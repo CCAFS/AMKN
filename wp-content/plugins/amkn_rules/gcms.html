@@ -1,0 +1,302 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=7" />
+
+<meta name="viewport" content="initial-scale=1, maximum-scale=1,user-scalable=no"/>
+<title>GCMs Data Query Test</title>
+<link rel="stylesheet" type="text/css" href="http://serverapi.arcgisonline.com/jsapi/arcgis/2.2/js/dojo/dijit/themes/claro/claro.css">
+<script type="text/javascript">djConfig = { parseOnLoad:true }</script>
+<script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.2"></script>
+<style>
+       html, body { height: 98%; width: 98%; margin: 0; padding: 5px; }
+    </style>
+<script type="text/javascript">
+      dojo.require("esri.map");
+      dojo.require("esri.tasks.identify");
+      dojo.require("dijit.layout.ContentPane");
+      dojo.require("dijit.layout.TabContainer");
+      dojo.require("dijit.form.Button");
+      dojo.require("dijit.form.CheckBox");
+      dojo.require("dijit.Tooltip");
+
+      var map, identifyTask, identifyParams, symbol, doingID;
+      var layer2results, layer3results, layer4results, loading, hasContent;
+      var intIdentify = setInterval('pulseId()',750);
+var wcLabels = [
+["Annual Mean Temperature", "1", "10"],
+["Mean Diurnal Range (Mean of monthly (max temp - min temp))", "1", "10"],
+["Isothermality (BIO2/BIO7) (* 100)", "1", "1"],
+["Temperature Seasonality (standard deviation *100)", "1", "1000"],
+["Max Temperature of Warmest Month", "1", "10"],
+["Min Temperature of Coldest Month", "1", "10"],
+["Temperature Annual Range (BIO5-BIO6)", "1", "10"],
+["Mean Temperature of Wettest Quarter", "1", "10"],
+["Mean Temperature of Driest Quarter", "1", "10"],
+["Mean Temperature of Warmest Quarter", "1", "10"],
+["Mean Temperature of Coldest Quarter", "1", "10"],
+["Annual Precipitation", "1", "1"],
+["Precipitation of Wettest Month", "1", "1"],
+["Precipitation of Driest Month", "1", "1"],
+["Precipitation Seasonality (Coefficient of Variation)", "1", "1"],
+["Precipitation of Wettest Quarter", "1", "1"],
+["Precipitation of Driest Quarter", "1", "1"],
+["Precipitation of Warmest Quarter", "1", "1"],
+["Precipitation of Coldest Quarter", "1", "1"]    
+]
+var moLabels = [
+['January'],
+['February'],
+['March'],
+['April'],
+['May'],
+['June'],
+['July'],
+['August'],
+['September'],
+['October'],
+['November'],
+['December']     
+]
+function pulseId() {
+	if (dojo.byId("searching").style.color == 'white') {
+	dojo.byId("searching").style.background = 'white';
+	dojo.byId("searching").style.color = '#FFFFCC';
+	dojo.byId("searching").style.border = 'thin solid #FFFFCC';
+	} else {
+	dojo.byId("searching").style.color = 'white';
+	dojo.byId("searching").style.background = '#FFFFCC';
+	dojo.byId("searching").style.border = 'thin solid white';
+	}
+}
+function hideSearching() {
+	dojo.byId("searching").style.visibility = 'hidden';
+}
+
+      function init() {
+        loading = dojo.byId("loadingImg");  //loading image. id
+        var initExtent = new esri.geometry.Extent({"xmin":-3247790.679362219,"ymin":-2944708.4017954674,"xmax":10919353.89112171,"ymax":5449911.79259349,"spatialReference":{"wkid":102100}});
+        map = new esri.Map("mapDiv",{extent:initExtent});
+        dojo.connect(map, "onLoad", initFunctionality);
+        dojo.connect(map,"onUpdateStart",showLoading);
+        dojo.connect(map,"onUpdateEnd",hideLoading);
+      
+        dojo.connect(map, "onClick", doIdentify);  
+
+
+	var basemap = new esri.layers.ArcGISTiledMapServiceLayer("http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer");
+        map.addLayer(basemap);
+
+        
+        var gcmLayer = new esri.layers.ArcGISDynamicMapServiceLayer("http://gismap.ciat.cgiar.org/ArcGISServer/rest/services/gcm/cccma_cgcm31_sresa1b_2030/MapServer",{opacity:.20});
+        dojo.connect(map.infoWindow, "onShow", function() {
+          dijit.byId("tabs").resize();
+          hideSearching();
+        });
+        map.addLayer(gcmLayer);
+        gcmLayer.hide();
+	dojo.connect(map.infoWindow, "onShow", hideSearching)
+        
+
+      }
+        function showLoading() {
+          esri.show(loading);
+          map.disableMapNavigation();
+          map.hideZoomSlider();
+        }
+
+        function hideLoading(error) {
+          esri.hide(loading);
+          map.enableMapNavigation();
+          map.showZoomSlider();
+        
+        }
+
+      function initFunctionality(map) {
+        
+          var tb = new esri.toolbars.Draw(map);
+
+        identifyTask = new esri.tasks.IdentifyTask("http://gismap.ciat.cgiar.org/ArcGISServer/rest/services/gcm/cccma_cgcm31_sresa1b_2030/MapServer");
+
+        identifyParams = new esri.tasks.IdentifyParameters();
+        identifyParams.tolerance = 3;
+        identifyParams.returnGeometry = false;
+        //identifyParams.layerIds = [0,2];
+        identifyParams.layerOption = esri.tasks.IdentifyParameters.LAYER_OPTION_ALL;
+        identifyParams.width  = map.width;
+        identifyParams.height = map.height;
+        
+        map.infoWindow.resize(500, 500);
+        map.infoWindow.setContent(dijit.byId("tabs").domNode);
+        map.infoWindow.setTitle("GCMs");
+
+        symbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255,0,0]), 2), new dojo.Color([255,255,0,0.25]));
+      }
+
+      function doIdentify(evt) {
+        if(doingID){
+        showLoading();
+        map.infoWindow.hide();
+        dijit.placeOnScreen(dojo.byId("searching"), {x: evt.pageX, y: evt.pageY}, ["TL", "BL"], {x: 1, y: 1});
+        dojo.byId("searching").style.visibility = 'visible';
+        map.graphics.clear();
+        identifyParams.geometry = evt.mapPoint;
+        identifyParams.mapExtent = map.extent;
+        identifyTask.execute(identifyParams, function(idResults) { addToMap(idResults, evt); });
+        showCoordinates(evt);
+        }
+      }
+
+      function addToMap(idResults, evt) {
+
+		bioclimResult = {displayFieldName:null,features:[]};
+		maxTempResult = {displayFieldName:null,features:[]};
+		minTempResult = {displayFieldName:null,features:[]};
+		meanTempResult = {displayFieldName:null,features:[]};
+		rainfallResult = {displayFieldName:null,features:[]};
+
+        for (var i=0, il=idResults.length; i<il; i++) {
+          var idResult = idResults[i];
+		  if(idResult.layerId >= 1 && idResult.layerId <= 19){//bioclimResult
+		  		bioclimResult.features.push(idResult.feature);
+		  }else if(idResult.layerId >= 21 && idResult.layerId <= 32){//maxTempResult
+				maxTempResult.features.push(idResult.feature);
+		  }else if(idResult.layerId >= 34 && idResult.layerId <= 45){//minTempResult
+				minTempResult.features.push(idResult.feature);
+		  }else if(idResult.layerId >= 47 && idResult.layerId <= 58){//meanTempResult
+				meanTempResult.features.push(idResult.feature);
+		  }else if(idResult.layerId >= 60 && idResult.layerId <= 71){//rainfallResult
+				rainfallResult.features.push(idResult.feature);
+		  }
+
+        }
+		dijit.byId("bioclim").setContent(layerTabContent(bioclimResult,"bioclimResult"));
+		dijit.byId("maxTemp").setContent(layerTabContent(maxTempResult,"maxTempResult"));
+		dijit.byId("minTemp").setContent(layerTabContent(minTempResult,"minTempResult"));
+		dijit.byId("meanTemp").setContent(layerTabContent(meanTempResult,"meanTempResult"));
+		dijit.byId("rainfall").setContent(layerTabContent(rainfallResult,"rainfallResult"));
+        if(hasContent)
+            {
+                map.infoWindow.show(evt.screenPoint, map.getInfoWindowAnchor(evt.screenPoint));
+            }
+        hideLoading();
+      }
+      function showCoordinates(evt) {
+        var mp = esri.geometry.webMercatorToGeographic(evt.mapPoint);
+        map.infoWindow.setTitle("GCMs at Lat:" + mp.y.toFixed(2) + " Lon:" + mp.x.toFixed(2));
+      }
+
+      function layerTabContent(layerResults, layerName) {
+        var content = "";
+        hasContent = false;
+        switch (layerName) {
+          case "bioclimResult":
+            content += "<table border='1'><tr><th>Bioclimatic variable</th><th>Value</th></tr>";
+            for (var i=0, il=layerResults.features.length; i<il; i++) {
+              content+="<tr><td>"+wcLabels[i][0]+"</td>";
+              //content+="<td>"+layerResults.features[i].attributes['Stretched value']+"</td>";
+              content+="<td>"+(layerResults.features[i].attributes['Pixel value']/wcLabels[i][2]).toFixed(wcLabels[i][1])+"</td>";
+              //content+="<td>"+layerResults.features[i].attributes['Rowid']+"</td>";
+              //content+="<td>"+layerResults.features[i].attributes['COUNT']+"</td></tr>";
+              hasContent = isNaN(layerResults.features[i].attributes['Pixel value']/wcLabels[i][2]) ? false : true;
+            }
+            content+="</table>";
+            break;
+          case "maxTempResult":
+            content += "<table border='1'><tr><th>Month</th><th>Max. Temp. (C)</th></tr>";
+           for (var i=0, il=layerResults.features.length; i<il; i++) {
+              content+="<tr><td>"+moLabels[i]+"</td>";
+              //content+="<td>"+layerResults.features[i].attributes['Stretched value']+"</td>";
+              content+="<td>"+layerResults.features[i].attributes['Pixel value']/10+"</td>";
+              //content+="<td>"+layerResults.features[i].attributes['Rowid']+"</td>";
+              //content+="<td>"+layerResults.features[i].attributes['COUNT']+"</td>";
+              hasContent = isNaN(layerResults.features[i].attributes['Pixel value']/wcLabels[i][2]) ? false : true;
+            }
+            content+="</tr></table>";
+            break;
+          case "minTempResult":
+            content += "<table border='1'><tr><th>Month</th><th>Min. Temp. (C)</th></tr>";
+           for (var i=0, il=layerResults.features.length; i<il; i++) {
+              content+="<tr><td>"+moLabels[i]+"</td>";
+              //content+="<td>"+layerResults.features[i].attributes['Stretched value']+"</td>";
+              content+="<td>"+layerResults.features[i].attributes['Pixel value']/10+"</td>";
+              //content+="<td>"+layerResults.features[i].attributes['Rowid']+"</td>";
+              //content+="<td>"+layerResults.features[i].attributes['COUNT']+"</td>";
+              hasContent = isNaN(layerResults.features[i].attributes['Pixel value']/wcLabels[i][2]) ? false : true;
+            }
+            content+="</tr></table>";
+            break;
+          case "meanTempResult":
+            content += "<table border='1'><tr><th>Month</th><th>Mean Temp. (C)</th></tr>";
+           for (var i=0, il=layerResults.features.length; i<il; i++) {
+              content+="<tr><td>"+moLabels[i]+"</td>";
+              //content+="<td>"+layerResults.features[i].attributes['Stretched value']+"</td>";
+              content+="<td>"+layerResults.features[i].attributes['Pixel value']/10+"</td>";
+              //content+="<td>"+layerResults.features[i].attributes['Rowid']+"</td>";
+              //content+="<td>"+layerResults.features[i].attributes['COUNT']+"</td>";
+              hasContent = isNaN(layerResults.features[i].attributes['Pixel value']/wcLabels[i][2]) ? false : true;
+            }
+            content+="</tr></table>";
+            break;
+          case "rainfallResult":
+            content += "<table border='1'><tr><th>Month</th><th>Rainfall (mm)</th></tr>";
+           for (var i=0, il=layerResults.features.length; i<il; i++) {
+              content+="<tr><td>"+moLabels[i]+"</td>";
+              //content+="<td>"+layerResults.features[i].attributes['Stretched value']+"</td>";
+              content+="<td>"+layerResults.features[i].attributes['Pixel value']+"</td>";
+              //content+="<td>"+layerResults.features[i].attributes['Rowid']+"</td>";
+              //content+="<td>"+layerResults.features[i].attributes['COUNT']+"</td>";
+              hasContent = isNaN(layerResults.features[i].attributes['Pixel value']/wcLabels[i][2]) ? false : true;
+            }
+            content+="</tr></table>";
+            break;
+        }
+        return content;
+      }
+
+      function showFeature(feature) {
+        map.graphics.clear();
+        feature.setSymbol(symbol);
+        map.graphics.add(feature);
+      }
+    dojo.addOnLoad(function() {
+        var checkBox = new dijit.form.CheckBox({
+            name: "checkBox",
+            value: "study",
+            checked: false,
+            onChange: function(b) {
+                doingID = b;
+                if(b){
+                  map.setMapCursor('crosshair');
+                }
+                else{
+                  map.setMapCursor('pointer');
+                }
+            }
+        },
+        "checkBox");
+    });
+      dojo.addOnLoad(init);
+    </script>
+</head>
+<body class="claro">
+<input id="checkBox" onchange="studyData" />
+<label for="checkBox">
+    Identify and view GCM climate data
+</label><div dojotype="dijit.Tooltip" connectId="checkBox">Check this, then click the map to query for climate data</div>
+<br />
+<div id="searching" style="position:absolute; left:45%; top:50%; border:thin solid white; background: red; color: white; PADDING: 0.80%; z-index: 2000; visibility:hidden; font-size: 13px; text-align:center;"><img src="images/loading.gif" /></div> 
+<div id="mapDiv" style="width:100%; height:100%; border:1px solid #000;">
+    <img id="loadingImg" src="images/loading.gif" style="position:absolute; right:512px; top:256px; z-index:100;" />
+</div>
+<!-- info window tabs -->
+<div id="tabs" dojoType="dijit.layout.TabContainer" style="width:500px;height:500px; overflow:scroll; z-index: 10000;">
+  <div id="bioclim" dojoType="dijit.layout.ContentPane" title="Bioclimatic variables"></div>
+  <div id="maxTemp" dojoType="dijit.layout.ContentPane" title="Maximum temperature"></div>
+  <div id="minTemp" dojoType="dijit.layout.ContentPane" title="Minimum temperature"></div>
+  <div id="meanTemp" dojoType="dijit.layout.ContentPane" title="Mean temperature"></div>
+  <div id="rainfall" dojoType="dijit.layout.ContentPane" title="Rainfall"></div>
+</div>
+</body>
+</html>

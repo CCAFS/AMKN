@@ -1,0 +1,141 @@
+html, body
+{
+	height: 100%;
+	margin: 0;
+	width: 100%;
+}
+body
+{
+	background-color: white;
+	font-family: "Trebuchet MS";
+	overflow: hidden;
+}
+#header
+{
+	background-color: white;
+	border: solid 2px #87907d;
+	font-weight: bold;
+	height: 70px;
+	margin: 2px;
+	text-align: left;
+}
+#titleDiv
+{
+	color: #aab6a2;
+	font-size: 18pt;
+	font-weight: bold;
+	padding-left: 10px;
+	padding-top: 15px;
+}
+#subtitleDiv
+{
+	color: #87907d;
+	font-size: small;
+	padding-left: 20px;
+}
+#rightPane
+{
+	background-color: white;
+	border: solid 2px #87907d;
+	color: #3f3f3f;
+	width: 20%;
+}
+#leftPane
+{
+	background-color: white;
+	border: solid 2px #87907d;
+	color: #3f3f3f;
+	margin: 5px;
+	padding: 2px;
+	width: 20%;
+}
+#map
+{
+	border: solid 2px #87907d;
+	margin: 5px;
+	moz-border-radius: 4px;
+}
+#footer
+{
+	background-color: #ecefe4;
+	border: solid 2px #87907d;
+	font-size: 15px;
+	height: 40px;
+	margin: 2px;
+	padding-bottom: 5px;
+	padding-left: 10px;
+	padding-top: 5px;
+	text-align: left;
+}
+#footer a
+{
+	color: #4086AA;
+	font-size: 15px;
+}
+.dijitTabInnerDiv
+{
+	background-color: #ecefe4;
+}
+#tabs
+{
+	padding: 10px;
+}
+#itemsDiv
+{
+	background-color: #FFFFFF;
+	overflow: auto;
+}
+#itemsList
+{
+	list-style: none;
+	margin: 0;
+	overflow: auto;
+	padding: 3px;
+}
+#itemsList li
+{
+	border-bottom: 1px solid #CCCCCC;
+	cursor: pointer;
+	padding: 2px;
+	padding-bottom: 4px;
+}
+#itemsList li:hover
+{
+	color: #0000FF;
+}
+#itemsList li.highlightedItem
+{
+	color: #0000FF;
+	moz-border-radius: 5px;
+	moz-box-shadow: 0 0 0.5em black;
+	webkit-border-radius: 5px;
+	webkit-box-shadow: 0 0 0.5em black;
+}
+#popupWindow
+{
+	background-color: #FFFFFF;
+	border: 2px solid #AAAAAA;
+	display: block;
+	height: 175px;
+	left: -1000px;
+	moz-border-radius: 5px;
+	moz-box-shadow: 0 0 0.5em black;
+	overflow: auto;
+	padding: 4px;
+	position: absolute;
+	top: -1000px;
+	webkit-border-radius: 5px;
+	webkit-box-shadow: 0 0 0.5em black;
+	width: 175px;
+	z-index: 100;
+}
+#popupHide
+{
+	color: blue;
+	cursor: pointer;
+	font-size: 10px;
+	text-align: right;
+	text-decoration: underline;
+}
+
+

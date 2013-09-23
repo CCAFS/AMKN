@@ -1,0 +1,498 @@
+@charset "UTF-8";
+/* AMKN CSS Document */
+
+@font-face {font-family: museo300; src: url('font/Museo300.otf');}
+@font-face {font-family: museo500; src: url('font/Museo500.otf');}
+
+body {
+    background: url("images/background.jpg") repeat scroll center top #fff;
+    color: #333333;
+    font-family:Helvetica, Arial, sans-serif;
+    font-size: 14px;
+    margin:0;
+    padding:0;
+}
+
+
+
+a {
+    color:#4b8d43;
+    text-decoration:none;
+}
+
+a:hover {
+    border-bottom:1px solid #4b8d43;
+}
+
+ul {
+    list-style: none outside none;
+    margin: 0;
+    padding: 0;
+}
+
+ul li img {
+    border:medium none;
+    float:left;
+}
+
+.preload {
+    display:none;
+}
+
+.shadow {
+    background: url("images/shadow.jpg") repeat scroll 0 0 transparent;
+    display: block;
+    height: 10px;
+}
+
+
+/* AMKN Header */
+
+#header {
+    height: 50px;
+    padding: 0;
+    margin:0;
+    border-bottom:5px solid #4b8d43;
+}
+
+#headercontent{
+    margin: 0 auto;
+    width: 970px;
+}
+
+ul.menu {
+    float: right;
+    font-family: museo500;
+    font-size: 16px;
+    margin-top: 15px;
+
+}
+
+ul.menu a:link{
+    color: #54322a;
+}
+
+ul.menu a:hover{
+    color: #54322a;
+    border-bottom:2px solid #F5CB00;
+}
+
+ul.menu li {
+    float: left;
+    margin-left: 15px;	
+}
+ul.menu li.current-menu-item a {
+    color: #54322a;
+    border-bottom:2px solid #F5CB00;
+}
+
+/* AMKN Container */
+
+.container {
+    margin: 0 auto;
+    width: 970px;
+}
+
+
+.container-bottom {
+    margin: 0 auto;
+}
+
+
+
+/* AMKN Sidebar */
+
+
+#sidebar {
+    background: url("images/sidebar-bg.png") repeat scroll 0 0 transparent;
+    display: block;
+    float: left;
+    width: 210px;
+    margin-top:-50px;
+    padding-left:20px;
+}
+
+#sidebar a:hover {
+    border-bottom:medium none;
+}
+
+.logo {
+    border: medium none;
+    margin-left:-10px;
+}
+
+
+.blurb {
+    color: #54322A;
+    line-height: 23px;
+    margin: 15px 15px 15px 0px;
+}
+
+.blurb-title {
+    color: #AFAFAF;
+    text-transform: uppercase;	
+}
+
+
+.ccafs-blurb {
+    margin-left:-10px;
+}
+
+.sidebar-title {
+    color: #54322a;
+    font-size:16px;
+}
+
+
+.sidebar-title {	
+    color: #54322A;
+    font-size: 16px;
+    margin-left: -5px;
+    font-family:museo300;
+}
+
+
+ul.social-list li p a:hover {
+    border-bottom:1px solid #4b8d43 !important;
+}
+
+ul.social-list li {
+    color: #AFAFAF;
+    font-size: 13px;
+    line-height: 16px;
+    margin-bottom: 15px;
+    text-transform: uppercase;
+}
+
+ul.social-list li p{
+    height: 30px;
+    margin: 0;
+    padding: 0;
+}
+
+
+ul.social-list a img {
+    border: medium none;
+    margin-right: 10px;
+    vertical-align: text-top;
+    float:left;
+}
+
+/* AMKN MainColumn */
+
+.maincol {
+    float: left;
+    margin-left: 6px;
+    width:734px;
+}
+
+
+.tags {
+    display: block;
+    width:170px;
+    height:34px;
+    float: right;
+    margin-top: -1px;
+    position: relative;
+    z-index: 1000;
+}
+
+.tags a img{
+    border:medium none;
+}
+
+.tags a:hover {
+    border-bottom:medium none;
+}
+
+
+.tags_body {  background: url("images/green-bg.png") repeat scroll 0 0 transparent;
+              display: block;
+              float: right;
+              left: 170px;
+              padding: 10px 10px 10px 0;
+              position: relative;
+              top: 31px;
+              width: 160px;
+              z-index: 1000;
+}
+
+
+.tags_body ul li a {
+    border-bottom: 1px solid #719c78;
+    color: #FFFFFF;
+    float: left;
+    font-size: 12px;
+    height: 17px;
+    margin-bottom: 0;
+    padding-left: 5px;
+    padding-top: 5px;
+    text-transform: uppercase;
+    width: 100%;
+}
+
+
+
+.tags_body ul li a:hover {
+    background:#F5CB00;
+    color:#54322A;
+}
+
+
+
+.map, #video {
+    /*    background-image: url("images/map.png");*/
+    border-bottom: 5px solid #4B8D43;
+    border-left: 5px solid #4B8D43;
+    border-right: 5px solid #4B8D43;
+    min-height: 429px;
+    margin-top: -1px;
+    position: absolute;
+    width: 724px;
+}
+
+#blog-post {
+    border-bottom: 5px solid #4B8D43;
+    border-left: 5px solid #4B8D43;
+    border-right: 5px solid #4B8D43;
+    padding: 5px;
+    background: none repeat scroll 0 0 #F1F1F1;
+    margin-top: -1px;
+    /*    position: absolute;*/
+    width: 724px;
+    min-height: 545px;
+}
+
+.controls {    
+    border-bottom: 5px solid #4B8D43;
+    border-left: 5px solid #4B8D43;
+    border-right: 5px solid #4B8D43;
+    height: 50px;
+    position: absolute;
+    top: 488px;
+    width: 724px;
+}
+
+.controls ul{
+    padding-top: 10px;
+}
+
+.controls ul li {
+    color: #54322A;
+    float: left;
+    font-family: museo500;
+    margin-left: 25px;
+}
+
+
+.controls ul li input {
+    margin-right: 10px;
+    float:left;
+    margin-top:5px;
+}
+
+.controls ul li img{
+    margin-right: 3px;
+    vertical-align: middle;
+}
+
+
+.strip { 
+    border-bottom: 5px solid #F5CB00;
+    display: block;
+    float: none;
+    height: 1px;
+    padding: 0;
+    position: absolute;
+    top: 614px;
+    left:0;
+    width: 100%;
+    z-index: -1;
+}
+
+
+.latest-stories {    
+    float: left;
+    margin-left: 6px;
+    position: absolute;
+    top: 596px;
+    width: 734px;
+}
+
+
+
+.lstories {
+    color: #54322A;
+    display: block;
+    float: left;
+    font-family: museo300;
+    font-size: 16px;
+    margin-right: 35px;
+    padding: 0;
+    margin:0 50px 0 0;
+}
+
+
+
+.latest-stories ul li{
+    float:left;
+    margin-right:10px;
+}
+
+.latest-stories ul li img{
+    border:medium none;
+}
+
+
+.loop {    
+    float: left;
+    margin-left: 6px;
+    position: absolute;
+    top: 630px;
+    width: 734px;
+    height: 270px;
+}
+
+.post {
+    float: left;
+    padding: 5px;
+    width: 234px;
+    background-image: url(images/shadow.jpg);
+    background-repeat: no-repeat;
+    background-attachment: none;
+    background-position: center bottom;
+    height: 100%;
+}
+
+#symbol-video_testimonials{
+    background-image: url("images/video.png");
+    height: 25px;
+    width: 25px;
+    /*    position: absolute;
+        left: 213px;*/
+    z-index: 1000;
+    float: right;
+    position: absolute;
+}
+#symbol-photo_testimonials{
+    background-image: url("images/photo.png");
+    height: 25px;
+    width: 25px;
+    /*    position: absolute;
+        left: 213px;*/
+    z-index: 1000;
+    float: right;
+    position: absolute;
+}
+#symbol-photosets{
+    background-image: url("images/photo.png");
+    height: 25px;
+    width: 25px;
+    /*    position: absolute;
+        left: 213px;*/
+    z-index: 1000;
+    float: right;
+    position: absolute;
+}
+#symbol-amkn_blog_posts{
+    background-image: url("images/post.png");
+    height: 25px;
+    width: 25px;
+    /*    position: absolute;
+        left: 213px;*/
+    z-index: 1000;
+    float: right;
+    position: absolute;
+}
+#symbol-research-site{
+    background-image: url("images/pin.png");
+    height: 25px;
+    width: 25px;
+    /*    position: absolute;
+        left: 213px;*/
+    z-index: 1000;
+    float: right;
+    position: absolute;
+}
+.loop-title {
+    font-size: 14px;
+    text-transform: uppercase;
+    color:#54322A;
+/*    height: 80px;*/
+    overflow: hidden;
+}
+
+a.loop-title  {
+    color: #54322A;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.loop-img {
+    border: 5px solid #F1F1F1;
+    display: block;
+    height: 130px;
+    width:224px;
+
+}
+.post a  img{
+    opacity:0.8;
+}
+.post a:hover img{
+    opacity:1;
+}
+.meta {    color: #AFAFAF;
+           float: left;
+           margin-top: 10px;
+           text-transform: uppercase;
+}
+/* AMKN Photo Sets */
+#photoSetThumb{
+    padding: 5px;
+    display: block;
+    float: left;
+}
+/* AMKN Footer */
+#footer {
+    background: none repeat scroll 0 0 #F1F1F1;
+    color: #AFAFAF;
+    float: left;
+    font-size: 16px;
+    height: 35px;
+    margin-top: 100px;
+    display: block;
+    width: 100%;
+}
+.footer-in {
+    width:970px;
+    margin:0 auto;
+}
+
+.footer-left {
+    float:left;
+    margin:0;
+    padding:10px;
+}
+
+.footer-right {
+    float:right;
+    margin:0;
+    padding:0px;
+}
+
+.footer-right a img{ 
+    border:medium none;
+    padding:10px;
+
+}
+.screen-reader-text,
+.section-heading {
+    position: absolute !important;
+    clip: rect(1px 1px 1px 1px); /* IE6, IE7 */
+    clip: rect(1px, 1px, 1px, 1px);
+}
+/* AMKN Mapping Elements */
+#rightPane div, #rightPane table{
+display: inline;
+width: 20px;
+}

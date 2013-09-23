@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<lang>English</lang>
+	<title>MarkSim GCM - DSSAT weather file generator</title>
+	<Copyright>ILRI © 2010</Copyright>
+	<Developer>Ernesto Giron - Peter Jones</Developer>
+	<!-- Change egironpc word for your URL or IP of your web server -->
+	<Webserver>http://gismap.ciat.cgiar.org/MarkSimGCM/</Webserver>
+
+	<!-- Change the path for WorldClim Grid, MarkSim Data and GCM4 according to your server
+	Please use double back-slash "\\" to separate folders and file name -->
+	<MarkSimGCMPath>
+		<!-- <WorldClim>C:\\Workspace\\egiron\\DroughtSite\\ToolData\\worldll.mtg</WorldClim> -->
+		<WorldClim>C:\\Workspace\\egiron\\MarkSimGCM\ToolData\\worldll.mtg</WorldClim>
+		<MarkSim>C:\\Workspace\\egiron\\DroughtSite\\ToolData\\MarkDat</MarkSim>
+		<GCM4data>C:\\Workspace\\egiron\\MarkSimGCM\\gcm4data</GCM4data>
+	</MarkSimGCMPath>
+
+	<!-- Change the URL according to your ArcGIS REST Web Services -->
+	<Geoprocessor>http://gismap.ciat.cgiar.org/ArcGISServer/rest/services/ILRI/MarkSimGCMv1/GPServer/MarkSimGCM</Geoprocessor>
+
+</config>
