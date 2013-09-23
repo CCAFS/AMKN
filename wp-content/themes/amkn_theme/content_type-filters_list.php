@@ -33,7 +33,5 @@ array_multisort($sortArray[$orderby],SORT_ASC,$post_types);
       }
   }
 ?>
-<div class="onmap" id="accord_legend" dojoType="dijit.layout.AccordionPane" title="Data Legend">
-<div id="legendDiv"></div>
-</div>  
-</div>
+
+        <div class="onmap" id="accord_legend" dojoType="dijit.layout.AccordionPane" title="Data Legend"> <div id="legendDiv"></div> </div>  </div>

@@ -28,7 +28,7 @@ $args3=array(
         $terms = get_terms($taxonomy->name, $args3);
         $count = count($terms);
          echo '<li><div class="taxonomies" dojoType="dijit.form.DropDownButton" id="d_' . $taxonomy->name . '">
-    <span>' . $taxonomy->label . '</span>
+    <span>' . $taxonomy->label . 'asd</span>
     <div dojoType="dijit.TooltipDialog" class="hide" id="c_' . $taxonomy->name . '">
     <button dojoType="dijit.form.Button" type="submit" class="checkCtrls"><a>Close</a></button>
     <form name="' . $taxonomy->name . '">';

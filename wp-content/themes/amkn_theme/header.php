@@ -32,13 +32,8 @@ $searchQ = $_GET["q"];
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" type="text/css" media="screen" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php wp_head(); ?>
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-<script type="text/javascript">
-	//<![CDATA[
-	google.load("jquery", "1.4.2");
-	google.load("jqueryui", "1.8.2");
-	//]]>
-</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script type="text/javascript">
   var djConfig = {
     parseOnLoad: true
@@ -49,7 +44,7 @@ $searchQ = $_GET["q"];
 </script>
 </head>
 <body>
-<div id="header" class="header-page">
+<div id="header index" class="header-page">
 <div class="logos"><a href="/">
 <img class="amkn_logo" src="<?php bloginfo( 'template_directory' ); ?>/images/amkn.gif" alt="AMKN logo" />
 <img class="ccafs_logo" src="<?php bloginfo( 'template_directory' ); ?>/images/ccafs-logo.png" alt="CCAFS logo" /></a>
