@@ -45,7 +45,7 @@ $searchQ = $_GET["q"];
 </head>
 <body>
 <div id="header index" class="header-page">
-<div class="logos"><a href="/">
+<div class="logos"><a href="<?php bloginfo('url'); ?>">
 <img class="amkn_logo" src="<?php bloginfo( 'template_directory' ); ?>/images/amkn.gif" alt="AMKN logo" />
 <img class="ccafs_logo" src="<?php bloginfo( 'template_directory' ); ?>/images/ccafs-logo.png" alt="CCAFS logo" /></a>
 </div><!-- end logos -->

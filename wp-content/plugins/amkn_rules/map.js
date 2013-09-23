@@ -37,17 +37,17 @@ var ptonmap=[];
 function initMap(){
     baseMP=1;
     getView();
-    syml6=new esri.symbol.PictureMarkerSymbol("/wp-content/themes/amkn_theme/images/pin-mini.png",17,25);
-    syms6=new esri.symbol.PictureMarkerSymbol("/wp-content/themes/amkn_theme/images/pin-mini.png",7,10);
+    syml6=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/pin-mini.png",17,25);
+    syms6=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/pin-mini.png",7,10);
     syml4=new esri.symbol.SimpleMarkerSymbol(esri.symbol.SimpleMarkerSymbol.STYLE_CIRCLE,15,new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID,new dojo.Color([0,128,0]),1),new dojo.Color([0,128,0,0.25]));
     syml5=new esri.symbol.SimpleMarkerSymbol(esri.symbol.SimpleMarkerSymbol.STYLE_CIRCLE,15,new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID,new dojo.Color([0,0,139]),1),new dojo.Color([0,0,139,0.25]));
     syml2=new esri.symbol.SimpleMarkerSymbol(esri.symbol.SimpleMarkerSymbol.STYLE_CIRCLE,15,new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID,new dojo.Color([128,0,128]),1),new dojo.Color([128,0,128,0.25]));
     sym7=new esri.symbol.SimpleMarkerSymbol(esri.symbol.SimpleMarkerSymbol.STYLE_CIRCLE,15,new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID,new dojo.Color([255,140,0]),1),new dojo.Color([255,140,0,0.25]));
-    symh2=new esri.symbol.PictureMarkerSymbol("/wp-content/themes/amkn_theme/images/video_testimonials-miniH.gif",21,21);
-    symh4=new esri.symbol.PictureMarkerSymbol("/wp-content/themes/amkn_theme/images/amkn_blog_posts-miniH.gif",21,21);
-    symh5=new esri.symbol.PictureMarkerSymbol("/wp-content/themes/amkn_theme/images/photo_testimonials-miniH.gif",21,21);
-    symh6=new esri.symbol.PictureMarkerSymbol("/wp-content/themes/amkn_theme/images/ccafs_sites-miniH.gif",17,25);
-    symhX=new esri.symbol.PictureMarkerSymbol("/wp-content/themes/amkn_theme/images/biodiv_cases-miniH.gif",21,21);
+    symh2=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/video_testimonials-miniH.gif",21,21);
+    symh4=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/amkn_blog_posts-miniH.gif",21,21);
+    symh5=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/photo_testimonials-miniH.gif",21,21);
+    symh6=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/ccafs_sites-miniH.gif",17,25);
+    symhX=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/biodiv_cases-miniH.gif",21,21);
     syms4=new esri.symbol.SimpleMarkerSymbol().setColor(new dojo.Color([0,0,255]));
     syms5=new esri.symbol.SimpleMarkerSymbol().setColor(new dojo.Color([0,0,255]));
     syms2=new esri.symbol.SimpleMarkerSymbol().setColor(new dojo.Color([0,0,255]));
@@ -442,34 +442,34 @@ function getListingContent(id){
             cid=csvStore.getValue(item,"CID");
         }
     });
-    mapPTS=rt=="video_testimonials"?vtonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
+    mapPTS=rt=="video_testimonials"?vtonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
     mapPTS=rt=="ccafs_sites"?cconmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' >"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;<a class='link-ccafs-sites' href='./?p="+cid+"'>"+ttl+"</a></li>"):"";
-    mapPTS=rt=="amkn_blog_posts"?bgonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
-    mapPTS=rt=="biodiv_cases"?bdonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
-    mapPTS=rt=="photo_testimonials"?ptonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
-    return"<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>";
+    mapPTS=rt=="amkn_blog_posts"?bgonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
+    mapPTS=rt=="biodiv_cases"?bdonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
+    mapPTS=rt=="photo_testimonials"?ptonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
+    return"<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>";
 }
 function getPopupTitle(type){
     switch(type){
         case"video_testimonials":
             cHType=symh2;
-            return"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Video";
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Video";
             break;
         case"ccafs_sites":
             cHType=symh6;
-            return"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Site";
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Site";
             break;
         case"amkn_blog_posts":
             cHType=symh4;
-            return"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Blog Post";
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Blog Post";
             break;
         case"biodiv_cases":
             cHType=symhX;
-            return"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Agrobiodiversity Cases";
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Agrobiodiversity Cases";
             break;
         case"photo_testimonials":
             cHType=symh5;
-            return"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Photo Set";
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Photo Set";
             break;
         default:
             cHType=highlightSymbol;
