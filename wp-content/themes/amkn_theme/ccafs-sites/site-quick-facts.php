@@ -3,8 +3,8 @@ $subsection = $_GET["subsection"];
 $section = $_GET["section"];
 $class = 'class="selected"';
 $ltab = './?section=' . $section . '&subsection=';
-// test!
 $ccafsSubSections = array("crop-calendar", "land-use", "hunger-months", "climate-crises", "food-security");
+//Quick Facts
 ?>
 <div id="container">
 

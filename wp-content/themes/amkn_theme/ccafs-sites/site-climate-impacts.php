@@ -1,75 +1,55 @@
+<?php
+$subsection = $_GET["subsection"];
+$section = $_GET["section"];
+$class = 'class="selected"';
+$ltab = './?section=' . $section . '&subsection=';
 
-
+$ccafsSubSections = array("weather-info-sources", "communication-assets", "aspects-of-farming-changed");
+?>
+<style>
+    #vtab ul li {
+        height: 93px;
+        padding-top: 22px;
+    }
+    #tabs ul li {
+        height: 27px;
+        padding-top: 22px;
+    }
+</style>
 <div id="container">
 
-<!--   <ul>
-      <li>- Climate &Impacts (climate-impacts)</li>
-      <li>//	- Weather predictions</li>
-      <li>//	- Weather info sources</li>
-      <li>//	- Communication assets</li>
-      <li>//	- Aspects of farming changed</li>
-   </ul>-->
-<link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/custom-theme/jquery-ui-1.8.11.custom.css" type="text/css" media="all" />
-                        <style type="text/css">
-                            #worldclimData>table {
-                                font-size: x-small;
-                                width: 98%;
-                            }
-                            #worldclimData>img {
-                                width: 98%;
-                            }
-                        </style>
-                        <script>
-                            $(function() {
-                                $("#tabs").tabs();
-                            });
-                        </script>
-                        <p>
-                           
-                            <?php
-                            $siteCentroid = explode(" ", get_post_meta($post->ID, 'geoRSSPoint', true));
-                            $worldClimDataURL1 = "http://droppr.org/data/climate/data/5/" . $siteCentroid[1] . "/" . $siteCentroid[0] . "/rain/809";
-                            $worldClimDataURL2 = "http://droppr.org/data/climate/data/5/" . $siteCentroid[1] . "/" . $siteCentroid[0] . "/tmax/809";
-                            $worldClimDataURL3 = "http://droppr.org/data/climate/data/5/" . $siteCentroid[1] . "/" . $siteCentroid[0] . "/tmin/809";
-                            ?>
-                        <h3>Current weather and 2050 predictions</h3>
+    <div id="vtab" class="4tabs"> 
 
-                        <div id="tabs">
-                            <ul>
-                                <li><a href="#tabs-1">Total Rainfall (mm)</a></li>
-                                <li><a href="#tabs-2">Max. Temp. (C)</a></li>
-                                <li><a href="#tabs-3">Min. Temp. (C)</a></li>
-                            </ul>
-                            <div id="tabs-1">
-                                <div id="worldclimData">
-                                    <?php
-                                    echo file_get_contents($worldClimDataURL1);
-                                    ?>
-                                </div>
+        <ul>
+            <li <?php if (!$subsection) echo $class; ?>>
+                <a href="<?php echo $ltab; ?>">
+                    <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/weather-predictions.png" border="0"><br> Weather Predictions</a>
+            </li>
+            <li <?php if ($subsection == $ccafsSubSections[0]) echo $class; ?>>
+                <a href="<?php echo $ltab . $ccafsSubSections[0]; ?>">
+                    <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/climate-crises.png" border="0"><br> Weather info sources</a>
+            </li>
+            <li <?php if ($subsection == $ccafsSubSections[1]) echo $class; ?>>
+                <a href="<?php echo $ltab . $ccafsSubSections[1]; ?>">
+                    <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/food-security.png" border="0"><br>Communication assets</a>
+            </li>
+            <li <?php if ($subsection == $ccafsSubSections[2]) echo $class; ?>>
+                <a href="<?php echo $ltab . $ccafsSubSections[2]; ?>">
+                    <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/climate-crises.png" border="0"><br>Aspects of farming changed</a>
+            </li>
 
-                            </div>
-                            <div id="tabs-2">
-                                <div id="worldclimData">
-                                    <?php
-                                    echo file_get_contents($worldClimDataURL2);
-                                    ?>
-                                </div>
-                            </div>
-                            <div id="tabs-3">
-                                <div id="worldclimData">
-                                    <?php
-                                    echo file_get_contents($worldClimDataURL3);
-                                    ?>
-                                </div>
+        </ul>
+        <div>
+            <?php
+            if (in_array($subsection, $ccafsSubSections)) {
+                load_template(TEMPLATEPATH . '/ccafs-sites/' . $section . '/' . $subsection . '.php');
+            } else {
+                load_template(TEMPLATEPATH . '/ccafs-sites/' . $section . '/default.php');
+            }
+            ?>
+        </div>
+    </div><!-- end vtab -->
 
-                            </div>
-                        </div>
-
-                        </p>
-                        <div class="entrymeta">
-                            Source: <a target="_blank" href="http://www.worldclim.org/">WorldClim database</a>
-                            <p>Hijmans, R.J., S.E. Cameron, J.L. Parra, P.G. Jones and A. Jarvis, 2005. Very high resolution interpolated climate surfaces for global land areas. <a target="_blank" href="http://www.worldclim.org/worldclim_IJC.pdf">International Journal of Climatology 25: 1965-1978</a></p>
-                        </div>
 
 </div><!-- end Container -->
 

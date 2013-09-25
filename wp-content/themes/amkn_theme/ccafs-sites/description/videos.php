@@ -55,7 +55,7 @@ $postType = "";
 
             <a href="#" data-reveal-id="<?php echo $post->ID; ?>"><img style="float:left" width="210" height="120" src="<?php echo $postThumb; ?>" border="0"></a>
 
-            <p style="float:right;width: 150px;padding-right: 70px;"><?php echo $metaDesc; ?>
+            <p style="float:right;width: 150px;padding-right: 20px;"><?php echo $metaDesc; ?>
                <a href="<?php the_permalink(); ?>"><span class="button-more">Read more</span></a>
             </p>
             <br clear="all" />

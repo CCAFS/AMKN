@@ -18,7 +18,7 @@ $urlJson = get_bloginfo('template_url') . "/ccafs-sites/json.php?table=" . $tabl
 		</tr>
 		<tr>
 			<td class="table-color1">Employment on someone else's farm</td>
-			<td align="center"><?php echo $data->hh_facing ?></td>
+			<td align="center"><?php echo $data->employment ?></td>
 		</tr>
 		<tr>
 			<td class="table-color1">Business</td>
@@ -26,39 +26,39 @@ $urlJson = get_bloginfo('template_url') . "/ccafs-sites/json.php?table=" . $tabl
 		</tr>
 		<tr>
 			<td  class="table-color1">Remittances/gifts</td>
-			<td align="center"><?php echo $data->remitt ?></td>
+			<td align="center"><?php echo $data->remittances ?></td>
 		</tr>
                 <tr>
 			<td  class="table-color1">Other off-farm employment</td>
-			<td align="center"><?php echo $data->otherfarm ?></td>
+			<td align="center"><?php echo $data->other ?></td>
 		</tr>
 		<tr>
 			<td class="table-color1">No off-farm cash source</td>
-			<td align="center"> <?php echo $data->otherjob ?></td>
+			<td align="center"> <?php echo $data->none ?></td>
 		</tr>
 		<tr>
 			<td  class="table-color1">Renting out farm machinery</td>
-			<td align="center"><?php echo $data->rentmatch ?></td>
+			<td align="center"><?php echo $data->rentoutfarm ?></td>
 		</tr>
                 <tr>
 			<td  class="table-color1">Renting out land</td>
-			<td align="center"><?php echo $data->rentland ?></td>
+			<td align="center"><?php echo $data->rentoutland ?></td>
 		</tr>
 		<tr>
 			<td  class="table-color1">Payments for environmental services</td>
-			<td align="center"> <?php echo $data->envirpay ?></td>
+			<td align="center"> <?php echo $data->payenv ?></td>
 		</tr>
 		<tr>
 			<td class="table-color1">Loan or credit from a formal institution</td>
-			<td align="center"><?php echo $data->formloan	 ?></td>
+			<td align="center"><?php echo $data->loan	 ?></td>
 		</tr>
                 <tr>
 			<td class="table-color1">Payments from government or other projects/programs</td>
-			<td align="center"><?php echo $data->govpay ?></td>
+			<td align="center"><?php echo $data->paygov ?></td>
 		</tr>
 		<tr>
 			<td  class="table-color1">Informal loan or credit</td>
-			<td align="center"> <?php echo $data->informloan ?></td>
+			<td align="center"> <?php echo $data->infloan ?></td>
 		</tr>
 		
 	

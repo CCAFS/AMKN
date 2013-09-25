@@ -1285,6 +1285,7 @@ ul#vtab {
     padding: 12px;
     position: relative;
     z-index: 9;
+    height: 500px;
 }
 #vtab > div > h4 {
     color: #880000;
@@ -1348,4 +1349,12 @@ td.table-color1 {
     background: #303030;
     color: #FFF;
     border-radius: 5px;
+    height: 35px;
 }
+.ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all {
+    height: 50px;
+}
+.ui-state-default.ui-corner-top.ui-tabs-active.ui-state-active {
+    height: 50px;
+}
+
