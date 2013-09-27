@@ -1192,7 +1192,7 @@ img.site-photo {
     margin: auto;
     width: 100%;
 }
-#vtab ul li {
+#vtab > ul > li {
     -moz-border-bottom-colors: none;
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
@@ -1204,7 +1204,7 @@ img.site-photo {
     border-width: 1px medium 1px 1px;
     cursor: pointer;
     display: block;
-    /*height: 72px;*/
+    height: 72px;
     list-style-type: none;
     margin: auto;
     opacity: 0.3;
@@ -1227,16 +1227,16 @@ img.site-photo {
 */
  
 
-#vtab ul li.home {
+#vtab > ul > li.home {
     background: url("ccafs-sites/images/crops-livestock.png") no-repeat scroll center center transparent;
 }
-#vtab ul li.login {
+#vtab > ul > li.login {
     background: url("login.png") no-repeat scroll center center transparent;
 }
-#vtab ul li.support {
+#vtab > ul > li.support {
     background: url("support.png") no-repeat scroll center center transparent;
 }
-#vtab ul li.selected {
+#vtab > ul > li.selected {
     -moz-border-bottom-colors: none;
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
@@ -1250,7 +1250,7 @@ img.site-photo {
     position: relative;
     z-index: 10;
 }
-#vtab ul li {
+#vtab > ul > li {
     -moz-border-bottom-colors: none;
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
@@ -1265,7 +1265,7 @@ img.site-photo {
     position: relative;
     z-index: 10;
 }
-#vtab ul {
+#vtab > ul {
     display: block;
     float: left;
     margin: auto 0;
@@ -1280,7 +1280,7 @@ img.site-photo {
 ul#vtab {
    
 }
-#vtab div {
+#vtab > div {
     -moz-border-bottom-colors: none;
     -moz-border-left-colors: none;
     -moz-border-right-colors: none;
@@ -1298,29 +1298,29 @@ ul#vtab {
     z-index: 9;
     height: 500px;
 }
-#vtab div h4 {
+#vtab > div > h4 {
     color: #880000;
     font-size: 1.7em;
     margin-top: 0;
     padding-top: 0;
 }
-#vtab ul li.selected {
+#vtab > ul > li.selected {
     border-radius: 8px 0 0 8px;
     border-right: 1px solid #F0F0F0 !important;
     box-shadow: 0 3px 4px #B9ABAB;
     z-index: -1;
 }
-#vtab ul li {
+#vtab > ul > li {
     border-radius: 11px 0 0 11px;
     border-right: 1px solid #F0F0F0 !important;
 }
-#vtab ul li {
+#vtab > ul > li {
     border-right: 1px solid #DDDDDD !important;
 }
-#vtab div {
+#vtab > div {
     left: 1px;
 }
-#vtab ul li a {
+#vtab > ul > li > a {
     color: #3A3A3A;
     text-decoration: none;
 }

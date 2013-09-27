@@ -7,7 +7,7 @@ $ltab = './?section=' . $section . '&subsection=';
 $ccafsSubSections = array("weather-info-sources", "communication-assets", "aspects-of-farming-changed");
 ?>
 <style>
-    /* This style must not be here. */
+    /* This style must not be here. It has to be in the style file. */
     #vtab ul li {
         height: 93px;
         padding-top: 22px;
