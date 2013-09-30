@@ -7,15 +7,10 @@ $ltab = './?section=' . $section . '&subsection=';
 $ccafsSubSections = array("on-farm", "off-farmcash", "diversification");
 ?>
 <style>
-    #vtab ul li {
-        height: 93px;
-        padding-top: 22px;
-    }
+    
 </style>
-<div id="container">
-
-    <div id="vtab" class="4tabs"> 
-
+<div id="container"> 
+    <div id="vtab" class="tabs4">  
         <ul>
             <li <?php if (!$subsection) echo $class; ?>>
                 <a href="<?php echo $ltab; ?>">
@@ -32,8 +27,7 @@ $ccafsSubSections = array("on-farm", "off-farmcash", "diversification");
             <li <?php if ($subsection == $ccafsSubSections[2]) echo $class; ?>>
                 <a href="<?php echo $ltab . $ccafsSubSections[2]; ?>">
                     <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/food-security.png" border="0"><br>Diversification indices</a>
-            </li>
-
+            </li> 
         </ul>
         <div>
             <?php

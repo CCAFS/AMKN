@@ -14,29 +14,21 @@
 
 $(function() {
 
-      var color = '#95b3d7';
+      var color = ['#fea10e','#e46c0a','#984807'];
       var colors = Highcharts.getOptions().colors,
-              categories = ["Radio","TV","Cellphone","Computer","Internet"],
-              name = 'Tools/Assets',
+              categories = ["0-1 Change","2-10 Changes","11 or more Changes"],
+              name = 'Changes',
               data = [{
-                  y: parseFloat(json[0].radio),
-                  color: color
+                  y: parseFloat(json[0].from0to1),
+                  color: color[0]
                  
                }, {
-                  y: parseFloat(json[0].tv),
-                  color: color
+                  y: parseFloat(json[0].from2to10),
+                  color: color[1]
                  
                }, {
-                  y: parseFloat(json[0].cellph),
-                  color: color
-                  
-               }, {
-                  y: parseFloat(json[0].compu),
-                  color: color
-                  
-               }, {
-                  y: parseFloat(json[0].internet),
-                  color: color
+                  y: parseFloat(json[0].more11),
+                  color: color[2]
                   
                }];
 
@@ -66,7 +58,7 @@ $(function() {
          },
          yAxis: {
             title: {
-               text: 'Percent of households with asset'
+               text: 'Percent of household reportings'
             }
          },
          plotOptions: {

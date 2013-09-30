@@ -5,21 +5,9 @@ $class = 'class="selected"';
 $ltab = './?section=' . $section . '&subsection=';
 
 $ccafsSubSections = array("weather-info-sources", "communication-assets", "aspects-of-farming-changed");
-?>
-<style>
-    /* This style must not be here. It has to be in the style file. */
-    #vtab ul li {
-        height: 93px;
-        padding-top: 22px;
-    }
-    #tabs ul li {
-        height: 27px;
-        padding-top: 22px;
-    }
-</style>
-<div id="container">
-
-    <div id="vtab" class="4tabs"> 
+?> 
+<div id="container"> 
+    <div id="vtab" class="tabs4"> 
 
         <ul>
             <li <?php if (!$subsection) echo $class; ?>>
@@ -49,9 +37,7 @@ $ccafsSubSections = array("weather-info-sources", "communication-assets", "aspec
             }
             ?>
         </div>
-    </div><!-- end vtab -->
-
-
+    </div><!-- end vtab --> 
 </div><!-- end Container -->
 
 <?php

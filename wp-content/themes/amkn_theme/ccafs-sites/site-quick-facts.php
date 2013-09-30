@@ -8,8 +8,11 @@ $ccafsSubSections = array("crop-calendar", "land-use", "hunger-months", "climate
 ?>
 <div id="container">
 
+
    <!-- div id="vtab" -->
-   <div id="vtab" class="6tabs"> 
+
+   <div id="vtab" class="tabs6"> 
+
       <ul>
          <li <?php if (!$subsection) echo $selectedClass; ?>>
             <a href="<?php echo $ltab; ?>">

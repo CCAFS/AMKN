@@ -24,11 +24,15 @@ $postType = "";
       <?php
       $postType = $post->post_type; 
       $photopoint = get_post_meta($post->ID, 'geoRSSPoint', true);
+      
       if (distance($sitepoint, $photopoint) < $rangephotos) {
+          $filename = get_post_meta($post->ID, 'galleryThumb', true);
+          $extension_pos = strrpos($filename, '.'); // find position of the last dot, so where the extension starts
+          $thumb = substr($filename, 0, $extension_pos) . '_q' . substr($filename, $extension_pos);
          ?>
 
          <div class="site-photo <?php echo distance($sitepoint, $photopoint) ?>"> 
-            <a href="<?php the_permalink(); ?>">  <img height="60" class="site-photo" src="<?php echo get_post_meta($post->ID, 'galleryThumb', true) ?>" border="0">  </a>  
+            <a href="<?php the_permalink(); ?>">  <img height="60" class="site-photo" src="<?php echo $thumb  ?>" border="0">  </a>  
          </div>
 
       <?php } ?>

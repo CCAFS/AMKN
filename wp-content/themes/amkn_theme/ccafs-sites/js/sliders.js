@@ -13,7 +13,7 @@
       // Photo Slider
       $('.slider-photos').bxSlider({
          slideWidth: 500,
-         minSlides: 6,
+         minSlides: 8,
          maxSlides: 10,
          slideMargin: 1,
          controls: true,

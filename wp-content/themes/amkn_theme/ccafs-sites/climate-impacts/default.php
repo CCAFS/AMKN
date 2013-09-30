@@ -21,7 +21,7 @@
     ?>
 <h4>Current weather and 2050 predictions</h4>
 
-<div id="tabs">
+<div id="tabs" class="tabs4">
     <ul>
         <li><a href="#tabs-1">Total Rainfall (mm)</a></li>
         <li><a href="#tabs-2">Max. Temp. (C)</a></li>

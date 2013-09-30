@@ -1214,18 +1214,27 @@ img.site-photo {
     width: 120px;
 }
 
-/*
-#vtab.3tabs ul li {
+
+#vtab.tabs3 ul li {
     height: 100px;
+    padding-top: 22px;
 }
-#vtab.4tabs ul li {
+#vtab.tabs4 ul li {
+    height: 94px;
+    padding-top: 22px;
+}
+#tabs.tabs4 ul li {
+    height: 27px;
+    padding-top: 22px;
+}
+#vtab.tabs6 ul li {
     height: 72px;
+    padding-top: 0px;
 }
-#vtab.6tabs ul li {
-    height: 50px;
-}
-*/
- 
+
+
+
+
 
 #vtab > ul > li.home {
     background: url("ccafs-sites/images/crops-livestock.png") no-repeat scroll center center transparent;
@@ -1278,7 +1287,7 @@ img.site-photo {
 }
 
 ul#vtab {
-   
+
 }
 #vtab > div {
     -moz-border-bottom-colors: none;
@@ -1298,7 +1307,10 @@ ul#vtab {
     z-index: 9;
     height: 500px;
 }
+
 #vtab > div > h4 {
+
+
     color: #880000;
     font-size: 1.7em;
     margin-top: 0;
@@ -1337,11 +1349,10 @@ ul#vtab {
     box-shadow: 1px 1px 3px #BEBEBE;
 }
 #container-description {
-    float: left;
-    
+    float: left; 
     margin: 0 auto;
     padding: 30px;
-   
+
 }
 #container-chart {
     border: 2px solid #A7C45F;
@@ -1353,7 +1364,7 @@ ul#vtab {
 }
 
 td.table-color1 {
-   background-color: #e3c44a;
+    background-color: #e3c44a;
 }
 
 .table-color2 {

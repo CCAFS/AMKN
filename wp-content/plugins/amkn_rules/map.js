@@ -443,7 +443,7 @@ function getListingContent(id){
         }
     });
     mapPTS=rt=="video_testimonials"?vtonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
-    mapPTS=rt=="ccafs_sites"?cconmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' >"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;<a class='link-ccafs-sites' href='./?p="+cid+"'>"+ttl+"</a></li>"):"";
+    mapPTS=rt=="ccafs_sites"?cconmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' >"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;<a class='link-ccafs-sites' href='./?p="+cid+"'>"+ttl+"</a></li>"):"";//without popup
     mapPTS=rt=="amkn_blog_posts"?bgonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
     mapPTS=rt=="biodiv_cases"?bdonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
     mapPTS=rt=="photo_testimonials"?ptonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";

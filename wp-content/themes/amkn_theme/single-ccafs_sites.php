@@ -71,7 +71,7 @@ if (isset($embed) && $embed == "true") {
          <li <?php if ($section == '') echo $class; ?>><a  href="./"><span>Description</span></a></li>
          <li <?php if ($section == 'quick-facts') echo $class; ?>><a href="./?section=quick-facts"><span>Quick facts</span></a></li>
          <li <?php if ($section == 'food-livelihood') echo $class; ?>><a href="./?section=food-livelihood"><span>Food & Livelihood</span></a></li>
-         <li <?php if ($section == 'climate-impacts') echo $class; ?>><a href="./?section=climate-impacts"><span>Climate &Impacts</span></a></li>
+         <li <?php if ($section == 'climate-impacts') echo $class; ?>><a href="./?section=climate-impacts"><span>Climate & Impacts</span></a></li>
          <li <?php if ($section == 'adaptation-mitigation') echo $class; ?>><a href="./?section=adaptation-mitigation"><span>Adaptation & Mitigation</span></a></li>
          <li <?php if ($section == 'gender') echo $class; ?>><a href="./?section=gender"><span>Gender</span></a></li>
          <li <?php if ($section == 'ongoing-research') echo $class; ?>><a href="./?section=ongoing-research"><span>Ongoing Research</span></a></li>
