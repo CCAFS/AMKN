@@ -1,35 +1,34 @@
 <?php
 $bmsId = get_post_meta($post->ID, 'siteId', true);
-$tableId = "bs_forecast_changes";
+$tableId = "bs_mitig_acts";
+$data = $wpdb->get_row("SELECT * FROM ".$tableId." WHERE bms_id='".$bmsId."'");
 $description = $wpdb->get_row("SELECT * FROM bs_descriptions WHERE bms_id='" . $bmsId . "' AND table_id='" . $tableId . "'");
-$longs = $wpdb->get_results("SELECT * FROM " . $tableId . " WHERE bms_id='" . $bmsId . "' and type_forecast='LONG'");
-$shorts = $wpdb->get_results("SELECT * FROM " . $tableId . " WHERE bms_id='" . $bmsId . "'and type_forecast='SHORT'");
 ?>
 <h4>Household mitigation indices</h4>
-<div id="container-description" style="float: left;width: 30%;">
+<div id="container-description" style="float: left;width: 35%;">
     <?php echo $description->description ?>
 </div>
-<div id="container-chart" style="float: right;width: 60%; height: auto; margin: 0 auto;font-size: 13px;font-weight: 700;">
+<div id="container-chart" style="float: right;width: 55%; height: auto; margin: 0 auto;font-size: 13px;font-weight: 700;">
     <table align="center" border="0" cellpadding="5" cellspacing="1" style="width:100%">
         <tr>
-            <td align="center" class="table-color2">Type of forecast</td>
-            <td align="center" class="table-color2">Farming practices changed</td>
+            <td align="center" class="table-color2">Mitigation Index</td>
+            <td align="center" class="table-color2">% of households citing</td>
         </tr>
         <tr>
-            <td class="table-color1">Long-term (2-3 months)</td>
-            <td align="center"><?php
-                foreach ($longs as $long) {
-                    echo $long->description."<br>";
-                }
-                ?></td>
+            <td class="table-color1">Tree management</td>
+            <td align="center"><?php echo $data->tree ?></td>
         </tr>
         <tr>
-            <td class="table-color1">Short-term (2-3 days)</td>
-            <td align="center"> <?php
-                foreach ($shorts  as $short ) {
-                    echo $short->description."<br>";
-                }
-                ?></td>
+            <td class="table-color1">Soil amendments </td>
+            <td align="center"><?php echo $data->soil ?></td>
+        </tr>
+        <tr>
+            <td class="table-color1">Increase in productivity </td>
+            <td align="center"><?php echo $data->productiv ?></td>
+        </tr>
+        <tr>
+            <td class="table-color1">Input intensification </td>
+            <td align="center">Low-<?php echo $data->intensif_lo ?>  Higth-<?php echo $data->intensif_hl ?></td>
         </tr>
 
 
