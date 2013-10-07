@@ -1,5 +1,5 @@
 <?php
-require('D:\xampp\htdocs\AMKN/wp-blog-header.php'); 
+require('../../../../wp-blog-header.php'); 
 $bmsid = htmlentities($_GET["bmsid"]);
 $table= htmlentities($_GET["table"]);
 $sth = mysql_query("SELECT * FROM ".$table." WHERE bms_id='".$bmsid."'");
