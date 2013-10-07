@@ -92,7 +92,7 @@ function initMap(){
     dojo.connect(map,"onZoomEnd",hideLoading);
     dojo.connect(map,'onLoad',function(map){
         createMapMenu();
-        map.disableScrollWheelZoom();
+//        map.disableScrollWheelZoom();
         highlightGraphic=new esri.Graphic(null,cHType);
         map.graphics.add(highlightGraphic);
         dojo.connect(dijit.byId('map'),'resize',resizeMap);
@@ -195,12 +195,12 @@ function showLoading(){
     esri.show(loading);
     dijit.popup.close(hQuery);
     map.disableMapNavigation();
-    map.disableScrollWheelZoom();
+//    map.disableScrollWheelZoom();
 }
 function hideLoading(error){
     esri.hide(loading);
     map.enableMapNavigation();
-    map.disableScrollWheelZoom();
+//    map.disableScrollWheelZoom();
 //    findPointsInExtent(map.extent);
     findPointsInExtent2(map.extent);
 }
@@ -1070,9 +1070,11 @@ function findPointsInExtent2(extent) {
     
     for(i = 0; i < childrenNodes.length; i++) {
         // clean array.
-        childrenNodes[i].removeChildren();
+        if (childrenNodes[i].data.key !== 'accord_data_layer') {
+          childrenNodes[i].removeChildren();
+        }
         // add children and update the number of records on it.
-        switch(childrenNodes[i].data.key) {            
+        switch(childrenNodes[i].data.key) {
             case 'accord_ccafs_sites':                
                 childrenNodes[i].addChild(cconmap);
                 childrenNodes[i].data.title = "Benchmark Sites ("+cconmap.length+")";
