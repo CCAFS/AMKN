@@ -111,7 +111,8 @@ function initMap(){
     dojo.connect(map,"onExtentChange",function(extent){
         setView();
         dijit.popup.close(hQuery);
-        findPointsInExtent(map.extent);
+//        findPointsInExtent(map.extent);
+        findPointsInExtent2(map.extent);
         hoverLayer.remove(polyGraphic);
     });
     dojo.connect(map,"onKeyDown",function(evt){
@@ -196,7 +197,8 @@ function hideLoading(error){
     esri.hide(loading);
     map.enableMapNavigation();
     map.disableScrollWheelZoom();
-    findPointsInExtent(map.extent);
+//    findPointsInExtent(map.extent);
+    findPointsInExtent2(map.extent);
 }
 function processCsvData(url){
     var frameUrl=new dojo._Url(window.location.href);
@@ -291,6 +293,7 @@ function onFeatureHover(evt){
     getItemsAtLocation(gPt2Spt.x,gPt2Spt.y,evt);
 }
 function onListHover(id){
+  if (typeof id === 'number') {
     var graphic=findGraphicById(id);
     map.graphics.remove(hoverGraphic);
     var id=graphic.attributes.id;
@@ -300,6 +303,7 @@ function onListHover(id){
     hoverGraphic.setAttributes({
         id:id
     });
+  }
 }
 function onFeatureLeave(){
     map.graphics.remove(hoverGraphic);
@@ -982,6 +986,125 @@ function getMapPointFromMenuPosition(box){
     var screenPoint=new esri.geometry.Point(x-map.position.x,y-map.position.y);
     return map.toMap(screenPoint);
 }
+
+function getListingContent2(id){
+    var rt,ttl,cid;
+    csvStore.fetchItemByIdentity({
+        identity:id,
+        onItem:function(item){
+            var attributes=csvStore.getAttributes(item),data={};
+
+            dojo.forEach(attributes,function(attr){
+                data[attr]=csvStore.getValue(item,attr);
+                ttl=attr;
+            });
+            ttl=csvStore.getValue(item,"Location");
+            cid=csvStore.getValue(item,"CID");
+            rt=esri.substitute(data,titleTemplate);
+        }
+    });
+    //mapPTS=rt=="video_testimonials"?vtonmap.push("{ title: "+ttl+", isLazy: true  onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+")}"):"";
+    mapPTS=rt=="ccafs_sites"?cconmap.push({
+        title: ttl, 
+        key: id,
+        url: './?p='+cid,
+        hideCheckbox: true,
+        icon: '../../../images/ccafs_sites-mini.png'
+    }):"";
+    mapPTS=rt=="video_testimonials"?vtonmap.push({
+        title: ttl, 
+        key: id,
+        url: './?p='+cid,
+        hideCheckbox: true,               
+        icon: '../../../images/video_testimonials-mini.png'
+    //isLazy: true
+    }):"";
+    mapPTS=rt=="amkn_blog_posts"?bgonmap.push({
+        title: ttl, 
+        key: id,
+        url: './?p='+cid,
+        hideCheckbox: true,
+        icon: '../../../images/amkn_blog_posts-mini.png'
+    //isLazy: true
+    }):"";
+    mapPTS=rt=="biodiv_cases"?bdonmap.push({
+        title: ttl, 
+        key: id,
+        url: './?p='+cid,
+        hideCheckbox: true,
+        icon: '../../../images/biodiv_cases-mini.png'
+    //isLazy: true
+    }):"";
+    mapPTS=rt=="photo_testimonials"?ptonmap.push({
+        title: ttl, 
+        key: id,
+        url: './?p='+cid,                        
+        hideCheckbox: true,
+        icon: '../../../images/photo_testimonials-mini.png'
+    //isLazy: true
+    }):"";
+  
+    return;
+}
+
+function findPointsInExtent2(extent) {
+    var results=[];
+    vtonmap=[];
+    cconmap=[];
+    bgonmap=[];
+    bdonmap=[];
+    ptonmap=[];
+    dojo.forEach(dataLayer.graphics,function(graphic){
+        if(extent.contains(graphic.geometry)){
+            results.push(getListingContent2(graphic.attributes.id));
+        }
+    });
+    var onthemap=dijit.byId('onthemap');
+    onthemap.attr("title","What&#39;s on the map ("+results.length+")");    
+    var rootNode = $("#cFiltersList2").dynatree("getRoot");
+    var childrenNodes = rootNode.getChildren();
+    
+    for(i = 0; i < childrenNodes.length; i++) {
+        // clean array.
+        childrenNodes[i].removeChildren();
+        // add children and update the number of records on it.
+        switch(childrenNodes[i].data.key) {            
+            case 'accord_ccafs_sites':                
+                childrenNodes[i].addChild(cconmap);
+                childrenNodes[i].data.title = "Benchmark Sites ("+cconmap.length+")";
+//                childrenNodes[i].data.initId = "testeando-"+childrenNodes[i].data.key;
+                break;
+            case 'accord_video_testimonials':
+                childrenNodes[i].addChild(vtonmap);                
+                childrenNodes[i].data.title = "Videos ("+vtonmap.length+")";
+//                alert(vtonmap.length);
+                break;
+            case 'accord_amkn_blog_posts':
+                childrenNodes[i].addChild(bgonmap);
+                childrenNodes[i].data.title = "Blog Posts ("+bgonmap.length+")";
+                break;
+            case 'accord_biodiv_cases':
+                childrenNodes[i].addChild(bdonmap);
+                childrenNodes[i].data.title = "Agrobiodiversity Cases ("+bdonmap.length+")";
+                break;
+            case 'accord_photo_testimonials':
+                childrenNodes[i].addChild(ptonmap);
+                childrenNodes[i].data.title = "Photo Sets ("+ptonmap.length+")";
+                break;
+        }
+    }
+    
+//childrenNodes[i].addChild(vtonmap);
+//$("#cFiltersList2").dynatree("getRoot").addChild(bgonmap);
+//$("#cFiltersList2").dynatree("getRoot").addChild(bdonmap);
+//$("#cFiltersList2").dynatree("getRoot").addChild(ptonmap);
+    
+    
+//    dojo.byId("onmap_video_testimonials").innerHTML="<table style='width:100%;'><tbody><tr><td><ul class='homebox-list zoom_in-list'>"+vtonmap.join("")+"<ul></tr></td></tbody></table>";
+//    dojo.byId("onmap_amkn_blog_posts").innerHTML="<table style='width:100%;'><tbody><tr><td><ul class='homebox-list zoom_in-list'>"+bgonmap.join("")+"<ul></tr></td></tbody></table>";
+//    dojo.byId("onmap_biodiv_cases").innerHTML="<table style='width:100%;'><tbody><tr><td><ul class='homebox-list zoom_in-list'>"+bdonmap.join("")+"<ul></tr></td></tbody></table>";
+//    dojo.byId("onmap_photo_testimonials").innerHTML="<table style='width:100%;'><tbody><tr><td><ul class='homebox-list zoom_in-list'>"+ptonmap.join("")+"<ul></tr></td></tbody></table>";
+}
 function findPointsInExtent(extent){
     var results=[];
     vtonmap=[];
@@ -1015,7 +1138,6 @@ function findPointsInExtent(extent){
 function setTrans(value){
     var cL=map.getLayer(visLyr);
     if(cL!=null)
-
     {
         cL.setOpacity(value);
     }

@@ -105,7 +105,8 @@ get_header('home');
     <?php endwhile; // end of the loop. ?>
         </div>
         <div id="onthemap" dojoType="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="235" splitter="false" region="left" style="width: 235px;" startExpanded="true">
-            <?php get_template_part( 'content_type', 'filters_list' ); ?>
+          <!--Here is the calling to the template that show the left menu-->
+            <?php get_template_part( 'content_type', 'filters_list2' ); ?>
 
         </div>
     </div>

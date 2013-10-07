@@ -32,7 +32,61 @@
                 parseOnLoad: true
             };
         </script>
-
+        <script type="text/javascript" src="http://www.google.com/jsapi"></script>
+        <script type="text/javascript">
+            //<![CDATA[
+            google.load("jquery", "1.7.1");
+            google.load("jqueryui", "1.8.2");
+            //]]>
+        </script>
+        <!-- DynaTree library used in the new sidebar -->
+        <link href="<?php bloginfo('template_directory'); ?>/libs/dynatree/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
+        <script src="<?php bloginfo('template_directory'); ?>/libs/dynatree/jquery.dynatree.min.js" type="text/javascript"></script>
+        <script type="text/javascript">
+            jQuery(function ($) {
+                //$(document).ready(function() {
+                // Attach the dynatree widget to an existing <div id="tree"> element
+                // and pass the tree options as an argument to the dynatree() function:
+                $("#cFiltersList2").dynatree({
+                    children: treeData,
+                    selectMode: 3,
+                    checkbox: true,
+                    onActivate: function(node) {
+                        // A DynaTreeNode object is passed to the activation handler
+                        // Note: we also get this event, if persistence is on, and the page is reloaded.
+                       
+                        //onListHover(node.data.key);
+                        //showItemDetails
+                        if( node.data.url )
+                            window.open(node.data.url);                       
+                    },
+                    onCreate: function(node, nodeSpan) {
+                        $(nodeSpan).hover(function(){
+                            onListHover(node.data.key);
+                        }, function(){                                                        
+                            onFeatureLeave();
+                        });
+                    },
+//                    onLazyRead: function(node){
+//                      // In real life we would call something like this:
+//              //              node.appendAjax({
+//              //                  url: "/getChildrenAsJson",
+//              //                data: {key: node.data.key,
+//              //                       mode: "funnyMode"
+//              //                         }
+//              //              });
+//                      // .. but here we use a local file instead:
+//                      node.appendAjax({
+//                        url: "sample-data2.json",
+//                        // We don't want the next line in production code:
+//                        debugLazyDelay: 750
+//                      });
+//                    }
+                });
+                
+                //});
+            });
+        </script>
         <script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5compact">
         </script>
         <?php
