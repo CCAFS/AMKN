@@ -34,6 +34,12 @@ var cconmap=[];
 var bgonmap=[];
 var bdonmap=[];
 var ptonmap=[];
+
+/**
+ * @function initMap
+ * @description this method is incharge of initialise the map, it make the calls and the assignations to the map to be loaded
+ * @return {void} 
+**/
 function initMap(){
     baseMP=1;
     getView();
@@ -85,7 +91,7 @@ function initMap(){
         wrapAround180:true
     });
     dojo.connect(map,"onUpdateStart",showLoading);
-    dojo.connect(map,"onUpdateEnd",cT);
+    dojo.connect(map,"onUpdateEnd",hideLoading);
     dojo.connect(map,"onPanStart",showLoading);
     dojo.connect(map,"onPanEnd",hideLoading);
     dojo.connect(map,"onZoomStart",showLoading);
@@ -115,13 +121,13 @@ function initMap(){
     dojo.connect(map,"onExtentChange",function(extent){
         setView();
         dijit.popup.close(hQuery);
-//        findPointsInExtent(map.extent);
-        findPointsInExtent2(map.extent);
+        findPointsInExtentTree(map.extent);
         hoverLayer.remove(polyGraphic);
     });
     dojo.connect(map,"onKeyDown",function(evt){
         dijit.popup.close(hQuery);
     });
+    createDataLayersBranch();
     basemapGallery=new esri.dijit.BasemapGallery({
         showArcGISBasemaps:false,
         map:map
@@ -174,6 +180,7 @@ function initMap(){
     dojo.connect(hoverLayer,"onMouseOver",showTT);
     dojo.connect(map,"onLoad",addDataLayers);
 }
+
 function addToMap(rsts,evt){
     for(var i=0,il=rsts.length;i<il;i++){
         var result=rsts[i];
@@ -202,7 +209,7 @@ function hideLoading(error){
     map.enableMapNavigation();
 //    map.disableScrollWheelZoom();
 //    findPointsInExtent(map.extent);
-    findPointsInExtent2(map.extent);
+    findPointsInExtentTree(map.extent);
 }
 function processCsvData(url){
     var frameUrl=new dojo._Url(window.location.href);
@@ -991,7 +998,14 @@ function getMapPointFromMenuPosition(box){
     return map.toMap(screenPoint);
 }
 
-function getListingContent2(id){
+/**
+ * @function getListingContentTree
+ * @description this method create the diferents objects to display in each item of the tree
+ * @argument {int} id it is the reference of a item on the map
+ * @return {void} 
+ * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
+**/
+function getListingContentTree(id){
     var rt,ttl,cid;
     csvStore.fetchItemByIdentity({
         identity:id,
@@ -1007,51 +1021,58 @@ function getListingContent2(id){
             rt=esri.substitute(data,titleTemplate);
         }
     });
-    //mapPTS=rt=="video_testimonials"?vtonmap.push("{ title: "+ttl+", isLazy: true  onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+")}"):"";
-    mapPTS=rt=="ccafs_sites"?cconmap.push({
+    
+    mapPTS=rt==="ccafs_sites"?cconmap.push({
         title: ttl, 
         key: id,
         url: './?p='+cid,
         hideCheckbox: true,
-        icon: '../../../images/ccafs_sites-mini.png'
+        icon: '../../../../images/ccafs_sites-mini.png'
     }):"";
-    mapPTS=rt=="video_testimonials"?vtonmap.push({
+    mapPTS=rt==="video_testimonials"?vtonmap.push({
         title: ttl, 
         key: id,
         url: './?p='+cid,
         hideCheckbox: true,               
-        icon: '../../../images/video_testimonials-mini.png'
+        icon: '../../../../images/video_testimonials-mini.png'
     //isLazy: true
     }):"";
-    mapPTS=rt=="amkn_blog_posts"?bgonmap.push({
+    mapPTS=rt==="amkn_blog_posts"?bgonmap.push({
         title: ttl, 
         key: id,
         url: './?p='+cid,
         hideCheckbox: true,
-        icon: '../../../images/amkn_blog_posts-mini.png'
+        icon: '../../../../images/amkn_blog_posts-mini.png'
     //isLazy: true
     }):"";
-    mapPTS=rt=="biodiv_cases"?bdonmap.push({
+    mapPTS=rt==="biodiv_cases"?bdonmap.push({
         title: ttl, 
         key: id,
         url: './?p='+cid,
         hideCheckbox: true,
-        icon: '../../../images/biodiv_cases-mini.png'
+        icon: '../../../../images/biodiv_cases-mini.png'
     //isLazy: true
     }):"";
-    mapPTS=rt=="photo_testimonials"?ptonmap.push({
+    mapPTS=rt==="photo_testimonials"?ptonmap.push({
         title: ttl, 
         key: id,
         url: './?p='+cid,                        
         hideCheckbox: true,
-        icon: '../../../images/photo_testimonials-mini.png'
+        icon: '../../../../images/photo_testimonials-mini.png'
     //isLazy: true
     }):"";
   
     return;
 }
 
-function findPointsInExtent2(extent) {
+/**
+ * @function findPointsInExtentTree
+ * @description this method update the left panel, updates the number of children of each item on the tree
+ * @argument {esri.Map} extent containt the map's settings
+ * @return {void} 
+ * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
+**/
+function findPointsInExtentTree(extent) {
     var results=[];
     vtonmap=[];
     cconmap=[];
@@ -1060,7 +1081,7 @@ function findPointsInExtent2(extent) {
     ptonmap=[];
     dojo.forEach(dataLayer.graphics,function(graphic){
         if(extent.contains(graphic.geometry)){
-            results.push(getListingContent2(graphic.attributes.id));
+            results.push(getListingContentTree(graphic.attributes.id));
         }
     });
     var onthemap=dijit.byId('onthemap');
@@ -1078,38 +1099,45 @@ function findPointsInExtent2(extent) {
             case 'accord_ccafs_sites':                
                 childrenNodes[i].addChild(cconmap);
                 childrenNodes[i].data.title = "Benchmark Sites ("+cconmap.length+")";
-//                childrenNodes[i].data.initId = "testeando-"+childrenNodes[i].data.key;
-                break;
+            break;
             case 'accord_video_testimonials':
                 childrenNodes[i].addChild(vtonmap);                
-                childrenNodes[i].data.title = "Videos ("+vtonmap.length+")";
-//                alert(vtonmap.length);
-                break;
+                childrenNodes[i].data.title = "Videos ("+vtonmap.length+")";                
+            break;
             case 'accord_amkn_blog_posts':
                 childrenNodes[i].addChild(bgonmap);
                 childrenNodes[i].data.title = "Blog Posts ("+bgonmap.length+")";
-                break;
+            break;
             case 'accord_biodiv_cases':
                 childrenNodes[i].addChild(bdonmap);
                 childrenNodes[i].data.title = "Agrobiodiversity Cases ("+bdonmap.length+")";
-                break;
+            break;
             case 'accord_photo_testimonials':
                 childrenNodes[i].addChild(ptonmap);
                 childrenNodes[i].data.title = "Photo Sets ("+ptonmap.length+")";
-                break;
+            break;
         }
     }
-    
-//childrenNodes[i].addChild(vtonmap);
-//$("#cFiltersList2").dynatree("getRoot").addChild(bgonmap);
-//$("#cFiltersList2").dynatree("getRoot").addChild(bdonmap);
-//$("#cFiltersList2").dynatree("getRoot").addChild(ptonmap);
-    
-    
-//    dojo.byId("onmap_video_testimonials").innerHTML="<table style='width:100%;'><tbody><tr><td><ul class='homebox-list zoom_in-list'>"+vtonmap.join("")+"<ul></tr></td></tbody></table>";
-//    dojo.byId("onmap_amkn_blog_posts").innerHTML="<table style='width:100%;'><tbody><tr><td><ul class='homebox-list zoom_in-list'>"+bgonmap.join("")+"<ul></tr></td></tbody></table>";
-//    dojo.byId("onmap_biodiv_cases").innerHTML="<table style='width:100%;'><tbody><tr><td><ul class='homebox-list zoom_in-list'>"+bdonmap.join("")+"<ul></tr></td></tbody></table>";
-//    dojo.byId("onmap_photo_testimonials").innerHTML="<table style='width:100%;'><tbody><tr><td><ul class='homebox-list zoom_in-list'>"+ptonmap.join("")+"<ul></tr></td></tbody></table>";
+}
+
+/**
+ * @function createDataLayersBranch
+ * @description this method create the tree's branch Data Layer on the left panel
+ * @return {void} 
+ * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
+**/
+function createDataLayersBranch () {
+  var nodeDataLayer = $("#cFiltersList2").dynatree("getTree").getNodeByKey("accord_data_layer")
+      var ly = '';
+      var children = nodeDataLayer.getChildren();
+      var totalLayers = 0;
+      for (j = 0; j < children.length; j++) {
+        soon = children[j];
+        ly = soon.data.key.split("-");
+        layer = new esri.layers.ArcGISDynamicMapServiceLayer(ly[2]);
+        layer.id = ly[0];      
+        totalLayers+=buildLayerListTree (layer,ly[0],ly[1],soon);
+      }
 }
 function findPointsInExtent(extent){
     var results=[];
@@ -1185,6 +1213,10 @@ function getItemsAtLocation(sPtX,sPtY,evt)
     findPointsInPolygon(polygon.getExtent(),evt);
 }
 var addedLayers=[];
+
+/**function in charge of paint the list of layers
+ * @function buildLayerList
+ * @deprecated buildLayerListTree() replace it**/
 function buildLayerList(layer,lID,layerName,single){
     addedLayers.push(layerName);
     layer.setVisibility(false);
@@ -1225,6 +1257,130 @@ function buildLayerList(layer,lID,layerName,single){
     }
     return"<ul class='homebox-list zoom_in-list'>"+tmp+lyrH+"</ul>";
 }
+
+/**function in charge of paint the list of layers
+ * @argument {esri.layers} layer description
+ * @argument {String} layerName Layer's name
+ * @argument {object} soon it is an object of a tree's branch (child)
+ * @argument {int} single description
+ * @return {void} 
+ * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
+**/
+function buildLayerListTree(layer,layerName,single,soon) {
+    addedLayers.push(layerName);
+    layer.setVisibility(false);
+    layer.setImageTransparency(true,false);
+    single=single=='null'?null:single;
+    var singleLyr=single==null?-1:single;   
+    var child =[];
+//    var checked="";
+    soon.data.hideCheckbox = false;
+//    ly = soon.data.key.split("-");
+    setTimeout(function(){
+    for ($i=0;$i<layer.layerInfos.length;$i++) {
+      ly = soon.data.key.split("-");
+//    dojo.map(layer.layerInfos,function(info){
+//        checked=(((typeof vLyr!="undefined")&&vLyr!="")&&(vLyr.split("|")[0]==layerName)&&(vLyr.split("|")[2]==info.id))?" checked=\"checked\"":"";
+        if(singleLyr==-1){
+            if((layer.layerInfos[$i].parentLayerId==-1&&layer.layerInfos[$i].subLayerIds==null)||(layer.layerInfos[$i].parentLayerId!=-1&&layer.layerInfos[$i].subLayerIds==null)){                
+                child.push({
+                  title: layer.layerInfos[$i].name,
+                  key: layer.id+'|'+ly[3]+'|'+layer.layerInfos[$i].id,
+//                  url: './?p='+cid,
+//                  hideCheckbox: true,
+                  icon: '../../../../images/map_icon.png'
+                });
+            }else{
+              child.push({
+                  title: "<h4>"+layer.layerInfos[$i].name+"</h4>",
+//                  isFolder: true,
+//                  key: layer.layerInfos[$i].id
+                  icon: '../../../../images/data_layersM.png',
+                  hideCheckbox: true,
+                  unselectable: true,
+//                  icon: '../../../../images/map_icon.png'
+                });
+              //Here comes the title or header layer's group
+            }
+        } else {
+//          alert(layer.layerInfos[$i].name);
+            if(layer.layerInfos[$i].id==singleLyr) {                
+                child.push({
+                  title: layer.layerInfos[$i].name,                  
+                  key: layer.id+'|'+ly[3]+'|'+layer.layerInfos[$i].id,
+//                  url: './?p='+cid,
+//                  hideCheckbox: true,
+                  icon: '../../../../images/map_icon.png'
+                });
+            }
+        }  
+        soon.removeChildren();
+        soon.addChild(child);                
+      }
+      soon.data.title = soon.data.title+" ("+child.length+")";
+      if (child.length === 0) soon.data.hideCheckbox = true;
+    },1000);
+
+    if(((typeof vLyr!="undefined")&&vLyr!="")&&fUd==false&&vLyr.split("|")[0]==layerName){
+        fUd=true;
+        visible=[];
+        visible.push(vLyr.split("|")[2]);
+        visLyr=layerName;
+        layer.setVisibility(true);
+        layer.setVisibleLayers(visible);
+        dijit.byId('cFiltersList').selectChild(dijit.byId('accord_legend'));
+        dojo.addClass(document.getElementById("layerbt_"+layerName),"sldMenu");
+        map.centerAt(map.extent.getCenter());
+    }    
+    return child.length;
+}
+
+/**function in charge of paint the list of layers
+ * @argument {object} node it is item from the tree that was selected
+ * @argument {boolean} flag indicates if the tree item is check or not
+ * @return {void} 
+ * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
+**/
+function updateLayerVisibilityTree(node,flag) {
+    ly = node.data.key.split("|");
+    lyrID = ly[0];
+    lID = ly[1];
+    
+    var cLyr=map.getLayer(ly[0]);
+    cLyr.setVisibility(false);
+//    (typeof visLyr!="undefined")?map.getLayer(visLyr).setVisibility(false):"";
+//    (typeof visLyr!="undefined")?dojo.removeClass(document.getElementById(visLyr+"_label"),"sldMenu"):"";
+//    (typeof visLyr!="undefined")?dojo.removeClass(document.getElementById("layerbt_"+visLyr),"sldMenu"):"";
+    if(cLyr!=null) {
+        dijit.byId('tslider').setValue(cLyr.opacity*100);
+    }
+    visLyr=lyrID;
+    vLyr="";    
+    visible=[];
+    visible.push(ly[2]);
+//    dojo.forEach(inputs,function(input){
+//        if(input.checked){
+//            visible.push(input.id);
+//            vLyr=lyrID+"|"+lID+"|"+input.id;
+//        }
+//    });
+    if(visible.length===0){
+        visible.push(-1);
+    }
+    if (flag) {
+      (visible.length!=-1)?cLyr.setVisibility(true):cLyr.setVisibility(false);    
+      (visible.length!=-1)?cLyr.setVisibleLayers(visible):"";
+    }
+    var deltLyr;
+    clearTimeout(deltLyr);
+    deltLyr=setTimeout(function(){
+        map.centerAt(map.extent.getCenter());
+        rLegend();
+    },1000);
+//    dojo.hasClass(document.getElementById("onthemap"),"dojoxExpandoClosed")?dijit.byId('onthemap').toggle():"";
+//    dijit.byId('cFiltersList').selectChild(dijit.byId('accord_legend'));
+}
+
 function updateLayerVisibility(lID,lyrID){
     var inputs=dojo.query(".list_item_"+lID),input;
     var cLyr=map.getLayer(lyrID);

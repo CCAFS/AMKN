@@ -40,8 +40,8 @@
             //]]>
         </script>
         <!-- DynaTree library used in the new sidebar -->
-        <link href="<?php bloginfo('template_directory'); ?>/libs/dynatree/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
-        <script src="<?php bloginfo('template_directory'); ?>/libs/dynatree/jquery.dynatree.min.js" type="text/javascript"></script>
+        <link href="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
+        <script src="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/jquery.dynatree.js" type="text/javascript"></script>
         <script type="text/javascript">
             jQuery(function ($) {
                 //$(document).ready(function() {
@@ -57,8 +57,17 @@
                        
                         //onListHover(node.data.key);
                         //showItemDetails
-                        if( node.data.url )
-                            window.open(node.data.url);                       
+                        if( node.data.url ) {
+                          document.location = node.data.url;
+//                          updateLayerVisibilityTree();
+                        }
+//                            window.open(node.data.url);                       
+                    },
+                    onSelect: function(flag, node) {
+                      if( !node.data.url ) {
+                          updateLayerVisibilityTree(node,flag);
+//                          alert(flag);
+                        }
                     },
                     onCreate: function(node, nodeSpan) {
                         $(nodeSpan).hover(function(){
@@ -67,24 +76,7 @@
                             onFeatureLeave();
                         });
                     },
-//                    onLazyRead: function(node){
-//                      // In real life we would call something like this:
-//              //              node.appendAjax({
-//              //                  url: "/getChildrenAsJson",
-//              //                data: {key: node.data.key,
-//              //                       mode: "funnyMode"
-//              //                         }
-//              //              });
-//                      // .. but here we use a local file instead:
-//                      node.appendAjax({
-//                        url: "sample-data2.json",
-//                        // We don't want the next line in production code:
-//                        debugLazyDelay: 750
-//                      });
-//                    }
-                });
-                
-                //});
+                });                               
             });
         </script>
         <script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5compact">
