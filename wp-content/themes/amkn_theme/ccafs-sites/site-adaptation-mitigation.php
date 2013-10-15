@@ -22,7 +22,7 @@ $ccafsSubSections = array("mitigation-activities", "cropping-changes", "manageme
             </li>
             <li <?php if ($subsection == $ccafsSubSections[2]) echo $class; ?>>
                 <a href="<?php echo $ltab . $ccafsSubSections[2]; ?>">
-                    <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/climate-crises.png" border="0"><br>Management changes</a>
+                    <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/management-changes.png" border="0"><br>Management changes</a>
             </li> 
         </ul>
         <div>
