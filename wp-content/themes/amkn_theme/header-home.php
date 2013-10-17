@@ -65,9 +65,15 @@
                     },
                     onSelect: function(flag, node) {
                       if( !node.data.url ) {
+                        if (node.data.key == 'accord_ccafs_sites' || node.data.key == 'accord_video_testimonials'  || node.data.key == 'accord_amkn_blog_posts'
+                              || node.data.key == 'accord_biodiv_cases' || node.data.key == 'accord_photo_testimonials') {
+                          var points = node.tree.getSelectedNodes();
+//                          alert('hi'+s);
+                          updateDataLayerTree(true,points);
+                        } else {
                           updateLayerVisibilityTree(node,flag);
-//                          alert(flag);
                         }
+                      }
                     },
                     onCreate: function(node, nodeSpan) {
                         $(nodeSpan).hover(function(){

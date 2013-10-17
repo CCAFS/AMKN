@@ -63,9 +63,9 @@ foreach ($post_types as $post_type) {
                 key: \"accord_" . $post_type->name . "\", 
                 noLink: true, 
                 isFolder: false,                
-                select: false,
+                select: true,
                 selectMode: 2,
-                hideCheckbox: true,
+                hideCheckbox: false,
                     ";
         switch ($post_type->name) {
             case "ccafs_sites":
@@ -94,7 +94,7 @@ $layers =  ",{ title: \"Data Layer (".count($bookmarks).")\",
                 key: \"accord_data_layer\", 
                 noLink: true, 
                 isFolder: true,                
-                select: true,
+                select: false,
                 icon: '../../../../images/data_layersM.png',
                 selectMode: 3,
                 children: [";

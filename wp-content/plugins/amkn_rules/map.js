@@ -518,6 +518,98 @@ function updateLegend()
     rLegend();
 }
 function showHideGCP(){}
+
+/**
+ * @function updateDataLayerTree
+ * @description this method show or hidde the different kind of content on the map
+ * @argument {boolean} cb it is the reference of a item on the map
+ * @argument {object} points it is an array of the element selected on the tree
+ * @return {void} 
+ * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
+**/
+function updateDataLayerTree(cb,points)
+{
+    var pts=document.pts;
+    var imp=document.impacts;
+    var as=document.adaptation_strategy;
+    var ms=document.mitigation_strategy;  
+    var ccc=document.climate_change_challenges;    
+    var showpts="";
+    var showimp="";
+    var showas="";
+    var showms="";
+    var showcl="";
+    var showccc="";
+    var showaz="";
+    var hasPts="";
+    var hasRes="";
+    for(var i=0;i<points.length;i++){
+        if(points[i].data.key.match('accord_')) {
+            showpts+=points[i].data.key.replace('accord_','')+",";            
+        }
+    }
+    for(var i=0;i<imp.length;i++)
+    {
+        if(imp.elements[i].checked)
+
+        {
+            showimp+=imp.elements[i].value+",";
+        }
+    }
+    for(var i=0;i<as.length;i++)
+    {
+        if(as.elements[i].checked)
+
+        {
+            showas+=as.elements[i].value+",";
+        }
+    }
+    for(var i=0;i<ms.length;i++)
+    {
+        if(ms.elements[i].checked)
+
+        {
+            showms+=ms.elements[i].value+",";
+        }
+    }
+    for(var i=0;i<ccc.length;i++)
+    {
+        if(ccc.elements[i].checked)
+
+        {
+            showccc+=ccc.elements[i].value+",";
+        }
+    }
+    showpts=showpts==""?"":"&pts="+showpts;
+    
+    //this vars provably will be use when the method be complet
+    showimp=showimp==""?"":"&imp="+showimp;
+    showas=showas==""?"":"&as="+showas;
+    showms=showms==""?"":"&ms="+showms;
+    showcl=showcl==""?"":"&cl="+showcl;
+    showccc=showccc==""?"":"&ccc="+showccc;
+    showaz=showaz==""?"":"&az="+showaz;
+
+    var newURL=baseDataURL+"?fmt=csv"+showpts+showimp+showas+showms+showcl+showccc+showaz;
+    if(cb)
+    {
+        map.removeLayer(dataLayer);
+        dataLayer="";
+        dataLayer=new esri.layers.GraphicsLayer();
+        map.addLayer(dataLayer);
+        disableFormsOnQuery();
+    }
+    processCsvData(newURL);
+    if(cb)
+    {
+        dojo.connect(dataLayer,"onClick",onFeatureClick);
+        dojo.connect(map.graphics,"onClick",onFeatureClick);
+        dojo.connect(dataLayer,"onMouseOver",onFeatureHover);
+        dojo.connect(dataLayer,"onMouseOut",onFeatureLeave);
+        setView();
+    }
+}
+
 function updateDataLayer(cb)
 {
     var pts=document.pts;
@@ -536,16 +628,14 @@ function updateDataLayer(cb)
     var showaz="";
     var hasPts="";
     var hasRes="";
-    for(var i=0;i<pts.length;i++)
+    for(var i=0;i<pts.length;i++){
+        if(pts.elements[i].checked)
 
-    {
-            if(pts.elements[i].checked)
-
-            {
-                showpts+=pts.elements[i].value+",";
-                hasPts=true;
-            }
+        {
+            showpts+=pts.elements[i].value+",";
+            hasPts=true;
         }
+    }
     for(var i=0;i<imp.length;i++)
     {
         if(imp.elements[i].checked)
@@ -1027,13 +1117,17 @@ function getListingContentTree(id){
         key: id,
         url: './?p='+cid,
         hideCheckbox: true,
+        unselectable: true,
+        select: false,
         icon: '../../../../images/ccafs_sites-mini.png'
     }):"";
     mapPTS=rt==="video_testimonials"?vtonmap.push({
         title: ttl, 
         key: id,
         url: './?p='+cid,
-        hideCheckbox: true,               
+        hideCheckbox: true,
+        unselectable: true,
+        select: false,
         icon: '../../../../images/video_testimonials-mini.png'
     //isLazy: true
     }):"";
@@ -1042,6 +1136,8 @@ function getListingContentTree(id){
         key: id,
         url: './?p='+cid,
         hideCheckbox: true,
+        unselectable: true,
+        select: false,
         icon: '../../../../images/amkn_blog_posts-mini.png'
     //isLazy: true
     }):"";
@@ -1050,6 +1146,8 @@ function getListingContentTree(id){
         key: id,
         url: './?p='+cid,
         hideCheckbox: true,
+        unselectable: true,
+        select: false,
         icon: '../../../../images/biodiv_cases-mini.png'
     //isLazy: true
     }):"";
@@ -1058,6 +1156,8 @@ function getListingContentTree(id){
         key: id,
         url: './?p='+cid,                        
         hideCheckbox: true,
+        unselectable: true,
+        select: false,
         icon: '../../../../images/photo_testimonials-mini.png'
     //isLazy: true
     }):"";
@@ -1109,11 +1209,11 @@ function findPointsInExtentTree(extent) {
                 childrenNodes[i].data.title = "Blog Posts ("+bgonmap.length+")";
             break;
             case 'accord_biodiv_cases':
-                childrenNodes[i].addChild(bdonmap);
+                childrenNodes[i].addChild(bdonmap);               
                 childrenNodes[i].data.title = "Agrobiodiversity Cases ("+bdonmap.length+")";
             break;
             case 'accord_photo_testimonials':
-                childrenNodes[i].addChild(ptonmap);
+                childrenNodes[i].addChild(ptonmap);                
                 childrenNodes[i].data.title = "Photo Sets ("+ptonmap.length+")";
             break;
         }
@@ -1347,11 +1447,12 @@ function updateLayerVisibilityTree(node,flag) {
     lID = ly[1];
     
     var cLyr=map.getLayer(ly[0]);
-    cLyr.setVisibility(false);
+    
 //    (typeof visLyr!="undefined")?map.getLayer(visLyr).setVisibility(false):"";
 //    (typeof visLyr!="undefined")?dojo.removeClass(document.getElementById(visLyr+"_label"),"sldMenu"):"";
 //    (typeof visLyr!="undefined")?dojo.removeClass(document.getElementById("layerbt_"+visLyr),"sldMenu"):"";
     if(cLyr!=null) {
+      cLyr.setVisibility(false);
         dijit.byId('tslider').setValue(cLyr.opacity*100);
     }
     visLyr=lyrID;
@@ -1367,7 +1468,7 @@ function updateLayerVisibilityTree(node,flag) {
     if(visible.length===0){
         visible.push(-1);
     }
-    if (flag) {
+    if (flag && cLyr!=null) {
       (visible.length!=-1)?cLyr.setVisibility(true):cLyr.setVisibility(false);    
       (visible.length!=-1)?cLyr.setVisibleLayers(visible):"";
     }
