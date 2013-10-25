@@ -303,8 +303,16 @@ function onFeatureHover(evt){
     var gPt2Spt=map.toScreen(evt.graphic.geometry);
     getItemsAtLocation(gPt2Spt.x,gPt2Spt.y,evt);
 }
+
+/**
+ * @function onListHover
+ * @description this method stand out the icon on the map
+ * @argument {int} id it is the reference of a item on the map
+ * @return {void} 
+**/
 function onListHover(id){
-  if (typeof id === 'number') {
+  id = parseInt(id);
+  if (!isNaN(id)) {
     var graphic=findGraphicById(id);
     map.graphics.remove(hoverGraphic);
     var id=graphic.attributes.id;
@@ -441,6 +449,13 @@ function setPopupContent(id){
         }
     });
 }
+
+/**
+ * @function getListingContent
+ * @description This method create the list item  to be show on the modal window that show the source near to the point selected
+ * @argument {int} id it is the reference of a item on the map
+ * @return {string} The list item to be show on the modal window 
+**/
 function getListingContent(id){
     var rt,ttl;
     csvStore.fetchItemByIdentity({
@@ -462,7 +477,7 @@ function getListingContent(id){
     mapPTS=rt=="amkn_blog_posts"?bgonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
     mapPTS=rt=="biodiv_cases"?bdonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
     mapPTS=rt=="photo_testimonials"?ptonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
-    return"<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>";
+    return"<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='document.location = \"./?p="+cid+"\"'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>";
 }
 function getPopupTitle(type){
     switch(type){
