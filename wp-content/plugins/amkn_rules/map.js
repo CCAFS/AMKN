@@ -216,8 +216,8 @@ function processCsvData(url){
     var csvUrl=new dojo._Url(url);
     if(frameUrl.host!==csvUrl.host||frameUrl.port!==csvUrl.port||frameUrl.scheme!==csvUrl.scheme){
         url=(proxyUrl)?proxyUrl+"?"+url:url;
-        console.log(url);
-    }
+        console.log(url);        
+    }    
     csvStore=new dojox.data.CsvStore({
         url:url
     });
@@ -255,19 +255,35 @@ function processCsvData(url){
         onError:function(error){}
     });
 }
+
+/**
+ * @function onFeatureClick
+ * @description this method executed when the icon in the map is clicked.
+ * @argument {object} evt it is the reference of the object in the map
+ * @return {void}
+ * @
+**/
 function onFeatureClick(evt){
     var graphic=evt.graphic;
     if(graphic){
         var id=graphic.attributes.id;
-        setPopupContent(id);
-        map.graphics.remove(highlightGraphic);
-        highlightGraphic=new esri.Graphic(null,cHType);
-        map.graphics.add(highlightGraphic);
-        highlightGraphic.setGeometry(graphic.geometry);
-        highlightGraphic.setAttributes({
-            id:graphic.attributes.id
+        var cid;
+        csvStore.fetchItemByIdentity({
+          identity:id,
+          onItem:function(item){
+            cid=csvStore.getValue(item,"CID");
+          }
         });
-        centerAtPoint(graphic.geometry.x,graphic.geometry.y);
+        document.location = "'./?p="+cid+"'";
+//        setPopupContent(id);
+//        map.graphics.remove(highlightGraphic);
+//        highlightGraphic=new esri.Graphic(null,cHType);
+//        map.graphics.add(highlightGraphic);
+//        highlightGraphic.setGeometry(graphic.geometry);
+//        highlightGraphic.setAttributes({
+//            id:graphic.attributes.id
+//        });
+//        centerAtPoint(graphic.geometry.x,graphic.geometry.y);
     }
 }
 function showItemDetails(node,id){
@@ -299,6 +315,13 @@ function findGraphicById(id){
     });
     return match;
 }
+
+/**
+ * @function onFeatureHover
+ * @description this method executed when the mouse is over the icon in the map.
+ * @argument {object} evt it is the reference of the object in the map
+ * @return {void} 
+**/
 function onFeatureHover(evt){
     var gPt2Spt=map.toScreen(evt.graphic.geometry);
     getItemsAtLocation(gPt2Spt.x,gPt2Spt.y,evt);
@@ -621,7 +644,7 @@ function updateDataLayerTree(cb,points)
         dojo.connect(map.graphics,"onClick",onFeatureClick);
         dojo.connect(dataLayer,"onMouseOver",onFeatureHover);
         dojo.connect(dataLayer,"onMouseOut",onFeatureLeave);
-        setView();
+        setViewTree(points);
     }
 }
 
@@ -846,6 +869,81 @@ function setView()
                 showpts+=pts.elements[i].value+",";
             }
         }
+    for(var i=0;i<imp.length;i++)
+    {
+        if(imp.elements[i].checked)
+
+        {
+            showimp+=imp.elements[i].value+",";
+        }
+    }
+    for(var i=0;i<as.length;i++)
+    {
+        if(as.elements[i].checked)
+
+        {
+            showas+=as.elements[i].value+",";
+        }
+    }
+    for(var i=0;i<ms.length;i++)
+    {
+        if(ms.elements[i].checked)
+
+        {
+            showms+=ms.elements[i].value+",";
+        }
+    }
+    for(var i=0;i<ccc.length;i++)
+    {
+        if(ccc.elements[i].checked)
+
+        {
+            showccc+=ccc.elements[i].value+",";
+        }
+    }
+    showpts=showpts==""?"":"/pts="+showpts;
+    showimp=showimp==""?"":"/imp="+showimp;
+    showas=showas==""?"":"/as="+showas;
+    showms=showms==""?"":"/ms="+showms;
+    showcl=showcl==""?"":"/cl="+showcl;
+    showccc=showccc==""?"":"/ccc="+showccc;
+    showLyr=((typeof vLyr=="undefined")||vLyr=="")?"":"/lyr="+vLyr;
+    ((typeof vLyr!="undefined")&&vLyr!="")?dojo.addClass(document.getElementById("rsLayers_label"),"sldMenu"):dojo.removeClass(document.getElementById("rsLayers_label"),"sldMenu");
+    mapCenter="/ctr="+map.extent.getCenter().x+";"+map.extent.getCenter().y;
+    mapLevel="/lvl="+map.getLevel();
+    var setBaseMP="/bm="+baseMP;
+    var showGCP="";
+    location.hash=setBaseMP+showGCP+mapCenter+mapLevel+showpts+showimp+showas+showms+showcl+showccc+showaz+showLyr;
+}
+
+/**
+ * @function setViewTree
+ * @description this method update the url
+ * @argument {object} points It is an array of the element selected on the tree
+ * @return {void} 
+ * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
+**/
+function setViewTree(points)
+{    
+    var imp=document.impacts;
+    var as=document.adaptation_strategy;
+    var ms=document.mitigation_strategy;
+    var cl=document.crops_livestock;
+    var ccc=document.climate_change_challenges;
+    var az=document.agroecological_zones;
+    var showpts="";
+    var showimp="";
+    var showas="";
+    var showms="";
+    var showcl="";
+    var showccc="";
+    var showaz="";
+    var showLyr="";
+    for(var i=0;i<points.length;i++){
+        if(points[i].data.key.match('accord_')) {
+            showpts+=points[i].data.key.replace('accord_','')+",";            
+        }
+    }
     for(var i=0;i<imp.length;i++)
     {
         if(imp.elements[i].checked)
@@ -1323,7 +1421,7 @@ function getItemsAtLocation(sPtX,sPtY,evt)
         wkid:102100
     });
     var gs=new esri.symbol.SimpleFillSymbol().setStyle(esri.symbol.SimpleFillSymbol.STYLE_SOLID);
-    polyGraphic=new esri.Graphic(polygon,gs);
+    polyGraphic=new esri.Graphic(polygon,gs);   
     hoverLayer.add(polyGraphic);
     findPointsInPolygon(polygon.getExtent(),evt);
 }
