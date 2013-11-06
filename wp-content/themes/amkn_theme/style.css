@@ -1014,7 +1014,7 @@ a, .all {
 ul.filters li input, input.homebox-check {
     margin-right: 5px;
 }
-.dijitReset .dijitToggleButtonIconChar, #hide, .hide, .dijitBackgroundIframe, #basemapGallery, .dijitArrowNodeInner, .navigating {
+.dijitReset .dijitToggleButtonIconChar, #hide, .hide, .dijitBackgroundIframe, .dijitArrowNodeInner, .navigating {
     display: none;
 }
 .homebox a, ul.sidelinks a:link {

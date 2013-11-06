@@ -84,9 +84,9 @@
                 });                               
             });
         </script>
-        <script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5compact"></script>
-        <!--<link rel="stylesheet" href="http://js.arcgis.com/3.7/js/esri/css/esri.css">-->
-        <!--<script src="http://js.arcgis.com/3.7/"></script>-->
+        <!--<script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5compact"></script>-->
+        <link rel="stylesheet" href="http://js.arcgis.com/3.7/js/esri/css/esri.css">
+        <script src="http://js.arcgis.com/3.7/"></script>
         <?php
         if (strpos($_SERVER['HTTP_USER_AGENT'], 'iPad') !== FALSE) {
             ?>

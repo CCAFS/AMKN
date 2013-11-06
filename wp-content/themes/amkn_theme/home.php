@@ -66,19 +66,13 @@ get_header('home');
   <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.6/dijit/themes/tundra/tundra.css" />
   <div dojoType="dijit.layout.BorderContainer" design="headline" gutters="true" liveSplitters="false" id="borderContainer">
     <div dojoType="dijit.layout.ContentPane" splitter="false" region="center" style="widows: 100%; display: inline; overflow:hidden;">
-      <div id="tb2" class="hide">
-          <div class="map_controls-box homebox">
-              <p class="blockNoWrap">
-
-              <!--    <a href="javascript:void(0)" onClick="map.setLevel(map.getLevel()+1)"><img src="<?php bloginfo( 'template_directory' ); ?>/images/z-in.gif" alt="zoom in" /></a> <a href="javascript:void(0)" onClick="map.setLevel(map.getLevel()-1)"><img src="<?php bloginfo( 'template_directory' ); ?>/images/z-out.gif" alt="zoom out" /></a>-->
-              <div id="hide"> | <input id="iconType" checked="checked" type="checkbox" name="iconType" value="large" onClick="updateDataLayer(true)"><label for="iconType">
-                  <a href="#">Use large icons</a>
-              </label></div>
-              </p>
-              <div id="basemapGallery"></div>
-              <p class="blockNoWrap"><a id="mapType1" class="controls-selected" href="javascript:void(0)" onClick="setBaseMap(1)">Topo map</a> | <a id="mapType2" href="javascript:void(0)" onClick="setBaseMap(2)">Street map</a> | <a id="mapType3" href="javascript:void(0)" onClick="setBaseMap(3)">Aerial map</a>
-              </p>
-          </div><!-- end map_controls-box -->
+      <div  style="position:absolute; left:20px; bottom:10px; z-Index:999;">
+        <div data-dojo-type="dijit/TitlePane" 
+             data-dojo-props="title:'Switch Basemap', closable:false,  open:false">
+          <div class="hide" data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:280px; overflow:auto;">
+            <div id="basemapGallery" ></div>            
+          </div>
+        </div>
       </div>
       <div id="tb3" class="hide">
         <div class="map_controls-box homebox">

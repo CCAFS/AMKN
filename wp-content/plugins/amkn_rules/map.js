@@ -41,6 +41,7 @@ var ptonmap=[];
  * @return {void} 
 **/
 function initMap(){
+    location.hash = '';
     baseMP=1;
     getView();
     syml6=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/pin-mini.png",17,25);
@@ -113,7 +114,7 @@ function initMap(){
         dojo.removeClass("c_adaptation_strategy","hide");
         dojo.removeClass("c_mitigation_strategy","hide");
         dojo.removeClass("c_climate_change_challenges","hide");
-        dojo.removeClass("tb2","hide");
+//        dojo.removeClass("tb2","hide");
         dojo.removeClass("rsType","hide");
         dojo.removeClass("rsLayers","hide");
         dojo.removeClass("tb3","hide");
@@ -129,36 +130,36 @@ function initMap(){
     });
     createDataLayersBranch();
     basemapGallery=new esri.dijit.BasemapGallery({
-        showArcGISBasemaps:false,
+        showArcGISBasemaps:true,
         map:map
     },"basemapGallery");
-    var topoLayer=new esri.dijit.BasemapLayer({
-        url:"http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
-    });
-    var basemapTopo=new esri.dijit.Basemap({
-        id:1,
-        layers:[topoLayer],
-        title:"Topo Map"
-    });
-    basemapGallery.add(basemapTopo);
-    var strtLayer=new esri.dijit.BasemapLayer({
-        url:"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
-    });
-    var basestrtLayer=new esri.dijit.Basemap({
-        id:2,
-        layers:[strtLayer],
-        title:"Street Map"
-    });
-    basemapGallery.add(basestrtLayer);
-    var aerLayer=new esri.dijit.BasemapLayer({
-        url:"http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
-    });
-    var baseaerLayer=new esri.dijit.Basemap({
-        id:3,
-        layers:[aerLayer],
-        title:"Aerial Map"
-    });
-    basemapGallery.add(baseaerLayer);
+//    var topoLayer=new esri.dijit.BasemapLayer({
+//        url:"http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
+//    });
+//    var basemapTopo=new esri.dijit.Basemap({
+//        id:1,
+//        layers:[topoLayer],
+//        title:"Topo Map"
+//    });
+//    basemapGallery.add(basemapTopo);
+//    var strtLayer=new esri.dijit.BasemapLayer({
+//        url:"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
+//    });
+//    var basestrtLayer=new esri.dijit.Basemap({
+//        id:2,
+//        layers:[strtLayer],
+//        title:"Street Map"
+//    });
+//    basemapGallery.add(basestrtLayer);
+//    var aerLayer=new esri.dijit.BasemapLayer({
+//        url:"http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
+//    });
+//    var baseaerLayer=new esri.dijit.Basemap({
+//        id:3,
+//        layers:[aerLayer],
+//        title:"Aerial Map"
+//    });
+//    basemapGallery.add(baseaerLayer);
     basemapGallery.startup();
     dojo.connect(basemapGallery,"onSelectionChange",function(){
         baseMP=basemapGallery.getSelected().id;
@@ -373,10 +374,14 @@ function addGraphic(id,latitude,longitude,type){
     if(dojo.indexOf([102113,102100,3857,4326],map.spatialReference.wkid)!==-1){
         geometry=esri.geometry.geographicToWebMercator(geometry);
     }
-    var sym6=(document.getElementById('iconType').checked)?syml6:syms6;
-    var sym4=(document.getElementById('iconType').checked)?syml4:syms4;
-    var sym5=(document.getElementById('iconType').checked)?syml5:syms5;
-    var sym2=(document.getElementById('iconType').checked)?syml2:syms2;
+//    var sym6=(document.getElementById('iconType').checked)?syml6:syms6;
+//    var sym4=(document.getElementById('iconType').checked)?syml4:syms4;
+//    var sym5=(document.getElementById('iconType').checked)?syml5:syms5;
+//    var sym2=(document.getElementById('iconType').checked)?syml2:syms2;
+    var sym6=syml6;
+    var sym4=syml4;
+    var sym5=syml5;
+    var sym2=syml2;
     switch(type){
         case"video_testimonials":
             dataLayer.add(new esri.Graphic(geometry,sym2,{
@@ -1126,18 +1131,18 @@ function checkTypeElements(elements){
 }
 function setBaseMap(bmId)
 {
-    clearBaseSelection();
-    dojo.addClass("mapType"+bmId,"controls-selected");
+//    clearBaseSelection();
+//    dojo.addClass("mapType"+bmId,"controls-selected");
     baseMP=bmId;
     basemapGallery.select(baseMP);
     setView();
 }
-function clearBaseSelection()
-{
-    dojo.removeClass("mapType1","controls-selected");
-    dojo.removeClass("mapType2","controls-selected");
-    dojo.removeClass("mapType3","controls-selected");
-}
+//function clearBaseSelection()
+//{
+//    dojo.removeClass("mapType1","controls-selected");
+//    dojo.removeClass("mapType2","controls-selected");
+//    dojo.removeClass("mapType3","controls-selected");
+//}
 function go2Loc(xMn,yMn,xMx,yMx){
     var setExt=new esri.geometry.Extent({
         "xmin":xMn,
