@@ -34,23 +34,6 @@ array_multisort($sortArray[$orderby], SORT_ASC, $post_types);
       'order'          => 'ASC',
       'category_name'  => 'MapServerLayers'
   ));
-  $i=0;
-  foreach($bookmarks as $bm) {
-    $bmLStr = explode("||",$bm->link_url);
-    if(count($bmLStr) == 1){
-      $bmLURL = $bm->link_url;
-      $singleLayer = "null";
-    } else{
-      $bmLURL = $bmLStr[0];
-      $singleLayer = $bmLStr[1];
-    }
-//    echo "aglyrc".$bm->link_id." = new esri.layers.ArcGISDynamicMapServiceLayer('".$bmLURL."');\n";
-//    echo "aglyrc".$bm->link_id.".id = 'aglyrc".$bm->link_id."';\n";
-//    echo "setTimeout(function(){alert(aglyrc".$bm->link_id.".layerInfos)},3000);";
-//    echo "alert(aglyrc".$bm->link_id.".layerInfos);\n";
-//    echo "test[".$i."] = buildLayerListTree(aglyrc".$bm->link_id.", '".$bm->link_id."', 'aglyrc".$bm->link_id."',".$singleLayer.");";
-    $i++;
-  }
   ?>
     var treeData = [
 <?php
@@ -93,14 +76,14 @@ foreach ($post_types as $post_type) {
 $layers =  ",{ title: \"Data Layer (".count($bookmarks).")\", 
                 key: \"accord_data_layer\", 
                 noLink: true, 
-                isFolder: true,                
+                isFolder: true,
+                hideCheckbox: true,            
                 select: false,
                 icon: '../../../../images/data_layersM.png',
                 selectMode: 3,
                 children: [";
 $i=0;
-foreach($bookmarks as $bm)
-{
+foreach($bookmarks as $bm) {
   $bmLStr = explode("||",$bm->link_url);
   if(count($bmLStr) == 1){
     $bmLURL = $bm->link_url;
@@ -116,6 +99,54 @@ foreach($bookmarks as $bm)
 $layers .=    "]
        }";
 echo $layers;
+
+$args2=array(
+  'public'   => true,
+  '_builtin' => false
+
+);
+$excludeTaxonomies = array("cgmap-countries", "crops_livestock", "agroecological_zones", "farming_systems");
+
+$output = 'objects'; // or names
+$operator = 'and'; // 'and' or 'or'
+$taxonomies=get_taxonomies($args2,$output,$operator);
+if  ($taxonomies) {
+  $taxoTree =  ",{ title: \"Filter by Resource Theme\", 
+                key: \"accord_filter_resource_theme\", 
+                noLink: true, 
+                isFolder: true,
+                //hideCheckbox: true,            
+                //select: false,
+                //icon: '../../../../images/data_layersM.png',
+                selectMode: 3,
+                children: [";
+  asort($taxonomies);
+  foreach ($taxonomies  as $taxonomy ) {
+    if(!in_array($taxonomy->name, $excludeTaxonomies)){
+      $args3=array(
+      'orderby'   => 'name'
+      );
+      $terms = get_terms($taxonomy->name, $args3);
+      $count = count($terms);
+      $taxoTree .= "{title: '".$taxonomy->label." (".$count.")', 
+                     isFolder: true, 
+                     key: '".$taxonomy->name."',
+                     selectMode: 3,
+                     children: [";
+      if($count > 0){
+        foreach ($terms as $term) {
+          $taxoTree .= "{title: '".$term->name."',                       
+                        key: 'taxio_".$term->term_id."',
+                        },";
+        }
+      }
+      $taxoTree .= "]},";      
+    }
+  }
+  $taxoTree .=    "]
+       }";
+  echo $taxoTree;
+}
 ?>        
     ];
 </script>

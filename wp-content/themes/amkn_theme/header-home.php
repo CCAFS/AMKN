@@ -66,9 +66,9 @@
                     onSelect: function(flag, node) {
                       if( !node.data.url ) {
                         if (node.data.key == 'accord_ccafs_sites' || node.data.key == 'accord_video_testimonials'  || node.data.key == 'accord_amkn_blog_posts'
-                              || node.data.key == 'accord_biodiv_cases' || node.data.key == 'accord_photo_testimonials') {
-                          var points = node.tree.getSelectedNodes();
-                          updateDataLayerTree(true,points);
+                              || node.data.key == 'accord_biodiv_cases' || node.data.key == 'accord_photo_testimonials' || node.data.key.match('taxio_')) {
+//                          var points = node.tree.getSelectedNodes();
+                          updateDataLayerTree(true);
                         } else {
                           updateLayerVisibilityTree(node,flag);
                         }

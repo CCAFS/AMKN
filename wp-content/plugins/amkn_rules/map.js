@@ -42,7 +42,7 @@ var ptonmap=[];
 **/
 function initMap(){
     location.hash = '';
-    baseMP=1;
+    baseMP='basemap_5';
     getView();
     syml6=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/pin-mini.png",17,25);
     syms6=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/pin-mini.png",7,10);    
@@ -110,17 +110,17 @@ function initMap(){
         overviewMapDijit.startup();
         basemapGallery.select(baseMP);
         initBackMap();
-        dojo.removeClass("c_impacts","hide");
-        dojo.removeClass("c_adaptation_strategy","hide");
-        dojo.removeClass("c_mitigation_strategy","hide");
-        dojo.removeClass("c_climate_change_challenges","hide");
+//        dojo.removeClass("c_impacts","hide");
+//        dojo.removeClass("c_adaptation_strategy","hide");
+//        dojo.removeClass("c_mitigation_strategy","hide");
+//        dojo.removeClass("c_climate_change_challenges","hide");
 //        dojo.removeClass("tb2","hide");
-        dojo.removeClass("rsType","hide");
-        dojo.removeClass("rsLayers","hide");
+//        dojo.removeClass("rsType","hide");
+//        dojo.removeClass("rsLayers","hide");
         dojo.removeClass("tb3","hide");
     });
     dojo.connect(map,"onExtentChange",function(extent){
-        setView();
+        setViewTree();
         dijit.popup.close(hQuery);
         findPointsInExtentTree(map.extent);
         hoverLayer.remove(polyGraphic);
@@ -163,7 +163,7 @@ function initMap(){
     basemapGallery.startup();
     dojo.connect(basemapGallery,"onSelectionChange",function(){
         baseMP=basemapGallery.getSelected().id;
-        setView();
+        setViewTree();
     });
     tiledMapServiceLayer=new esri.layers.ArcGISTiledMapServiceLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer");
     map.addLayer(tiledMapServiceLayer);
@@ -211,6 +211,7 @@ function hideLoading(error){
 //    map.disableScrollWheelZoom();
 //    findPointsInExtent(map.extent);
     findPointsInExtentTree(map.extent);
+//    setViewTree();
 }
 function processCsvData(url){
     var frameUrl=new dojo._Url(window.location.href);
@@ -251,7 +252,8 @@ function processCsvData(url){
             if(multipoint.points.length>0){
                 maxExtent=multipoint.getExtent();
             }
-            enableFormsOnQuery();
+            hideLoading();
+//            enableFormsOnQuery();
         },
         onError:function(error){}
     });
@@ -566,91 +568,65 @@ function showHideGCP(){}
  * @function updateDataLayerTree
  * @description this method show or hidde the different kind of content on the map
  * @argument {boolean} cb it is the reference of a item on the map
- * @argument {object} points it is an array of the element selected on the tree
  * @return {void} 
  * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
 **/
-function updateDataLayerTree(cb,points)
-{
-    var pts=document.pts;
-    var imp=document.impacts;
-    var as=document.adaptation_strategy;
-    var ms=document.mitigation_strategy;  
-    var ccc=document.climate_change_challenges;    
-    var showpts="";
-    var showimp="";
-    var showas="";
-    var showms="";
-    var showcl="";
-    var showccc="";
-    var showaz="";
-    var hasPts="";
-    var hasRes="";
-    for(var i=0;i<points.length;i++){
-        if(points[i].data.key.match('accord_')) {
-            showpts+=points[i].data.key.replace('accord_','')+",";            
+function updateDataLayerTree(cb)
+{  
+  var points = $("#cFiltersList2").dynatree("getTree").getSelectedNodes();
+  var showpts="";
+  var showimp="";
+  var showas="";
+  var showms="";
+  var showcl="";
+  var showccc="";
+  var showaz="";
+  for(var i=0;i<points.length;i++){
+      if(points[i].data.key.match('accord_')) {
+          showpts+=points[i].data.key.replace('accord_','')+",";            
+      } else if (points[i].data.key.match('taxio_')) {          
+        switch(points[i].getParent().data.key){
+          case"impacts":
+            showimp+=points[i].data.key.replace('taxio_','')+",";
+          break;
+          case"adaptation_strategy":
+            showas+=points[i].data.key.replace('taxio_','')+","; 
+          break;
+          case"mitigation_strategy":
+            showms+=points[i].data.key.replace('taxio_','')+","; 
+          break;
+          case"climate_change_challenges":
+            showccc+=points[i].data.key.replace('taxio_','')+","; 
+          break;
         }
-    }
-    for(var i=0;i<imp.length;i++)
-    {
-        if(imp.elements[i].checked)
+      }
+  }
+  showpts=showpts===""?"":"&pts="+showpts;
 
-        {
-            showimp+=imp.elements[i].value+",";
-        }
-    }
-    for(var i=0;i<as.length;i++)
-    {
-        if(as.elements[i].checked)
+  //this vars provably will be use when the method be complet
+  showimp=showimp===""?"":"&imp="+showimp;
+  showas=showas===""?"":"&as="+showas;
+  showms=showms==""?"":"&ms="+showms;
+  showccc=showccc===""?"":"&ccc="+showccc;
 
-        {
-            showas+=as.elements[i].value+",";
-        }
-    }
-    for(var i=0;i<ms.length;i++)
-    {
-        if(ms.elements[i].checked)
-
-        {
-            showms+=ms.elements[i].value+",";
-        }
-    }
-    for(var i=0;i<ccc.length;i++)
-    {
-        if(ccc.elements[i].checked)
-
-        {
-            showccc+=ccc.elements[i].value+",";
-        }
-    }
-    showpts=showpts==""?"":"&pts="+showpts;
-    
-    //this vars provably will be use when the method be complet
-    showimp=showimp==""?"":"&imp="+showimp;
-    showas=showas==""?"":"&as="+showas;
-    showms=showms==""?"":"&ms="+showms;
-    showcl=showcl==""?"":"&cl="+showcl;
-    showccc=showccc==""?"":"&ccc="+showccc;
-    showaz=showaz==""?"":"&az="+showaz;
-
-    var newURL=baseDataURL+"?fmt=csv"+showpts+showimp+showas+showms+showcl+showccc+showaz;
-    if(cb)
-    {
-        map.removeLayer(dataLayer);
-        dataLayer="";
-        dataLayer=new esri.layers.GraphicsLayer();
-        map.addLayer(dataLayer);
-        disableFormsOnQuery();
-    }
-    processCsvData(newURL);
-    if(cb)
-    {
-        dojo.connect(dataLayer,"onClick",onFeatureClick);
-        dojo.connect(map.graphics,"onClick",onFeatureClick);
-        dojo.connect(dataLayer,"onMouseOver",onFeatureHover);
-        dojo.connect(dataLayer,"onMouseOut",onFeatureLeave);
-        setViewTree(points);
-    }
+  var newURL=baseDataURL+"?fmt=csv"+showpts+showimp+showas+showms+showcl+showccc+showaz;
+  if(cb)
+  {
+      map.removeLayer(dataLayer);
+      dataLayer="";
+      dataLayer=new esri.layers.GraphicsLayer();
+      map.addLayer(dataLayer);
+//      disableFormsOnQuery();
+  }
+  processCsvData(newURL);
+  if(cb)
+  {
+      dojo.connect(dataLayer,"onClick",onFeatureClick);
+      dojo.connect(map.graphics,"onClick",onFeatureClick);
+      dojo.connect(dataLayer,"onMouseOver",onFeatureHover);
+      dojo.connect(dataLayer,"onMouseOut",onFeatureLeave);
+      setViewTree();
+  }
 }
 
 function updateDataLayer(cb)
@@ -928,82 +904,56 @@ function setView()
  * @return {void} 
  * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
 **/
-function setViewTree(points)
+function setViewTree()
 {    
-    var imp=document.impacts;
-    var as=document.adaptation_strategy;
-    var ms=document.mitigation_strategy;
-    var cl=document.crops_livestock;
-    var ccc=document.climate_change_challenges;
-    var az=document.agroecological_zones;
-    var showpts="";
-    var showimp="";
-    var showas="";
-    var showms="";
-    var showcl="";
-    var showccc="";
-    var showaz="";
-    var showLyr="";
-    for(var i=0;i<points.length;i++){
-        if(points[i].data.key.match('accord_')) {
-            showpts+=points[i].data.key.replace('accord_','')+",";            
-        }
+  var points = $("#cFiltersList2").dynatree("getTree").getSelectedNodes();
+  var showpts="";
+  var showimp="";
+  var showas="";
+  var showms="";
+  var showccc="";
+  var showLyr="";
+  for(var i=0;i<points.length;i++){
+    if(points[i].data.key.match('accord_')) {
+        showpts+=points[i].data.key.replace('accord_','')+",";            
+    } else if (points[i].data.key.match('taxio_')) {          
+      switch(points[i].getParent().data.key){
+        case"impacts":
+          showimp+=points[i].data.key.replace('taxio_','')+",";
+        break;
+        case"adaptation_strategy":
+          showas+=points[i].data.key.replace('taxio_','')+","; 
+        break;
+        case"mitigation_strategy":
+          showms+=points[i].data.key.replace('taxio_','')+","; 
+        break;
+        case"climate_change_challenges":
+          showccc+=points[i].data.key.replace('taxio_','')+","; 
+        break;
+      }
     }
-    for(var i=0;i<imp.length;i++)
-    {
-        if(imp.elements[i].checked)
-
-        {
-            showimp+=imp.elements[i].value+",";
-        }
-    }
-    for(var i=0;i<as.length;i++)
-    {
-        if(as.elements[i].checked)
-
-        {
-            showas+=as.elements[i].value+",";
-        }
-    }
-    for(var i=0;i<ms.length;i++)
-    {
-        if(ms.elements[i].checked)
-
-        {
-            showms+=ms.elements[i].value+",";
-        }
-    }
-    for(var i=0;i<ccc.length;i++)
-    {
-        if(ccc.elements[i].checked)
-
-        {
-            showccc+=ccc.elements[i].value+",";
-        }
-    }
-    showpts=showpts==""?"":"/pts="+showpts;
-    showimp=showimp==""?"":"/imp="+showimp;
-    showas=showas==""?"":"/as="+showas;
-    showms=showms==""?"":"/ms="+showms;
-    showcl=showcl==""?"":"/cl="+showcl;
-    showccc=showccc==""?"":"/ccc="+showccc;
-    showLyr=((typeof vLyr=="undefined")||vLyr=="")?"":"/lyr="+vLyr;
-    ((typeof vLyr!="undefined")&&vLyr!="")?dojo.addClass(document.getElementById("rsLayers_label"),"sldMenu"):dojo.removeClass(document.getElementById("rsLayers_label"),"sldMenu");
-    mapCenter="/ctr="+map.extent.getCenter().x+";"+map.extent.getCenter().y;
-    mapLevel="/lvl="+map.getLevel();
-    var setBaseMP="/bm="+baseMP;
-    var showGCP="";
-    location.hash=setBaseMP+showGCP+mapCenter+mapLevel+showpts+showimp+showas+showms+showcl+showccc+showaz+showLyr;
+  }
+  showpts=showpts===""?"":"/pts="+showpts;
+  showimp=showimp===""?"":"/imp="+showimp;
+  showas=showas===""?"":"/as="+showas;
+  showms=showms===""?"":"/ms="+showms;
+  showccc=showccc===""?"":"/ccc="+showccc;
+  showLyr=((typeof vLyr=="undefined")||vLyr=="")?"":"/lyr="+vLyr;
+  mapCenter="/ctr="+map.extent.getCenter().x+";"+map.extent.getCenter().y;
+  mapLevel="/lvl="+map.getLevel();
+  var setBaseMP="/bm="+baseMP;
+  var showGCP="";  
+  location.hash=setBaseMP+showGCP+mapCenter+mapLevel+showpts+showimp+showas+showms+showccc+showLyr;
 }
 function getView()
 {
-    var pts=document.pts;
-    var imp=document.impacts;
-    var as=document.adaptation_strategy;
-    var ms=document.mitigation_strategy;
-    var cl=document.crops_livestock;
-    var ccc=document.climate_change_challenges;
-    var az=document.agroecological_zones;
+//    var pts=document.pts;
+//    var imp=document.impacts;
+//    var as=document.adaptation_strategy;
+//    var ms=document.mitigation_strategy;
+//    var cl=document.crops_livestock;
+//    var ccc=document.climate_change_challenges;
+//    var az=document.agroecological_zones;
     var showpts="";
     var showimp="";
     var showas="";
@@ -1022,32 +972,32 @@ function getView()
         if(theMap!="")
 
         {
-            unChecks(document.pts);
+//            unChecks(document.pts);
             for(var mp=0;mp<theMap.length;mp++)
 
             {
                     var cEle=theMap[mp].split("=")[0];
                     switch(cEle){
                         case"pts":
-                            checkTypeElements(theMap[mp].split("=")[1]);
+//                            checkTypeElements(theMap[mp].split("=")[1]);
                             break;
                         case"imp":
-                            checkTaxElements("impacts",theMap[mp].split("=")[1]);
+//                            checkTaxElements("impacts",theMap[mp].split("=")[1]);
                             break;
                         case"as":
-                            checkTaxElements("adaptation_strategy",theMap[mp].split("=")[1]);
+//                            checkTaxElements("adaptation_strategy",theMap[mp].split("=")[1]);
                             break;
                         case"ms":
-                            checkTaxElements("mitigation_strategy",theMap[mp].split("=")[1]);
+//                            checkTaxElements("mitigation_strategy",theMap[mp].split("=")[1]);
                             break;
                         case"cl":
-                            checkTaxElements("crops_livestock",theMap[mp].split("=")[1]);
+//                            checkTaxElements("crops_livestock",theMap[mp].split("=")[1]);
                             break;
                         case"ccc":
-                            checkTaxElements("climate_change_challenges",theMap[mp].split("=")[1]);
+//                            checkTaxElements("climate_change_challenges",theMap[mp].split("=")[1]);
                             break;
                         case"az":
-                            checkTaxElements("agroecological_zones",theMap[mp].split("=")[1]);
+//                            checkTaxElements("agroecological_zones",theMap[mp].split("=")[1]);
                             break;
                         case"ctr":
                             ctrPt=theMap[mp].split("=")[1];
@@ -1072,9 +1022,9 @@ function getView()
                         case"gcp":
                             if(theMap[mp].split("=")[1]=="t"){
                                 sGCP=theMap[mp].split("=")[1];
-                                document.getElementById("gcpFS").checked="checked";
+//                                document.getElementById("gcpFS").checked="checked";
                             }else{
-                                document.getElementById("gcpFS").checked="";
+//                                document.getElementById("gcpFS").checked="";
                             }
                             break;
                         case"bm":
@@ -1099,7 +1049,7 @@ function initBackMap()
     ctrPt="";
     lvlMp="";
     setBaseMap(baseMP);
-    updateDataLayer(false);
+    updateDataLayerTree(false);
 }
 function go2Region(pt,zm)
 {
@@ -1134,8 +1084,8 @@ function setBaseMap(bmId)
 //    clearBaseSelection();
 //    dojo.addClass("mapType"+bmId,"controls-selected");
     baseMP=bmId;
-    basemapGallery.select(baseMP);
-    setView();
+    basemapGallery.select(baseMP);    
+//    setViewTree();
 }
 //function clearBaseSelection()
 //{
@@ -1309,7 +1259,7 @@ function findPointsInExtentTree(extent) {
     
     for(i = 0; i < childrenNodes.length; i++) {
         // clean array.
-        if (childrenNodes[i].data.key !== 'accord_data_layer') {
+        if (childrenNodes[i].data.key !== 'accord_data_layer' && childrenNodes[i].data.key !== 'accord_filter_resource_theme') {
           childrenNodes[i].removeChildren();
         }
         // add children and update the number of records on it.

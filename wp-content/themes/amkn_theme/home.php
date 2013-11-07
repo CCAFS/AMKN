@@ -6,16 +6,7 @@ get_header('home');
 //get_sidebar( 'home' );
 ?>
 <div class="tundra">
-<div id="yellow_navbar">
-    <div class="taxonomies hide" dojoType="dijit.form.DropDownButton" id="rsType">
-      <span>Filter Map Resources</span>
-      <div dojoType="dijit.TooltipDialog">
-        <button dojoType="dijit.form.Button" type="submit" class="checkCtrls amknButton"><a>Close</a></button>
-        <?php get_template_part( 'content_type', 'filters' ); ?>
-
-        <?php get_template_part( 'taxonomy', 'filters' ); ?>
-      </div>
-    </div>
+<div id="yellow_navbar">       
     <div class="taxonomies hide" dojoType="dijit.form.DropDownButton" id="rsLayers">
       <span>Display Data Layers</span>
       <div dojoType="dijit.TooltipDialog">
