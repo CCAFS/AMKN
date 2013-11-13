@@ -68,19 +68,19 @@ get_header('home');
       <div id="tb3" class="hide">
         <div class="map_controls-box homebox">
           <p class="blockNoWrap">
-            <button class="amknButton" id="ccafsRegion" dojoType="dijit.form.Button">
-                Zoom to CCAFS Region
-            </button>
+            <div data-dojo-type="dijit/form/DropDownButton">
+                <span>Zoom to CCAFS Region</span>
+                <div data-dojo-type="dijit/TooltipDialog">
+                  <ul class="homebox-list zoom_in-list">
+                  <li><a href="javascript:void(0)" onClick="go2Region('-268581.06491998816;1492308.2161012604', 5);">West Africa</a></li>
+                  <li><a href="javascript:void(0)" onClick="go2Region('3997216.609617994;-51108.259032608126', 5);">East Africa</a></li>
+                  <li><a href="javascript:void(0)" onClick="go2Region('8610344.140683722;2172292.0197260105', 5);">South Asia</a></li>
+                  </ul>
+                </div>
+            </div>
             <button class="amknButton" id="resetMap" dojoType="dijit.form.Button" onClick="zoomToOExt();">
               Reset Zoom
             </button>
-            <div dojoType="dijit.Tooltip" connectId="ccafsRegion" position="below">
-              <ul class="homebox-list zoom_in-list">
-              <li><a href="javascript:void(0)" onClick="go2Region('-268581.06491998816;1492308.2161012604', 5);">West Africa</a></li>
-              <li><a href="javascript:void(0)" onClick="go2Region('3997216.609617994;-51108.259032608126', 5);">East Africa</a></li>
-              <li><a href="javascript:void(0)" onClick="go2Region('8610344.140683722;2172292.0197260105', 5);">South Asia</a></li>
-              </ul>
-            </div>
           </p>
         </div><!-- end map_controls-box -->
       </div>
