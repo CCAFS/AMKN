@@ -46,7 +46,7 @@ foreach ($post_types as $post_type) {
                 key: \"accord_" . $post_type->name . "\", 
                 noLink: true, 
                 isFolder: false,                
-                select: true,
+//                select: true,
                 selectMode: 2,
                 hideCheckbox: false,
                     ";
@@ -92,7 +92,7 @@ foreach($bookmarks as $bm) {
     $bmLURL = $bmLStr[0];
     $singleLayer = $bmLStr[1];
   }
-  $layers .= "{title: '".$bm->link_name."', isFolder: true, key: 'aglyr".$bm->link_id."-".$singleLayer."-".$bmLURL."-".$bm->link_id."'},";
+  $layers .= "{title: '".$bm->link_name."', isFolder: true, hideCheckbox: true, key: 'aglyr".$bm->link_id."-".$singleLayer."-".$bmLURL."-".$bm->link_id."'},";
 //  $layers .= "children: [ test[".$i."]]},";
   $i++;
 }

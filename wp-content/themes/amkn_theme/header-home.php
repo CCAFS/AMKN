@@ -43,6 +43,7 @@
         <link href="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
         <script src="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/jquery.dynatree.js" type="text/javascript"></script>
         <script type="text/javascript">
+          var firstime = false;
             jQuery(function ($) {
                 //$(document).ready(function() {
                 // Attach the dynatree widget to an existing <div id="tree"> element
@@ -68,7 +69,7 @@
                         if (node.data.key == 'accord_ccafs_sites' || node.data.key == 'accord_video_testimonials'  || node.data.key == 'accord_amkn_blog_posts'
                               || node.data.key == 'accord_biodiv_cases' || node.data.key == 'accord_photo_testimonials' || node.data.key.match('taxio_')) {
 //                          var points = node.tree.getSelectedNodes();
-                          updateDataLayerTree(true);
+                          if (firstime) updateDataLayerTree(true);
                         } else {
                           updateLayerVisibilityTree(node,flag);
                         }
