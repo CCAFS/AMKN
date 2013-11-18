@@ -1480,15 +1480,6 @@ function buildLayerListTree(layer,layerName,single,soon) {
     for ($i=0;$i<layer.layerInfos.length;$i++) {
       ly = soon.data.key.split("-");
 //    dojo.map(layer.layerInfos,function(info){
-        var vLyrArray = (typeof vLyr!=="undefined")?vLyr.split(","):new Array();
-        for ($j=0;$j<vLyrArray.length;$j++) {
-          if(((typeof vLyrArray[$j]!=="undefined")&&vLyrArray[$j]!=="")&&(vLyrArray[$j].split("|")[0]===layerName)&&(vLyrArray[$j].split("|")[2]===layer.layerInfos[$i].id)){
-            checked=true;
-            break;
-          } else {
-            checked=false;
-          }
-        }
         if(singleLyr==-1){
             if((layer.layerInfos[$i].parentLayerId==-1&&layer.layerInfos[$i].subLayerIds==null)||(layer.layerInfos[$i].parentLayerId!=-1&&layer.layerInfos[$i].subLayerIds==null)){                
                 child.push({
@@ -1530,6 +1521,13 @@ function buildLayerListTree(layer,layerName,single,soon) {
           soon.expand(true);
         }
       }
+      var vLyrArray = (typeof vLyr!=="undefined")?vLyr.split(","):new Array();
+      for ($j=0;$j<vLyrArray.length;$j++) {
+        $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).select(true);
+        $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).getParent().expand(true);
+        $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).getParent().getParent().expand(true);
+      }
+
       soon.data.title = soon.data.title+" ("+child.length+")";
       if (child.length === 0) soon.data.hideCheckbox = true;
     },1000);
