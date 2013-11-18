@@ -19,9 +19,9 @@
 
    <div class="credits"><a href="/about/disclaimer/">Disclaimer</a> <a href="/about/credits/">Credits</a></div>
 </div><!-- end Footer -->
-<!--<script type="text/javascript">
+<script type="text/javascript">
    var _gaq = _gaq || [];
-   _gaq.push(['_setAccount', '<?php //echo get_option('google_analytics'); ?>']);
+   _gaq.push(['_setAccount', '<?php echo get_option('google_analytics'); ?>']);
    _gaq.push(['_trackPageview']);
    _gaq.push(['_trackPageLoadTime']);
    (function() {
@@ -32,7 +32,7 @@
       var s = document.getElementsByTagName('script')[0];
       s.parentNode.insertBefore(ga, s);
    })();
-</script>-->
+</script>
 
 <?php wp_footer(); ?>
 </body>
