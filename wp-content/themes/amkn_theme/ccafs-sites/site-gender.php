@@ -10,11 +10,11 @@ $ccafsSubSections = array("female-headed", "gender-weather");
         <ul>
             <li <?php if (!$subsection) echo $class; ?>>
                 <a href="<?php echo $ltab; ?>">
-                    <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/food-security.png" border="0"><br>Workload by gender</a>
+                    <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/land-use.png" border="0"><br>Workload by gender</a>
             </li>
             <li <?php if ($subsection == $ccafsSubSections[0]) echo $class; ?>>
                 <a href="<?php echo $ltab . $ccafsSubSections[0]; ?>">
-                    <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/climate-crises.png" border="0"><br> Female-headed households</a>
+                    <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/food-security.png" border="0"><br> Female-headed households</a>
             </li>
             <li <?php if ($subsection == $ccafsSubSections[1]) echo $class; ?>>
                 <a href="<?php echo $ltab . $ccafsSubSections[1]; ?>">
