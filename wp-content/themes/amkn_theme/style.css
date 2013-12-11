@@ -1373,6 +1373,13 @@ td.table-color1 {
     border-radius: 5px;
     height: 35px;
 }
+
+.table-color3 {
+    background: #CDCBCB;    
+    border-radius: 5px;
+    height: 35px;    
+}
+
 .ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all {
     height: 50px;
 }
