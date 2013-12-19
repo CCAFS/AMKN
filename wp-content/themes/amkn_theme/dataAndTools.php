@@ -7,28 +7,29 @@ $http_respone_header = file_get_contents($url);
 $apps = json_decode($http_respone_header,true);
 //echo "<pre>".print_r( json_decode($http_respone_header,true),true)."</pre>"; 
 ?>
-<table>
+<div id="container">
+<h2>Data & Tools</h2>
 <?php
 foreach ($apps as $app) :
 ?>
 
-    <tr >
-      <td>
+    <div id="tool">
+      <div id="tool-img">
       <a href="<?php echo $app['url']?>">
-        <img float="inherit" width="300" height="212" src="<?php echo $app['imageUrl']?>" />
+        <img src="<?php echo $app['imageUrl']?>" />
       </a>
-      </td>
+      </div>
 
-      <td style="vertical-align: top">
-      <h4><?php echo $app['title']?></h4>
+      <div id="tool-content">
+      <a href="<?php echo $app['url']?>"><h4><?php echo $app['title']?></h4> </a>
       <?php echo $app['description']?>
-      </td>
-    </tr>
+      </div>
+    </div>
 
 <?php    
 endforeach;
 ?>
-  </table>
+</div>
 <?php
 get_footer('home'); 
 ?>
