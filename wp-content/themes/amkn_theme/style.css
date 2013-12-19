@@ -1387,3 +1387,41 @@ td.table-color1 {
     height: 50px;
 }
 
+
+/********************/
+/*  Data and Tools  */
+/********************/
+
+#tool{
+    width: 100%;
+    background: #fff;
+    box-shadow: 1px 1px 7px #CCC;
+    float: left;
+    padding: 10px;
+    margin: 10px;  
+}
+
+#tool-img{
+    float: left; 
+    width: 25%;
+}
+
+#tool img {
+    width: 215px;
+    border-radius: 4px;
+    border: 1px solid #E4E4E4;
+}
+#tool img:hover {
+    opacity: 0.7;
+}
+
+#tool h4 {
+    font-size: 17px;
+    
+    margin: 10px 0px;
+}
+
+#tool-content{
+    float: left; 
+    width: 70%;
+}

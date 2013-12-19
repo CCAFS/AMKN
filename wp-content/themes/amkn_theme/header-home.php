@@ -136,4 +136,4 @@
 
            
         </div> <!-- end Header -->
-        <?php //get_header('menu'); ?>
+        <?php get_header('menu'); ?>
