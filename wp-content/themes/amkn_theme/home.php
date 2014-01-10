@@ -2,11 +2,18 @@
 /*
 Template Name: Home Map Template
 */
-get_header('home');
+if (!isset($_GET['type'])){
+  get_header('home');
+  $style='';
+} else {
+  get_header('light');
+  $style="style='display:none'";
+}
+
 //get_sidebar( 'home' );
 ?>
 <div class="tundra">
-<div id="yellow_navbar">       
+<div <?php echo $style?> id="yellow_navbar">       
     <div class="taxonomies hide" dojoType="dijit.form.DropDownButton" id="rsLayers">
       <span>Display Data Layers</span>
       <div dojoType="dijit.TooltipDialog">
@@ -65,7 +72,7 @@ get_header('home');
           </div>
         </div>
       </div>
-      <div id="tb3" class="hide">
+      <div <?php echo $style?> id="tb3" class="hide">
         <div class="map_controls-box homebox">
           <p class="blockNoWrap">
             <div data-dojo-type="dijit/form/DropDownButton">
@@ -88,7 +95,7 @@ get_header('home');
       <?php the_content(); ?>
       <?php endwhile; // end of the loop. ?>
     </div>
-    <div id="onthemap" dojoType="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="235" splitter="false" region="left" style="width: 235px;" startExpanded="true">
+    <div <?php echo $style?> id="onthemap" dojoType="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="235" splitter="false" region="left" style="width: 235px;" startExpanded="true">
       <!--Here is the calling to the template that show the left menu-->
         <?php get_template_part( 'content_type', 'filters_list2' ); ?>
     </div>
@@ -96,6 +103,7 @@ get_header('home');
     <!-- featured section starts here -->
 </div>
 </div>
+<?php if (!isset($_GET['type'])):?>
 <div id="featured">
   <h1 class="feat-maintitle">Featured on AMKN</h1>
   <!--<button onClick="feedback_widget.show()" dojoType="dijit.form.Button" type="submit" class="amknButton msGenButton right"><a>Community <br />Feedback</a></button>-->
@@ -105,4 +113,4 @@ get_header('home');
   <?php get_sidebar( 'follow' ); ?>
 
 </div><!-- end Featured -->
-<?php get_footer('home'); ?>
+<?php get_footer('home'); endif; ?>
