@@ -82,6 +82,13 @@
     $obj->url = 'http://ccafs.cgiar.org/tool-climate-analogue-tool';
     $tools[6] = $obj;
     
+    $obj = new stdClass();    
+    $obj->title = 'Data Management Support Pack';
+    $obj->description = 'The CCAFS Data Management Support Pack guides researchers to produce high quality, reusable data from CCAFS research activities.  It consists of documents, templates and videos covering the different aspects of data management and ranging from the overarching concepts and strategies through to the day-to-day activities.';
+    $obj->imageUrl = 'http://ccafs.cgiar.org/sites/default/files/styles/medium/public/DSMP-screenshot_1.png?itok=BsjL0AZE';
+    $obj->url = 'http://ccafs.cgiar.org/atlas-ccafs-sites';
+    $tools[7] = $obj;
+    
     return $tools;  
   }
   function my_post() { }
