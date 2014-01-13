@@ -62,3 +62,5 @@
 /wp-content/plugins/trabaria_flickr/
 /wp-content/plugins/members/
 /wp-content/plugins/feedwordpress/
+!/wp-content/plugins/trabaria-flickr/getPhotoSetsAsFeed.php
+/wp-content/themes/twentyfourteen/
