@@ -5,9 +5,11 @@ Template Name: Home Map Template
 if (!isset($_GET['embedded'])){
   get_header('home');
   $style='';
+  $splitter = "true";
 } else {
   get_header('light');
   $style="style='display:none'";
+  $splitter = "false";
 }
 $size="";
 if (isset($_GET['width']) && isset($_GET['height'])) {
@@ -99,7 +101,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
       <?php the_content(); ?>
       <?php endwhile; // end of the loop. ?>
     </div>
-    <div <?php echo $style?> id="onthemap" dojoType="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="235" splitter="true" region="left" style="width: 235px;" startExpanded="true">
+    <div <?php echo $style?> id="onthemap" dojoType="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="235" splitter="<?php echo $splitter?>" region="left" style="width: 235px;" startExpanded="true">
       <!--Here is the calling to the template that show the left menu-->
         <?php get_template_part( 'content_type', 'filters_list2' ); ?>
     </div>

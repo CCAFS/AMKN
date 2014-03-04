@@ -3,6 +3,13 @@
  * @package WordPress
  * @subpackage AMKNToolbox
  */
+$var = '';
+if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){ 
+  $var = '?embedded=1';
+  if (isset($_GET['width']) && isset($_GET['height'])) {
+    $var .= "&width=".$_GET['width']."&height=".$_GET['height'];
+  }
+}
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
     <head>
@@ -51,7 +58,7 @@
     </head>
     <body class="tundra">
         <div id="header">
-            <div class="logos"><a href="<?php bloginfo('url'); ?>">
+            <div class="logos"><a href="<?php bloginfo('url');echo $var; ?>">
                     <img class="amkn_logo" src="<?php bloginfo('template_directory'); ?>/images/amkn.gif" alt="AMKN logo" />
                     <img class="ccafs_logo" src="<?php bloginfo('template_directory'); ?>/images/ccafs-logo.png" alt="CCAFS logo" /></a>
             </div><!-- end logos -->

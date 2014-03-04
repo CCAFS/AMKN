@@ -43,10 +43,10 @@
 
 
 $metaDesc = get_post_meta($post->ID, 'content_description', true);
-$embed = $_GET["embed"];
+$embed = $_GET["embeddded"];
 $section = $_GET["section"];
 
-if (isset($embed) && $embed == "true") {
+if (isset($embed) && $embed == "1") {
    get_header('embed');
 } else {
    get_header('page');
@@ -74,8 +74,8 @@ if (isset($embed) && $embed == "true") {
          <li <?php if ($section == 'climate-impacts') echo $class; ?>><a href="./?section=climate-impacts"><span>Climate & Impacts</span></a></li>
          <li <?php if ($section == 'adaptation-mitigation') echo $class; ?>><a href="./?section=adaptation-mitigation"><span>Adaptation & Mitigation</span></a></li>
          <li <?php if ($section == 'gender') echo $class; ?>><a href="./?section=gender"><span>Gender</span></a></li>
-         <li <?php if ($section == 'ongoing-research') echo $class; ?>><a href="./?section=ongoing-research"><span>Ongoing Research</span></a></li>
-         <li <?php if ($section == 'tools-data') echo $class; ?>><a href="./?section=tools-data"><span>Tools & Data</span></a></li>
+         <!--<li <?php if ($section == 'ongoing-research') echo $class; ?>><a href="./?section=ongoing-research"><span>Ongoing Research</span></a></li>-->
+         <!--<li <?php if ($section == 'tools-data') echo $class; ?>><a href="./?section=tools-data"><span>Tools & Data</span></a></li>-->
       </ul> 
    </div><!-- end mainmenu -->
    <div class="borde-menu"> </div>

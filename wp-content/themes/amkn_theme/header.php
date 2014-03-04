@@ -4,6 +4,13 @@
  * @subpackage AMKNToolbox
  */
 $searchQ = $_GET["q"];
+$var = '';
+if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){ 
+  $var = '?embedded=1';
+  if (isset($_GET['width']) && isset($_GET['height'])) {
+    $var .= "&width=".$_GET['width']."&height=".$_GET['height'];
+  }
+}
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -44,32 +51,32 @@ $searchQ = $_GET["q"];
 </script>
 </head>
 <body>
-<div id="header index" class="header-page">
-<div class="logos"><a href="<?php bloginfo('url'); ?>">
-<img class="amkn_logo" src="<?php bloginfo( 'template_directory' ); ?>/images/amkn.gif" alt="AMKN logo" />
-<img class="ccafs_logo" src="<?php bloginfo( 'template_directory' ); ?>/images/ccafs-logo.png" alt="CCAFS logo" /></a>
-</div><!-- end logos -->
+  <div id="header index" class="header-page">
+    <div class="logos"><a href="<?php bloginfo('url');echo $var; ?>">
+      <img class="amkn_logo" src="<?php bloginfo( 'template_directory' ); ?>/images/amkn.gif" alt="AMKN logo" />
+      <img class="ccafs_logo" src="<?php bloginfo( 'template_directory' ); ?>/images/ccafs-logo.png" alt="CCAFS logo" /></a>
+    </div><!-- end logos -->
 
-<div id="right-header">
-<div class="navbar">
+    <div id="right-header">
+      <div class="navbar">
 
-<?php
-$defaults = array(
-  'container'       => 'none',
-  'container_id'    => '',
-  'menu_class'      => 'navigation',
-  'menu_id'         => 'menu',
-  'echo'            => true,
-  'fallback_cb'     => 'wp_page_menu',
-  'before'          => '',
-  'after'           => '',
-  'link_before'     => '',
-  'link_after'      => '',
-  'depth'           => 0,
-  'walker'          => '');
-//
-wp_nav_menu( $defaults ); ?>
-<form action="/search/" id="searchform" method="get"><input type="text" value="<?php echo $searchQ; ?>" id="searchbar" name="q" /><input type="submit" value="Search" id="searchsubmit" /></form>
-</div><!-- end navbar -->
-</div><!-- end right-header -->
-</div> <!-- end Header -->
+      <?php
+      $defaults = array(
+        'container'       => 'none',
+        'container_id'    => '',
+        'menu_class'      => 'navigation',
+        'menu_id'         => 'menu',
+        'echo'            => true,
+        'fallback_cb'     => 'wp_page_menu',
+        'before'          => '',
+        'after'           => '',
+        'link_before'     => '',
+        'link_after'      => '',
+        'depth'           => 0,
+        'walker'          => '');
+      //
+      wp_nav_menu( $defaults ); ?>
+      <form action="/search/" id="searchform" method="get"><input type="text" value="<?php echo $searchQ; ?>" id="searchbar" name="q" /><input type="submit" value="Search" id="searchsubmit" /></form>
+      </div><!-- end navbar -->
+    </div><!-- end right-header -->
+  </div> <!-- end Header -->

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:georss="http://www.georss.org/georss" xmlns:ccafs="http://localhost/AMKN/wp-content/plugins/activitiesImporter/TypeActivities" version="2.0">
+<channel><title>Planing and Reporting</title><link>http://activities.ccafs.cgiar.org</link><description></description>
+<item>
+<title>Communication of successful strategies, approaches, policies, and investments contributing to improved science-informed CC-ag development-food security policies and decision making in rice-wheat systems and maize-legume systems in view of main- streaming adaptation strategies.</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=1</link>
+<description>This activity addresses the importance of ensuring that the information and knowledge resulting from different milestones is translated into communication products that are targeted to those that have the responsibility of applying that knowledg either in the field or at the level of decision making.  </description>
+<ccafs:id>1</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2012</ccafs:endDate>
+<ccafs:milestone>4.1.2 2012</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Mejoramiento de Maiz y Trigo</ccafs:leaderName>
+<ccafs:leaderAcronym>CIMMYT</ccafs:leaderAcronym>
+<ccafs:contactName>Clare Stirling</ccafs:contactName>
+<ccafs:contactEmail>c.stirling@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Gbegbelegbe, sika</ccafs:contactName>
+<ccafs:contactEmail>S.Gbegbelegbe@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Mike Listman</ccafs:contactName>
+<ccafs:contactEmail>m.listman@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Jon Hellin</ccafs:contactName>
+<ccafs:contactEmail>j.hellin@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:keyword>communicating climate change</ccafs:keyword>
+</item>
+<item>
+<title>Continued improvement of downscaled climate information for the globe, including testing of RCMs</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=2</link>
+<description>CIAT has stood first in terms of providing downscaled climate change predictions. Continued work in terms of climate change projections that can be used in different agricultural models will be done. Next years&apos; plans include two main targets:
+(1) the downloading, processing, assessment, and use of daily predictions of CMIP5 (Coupled Model Intercomparison Project phase 5) and their downscaling using the delta method. Additional comparisons with CMIP3 might be done.
+(2) the downloading, processing and assessment of both PRECIS model runs, and also any available regional climate model runs (e.g. ETA from CPTEC, and results of the CORDEX framework).</description>
+<ccafs:id>2</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2014</ccafs:endDate>
+<ccafs:milestone>4.2.1 2012 (2)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Agricultura Tropical</ccafs:leaderName>
+<ccafs:leaderAcronym>CIAT</ccafs:leaderAcronym>
+<ccafs:contactName>Julian Ramirez-Villegas</ccafs:contactName>
+<ccafs:contactEmail>j.r.villegas@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:countryLocationIso2>bo</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Bolivia</ccafs:countryLocationName>
+<ccafs:keyword>uncertainties</ccafs:keyword>
+<ccafs:keyword>climate modeling</ccafs:keyword>
+<ccafs:keyword>downscaling</ccafs:keyword>
+<ccafs:keyword>environmental data</ccafs:keyword>
+<ccafs:keyword>meteorological data</ccafs:keyword>
+</item>
+</channel>
+</rss>

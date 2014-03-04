@@ -56,7 +56,7 @@ h3 {
 }
 .header-page {
     background: url("images/header-page.png") repeat scroll 0 0 transparent !important;
-    height: 119px !important;
+    height: 125px !important;
     position: relative;
     z-index: 100;
 }
@@ -768,8 +768,8 @@ ul.side-followlist li img {
 }
 .content {
     float: none;
-    margin-left: 270px;
-    margin-top: 10px;
+    /*margin-left: 270px;*/
+    /*margin-top: 10px;*/
     width: 693px;
 }
 #map_infowindow .content {

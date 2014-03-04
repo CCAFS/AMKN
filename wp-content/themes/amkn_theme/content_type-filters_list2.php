@@ -10,7 +10,7 @@ $args1 = array(
     'public' => true,
     '_builtin' => false
 );
-$excludeTypes = array("flickr_photos", "agtrials");
+$excludeTypes = array("flickr_photos", "agtrials","ccafs_activities");
 $output = 'objects'; // names or objects
 $operator = 'and'; // 'and' or 'or'
 $post_types = get_post_types($args1, $output, $operator);
@@ -52,23 +52,26 @@ foreach ($post_types as $post_type) {
                     ";
         switch ($post_type->name) {
             case "ccafs_sites":
-                echo "icon: \"../../../../images/ccafs_sites-mini.png\"";
+                echo "icon: \"../../../../images/ccafs_sites-mini.png\",";
                 break;
             case 'video_testimonials':
-                echo "icon: \"../../../../images/video_testimonials-mini.png\"";
+                echo "icon: \"../../../../images/video_testimonials-mini.png\",";
                 break;
             case 'amkn_blog_posts':
-                echo "icon: \"../../../../images/amkn_blog_posts-mini.png\"";
+                echo "icon: \"../../../../images/amkn_blog_posts-mini.png\",";
                 break;
             case 'biodiv_cases':
-                echo "icon: \"../../../../images/biodiv_cases-mini.png\"";
+                echo "icon: \"../../../../images/biodiv_cases-mini.png\",";
                 break;
             case 'photo_testimonials':
-                echo "icon: \"../../../../images/photo_testimonials-mini.png\"";
+                echo "icon: \"../../../../images/photo_testimonials-mini.png\",";
+                break;
+            case 'ccafs_activities':
+                echo "icon: \"../../../../images/ccafs_activities-mini.png\",";
                 break;
         }
         echo "
-            , children: [ // Pass an array of nodes.
+            children: [ // Pass an array of nodes.
                 ]
             }";
     }
