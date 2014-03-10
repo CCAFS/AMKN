@@ -35,6 +35,8 @@
 /wp-commentsrss2.php
 /wp-config.php
 /wp-includes/
+/nbproject/
+/wp-content/advanced-cache.php
 /wp-content/cache/
 /wp-content/index.php
 /wp-content/uploads/
@@ -42,8 +44,9 @@
 /wp-content/themes/index.php
 /wp-content/themes/toolbox/
 /wp-content/themes/nuvolar_theme/
-/wp-content/plugins/feedwordpress/
-/wp-content/plugins/members/
+/wp-content/themes/old_amkn_theme/
+/wp-content/themes/twentythirteen/
+/wp-content/themes/twentytwelve/
 /wp-content/plugins/google-sitemap-generator/
 /wp-content/plugins/trabaria-geo/
 /wp-content/plugins/custom-post-type-ui/
@@ -57,3 +60,7 @@
 /wp-content/plugins/active-extra-fields/
 /wp-content/plugins/sociable/
 /wp-content/plugins/trabaria_flickr/
+/wp-content/plugins/members/
+/wp-content/plugins/feedwordpress/
+!/wp-content/plugins/trabaria-flickr/getPhotoSetsAsFeed.php
+/wp-content/themes/twentyfourteen/

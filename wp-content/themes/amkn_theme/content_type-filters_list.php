@@ -27,13 +27,15 @@ foreach($post_types as $post_type){
 }
 $orderby = "menu_position";
 array_multisort($sortArray[$orderby],SORT_ASC,$post_types);
-  foreach ($post_types  as $post_type ) {
-    if(!in_array($post_type->name, $excludeTypes)){
+foreach ($post_types  as $post_type ) {
+  if(!in_array($post_type->name, $excludeTypes)){
     echo '<div class="onmap" id="accord_' . $post_type->name . '" dojoType="dijit.layout.AccordionPane" title="' . $post_type->label . '"><div id="onmap_' . $post_type->name . '"></div></div>';
       }
   }
 ?>
+
 <div class="onmap" id="accord_legend" dojoType="dijit.layout.AccordionPane" title="Data Legend">
 <div id="legendDiv"></div>
 </div>  
 </div>
+

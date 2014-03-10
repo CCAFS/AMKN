@@ -1,0 +1,559 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:georss="http://www.georss.org/georss" xmlns:ccafs="http://localhost/AMKN/wp-content/plugins/activitiesImporter/TypeActivities" version="2.0">
+<channel><title>Planing and Reporting</title><link>http://activities.ccafs.cgiar.org</link><description></description>
+<item>
+<title>Communication of successful strategies, approaches, policies, and investments contributing to improved science-informed CC-ag development-food security policies and decision making in rice-wheat systems and maize-legume systems in view of main- streaming adaptation strategies.</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=1</link>
+<description>This activity addresses the importance of ensuring that the information and knowledge resulting from different milestones is translated into communication products that are targeted to those that have the responsibility of applying that knowledg either in the field or at the level of decision making.  </description>
+<ccafs:id>1</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2012</ccafs:endDate>
+<ccafs:milestone>4.1.2 2012</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Mejoramiento de Maiz y Trigo</ccafs:leaderName>
+<ccafs:leaderAcronym>CIMMYT</ccafs:leaderAcronym>
+<ccafs:contactName>Clare Stirling</ccafs:contactName>
+<ccafs:contactEmail>c.stirling@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Gbegbelegbe, sika</ccafs:contactName>
+<ccafs:contactEmail>S.Gbegbelegbe@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Mike Listman</ccafs:contactName>
+<ccafs:contactEmail>m.listman@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Jon Hellin</ccafs:contactName>
+<ccafs:contactEmail>j.hellin@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:keyword>communicating climate change</ccafs:keyword>
+</item>
+<item>
+<title>Continued improvement of downscaled climate information for the globe, including testing of RCMs</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=2</link>
+<description>CIAT has stood first in terms of providing downscaled climate change predictions. Continued work in terms of climate change projections that can be used in different agricultural models will be done. Next years&apos; plans include two main targets:
+(1) the downloading, processing, assessment, and use of daily predictions of CMIP5 (Coupled Model Intercomparison Project phase 5) and their downscaling using the delta method. Additional comparisons with CMIP3 might be done.
+(2) the downloading, processing and assessment of both PRECIS model runs, and also any available regional climate model runs (e.g. ETA from CPTEC, and results of the CORDEX framework).</description>
+<ccafs:id>2</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2014</ccafs:endDate>
+<ccafs:milestone>4.2.1 2012 (2)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Agricultura Tropical</ccafs:leaderName>
+<ccafs:leaderAcronym>CIAT</ccafs:leaderAcronym>
+<ccafs:contactName>Julian Ramirez-Villegas</ccafs:contactName>
+<ccafs:contactEmail>j.r.villegas@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:countryLocationIso2>bo</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Bolivia</ccafs:countryLocationName>
+<ccafs:keyword>uncertainties</ccafs:keyword>
+<ccafs:keyword>climate modeling</ccafs:keyword>
+<ccafs:keyword>downscaling</ccafs:keyword>
+<ccafs:keyword>environmental data</ccafs:keyword>
+<ccafs:keyword>meteorological data</ccafs:keyword>
+</item>
+<item>
+<title>Assembling and development of data and parameters to integrate maize and wheat systems information into global models, including calibration of selected benchmark cultivars for target environments.</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=3</link>
+<description>A global database on climate, crop and economic variables is needed to facilitate the development of the climate, crop and economic models required to quantify the biophysical and socio-economic impact of climate change on the maize and wheat systems in the developing world.</description>
+<ccafs:id>3</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2012</ccafs:endDate>
+<ccafs:milestone>4.2.1 2012 (3)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Mejoramiento de Maiz y Trigo</ccafs:leaderName>
+<ccafs:leaderAcronym>CIMMYT</ccafs:leaderAcronym>
+<ccafs:contactName>Gbegbelegbe</ccafs:contactName>
+<ccafs:contactEmail>S.Gbegbelegbe@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Kindie Tesfaye</ccafs:contactName>
+<ccafs:contactEmail>K.Tesfaye@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Bekele Shiferaw</ccafs:contactName>
+<ccafs:contactEmail>b.shiferaw@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Uran chung</ccafs:contactName>
+<ccafs:contactEmail>u.chung@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>true</ccafs:locationIsGlobal>
+<ccafs:keyword>climate-smart agriculture</ccafs:keyword>
+<ccafs:keyword>crop modeling approaches</ccafs:keyword>
+<ccafs:keyword>downscaling</ccafs:keyword>
+<ccafs:keyword>economic incentives</ccafs:keyword>
+<ccafs:keyword>maize</ccafs:keyword>
+<ccafs:keyword>policy analysis</ccafs:keyword>
+<ccafs:keyword>wheat</ccafs:keyword>
+</item>
+<item>
+<title>Integrated assessments for estimating future impacts and identifying policy options for adaptation to and mitigation of climate change.</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=4</link>
+<description>Climate change is a continuous phenomenon and  it is difficult to quantify  its  future impacts. There is an urgent need for methods and tools that enable us to make a reasonable assessment of both the present and future impacts of climate change. It is, therefore, imperative to develop and test these tools.  Dynamic crop models are now useful tools to create and analyse  the impacts of different climate change scenarios and develop policy foresights.</description>
+<ccafs:id>4</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2012</ccafs:endDate>
+<ccafs:milestone>4.2.1 2012 (3)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Mejoramiento de Maiz y Trigo</ccafs:leaderName>
+<ccafs:leaderAcronym>CIMMYT</ccafs:leaderAcronym>
+<ccafs:contactName>Kindie Tesfaye </ccafs:contactName>
+<ccafs:contactEmail>K.Tesfaye@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Gbegbelegbe, sika</ccafs:contactName>
+<ccafs:contactEmail>S.Gbegbelegbe@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Bekele Shiferaw</ccafs:contactName>
+<ccafs:contactEmail>b.shiferaw@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Uran Chung</ccafs:contactName>
+<ccafs:contactEmail>u.chung@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:keyword>climate change impacts</ccafs:keyword>
+<ccafs:keyword>climate-smart agriculture</ccafs:keyword>
+<ccafs:keyword>crop breeding</ccafs:keyword>
+<ccafs:keyword>crop modeling approaches</ccafs:keyword>
+<ccafs:keyword>crop vulnerability</ccafs:keyword>
+<ccafs:keyword>data and tools</ccafs:keyword>
+<ccafs:keyword>delivery of climate information</ccafs:keyword>
+<ccafs:keyword>environmental data</ccafs:keyword>
+<ccafs:keyword>environmental data</ccafs:keyword>
+<ccafs:keyword>germplasm evaluation</ccafs:keyword>
+<ccafs:keyword>meteorological data</ccafs:keyword>
+<ccafs:keyword>planning tools</ccafs:keyword>
+<ccafs:keyword>yield changes</ccafs:keyword>
+</item>
+<item>
+<title>Improved modelling framework for cassava, beans, rice and tropical forages to set centre priorities for technology development in the face of climate change</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=5</link>
+<description>Carrying out improvement of models and simulation runs for long-term changes in CIAT commodities.  This work involves global modelling of common bean with DSSAT, modelling of rice in Latin America with DSSAT-ORYZA, and global modelling of cassava.  In the case of cassava, significant investment is being made in upgrading the model in DSSAT. This upgrading includes collation of new trial data for calibration, re-programming of the DSSAT model, and release of a new cassava model expected for 2013.  For rice, Latin American cultivars are being calibrated through field experimentation as the current version of ORYZA does not have appropriate varieties for LAC.</description>
+<ccafs:id>5</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2013</ccafs:endDate>
+<ccafs:milestone>4.3.1 2012 (1)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Agricultura Tropical</ccafs:leaderName>
+<ccafs:leaderAcronym>CIAT</ccafs:leaderAcronym>
+<ccafs:contactName>Bernardo Creamer</ccafs:contactName>
+<ccafs:contactEmail>b.creamer@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Julian Ramirez-Villegas</ccafs:contactName>
+<ccafs:contactEmail>j.r.villegas@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:keyword>beans</ccafs:keyword>
+<ccafs:keyword>breeding strategies</ccafs:keyword>
+<ccafs:keyword>cassava</ccafs:keyword>
+<ccafs:keyword>climate change impacts</ccafs:keyword>
+<ccafs:keyword>crop modeling approaches</ccafs:keyword>
+<ccafs:keyword>data and tools</ccafs:keyword>
+<ccafs:keyword>rice</ccafs:keyword>
+<ccafs:keyword>vulnerability assessment</ccafs:keyword>
+</item>
+<item>
+<title>Cost Effectivenes Analysis and Cost-benefit analysis of mitigation/adaptation options for pasture systems, rice, fruits, rubber and soybean in Colombia</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=6</link>
+<description>For mitigation, four subsectors are being analyzed: i) Silvopastoral systems, ii) improved pastures, iii) efficient use of nitrogen fertilizer in rice, and iv) converting degraded pasture to fruits. CIAT is organizing several national workshops to identify regions with major potential to implement silvopstoral systems and improved pasture. In rice, N-Fertilizer dose-response curves are being modeled and inefficient levels of nitrogen fertilizer use identified. Local workshops are being held with producers and local technicians to identify alternatives for improving use-efficiency of N-fertilizer. Regarding fruits, modeling is being used to identify the most suitable locations for growing avocado and mango. Economic information about costs and benefits are being calculated for different locations and a national level MAC Curve is being built. Regarding adaptation, climate change impacts on pasture, rice, soybean and rubber are being estimated and some adaptation measures are being identified by different stakeholders in local workshops. Cost for every measure is being calculated and cost-benefit analyses carried out.</description>
+<ccafs:id>6</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2012</ccafs:endDate>
+<ccafs:milestone>3.1.1 2012</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Agricultura Tropical</ccafs:leaderName>
+<ccafs:leaderAcronym>CIAT</ccafs:leaderAcronym>
+<ccafs:contactName>Jeimar Tapasco</ccafs:contactName>
+<ccafs:contactEmail>j.tapasco@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:countryLocationIso2>co</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Colombia</ccafs:countryLocationName>
+<ccafs:keyword>economic analysis</ccafs:keyword>
+<ccafs:keyword>carbon sequestration</ccafs:keyword>
+<ccafs:keyword>climate change impacts</ccafs:keyword>
+<ccafs:keyword>crop/livestock evaluation</ccafs:keyword>
+<ccafs:keyword>data and tools</ccafs:keyword>
+<ccafs:keyword>GHG emissions reduction</ccafs:keyword>
+<ccafs:keyword>national adaptation programs</ccafs:keyword>
+<ccafs:keyword>policy analysis</ccafs:keyword>
+<ccafs:keyword>rice</ccafs:keyword>
+<ccafs:keyword>silvopastoralism</ccafs:keyword>
+</item>
+<item>
+<title>Assessing the potential of tropical forage options to mitigate climate change through reducing nitrous oxide emissions and enhancing carbon sequestration</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=7</link>
+<description>The livestock sector accounts for 40% of the total value of global agricultural output and provides livelihoods for nearly 1 billion people. Improved tropical forages could offer the single most effective means to mitigate climate change from agriculture and land use change, while also sustainably boosting production of milk, meat, and crops. Livestock are estimated to be responsible for about half of agriculture&apos;s total greenhouse gas emissions. But forages, particularly brachiaria grasses, can offset these emissions through diverse mitigation pathways. These include: (i) carbon sequestration in soil through their deep and abundant root systems, and (ii) reduced emissions of nitrous oxide. Brachiaria grasses suppress nitrification in soil through the release of biological nitrification inhibitors from their roots, an ability known as biological nitrification inhibition (BNI). These inhibitors have the potential to improve recovery of applied nitrogen to crops (e.g., maize) and reduce nitrous oxide emisions from agropastoral systems. </description>
+<ccafs:id>7</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2012</ccafs:endDate>
+<ccafs:milestone>3.3.1 2012 (1)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Agricultura Tropical</ccafs:leaderName>
+<ccafs:leaderAcronym>CIAT</ccafs:leaderAcronym>
+<ccafs:contactName>Michael Peters</ccafs:contactName>
+<ccafs:contactEmail>M.PETERS-CIAT@CGIAR.ORG</ccafs:contactEmail>
+<ccafs:contactName>Idupulapati Rao</ccafs:contactName>
+<ccafs:contactEmail>I.RAO@CGIAR.ORG</ccafs:contactEmail>
+<ccafs:contactName>Aracely Castro</ccafs:contactName>
+<ccafs:contactEmail>a.castro@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Glenn Hyman</ccafs:contactName>
+<ccafs:contactEmail>G.HYMAN@CGIAR.ORG</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:countryLocationIso2>ag</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Antigua and Barbuda</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>aw</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Aruba</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>bs</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Bahamas</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>bb</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Barbados</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>dm</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Dominica</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>gd</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Grenada</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>tc</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Turks and Caicos Islands</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>vg</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>British Virgin Islands</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>jm</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Jamaica</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>pr</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Puerto Rico</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>bl</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Saint Barthelemy</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>tt</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Trinidad and Tobago</ccafs:countryLocationName>
+<ccafs:keyword>carbon footprint</ccafs:keyword>
+<ccafs:keyword>carbon sequestration</ccafs:keyword>
+<ccafs:keyword>climate-smart agriculture</ccafs:keyword>
+<ccafs:keyword>GHG emissions reduction</ccafs:keyword>
+<ccafs:keyword>land/soil management</ccafs:keyword>
+<ccafs:keyword>sustainable intensification</ccafs:keyword>
+</item>
+<item>
+<title>Collection of agronomic &amp; management data for past &amp; current on-farm research sites in IGP (rice-wheat-maize based systems, CSISA, RWC) and prioritize filling the gaps (short and long term data collection + reviewing long term trials).</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=8</link>
+<description>Crop response to management practices in different production systems vary spatially and temporally but blanket technological recommendations tend to be applied and generalized across wider geographies leading to variable responses/results. To define the target domains for management practices that are adapted to climatic variability it is necessary to understand the response to crop management under a range of soil, climatic and production systems. A wide range of data, from different sources, exist on short- and long-terms trials of different management practices in various cropping systems and ecologies. These data, if collated and analysed, could provide important insight into defining suitable recommendation domains.  </description>
+<ccafs:id>8</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2012</ccafs:endDate>
+<ccafs:milestone>1.1.1 2012 (1)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Mejoramiento de Maiz y Trigo</ccafs:leaderName>
+<ccafs:leaderAcronym>CIMMYT</ccafs:leaderAcronym>
+<ccafs:contactName>ML Jat</ccafs:contactName>
+<ccafs:contactEmail>M.Jat@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>A. McDonald</ccafs:contactName>
+<ccafs:contactEmail>A.McDonald@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Bruno Gerard</ccafs:contactName>
+<ccafs:contactEmail>B.Gerard@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:ccafsSiteName>Nepal</ccafs:ccafsSiteName>
+<ccafs:ccafsSitePoint>27.54 83.45</ccafs:ccafsSitePoint>
+<ccafs:keyword>water stress</ccafs:keyword>
+<ccafs:keyword>carbon footprint</ccafs:keyword>
+<ccafs:keyword>climate-smart agriculture</ccafs:keyword>
+<ccafs:keyword>conservation agriculture</ccafs:keyword>
+<ccafs:keyword>crop diversification</ccafs:keyword>
+<ccafs:keyword>data and tools</ccafs:keyword>
+<ccafs:keyword>maize</ccafs:keyword>
+<ccafs:keyword>rice</ccafs:keyword>
+<ccafs:keyword>wheat</ccafs:keyword>
+</item>
+<item>
+<title>Collection of agronomic &amp; management data for past &amp; current on-farm research sites in SIMLESA research sites.</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=9</link>
+<description>Crop response to management practices in different production systems vary spatially and temporally but blanket technological recommendations tend to be applied and generalized across wider geographies leading to variable responses/results. To define the target domains for management practices that are adapted to climatic variability it is necessary to understand the response to crop management under a range of soil, climatic and production systems. A wide range of data, from different sources, exist on short- and long-terms trials of different management practices in various cropping systems and ecologies. These data, if collated and analysed, could provide important insight into defining suitable recommendation domains.</description>
+<ccafs:id>9</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2012</ccafs:endDate>
+<ccafs:milestone>1.1.1 2012 (1)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Mejoramiento de Maiz y Trigo</ccafs:leaderName>
+<ccafs:leaderAcronym>CIMMYT</ccafs:leaderAcronym>
+<ccafs:contactName>F Kanampiu</ccafs:contactName>
+<ccafs:contactEmail>F.Kanampiu@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>F Baudron</ccafs:contactName>
+<ccafs:contactEmail>F.Baudron@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Bruno Gerard</ccafs:contactName>
+<ccafs:contactEmail>B.Gerard@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:otherSiteName>Ethiopia</ccafs:otherSiteName>
+<ccafs:otherSiteIso2>et</ccafs:otherSiteIso2>
+<ccafs:otherSitePoint>5.284 36.767</ccafs:otherSitePoint>
+<ccafs:otherSiteName>Ethiopia</ccafs:otherSiteName>
+<ccafs:otherSiteIso2>et</ccafs:otherSiteIso2>
+<ccafs:otherSitePoint>8.4 39.335</ccafs:otherSitePoint>
+<ccafs:otherSiteName>Ethiopia</ccafs:otherSiteName>
+<ccafs:otherSiteIso2>et</ccafs:otherSiteIso2>
+<ccafs:otherSitePoint>7.061 38.477</ccafs:otherSitePoint>
+<ccafs:keyword>water stress</ccafs:keyword>
+<ccafs:keyword>beans</ccafs:keyword>
+<ccafs:keyword>carbon footprint</ccafs:keyword>
+<ccafs:keyword>climate-smart agriculture</ccafs:keyword>
+<ccafs:keyword>conservation agriculture</ccafs:keyword>
+<ccafs:keyword>crop diversification</ccafs:keyword>
+<ccafs:keyword>data and tools</ccafs:keyword>
+<ccafs:keyword>maize</ccafs:keyword>
+<ccafs:keyword>yield changes</ccafs:keyword>
+</item>
+<item>
+<title>Curation and analysis of historical wheat germplasm evaluation data.</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=10</link>
+<description>The historical wheat germplasm evaluation database (IWIN) is an unprecedented resource that provides an opportunity to map the adaptation of diverse wheat germplasm - bred explicitly for developiing countries- to a range of climates that span the entire globe over several decades. These data can be used for climate change modelling, impact assessments and defining environmental clines. However, it requires a systematic curation procedure and subsequent analysis such that good quality data can be provided for subsequent studies.</description>
+<ccafs:id>10</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2012</ccafs:endDate>
+<ccafs:milestone>1.1.1 2012 (1)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Mejoramiento de Maiz y Trigo</ccafs:leaderName>
+<ccafs:leaderAcronym>CIMMYT</ccafs:leaderAcronym>
+<ccafs:contactName>Mathews, Ky</ccafs:contactName>
+<ccafs:contactEmail>K.Mathews@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Reynolds, Matthew</ccafs:contactName>
+<ccafs:contactEmail>M.Reynolds@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>true</ccafs:locationIsGlobal>
+<ccafs:keyword>breeding strategies</ccafs:keyword>
+<ccafs:keyword>data and tools</ccafs:keyword>
+<ccafs:keyword>germplasm evaluation</ccafs:keyword>
+<ccafs:keyword>wheat</ccafs:keyword>
+<ccafs:keyword>yield changes</ccafs:keyword>
+</item>
+<item>
+<title>Matching of historical maize &amp; wheat germplasm evaluation data with GIS data and current weather data</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=11</link>
+<description>Every year CIMMYT sends promising lines coming out of the breeding pipelines of the global wheat and maize programs to a large number of partners in NARS located globally for wheat and in Africa, Asia and Latin America for maize, each location representing mega environments defined for both crops. The mega environments are utilized by the breeders to plan and target their breeding efforts. Many institutions evaluating these lines send feedback on yields, phenotypic information and pest and disease scorings. This data set, spanning several decades, can be utilized to analyze the impact of climate variability on yield in a large variety of environments. It can be used to calibrate crop models like DSSAT or APSIM over a long period for many different locations worldwide. Information on pests and diseases can be utilized to generate risk maps based on related climate data extracted for the individual locations. For all these purposes, the precision of the locations of the nursery sites has to be as high as possible. A large number of the sites were georeferenced when GPS was not available and thus often inaccurate. This emphasizes the need of the first step in correcting the inaccuracies with current tools and GPS information from nursery site managers. Based on this, creating the analogue layers will enable determination of the areas the nursery sites represent under current climate conditions. Utilizing climate change data sets will allow the identification of those areas that are predicted to have the climate conditions today other maize and wheat growing areas will experience in the future and to identify those areas that are under climate conditions currently that the nursery sites will experience in the future. This will allow the breeders to test new breeding material in such environments and to plan for shifts of climate and mega environments.</description>
+<ccafs:id>11</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2012</ccafs:endDate>
+<ccafs:milestone>1.1.1 2012 (1)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Mejoramiento de Maiz y Trigo</ccafs:leaderName>
+<ccafs:leaderAcronym>CIMMYT</ccafs:leaderAcronym>
+<ccafs:contactName>Kai Sonder</ccafs:contactName>
+<ccafs:contactEmail>K.Sonder@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Kindie Tesfaye</ccafs:contactName>
+<ccafs:contactEmail>K.Tesfaye@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Mathews, Ky</ccafs:contactName>
+<ccafs:contactEmail>K.Mathews@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Uran Chung</ccafs:contactName>
+<ccafs:contactEmail>u.chung@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:keyword>breeding strategies</ccafs:keyword>
+<ccafs:keyword>climate modeling</ccafs:keyword>
+<ccafs:keyword>crop breeding</ccafs:keyword>
+<ccafs:keyword>crop modeling approaches</ccafs:keyword>
+<ccafs:keyword>germplasm evaluation</ccafs:keyword>
+<ccafs:keyword>maize</ccafs:keyword>
+<ccafs:keyword>wheat</ccafs:keyword>
+</item>
+<item>
+<title>Suitable international maize trial data identified, collated and relevant climate / environment data of these trials reconstructed or accessed and analysis initiated.</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=12</link>
+<description>The analysis of regional trial datasets generated over a 8-year period in combination with climatic data in southern Africa revealed the vulnerability of maize yields to drought stress under elevated temperatures (Lobell et al. 2011). CIMMYT in collaboration with national partners has also been running regional trials at multiple locations in EA for over 8 years. Compiling this data together with climatic data will provide insight into the performance of maize under different climatic conditions.</description>
+<ccafs:id>12</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2012</ccafs:endDate>
+<ccafs:milestone>1.1.1 2012 (1)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Mejoramiento de Maiz y Trigo</ccafs:leaderName>
+<ccafs:leaderAcronym>CIMMYT</ccafs:leaderAcronym>
+<ccafs:contactName>Cairns, Jill</ccafs:contactName>
+<ccafs:contactEmail>J.Cairns@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:countryLocationIso2>et</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Ethiopia</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>ke</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Kenya</ccafs:countryLocationName>
+<ccafs:ccafsSiteName>India</ccafs:ccafsSiteName>
+<ccafs:ccafsSitePoint>25.98 85.73</ccafs:ccafsSitePoint>
+<ccafs:keyword>crop modeling approaches</ccafs:keyword>
+<ccafs:keyword>crop vulnerability</ccafs:keyword>
+<ccafs:keyword>maize</ccafs:keyword>
+<ccafs:keyword>yield changes</ccafs:keyword>
+</item>
+<item>
+<title>Discuss usefulness and limitations of carbon footprints in coffee systems based on evidence data compiled across Latin America and quantify total carbon stock in Central American coffee systems.</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=13</link>
+<description>Carbon stocks and footprints vary considerably across coffee agroferestry systems, as do their resultant contributions to climate change and climate change mitigation. On the other hand, they are high carbon storage systems that are not rewarded for the carbon they conserve because the increase in carbon stock per year is minimal. It is important to have evidence data to show the differences between systems and subsequently demonstrate the limitations and potential of carbon footprint measurements.</description>
+<ccafs:id>13</ccafs:id>
+<ccafs:startDate>01/01/2011</ccafs:startDate>
+<ccafs:endDate>12/01/2012</ccafs:endDate>
+<ccafs:milestone>3.3.1 2012 (1)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Agricultura Tropical</ccafs:leaderName>
+<ccafs:leaderAcronym>CIAT</ccafs:leaderAcronym>
+<ccafs:contactName>Peter Laderach</ccafs:contactName>
+<ccafs:contactEmail>p.laderach@cgiar.org</ccafs:contactEmail>
+<ccafs:contactName>Gerald Nelson</ccafs:contactName>
+<ccafs:contactEmail>g.nelson@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:keyword>agroforestry</ccafs:keyword>
+<ccafs:keyword>carbon footprint</ccafs:keyword>
+</item>
+<item>
+<title>Data compilation to identify coping and adaptation strategies of farmers and the poor to manage future climate outcomes</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=14</link>
+<description>Climate change is threatening the livelihood and food security of many poor farmers in the African continent.  The vulnerability of women (both in female- and male-headed households) and men to impacts of climate change are uneven and will be affected differently.  Gender-disaggregated data will help us identify and understand the coping and adaptation strategies for climate change used by female and male farmers which in turn will inform gender-sensitive recommendations for coping and adaption strategies to climate variability and extreme events.</description>
+<ccafs:id>14</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2012</ccafs:endDate>
+<ccafs:milestone>1.1.3 2013 (3)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Mejoramiento de Maiz y Trigo</ccafs:leaderName>
+<ccafs:leaderAcronym>CIMMYT</ccafs:leaderAcronym>
+<ccafs:contactName>Tongruksawttana</ccafs:contactName>
+<ccafs:contactEmail>S.Tongruksawttana@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:countryLocationIso2>et</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Ethiopia</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>ke</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Kenya</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>ug</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Uganda</ccafs:countryLocationName>
+</item>
+<item>
+<title>Analysis and modeling of wheat trial data to identify climate ready traits/ideotypes, and analogue sites in climate vulnerable regions with the medium-term objective of developing phenotyping platforms with NARS collaborators.</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=15</link>
+<description>The first main objective of this activity is to identify the key stress adaptive traits, and combinations of traits, that will be needed to maintain productive wheat crops in warmer regions now and in the future climate scenarios. This will be achieved through analysis and modeling of detailed wheat trial data from heat stressed experimental environments. While conceptual models for adaptation to heat stress have already been developed by CIMMYT, simulation exercises using comprehensive data sets can help determine the levels of expression of traits required to maintain productivity across the range of stress profiles that are likely to be experienced in target sites, as identified by climate models. Clearly, for this information to be applied, experimental sites must be established where germplasm can be evaluated and selected for expression of the appropriate phenotype. Therefore, the second main objective is to develop phenotyping platforms with NARS collaborators so that they can breed for probable climates, e.g. 20 years into the future. While climate models can establish the broad meteorological parameters of future environments, the outputs from crop models will determine which aspects of growth will be most affected. This kind of information can help define the key characteristics of analogue sites since any given analogue site is only an approximation of a range of target environments. For example, it may be that reproductive growth becomes a new bottleneck to productivity, and therefore, it will be crucial that the stress profile at the analogue site around the crop stage of meiosis and anthesis closely matches those characteristics of the future climate scenario at the same growth stage. This is not only determined by air temperature but also relative humidity, radiation load, and water availability, since these factors also influence the expression of plant temperature.</description>
+<ccafs:id>15</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2012</ccafs:endDate>
+<ccafs:milestone>1.1.3 2014 (1)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Mejoramiento de Maiz y Trigo</ccafs:leaderName>
+<ccafs:leaderAcronym>CIMMYT</ccafs:leaderAcronym>
+<ccafs:contactName>Reynolds, Matthew</ccafs:contactName>
+<ccafs:contactEmail>M.Reynolds@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:keyword>breeding strategies</ccafs:keyword>
+<ccafs:keyword>climate modeling</ccafs:keyword>
+<ccafs:keyword>crop modeling approaches</ccafs:keyword>
+<ccafs:keyword>improved varieties</ccafs:keyword>
+<ccafs:keyword>thermal stress</ccafs:keyword>
+<ccafs:keyword>wheat</ccafs:keyword>
+</item>
+<item>
+<title>Development of abiotic (heat and combined drought and heat stress) and biotic screening sites in partnership with NARS to evaluate the resilience of key maize germplasm to future climates</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=16</link>
+<description>Climate predictions for EA and IGP show temperatures are likely to increase however very little research has been conducted in maize for tolerance to heat stress and combined heat and drought stress. There is currently limited phenotyping capacity for both heat stresss and combined heat and drought stress in  EA and IGP. Repeatable screening protocols for drought stress can be achieved by screening in the dry season however screening for heat and combined heat and drought stress is much harder to manage resulting in loss of trials if a suitable stress level was not reached and large genotype x year variability. The establishment of  a FATE facility will allow carefully controlled stress to be applied at the field level. Climate change is also likely to change the prevelance, diversity and responsiveness of maize pests and diseases, thus further work is required on screening for biotic stress.</description>
+<ccafs:id>16</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2012</ccafs:endDate>
+<ccafs:milestone>1.1.3 2014 (1)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Mejoramiento de Maiz y Trigo</ccafs:leaderName>
+<ccafs:leaderAcronym>CIMMYT</ccafs:leaderAcronym>
+<ccafs:contactName>Cairns, Jill</ccafs:contactName>
+<ccafs:contactEmail>J.Cairns@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:countryLocationIso2>co</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Colombia</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>ch</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Switzerland</ccafs:countryLocationName>
+<ccafs:otherSiteName>Ethiopia</ccafs:otherSiteName>
+<ccafs:otherSiteIso2>et</ccafs:otherSiteIso2>
+<ccafs:otherSitePoint>9.55 40.4</ccafs:otherSitePoint>
+<ccafs:otherSiteName>India</ccafs:otherSiteName>
+<ccafs:otherSiteIso2>in</ccafs:otherSiteIso2>
+<ccafs:otherSitePoint>28.269 79.416</ccafs:otherSitePoint>
+<ccafs:otherSiteName>Mexico</ccafs:otherSiteName>
+<ccafs:otherSiteIso2>mx</ccafs:otherSiteIso2>
+<ccafs:otherSitePoint>27.49 -109.926</ccafs:otherSitePoint>
+<ccafs:keyword>adaptive capacity</ccafs:keyword>
+<ccafs:keyword>breeding strategies</ccafs:keyword>
+<ccafs:keyword>drought</ccafs:keyword>
+<ccafs:keyword>improved varieties</ccafs:keyword>
+<ccafs:keyword>maize</ccafs:keyword>
+<ccafs:keyword>pests and diseases management</ccafs:keyword>
+<ccafs:keyword>thermal stress</ccafs:keyword>
+</item>
+<item>
+<title>Planning and initiation of assessments of farm practices affecting GHG emissions in extensive and intensive Fruit Production Systems</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=17</link>
+<description>Fruit growers implement farm management practices that can either increase or substantially reduce carbon footprints. This activity is focused on developing a baseline of these practices among passionfruit, naranjil and guava growers in several locations around Colombia. A primary focus is on practices conducive to pest and disease control, and the rationale for depending either solely on chemical control or on integrated pest management systems.</description>
+<ccafs:id>17</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2012</ccafs:endDate>
+<ccafs:milestone>3.3.1 2012 (1)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Agricultura Tropical</ccafs:leaderName>
+<ccafs:leaderAcronym>CIAT</ccafs:leaderAcronym>
+<ccafs:contactName>Alonso Gonzalez</ccafs:contactName>
+<ccafs:contactEmail>A.GONZALEZ@CGIAR.ORG</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:countryLocationIso2>co</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Colombia</ccafs:countryLocationName>
+<ccafs:keyword>conservation agriculture</ccafs:keyword>
+<ccafs:keyword>pests and diseases management</ccafs:keyword>
+</item>
+<item>
+<title>On farm evaluation of bean elite lines to correlate physiological traits with farmer traits (Kenya, Malawi)</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=18</link>
+<description>Farmers have their own way of observing their crops on a daily basis, and under varying climates from season to season. They also recognize plant traits that are conducive to better crop productivity. Scientists on the other hand define traits in their language. A comparison  of farmer and scientist perspectives will permit validating scientist criteria, and receiving feedback from farmers on the value of those traits over time and in multiple environments. </description>
+<ccafs:id>18</ccafs:id>
+<ccafs:startDate>01/01/2012</ccafs:startDate>
+<ccafs:endDate>12/01/2012</ccafs:endDate>
+<ccafs:milestone>1.1.2 2013 (1)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Agricultura Tropical</ccafs:leaderName>
+<ccafs:leaderAcronym>CIAT</ccafs:leaderAcronym>
+<ccafs:contactName>Steve Beebe</ccafs:contactName>
+<ccafs:contactEmail>s.beebe@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:countryLocationIso2>ug</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Uganda</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>mw</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Malawi</ccafs:countryLocationName>
+<ccafs:keyword>beans</ccafs:keyword>
+<ccafs:keyword>breeding strategies</ccafs:keyword>
+</item>
+<item>
+<title>Quantify impact of climate change on maize and bean system in Nicaragua, Honduras, Guatemala and El Salvador.</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=19</link>
+<description>Central America is highly vulnerable to extreme events and unfavorable future climate conditions. A climate disaster often leads to crop failure and harms farmers’ resilience and food security. Farmers have already experienced unforeseen climate variability in the past and need to cope with uncertainties every day to sustain agricultural production. Climate change means they will have to face additional long-term shifts of climate patterns as shown by global climate predictions. The project “Tortillas on the Roaster” seeks to predict site-specific changes in maize-bean production systems in order to inform and enable vulnerable farmers to act and respond to ongoing climate change through specific adaptation measures and increased capacity.</description>
+<ccafs:id>19</ccafs:id>
+<ccafs:startDate>05/01/2011</ccafs:startDate>
+<ccafs:endDate>05/01/2012</ccafs:endDate>
+<ccafs:milestone>1.1.2 2013 (1)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Agricultura Tropical</ccafs:leaderName>
+<ccafs:leaderAcronym>CIAT</ccafs:leaderAcronym>
+<ccafs:contactName>Anton Eitzinger</ccafs:contactName>
+<ccafs:contactEmail>a.eitzinger@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:countryLocationIso2>ag</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Antigua and Barbuda</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>aw</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Aruba</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>bs</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Bahamas</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>bb</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Barbados</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>dm</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Dominica</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>gd</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Grenada</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>tc</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Turks and Caicos Islands</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>vg</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>British Virgin Islands</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>jm</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Jamaica</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>pr</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Puerto Rico</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>bl</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Saint Barthelemy</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>tt</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Trinidad and Tobago</ccafs:countryLocationName>
+<ccafs:keyword>adaptive capacity</ccafs:keyword>
+<ccafs:keyword>climate change impacts</ccafs:keyword>
+<ccafs:keyword>crop modeling approaches</ccafs:keyword>
+<ccafs:keyword>yield changes</ccafs:keyword>
+</item>
+<item>
+<title>Develop supply chain  adaptation frame work,  that outlines ways for  supply chain to adapt jointly.</title>
+<link>http://activities.ccafs.cgiar.org/activity.do?id=20</link>
+<description>Global climate change (GCC) presents serious challenges to agricultural systems as they strive to meet growing demand over the coming decades. Within these systems, food value chains are increasingly recognized as vital for development. Yet relatively little is known about the vulnerability of such chains to GCC, or their adaptability. This activity provides a framework to examine how food value chains adapt to the uncertain impacts posed by GCC. While intervention models mostly deal with measures for producers, we hypothesize that adaptation strategies must include the entire chain to achieve the scale needed to tackle GCC. We propose that comprehensive situation assessment is necessary to examine both behavior and assets – two key attributes for adaptive capacities. 
+Our framework examines three sets of attributes: 1) The general setup and nature of the supply chain, 2) rural livelihoods’ and food supply systems’ vulnerability to GCC, including downscaled crop suitability modeling to assess precise impacts of global climate change and 3) the behavior of people and entities involved in value creation and the institutions mediating them. The framework provides decision-makers with a scale-, crop- and site-independent road map to design and evaluate adaptation strategies to changing climate conditions. We test the framework on three case studies with differing supply chain characteristics and geographical contexts. </description>
+<ccafs:id>20</ccafs:id>
+<ccafs:startDate>01/01/2011</ccafs:startDate>
+<ccafs:endDate>08/01/2012</ccafs:endDate>
+<ccafs:milestone>1.1.2 2013 (1)</ccafs:milestone>
+<ccafs:leaderName>Centro Internacional de Agricultura Tropical</ccafs:leaderName>
+<ccafs:leaderAcronym>CIAT</ccafs:leaderAcronym>
+<ccafs:contactName>Peter Laderach</ccafs:contactName>
+<ccafs:contactEmail>p.laderach@cgiar.org</ccafs:contactEmail>
+<ccafs:locationIsGlobal>false</ccafs:locationIsGlobal>
+<ccafs:countryLocationIso2>ag</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Antigua and Barbuda</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>aw</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Aruba</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>bs</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Bahamas</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>bb</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Barbados</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>dm</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Dominica</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>gd</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Grenada</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>tc</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Turks and Caicos Islands</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>vg</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>British Virgin Islands</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>jm</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Jamaica</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>pr</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Puerto Rico</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>bl</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Saint Barthelemy</ccafs:countryLocationName>
+<ccafs:countryLocationIso2>tt</ccafs:countryLocationIso2>
+<ccafs:countryLocationName>Trinidad and Tobago</ccafs:countryLocationName>
+<ccafs:keyword>adaptive capacity</ccafs:keyword>
+<ccafs:keyword>decision-making</ccafs:keyword>
+</item>
+</channel>
+</rss>

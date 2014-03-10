@@ -19,6 +19,10 @@ dojo.require("dijit.Menu");
 dojo.require("dojox.layout.ExpandoPane");
 dojo.require("dijit.Tooltip");
 dojo.require("esri.tasks.identify");
+dojo.require("esri.dijit.Popup");        
+dojo.require("esri.dijit.PopupTemplate");
+dojo.require("esri.lang");
+
 var maxExtX=-20006031.09149561;
 var maxExtY=-12433824.981519768;
 var minExtX=18816641.322648488;
@@ -28,26 +32,35 @@ var intMaxExtY=7524106.992139481;
 var intMinExtX=-7728835.025551194;
 var intMinExtY=-5586372.099330453;
 var initLvl=3;
-var map,visLyr,tLayers=[],vLyr,qPop,identifyTask,identifyParams,legend,hQuery,cPx,cHType,polyGraphic,hoverGraphic,hoverText,currentLocation,popupWindow,cntr,idCT,highlightSymbol,highlightGraphic,showLegend,sGCP,baseMP,iconT,baseExt,ctrPt,lvlMp,loadExtent,mapLevel,mapExtent,basemapGallery,tiledMapServiceLayer,gcpFarmingSystems,africaTSLayers,multipoint,popupSize,loading,initExtent,maxExtent,dataLayer,hoverLayer,syms6,syms4,syms5,syms2,syml6,syml4,syml5,syml2,visible=[],legendLayers=[];
+
+var map,visLyr,popup,popupOptions,tLayers=[],vLyr,qPop,identifyTask,identifyParams,legend,hQuery,cPx,cHType,polyGraphic,hoverGraphic,hoverText,currentLocation,popupWindow,cntr,idCT,highlightSymbol,highlightGraphic,showLegend,sGCP,baseMP,iconT,baseExt,ctrPt,lvlMp,loadExtent,mapLevel,mapExtent,basemapGallery,tiledMapServiceLayer,gcpFarmingSystems,africaTSLayers,multipoint,popupSize,loading,initExtent,maxExtent,dataLayer,hoverLayer,syms6,syms4,syms5,syms2,syml6,syml4,syml5,syml2,visible=[],legendLayers=[];
+
 var vtonmap=[];
 var cconmap=[];
 var bgonmap=[];
 var bdonmap=[];
 var ptonmap=[];
+
+/**
+ * @function initMap
+ * @description this method is incharge of initialise the map, it make the calls and the assignations to the map to be loaded
+ * @return {void} 
+**/
 function initMap(){
-    baseMP=1;
-    getView();
-    syml6=new esri.symbol.PictureMarkerSymbol("/wp-content/themes/amkn_theme/images/pin-mini.png",17,25);
-    syms6=new esri.symbol.PictureMarkerSymbol("/wp-content/themes/amkn_theme/images/pin-mini.png",7,10);
-    syml4=new esri.symbol.SimpleMarkerSymbol(esri.symbol.SimpleMarkerSymbol.STYLE_CIRCLE,15,new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID,new dojo.Color([0,128,0]),1),new dojo.Color([0,128,0,0.25]));
-    syml5=new esri.symbol.SimpleMarkerSymbol(esri.symbol.SimpleMarkerSymbol.STYLE_CIRCLE,15,new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID,new dojo.Color([0,0,139]),1),new dojo.Color([0,0,139,0.25]));
-    syml2=new esri.symbol.SimpleMarkerSymbol(esri.symbol.SimpleMarkerSymbol.STYLE_CIRCLE,15,new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID,new dojo.Color([128,0,128]),1),new dojo.Color([128,0,128,0.25]));
-    sym7=new esri.symbol.SimpleMarkerSymbol(esri.symbol.SimpleMarkerSymbol.STYLE_CIRCLE,15,new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID,new dojo.Color([255,140,0]),1),new dojo.Color([255,140,0,0.25]));
-    symh2=new esri.symbol.PictureMarkerSymbol("/wp-content/themes/amkn_theme/images/video_testimonials-miniH.gif",21,21);
-    symh4=new esri.symbol.PictureMarkerSymbol("/wp-content/themes/amkn_theme/images/amkn_blog_posts-miniH.gif",21,21);
-    symh5=new esri.symbol.PictureMarkerSymbol("/wp-content/themes/amkn_theme/images/photo_testimonials-miniH.gif",21,21);
-    symh6=new esri.symbol.PictureMarkerSymbol("/wp-content/themes/amkn_theme/images/ccafs_sites-miniH.gif",17,25);
-    symhX=new esri.symbol.PictureMarkerSymbol("/wp-content/themes/amkn_theme/images/biodiv_cases-miniH.gif",21,21);
+    baseMP='basemap_5';
+    getViewTree();
+    syml6=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/pin-mini.png",17,25);
+    syms6=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/pin-mini.png",7,10);    
+    syml4=new esri.symbol.PictureMarkerSymbol('./wp-content/themes/amkn_theme/images/amkn_blog_posts-mini.png',21,21);    
+    syml5=new esri.symbol.PictureMarkerSymbol('./wp-content/themes/amkn_theme/images/photo_testimonials-mini.png',21,21);    
+    syml2=new esri.symbol.PictureMarkerSymbol('./wp-content/themes/amkn_theme/images/video_testimonials-mini.png',21,21);    
+    sym7=new esri.symbol.PictureMarkerSymbol('./wp-content/themes/amkn_theme/images/biodiv_cases-mini.png',21,21);    
+    symh2=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/video_testimonials-miniH.gif",21,21);
+    symh4=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/amkn_blog_posts-miniH.gif",21,21);
+    symh5=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/photo_testimonials-miniH.gif",21,21);
+    symh6=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/ccafs_sites-miniH.gif",17,25);
+    symhX=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/biodiv_cases-miniH.gif",21,21);
+    symhA=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/ccafs_activities-mini.png",21,21);
     syms4=new esri.symbol.SimpleMarkerSymbol().setColor(new dojo.Color([0,0,255]));
     syms5=new esri.symbol.SimpleMarkerSymbol().setColor(new dojo.Color([0,0,255]));
     syms2=new esri.symbol.SimpleMarkerSymbol().setColor(new dojo.Color([0,0,255]));
@@ -80,15 +93,16 @@ function initMap(){
         isZoomSlider:true,
         wrapAround180:true
     });
+//    polygonsDraw();
     dojo.connect(map,"onUpdateStart",showLoading);
-    dojo.connect(map,"onUpdateEnd",cT);
+    dojo.connect(map,"onUpdateEnd",hideLoading);
     dojo.connect(map,"onPanStart",showLoading);
     dojo.connect(map,"onPanEnd",hideLoading);
     dojo.connect(map,"onZoomStart",showLoading);
     dojo.connect(map,"onZoomEnd",hideLoading);
     dojo.connect(map,'onLoad',function(map){
         createMapMenu();
-        map.disableScrollWheelZoom();
+//        map.disableScrollWheelZoom();
         highlightGraphic=new esri.Graphic(null,cHType);
         map.graphics.add(highlightGraphic);
         dojo.connect(dijit.byId('map'),'resize',resizeMap);
@@ -96,63 +110,37 @@ function initMap(){
             map:map,
             visible:true
         });
-        overviewMapDijit.startup();
-        basemapGallery.select(baseMP);
+        overviewMapDijit.startup();        
         initBackMap();
-        dojo.removeClass("c_impacts","hide");
-        dojo.removeClass("c_adaptation_strategy","hide");
-        dojo.removeClass("c_mitigation_strategy","hide");
-        dojo.removeClass("c_climate_change_challenges","hide");
-        dojo.removeClass("tb2","hide");
-        dojo.removeClass("rsType","hide");
-        dojo.removeClass("rsLayers","hide");
         dojo.removeClass("tb3","hide");
     });
     dojo.connect(map,"onExtentChange",function(extent){
-        setView();
+        setViewTree();
         dijit.popup.close(hQuery);
-        findPointsInExtent(map.extent);
-        hoverLayer.remove(polyGraphic);
+        findPointsInExtentTree(map.extent);
+        hoverLayer.remove(polyGraphic);        
     });
     dojo.connect(map,"onKeyDown",function(evt){
         dijit.popup.close(hQuery);
     });
+    createDataLayersBranch();
     basemapGallery=new esri.dijit.BasemapGallery({
-        showArcGISBasemaps:false,
+        showArcGISBasemaps:true,
         map:map
     },"basemapGallery");
-    var topoLayer=new esri.dijit.BasemapLayer({
-        url:"http://services.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer"
-    });
-    var basemapTopo=new esri.dijit.Basemap({
-        id:1,
-        layers:[topoLayer],
-        title:"Topo Map"
-    });
-    basemapGallery.add(basemapTopo);
-    var strtLayer=new esri.dijit.BasemapLayer({
-        url:"http://services.arcgisonline.com/ArcGIS/rest/services/World_Street_Map/MapServer"
-    });
-    var basestrtLayer=new esri.dijit.Basemap({
-        id:2,
-        layers:[strtLayer],
-        title:"Street Map"
-    });
-    basemapGallery.add(basestrtLayer);
-    var aerLayer=new esri.dijit.BasemapLayer({
-        url:"http://services.arcgisonline.com/ArcGIS/rest/services/World_Imagery/MapServer"
-    });
-    var baseaerLayer=new esri.dijit.Basemap({
-        id:3,
-        layers:[aerLayer],
-        title:"Aerial Map"
-    });
-    basemapGallery.add(baseaerLayer);
     basemapGallery.startup();
+    
     dojo.connect(basemapGallery,"onSelectionChange",function(){
         baseMP=basemapGallery.getSelected().id;
-        setView();
+        setViewTree();
     });
+    
+    require(["dojo/on"], function(on){
+      on(basemapGallery, "load", function(){
+        basemapGallery.select(baseMP);
+      });     
+    });
+    
     tiledMapServiceLayer=new esri.layers.ArcGISTiledMapServiceLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer");
     map.addLayer(tiledMapServiceLayer);
     multipoint=new esri.geometry.Multipoint(new esri.SpatialReference({
@@ -169,6 +157,119 @@ function initMap(){
     dojo.connect(hoverLayer,"onMouseOver",showTT);
     dojo.connect(map,"onLoad",addDataLayers);
 }
+
+function polygonsDraw() {      
+//create a popup to replace the map's info window
+//    domConstruct = new dojo.domConstruct();
+    require(["dojo.dom-construct","dojo/domReady!","esri/symbols/SimpleMarkerSymbol"], function(domConstruct,SimpleMarkerSymbol){
+      popupOptions = {
+        markerSymbol: new SimpleMarkerSymbol("circle", 32, null,
+              new dojo.Color([0, 0, 0, 0.25])),
+        marginLeft: "20",
+        marginTop: "20"
+      };
+      popup = new esri.dijit.Popup(popupOptions, domConstruct.create("div"));   
+    });
+    
+//    map=new esri.Map("map",{
+//        extent:initExtent,
+//        isZoomSlider:true,
+//        wrapAround180:true,
+//        infoWindow: popup
+//    });
+        
+    var popupTemplate = new esri.dijit.PopupTemplate({
+      title: "{address}",
+      fieldInfos: [        
+        {
+          fieldName: "COUNTRY",
+          visible: true,
+          label: "COUNTRY"                
+        },
+        {
+          fieldName: "Shape",
+          visible: true,
+          label: "Shape"                
+        },
+        {
+          fieldName: "SHAPE_AREA",
+          visible: true,
+          label: "SHAPE_AREA"                
+        },
+        {
+          fieldName: "FEATURECLA",
+          visible: true,
+          label: "FEATURECLA"                
+        }
+      ]      
+    });
+
+    //create a feature layer based on the feature collection
+    var featureLayer = new esri.layers.FeatureLayer("http://gisweb.ciat.cgiar.org/arcgis/rest/services/CCAFS/ccafs_climate/MapServer/0",
+    {
+      mode: esri.layers.FeatureLayer.MODE_SNAPSHOT,
+      infoTemplate: popupTemplate,
+      outFields: ["*"]
+    });
+    featureLayer.setDefinitionExpression("COUNTRY IN ('Colombia','Brazil','Peru','Nigeria','argentina')");
+    var symbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([0, 0, 0, 1]), 1), new dojo.Color([0, 255, 0, 0.35]));
+    featureLayer.setRenderer(new esri.renderer.SimpleRenderer(symbol));
+    map.addLayer(featureLayer);
+    
+//    map.infoWindow.resize(245,125);
+        
+        dialog = new dijit.TooltipDialog({
+          id: "tooltipDialog",
+          style: "position: absolute; width: 250px; font: normal normal normal 10pt Helvetica;z-index:100"
+        });
+        dialog.startup();
+        
+        var highlightSymbol = new esri.symbol.SimpleFillSymbol(
+          esri.symbol.SimpleFillSymbol.STYLE_NULL, 
+          new esri.symbol.SimpleLineSymbol(
+            esri.symbol.SimpleLineSymbol.STYLE_SOLID, 
+            new dojo.Color([255,0,0]), 3
+          ), 
+          new dojo.Color([125,125,125,0.35])
+        );
+
+        //close the dialog when the mouse leaves the highlight graphic
+        map.on("load", function(){
+          map.graphics.enableMouseEvents();
+          map.graphics.on("mouse-out", closeDialog);
+          
+        });
+                
+        //listen for when the onMouseOver event fires on the countiesGraphicsLayer
+        //when fired, create a new graphic with the geometry from the event.graphic and add it to the maps graphics layer
+        featureLayer.on("mouse-over", function(evt){
+          var t = "<b>${NAME}</b><hr><b>2000 Population: </b>${POP2000:NumberFormat}<br>"
+            + "<b>2000 Population per Sq. Mi.: </b>${POP00_SQMI:NumberFormat}<br>"
+            + "<b>2007 Population: </b>${POP2007:NumberFormat}<br>"
+            + "<b>2007 Population per Sq. Mi.: </b>${POP07_SQMI:NumberFormat}";
+//          var esriLang = new esri.lang();
+//          var content = esriLang.substitute(evt.graphic.attributes,t);
+          var highlightGraphic = new esri.Graphic(evt.graphic.geometry,highlightSymbol);          
+          map.graphics.add(highlightGraphic);
+          map.graphics.on("click", function(){
+            alert('ttt');
+          });
+//          dialog.setContent(content);
+
+//          domStyle.set(dialog.domNode, "opacity", 0.85);
+//          dijitPopup.open({
+//            popup: dialog, 
+//            x: evt.pageX,
+//            y: evt.pageY
+//          });
+        });  
+}
+
+function closeDialog() {
+  map.graphics.clear();
+//  dijitPopup.close(dialog);
+}
+
 function addToMap(rsts,evt){
     for(var i=0,il=rsts.length;i<il;i++){
         var result=rsts[i];
@@ -187,24 +288,26 @@ function cT(){
     hideLoading();
 }
 function showLoading(){
-    esri.show(loading);
+//    esri.show(loading);
     dijit.popup.close(hQuery);
-    map.disableMapNavigation();
-    map.disableScrollWheelZoom();
+//    map.disableMapNavigation();
+//    map.disableScrollWheelZoom();
 }
 function hideLoading(error){
-    esri.hide(loading);
-    map.enableMapNavigation();
-    map.disableScrollWheelZoom();
-    findPointsInExtent(map.extent);
+//    esri.hide(loading);
+//    map.enableMapNavigation();
+//    map.disableScrollWheelZoom();
+//    findPointsInExtent(map.extent);
+    findPointsInExtentTree(map.extent);
+//    setViewTree();
 }
 function processCsvData(url){
     var frameUrl=new dojo._Url(window.location.href);
     var csvUrl=new dojo._Url(url);
     if(frameUrl.host!==csvUrl.host||frameUrl.port!==csvUrl.port||frameUrl.scheme!==csvUrl.scheme){
         url=(proxyUrl)?proxyUrl+"?"+url:url;
-        console.log(url);
-    }
+        console.log(url);        
+    }    
     csvStore=new dojox.data.CsvStore({
         url:url
     });
@@ -237,24 +340,41 @@ function processCsvData(url){
             if(multipoint.points.length>0){
                 maxExtent=multipoint.getExtent();
             }
-            enableFormsOnQuery();
+            hideLoading();
+//            enableFormsOnQuery();
         },
         onError:function(error){}
     });
 }
+
+/**
+ * @function onFeatureClick
+ * @description this method executed when the icon in the map is clicked.
+ * @argument {object} evt it is the reference of the object in the map
+ * @return {void}
+ * @
+**/
 function onFeatureClick(evt){
     var graphic=evt.graphic;
     if(graphic){
         var id=graphic.attributes.id;
-        setPopupContent(id);
-        map.graphics.remove(highlightGraphic);
-        highlightGraphic=new esri.Graphic(null,cHType);
-        map.graphics.add(highlightGraphic);
-        highlightGraphic.setGeometry(graphic.geometry);
-        highlightGraphic.setAttributes({
-            id:graphic.attributes.id
+        var cid;
+        csvStore.fetchItemByIdentity({
+          identity:id,
+          onItem:function(item){
+            cid=csvStore.getValue(item,"CID");
+          }
         });
-        centerAtPoint(graphic.geometry.x,graphic.geometry.y);
+        document.location = "'./?p="+cid+"'";
+//        setPopupContent(id);
+//        map.graphics.remove(highlightGraphic);
+//        highlightGraphic=new esri.Graphic(null,cHType);
+//        map.graphics.add(highlightGraphic);
+//        highlightGraphic.setGeometry(graphic.geometry);
+//        highlightGraphic.setAttributes({
+//            id:graphic.attributes.id
+//        });
+//        centerAtPoint(graphic.geometry.x,graphic.geometry.y);
     }
 }
 function showItemDetails(node,id){
@@ -286,11 +406,27 @@ function findGraphicById(id){
     });
     return match;
 }
+
+/**
+ * @function onFeatureHover
+ * @description this method executed when the mouse is over the icon in the map.
+ * @argument {object} evt it is the reference of the object in the map
+ * @return {void} 
+**/
 function onFeatureHover(evt){
     var gPt2Spt=map.toScreen(evt.graphic.geometry);
     getItemsAtLocation(gPt2Spt.x,gPt2Spt.y,evt);
 }
+
+/**
+ * @function onListHover
+ * @description this method stand out the icon on the map
+ * @argument {int} id it is the reference of a item on the map
+ * @return {void} 
+**/
 function onListHover(id){
+  id = parseInt(id);  
+  if (!isNaN(id)) {
     var graphic=findGraphicById(id);
     map.graphics.remove(hoverGraphic);
     var id=graphic.attributes.id;
@@ -300,6 +436,9 @@ function onListHover(id){
     hoverGraphic.setAttributes({
         id:id
     });
+
+  }
+
 }
 function onFeatureLeave(){
     map.graphics.remove(hoverGraphic);
@@ -327,10 +466,15 @@ function addGraphic(id,latitude,longitude,type){
     if(dojo.indexOf([102113,102100,3857,4326],map.spatialReference.wkid)!==-1){
         geometry=esri.geometry.geographicToWebMercator(geometry);
     }
-    var sym6=(document.getElementById('iconType').checked)?syml6:syms6;
-    var sym4=(document.getElementById('iconType').checked)?syml4:syms4;
-    var sym5=(document.getElementById('iconType').checked)?syml5:syms5;
-    var sym2=(document.getElementById('iconType').checked)?syml2:syms2;
+//    var sym6=(document.getElementById('iconType').checked)?syml6:syms6;
+//    var sym4=(document.getElementById('iconType').checked)?syml4:syms4;
+//    var sym5=(document.getElementById('iconType').checked)?syml5:syms5;
+//    var sym2=(document.getElementById('iconType').checked)?syml2:syms2;
+    var sym6=syml6;
+    var sym4=syml4;
+    var sym5=syml5;
+    var sym2=syml2;
+    var symA=symhA;
     switch(type){
         case"video_testimonials":
             dataLayer.add(new esri.Graphic(geometry,sym2,{
@@ -354,6 +498,11 @@ function addGraphic(id,latitude,longitude,type){
             break;
         case"photo_testimonials":
             dataLayer.add(new esri.Graphic(geometry,sym5,{
+                id:id
+            }));
+            break;
+        case"ccafs_activities":
+            dataLayer.add(new esri.Graphic(geometry,symA,{
                 id:id
             }));
             break;
@@ -426,6 +575,13 @@ function setPopupContent(id){
         }
     });
 }
+
+/**
+ * @function getListingContent
+ * @description This method create the list item  to be show on the modal window that show the source near to the point selected
+ * @argument {int} id it is the reference of a item on the map
+ * @return {string} The list item to be show on the modal window 
+**/
 function getListingContent(id){
     var rt,ttl;
     csvStore.fetchItemByIdentity({
@@ -439,36 +595,60 @@ function getListingContent(id){
             });
             ttl=csvStore.getValue(item,"Location");
             rt=esri.substitute(data,titleTemplate);
+            cid=csvStore.getValue(item,"CID");
         }
     });
-    mapPTS=rt=="video_testimonials"?vtonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
-    mapPTS=rt=="ccafs_sites"?cconmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
-    mapPTS=rt=="amkn_blog_posts"?bgonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
-    mapPTS=rt=="biodiv_cases"?bdonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
-    mapPTS=rt=="photo_testimonials"?ptonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
-    return"<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>";
+    mapPTS=rt=="video_testimonials"?vtonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
+    mapPTS=rt=="ccafs_sites"?cconmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' >"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;<a class='link-ccafs-sites' href='./?p="+cid+"'>"+ttl+"</a></li>"):"";//without popup
+    mapPTS=rt=="amkn_blog_posts"?bgonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
+    mapPTS=rt=="biodiv_cases"?bdonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
+    mapPTS=rt=="photo_testimonials"?ptonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
+    maganaPpTS=rt=="ccafs_activities"?actnmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
+    if (location.search=='') {
+      if (rt=="ccafs_activities") {
+        return"<li style='cursor:pointer;' onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+")'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>";
+      } else {
+        return"<li style='cursor:pointer;' onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='document.location = \"./?p="+cid+"\"'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>";
+      }
+    } else {
+      str = location.search.split('&');
+      parameterOne = str[1].split('=');
+      parameterTwo = str[2].split('=');
+      document.getElementById("showContent").style.top = "0px";
+      document.getElementById("showContent").style.width = (parameterOne[1]-50)+"px";
+      document.getElementById("showContent").style.height = (parameterTwo[1]-50)+"px";
+//      document.getElementById("ifrm").style.width = (parameterOne[1]-50)+"px";
+//      document.getElementById("ifrm").style.minHeight = (parameterTwo[1]-50)+"px";
+      
+      return"<li style='cursor:pointer;' onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='window.open(\"./?p="+cid+"\",\"_blank\",\"scrollbars=yes, resizable=yes, top=60, left=60, width=700, height=630\");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>";
+//      return"<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+")'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>";
+    }    
 }
 function getPopupTitle(type){
     switch(type){
         case"video_testimonials":
             cHType=symh2;
-            return"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Video";
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Video";
             break;
         case"ccafs_sites":
             cHType=symh6;
-            return"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Site";
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Site";
             break;
         case"amkn_blog_posts":
             cHType=symh4;
-            return"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Blog Post";
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Blog Post";
             break;
         case"biodiv_cases":
             cHType=symhX;
-            return"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Agrobiodiversity Cases";
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Agrobiodiversity Cases";
             break;
         case"photo_testimonials":
             cHType=symh5;
-            return"<img class='titleImg' src='/wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Photo Set";
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Photo Set";
+            break;
+        case"ccafs_activities":
+            cHType=symhA;
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Activities";
             break;
         default:
             cHType=highlightSymbol;
@@ -502,6 +682,72 @@ function updateLegend()
     rLegend();
 }
 function showHideGCP(){}
+
+/**
+ * @function updateDataLayerTree
+ * @description this method show or hidde the different kind of content on the map
+ * @argument {boolean} cb it is the reference of a item on the map
+ * @return {void} 
+ * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
+**/
+function updateDataLayerTree(cb)
+{  
+  var points = $("#cFiltersList2").dynatree("getTree").getSelectedNodes();
+  var showpts="";
+  var showimp="";
+  var showas="";
+  var showms="";
+  var showcl="";
+  var showccc="";
+  var showaz="";
+  for(var i=0;i<points.length;i++){
+      if(points[i].data.key.match('accord_')) {
+          showpts+=points[i].data.key.replace('accord_','')+",";            
+      } else if (points[i].data.key.match('taxio_')) {          
+        switch(points[i].getParent().data.key){
+          case"impacts":
+            showimp+=points[i].data.key.replace('taxio_','')+",";
+          break;
+          case"adaptation_strategy":
+            showas+=points[i].data.key.replace('taxio_','')+","; 
+          break;
+          case"mitigation_strategy":
+            showms+=points[i].data.key.replace('taxio_','')+","; 
+          break;
+          case"climate_change_challenges":
+            showccc+=points[i].data.key.replace('taxio_','')+","; 
+          break;
+        }
+      }
+  }
+  showpts=showpts===""?"":"&pts="+showpts;
+
+  //this vars provably will be use when the method be complet
+  showimp=showimp===""?"":"&imp="+showimp;
+  showas=showas===""?"":"&as="+showas;
+  showms=showms==""?"":"&ms="+showms;
+  showccc=showccc===""?"":"&ccc="+showccc;
+
+  var newURL=baseDataURL+"?fmt=csv"+showpts+showimp+showas+showms+showcl+showccc+showaz;
+  if(cb)
+  {
+      map.removeLayer(dataLayer);
+      dataLayer="";
+      dataLayer=new esri.layers.GraphicsLayer();
+      map.addLayer(dataLayer);
+//      disableFormsOnQuery();
+  }
+  processCsvData(newURL);
+  if(cb)
+  {
+      dojo.connect(dataLayer,"onClick",onFeatureClick);
+      dojo.connect(map.graphics,"onClick",onFeatureClick);
+      dojo.connect(dataLayer,"onMouseOver",onFeatureHover);
+      dojo.connect(dataLayer,"onMouseOut",onFeatureLeave);
+      setViewTree();
+  }
+}
+
 function updateDataLayer(cb)
 {
     var pts=document.pts;
@@ -520,16 +766,16 @@ function updateDataLayer(cb)
     var showaz="";
     var hasPts="";
     var hasRes="";
-    for(var i=0;i<pts.length;i++)
+    
+    for(var i=0;i<pts.length;i++){
+        if(pts.elements[i].checked)
 
-    {
-            if(pts.elements[i].checked)
-
-            {
-                showpts+=pts.elements[i].value+",";
-                hasPts=true;
-            }
+        {
+            showpts+=pts.elements[i].value+",";
+            hasPts=true;
         }
+    }
+
     for(var i=0;i<imp.length;i++)
     {
         if(imp.elements[i].checked)
@@ -771,15 +1017,60 @@ function setView()
     var showGCP="";
     location.hash=setBaseMP+showGCP+mapCenter+mapLevel+showpts+showimp+showas+showms+showcl+showccc+showaz+showLyr;
 }
+
+/**
+ * @function setViewTree
+ * @description this method update the url
+ * @argument {object} points It is an array of the element selected on the tree
+ * @return {void} 
+ * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
+**/
+function setViewTree()
+{    
+  var points = $("#cFiltersList2").dynatree("getTree").getSelectedNodes();
+  var showpts="";
+  var showimp="";
+  var showas="";
+  var showms="";
+  var showccc="";
+  var showLyr="";
+  for(var i=0;i<points.length;i++){
+    if(points[i].data.key.match('accord_')) {
+        showpts+=points[i].data.key.replace('accord_','')+",";            
+    } else if (points[i].data.key.match('taxio_')) {
+      switch(points[i].getParent().data.key){
+        case"impacts":
+          showimp+=points[i].data.key.replace('taxio_','')+",";
+        break;
+        case"adaptation_strategy":
+          showas+=points[i].data.key.replace('taxio_','')+","; 
+        break;
+        case"mitigation_strategy":
+          showms+=points[i].data.key.replace('taxio_','')+","; 
+        break;
+        case"climate_change_challenges":
+          showccc+=points[i].data.key.replace('taxio_','')+",";
+        break;
+      }
+    } else if (points[i].data.key.match('aglyr') && points[i].data.key.match('|')) {
+      showLyr+=points[i].data.key+","; 
+    }
+  }
+  showpts=showpts===""?"":"/pts="+showpts;
+  showimp=showimp===""?"":"/imp="+showimp;
+  showas=showas===""?"":"/as="+showas;
+  showms=showms===""?"":"/ms="+showms;
+  showccc=showccc===""?"":"/ccc="+showccc;
+  showLyr=showLyr===""?"":"/lyr="+showLyr;
+//  showLyr=((typeof vLyr=="undefined")||vLyr=="")?"":"/lyr="+vLyr;
+  mapCenter="/ctr="+map.extent.getCenter().x+";"+map.extent.getCenter().y;
+  mapLevel="/lvl="+map.getLevel();
+  var setBaseMP="/bm="+baseMP;
+  var showGCP="";  
+  location.hash=setBaseMP+showGCP+mapCenter+mapLevel+showpts+showimp+showas+showms+showccc+showLyr;
+}
 function getView()
 {
-    var pts=document.pts;
-    var imp=document.impacts;
-    var as=document.adaptation_strategy;
-    var ms=document.mitigation_strategy;
-    var cl=document.crops_livestock;
-    var ccc=document.climate_change_challenges;
-    var az=document.agroecological_zones;
     var showpts="";
     var showimp="";
     var showas="";
@@ -793,8 +1084,8 @@ function getView()
     if(location.hash)
 
     {
-        location.hash=unescape(location.hash);
-        var theMap=unescape(location.hash).split("/");
+    location.hash=unescape(location.hash);
+    var theMap=unescape(location.hash).split("/");
         if(theMap!="")
 
         {
@@ -802,116 +1093,179 @@ function getView()
             for(var mp=0;mp<theMap.length;mp++)
 
             {
-                    var cEle=theMap[mp].split("=")[0];
-                    switch(cEle){
-                        case"pts":
+        var cEle=theMap[mp].split("=")[0];
+        switch(cEle){
+          case"pts":
                             checkTypeElements(theMap[mp].split("=")[1]);
-                            break;
-                        case"imp":
+          break;
+          case"imp":
                             checkTaxElements("impacts",theMap[mp].split("=")[1]);
-                            break;
-                        case"as":
+              break;
+          case"as":
                             checkTaxElements("adaptation_strategy",theMap[mp].split("=")[1]);
-                            break;
-                        case"ms":
+              break;
+          case"ms":
                             checkTaxElements("mitigation_strategy",theMap[mp].split("=")[1]);
-                            break;
-                        case"cl":
+              break;
+          case"cl":
                             checkTaxElements("crops_livestock",theMap[mp].split("=")[1]);
-                            break;
-                        case"ccc":
+              break;
+          case"ccc":
                             checkTaxElements("climate_change_challenges",theMap[mp].split("=")[1]);
-                            break;
-                        case"az":
+              break;
+          case"az":
                             checkTaxElements("agroecological_zones",theMap[mp].split("=")[1]);
-                            break;
-                        case"ctr":
-                            ctrPt=theMap[mp].split("=")[1];
-                            break;
-                        case"cntr":
+              break;
+          case"ctr":
+            ctrPt=theMap[mp].split("=")[1];
+          break;
+          case"cntr":
                             cntr=theMap[mp].split("=")[1];
                             var ctPT=new esri.geometry.Point(parseFloat(cntr.split(";")[1]),parseFloat(cntr.split(";")[0]));
                             ctPT=esri.geometry.geographicToWebMercator(ctPT);
                             ctrPt=ctPT.x+";"+ctPT.y;
-                            break;
-                        case"idCT":
+
+          break;
+          case"idCT":
                             idCT=theMap[mp].split("=")[1];
-                            break;
-                        case"lvl":
-                            lvlMp=theMap[mp].split("=")[1];
-                            break;
-                        case"lyr":
+          break;
+          case"lvl":
+              lvlMp=theMap[mp].split("=")[1];
+          break;
+          case"lyr":
                             vLyr=theMap[mp].split("=")[1];
-                            break;
-                        case"ext":
-                            break;
-                        case"gcp":
+          break;
+          case"ext":
+          break;
+          case"gcp":
                             if(theMap[mp].split("=")[1]=="t"){
                                 sGCP=theMap[mp].split("=")[1];
                                 document.getElementById("gcpFS").checked="checked";
                             }else{
                                 document.getElementById("gcpFS").checked="";
                             }
-                            break;
-                        case"bm":
-                            baseMP=theMap[mp].split("=")[1];
-                            break;
-                        default:
-                            break;
-                    }
-                }
+
+          break;
+          case"bm":
+            baseMP=theMap[mp].split("=")[1];
+          break;
+          default:
+          break;
         }
+      }
     }
+  }
 }
+
+function getViewTree()
+{
+  if(location.hash) {
+    location.hash=unescape(location.hash);
+    var theMap=unescape(location.hash).split("/");
+    if(theMap!="") {
+      for(var mp=0;mp<theMap.length;mp++) {
+        var cEle=theMap[mp].split("=")[0];
+        switch(cEle){
+          case"pts":
+            checkTypeElements(theMap[mp].split("=")[1]);
+          break;
+          case"imp":
+            checkTaxElements(theMap[mp].split("=")[1]);
+          break;
+          case"as":
+            checkTaxElements(theMap[mp].split("=")[1]);
+          break;
+          case"ms":
+            checkTaxElements(theMap[mp].split("=")[1]);
+          break;
+          case"cl":
+            checkTaxElements(theMap[mp].split("=")[1]);
+          break;
+          case"ccc":
+            checkTaxElements(theMap[mp].split("=")[1]);
+          break;          
+          case"ctr":
+            ctrPt=theMap[mp].split("=")[1];
+          break;
+          case"cntr":
+//            cntr=theMap[mp].split("=")[1];
+//            var ctPT=new esri.geometry.Point(parseFloat(cntr.split(";")[1]),parseFloat(cntr.split(";")[0]));
+//            ctPT=esri.geometry.geographicToWebMercator(ctPT);
+//            ctrPt=ctPT.x+";"+ctPT.y;
+          break;
+          case"idCT":
+//            idCT=theMap[mp].split("=")[1];
+          break;
+          case"lvl":
+              lvlMp=theMap[mp].split("=")[1];
+          break;
+          case"lyr":  
+              vLyr=theMap[mp].split("=")[1];
+          break;
+          case"gcp":
+//            if(theMap[mp].split("=")[1]=="t"){
+//              sGCP=theMap[mp].split("=")[1];
+//    //                                document.getElementById("gcpFS").checked="checked";
+//            }else{
+//    //                                document.getElementById("gcpFS").checked="";
+//            }
+          break;
+          case"bm":
+            baseMP=theMap[mp].split("=")[1];
+          break;
+          default:
+          break;
+        }
+      }
+    }
+  }
+  firstime = true;
+}
+
 function initBackMap()
 {
     var move;
     if(ctrPt&&lvlMp){
-        move=new esri.geometry.Point([parseFloat(ctrPt.split(";")[0]),parseFloat(ctrPt.split(";")[1])],new esri.SpatialReference({
-            wkid:4326
-        }));
-        map.centerAndZoom(move,parseFloat(lvlMp));
+      move=new esri.geometry.Point([parseFloat(ctrPt.split(";")[0]),parseFloat(ctrPt.split(";")[1])],new esri.SpatialReference({wkid:102100}));
+      map.centerAndZoom(move,parseFloat(lvlMp));
     }
     ctrPt="";
-    lvlMp="";
-    setBaseMap(baseMP);
-    updateDataLayer(false);
+    lvlMp="";        
+    updateDataLayerTree(false);
 }
 function go2Region(pt,zm)
 {
     move2=new esri.geometry.Point([parseFloat(pt.split(";")[0]),parseFloat(pt.split(";")[1])],new esri.SpatialReference({
-        wkid:4326
+        wkid:102100
     }));
     map.centerAndZoom(move2,parseFloat(zm));
-    map.centerAt(map.extent.getCenter());
+//    map.centerAt(map.extent.getCenter());
 }
-function checkTaxElements(tax,elements){
-    var chkElements=elements.split(",");
-    for(var i=0;i<chkElements.length;i++)
-
-    {
-            if(chkElements[i]!=""){
-                document.getElementById(tax+"_"+chkElements[i]).checked="checked";
-            }
-        }
+function checkTaxElements(elements){
+  var chkElements=elements.split(",");
+  for(var i=0;i<chkElements.length;i++) {
+    if(chkElements[i]!="") {
+      $("#cFiltersList2").dynatree("getTree").getNodeByKey("taxio_"+chkElements[i]).select(true);
+      $("#cFiltersList2").dynatree("getTree").getNodeByKey("taxio_"+chkElements[i]).getParent().getParent().expand(true);
+      $("#cFiltersList2").dynatree("getTree").getNodeByKey("taxio_"+chkElements[i]).getParent().expand(true);
+    }
+  }
 }
 function checkTypeElements(elements){
-    var chkElements=elements.split(",");
-    for(var i=0;i<chkElements.length;i++)
-
-    {
-            if(chkElements[i]!=""){
-                document.getElementById(chkElements[i]).checked="checked";
-            }
-        }
+  var chkElements=elements.split(",");
+  for(var i=0;i<chkElements.length;i++) {    
+    if(chkElements[i]!="") {
+      $("#cFiltersList2").dynatree("getTree").getNodeByKey("accord_"+chkElements[i]).select(true);
+    }
+  }
 }
 function setBaseMap(bmId)
 {
-    clearBaseSelection();
-    dojo.addClass("mapType"+bmId,"controls-selected");
+//    clearBaseSelection();
+//    dojo.addClass("mapType"+bmId,"controls-selected");
     baseMP=bmId;
-    basemapGallery.select(baseMP);
-    setView();
+    basemapGallery.select(baseMP);    
+//    setViewTree();
 }
 function clearBaseSelection()
 {
@@ -981,6 +1335,173 @@ function getMapPointFromMenuPosition(box){
     var screenPoint=new esri.geometry.Point(x-map.position.x,y-map.position.y);
     return map.toMap(screenPoint);
 }
+
+/**
+ * @function getListingContentTree
+ * @description this method create the diferents objects to display in each item of the tree
+ * @argument {int} id it is the reference of a item on the map
+ * @return {void} 
+ * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
+**/
+function getListingContentTree(id){
+    var rt,ttl,cid;
+    csvStore.fetchItemByIdentity({
+        identity:id,
+        onItem:function(item){
+            var attributes=csvStore.getAttributes(item),data={};
+
+            dojo.forEach(attributes,function(attr){
+                data[attr]=csvStore.getValue(item,attr);
+                ttl=attr;
+            });
+            ttl=csvStore.getValue(item,"Location");
+            cid=csvStore.getValue(item,"CID");
+            rt=esri.substitute(data,titleTemplate);
+        }
+    });
+    
+    mapPTS=rt==="ccafs_sites"?cconmap.push({
+        title: ttl, 
+        key: id,
+        url: './?p='+cid,
+        hideCheckbox: true,
+        unselectable: true,
+        select: false,
+        icon: '../../../../images/ccafs_sites-mini.png'
+    }):"";
+    mapPTS=rt==="video_testimonials"?vtonmap.push({
+        title: ttl, 
+        key: id,
+        url: './?p='+cid,
+        hideCheckbox: true,
+        unselectable: true,
+        select: false,
+        icon: '../../../../images/video_testimonials-mini.png'
+    //isLazy: true
+    }):"";
+    mapPTS=rt==="amkn_blog_posts"?bgonmap.push({
+        title: ttl, 
+        key: id,
+        url: './?p='+cid,
+        hideCheckbox: true,
+        unselectable: true,
+        select: false,
+        icon: '../../../../images/amkn_blog_posts-mini.png'
+    //isLazy: true
+    }):"";
+    mapPTS=rt==="biodiv_cases"?bdonmap.push({
+        title: ttl, 
+        key: id,
+        url: './?p='+cid,
+        hideCheckbox: true,
+        unselectable: true,
+        select: false,
+        icon: '../../../../images/biodiv_cases-mini.png'
+    //isLazy: true
+    }):"";
+    mapPTS=rt==="photo_testimonials"?ptonmap.push({
+        title: ttl, 
+        key: id,
+        url: './?p='+cid,                        
+        hideCheckbox: true,
+        unselectable: true,
+        select: false,
+        icon: '../../../../images/photo_testimonials-mini.png'
+    //isLazy: true
+    }):"";
+    mapPTS=rt==="ccafs_activities"?actnmap.push({
+        title: ttl, 
+        key: id,
+        url: './?p='+cid,                        
+        hideCheckbox: true,
+        unselectable: true,
+        select: false,
+        icon: '../../../../images/ccafs_activities-mini.png'
+    //isLazy: true
+    }):"";
+    return;
+}
+
+/**
+ * @function findPointsInExtentTree
+ * @description this method update the left panel, updates the number of children of each item on the tree
+ * @argument {esri.Map} extent containt the map's settings
+ * @return {void} 
+ * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
+**/
+function findPointsInExtentTree(extent) {
+    var results=[];
+    vtonmap=[];
+    cconmap=[];
+    bgonmap=[];
+    bdonmap=[];
+    ptonmap=[];
+    actnmap=[];
+    dojo.forEach(dataLayer.graphics,function(graphic){
+        if(extent.contains(graphic.geometry)){
+            results.push(getListingContentTree(graphic.attributes.id));
+        }
+    });
+    var onthemap=dijit.byId('onthemap');
+    onthemap.attr("title","What&#39;s on the map ("+results.length+")");    
+    var rootNode = $("#cFiltersList2").dynatree("getRoot");
+    var childrenNodes = rootNode.getChildren();
+    
+    for(i = 0; i < childrenNodes.length; i++) {
+        // clean array.
+        if (childrenNodes[i].data.key !== 'accord_data_layer' && childrenNodes[i].data.key !== 'accord_filter_resource_theme') {
+          childrenNodes[i].removeChildren();
+        }
+        // add children and update the number of records on it.
+        switch(childrenNodes[i].data.key) {
+            case 'accord_ccafs_sites':                
+                childrenNodes[i].addChild(cconmap);
+                childrenNodes[i].data.title = "CCAFS Sites ("+cconmap.length+")";
+            break;
+            case 'accord_video_testimonials':              
+                childrenNodes[i].addChild(vtonmap);                
+                childrenNodes[i].data.title = "Videos ("+vtonmap.length+")";                
+            break;
+            case 'accord_amkn_blog_posts':
+                childrenNodes[i].addChild(bgonmap);
+                childrenNodes[i].data.title = "Blog Posts ("+bgonmap.length+")";
+            break;
+            case 'accord_biodiv_cases':
+                childrenNodes[i].addChild(bdonmap);               
+                childrenNodes[i].data.title = "Agrobiodiversity Cases ("+bdonmap.length+")";
+            break;
+            case 'accord_photo_testimonials':
+                childrenNodes[i].addChild(ptonmap);                
+                childrenNodes[i].data.title = "Photo Sets ("+ptonmap.length+")";
+            break;
+            case 'accord_ccafs_activities':
+                childrenNodes[i].addChild(actnmap);                
+                childrenNodes[i].data.title = "Activities ("+actnmap.length+")";
+            break;
+        }
+    }
+}
+
+/**
+ * @function createDataLayersBranch
+ * @description this method create the tree's branch Data Layer on the left panel
+ * @return {void} 
+ * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
+**/
+function createDataLayersBranch () {
+  var nodeDataLayer = $("#cFiltersList2").dynatree("getTree").getNodeByKey("accord_data_layer");
+  var ly = '';
+  var children = nodeDataLayer.getChildren();
+  var totalLayers = 0;
+  for (j = 0; j < children.length; j++) {
+    soon = children[j];
+    ly = soon.data.key.split("-");
+    layer = new esri.layers.ArcGISDynamicMapServiceLayer(ly[2]);
+    layer.id = ly[0];      
+    totalLayers+=buildLayerListTree (layer,ly[0],ly[1],soon);
+  }
+}
+
 function findPointsInExtent(extent){
     var results=[];
     vtonmap=[];
@@ -1014,7 +1535,6 @@ function findPointsInExtent(extent){
 function setTrans(value){
     var cL=map.getLayer(visLyr);
     if(cL!=null)
-
     {
         cL.setOpacity(value);
     }
@@ -1043,7 +1563,9 @@ function getItemsAtLocation(sPtX,sPtY,evt)
     var sPt2=new esri.geometry.Point(sPtX+20,sPtY+20);
     var sPt3=new esri.geometry.Point(sPtX+20,sPtY-20);
     var sPt4=new esri.geometry.Point(sPtX-20,sPtY-20);
+//    hoverLayer=new esri.layers.GraphicsLayer();
     hoverLayer.remove(polyGraphic);
+    hoverLayer.clear();
     points=[map.toMap(sPt1),map.toMap(sPt2),map.toMap(sPt3),map.toMap(sPt4),map.toMap(sPt1)];
     var polygon=new esri.geometry.Polygon();
     polygon.addRing(points);
@@ -1051,11 +1573,35 @@ function getItemsAtLocation(sPtX,sPtY,evt)
         wkid:102100
     });
     var gs=new esri.symbol.SimpleFillSymbol().setStyle(esri.symbol.SimpleFillSymbol.STYLE_SOLID);
-    polyGraphic=new esri.Graphic(polygon,gs);
-    hoverLayer.add(polyGraphic);
-    findPointsInPolygon(polygon.getExtent(),evt);
+    polyGraphic=new esri.Graphic(polygon,gs);   
+    hoverLayer.add(polyGraphic);  
+    dojo.connect(hoverLayer,"onClick",function(){
+      var results=[];      
+      dojo.forEach(dataLayer.graphics,function(graphic){
+          if(polygon.getExtent().contains(graphic.geometry)){
+              results.push(getListingContent(graphic.attributes.id));
+          }
+      });
+//      alert(results.length);
+      cPx=new esri.geometry.Point(map.toMap(evt.screenPoint).x,map.toMap(evt.screenPoint).y,map.spatialReference);
+      var ttContent="<span class='blockNoWrap'>At this location ("+results.length+") <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='zoomToCtxt();'><a>Zoom here</a></button> <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='cPop();'><a>Close</a></button></span>";
+      ttContent+="<table style='width:100%;'><tbody><tr><td><ul class='homebox-list zoom_in-list'>"+results.join("")+"<ul></tr></td></tbody></table>";
+      hQuery.setContent(ttContent);
+      dojo.style(hQuery.domNode,"opacity",1);
+      dijit.popup.open({
+          popup:hQuery,
+          x:evt.pageX,
+          y:evt.pageY
+      });
+//      dojo.connect(hQuery,"onMouseOut",cPop);
+    });
+//    findPointsInPolygon(polygon.getExtent(),evt);
 }
 var addedLayers=[];
+
+/**function in charge of paint the list of layers
+ * @function buildLayerList
+ * @deprecated buildLayerListTree() replace it**/
 function buildLayerList(layer,lID,layerName,single){
     addedLayers.push(layerName);
     layer.setVisibility(false);
@@ -1096,6 +1642,153 @@ function buildLayerList(layer,lID,layerName,single){
     }
     return"<ul class='homebox-list zoom_in-list'>"+tmp+lyrH+"</ul>";
 }
+
+/**function in charge of paint the list of layers
+ * @argument {esri.layers} layer description
+ * @argument {String} layerName Layer's name
+ * @argument {object} soon it is an object of a tree's branch (child)
+ * @argument {int} single description
+ * @return {void} 
+ * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
+**/
+function buildLayerListTree(layer,layerName,single,soon) {
+    addedLayers.push(layerName);
+    layer.setVisibility(false);
+    layer.setImageTransparency(true,false);
+    single=single=='null'?null:single;
+    var singleLyr=single==null?-1:single;   
+    var child =[];
+    var checked=false;
+//    soon.data.hideCheckbox = false;
+//    ly = soon.data.key.split("-");
+    setTimeout(function(){
+    for ($i=0;$i<layer.layerInfos.length;$i++) {
+      ly = soon.data.key.split("-");
+//    dojo.map(layer.layerInfos,function(info){
+        if(singleLyr==-1){
+            if((layer.layerInfos[$i].parentLayerId==-1&&layer.layerInfos[$i].subLayerIds==null)||(layer.layerInfos[$i].parentLayerId!=-1&&layer.layerInfos[$i].subLayerIds==null)){                
+                child.push({
+                  title: layer.layerInfos[$i].name,
+                  key: layer.id+'|'+ly[3]+'|'+layer.layerInfos[$i].id,
+//                  url: './?p='+cid,
+//                  hideCheckbox: true,
+                  select: checked,
+                  icon: '../../../../images/map_icon.png'
+                });
+            }else{
+              child.push({
+                  title: "<h4>"+layer.layerInfos[$i].name+"</h4>",
+//                  isFolder: true,
+//                  key: layer.layerInfos[$i].id
+                  icon: '../../../../images/data_layersM.png',
+                  hideCheckbox: true,
+                  unselectable: true,
+//                  icon: '../../../../images/map_icon.png'
+                });
+              //Here comes the title or header layer's group
+            }
+        } else {
+            if(layer.layerInfos[$i].id==singleLyr) {                
+                child.push({
+                  title: layer.layerInfos[$i].name,                  
+                  key: layer.id+'|'+ly[3]+'|'+layer.layerInfos[$i].id,
+//                  url: './?p='+cid,
+//                  hideCheckbox: true,
+                  select: checked,
+                  icon: '../../../../images/map_icon.png'
+                });
+            }
+        }  
+        soon.removeChildren();
+        soon.addChild(child);
+        if (checked) {
+          soon.getParent().expand(true);
+          soon.expand(true);
+        }
+      }
+      var vLyrArray = (typeof vLyr!=="undefined")?vLyr.split(","):new Array();
+      for ($j=0;$j<vLyrArray.length;$j++) {
+        $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).select(true);
+        $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).getParent().expand(true);
+        $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).getParent().getParent().expand(true);
+      }
+
+      soon.data.title = soon.data.title+" ("+child.length+")";
+      if (child.length === 0) soon.data.hideCheckbox = true;
+    },1000);
+
+    if(((typeof vLyr!="undefined")&&vLyr!="")&&fUd==false&&vLyr.split("|")[0]==layerName){
+        fUd=true;
+        visible=[];
+        visible.push(vLyr.split("|")[2]);
+        visLyr=layerName;
+        layer.setVisibility(true);
+        layer.setVisibleLayers(visible);
+        dijit.byId('cFiltersList').selectChild(dijit.byId('accord_legend'));
+        dojo.addClass(document.getElementById("layerbt_"+layerName),"sldMenu");
+        map.centerAt(map.extent.getCenter());
+    }
+    return child.length;
+}
+
+/**function in charge of paint the list of layers
+ * @argument {object} node it is item from the tree that was selected
+ * @argument {boolean} flag indicates if the tree item is check or not
+ * @return {void} 
+ * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
+**/
+function updateLayerVisibilityTree(node,flag) {
+    var ly = node.data.key.split("|");
+    if (flag) {
+      tmp = node.getNextSibling();
+      while(tmp) {
+        tmp.select(false);
+        tmp = tmp.getNextSibling();
+      }
+      tmp = node.getPrevSibling();
+      while(tmp) {
+        tmp.select(false);
+        tmp = tmp.getPrevSibling();
+      }
+    }
+    lyrID = ly[0];
+    lID = ly[1];
+    if(map) var cLyr=map.getLayer(ly[0]);
+    
+//    (typeof visLyr!="undefined")?map.getLayer(visLyr).setVisibility(false):"";
+//    (typeof visLyr!="undefined")?dojo.removeClass(document.getElementById(visLyr+"_label"),"sldMenu"):"";
+//    (typeof visLyr!="undefined")?dojo.removeClass(document.getElementById("layerbt_"+visLyr),"sldMenu"):"";
+    if(cLyr!=null) {
+      cLyr.setVisibility(false);
+        dijit.byId('tslider').setValue(cLyr.opacity*100);
+    }
+    visLyr=lyrID;
+    vLyr="";    
+    visible=[];
+    visible.push(ly[2]);
+//    dojo.forEach(inputs,function(input){
+//        if(input.checked){
+//            visible.push(input.id);
+//            vLyr=lyrID+"|"+lID+"|"+input.id;
+//        }
+//    });
+    if(visible.length===0){
+        visible.push(-1);
+    }
+    if (flag && cLyr!=null) {
+      (visible.length!=-1)?cLyr.setVisibility(true):cLyr.setVisibility(false);    
+      (visible.length!=-1)?cLyr.setVisibleLayers(visible):"";
+    }
+    var deltLyr;
+    clearTimeout(deltLyr);
+    deltLyr=setTimeout(function(){
+        map.centerAt(map.extent.getCenter());
+        rLegend();
+    },1000);
+//    dojo.hasClass(document.getElementById("onthemap"),"dojoxExpandoClosed")?dijit.byId('onthemap').toggle():"";
+//    dijit.byId('cFiltersList').selectChild(dijit.byId('accord_legend'));
+}
+
 function updateLayerVisibility(lID,lyrID){
     var inputs=dojo.query(".list_item_"+lID),input;
     var cLyr=map.getLayer(lyrID);
@@ -1110,7 +1803,7 @@ function updateLayerVisibility(lID,lyrID){
     }
     visLyr=lyrID;
     vLyr="";
-    var test="";
+
     visible=[];
     dojo.forEach(inputs,function(input){
         if(input.checked){

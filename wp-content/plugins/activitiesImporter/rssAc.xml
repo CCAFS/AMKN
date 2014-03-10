@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:georss="http://www.georss.org/georss" xmlns:ccafs="http://localhost/AMKN/wp-content/plugins/activitiesImporter/TypeActivities" version="2.0">
+
+<channel>
+  <title>Activities</title>
+  <link>http://activities.ccafs.cgiar.org</link>
+  <description>Free web building tutorials</description>
+  <item>
+    <title>activity 1</title>
+    <link>http://activities.ccafs.cgiar.org/activity.do?id=1</link>
+    <description>New RSS tutorial</description>
+    <georss:point>0 -85.376944</georss:point>
+    <ccafs:startDate>01/01/2012</ccafs:startDate>
+    <ccafs:endDate>12/01/2012</ccafs:endDate>
+    <ccafs:milestone>4.1.2 2012</ccafs:milestone>
+  </item>
+  <item>
+    <title>activity 2</title>
+    <link>http://activities.ccafs.cgiar.org/activity.do?id=2</link>
+    <description>New XML tutorial on W3Schools</description>
+    <georss:point>13.330955 -85.376944</georss:point>
+    <ccafs:startDate>01/01/2012</ccafs:startDate>
+    <ccafs:endDate>12/01/2014</ccafs:endDate>
+    <ccafs:milestone>4.2.1 2012 (2)</ccafs:milestone>
+  </item>
+</channel>
+</rss>
+

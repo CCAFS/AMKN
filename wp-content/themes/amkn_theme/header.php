@@ -4,6 +4,13 @@
  * @subpackage AMKNToolbox
  */
 $searchQ = $_GET["q"];
+$var = '';
+if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){ 
+  $var = '?embedded=1';
+  if (isset($_GET['width']) && isset($_GET['height'])) {
+    $var .= "&width=".$_GET['width']."&height=".$_GET['height'];
+  }
+}
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
 <head>
@@ -32,13 +39,8 @@ $searchQ = $_GET["q"];
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" type="text/css" media="screen" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php wp_head(); ?>
-<script type="text/javascript" src="http://www.google.com/jsapi"></script>
-<script type="text/javascript">
-	//<![CDATA[
-	google.load("jquery", "1.4.2");
-	google.load("jqueryui", "1.8.2");
-	//]]>
-</script>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+<script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js"></script>
 <script type="text/javascript">
   var djConfig = {
     parseOnLoad: true
@@ -49,32 +51,32 @@ $searchQ = $_GET["q"];
 </script>
 </head>
 <body>
-<div id="header" class="header-page">
-<div class="logos"><a href="/">
-<img class="amkn_logo" src="<?php bloginfo( 'template_directory' ); ?>/images/amkn.gif" alt="AMKN logo" />
-<img class="ccafs_logo" src="<?php bloginfo( 'template_directory' ); ?>/images/ccafs-logo.png" alt="CCAFS logo" /></a>
-</div><!-- end logos -->
+  <div id="header index" class="header-page">
+    <div class="logos"><a href="<?php bloginfo('url');echo $var; ?>">
+      <img class="amkn_logo" src="<?php bloginfo( 'template_directory' ); ?>/images/amkn.gif" alt="AMKN logo" />
+      <img class="ccafs_logo" src="<?php bloginfo( 'template_directory' ); ?>/images/ccafs-logo.png" alt="CCAFS logo" /></a>
+    </div><!-- end logos -->
 
-<div id="right-header">
-<div class="navbar">
+    <div id="right-header">
+      <div class="navbar">
 
-<?php
-$defaults = array(
-  'container'       => 'none',
-  'container_id'    => '',
-  'menu_class'      => 'navigation',
-  'menu_id'         => 'menu',
-  'echo'            => true,
-  'fallback_cb'     => 'wp_page_menu',
-  'before'          => '',
-  'after'           => '',
-  'link_before'     => '',
-  'link_after'      => '',
-  'depth'           => 0,
-  'walker'          => '');
-//
-wp_nav_menu( $defaults ); ?>
-<form action="/search/" id="searchform" method="get"><input type="text" value="<?php echo $searchQ; ?>" id="searchbar" name="q" /><input type="submit" value="Search" id="searchsubmit" /></form>
-</div><!-- end navbar -->
-</div><!-- end right-header -->
-</div> <!-- end Header -->
+      <?php
+      $defaults = array(
+        'container'       => 'none',
+        'container_id'    => '',
+        'menu_class'      => 'navigation',
+        'menu_id'         => 'menu',
+        'echo'            => true,
+        'fallback_cb'     => 'wp_page_menu',
+        'before'          => '',
+        'after'           => '',
+        'link_before'     => '',
+        'link_after'      => '',
+        'depth'           => 0,
+        'walker'          => '');
+      //
+      wp_nav_menu( $defaults ); ?>
+      <form action="/search/" id="searchform" method="get"><input type="text" value="<?php echo $searchQ; ?>" id="searchbar" name="q" /><input type="submit" value="Search" id="searchsubmit" /></form>
+      </div><!-- end navbar -->
+    </div><!-- end right-header -->
+  </div> <!-- end Header -->
