@@ -32,6 +32,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                 echo " | $site_description";
             ?></title>
         <link rel="icon" type="image/png" href="<?php bloginfo('template_directory'); ?>/images/favicon.png" />
+        <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/tundra/tundra.css" />
         <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
         <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
         <script type="text/javascript">
@@ -109,7 +110,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
         <?php wp_head(); ?>
     </head>
     <body class="tundra">
-        <div id="header index">
+        <div id="header">
             <div class="logos"><a href="<?php bloginfo('url');echo $var; ?>">
                     <img class="amkn_logo" src="<?php bloginfo('template_directory'); ?>/images/amkn.gif" alt="AMKN logo" />
                     <img class="ccafs_logo" src="<?php bloginfo('template_directory'); ?>/images/ccafs-logo.png" alt="CCAFS logo" /></a>
@@ -118,7 +119,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
             <div id="right-header">
 
                 <div class="navbar">
-
+                    <form action="/search/" id="searchform" method="get"><input type="text" value="" id="searchbar" name="q" /><input type="submit" value="Search" id="searchsubmit" /></form>   
                     <?php
                     $defaults = array(
                         'container' => 'none',
@@ -136,7 +137,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                         'walker' => '');
                     wp_nav_menu($defaults);
                     ?>
-                    <form action="/search/" id="searchform" method="get"><input type="text" value="" id="searchbar" name="q" /><input type="submit" value="Search" id="searchsubmit" /></form>
+                    
                 </div><!-- end navbar -->
 
 
@@ -144,4 +145,4 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
 
            
         </div> <!-- end Header -->
-        <?php get_header('menu'); ?>
+        <?php //get_header('menu'); ?>

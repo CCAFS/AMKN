@@ -51,7 +51,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
 </script>
 </head>
 <body>
-  <div id="header index" class="header-page">
+  <div id="header">
     <div class="logos"><a href="<?php bloginfo('url');echo $var; ?>">
       <img class="amkn_logo" src="<?php bloginfo( 'template_directory' ); ?>/images/amkn.gif" alt="AMKN logo" />
       <img class="ccafs_logo" src="<?php bloginfo( 'template_directory' ); ?>/images/ccafs-logo.png" alt="CCAFS logo" /></a>

@@ -7,17 +7,36 @@
 <!-- footer starts here -->
 <div id="footer" class="footer-page">
 
-   <ul class="footercredits">
-      <li>Supported by the <a href="http://ictkm.cgiar.org/">Communications and Knowledge Team of the CGIAR Consortium</a></li>
-   </ul>    
+      
    <ul class="footerlogos">
-      <li><a href="http://www.ciat.cgiar.org"><img src="<?php bloginfo('template_directory'); ?>/images/logo1.png" alt="CIAT - International Center for Tropical Agriculture"/></a></li>
-      <li><a href="http://www.essp.org/"><img src="<?php bloginfo('template_directory'); ?>/images/logo2.png" alt="Earth System Science Partnership (ESSP)"/></a></li>
-      <li><a href="http://www.cgiar.org"><img src="<?php bloginfo('template_directory'); ?>/images/logo3.png" alt="CGIAR"/></a></li>
-      <li><a href="http://www.ccafs.cgiar.org/"><img src="<?php bloginfo('template_directory'); ?>/images/ccafs_sm.png" alt="The CGIAR Research Program on Climate Change, Agriculture and Food Security (CCAFS)"/></a></li>
+      <li><a href="http://www.ciat.cgiar.org"><img src="<?php bloginfo('template_directory'); ?>/images/logo_ciat.png" alt="CIAT - International Center for Tropical Agriculture"/></a></li>
+      <li><a href="http://www.cgiar.org"><img src="<?php bloginfo('template_directory'); ?>/images/logo_cgiar.png" alt="CGIAR"/></a></li>
+      <li><a href="http://www.ccafs.cgiar.org/"><img src="<?php bloginfo('template_directory'); ?>/images/logo_ccafs.png" alt="The CGIAR Research Program on Climate Change, Agriculture and Food Security (CCAFS)"/></a></li>
    </ul>
 
-   <div class="credits"><a href="/about/disclaimer/">Disclaimer</a> <a href="/about/credits/">Credits</a></div>
+    
+    
+   <ul class="sidelinks-footer">
+   <?php
+      $aboutPages = get_pages('child_of=5&sort_column=post_title');
+           $currStyle = $post->ID == 5 ? "sidecurrent" : "";
+      ?>
+       <li><a class="<?php echo $currStyle; ?>" href="<?php echo get_page_link(5) ?>">About AMKN</a></li>
+      <?php
+      foreach($aboutPages as $pageA)
+      {
+      $currPStyle = $post->ID == $pageA->ID ? "sidecurrent" : "";
+               ?>
+       <li><a class="<?php echo $currPStyle; ?>" href="<?php echo get_page_link($pageA->ID) ?>"><?php echo $pageA->post_title ?></a></li>
+      <?php
+      }
+   ?>
+   </ul>
+
+   <?php get_sidebar( 'follow' ); ?>
+ 
+
+
 </div><!-- end Footer -->
 <script type="text/javascript">
    var _gaq = _gaq || [];
