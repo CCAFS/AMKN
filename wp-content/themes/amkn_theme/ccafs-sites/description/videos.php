@@ -42,20 +42,24 @@ $postType = "";
       $videoURL = trim(str_ireplace("\r", "", $videoURL));
 
       $metaDesc = get_post_meta($post->ID, 'content_description', true);
-      if (strlen($metaDesc) > 80)
-         $metaDesc = substr($metaDesc, 0, 80) . "...";
+      if (strlen($metaDesc) > 150)
+         $metaDesc = substr($metaDesc, 0, 150) . "...";
+
+      $title =get_the_title();
+      if (strlen($title) > 65)
+         $title = substr($title, 0, 65) . "...";
 
       if (distance($sitepoint, $videopoint) < $rangevideos) {
          ?>
 
          <div class="site-video <?php echo distance($sitepoint, $videopoint) ?>">
 
-            <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+            <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php echo $title; ?></a></h2>
             <a href="<?php the_permalink(); ?>"></a> 
 
             <a href="#" data-reveal-id="<?php echo $post->ID; ?>"><img style="float:left" width="210" height="120" src="<?php echo $postThumb; ?>" border="0"></a>
 
-            <p style="float:right;width: 150px;padding-right: 20px;"><?php echo $metaDesc; ?>
+            <p style="float:right;width: 188px;padding-right: 20px;"><?php echo $metaDesc; ?>
                <a href="<?php the_permalink(); ?>"><span class="button-more">Read more</span></a>
             </p>
             <br clear="all" />
