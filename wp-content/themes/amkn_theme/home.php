@@ -46,11 +46,12 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
       <?php the_content(); ?>
       <?php endwhile; // end of the loop. ?>
     </div>
-
+    
     <div id="onthemap" <?php echo $style?> dojoType="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="235" splitter="<?php echo $splitter?>" region="left" style="width: 235px;" startExpanded="true">
       <!--Here is the calling to the template that show the left menu-->
         <?php get_template_part( 'content_type', 'filters_list2' ); ?>
     </div>
+    
   </div>
     <!-- featured section starts here -->
 </div>

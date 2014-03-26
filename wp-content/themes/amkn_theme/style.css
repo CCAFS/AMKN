@@ -46,7 +46,7 @@ body.embededO {
 #cBlock {
     clear: both;
     display: block;
-    height: 651px;
+    height: 660px;
     margin: 0;
     min-width: 1000px;
 }
@@ -1583,19 +1583,42 @@ td.table-color1 {
     background-color: #FFF;
     padding: 0px;
     width: 100% !important;
+    height: 100% !important;
     left: 0 !important;
     top: 0 !important;
 }
 
 
-/*  Dynatree css changes  */
+/*  Dynatree css changes */
 
-ul.dynatree-container {
+ .tundra .dijitAccordionContainer-dijitContentPane {
+ 
+padding: 0;
+}
+
+ ul.dynatree-container {
  border: 0 !important; 
 }
 
-#content-side{
-    width: 100% !important;
-    height: 88% !important;
-    overflow: hidden !important;
+#accord_content{
+    height: 500px !important;
+}
+#cFiltersList {
+padding-bottom: 50px;
+}
+ #onthemap {
+
+    background: #fff;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.1); 
+    top: 1em !important;
+    left: 1em !important;
+   
+    margin: 0 0 40px 0 !important;
+    
+}
+
+
+/* ESRI CSS */
+.esriSimpleSliderTL {
+  left: 96.5% ! important;
 }

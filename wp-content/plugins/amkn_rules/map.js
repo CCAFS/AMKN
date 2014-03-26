@@ -87,8 +87,8 @@ function initMap(){
     qPop.startup();
     map=new esri.Map("map",{
         extent:initExtent,
-        isZoomSlider:true,
-        wrapAround180:true
+        isZoomSlider:false,
+        wrapAround180:false
     });
 //    polygonsDraw();
     dojo.connect(map,"onUpdateStart",showLoading);
@@ -105,7 +105,7 @@ function initMap(){
         dojo.connect(dijit.byId('map'),'resize',resizeMap);
         var overviewMapDijit=new esri.dijit.OverviewMap({
             map:map,
-            visible:true
+            visible:false
         });
         overviewMapDijit.startup();        
         initBackMap();

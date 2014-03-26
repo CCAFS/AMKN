@@ -157,8 +157,7 @@ if  ($taxonomies) {
 <!--<div id="cFiltersList2" style="width: 100%; height: 68%; overflow: hidden;">
 </div>  end cFiltersList2-->
 
-<div id="content-side" dojoType="dijit.layout.AccordionContainer" minSize="20" 
-     id="cFiltersList" region="top" splitter="true">
+<div dojoType="dijit.layout.AccordionContainer" minSize="20" id="cFiltersList" region="top" splitter="false" style="width: 100%; height: 68%; overflow: hidden;">
     <div class="onmap" id="accord_content" dojoType="dijit.layout.AccordionPane" title="Content">
         <div id="cFiltersList2" style="width: 100%; height: 100%; overflow: hidden;">
         </div>
