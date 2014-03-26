@@ -25,7 +25,7 @@ $staticMapURL = "http://maps.google.com/maps/api/staticmap?center=" . $geoPoint 
       $showLocality = ($village) ? $village : $city;
       $nearestBMSiteID = get_post_meta($post->ID, 'nearestBenchmarkSite', true);
       $nearestBMSitePermalink = get_permalink($nearestBMSiteID);
-      $browserURL = "/#/bm=1/cntr=" . str_ireplace(" ", ";", trim($geoRSSPoint)) . "/lvl=8";
+      $browserURL = "/#/bm=1/ctr=" . str_ireplace(" ", ";", trim($geoRSSPoint)) . "/lvl=8";
       $showLocality2 = ($showLocality) ? $showLocality : $geoPoint;
       $wcURL = "/marksim-dssat-weather-file-generator/?lt=" . str_ireplace(" ", "&ln=", $geoRSSPoint) . "&pl=" . $showLocality2;
       ?>

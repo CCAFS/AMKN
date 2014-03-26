@@ -353,7 +353,7 @@ function esriMapEmbedFine0( $atts ) {
           <a href="javascript:void(0)" onClick="map.setLevel(map.getLevel()+1)">Zoom in</a> |
           <a href="javascript:void(0)" onClick="map.setLevel(map.getLevel()-1)">Zoom out</a>
 </div>
-          <div dojoType="dijit.layout.ContentPane" style="width:325px; height:280px; overflow:scroll;">
+          <div id="panel" dojoType="dijit.layout.ContentPane" style="width:325px; height:280px; overflow:scroll;">
           <div id="basemapGallery" ></div></div>
         </div>
       </div>

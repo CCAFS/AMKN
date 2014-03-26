@@ -84,7 +84,7 @@ h3 {
     font-family: 'open_sanscondensed_light';
     box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.2);
     position: relative;
-    z-index: 1;
+    z-index: 10;
 }
 .header-page {
     background: url("images/header-page.png") repeat scroll 0 0 transparent !important;
@@ -270,7 +270,8 @@ table.esriLegendLayer {
     width: 100%;
 }
 h2.homebox-title, .dijitDialogTitle, .dojoxExpandoTitle, .homebox, .dijitTitlePaneTitle, .dijitTitlePaneTextNode, .dijitDialogTitleBar {
-    background: url("images/box-bg.png") repeat scroll 0 0 #FFFFFF !important;
+    /* background: url("images/box-bg.png") repeat scroll 0 0 #FFFFFF !important; */
+    background: #fff;
     font-family: Museo300,trebuchet MS,Helvetica,Sans-serif;
     font-size: 16px;
     margin: 0;
@@ -354,7 +355,7 @@ form#searchform-content {
     top: 20px;
 }
 
-#borderContainer { width: 100%; height: 650px; }
+#borderContainer { position: relative; width: 100%; height: 650px; }
 
 .map_controls-box p {
     display: inline;
@@ -787,7 +788,7 @@ ul.footercredits {
 }
 .dojoxExpandoTitle {
     display: block;
-    margin-bottom: 6px;
+    margin-bottom: 0px;
     padding: 5px;
 }
 #popContent .dijitArrowNode, .tundra .dijitDialogCloseIcon {
@@ -819,7 +820,7 @@ ul.footercredits {
 #container {
     display: table;
     margin: 0 auto -10px;
-    min-height: 800px;
+    min-height: 640px;
     position: relative;
     top: 0;
     width: 100%;
@@ -948,7 +949,7 @@ h2.title {
     z-index: 100 !important;
 }
 .video {
-    border: 5px solid #275C03;
+    /* border: 5px solid #275C03; */
     margin-top: 15px;
     overflow: hidden;
 }
@@ -957,7 +958,10 @@ h3.videolabels {
     margin: 0;
 }
 .sidemap {
-    margin: 30px 25px 10px;
+    background: #fff;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+    margin: 28px 8px;
+    padding: 19px;
 }
 ul.sidemap-list {
     color: #55322B;
@@ -1061,7 +1065,7 @@ h2.entrytitle {
 }
 .entrymeta {
     font-size: 12px;
-    margin-top: 5px;
+    /* margin-top: 5px; */
 }
 .entry p {
     line-height: 20px;
@@ -1105,8 +1109,8 @@ blockquote {
     white-space: nowrap;
 }
 .dojoxExpandoWrapper {
-    border-left: 1px solid #CCCCCC;
-    border-right: 1px solid #CCCCCC;
+    border-left: 0;
+    border-right: 0;
 }
 .dijitBorderContainerPane, .dijitBorderContainerNoGutterPane {
     border-bottom: 1px solid #CCCCCC !important;
@@ -1297,8 +1301,7 @@ ul, ol, .m3re-item p {
     border: 2px solid #ADA5A5;
 }
 .borde1 {
-    border: 1px solid #E4E4E4;
-    box-shadow: 1px 1px 5px rgba(0, 0, 0, 0.3);
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
 }
 .site-photos {
     float: right;
@@ -1571,3 +1574,28 @@ td.table-color1 {
 
 /*  Dojo tuntra css changes  */
 
+.tundra .dijitBorderContainer-child {
+    border: none;
+
+}
+
+.tundra .dijitBorderContainer-dijitContentPane {
+    background-color: #FFF;
+    padding: 0px;
+    width: 100% !important;
+    left: 0 !important;
+    top: 0 !important;
+}
+
+
+/*  Dynatree css changes  */
+
+ul.dynatree-container {
+ border: 0 !important; 
+}
+
+#content-side{
+    width: 100% !important;
+    height: 88% !important;
+    overflow: hidden !important;
+}
