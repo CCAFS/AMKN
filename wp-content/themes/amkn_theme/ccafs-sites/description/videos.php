@@ -47,7 +47,7 @@ $postType = "";
 
       $title =get_the_title();
       if (strlen($title) > 65)
-         $title = substr($title, 0, 65) . "...";
+         $title = substr($title, 0, 60) . "...";
 
       if (distance($sitepoint, $videopoint) < $rangevideos) {
          ?>

@@ -53,6 +53,7 @@ if (isset($embed) && $embed == "1") {
 }
 ?>
 </div> <!-- end Header -->
+<div id="header-sites">
 <div class="title-page">
    <h2 class="title"><?php the_title(); ?>
       <em style="font-size:32px">(<?php echo get_post_meta($post->ID, 'siteCountry', true); ?>)</em>
@@ -78,6 +79,7 @@ if (isset($embed) && $embed == "1") {
          <!--<li <?php if ($section == 'tools-data') echo $class; ?>><a href="./?section=tools-data"><span>Tools & Data</span></a></li>-->
       </ul> 
    </div><!-- end mainmenu -->
+   </div>
    <div class="borde-menu"> </div>
 <?php
 //Load information of CCAFS Sites

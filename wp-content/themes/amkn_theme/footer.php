@@ -14,7 +14,7 @@
       <li><a href="http://www.ccafs.cgiar.org/"><img src="<?php bloginfo('template_directory'); ?>/images/logo_ccafs.png" alt="The CGIAR Research Program on Climate Change, Agriculture and Food Security (CCAFS)"/></a></li>
    </ul>
 
-    
+    <?php get_sidebar( 'follow' ); ?>
     
    <ul class="sidelinks-footer">
    <?php
@@ -32,8 +32,29 @@
       }
    ?>
    </ul>
+   <ul class="sidelinks-footer">
+   <?php
+   $args1=array(
+     'public'   => true,
+     '_builtin' => false
+   );
+   $excludeTypes = array("flickr_photos", "biodiv_cases");
+   $output = 'objects'; // names or objects
+   $operator = 'and'; // 'and' or 'or'
+   $post_types=get_post_types($args1,$output,$operator);
+   asort($post_types);
+     foreach ($post_types  as $post_type ) {
+       if(!in_array($post_type->name, $excludeTypes)){
+      $currPStyle = get_query_var( 'post_type' ) == $post_type->name ? "sidecurrent" : "";
+               ?>
+       <li><a class="<?php echo $currPStyle; ?>" href="<?php echo get_post_type_archive_link($post_type->name); ?>"><?php echo $post_type->label; ?></a></li>
+      <?php
+         }
+     }
+     ?>
+   </ul>
 
-   <?php get_sidebar( 'follow' ); ?>
+   
  
 
 
