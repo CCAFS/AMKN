@@ -87,10 +87,9 @@ $getArgs=array(
  ?>
 <div id="container">
 <div id="sidebar">
-<?php get_sidebar( 'sidemap' ); ?>.
+<?php get_sidebar( 'sidemap' ); ?>
 <?php get_sidebar( 'sidemore' ); ?>
 
-<?php get_sidebar( 'follow' ); ?>
 </div><!--end sidebar -->
 
 
@@ -98,23 +97,25 @@ $getArgs=array(
 
 <h2 class="title"><?php the_title(); ?></h2>
 <div class="entrymeta">Source: <em><?php echo get_bookmark( $srcID )->link_description; ?></em> <a target="_blank" href="<?php echo get_post_meta($post->ID, 'syndication_permalink', true); ?>">permalink</a></div>
-<!--Begin Share Button-->
-<?php if (function_exists('sociable_html')) {
-echo sociable_html();
-} ?>
+
 <!--End Share Button-->
 <div class="video">
-<object width="683" height="390" type="application/http">
+<object width="747" height="390" type="application/http">
   <param name="movie" value="<?php echo $videoURL; ?>&amp;fs=1&amp;hl=en_GB&amp;rel=0&amp;hd=1" />
   <param name="allowFullScreen" value="true" />
   <param name="allowScriptAccess" value="always" />
   <embed src="<?php echo $videoURL; ?>&amp;fs=1&amp;hl=en_GB&amp;rel=0&amp;hd=1"
     type="application/x-shockwave-flash"
     allowscriptaccess="always"
-    width="683" height="390"
+    width="747" height="390"
     allowfullscreen="true" />
 </object>
 </div>
+
+<!--Begin Share Button-->
+<?php if (function_exists('sociable_html')) {
+echo sociable_html();
+} ?>
 <h3>Themes</h3>
 <p><?php echo $metaDesc; ?></p>
 <?php
