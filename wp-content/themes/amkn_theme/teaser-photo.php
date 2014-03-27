@@ -3,7 +3,7 @@
  * @package WordPress
  * @subpackage AMKNToolbox
  */
-query_posts("cat=297&showposts=1&post_type=photo_testimonials");
+query_posts("showposts=1&post_type=photo_testimonials&order=DESC");
 $postType = "";
 ?>
 <?php /* Start the Loop */ ?>

@@ -85,3 +85,38 @@ function distance($point1, $point2) {
    $coo2 = explode(',', trim($point2));
    return sqrt(pow(($coo1[0] - $coo2[0]), 2) + pow(($coo1[1] - $coo2[1]), 2)) * 235;
 }
+
+
+/**
+ * Function to get an image of post
+ */
+function postimage($postId) {
+    $scriptpath = get_bloginfo('template_directory');   
+    $attachments = get_children(array('post_parent' => $postId, 'post_type' => 'attachment', 'post_mime_type' => 'image', 'orderby' => 'menu_order'));   
+    if (empty($attachments)) {       
+        $src_file = get_bloginfo('wpurl').'/wp-includes/images/noPicLarge.png';
+        return $src_file;
+    } else if (has_post_thumbnail($postId)) {
+        $featuredImage = wp_get_attachment_image_src(get_post_thumbnail_id($postId), 'single-post-thumbnail');
+        return $featuredImage[0];
+    } else {
+        $img = array_shift($attachments);        
+        $imagelink = wp_get_attachment_image_src($img->ID, 'full');
+        $image = $imagelink[0];
+        return $image;
+    }
+}
+
+function catch_that_image($post) {
+  
+  $first_img = '';
+  ob_start();
+  ob_end_clean();
+  $output = preg_match_all('/<img.+src=[\'"]([^\'"]+)[\'"].*>/i', $post->post_content, $matches);
+  $first_img = $matches [1] [0];
+
+  if(empty($first_img)){ //Defines a default image
+    $first_img = "/images/default.jpg";
+  }
+  return $first_img;
+}

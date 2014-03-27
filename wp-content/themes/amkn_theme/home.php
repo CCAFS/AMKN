@@ -30,15 +30,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
   <div dojoType="dijit.layout.BorderContainer" design="headline" gutters="true" liveSplitters="false" id="borderContainer" style='<?php echo $size?>'>
     
     <div id="map-side" dojoType="dijit.layout.ContentPane" splitter="false" region="center" style="widows: 100%; display: inline; overflow:hidden;">
-      <!--  Base map -->
-      <div id="basemap-gallery">
-        <div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Basemap', closable:false,  open:false">
-          <div class="hide" data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:280px; overflow:auto;">
-            <div id="basemapGallery" ></div>            
-          </div>
-        </div>
-      </div>
-      <!--  end Base map -->
+      
       <div <?php echo $style?> id="tb3" class="hide"> 
       </div>
       <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
@@ -51,9 +43,22 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
         <?php get_template_part( 'content_type', 'filters_list2' ); ?>
     </div>
   </div>
+
     <!-- featured section starts here -->
 </div>
+
+
 </div>
+
+<!--  Base map -->
+      <div id="basemap-gallery">
+        <div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Basemap', closable:false,  open:false">
+          <div class="hide" data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:280px; overflow:auto;">
+            <div id="basemapGallery" ></div>            
+          </div>
+        </div>
+      </div>
+      <!--  end Base map -->
 <?php if (!isset($_GET['embedded'])):?>
 
 <div id="featured">

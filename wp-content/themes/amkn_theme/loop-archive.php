@@ -11,6 +11,7 @@ $posts = query_posts($query_string.'&posts_per_page=8&order=ASC');
 <?php //query_posts('posts_per_page=10'); ?>
 <?php while ( have_posts() ) : the_post();
 $postType = $post->post_type;
+$postId = $post->ID;
 $postThumb = "";
 
 ?>
@@ -70,12 +71,13 @@ switch ($postType) {
         //$postThumb = get_the_post_thumbnail($post->ID, array(130,224) ); 
 ?>
 
-<div class="entry">
-<h2 class="entrytitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-<div class="entrymeta">Posted by <?php the_author(); ?> on <?php the_date(); ?><!--  | <a href="<?php comments_link(); ?>"><?php comments_number('no responses','one response','% responses'); ?></a>--><?php echo get_the_tag_list(' | ',', ',''); ?> </div>
-<p><?php the_excerpt(); ?></p>
-<p><a href="<?php the_permalink(); ?>"><span class="button-more">Read more</span></a></p>
-</div>
+    <div class="entry">
+    <div class="image" style="background: url(<?php echo catch_that_image($post); ?>) center" ></div>
+    <h2 class="entrytitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
+    <div class="entrymeta">Posted by <?php the_author(); ?> on <?php the_date(); ?><!--  | <a href="<?php comments_link(); ?>"><?php comments_number('no responses','one response','% responses'); ?></a>--><?php echo get_the_tag_list(' | ',', ',''); ?> </div>
+    <p><?php the_excerpt(); ?></p>
+    <p><a href="<?php the_permalink(); ?>"><span class="button-more">Read more</span></a></p>
+    </div>
 <?php
     break;
     case "ccafs_sites":

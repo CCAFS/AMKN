@@ -3,13 +3,13 @@
  * @package WordPress
  * @subpackage AMKNToolbox
  */
-query_posts("cat=297&showposts=1&post_type=video_testimonials");
+query_posts("&showposts=1&post_type=video_testimonials&order=DESC");
 $postType = "";
 ?>
 <?php /* Start the Loop */ ?>
 <div class="column">
 <?php while ( have_posts() ) : the_post(); ?>
-<div class="teaser">
+<div class="teaser <?php echo $post->post_type ?>">
 <?php
 $postType = $post->post_type;
 $postThumb = "";
@@ -35,7 +35,7 @@ if(strlen($metaDesc) > 65)
     $metaDesc = substr($metaDesc,0,65)."...";
 ?>
 <img class="titleico" src="<?php bloginfo( 'template_directory' ); ?>/images/<?php echo $postType; ?>-mini.png" alt="<?php echo get_post_type_object($postType)->labels->singular_name; ?>"/> <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-<a href="<?php the_permalink(); ?>"><img width="257" height="157" src="<?php echo $postThumb; ?>" alt="<?php printf( esc_attr__( 'Permalink to %s', 'AMKNToolbox' ), the_title_attribute( 'echo=0' ) ); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'AMKNToolbox' ), the_title_attribute( 'echo=0' ) ); ?>" /></a>
+<a href="<?php the_permalink(); ?>"><div class="image" style="background: url(<?php echo $postThumb ?>) center" alt="<?php printf( esc_attr__( 'Permalink to %s', 'AMKNToolbox' ), the_title_attribute( 'echo=0' ) ); ?>" title="<?php printf( esc_attr__( 'Permalink to %s', 'AMKNToolbox' ), the_title_attribute( 'echo=0' ) ); ?>"></div></a>
 <p><?php echo $metaDesc; ?>
 </p></div><!-- end feat-item -->
 <a href="<?php the_permalink(); ?>"><span class="button-more">Read more</span></a>
