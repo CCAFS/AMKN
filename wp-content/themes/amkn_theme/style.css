@@ -46,7 +46,7 @@ body.embededO {
 #cBlock {
     clear: both;
     display: block;
-    height: 660px;
+    height: 570px;
     margin: 0;
     min-width: 1000px;
 }
@@ -136,6 +136,7 @@ ul.navigation {
     position: absolute;
     right: 0.5em;
     bottom: -24px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.15);
 }
 ul.navigation li {
     position: relative;
@@ -355,7 +356,7 @@ form#searchform-content {
     top: 20px;
 }
 
-#borderContainer { position: relative; width: 100%; height: 650px; }
+#borderContainer { position: relative; width: 100%; height: 100%; }
 
 .map_controls-box p {
     display: inline;
@@ -366,24 +367,30 @@ form#searchform-content {
     padding: 3px;
 }
 #featured {
-    background: url("images/bg-featured.png") repeat-x scroll 0 0 transparent;
+    margin: 25px 0;
+    box-shadow: 0px 0px 4px rgba(0,0,0,0.1);
+    background: #fff;
     clear: both;
-    height: 390px;
-    min-width: 1000px;
+    height: 406px;
 }
 h1.feat-maintitle {
     color: #55322B;
-    font-family: Museo300,trebuchet MS,Helvetica,Sans-serif;
-    font-size: 25px;
-    font-weight: lighter;
-    margin-left: 20px;
+    font-family: open_sanscondensed_light,trebuchet MS,Helvetica,sans-serif;
+    font-size: 30px;
+    font-weight: 100;
+    /* margin-left: 20px; */
+    margin: 5px;
     position: relative;
-    top: 20px;
+    /* top: 20px; */
 }
 .column {
+    background: #F1F1F1;  border-radius: 10px;
     display: inline-block;
     float: left;
     padding: 3px;
+    width: 30%;
+    margin-left: 26px;
+    position: relative;
 }
 
 /*  loop-archive.php */
@@ -395,7 +402,7 @@ h1.feat-maintitle {
     width: 247px;
 }
 .ccafs_sites { 
-    height: 345px;
+    height: 360px;
     width: 247px;
 
 }
@@ -424,13 +431,12 @@ h1.feat-maintitle {
 }
 
 .teaser {
-    background: url("images/teaser.png") no-repeat scroll 0 0 transparent;
     clear: both;
     color: #55322B;
     display: block;
     font-family: trebuchet MS,Helvetica,Sans-serif;
     height: 260px;
-    width: 279px;
+    width: 98%;
 }
 .videoteaser {
     /* background: url("images/teaser-index.png") no-repeat scroll 0 0 transparent; */
@@ -505,28 +511,23 @@ img.videotitleico {
     width: 147px;
 }
 .button-more {
-    background: url("images/button.png") no-repeat scroll 0 0 transparent;
-    color: #275C03;
-    font-family: Museo300,trebuchet MS,Helvetica,Sans-serif;
-    margin-left: 75px;
-    margin-top: 12px;
-    padding: 5px 5px 2px 9px;
-    right: 24px;
+    background: #E3BB3B;
+    color: #FFFFFF;
+    font-family: open_sanscondensed_light,trebuchet MS,Helvetica,sans-serif;
+    padding: 2px 5px 2px 11px;
     white-space: nowrap;
-    width: auto;
+    width: 66px;
+    font-weight: lighter;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.2);
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.1);
 }
 .column > a > span.button-more {
-    background: url("images/button.png") no-repeat scroll 0 0 transparent;
-    color: #275C03;
-    font-family: Museo300,trebuchet MS,Helvetica,Sans-serif;
-    margin-left: 179px;
-    margin-top: -25px;
-    padding: 1px 1px 1px 15px;
     position: absolute;
-    right: auto;
-    white-space: nowrap;
-    width: auto;
+ 
+    right: 0.5em;
+    bottom: 0.5em;
 }
+
 .button-sidebar {
     background: url("images/button.png") no-repeat scroll 0 0 transparent;
     clear: both;
@@ -1143,6 +1144,7 @@ a#fdbk_tab {
 }
 a, .all {
     color: #275C03;
+    text-decoration: none;
 }
 #results li:hover, ul.zoom_in-list li:hover {
     background-color: #F4C93F !important;
@@ -1504,7 +1506,7 @@ ul#vtab {
     border-radius: 5px 5px 5px 5px;
     box-shadow: 2px 2px 15px #CCCCCC;
 }
-#header index {
+#header .index {
     width: 100%;
 }
 
@@ -1581,44 +1583,57 @@ td.table-color1 {
 
 .tundra .dijitBorderContainer-dijitContentPane {
     background-color: #FFF;
-    padding: 0px;
+    padding: 0px !important;
     width: 100% !important;
     height: 100% !important;
     left: 0 !important;
     top: 0 !important;
 }
-
-
-/*  Dynatree css changes */
-
- .tundra .dijitAccordionContainer-dijitContentPane {
- 
-padding: 0;
+.tundra .dijitAccordionContainer-dijitContentPane { 
+    padding: 0;
+}
+#dijit_TitlePane_0_titleBarNode {
+    background: #FFF;
 }
 
- ul.dynatree-container {
- border: 0 !important; 
+
+/*  Dynatree css changes */ 
+
+ul.dynatree-container {
+    border: 0 !important; 
+}
+#cFiltersList {
+    padding-bottom: 50px;
+}
+#cFiltersList2 > ul > li > span > span.dynatree-title {
+    margin-left: 0.5em;
 }
 
 #accord_content{
-    height: 500px !important;
+    height: 425px !important;
 }
-#cFiltersList {
-padding-bottom: 50px;
-}
- #onthemap {
 
-    background: #fff;
-    box-shadow: 1px 1px 4px rgba(0,0,0,0.1); 
+#onthemap { 
+    background: #fff;  
+    box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2); 
     top: 1em !important;
-    left: 1em !important;
-   
-    margin: 0 0 40px 0 !important;
-    
+    left: 1em !important; 
+    margin: 0 0 20px 0 !important;
 }
 
+#map-side {
+    border: 0;
+}
+
+#basemap-gallery {
+    position: absolute;
+    left: 253px;
+    bottom: 14px;
+    z-Index: 999;
+}
 
 /* ESRI CSS */
+
 .esriSimpleSliderTL {
   left: 96.5% ! important;
 }

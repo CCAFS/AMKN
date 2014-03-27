@@ -88,7 +88,7 @@ function initMap(){
     map=new esri.Map("map",{
         extent:initExtent,
         isZoomSlider:false,
-        wrapAround180:false
+        wrapAround180:true
     });
 //    polygonsDraw();
     dojo.connect(map,"onUpdateStart",showLoading);
@@ -121,6 +121,7 @@ function initMap(){
         dijit.popup.close(hQuery);
     });
     createDataLayersBranch();
+
     basemapGallery=new esri.dijit.BasemapGallery({
         showArcGISBasemaps:true,
         map:map
