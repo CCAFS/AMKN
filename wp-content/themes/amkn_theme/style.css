@@ -288,6 +288,10 @@ h2.homebox-title, .dijitDialogTitle, .dojoxExpandoTitle, .homebox, .dijitTitlePa
     background: url("images/box-bg.png") repeat scroll 0 0 #FFFFFF !important;
     color: #55322B !important;
 }
+.tundra {
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, 0.2);
+}
+
 #ifrm {
     height: 100%;
     min-height: 630px;
@@ -523,7 +527,7 @@ img.titleico {
 img.videotitleico {
     float: left;
     margin-right: 10px;
-    margin-top: 10px;
+    margin-top: 0px;
     padding-left: 5px;
 }
 .teaser p {
@@ -1669,6 +1673,10 @@ ul.dynatree-container {
     font-family: sans-serif,tahoma, arial, helvetica !important;
 }
 
+ul.dynatree-container img {
+    width: 20px !important;
+    height: 20px !important;
+}
 #cFiltersList {
     padding-bottom: 50px;
 }

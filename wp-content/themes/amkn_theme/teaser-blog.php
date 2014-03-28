@@ -13,8 +13,8 @@ $postType = "";
 <?php
 $postType = $post->post_type;
 $metaDesc = get_the_excerpt();
-if(strlen($metaDesc) > 150){
-    $metaDesc = substr($metaDesc,0,150)."...";
+if(strlen($metaDesc) > 250){
+    $metaDesc = substr($metaDesc,0,250)."...";
 }
 ?>
 <img class="titleico" src="<?php bloginfo( 'template_directory' ); ?>/images/<?php echo $postType; ?>-mini.png" alt="<?php echo get_post_type_object($postType)->labels->singular_name; ?>"/> <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
