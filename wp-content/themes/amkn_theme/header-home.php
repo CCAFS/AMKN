@@ -137,11 +137,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                         'walker' => '');
                     wp_nav_menu($defaults);
                     ?>
-<<<<<<< HEAD
-                    
-=======
                     <form action=<?php echo get_bloginfo('wpurl')."/search/"?> id="searchform" method="get"><input type="text" value="" id="searchbar" name="q" /><input type="submit" value="Search" id="searchsubmit" /></form>
->>>>>>> origin/dev
                 </div><!-- end navbar -->
 
 
