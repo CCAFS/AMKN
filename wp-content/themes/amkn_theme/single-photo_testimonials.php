@@ -82,7 +82,7 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
          <?php get_sidebar('sidemap'); ?>
 
          <?php get_sidebar('sidemore'); ?>
-         <?php get_sidebar('follow'); ?>
+         
       </div><!--end sidebar -->
 
 

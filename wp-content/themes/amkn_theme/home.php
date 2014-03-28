@@ -20,7 +20,46 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 ?>
 <div class="tundra">
 
+<div <?php echo $style?> id="yellow_navbar">       
+    <div class="taxonomies hide" dojoType="dijit.form.DropDownButton" id="rsLayers">
+        <span>Display Data Layers</span>
+      <div dojoType="dijit.TooltipDialog">
+      <button dojoType="dijit.form.Button" type="submit" class="checkCtrls amknButton"><a>Close</a></button>
+  <!--    <button onClick="updateLegend();" dojoType="dijit.form.Button" type="submit" class="checkCtrls amknButton"><a>[Show Data Layer Legend]</a></button>-->
+      <button class="checkCtrls amknButton" id="aLayer" dojoType="dijit.form.Button"  onclick="updateLayerVisibility(null, visLyr);">
+          Hide All Layers
+      </button>
+      <br />
+      <div id="tslider" dojoType="dijit.form.HorizontalSlider" name="tslider" width="350"
+                    onChange="setTrans(arguments[0]/100);"
+                    value="100" maximum="100" minimum="0" pageIncrement="100"
+                    showButtons="true" intermediateChanges="true" slideDuration="500" style="position:relative; width:350px;">
+                <ol dojoType="dijit.form.HorizontalRuleLabels" container="topDecoration"
+                style="height:1.5em;font-size:75%;color:gray;">
+                    <li>Active Data Layer Opacity
+                    </li>
+                </ol>
 
+                <ol dojoType="dijit.form.HorizontalRuleLabels" container="bottomDecoration"
+                style="height:1em;font-size:75%;color:gray;">
+                    <li>
+                        0.0
+                    </li>
+
+                    <li>
+                        1.0
+                    </li>
+                </ol>
+        </div>
+        <div id="onmap_layers">
+
+            <?php get_sidebar( 'map_layers' ); ?>
+
+        </div>
+      </div>
+    </div>
+
+</div> <!--end yellow_navbar -->
 
 <div id="cBlock" style='<?php echo $size?>'>
   <div id="showContent" class="navigating">
@@ -30,7 +69,15 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
   <div dojoType="dijit.layout.BorderContainer" design="headline" gutters="true" liveSplitters="false" id="borderContainer" style='<?php echo $size?>'>
     
     <div id="map-side" dojoType="dijit.layout.ContentPane" splitter="false" region="center" style="widows: 100%; display: inline; overflow:hidden;">
-      
+      <!--  Base map -->
+      <div id="basemap-gallery">
+        <div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Basemap', closable:false,  open:false">
+          <div class="hide" data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:280px; overflow:auto;">
+            <div id="basemapGallery" ></div>            
+          </div>
+        </div>
+      </div>
+      <!--  end Base map -->
       <div <?php echo $style?> id="tb3" class="hide"> 
       </div>
       <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
@@ -50,15 +97,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 
 </div>
 
-<!--  Base map -->
-      <div id="basemap-gallery">
-        <div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Basemap', closable:false,  open:false">
-          <div class="hide" data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:280px; overflow:auto;">
-            <div id="basemapGallery" ></div>            
-          </div>
-        </div>
-      </div>
-      <!--  end Base map -->
+
 <?php if (!isset($_GET['embedded'])):?>
 
 <div id="featured">

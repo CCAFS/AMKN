@@ -53,6 +53,5 @@ if(strlen($metaDesc) > 75)
 
 
 
-<a href="<?php echo get_post_type_archive_link($postType); ?>"><span class="button-featured ">View All <?php echo get_post_type_object($postType)->labels->name; ?></span></a>
 
 </div>

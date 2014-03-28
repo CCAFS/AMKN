@@ -75,6 +75,10 @@ function AMKNToolbox_widgets_init() {
 }
 
 add_action('init', 'AMKNToolbox_widgets_init');
+function custom_excerpt_length( $length ) {
+  return 20;
+}
+add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
 
 /**
  * Calculates distances in kilometers
@@ -116,7 +120,7 @@ function catch_that_image($post) {
   $first_img = $matches [1] [0];
 
   if(empty($first_img)){ //Defines a default image
-    $first_img = "/images/default.jpg";
+    $first_img = bloginfo('template_url')."/images/default.png";
   }
   return $first_img;
 }

@@ -26,7 +26,9 @@ if(isset($_GET["embed"]) && $_GET["embed"] == "true")
 echo sociable_html();
 } ?>
 <!--End Share Button-->
+
 <?php get_sidebar( 'sidemap_embed' ); ?>
+
 <div class="video blog-post">
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
     <?php the_excerpt(); ?>
@@ -72,13 +74,14 @@ $getArgs=array(
     get_footer('embed');
 }else{
 ?>
+
 <div id="container">
 <div id="sidebar">
 <?php get_sidebar( 'sidemap' ); ?>
 <?php get_sidebar( 'sidemore' ); ?>
 
 
-<?php get_sidebar( 'follow' ); ?>
+
 </div><!--end sidebar -->
 <div class="content">
 <h2 class="title"><?php the_title(); ?></h2>

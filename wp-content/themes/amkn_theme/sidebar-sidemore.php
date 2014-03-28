@@ -10,7 +10,7 @@ global $post;
  * @package WordPress
  * @subpackage AMKNToolbox
  */
-query_posts("cat=297&showposts=1&post_type=video_testimonials");
+query_posts("showposts=1&post_type=video_testimonials&order=DESC");
 $postType = "";
 ?>
 <?php /* Start the Loop */ ?>
@@ -24,9 +24,9 @@ $postType = "";
 <div class="side-more">
 <h3 class="sidefollow">Featured on AMKN</h3>
 <ul class="side-more-list">
-<li><a href="javascript:void(0)" onclick="switchTab('tabvideo_testimonials')"><img src="<?php bloginfo( 'template_directory' ); ?>/images/tab-video.png" /></a></li>
-<li><a href="javascript:void(0)" onclick="switchTab('tabphoto_testimonials')"><img src="<?php bloginfo( 'template_directory' ); ?>/images/tab-photo.png" /></a></li>
-<li><a href="javascript:void(0)" onclick="switchTab('tabamkn_blog_posts')"><img src="<?php bloginfo( 'template_directory' ); ?>/images/tab-post.png" /></a></li>
+<li><a href="javascript:void(0)" onclick="switchTab('tabvideo_testimonials')">Video</a></li>
+<li><a href="javascript:void(0)" onclick="switchTab('tabphoto_testimonials')">Photo</a></li>
+<li><a href="javascript:void(0)" onclick="switchTab('tabamkn_blog_posts')">Blog post</a></li>
 </ul>
 <?php while ( have_posts() ) : the_post(); ?>
 <?php
@@ -50,8 +50,8 @@ switch ($postType) {
         break;
 }
 $metaDesc = get_post_meta($post->ID, 'content_description', true);
-if(strlen($metaDesc) > 65)
-    $metaDesc = substr($metaDesc,0,65)."...";
+if(strlen($metaDesc) > 200)
+    $metaDesc = substr($metaDesc,0,200)."...";
 ?>
 <div class="more-item tab<?php echo $postType; ?> tabselected">
 <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
@@ -61,11 +61,11 @@ if(strlen($metaDesc) > 65)
 </p>
 <br clear="all" />
 <br clear="all" />
-<a href="<?php echo get_post_type_archive_link($postType); ?>"><span class="button-sidebar-more ">View All <?php echo get_post_type_object($postType)->labels->name; ?></span></a>
+
 </div>
 <?php endwhile; ?><!-- end loop-->
 <?php
-query_posts("cat=297&showposts=1&post_type=photo_testimonials");
+query_posts("showposts=1&post_type=photo_testimonials&order=DESC");
 $postType = "";
 ?>
 
@@ -92,8 +92,8 @@ switch ($postType) {
         break;
 }
 $metaDesc = get_post_meta($post->ID, 'content_description', true);
-if(strlen($metaDesc) > 65)
-    $metaDesc = substr($metaDesc,0,65)."...";
+if(strlen($metaDesc) > 200)
+    $metaDesc = substr($metaDesc,0,200)."...";
 ?>
 <div class="more-item tab<?php echo $postType; ?>">
 <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
@@ -103,11 +103,11 @@ if(strlen($metaDesc) > 65)
 </p>
 <br clear="all" />
 <br clear="all" />
-<a href="<?php echo get_post_type_archive_link($postType); ?>"><span class="button-sidebar-more ">View All <?php echo get_post_type_object($postType)->labels->name; ?></span></a>
+
 </div>
 <?php endwhile; ?><!-- end loop-->
 <?php
-query_posts("cat=297&showposts=1&post_type=amkn_blog_posts");
+query_posts("showposts=1&post_type=amkn_blog_posts&order=DESC");
 $postType = "";
 ?>
 
@@ -152,7 +152,8 @@ if(strlen($metaDesc) > 200){
 </div><!-- end feat-item -->
 <br clear="all" />
 <br clear="all" />
-<a href="<?php echo get_post_type_archive_link($postType); ?>"><span class="button-sidebar-more ">View All <?php echo get_post_type_object($postType)->labels->name; ?></span></a>
+
 </div>
 <?php endwhile; ?><!-- end loop-->
 </div>
+<?php wp_reset_query(); ?>

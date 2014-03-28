@@ -81,12 +81,10 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
 } else {
   ?>
   <div id="container">
+    
     <div id="sidebar">
       <?php get_sidebar('sidemap'); ?>
-      <?php get_sidebar('sidemore'); ?>
-
-
-      <?php get_sidebar('follow'); ?>
+      <?php get_sidebar('sidemore'); ?>  
     </div><!--end sidebar -->
     <div class="content">
       <h2 class="title"><?php the_title(); ?></h2>
