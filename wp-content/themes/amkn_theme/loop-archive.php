@@ -4,7 +4,27 @@
  * @subpackage AMKNToolbox
  */
 global $query_string; // required
-$posts = query_posts($query_string.'&posts_per_page=8&order=DESC'); 
+$metaKey = array();
+if($_GET['initDate'] != '') {
+  $metaKey[] = array('key' => 'startDate','value' => date_format_wp($_GET['initDate']), 'compare' => '>=');
+}
+if($_GET['endDate'] != '') {
+  $metaKey[] = array('key' => 'endDate','value' => date_format_wp($_GET['endDate']), 'compare' => '<=');
+}
+if($_GET['leader'] != '0' && $_GET['leader'] != '') {
+  $metaKey[] = array('key' => 'leaderAcronym','value' => $_GET['leader']);
+}
+if($_GET['theme'] != '0' && $_GET['theme'] != '') {
+  $metaKey[] = array('key' => 'theme','value' => $_GET['theme']);
+}
+
+if(count($metaKey)) {
+  $args = array_merge(array('meta_query' => $metaKey), array('posts_per_page' => '8', 'order'=>'DESC'));  
+} else {
+  $args = $query_string.'&posts_per_page=8&order=DESC';  
+}
+$posts = query_posts($args);
+//print_r($metaKey);
 ?>
 
 <?php /* Start the Loop */ ?>
