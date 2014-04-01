@@ -1663,7 +1663,9 @@ function buildLayerListTree(layer,layerName,single,soon) {
       ly = soon.data.key.split("-");
 //    dojo.map(layer.layerInfos,function(info){
         if(singleLyr==-1){
-            if((layer.layerInfos[$i].parentLayerId==-1&&layer.layerInfos[$i].subLayerIds==null)||(layer.layerInfos[$i].parentLayerId!=-1&&layer.layerInfos[$i].subLayerIds==null)){                
+            if ((ly[3] == 14 && layer.layerInfos[$i].id == 26) || (ly[3] == 14 && layer.layerInfos[$i].id == 25) || (ly[3] == 21 && layer.layerInfos[$i].id == 0)) {
+              
+            } else if((layer.layerInfos[$i].parentLayerId==-1&&layer.layerInfos[$i].subLayerIds==null)||(layer.layerInfos[$i].parentLayerId!=-1&&layer.layerInfos[$i].subLayerIds==null)){                
                 child.push({
                   title: layer.layerInfos[$i].name,
                   key: layer.id+'|'+ly[3]+'|'+layer.layerInfos[$i].id,
@@ -1735,18 +1737,10 @@ function buildLayerListTree(layer,layerName,single,soon) {
  * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
 **/
 function updateLayerVisibilityTree(node,flag) {
-    var ly = node.data.key.split("|");
+    var ly = node.data.key.split("|");    
     if (flag) {
-      tmp = node.getNextSibling();
-      while(tmp) {
-        tmp.select(false);
-        tmp = tmp.getNextSibling();
-      }
-      tmp = node.getPrevSibling();
-      while(tmp) {
-        tmp.select(false);
-        tmp = tmp.getPrevSibling();
-      }
+      unselectCheck(node);
+      unselectCheckParents(node);  
     }
     lyrID = ly[0];
     lID = ly[1];
@@ -1784,6 +1778,39 @@ function updateLayerVisibilityTree(node,flag) {
     },1000);
 //    dojo.hasClass(document.getElementById("onthemap"),"dojoxExpandoClosed")?dijit.byId('onthemap').toggle():"";
 //    dijit.byId('cFiltersList').selectChild(dijit.byId('accord_legend'));
+}
+
+function unselectCheck(node) {
+  tmp = node.getNextSibling();
+  while(tmp) {
+    tmp.select(false);
+    tmp = tmp.getNextSibling();
+  }
+  tmp = node.getPrevSibling();
+  while(tmp) {
+    tmp.select(false);
+    tmp = tmp.getPrevSibling();
+  }
+}
+
+function unselectCheckParents(node) {
+  parent = node.getParent();
+  tmp = parent.getNextSibling();
+  while(tmp) {
+    children = tmp.getChildren();
+    for(var i=0, l=children.length; i<l; i++){
+      children[i].select(false);
+    }    
+    tmp = tmp.getNextSibling();
+  }
+  tmp = parent.getPrevSibling();
+  while(tmp) {
+    children = tmp.getChildren();
+    for(var i=0, l=children.length; i<l; i++){
+      children[i].select(false);
+    }  
+    tmp = tmp.getPrevSibling();
+  }
 }
 
 function updateLayerVisibility(lID,lyrID){
