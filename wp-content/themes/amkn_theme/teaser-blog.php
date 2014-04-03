@@ -12,13 +12,14 @@ $postType = "";
 <div class="teaser">
 <?php
 $postType = $post->post_type;
-$metaDesc = get_the_excerpt();
-if(strlen($metaDesc) > 250){
-    $metaDesc = substr($metaDesc,0,250)."...";
+
+$metaDesc = $post->post_excerpt;
+if(strlen($metaDesc) > 550){
+    $metaDesc = substr($metaDesc,0,550)."...";
 }
 ?>
 <img class="titleico" src="<?php bloginfo( 'template_directory' ); ?>/images/<?php echo $postType; ?>-mini.png" alt="<?php echo get_post_type_object($postType)->labels->singular_name; ?>"/> <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2>
-<p><?php the_excerpt(); ?>
+<p><?php echo $metaDesc; ?>
 
 </p>
 </div><!-- end feat-item -->

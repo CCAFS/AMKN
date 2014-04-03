@@ -416,6 +416,7 @@ h1.feat-maintitle {
 }
 .ccafs_activities {
     width: 500px;
+    height: 130px;
 }
 .ccafs_activities img.image {
   float: left;
@@ -1713,5 +1714,7 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
 /* ESRI CSS */
 
 .esriSimpleSliderTL {
-  left: 96.5% ! important;
+   
+  left: initial !important;
+  right: 0.5em !important;
 }
