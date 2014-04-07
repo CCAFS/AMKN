@@ -69,15 +69,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
   <div dojoType="dijit.layout.BorderContainer" design="headline" gutters="true" liveSplitters="false" id="borderContainer" style='<?php echo $size?>'>
     
     <div id="map-side" dojoType="dijit.layout.ContentPane" splitter="false" region="center" style="widows: 100%; display: inline; overflow:hidden;">
-      <!--  Base map -->
-      <div id="basemap-gallery">
-        <div data-dojo-type="dijit/TitlePane" data-dojo-props="title:'Basemap', closable:false,  open:false">
-          <div class="hide" data-dojo-type="dijit/layout/ContentPane" style="width:380px; height:280px; overflow:auto;">
-            <div id="basemapGallery" ></div>            
-          </div>
-        </div>
-      </div>
-      <!--  end Base map -->
+    
       <div <?php echo $style?> id="tb3" class="hide"> 
       </div>
       <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
@@ -85,14 +77,38 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
       <?php endwhile; // end of the loop. ?>
     </div>
     
-    <div id="onthemap" <?php echo $style?> dojoType="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="235" splitter="<?php echo $splitter?>" region="left" style="width: 235px;" startExpanded="true">
+    <div id="onthemap" <?php echo $style?> dojoType="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="259" splitter="<?php echo $splitter?>" region="left" style="width: 259px;" startExpanded="true">
       <!--Here is the calling to the template that show the left menu-->
         <?php get_template_part( 'content_type', 'filters_list2' ); ?>
+
+          <!--  Base map -->
+          <div>
+            <div id="cFiltersList2" style="width: 100%; height: 100%; overflow: hidden;"></div>
+            <div id="basemapGallery" class="drop-panel" ></div> 
+            <div id="legendDiv" class="drop-panel"></div>
+            <div id="regions" class="drop-panel">
+              <ul class="homebox-list zoom_in-list">
+              <li><a href="javascript:void(0)" onClick="go2Region('-268581.06491998816;1492308.2161012604', 5);">West Africa</a></li>
+              <li><a href="javascript:void(0)" onClick="go2Region('3997216.609617994;-51108.259032608126', 5);">East Africa</a></li>
+              <li><a href="javascript:void(0)" onClick="go2Region('8610344.140683722;2172292.0197260105', 5);">South Asia</a></li>
+              </ul>
+            </div>
+          </div>   
+          <!--  end Base map -->
+       <div id="panel-buttons">
+      <button id="filter-button" class="panel-button selected"> &nbsp;</button>
+      <button id="legend-button" class="panel-button"> &nbsp;</button>
+      <button id="basemap-button" class="panel-button"> &nbsp;</button>
+      <button id="region-button" class="panel-button"> &nbsp;</button>
+      <button id="reset-button" class="panel-button" onClick="zoomToOExt();"> &nbsp;</button>
+    </div>    
     </div>
+    
   </div>
 
     <!-- featured section starts here -->
 </div>
+
 
 
 </div>

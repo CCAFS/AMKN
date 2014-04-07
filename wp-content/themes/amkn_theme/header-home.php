@@ -89,9 +89,28 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                         }, function(){                                                        
                             onFeatureLeave();
                         });
-                    },
-                });                               
+                    }
+                }); 
+                $( "#basemap-button" ).click(function() {
+                  $( this ).addClass("selected").siblings().removeClass("selected");  
+                  $( "#basemapGallery" ).show().siblings().hide();
+                }); 
+                $( "#legend-button" ).click(function() {
+                  $( this ).addClass("selected").siblings().removeClass("selected");  
+                  $( "#legendDiv" ).show().siblings().hide();
+                }); 
+                $( "#filter-button" ).click(function() {
+                  $( this ).addClass("selected").siblings().removeClass("selected");  
+                  $( "#cFiltersList2" ).show().siblings().hide();
+                }); 
+                $( "#region-button" ).click(function() {
+                  $( this ).addClass("selected").siblings().removeClass("selected");  
+                  $( "#regions" ).show().siblings().hide();
+                }); 
+                  
             });
+
+            
         </script>
         <!--<script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5compact"></script>-->
         <!--<link rel="stylesheet" href="http://js.arcgis.com/3.7/js/esri/css/esri.css">-->

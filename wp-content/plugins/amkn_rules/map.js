@@ -1682,7 +1682,7 @@ function buildLayerListTree(layer,layerName,single,soon) {
 //                  key: layer.layerInfos[$i].id
                   icon: '../../../../images/data_layersM.png',
                   hideCheckbox: true,
-                  unselectable: true,
+                  unselectable: true
 //                  icon: '../../../../images/map_icon.png'
                 });
               //Here comes the title or header layer's group
