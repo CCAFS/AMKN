@@ -1184,11 +1184,11 @@ img.site-photo {
 .site-video {
     background: none repeat scroll 0 0 #F1F1F1;
     float: left;
-    padding: 0 30px;
+    padding: 0 10px;
 }
 #vtab {
     font-size: 14px;
-    height: 100%;
+    height: auto;
     margin: auto;
     width: 100%;
 }
@@ -1300,12 +1300,13 @@ ul#vtab {
     border-style: solid;
     border-width: 1px;
     box-shadow: 3px 3px 1px #DFDDDD;
-    margin: 10px 0 0 120px;
+    margin: 9px 0 22px 120px;
     min-height: 500px;
     padding: 12px;
     position: relative;
     z-index: 9;
-    height: 500px;
+    height: auto;
+    overflow: hidden;
 }
 
 #vtab > div > h4 {

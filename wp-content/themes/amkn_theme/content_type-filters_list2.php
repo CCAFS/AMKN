@@ -10,7 +10,7 @@ $args1 = array(
     'public' => true,
     '_builtin' => false
 );
-$excludeTypes = array("flickr_photos", "agtrials","ccafs_activities");
+$excludeTypes = array("flickr_photos", "agtrials");
 $output = 'objects'; // names or objects
 $operator = 'and'; // 'and' or 'or'
 $post_types = get_post_types($args1, $output, $operator);

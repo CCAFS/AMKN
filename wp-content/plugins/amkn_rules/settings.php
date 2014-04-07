@@ -453,7 +453,7 @@ $cccO = isset($ccc) ? "IN" : "BETWEEN";
 $azO = isset($az) ? "IN" : "BETWEEN";
 
 $qargs = array(
-        'post_type' => isset($postTypes) ? explode(",",$postTypes) : array( 'video_testimonials', 'ccafs_sites', 'amkn_blog_posts', 'photo_testimonials', 'biodiv_cases' ),
+        'post_type' => isset($postTypes) ? explode(",",$postTypes) : array( 'video_testimonials', 'ccafs_sites', 'amkn_blog_posts', 'photo_testimonials', 'biodiv_cases', 'ccafs_activities' ),
 	'posts_per_page' => '-1',
         'tax_query' => array(
 		'relation' => 'AND',
@@ -499,11 +499,19 @@ $contentQuery = new WP_Query($qargs);
 $trans = array(" " => ",");
 echo 'Latitude,Longitude,Location,CID,Type' . "\n";
 while( $contentQuery->have_posts() ) : $contentQuery->the_post();
- $geoPoint=strtr(get_post_meta($contentQuery->post->ID, 'geoRSSPoint', true), $trans);
-    if($geoPoint)
-    {
-         echo $geoPoint.",\"".the_title( "", "", false )."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
+  $row = get_post_meta($contentQuery->post->ID, 'geoRSSPoint', false);
+  $tmpGeoPoint = '';
+  foreach ($row as $value) {
+    $geoPoint=strtr($value, $trans);
+    if(($geoPoint && $tmpGeoPoint == '' ) || $geoPoint != $tmpGeoPoint) {
+      echo $geoPoint.",\"".the_title( "", "", false )."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
     }
+    $tmpGeoPoint = $geoPoint;
+  }
+//  $geoPoint=strtr(get_post_meta($contentQuery->post->ID, 'geoRSSPoint', true), $trans);
+//  if($geoPoint) {
+//    echo $geoPoint.",\"".the_title( "", "", false )."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
+//  }
 //    else
 //    {
 //         echo "NP".",\"".the_title( "", "", false )."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
