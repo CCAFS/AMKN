@@ -82,7 +82,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
         <?php get_template_part( 'content_type', 'filters_list2' ); ?>
 
           <!--  Base map -->
-          <div>
+          <div style="height: 86%;">
             <div id="cFiltersList2" style="width: 100%; height: 100%; overflow: hidden;"></div>
             <div id="basemapGallery" class="drop-panel" ></div> 
             <div id="legendDiv" class="drop-panel"></div>

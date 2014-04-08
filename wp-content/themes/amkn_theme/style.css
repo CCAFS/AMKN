@@ -1774,6 +1774,12 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
     background-position: center;
 }
 
+
+
+.panel-button.haslegend{ 
+    background-color: #D3E9D6;
+    border-top: 1px solid #fff;
+}
 .panel-button.selected { 
     background-color: #FFFFFF;
     border-top: 1px solid #fff;

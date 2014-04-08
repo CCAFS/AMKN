@@ -60,6 +60,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                     children: treeData,
                     selectMode: 3,
                     checkbox: true,
+                    debugLevel: 0,
                     onActivate: function(node) {
                         // A DynaTreeNode object is passed to the activation handler
                         // Note: we also get this event, if persistence is on, and the page is reloaded.
@@ -72,13 +73,16 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                         }
 //                            window.open(node.data.url);                       
                     },
-                    onSelect: function(flag, node) {
+                    onSelect: function(flag, node) {  
                       if( !node.data.url ) {
+
                         if (node.data.key == 'accord_ccafs_sites' || node.data.key == 'accord_video_testimonials'  || node.data.key == 'accord_amkn_blog_posts'
                               || node.data.key == 'accord_biodiv_cases' || node.data.key == 'accord_photo_testimonials'|| node.data.key == 'accord_ccafs_activities' || node.data.key.match('taxio_')) {
-//                          var points = node.tree.getSelectedNodes();
-                          if (firstime) updateDataLayerTree(true);
+//                          var points = node.tree.getSelectedNodes(); 
+                            if (firstime) updateDataLayerTree(true); 
                         } else {
+                            if(!flag) {$( "#legend-button" ).removeClass("haslegend");   
+                            }else { $( "#legend-button" ).addClass("haslegend");   }
                           updateLayerVisibilityTree(node,flag);
                         }
                       }
