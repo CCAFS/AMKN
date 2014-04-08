@@ -99,7 +99,7 @@ function initMap(){
     dojo.connect(map,"onZoomEnd",hideLoading);
     dojo.connect(map,'onLoad',function(map){
         createMapMenu();
-//        map.disableScrollWheelZoom();
+        map.disableScrollWheelZoom();
         highlightGraphic=new esri.Graphic(null,cHType);
         map.graphics.add(highlightGraphic);
         dojo.connect(dijit.byId('map'),'resize',resizeMap);
@@ -727,19 +727,20 @@ function updateDataLayerTree(cb)
   var newURL=baseDataURL+"?fmt=csv"+showpts+showimp+showas+showms+showcl+showccc+showaz;
   if(cb)
   {
-      map.removeLayer(dataLayer);
-      dataLayer="";
-      dataLayer=new esri.layers.GraphicsLayer();
-      map.addLayer(dataLayer);
+//      map.removeLayer(dataLayer);
+//      dataLayer="";
+//      dataLayer=new esri.layers.GraphicsLayer();
+//      map.addLayer(dataLayer);
+      dataLayer.clear();
 //      disableFormsOnQuery();
   }
   processCsvData(newURL);
   if(cb)
   {
-      dojo.connect(dataLayer,"onClick",onFeatureClick);
-      dojo.connect(map.graphics,"onClick",onFeatureClick);
-      dojo.connect(dataLayer,"onMouseOver",onFeatureHover);
-      dojo.connect(dataLayer,"onMouseOut",onFeatureLeave);
+//      dojo.connect(dataLayer,"onClick",onFeatureClick);
+//      dojo.connect(map.graphics,"onClick",onFeatureClick);
+//      dojo.connect(dataLayer,"onMouseOver",onFeatureHover);
+//      dojo.connect(dataLayer,"onMouseOut",onFeatureLeave);
       setViewTree();
   }
 }
@@ -1357,7 +1358,7 @@ function getListingContentTree(id){
             cid=csvStore.getValue(item,"CID");
             rt=esri.substitute(data,titleTemplate);
         }
-    });
+    });    
     
     mapPTS=rt==="ccafs_sites"?cconmap.push({
         title: ttl, 
@@ -1416,7 +1417,7 @@ function getListingContentTree(id){
         unselectable: true,
         select: false,
         icon: '../../../../images/ccafs_activities-mini.png'
-    //isLazy: true
+      //isLazy: true
     }):"";
     return;
 }
@@ -1439,7 +1440,7 @@ function findPointsInExtentTree(extent) {
     dojo.forEach(dataLayer.graphics,function(graphic){
         if(extent.contains(graphic.geometry)){
             results.push(getListingContentTree(graphic.attributes.id));
-        }
+          } 
     });
     var onthemap=dijit.byId('onthemap');
     onthemap.attr("title","What&#39;s on the map ("+results.length+")");    
@@ -1561,8 +1562,8 @@ function getItemsAtLocation(sPtX,sPtY,evt)
     var sPt2=new esri.geometry.Point(sPtX+20,sPtY+20);
     var sPt3=new esri.geometry.Point(sPtX+20,sPtY-20);
     var sPt4=new esri.geometry.Point(sPtX-20,sPtY-20);
-//    hoverLayer=new esri.layers.GraphicsLayer();
-    hoverLayer.remove(polyGraphic);
+//    hoverLayer=new esri.layers.GraphicsLayer();    
+//    hoverLayer.remove(polyGraphic);
     hoverLayer.clear();
     points=[map.toMap(sPt1),map.toMap(sPt2),map.toMap(sPt3),map.toMap(sPt4),map.toMap(sPt1)];
     var polygon=new esri.geometry.Polygon();
@@ -1708,9 +1709,11 @@ function buildLayerListTree(layer,layerName,single,soon) {
       }
       var vLyrArray = (typeof vLyr!=="undefined")?vLyr.split(","):new Array();
       for ($j=0;$j<vLyrArray.length;$j++) {
-        $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).select(true);
-        $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).getParent().expand(true);
-        $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).getParent().getParent().expand(true);
+        if($("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]) != null) {
+          $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).select(true);
+          $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).getParent().expand(true);
+          $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).getParent().getParent().expand(true);
+        }
       }
 
       soon.data.title = soon.data.title+" ("+child.length+")";
@@ -1799,17 +1802,21 @@ function unselectCheckParents(node) {
   tmp = parent.getNextSibling();
   while(tmp) {
     children = tmp.getChildren();
-    for(var i=0, l=children.length; i<l; i++){
-      children[i].select(false);
-    }    
+    if(children!==null) {
+      for(var i=0, l=children.length; i<l; i++){
+        children[i].select(false);
+      }
+    }
     tmp = tmp.getNextSibling();
   }
   tmp = parent.getPrevSibling();
   while(tmp) {
     children = tmp.getChildren();
-    for(var i=0, l=children.length; i<l; i++){
-      children[i].select(false);
-    }  
+    if(children!==null) {
+      for(var i=0, l=children.length; i<l; i++){
+        children[i].select(false);
+      }
+    }
     tmp = tmp.getPrevSibling();
   }
 }
