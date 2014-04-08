@@ -88,9 +88,9 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
             <div id="legendDiv" class="drop-panel"></div>
             <div id="regions" class="drop-panel">
               <ul class="homebox-list zoom_in-list">
-              <li><a href="javascript:void(0)" onClick="go2Region('-268581.06491998816;1492308.2161012604', 5);">West Africa</a></li>
-              <li><a href="javascript:void(0)" onClick="go2Region('3997216.609617994;-51108.259032608126', 5);">East Africa</a></li>
-              <li><a href="javascript:void(0)" onClick="go2Region('8610344.140683722;2172292.0197260105', 5);">South Asia</a></li>
+              <li><a href="javascript:void(0)" onClick="go2Region('-268581.06491998816;1492308.2161012604', 5);"><img src="<?php bloginfo('template_directory'); ?>/images/west-africa.png"> West Africa</a></li>
+              <li><a href="javascript:void(0)" onClick="go2Region('3997216.609617994;-51108.259032608126', 5);"><img src="<?php bloginfo('template_directory'); ?>/images/east-africa.png"> East Africa</a></li>
+              <li><a href="javascript:void(0)" onClick="go2Region('8610344.140683722;2172292.0197260105', 5);"><img src="<?php bloginfo('template_directory'); ?>/images/south-asia.png"> South Asia</a></li>
               </ul>
             </div>
           </div>   

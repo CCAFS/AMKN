@@ -344,7 +344,8 @@ ul.taxListing {
     width: 47%;
 }
 ul.homebox-list {
-    font-size: 14px;
+    font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
+    font-size: 16px;
     list-style: none outside none;
     margin: 0;
     padding: 0;
@@ -352,9 +353,17 @@ ul.homebox-list {
 ul.homebox-list li {
     margin: 10px 5px;
 }
+ul.homebox-list li a {
+    color: #444;
+}
+ul.homebox-list li img {
+  width:60px;
+  vertical-align: middle;
+}
 ul.zoom_in-list li {
+    padding-bottom: 35px;
     display: block;
-    margin: 10px 15px 10px 5px !important;
+    padding: 3px;
 }
 .dijitTooltipContents ul.zoom_in-list {
     max-height: 200px !important;
@@ -1776,9 +1785,9 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
 
 
 
-.panel-button.haslegend{ 
-    background-color: #D3E9D6;
-    border-top: 1px solid #fff;
+#legend-button.panel-button.haslegend{ 
+    background-image: url("images/layers_legend.png");
+    
 }
 .panel-button.selected { 
     background-color: #FFFFFF;

@@ -1727,7 +1727,7 @@ function buildLayerListTree(layer,layerName,single,soon) {
         visLyr=layerName;
         layer.setVisibility(true);
         layer.setVisibleLayers(visible);
-        dijit.byId('cFiltersList').selectChild(dijit.byId('accord_legend'));
+        //dijit.byId('cFiltersList').selectChild(dijit.byId('accord_legend'));
         dojo.addClass(document.getElementById("layerbt_"+layerName),"sldMenu");
         map.centerAt(map.extent.getCenter());
     }

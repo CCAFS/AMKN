@@ -80,10 +80,13 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                               || node.data.key == 'accord_biodiv_cases' || node.data.key == 'accord_photo_testimonials'|| node.data.key == 'accord_ccafs_activities' || node.data.key.match('taxio_')) {
 //                          var points = node.tree.getSelectedNodes(); 
                             if (firstime) updateDataLayerTree(true); 
-                        } else {
-                            if(!flag) {$( "#legend-button" ).removeClass("haslegend");   
-                            }else { $( "#legend-button" ).addClass("haslegend");   }
-                          updateLayerVisibilityTree(node,flag);
+                        } else { 
+                          updateLayerVisibilityTree(node,flag);  
+                            if ($("#legendDiv").children().length != 1) {
+                                $( "#legend-button" ).addClass("haslegend"); 
+                            }else{
+                                $( "#legend-button" ).removeClass("haslegend");   
+                            }
                         }
                       }
                     },
@@ -100,8 +103,9 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                   $( "#basemapGallery" ).show().siblings().hide();
                 }); 
                 $( "#legend-button" ).click(function() {
-                  $( this ).addClass("selected").siblings().removeClass("selected");  
-                  $( "#legendDiv" ).show().siblings().hide();
+                  $( this ).addClass("selected").siblings().removeClass("selected"); 
+                  $( this ).removeClass("haslegend"); 
+                  $( "#legendDiv" ).show().siblings().hide(); 
                 }); 
                 $( "#filter-button" ).click(function() {
                   $( this ).addClass("selected").siblings().removeClass("selected");  
