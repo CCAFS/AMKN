@@ -1359,7 +1359,7 @@ function getListingContentTree(id){
             cid=csvStore.getValue(item,"CID");
             rt=esri.substitute(data,titleTemplate);
         }
-    });
+    });    
     
     mapPTS=rt==="ccafs_sites"?cconmap.push({
         title: ttl, 
@@ -1711,9 +1711,11 @@ function buildLayerListTree(layer,layerName,single,soon) {
       }
       var vLyrArray = (typeof vLyr!=="undefined")?vLyr.split(","):new Array();
       for ($j=0;$j<vLyrArray.length;$j++) {
-        $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).select(true);
-        $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).getParent().expand(true);
-        $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).getParent().getParent().expand(true);
+        if($("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]) != null) {
+          $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).select(true);
+          $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).getParent().expand(true);
+          $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).getParent().getParent().expand(true);
+        }
       }
 
       soon.data.title = soon.data.title+" ("+child.length+")";
@@ -1802,17 +1804,21 @@ function unselectCheckParents(node) {
   tmp = parent.getNextSibling();
   while(tmp) {
     children = tmp.getChildren();
-    for(var i=0, l=children.length; i<l; i++){
-      children[i].select(false);
-    }    
+    if(children!==null) {
+      for(var i=0, l=children.length; i<l; i++){
+        children[i].select(false);
+      }
+    }
     tmp = tmp.getNextSibling();
   }
   tmp = parent.getPrevSibling();
   while(tmp) {
     children = tmp.getChildren();
-    for(var i=0, l=children.length; i<l; i++){
-      children[i].select(false);
-    }  
+    if(children!==null) {
+      for(var i=0, l=children.length; i<l; i++){
+        children[i].select(false);
+      }
+    }
     tmp = tmp.getPrevSibling();
   }
 }
