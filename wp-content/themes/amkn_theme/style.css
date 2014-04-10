@@ -1426,3 +1426,9 @@ td.table-color1 {
     float: left; 
     width: 70%;
 }
+
+.source {
+  width: 100%;
+  position: absolute;
+  bottom: 1em;
+}

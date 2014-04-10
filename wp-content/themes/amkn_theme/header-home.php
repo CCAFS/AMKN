@@ -84,7 +84,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                     },
                     onCreate: function(node, nodeSpan) {
                         $(nodeSpan).hover(function(){
-                            onListHover(node.data.key);
+                            onListHover(node.data.key,node.data.url);
                         }, function(){                                                        
                             onFeatureLeave();
                         });

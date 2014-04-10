@@ -29,3 +29,4 @@ $urlJson = get_bloginfo('template_url') . "/ccafs-sites/json.php?table=" . $tabl
 </table>
    
 </div>
+<div class='source'><a href='<?php echo $description->source ?>' target="_blank">Source: Baseline survey</a></div>
