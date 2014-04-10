@@ -444,16 +444,6 @@ function onListHover(id,url){
     }
   } else {
     map.graphics.remove(hoverGraphic);
-<<<<<<< HEAD
-    var id=graphic.attributes.id;
-    hoverGraphic=new esri.Graphic(null,highlightSymbol);
-    map.graphics.add(hoverGraphic);
-    hoverGraphic.setGeometry(graphic.geometry);
-    hoverGraphic.setAttributes({
-        id:id
-    });
-
-=======
     for(var i=0;i<oactnmap[cit[1]].length;i++){
       var graphic=findGraphicById(oactnmap[cit[1]][i].key);      
       if (typeof graphic !== 'undefined') {
@@ -466,7 +456,6 @@ function onListHover(id,url){
         });
       }
     }
->>>>>>> origin/dev
   }
 
 }
