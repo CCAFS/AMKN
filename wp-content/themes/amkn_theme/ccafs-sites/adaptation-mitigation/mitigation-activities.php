@@ -36,3 +36,4 @@ $description = $wpdb->get_row("SELECT * FROM bs_descriptions WHERE bms_id='" . $
     </table>
 
 </div>
+<div class='source'><a href='<?php echo $description->source ?>' target="_blank">Source: Baseline survey</a></div>

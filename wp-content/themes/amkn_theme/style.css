@@ -1793,3 +1793,9 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
     background-color: #FFFFFF;
     border-top: 1px solid #fff;
 }
+.source {
+  width: 100%;
+  position: absolute;
+  bottom: 1em;
+
+}

@@ -37,3 +37,4 @@ $shorts = $wpdb->get_results("SELECT * FROM " . $tableId . " WHERE bms_id='" . $
     </table>
 
 </div>
+<div class='source'><a href='<?php echo $description->source ?>' target="_blank">Source: Baseline survey</a></div>
