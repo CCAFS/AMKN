@@ -15,6 +15,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=<?php bloginfo('charset'); ?>" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
+        <meta name="description" content="The Climate Change Adaptation and Mitigation Knowledge Network (AMKN) is a platform for accessing and sharing current agricultural adaptation and mitigation knowledge from the CGIAR and its partners. It brings together farmers’ realities on the ground and links them with multiple and combined research outputs, to highlight current challenges and inspire new ideas. It aims to assits scientists and stakeholders to assess and adjust their actions in order to ensure future food security, improved smallholder farmers’ resilience and livelihoods.">
         <title><?php
             /*
              * Print the <title> tag based on what is being viewed.
@@ -84,6 +85,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                           updateLayerVisibilityTree(node,flag);  
                             if ($("#legendDiv").children().length != 1) {
                                 $( "#legend-button" ).addClass("haslegend"); 
+
                             }else{
                                 $( "#legend-button" ).removeClass("haslegend");   
                             }
