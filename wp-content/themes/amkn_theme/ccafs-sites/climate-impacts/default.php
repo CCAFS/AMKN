@@ -48,4 +48,6 @@
     Source: <a target="_blank" href="http://www.worldclim.org/">WorldClim database</a>
     <p>Hijmans, R.J., S.E. Cameron, J.L. Parra, P.G. Jones and A. Jarvis, 2005. Very high resolution interpolated climate surfaces for global land areas. <a target="_blank" href="http://www.worldclim.org/worldclim_IJC.pdf">International Journal of Climatology 25: 1965-1978</a></p>
 </div>
-<div class='source'><a href='<?php echo $description->source ?>' target="_blank">Source: Baseline survey</a></div>
+<?php if ($description->source):?>
+  <div class='source'><a href='<?php echo $description->source ?>' target="_blank">Source: Baseline survey</a></div>
+<?php endif;?>
