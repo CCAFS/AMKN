@@ -1,6 +1,7 @@
 <?php
 $bmsId = get_post_meta($post->ID, 'siteId', true);
 $tableId = "bs_mgmt_changes";
+$description = $wpdb->get_row("SELECT * FROM bs_descriptions WHERE bms_id='" . $bmsId . "' AND table_id='" . $tableId . "'");
 $urlJson = get_bloginfo('template_url') . "/ccafs-sites/json.php?table=" . $tableId . "&bmsid=" . $bmsId;
 ?>
 <div id="url-site" style="visibility: hidden;"><?php echo $urlJson ?></div>
