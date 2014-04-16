@@ -285,7 +285,7 @@ function cPop(){
     dijit.popup.close(hQuery);
 }
 function cT(){
-    hideLoading();
+//    hideLoading();
 }
 function showLoading(){
 //    esri.show(loading);
@@ -1494,26 +1494,32 @@ function findPointsInExtentTree(extent) {
             case 'accord_ccafs_sites':                
                 childrenNodes[i].addChild(cconmap);
                 childrenNodes[i].data.title = "CCAFS Sites ("+cconmap.length+")";
+                childrenNodes[i].render();
             break;
-            case 'accord_video_testimonials':              
+            case 'accord_video_testimonials':     
                 childrenNodes[i].addChild(vtonmap);                
-                childrenNodes[i].data.title = "Videos ("+vtonmap.length+")";                
+                childrenNodes[i].data.title = "Videos ("+vtonmap.length+")";
+                childrenNodes[i].render();
             break;
             case 'accord_amkn_blog_posts':
                 childrenNodes[i].addChild(bgonmap);
                 childrenNodes[i].data.title = "Blog Posts ("+bgonmap.length+")";
+                childrenNodes[i].render();
             break;
             case 'accord_biodiv_cases':
                 childrenNodes[i].addChild(bdonmap);               
                 childrenNodes[i].data.title = "Agrobiodiversity Cases ("+bdonmap.length+")";
+                childrenNodes[i].render();
             break;
             case 'accord_photo_testimonials':
                 childrenNodes[i].addChild(ptonmap);                
                 childrenNodes[i].data.title = "Photo Sets ("+ptonmap.length+")";
+                childrenNodes[i].render();
             break;
-            case 'accord_ccafs_activities':
+            case 'accord_ccafs_activities':             
                 childrenNodes[i].addChild(actnmap);                
                 childrenNodes[i].data.title = "Activities ("+actnmap.length+")";
+                childrenNodes[i].render();
             break;
         }
     }

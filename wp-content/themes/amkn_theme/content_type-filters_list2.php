@@ -43,10 +43,9 @@ foreach ($post_types as $post_type) {
         echo $fst == 1 ? "" : ",";
         $fst = 0;
         echo "{ title: \"" . $post_type->label . "\", 
-                key: \"accord_" . $post_type->name . "\", 
-                noLink: true, 
-                isFolder: false,                
-//                select: true,
+                key: \"accord_" . $post_type->name . "\",                 
+                isFolder: true,                
+                select: false,
                 selectMode: 2,
                 hideCheckbox: false,
                     ";
@@ -77,8 +76,7 @@ foreach ($post_types as $post_type) {
     }
 }
 $layers =  ",{ title: \"Data Layer (".count($bookmarks).")\", 
-                key: \"accord_data_layer\", 
-                noLink: true, 
+                key: \"accord_data_layer\",                  
                 isFolder: true,
                 hideCheckbox: true,            
                 select: false,
@@ -116,9 +114,8 @@ $taxonomies=get_taxonomies($args2,$output,$operator);
 if  ($taxonomies) {
   $taxoTree =  ",{ title: \"Filter by Resource Theme\", 
                 key: \"accord_filter_resource_theme\", 
-                noLink: true, 
                 isFolder: true,
-                //hideCheckbox: true,            
+                hideCheckbox: true,            
                 //select: false,
                 //icon: '../../../../images/data_layersM.png',
                 selectMode: 3,
@@ -133,6 +130,7 @@ if  ($taxonomies) {
       $count = count($terms);
       $taxoTree .= "{title: '".$taxonomy->label." (".$count.")', 
                      isFolder: true, 
+                     hideCheckbox: true,
                      key: '".$taxonomy->name."',
                      selectMode: 3,
                      children: [";
