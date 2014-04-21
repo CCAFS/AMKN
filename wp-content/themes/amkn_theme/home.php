@@ -96,12 +96,12 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
           </div>   
           <!--  end Base map -->
        <div id="panel-buttons">
-      <button id="filter-button" class="panel-button selected"> &nbsp;</button>
-      <button id="legend-button" class="panel-button"> &nbsp;</button>
-      <button id="basemap-button" class="panel-button"> &nbsp;</button>
-      <button id="region-button" class="panel-button"> &nbsp;</button>
-      <button id="reset-button" class="panel-button" onClick="zoomToOExt();"> &nbsp;</button>
-    </div>    
+        <button id="filter-button" class="panel-button selected"> &nbsp;</button>
+        <button id="legend-button" class="panel-button"> &nbsp;</button>
+        <button id="basemap-button" class="panel-button"> &nbsp;</button>
+        <button id="region-button" class="panel-button"> &nbsp;</button>
+        <button id="reset-button" class="panel-button" onClick="zoomToOExt();"> &nbsp;</button>
+      </div>    
     </div>
     
   </div>

@@ -154,6 +154,29 @@ function initMap(){
     dojo.connect(hoverLayer,"onMouseOut",onFeatureLeave);    
     dojo.connect(hoverLayer,"onMouseOver",showTT);
     dojo.connect(map,"onLoad",addDataLayers);
+    
+    require(["dijit/Tooltip", "dojo/domReady!"], function(Tooltip){
+      new Tooltip({
+          connectId: ["filter-button"],
+          label: "Resources"
+      });
+      new Tooltip({
+          connectId: ["legend-button"],
+          label: "Data Legend"
+      });
+      new Tooltip({
+          connectId: ["basemap-button"],
+          label: "Base map galery"
+      });
+      new Tooltip({
+          connectId: ["region-button"],
+          label: "CCAFS Regions"
+      });
+      new Tooltip({
+          connectId: ["reset-button"],
+          label: "Reset zoom"
+      });
+  });
 }
 
 function polygonsDraw() {      
@@ -1610,7 +1633,7 @@ function getItemsAtLocation(sPtX,sPtY,evt)
     });
     var gs=new esri.symbol.SimpleFillSymbol().setStyle(esri.symbol.SimpleFillSymbol.STYLE_SOLID);
     polyGraphic=new esri.Graphic(polygon,gs);   
-    hoverLayer.add(polyGraphic);  
+    hoverLayer.add(polyGraphic);
     dojo.connect(hoverLayer,"onClick",function(){      
       var results=[]; 
       tempcid = 0;
