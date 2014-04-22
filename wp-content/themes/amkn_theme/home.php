@@ -128,7 +128,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 
   </div><!-- end Featured -->
 </div>  
-<div class="remodal" data-remodal-id="modal" data-remodal-options='{ "hashTracking": false }'>
+<div class="remodal" style="display:none;" data-remodal-id="modal" data-remodal-options='{ "hashTracking": false }'>
   <div id="whatisamkn" class="modal"> 
     <h1><strong>What is AMKN?</strong></h1>
     <p>
@@ -154,9 +154,11 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
     <p><img src="<?php bloginfo('template_directory'); ?>/images/ccafs_activities-mini.png" alt="">  <strong>CCAFS activities</strong> – Descriptions of specific past and ongoing research being conducted by CCAFS and its partners, including date, location and budget information</p>
     <br>
   </div>
-  <p >For more information on AMKN, visit the About page.</p>
-  <p class="chkmsg">&nbsp;&nbsp;<input type="checkbox" id="chk_showmsg" onchange="applyShowMsg();">Do not show this message again</p>
-  
+  <div id="info" class="left">
+    <p >For more information on AMKN, visit the About page.</p>
+    <p class="chkmsg">&nbsp;&nbsp;<input type="checkbox" id="chk_showmsg" onchange="applyShowMsg();">Do not show this message again</p>
+    <a id="gotoamkn" onclick="closeLandingPage()">Go to AMKN</a>
+  </div>
     
 </div>
 <?php get_footer(); endif; ?>

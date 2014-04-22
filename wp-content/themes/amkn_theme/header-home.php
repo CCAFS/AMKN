@@ -53,6 +53,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
         <script src="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/jquery.dynatree.js" type="text/javascript"></script>
         <script type="text/javascript">
           var firstime = false;
+          var inst;
             jQuery(function ($) {
                 //$(document).ready(function() {
                 // Attach the dynatree widget to an existing <div id="tree"> element
@@ -120,11 +121,18 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                   $( "#regions" ).show().siblings().hide();
                 }); 
 
-                var inst = $('[data-remodal-id=modal]').remodal();
-                inst.open();
-                  
+                
+                var a =getCookie("showmsg"); 
+                if(null!=a&&""!=a&&"true"==a);else{
+                    // Remodal-master http://vodkabears.github.io/remodal/ 
+                    openLandingPage();
+                }
             });
-
+            function openLandingPage(){$('.remodal').show();inst = $('[data-remodal-id=modal]').remodal({ "hashTracking": false });inst.open()}
+            function closeLandingPage(){inst.close()}
+            function applyShowMsg(){showmsg=document.getElementById("chk_showmsg").checked,null!=showmsg&&""!=showmsg&&setCookie("showmsg",showmsg,365)}
+            function getCookie(a){var b=document.cookie,c=b.indexOf(" "+a+"=");if(-1==c&&(c=b.indexOf(a+"=")),-1==c)b=null;else{c=b.indexOf("=",c)+1;var d=b.indexOf(";",c);-1==d&&(d=b.length),b=unescape(b.substring(c,d))}return b}
+            function setCookie(a,b,c){var d=new Date;d.setDate(d.getDate()+c);var e=escape(b)+(null==c?"":"; expires="+d.toUTCString());document.cookie=a+"="+e}
             
         </script>
         <!--<script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5compact"></script>-->
@@ -141,7 +149,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
             </style>
         <?php }
         ?>
-        <!--  Remodal-master  "version": "0.1.3" -->
+        <!--  Remodal-master  "version": "0.1.3" http://vodkabears.github.io/remodal/ -->
         <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.css">
         <script src="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.min.js"></script>
         <?php wp_head(); ?>
