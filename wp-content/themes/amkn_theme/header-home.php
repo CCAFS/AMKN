@@ -117,6 +117,9 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                   $( this ).addClass("selected").siblings().removeClass("selected");  
                   $( "#regions" ).show().siblings().hide();
                 }); 
+
+                var inst = $('[data-remodal-id=modal]').remodal();
+                inst.open();
                   
             });
 
@@ -136,9 +139,15 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
             </style>
         <?php }
         ?>
+        <!--  Remodal-master  "version": "0.1.3" -->
+        <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.css">
+        <script src="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.min.js"></script>
         <?php wp_head(); ?>
     </head>
     <body class="tundra">
+        
+ 
+
         <div id="header">
             <div class="logos"><a href="<?php bloginfo('url');echo $var; ?>">
                     <img class="amkn_logo" src="<?php bloginfo('template_directory'); ?>/images/amkn.gif" alt="AMKN logo" />

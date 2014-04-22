@@ -18,6 +18,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 
 //get_sidebar( 'home' );
 ?>
+<div class="remodal-bg">
 <div class="tundra">
 
 <div <?php echo $style?> id="yellow_navbar">       
@@ -118,6 +119,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 
 <div id="featured">
   <div id="container">
+    <a data-remodal-target="remodal" href="#remodal">Call the modal with data-remodal-id="modal"</a>
     <h1 class="feat-maintitle">Featured on AMKN</h1>
     <!--<button onClick="feedback_widget.show()" dojoType="dijit.form.Button" type="submit" class="amknButton msGenButton right"><a>Community <br />Feedback</a></button>-->
     <?php get_template_part( 'teaser', 'video' ); ?><!-- end column 1 -->
@@ -127,4 +129,21 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 
   </div><!-- end Featured -->
 </div>  
+<div class="remodal" data-remodal-id="modal" data-remodal-options='{ "hashTracking": false }'>
+    <h1>AMKN</h1>
+    <p>
+      The Climate Change Adaptation and Mitigation Knowledge Network (AMKN) is a platform for accessing and sharing current agricultural adaptation and mitigation knowledge from the CGIAR and its partners. It brings together farmers’ realities on the ground and links them with multiple and combined research outputs, to highlight current challenges and inspire new ideas. It aims to assits scientists and stakeholders to assess and adjust their actions in order to ensure future food security, improved smallholder farmers’ resilience and livelihoods.
+    </p>
+    <p>  
+      AMKN aggregates, visualizes and interconnects research outputs from the CGIAR Research Program on Climate Change, Agriculture and Food Security (CCAFS) focused on addressing risk management, progressive adaptation and pro-poor mitigation options for agricultural and food systems.
+    </p>
+    <p>  
+      The AMKN map allows users to explore a large volume of climatic, environmental, and social information from diverse sources, including data visualization tools, map layers, and multimedia. 
+    </p>
+    <br>
+    
+    
+</div>
 <?php get_footer(); endif; ?>
+
+</div>
