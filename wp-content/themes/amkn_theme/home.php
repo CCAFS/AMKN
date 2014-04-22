@@ -119,7 +119,6 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 
 <div id="featured">
   <div id="container">
-    <a data-remodal-target="remodal" href="#remodal">Call the modal with data-remodal-id="modal"</a>
     <h1 class="feat-maintitle">Featured on AMKN</h1>
     <!--<button onClick="feedback_widget.show()" dojoType="dijit.form.Button" type="submit" class="amknButton msGenButton right"><a>Community <br />Feedback</a></button>-->
     <?php get_template_part( 'teaser', 'video' ); ?><!-- end column 1 -->
@@ -130,7 +129,8 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
   </div><!-- end Featured -->
 </div>  
 <div class="remodal" data-remodal-id="modal" data-remodal-options='{ "hashTracking": false }'>
-    <h1>AMKN</h1>
+  <div id="whatisamkn" class="modal"> 
+    <h1><strong>What is AMKN?</strong></h1>
     <p>
       The Climate Change Adaptation and Mitigation Knowledge Network (AMKN) is a platform for accessing and sharing current agricultural adaptation and mitigation knowledge from the CGIAR and its partners. It brings together farmers’ realities on the ground and links them with multiple and combined research outputs, to highlight current challenges and inspire new ideas. It aims to assits scientists and stakeholders to assess and adjust their actions in order to ensure future food security, improved smallholder farmers’ resilience and livelihoods.
     </p>
@@ -141,7 +141,22 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
       The AMKN map allows users to explore a large volume of climatic, environmental, and social information from diverse sources, including data visualization tools, map layers, and multimedia. 
     </p>
     <br>
-    
+  </div>
+
+  <div id="whatonthemap" class="modal"> 
+    <h1><strong>What’s on the map?</strong></h1>
+    <p><img src="<?php bloginfo('template_directory'); ?>/images/data_layersM.png" alt="">  <strong>Data layers </strong> – Geographic data such as crop suitability, crop yield, soils, drought indices and GHG emissions scenarios </p>
+    <p><img src="<?php bloginfo('template_directory'); ?>/images/ccafs_sites-mini.png" alt="">  <strong>CCAFS sites</strong> – Descriptions, related media, and facts and statistics on CCAFS focal research sites in five regions of the world: East Africa, West Africa, South Asia, Southeast Asia and Latin America</p>
+    <p><img src="<?php bloginfo('template_directory'); ?>/images/amkn_blog_posts-mini.png" alt="">  <strong>Blogs</strong> – Original posts from the CCAFS, CIAT-DAPA and other online sources relating to climate change, agriculture and food security research in the global tropics</p>
+    <p><img src="<?php bloginfo('template_directory'); ?>/images/photo_testimonials-mini.png" alt="">  <strong>Photos</strong> – Photosets from around the world highlighting research projects, workshops and events from CCAFS and its partners</p>
+    <p><img src="<?php bloginfo('template_directory'); ?>/images/video_testimonials-mini.png" alt=""> <strong>Videos</strong> – Farmer testimonials, interviews, and informational videos relating to climate change mitigation and adaptation in CCAFS sites and the rest of the world</p>
+    <p><img src="<?php bloginfo('template_directory'); ?>/images/biodiv_cases-mini.png" alt="">  <strong>Agrobiodiversity case studies</strong> – Stories from the Platform for Agrobiodiversity Research highlighting benefits, uses and challenges confronting agricultural biodiversity in the tropics</p>
+    <p><img src="<?php bloginfo('template_directory'); ?>/images/ccafs_activities-mini.png" alt="">  <strong>CCAFS activities</strong> – Descriptions of specific past and ongoing research being conducted by CCAFS and its partners, including date, location and budget information</p>
+    <br>
+  </div>
+  <p >For more information on AMKN, visit the About page.</p>
+  <p class="chkmsg">&nbsp;&nbsp;<input type="checkbox" id="chk_showmsg" onchange="applyShowMsg();">Do not show this message again</p>
+  
     
 </div>
 <?php get_footer(); endif; ?>

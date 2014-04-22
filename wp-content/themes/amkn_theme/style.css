@@ -1799,3 +1799,28 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
   bottom: 1em;
 
 }
+
+/*  Modal landing page  */
+
+.remodal{
+    padding: 35px 20px !important;
+    max-width: 900px !important;
+}
+
+.remodal div { 
+    text-align: justify;
+    float: left;
+    margin: 0 1em;
+    font-size: 0.9em;
+}
+
+.remodal #whatisamkn {
+    width: 37%;}
+.remodal #whatonthemap{
+    width: 57%;}
+.remodal #whatonthemap img{
+    float: left;
+    margin-right: 0.8em;
+    width: 22px;
+    height: 22px;
+}
