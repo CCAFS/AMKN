@@ -34,4 +34,8 @@ foreach ($post_types  as $post_type ) {
   }
 ?>
 
-        <div class="onmap" id="accord_legend" dojoType="dijit.layout.AccordionPane" title="Data Legend"> <div id="legendDiv"></div> </div>  </div>
+<div class="onmap" id="accord_legend" dojoType="dijit.layout.AccordionPane" title="Data Legend">
+<div id="legendDiv"></div>
+</div>  
+</div>
+

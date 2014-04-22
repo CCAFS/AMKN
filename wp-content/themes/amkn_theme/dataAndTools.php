@@ -2,15 +2,17 @@
 require('../../../wp-blog-header.php'); 
 get_header('home');
 
-$url = "http://lab.amkn.org/wp-content/themes/amkn_theme/services.php/DataAndTools/get";
+$url = "http://amkn.org/wp-content/themes/amkn_theme/services.php/DataAndTools/get";
 $http_respone_header = file_get_contents($url);
 $apps = json_decode($http_respone_header,true);
 //echo "<pre>".print_r( json_decode($http_respone_header,true),true)."</pre>"; 
 ?>
 <script>
+
 //  document.getElementById("menu-item-2540").className =
 //   document.getElementById("menu-item-2540").className.replace
 //      ( /(?:^|\s)current-menu-item(?!\S)/ , '' );
+
   document.getElementById("menu-item-846").className =
    document.getElementById("menu-item-846").className.replace
       ( /(?:^|\s)current-menu-item(?!\S)/ , '' );

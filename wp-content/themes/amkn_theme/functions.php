@@ -3,6 +3,7 @@
  * @package WordPress
  * @subpackage AMKNToolbox
  */
+
 /**
  * Make theme available for translation
  * Translations can be filed in the /languages/ directory
@@ -11,10 +12,9 @@
  */
 load_theme_textdomain('AMKNToolbox', TEMPLATEPATH . '/languages');
 
-
-
 $locale = get_locale();
 $locale_file = TEMPLATEPATH . "/languages/$locale.php";
+
 if (is_readable($locale_file))
    require_once( $locale_file );
 
@@ -37,18 +37,16 @@ register_nav_menus(array(
  */
 add_theme_support('automatic-feed-links');
 
+
 /**
  * Get our wp_nav_menu() fallback, wp_page_menu(), to show a home link.
  */
 function AMKNToolbox_page_menu_args($args) {
    $args['show_home'] = true;
-
-
-
    return $args;
 }
-
 add_filter('wp_page_menu_args', 'AMKNToolbox_page_menu_args');
+
 
 /**
  * Register widgetized area and update sidebar with default widgets
@@ -89,6 +87,7 @@ function distance($point1, $point2) {
    $coo2 = explode(',', trim($point2));
    return sqrt(pow(($coo1[0] - $coo2[0]), 2) + pow(($coo1[1] - $coo2[1]), 2)) * 235;
 }
+
 
 
 /**

@@ -22,6 +22,7 @@ dojo.require("esri.tasks.identify");
 dojo.require("esri.dijit.Popup");        
 dojo.require("esri.dijit.PopupTemplate");
 dojo.require("esri.lang");
+
 var maxExtX=-20006031.09149561;
 var maxExtY=-12433824.981519768;
 var minExtX=18816641.322648488;
@@ -31,7 +32,9 @@ var intMaxExtY=7524106.992139481;
 var intMinExtX=-7728835.025551194;
 var intMinExtY=-5586372.099330453;
 var initLvl=3;
+
 var map,visLyr,popup,popupOptions,tLayers=[],vLyr,qPop,identifyTask,identifyParams,legend,hQuery,cPx,cHType,polyGraphic,hoverGraphic,hoverText,currentLocation,popupWindow,cntr,idCT,highlightSymbol,highlightGraphic,showLegend,sGCP,baseMP,iconT,baseExt,ctrPt,lvlMp,loadExtent,mapLevel,mapExtent,basemapGallery,tiledMapServiceLayer,gcpFarmingSystems,africaTSLayers,multipoint,popupSize,loading,initExtent,maxExtent,dataLayer,hoverLayer,syms6,syms4,syms5,syms2,syml6,syml4,syml5,syml2,visible=[],legendLayers=[];
+
 var vtonmap=[];
 var cconmap=[];
 var bgonmap=[];
@@ -306,7 +309,7 @@ function cPop(){
     dijit.popup.close(hQuery);
 }
 function cT(){
-    hideLoading();
+//    hideLoading();
 }
 function showLoading(){
 //    esri.show(loading);
@@ -478,6 +481,7 @@ function onListHover(id,url){
       }
     }
   }
+
 }
 function onFeatureLeave(){
     map.graphics.clear();
@@ -811,6 +815,7 @@ function updateDataLayer(cb)
     var showaz="";
     var hasPts="";
     var hasRes="";
+    
     for(var i=0;i<pts.length;i++){
         if(pts.elements[i].checked)
 
@@ -819,6 +824,7 @@ function updateDataLayer(cb)
             hasPts=true;
         }
     }
+
     for(var i=0;i<imp.length;i++)
     {
         if(imp.elements[i].checked)
@@ -1113,13 +1119,6 @@ function setViewTree()
 }
 function getView()
 {
-//    var pts=document.pts;
-//    var imp=document.impacts;
-//    var as=document.adaptation_strategy;
-//    var ms=document.mitigation_strategy;
-//    var cl=document.crops_livestock;
-//    var ccc=document.climate_change_challenges;
-//    var az=document.agroecological_zones;
     var showpts="";
     var showimp="";
     var showas="";
@@ -1173,6 +1172,7 @@ function getView()
                             var ctPT=new esri.geometry.Point(parseFloat(cntr.split(";")[1]),parseFloat(cntr.split(";")[0]));
                             ctPT=esri.geometry.geographicToWebMercator(ctPT);
                             ctrPt=ctPT.x+";"+ctPT.y;
+
           break;
           case"idCT":
                             idCT=theMap[mp].split("=")[1];
@@ -1192,6 +1192,7 @@ function getView()
                             }else{
                                 document.getElementById("gcpFS").checked="";
                             }
+
           break;
           case"bm":
             baseMP=theMap[mp].split("=")[1];
@@ -1517,26 +1518,32 @@ function findPointsInExtentTree(extent) {
             case 'accord_ccafs_sites':                
                 childrenNodes[i].addChild(cconmap);
                 childrenNodes[i].data.title = "CCAFS Sites ("+cconmap.length+")";
+                childrenNodes[i].render();
             break;
-            case 'accord_video_testimonials':              
+            case 'accord_video_testimonials':     
                 childrenNodes[i].addChild(vtonmap);                
-                childrenNodes[i].data.title = "Videos ("+vtonmap.length+")";                
+                childrenNodes[i].data.title = "Videos ("+vtonmap.length+")";
+                childrenNodes[i].render();
             break;
             case 'accord_amkn_blog_posts':
                 childrenNodes[i].addChild(bgonmap);
                 childrenNodes[i].data.title = "Blog Posts ("+bgonmap.length+")";
+                childrenNodes[i].render();
             break;
             case 'accord_biodiv_cases':
                 childrenNodes[i].addChild(bdonmap);               
                 childrenNodes[i].data.title = "Agrobiodiversity Cases ("+bdonmap.length+")";
+                childrenNodes[i].render();
             break;
             case 'accord_photo_testimonials':
                 childrenNodes[i].addChild(ptonmap);                
                 childrenNodes[i].data.title = "Photo Sets ("+ptonmap.length+")";
+                childrenNodes[i].render();
             break;
-            case 'accord_ccafs_activities':
+            case 'accord_ccafs_activities':             
                 childrenNodes[i].addChild(actnmap);                
                 childrenNodes[i].data.title = "Activities ("+actnmap.length+")";
+                childrenNodes[i].render();
             break;
         }
     }
@@ -1561,6 +1568,7 @@ function createDataLayersBranch () {
     totalLayers+=buildLayerListTree (layer,ly[0],ly[1],soon);
   }
 }
+
 function findPointsInExtent(extent){
     var results=[];
     vtonmap=[];
@@ -1886,7 +1894,7 @@ function updateLayerVisibility(lID,lyrID){
     }
     visLyr=lyrID;
     vLyr="";
-//    var test="";
+
     visible=[];
     dojo.forEach(inputs,function(input){
         if(input.checked){

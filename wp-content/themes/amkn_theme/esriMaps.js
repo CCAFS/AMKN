@@ -79,8 +79,6 @@ function resizeMap() {
     }, 500);
 }
 
-
-
 function buildLayerList(layer) {
     var infos = layer.layerInfos, info;
     var items = [];

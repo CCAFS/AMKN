@@ -14,6 +14,7 @@ var json = (function() {
 
 
 $(function () {
+  if(json !=''){
     	
     	// Radialize the colors
 		Highcharts.getOptions().colors = Highcharts.map(Highcharts.getOptions().colors, function(color) {
@@ -66,5 +67,8 @@ $(function () {
                 ]
             }]
         });
+      } else {
+        $('#container-chart').append('NOT AVAILABLE');
+      }
     });
     

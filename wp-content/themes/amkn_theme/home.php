@@ -147,3 +147,4 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 <?php get_footer(); endif; ?>
 
 </div>
+

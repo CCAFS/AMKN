@@ -16,4 +16,6 @@ $urlJson = get_bloginfo('template_url') . "/ccafs-sites/json.php?table=" . $tabl
 </div> 
 
 <div id="container-chart" style="float: left;width: 65%; height: auto; margin: 0 auto"></div>
-<div class='source'><a href='<?php echo $description->source ?>' target="_blank">Source: Baseline survey</a></div>
+<?php if ($description->source):?>
+  <div class='source'><a href='<?php echo $description->source ?>' target="_blank">Source: Baseline survey</a></div>
+<?php endif;?>
