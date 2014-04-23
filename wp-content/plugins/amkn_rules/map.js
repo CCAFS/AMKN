@@ -112,7 +112,7 @@ function initMap(){
         });
         overviewMapDijit.startup();        
         initBackMap();
-        dojo.removeClass("tb3","hide");
+        dojo.removeClass("tb3","hide");       
     });
     dojo.connect(map,"onExtentChange",function(extent){
         setViewTree();
@@ -156,7 +156,7 @@ function initMap(){
     dojo.connect(hoverLayer,"onMouseOut",onFeatureLeave);    
     dojo.connect(hoverLayer,"onMouseOver",showTT);
     dojo.connect(map,"onLoad",addDataLayers);
-}
+  }
 
 function polygonsDraw() {      
 //create a popup to replace the map's info window
@@ -285,16 +285,16 @@ function cPop(){
     dijit.popup.close(hQuery);
 }
 function cT(){
-//    hideLoading();
+    hideLoading();
 }
 function showLoading(){
-//    esri.show(loading);
+    esri.show(loading);
     dijit.popup.close(hQuery);
 //    map.disableMapNavigation();
 //    map.disableScrollWheelZoom();
 }
 function hideLoading(error){
-//    esri.hide(loading);
+    esri.hide(loading);
 //    map.enableMapNavigation();
 //    map.disableScrollWheelZoom();
 //    findPointsInExtent(map.extent);
@@ -302,6 +302,7 @@ function hideLoading(error){
 //    setViewTree();
 }
 function processCsvData(url){
+    showLoading();
     var frameUrl=new dojo._Url(window.location.href);
     var csvUrl=new dojo._Url(url);
     if(frameUrl.host!==csvUrl.host||frameUrl.port!==csvUrl.port||frameUrl.scheme!==csvUrl.scheme){
@@ -415,7 +416,7 @@ function findGraphicById(id){
 **/
 function onFeatureHover(evt){
     var gPt2Spt=map.toScreen(evt.graphic.geometry);
-    getItemsAtLocation(gPt2Spt.x,gPt2Spt.y,evt);
+    getItemsAtLocation(gPt2Spt.x,gPt2Spt.y,evt);    
 }
 
 /**
@@ -461,7 +462,7 @@ function onListHover(id,url){
 }
 function onFeatureLeave(){
     map.graphics.clear();
-    hoverLayer.remove(polyGraphic);
+    hoverLayer.clear();
 }
 function showTT(evt){}
 function onQueryByPolyClick(){}
@@ -1617,7 +1618,7 @@ function getItemsAtLocation(sPtX,sPtY,evt)
     });
     var gs=new esri.symbol.SimpleFillSymbol().setStyle(esri.symbol.SimpleFillSymbol.STYLE_SOLID);
     polyGraphic=new esri.Graphic(polygon,gs);   
-    hoverLayer.add(polyGraphic);  
+    hoverLayer.add(polyGraphic); 
     dojo.connect(hoverLayer,"onClick",function(){      
       var results=[]; 
       tempcid = 0;
