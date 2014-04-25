@@ -161,7 +161,7 @@ ul.navigation li:hover .sub-menu {
 ul.navigation li a {
     color: #FFFFFF;
     text-decoration: none;
-    padding: 0.35em 0.5em 0.5em 0.5em;
+    padding: 0.35em 0.5em 0.35em 0.5em;
 }
 
 /* Navigation SUB MENU*/
@@ -170,11 +170,11 @@ ul.navigation li ul.sub-menu {
     display: none;
     position: absolute;
     list-style: none;
-    margin: 0;
-    padding: 6px 0px 0px 0px;
+    padding: 5px 0px 0px 0px;
     top: 51px;
     left: 0;
     font-size: 0.7em;
+    background: url(./images/transparent.gif) transparent !important;
 }
 
 ul.navigation li ul.sub-menu li { 
@@ -868,9 +868,7 @@ ul.footercredits {
     white-space: nowrap;
     z-index: 1000;
 }
-.esriSimpleSlider {
-    top: 50px !important;
-}
+
 #container {
     display: table;
     margin: 0 auto -10px;
@@ -1728,10 +1726,14 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
 
 /* ESRI CSS */
 
-.esriSimpleSliderTL {
-   
-  left: initial !important;
-  right: 0.5em !important;
+.esriSimpleSliderTL { 
+}
+
+.esriSimpleSlider{
+     clear: left;
+    top:3% !important;
+     
+    left: 96% !important;
 }
 
 
