@@ -206,36 +206,23 @@ function polygonsDraw() {
       title: "{address}",
       fieldInfos: [        
         {
-          fieldName: "COUNTRY",
+          fieldName: "REGION",
           visible: true,
-          label: "COUNTRY"                
-        },
-        {
-          fieldName: "Shape",
-          visible: true,
-          label: "Shape"                
-        },
-        {
-          fieldName: "SHAPE_AREA",
-          visible: true,
-          label: "SHAPE_AREA"                
-        },
-        {
-          fieldName: "FEATURECLA",
-          visible: true,
-          label: "FEATURECLA"                
+          label: "NAME"                
         }
       ]      
     });
 
     //create a feature layer based on the feature collection
-    var featureLayer = new esri.layers.FeatureLayer("http://gisweb.ciat.cgiar.org/arcgis/rest/services/CCAFS/ccafs_climate/MapServer/0",
+//    var featureLayer = new esri.layers.FeatureLayer("http://services.arcgis.com/mBg08vgayOnqC7Si/arcgis/rest/services/Division_Politca_Mundo/FeatureServer/0",
+    var featureLayer = new esri.layers.FeatureLayer("http://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/World_Regions/FeatureServer/0",
     {
       mode: esri.layers.FeatureLayer.MODE_SNAPSHOT,
       infoTemplate: popupTemplate,
       outFields: ["*"]
     });
-    featureLayer.setDefinitionExpression("COUNTRY IN ('Colombia','Brazil','Peru','Nigeria','argentina')");
+//    featureLayer.setDefinitionExpression("NAME IN ('COLOMBIA')");
+//    featureLayer.setDefinitionExpression("NAME IN ('Caribbean')");
     var symbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([0, 0, 0, 1]), 1), new dojo.Color([0, 255, 0, 0.35]));
     featureLayer.setRenderer(new esri.renderer.SimpleRenderer(symbol));
     map.addLayer(featureLayer);
@@ -276,7 +263,7 @@ function polygonsDraw() {
           var highlightGraphic = new esri.Graphic(evt.graphic.geometry,highlightSymbol);          
           map.graphics.add(highlightGraphic);
           map.graphics.on("click", function(){
-            alert('ttt');
+//            alert('ttt');
           });
 //          dialog.setContent(content);
 

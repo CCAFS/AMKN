@@ -70,7 +70,7 @@ h3 {
     clear: left;
     color: #275C03;
     display: block;
-    font-family: open_sanscondensed_light,trebuchet MS,Helvetica,Sans-serif;
+    /*font-family: open_sanscondensed_light,trebuchet MS,Helvetica,Sans-serif;*/
     font-size: 34px;
     font-weight: lighter;
     margin: 0;
@@ -965,8 +965,8 @@ ul.side-followlist li img {
 }
 .taxItems {
     color: #55322B;
-    font-size: 11px;
-    line-height: 25px;
+    /*font-size: 11px;*/
+    line-height: 20px;
 }
 #embedPage > div.content {
     float: none;

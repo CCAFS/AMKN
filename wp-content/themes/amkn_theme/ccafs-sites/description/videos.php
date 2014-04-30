@@ -19,6 +19,7 @@ if (get_post_meta($post->ID, 'rangevideos', true)) {
 
 
 $sitepoint = get_post_meta($post->ID, 'geoRSSPoint', true);
+$siteTitle = $post->post_name;
 query_posts("posts_per_page=80&post_type=video_testimonials");
 $postType = "";
 ?>
@@ -131,7 +132,8 @@ $postType = "";
                   }
                }
             }
-            ?>
+            ?> 
+            <h3 class="videolabels"><?php echo ucfirst($siteTitle);?><span class="taxItems"> to <?php echo round(distance($sitepoint, $videopoint),2)." KM"?></span></h3>         
          </div>
 
          <a class="close-reveal-modal">&#215;</a>
