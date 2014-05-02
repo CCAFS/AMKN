@@ -157,6 +157,53 @@ function initMap(){
     dojo.connect(hoverLayer,"onMouseOver",showTT);
     dojo.connect(map,"onLoad",addDataLayers);
   }
+  
+  function getActivitiesByCountry(){
+    showLoading();
+//    var frameUrl=new dojo._Url(window.location.href);
+//    var csvUrl=new dojo._Url(url);
+//    if(frameUrl.host!==csvUrl.host||frameUrl.port!==csvUrl.port||frameUrl.scheme!==csvUrl.scheme){
+//        url=(proxyUrl)?proxyUrl+"?"+url:url;
+//        console.log(url);        
+//    }    
+    csvStore=new dojox.data.CsvStore({
+        url:'http://amkn.local/mapregions/'
+    });
+    csvStore.fetch({
+        onComplete:function(items,request){
+            var content="";
+            var labelField,latField,longField,typeField,cIDField;
+            dojo.forEach(items,function(item,index){
+                if(index===0){
+                    var fields=getAttributeFields(item);
+                    labelField=fields[0];
+                    latField=fields[1];
+                    longField=fields[2];
+                    typeField=fields[3];
+                    cIDField=fields[4];
+                }
+//                var label=csvStore.getValue(item,labelField)||"";
+                var id=csvStore.getIdentity(item);
+                addGraphic(id,csvStore.getValue(item,latField),csvStore.getValue(item,longField),csvStore.getValue(item,typeField));
+            });
+            dojo.forEach(dataLayer.graphics,function(graphic){
+                var geometry=graphic.geometry;
+                if(geometry){
+                    multipoint.addPoint({
+                        x:geometry.x,
+                        y:geometry.y
+                    });
+                }
+            });
+            if(multipoint.points.length>0){
+                maxExtent=multipoint.getExtent();
+            }
+            hideLoading();
+//            enableFormsOnQuery();
+        },
+        onError:function(error){}
+    });
+  }
 
 function polygonsDraw() {      
 //create a popup to replace the map's info window
@@ -208,13 +255,17 @@ function polygonsDraw() {
     var featureLayer = new esri.layers.FeatureLayer("http://gisweb.ciat.cgiar.org/arcgis/rest/services/CCAFS/ccafs_climate/MapServer/0",
     {
       mode: esri.layers.FeatureLayer.MODE_SNAPSHOT,
-      infoTemplate: popupTemplate,
+//      infoTemplate: popupTemplate,
       outFields: ["*"]
     });
-    featureLayer.setDefinitionExpression("COUNTRY IN ('Colombia','Brazil','Peru','Nigeria','argentina')");
-    var symbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([0, 0, 0, 1]), 1), new dojo.Color([0, 255, 0, 0.35]));
+    featureLayer.setDefinitionExpression("COUNTRY IN ('Solomon Islands','Brazil','Peru','Nigeria','argentina')");
+//    var symbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([0, 0, 0, 1]), 1), new dojo.Color([0, 255, 0, 0.35]));
+    var symbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255, 255, 255, 0.35]), 1), new dojo.Color([125, 125, 125, 0.35]));
     featureLayer.setRenderer(new esri.renderer.SimpleRenderer(symbol));
     map.addLayer(featureLayer);
+    featureLayer.on("click", function(){
+      alert('ttt');
+    });
     
 //    map.infoWindow.resize(245,125);
         
@@ -228,7 +279,7 @@ function polygonsDraw() {
           esri.symbol.SimpleFillSymbol.STYLE_NULL, 
           new esri.symbol.SimpleLineSymbol(
             esri.symbol.SimpleLineSymbol.STYLE_SOLID, 
-            new dojo.Color([255,0,0]), 3
+            new dojo.Color([125,125,125]), 3
           ), 
           new dojo.Color([125,125,125,0.35])
         );
@@ -250,10 +301,7 @@ function polygonsDraw() {
 //          var esriLang = new esri.lang();
 //          var content = esriLang.substitute(evt.graphic.attributes,t);
           var highlightGraphic = new esri.Graphic(evt.graphic.geometry,highlightSymbol);          
-          map.graphics.add(highlightGraphic);
-          map.graphics.on("click", function(){
-            alert('ttt');
-          });
+          map.graphics.add(highlightGraphic);          
 //          dialog.setContent(content);
 
 //          domStyle.set(dialog.domNode, "opacity", 0.85);
@@ -262,7 +310,10 @@ function polygonsDraw() {
 //            x: evt.pageX,
 //            y: evt.pageY
 //          });
-        });  
+        });
+        featureLayer.on("mouse-out", function(evt){
+          map.graphics.clear();
+        });
 }
 
 function closeDialog() {

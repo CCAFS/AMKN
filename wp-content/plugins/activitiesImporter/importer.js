@@ -19,7 +19,9 @@ for (var i=0, len=activities.length; i<len; i++) {
   output += '<link>'+activities[i].getElementsByTagName("publicURL")[0].childNodes[0].data+'</link>\n';
   output += '<description>'+activities[i].getElementsByTagName("description")[0].childNodes[0].data+'</description>\n';
   output += '<ccafs:id>'+activities[i].getElementsByTagName("id")[0].childNodes[0].data+'</ccafs:id>\n';
-  output += '<ccafs:startDate>'+activities[i].getElementsByTagName("startDate")[0].childNodes[0].data+'</ccafs:startDate>\n';
+  if (activities[i].getElementsByTagName("startDate")[0].childNodes[0])
+    output += '<ccafs:startDate>'+activities[i].getElementsByTagName("startDate")[0].childNodes[0].data+'</ccafs:startDate>\n';
+  if (activities[i].getElementsByTagName("endDate")[0].childNodes[0]) 
   output += '<ccafs:endDate>'+activities[i].getElementsByTagName("endDate")[0].childNodes[0].data+'</ccafs:endDate>\n';
   output += '<ccafs:milestone>'+activities[i].getElementsByTagName("milestone")[0].childNodes[0].data+'</ccafs:milestone>\n';
 
@@ -32,7 +34,8 @@ for (var i=0, len=activities.length; i<len; i++) {
   cont = activities[i].getElementsByTagName("contactPersons")[0].getElementsByTagName("contactPerson");
   for (var j=0, lenj=cont.length; j<lenj; j++) {
     output += '<ccafs:contactName>'+cont[j].getElementsByTagName("name")[0].childNodes[0].data+'</ccafs:contactName>\n';
-    output += '<ccafs:contactEmail>'+cont[j].getElementsByTagName("email")[0].childNodes[0].data+'</ccafs:contactEmail>\n';
+    if (cont[j].getElementsByTagName("email")[0].childNodes[0])
+      output += '<ccafs:contactEmail>'+cont[j].getElementsByTagName("email")[0].childNodes[0].data+'</ccafs:contactEmail>\n';
   }
 
   output += '<ccafs:locationIsGlobal>'+activities[i].getElementsByTagName("locations")[0].getElementsByTagName("isGlobal")[0].childNodes[0].data+'</ccafs:locationIsGlobal>\n';       
