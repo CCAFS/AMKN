@@ -384,6 +384,7 @@ function esriMapEmbedFine( $atts ) {
 <script>
     var dataUrl = "' . get_bloginfo ( 'home' ) . '/mappoints/";
     var baseDataURL = "' . get_bloginfo ( 'home' ) . '/mappoints/";
+    var regionsDataURL = "' . get_bloginfo ( 'home' ) . '/mapregions/";
     var defaultFields = ["Location", "Latitude", "Longitude", "Type", "cID"];
     var defaultInfoTemplate = "<iframe id=\'ifrm\' class=\'embededO\' src=\'' . get_bloginfo ( 'home' ) . '/?p=${CID}&embed=true\' width=\'100%\' frameborder=\'0\' scrolling=\'yes\'></iframe>";
     var titleTemplate = "${Type}";
@@ -523,8 +524,26 @@ wp_reset_postdata();
 add_shortcode( 'getcsvpoints', 'esriMapPoints' );
 
 
-
-
+function esriMapRegions( $atts ) {
+  $qargs = array(
+//        'post_type' => array('ccafs_activities'),
+	'posts_per_page' => '-1');
+  $contentQuery = new WP_Query($qargs);
+  $trans = array(" " => ",");
+  echo 'Regions,Location,CID,Type' . "\n";
+  while( $contentQuery->have_posts() ) { $contentQuery->the_post();
+    $row = get_post_meta($contentQuery->post->ID, 'countryLocationName', false);
+    $tmpGeoPoint = '';
+    foreach ($row as $value) {
+      $geoPoint=$value;
+      if(($geoPoint && $tmpGeoPoint == '' ) || $geoPoint != $tmpGeoPoint) {
+        echo "\"".$geoPoint."\",\"".the_title( "", "", false )."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
+      }
+      $tmpGeoPoint = $geoPoint;
+    }
+  }
+}
+add_shortcode( 'getcsvregions', 'esriMapRegions' );
 
 
 

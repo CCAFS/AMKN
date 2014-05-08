@@ -33,7 +33,7 @@ var intMinExtX=-7728835.025551194;
 var intMinExtY=-5586372.099330453;
 var initLvl=3;
 
-var map,visLyr,popup,popupOptions,tLayers=[],vLyr,qPop,identifyTask,identifyParams,legend,hQuery,cPx,cHType,polyGraphic,hoverGraphic,hoverText,currentLocation,popupWindow,cntr,idCT,highlightSymbol,highlightGraphic,showLegend,sGCP,baseMP,iconT,baseExt,ctrPt,lvlMp,loadExtent,mapLevel,mapExtent,basemapGallery,tiledMapServiceLayer,gcpFarmingSystems,africaTSLayers,multipoint,popupSize,loading,initExtent,maxExtent,dataLayer,hoverLayer,syms6,syms4,syms5,syms2,syml6,syml4,syml5,syml2,visible=[],legendLayers=[];
+var map,visLyr,popup,popupOptions,tLayers=[],vLyr,qPop,identifyTask,identifyParams,legend,hQuery,cPx,cHType,polyGraphic,hoverGraphic,hoverText,currentLocation,popupWindow,cntr,idCT,highlightSymbol,highlightGraphic,showLegend,sGCP,baseMP,iconT,baseExt,ctrPt,lvlMp,loadExtent,mapLevel,mapExtent,basemapGallery,tiledMapServiceLayer,gcpFarmingSystems,africaTSLayers,multipoint,popupSize,loading,initExtent,maxExtent,dataLayer,hoverLayer,syms6,syms4,syms5,syms2,syml6,syml4,syml5,syml2,visible=[],legendLayers=[],featureLayer;
 
 var vtonmap=[];
 var cconmap=[];
@@ -93,7 +93,7 @@ function initMap(){
         isZoomSlider:false,
         wrapAround180:true
     });
-//    polygonsDraw();
+    getActivitiesByCountry();
     dojo.connect(map,"onUpdateStart",showLoading);
     dojo.connect(map,"onUpdateEnd",hideLoading);
     dojo.connect(map,"onPanStart",showLoading);
@@ -112,7 +112,7 @@ function initMap(){
         });
         overviewMapDijit.startup();        
         initBackMap();
-        dojo.removeClass("tb3","hide");
+        dojo.removeClass("tb3","hide");       
     });
     dojo.connect(map,"onExtentChange",function(extent){
         setViewTree();
@@ -181,99 +181,109 @@ function initMap(){
       });
   });
 }
+  
+  function getActivitiesByCountry(){
+//    showLoading();   
+    var regmap = {};
+    
+    var csvStore=new dojox.data.CsvStore({
+        url:'http://amkn.local/mapregions/'
+    });
+    csvStore.fetch({
+        onComplete:function(items,request){
+            var labelField,regField,typeField,cIDField;            
+            var defaultFields = ["Regions","Location","CID","Type"];
+            dojo.forEach(items,function(item,index){
+                if(index===0){
+                    regField=defaultFields[0];
+                    labelField=defaultFields[1];                    
+                    cIDField=defaultFields[2];
+                    typeField=defaultFields[3];                    
+                }
+                if (csvStore.getValue(item,typeField) == 'ccafs_activities') {
+                  if(!regmap[csvStore.getValue(item,regField)])
+                    regmap[csvStore.getValue(item,regField)] = [];
+                  regmap[csvStore.getValue(item,regField)].push({ 
+                    cIDField: csvStore.getValue(item,cIDField),
+                    labelField: csvStore.getValue(item,labelField),
+                    typeField: csvStore.getValue(item,typeField)
+                  }); 
+                }
+            }); 
+          polygonsDraw(regmap);
+//          hideLoading();
+        },
+        onError:function(error){}
+    });    
+  }
 
-function polygonsDraw() {      
+function polygonsDraw(regions) {
 //create a popup to replace the map's info window
-//    domConstruct = new dojo.domConstruct();
-    require(["dojo.dom-construct","dojo/domReady!","esri/symbols/SimpleMarkerSymbol"], function(domConstruct,SimpleMarkerSymbol){
-      popupOptions = {
-        markerSymbol: new SimpleMarkerSymbol("circle", 32, null,
-              new dojo.Color([0, 0, 0, 0.25])),
-        marginLeft: "20",
-        marginTop: "20"
-      };
-      popup = new esri.dijit.Popup(popupOptions, domConstruct.create("div"));   
+  var content = "<b>Name</b>: ${SHAPE_AREA}" + "<br /><b>Area</b>: ${COUNTRY}";    
+  var infoTemplate = new esri.InfoTemplate("${address}", content);
+
+  //create a feature layer based on the feature collection
+  featureLayer = new esri.layers.FeatureLayer("http://gisweb.ciat.cgiar.org/arcgis/rest/services/CCAFS/ccafs_climate/MapServer/0",
+  {
+    mode: esri.layers.FeatureLayer.MODE_SNAPSHOT,
+//      infoTemplate: infoTemplate,
+    outFields: ["*"]
+  });
+  featureLayer.setDefinitionExpression("COUNTRY IN ('"+Object.keys(regions).join("','")+"')");
+//    var symbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([0, 0, 0, 1]), 1), new dojo.Color([0, 255, 0, 0.35]));
+  var symbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255, 255, 255, 0.35]), 1), new dojo.Color([125, 125, 125, 0.35]));
+  featureLayer.setRenderer(new esri.renderer.SimpleRenderer(symbol));
+  map.addLayer(featureLayer,0);
+  
+  featureLayer.on("click", function(evt){
+//    console.log(JSON.stringify(evt.graphic.attributes, null, 4));
+    var results=[];
+    dojo.forEach(regions[evt.graphic.attributes['COUNTRY']],function(item){
+      results.push("<li style='cursor:pointer;' onMouseOut='onFeatureLeave()' onclick='document.location = \"./?p="+item.cIDField+"\"''>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+item.typeField+"-mini.png' />&nbsp;"+item.labelField+"</li>");
+    });      
+
+    var ttContent="<span class='blockNoWrap'>At "+evt.graphic.attributes['COUNTRY']+" ("+results.length+") <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='zoomToCtxt();'><a>Zoom here</a></button> <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='cPop();'><a>Close</a></button></span>";
+    ttContent+="<table style='width:100%;'><tbody><tr><td><ul class='homebox-list zoom_in-list'>"+results.join("")+"<ul></tr></td></tbody></table>";
+
+    hQuery.setContent(ttContent);
+    dojo.style(hQuery.domNode,"opacity",1);
+    dijit.popup.open({
+        popup:hQuery,
+        x:evt.pageX,
+        y:evt.pageY
     });
-    
-//    map=new esri.Map("map",{
-//        extent:initExtent,
-//        isZoomSlider:true,
-//        wrapAround180:true,
-//        infoWindow: popup
+    dojo.forEach(featureLayer.graphics,function(item){
+      console.log(JSON.stringify(item.attributes, null, 4));
+    });
+//    alert(featureLayer.graphics);
+  });
+        
+  var highlightSymbol = new esri.symbol.SimpleFillSymbol(
+    esri.symbol.SimpleFillSymbol.STYLE_NULL, 
+    new esri.symbol.SimpleLineSymbol(
+      esri.symbol.SimpleLineSymbol.STYLE_SOLID, 
+      new dojo.Color([125,125,125]), 3
+    ), 
+    new dojo.Color([125,125,125,0.35])
+  );
+              
+  //listen for when the onMouseOver event fires on the countiesGraphicsLayer
+  //when fired, create a new graphic with the geometry from the event.graphic and add it to the maps graphics layer
+  featureLayer.on("mouse-over", function(evt){          
+    var highlightGraphic = new esri.Graphic(evt.graphic.geometry,highlightSymbol);          
+    map.graphics.add(highlightGraphic);          
+  });
+  featureLayer.on("mouse-out", function(evt){
+    map.graphics.clear();
+  });
+  featureLayer.on("selection-complete", function(evt){
+    alert(featureLayer.graphics+'@');
+  });  
+//    dojo.forEach(featureLayer.graphics,function(graphic){
+//      if(extent.contains(graphic.geometry)){       
+//            results.push(getListingContentTree(graphic.attributes.id));
+//        } 
 //    });
-        
-    var popupTemplate = new esri.dijit.PopupTemplate({
-      title: "{address}",
-      fieldInfos: [        
-        {
-          fieldName: "REGION",
-          visible: true,
-          label: "NAME"                
-        }
-      ]      
-    });
-
-    //create a feature layer based on the feature collection
-//    var featureLayer = new esri.layers.FeatureLayer("http://services.arcgis.com/mBg08vgayOnqC7Si/arcgis/rest/services/Division_Politca_Mundo/FeatureServer/0",
-    var featureLayer = new esri.layers.FeatureLayer("http://services.arcgis.com/P3ePLMYs2RVChkJx/arcgis/rest/services/World_Regions/FeatureServer/0",
-    {
-      mode: esri.layers.FeatureLayer.MODE_SNAPSHOT,
-      infoTemplate: popupTemplate,
-      outFields: ["*"]
-    });
-//    featureLayer.setDefinitionExpression("NAME IN ('COLOMBIA')");
-//    featureLayer.setDefinitionExpression("NAME IN ('Caribbean')");
-    var symbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([0, 0, 0, 1]), 1), new dojo.Color([0, 255, 0, 0.35]));
-    featureLayer.setRenderer(new esri.renderer.SimpleRenderer(symbol));
-    map.addLayer(featureLayer);
-    
-//    map.infoWindow.resize(245,125);
-        
-        dialog = new dijit.TooltipDialog({
-          id: "tooltipDialog",
-          style: "position: absolute; width: 250px; font: normal normal normal 10pt Helvetica;z-index:100"
-        });
-        dialog.startup();
-        
-        var highlightSymbol = new esri.symbol.SimpleFillSymbol(
-          esri.symbol.SimpleFillSymbol.STYLE_NULL, 
-          new esri.symbol.SimpleLineSymbol(
-            esri.symbol.SimpleLineSymbol.STYLE_SOLID, 
-            new dojo.Color([255,0,0]), 3
-          ), 
-          new dojo.Color([125,125,125,0.35])
-        );
-
-        //close the dialog when the mouse leaves the highlight graphic
-        map.on("load", function(){
-          map.graphics.enableMouseEvents();
-          map.graphics.on("mouse-out", closeDialog);
-          
-        });
-                
-        //listen for when the onMouseOver event fires on the countiesGraphicsLayer
-        //when fired, create a new graphic with the geometry from the event.graphic and add it to the maps graphics layer
-        featureLayer.on("mouse-over", function(evt){
-          var t = "<b>${NAME}</b><hr><b>2000 Population: </b>${POP2000:NumberFormat}<br>"
-            + "<b>2000 Population per Sq. Mi.: </b>${POP00_SQMI:NumberFormat}<br>"
-            + "<b>2007 Population: </b>${POP2007:NumberFormat}<br>"
-            + "<b>2007 Population per Sq. Mi.: </b>${POP07_SQMI:NumberFormat}";
-//          var esriLang = new esri.lang();
-//          var content = esriLang.substitute(evt.graphic.attributes,t);
-          var highlightGraphic = new esri.Graphic(evt.graphic.geometry,highlightSymbol);          
-          map.graphics.add(highlightGraphic);
-          map.graphics.on("click", function(){
-//            alert('ttt');
-          });
-//          dialog.setContent(content);
-
-//          domStyle.set(dialog.domNode, "opacity", 0.85);
-//          dijitPopup.open({
-//            popup: dialog, 
-//            x: evt.pageX,
-//            y: evt.pageY
-//          });
-        });  
 }
 
 function closeDialog() {
@@ -296,16 +306,16 @@ function cPop(){
     dijit.popup.close(hQuery);
 }
 function cT(){
-//    hideLoading();
+    hideLoading();
 }
 function showLoading(){
-//    esri.show(loading);
+    esri.show(loading);
     dijit.popup.close(hQuery);
 //    map.disableMapNavigation();
 //    map.disableScrollWheelZoom();
 }
 function hideLoading(error){
-//    esri.hide(loading);
+    esri.hide(loading);
 //    map.enableMapNavigation();
 //    map.disableScrollWheelZoom();
 //    findPointsInExtent(map.extent);
@@ -313,6 +323,7 @@ function hideLoading(error){
 //    setViewTree();
 }
 function processCsvData(url){
+    showLoading();
     var frameUrl=new dojo._Url(window.location.href);
     var csvUrl=new dojo._Url(url);
     if(frameUrl.host!==csvUrl.host||frameUrl.port!==csvUrl.port||frameUrl.scheme!==csvUrl.scheme){
@@ -426,7 +437,7 @@ function findGraphicById(id){
 **/
 function onFeatureHover(evt){
     var gPt2Spt=map.toScreen(evt.graphic.geometry);
-    getItemsAtLocation(gPt2Spt.x,gPt2Spt.y,evt);
+    getItemsAtLocation(gPt2Spt.x,gPt2Spt.y,evt);    
 }
 
 /**
@@ -472,7 +483,7 @@ function onListHover(id,url){
 }
 function onFeatureLeave(){
     map.graphics.clear();
-    hoverLayer.remove(polyGraphic);
+    hoverLayer.clear();
 }
 function showTT(evt){}
 function onQueryByPolyClick(){}
@@ -1486,9 +1497,9 @@ function findPointsInExtentTree(extent) {
     tempCid = 0;
     countCid = 0;
     dojo.forEach(dataLayer.graphics,function(graphic){
-        if(extent.contains(graphic.geometry)){
+        if(extent.contains(graphic.geometry)){            
             results.push(getListingContentTree(graphic.attributes.id));
-          } 
+        } 
     });
     var onthemap=dijit.byId('onthemap');
     onthemap.attr("title","What&#39;s on the map ("+results.length+")");    
@@ -1595,6 +1606,7 @@ function setTrans(value){
 }
 function findPointsInPolygon(extent,evt){
     var results=[];
+    tempcid = 0;
     dojo.forEach(dataLayer.graphics,function(graphic){
         if(extent.contains(graphic.geometry)){
             results.push(getListingContent(graphic.attributes.id));
@@ -1629,29 +1641,30 @@ function getItemsAtLocation(sPtX,sPtY,evt)
     var gs=new esri.symbol.SimpleFillSymbol().setStyle(esri.symbol.SimpleFillSymbol.STYLE_SOLID);
     polyGraphic=new esri.Graphic(polygon,gs);   
     hoverLayer.add(polyGraphic);
-    dojo.connect(hoverLayer,"onClick",function(){      
-      var results=[]; 
-      tempcid = 0;
-      countCid = 0;
-      dojo.forEach(dataLayer.graphics,function(graphic){
-          if(polygon.getExtent().contains(graphic.geometry)){
-              results.push(getListingContent(graphic.attributes.id));
-          }
-      });      
-//      alert(results.length);
-      cPx=new esri.geometry.Point(map.toMap(evt.screenPoint).x,map.toMap(evt.screenPoint).y,map.spatialReference);
-      var ttContent="<span class='blockNoWrap'>At this location ("+results.length+") <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='zoomToCtxt();'><a>Zoom here</a></button> <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='cPop();'><a>Close</a></button></span>";
-      ttContent+="<table style='width:100%;'><tbody><tr><td><ul class='homebox-list zoom_in-list'>"+results.join("")+"<ul></tr></td></tbody></table>";
-      hQuery.setContent(ttContent);
-      dojo.style(hQuery.domNode,"opacity",1);
-      dijit.popup.open({
-          popup:hQuery,
-          x:evt.pageX,
-          y:evt.pageY
-      });
-//      dojo.connect(hQuery,"onMouseOut",cPop);
-    });
-//    findPointsInPolygon(polygon.getExtent(),evt);
+//    dojo.connect(hoverLayer,"onClick",function(){
+//    hoverLayer.on("click", function(evts){
+//      var results=[]; 
+//      tempcid = 0;
+//      countCid = 0;
+//      dojo.forEach(dataLayer.graphics,function(graphic){
+//          if(polygon.getExtent().contains(graphic.geometry)){
+//              results.push(getListingContent(graphic.attributes.id));
+//          }
+//      });      
+////      alert(results.length);
+//      cPx=new esri.geometry.Point(map.toMap(evt.screenPoint).x,map.toMap(evt.screenPoint).y,map.spatialReference);
+//      var ttContent="<span class='blockNoWrap'>At this location ("+results.length+") <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='zoomToCtxt();'><a>Zoom here</a></button> <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='cPop();'><a>Close</a></button></span>";
+//      ttContent+="<table style='width:100%;'><tbody><tr><td><ul class='homebox-list zoom_in-list'>"+results.join("")+"<ul></tr></td></tbody></table>";
+//      hQuery.setContent(ttContent);
+//      dojo.style(hQuery.domNode,"opacity",1);
+//      dijit.popup.open({
+//          popup:hQuery,
+//          x:evt.pageX,
+//          y:evt.pageY
+//      });
+////      dojo.connect(hQuery,"onMouseOut",cPop);
+//    });
+    findPointsInPolygon(polygon.getExtent(),evt);
 }
 var addedLayers=[];
 
