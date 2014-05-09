@@ -187,7 +187,7 @@ function initMap(){
     var regmap = {};
     
     var csvStore=new dojox.data.CsvStore({
-        url:'http://amkn.local/mapregions/'
+        url:regionsDataURL
     });
     csvStore.fetch({
         onComplete:function(items,request){
@@ -236,7 +236,7 @@ function polygonsDraw(regions) {
   map.addLayer(featureLayer,0);
   
   featureLayer.on("click", function(evt){
-//    console.log(JSON.stringify(evt.graphic.attributes, null, 4));
+    console.log(JSON.stringify(evt.graphic.attributes, null, 4));
     var results=[];
     dojo.forEach(regions[evt.graphic.attributes['COUNTRY']],function(item){
       results.push("<li style='cursor:pointer;' onMouseOut='onFeatureLeave()' onclick='document.location = \"./?p="+item.cIDField+"\"''>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+item.typeField+"-mini.png' />&nbsp;"+item.labelField+"</li>");
@@ -252,9 +252,9 @@ function polygonsDraw(regions) {
         x:evt.pageX,
         y:evt.pageY
     });
-    dojo.forEach(featureLayer.graphics,function(item){
-      console.log(JSON.stringify(item.attributes, null, 4));
-    });
+//    dojo.forEach(featureLayer.graphics,function(item){
+//      console.log(JSON.stringify(item.attributes, null, 4));
+//    });
 //    alert(featureLayer.graphics);
   });
         
