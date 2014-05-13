@@ -10,7 +10,7 @@ if (get_post_meta($post->ID, 'rangephotos', true)) {
    // Range default of photos --> 710 km
    $rangephotos = 300;
 }
-
+$siteTitle = $post->post_name;
 $sitepoint = get_post_meta($post->ID, 'geoRSSPoint', true);
 query_posts("posts_per_page=1000&post_type=photo_testimonials");
 $postType = "";
@@ -92,9 +92,16 @@ $postType = "";
                }
             }
             ?>
+            <h3 class="videolabels"><?php echo ucfirst($siteTitle);?> distance: <span class="taxItems"><?php echo round(distance($sitepoint, $photopoint),2)." km"?></span></h3>
          </div>
          <div class="video photoset">
               <?php the_content(); ?>
+          </div>
+         <div id="amkn-paginate">
+          <?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); } else { ?>
+              <div class="alignleft"><?php next_posts_link('&larr; Previous Entries'); ?></div>
+              <div class="alignright"><?php previous_posts_link('Next Entries &rarr;'); ?></div>
+              <?php } ?>
           </div>
           <a class="close-reveal-modal">&#215;</a>
        </div>

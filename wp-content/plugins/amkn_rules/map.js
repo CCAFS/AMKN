@@ -211,6 +211,7 @@ function initMap(){
                 }
             }); 
           polygonsDraw(regmap);
+          findPointsRegions(regmap);
 //          hideLoading();
         },
         onError:function(error){}
@@ -236,7 +237,7 @@ function polygonsDraw(regions) {
   map.addLayer(featureLayer,0);
   
   featureLayer.on("click", function(evt){
-    console.log(JSON.stringify(evt.graphic.attributes, null, 4));
+//    console.log(JSON.stringify(evt.graphic.geometry, null, 4));
     var results=[];
     dojo.forEach(regions[evt.graphic.attributes['COUNTRY']],function(item){
       results.push("<li style='cursor:pointer;' onMouseOut='onFeatureLeave()' onclick='document.location = \"./?p="+item.cIDField+"\"''>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+item.typeField+"-mini.png' />&nbsp;"+item.labelField+"</li>");
@@ -279,11 +280,139 @@ function polygonsDraw(regions) {
   featureLayer.on("selection-complete", function(evt){
     alert(featureLayer.graphics+'@');
   });  
+//  featureLayer.hide();
 //    dojo.forEach(featureLayer.graphics,function(graphic){
 //      if(extent.contains(graphic.geometry)){       
 //            results.push(getListingContentTree(graphic.attributes.id));
 //        } 
 //    });
+}
+
+function findPointsRegions(regions) {
+    var results=[];
+//    vtonmap=[];
+//    cconmap=[];
+//    bgonmap=[];
+//    bdonmap=[];
+//    ptonmap=[];
+    actnmap=[];
+    oactnmapr = {};
+    tempCidr = 0;
+    countCid = 0;  
+    limitfor = 0;
+//    alert(JSON.stringify(regions, null, 4));
+    for(var index in regions) { 
+//      alert(JSON.stringify(regions[index], null, 4));
+      results.push(getListingRegionsTree(regions[index]));
+    }
+//    dojo.forEach(regions,function(region){
+////      alert(JSON.stringify(region, null, 4));
+////        if(extent.contains(graphic.geometry)){            
+//            results.push(getListingRegionsTree(region));
+////        } 
+//    });
+//    var onthemap=dijit.byId('onthemap');
+//    onthemap.attr("title","What&#39;s on the map ("+results.length+")");    
+    var rootNode = $("#cFiltersRegion").dynatree("getRoot");
+    var childrenNodes = rootNode.getChildren();
+    
+    for(i = 0; i < childrenNodes.length; i++) {
+        // clean array.
+//        if (childrenNodes[i].data.key !== 'accord_data_layer' && childrenNodes[i].data.key !== 'accord_filter_resource_theme') {
+//          childrenNodes[i].removeChildren();
+//        }
+        // add children and update the number of records on it.
+        switch(childrenNodes[i].data.key) {
+//            case 'accord_ccafs_sites':                
+//                childrenNodes[i].addChild(cconmap);
+//                childrenNodes[i].data.title = "CCAFS Sites ("+cconmap.length+")";
+//                childrenNodes[i].render();
+//            break;
+//            case 'accord_video_testimonials':     
+//                childrenNodes[i].addChild(vtonmap);                
+//                childrenNodes[i].data.title = "Videos ("+vtonmap.length+")";
+//                childrenNodes[i].render();
+//            break;
+//            case 'accord_amkn_blog_posts':
+//                childrenNodes[i].addChild(bgonmap);
+//                childrenNodes[i].data.title = "Blog Posts ("+bgonmap.length+")";
+//                childrenNodes[i].render();
+//            break;
+//            case 'accord_biodiv_cases':
+//                childrenNodes[i].addChild(bdonmap);               
+//                childrenNodes[i].data.title = "Agrobiodiversity Cases ("+bdonmap.length+")";
+//                childrenNodes[i].render();
+//            break;
+//            case 'accord_photo_testimonials':
+//                childrenNodes[i].addChild(ptonmap);                
+//                childrenNodes[i].data.title = "Photo Sets ("+ptonmap.length+")";
+//                childrenNodes[i].render();
+//            break;
+            case 'accord_ccafs_activities':             
+                childrenNodes[i].addChild(actnmap);
+                childrenNodes[i].select(true);
+                childrenNodes[i].data.title = "Activities ("+actnmap.length+")";
+                childrenNodes[i].render();
+            break;
+        }
+    }
+}
+
+function getListingRegionsTree(region){
+    var rt,ttl,cid;
+    
+    dojo.forEach(region,function(activitie){      
+      ttl=activitie.labelField;
+      cid=activitie.cIDField;
+      rt=activitie.typeField;
+//      console.log(JSON.stringify(activitie, null, 4)+limitfor+'//'+cid+'/');
+      if (!oactnmap[cid]) {
+        countCid=1;
+        mapPTS=rt==="ccafs_activities"?actnmap.push({
+          title: ttl,
+          tooltip:ttl,
+          key: 52,
+          url: './?p='+cid,                        
+          hideCheckbox: true,
+          unselectable: true,
+          select: false,
+          icon: '../../../../images/ccafs_activities-mini.png'
+          //isLazy: true
+        }):"";    
+      } else {
+        countCid++;
+      }
+      if(!oactnmapr[cid])
+        oactnmapr[cid] = [];
+      oactnmapr[cid].push({ 
+        key: 52,
+      });     
+      tempCidr = cid;
+      limitfor++;
+//      if(limitfor==1) 
+//        return;
+    });
+    return;
+}
+
+function updateDataLayerRegionTree(flag)
+{
+  if (flag)
+    featureLayer.show();
+  else
+    featureLayer.hide();
+}
+
+function updateDataLayerPoints(flag)
+{
+  console.log(dataLayer.visible+'1$%&'+featureLayer.visible);
+  if (dataLayer.visible) {
+    dataLayer.hide();
+    featureLayer.show();
+  } else {
+    dataLayer.show();
+    featureLayer.hide();
+  }
 }
 
 function closeDialog() {
@@ -1457,7 +1586,8 @@ function getListingContentTree(id){
       //isLazy: true
       }):"";
       mapPTS=rt==="ccafs_activities"?actnmap.push({
-        title: ttl, 
+        title: ttl,
+        tooltip:ttl,
           key: id,
           url: './?p='+cid,                        
           hideCheckbox: true,
@@ -1555,6 +1685,18 @@ function findPointsInExtentTree(extent) {
 **/
 function createDataLayersBranch () {
   var nodeDataLayer = $("#cFiltersList2").dynatree("getTree").getNodeByKey("accord_data_layer");
+  var ly = '';
+  var children = nodeDataLayer.getChildren();
+  var totalLayers = 0;
+  for (j = 0; j < children.length; j++) {
+    soon = children[j];
+    ly = soon.data.key.split("-");
+    layer = new esri.layers.ArcGISDynamicMapServiceLayer(ly[2]);
+    layer.id = ly[0];      
+    totalLayers+=buildLayerListTree (layer,ly[0],ly[1],soon);
+  }
+  
+  var nodeDataLayer = $("#cFiltersRegion").dynatree("getTree").getNodeByKey("accord_data_layer");
   var ly = '';
   var children = nodeDataLayer.getChildren();
   var totalLayers = 0;

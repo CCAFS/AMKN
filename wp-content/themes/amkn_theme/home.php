@@ -84,7 +84,15 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 
           <!--  Base map -->
           <div style="height: 86%;">
-            <div id="cFiltersList2" style="width: 100%; height: 100%; overflow: hidden;"></div>
+            
+            <div id="sourceMap" data-dojo-type="dijit/layout/AccordionContainer" style="height: 100%;">
+                <div id ="gpoints" data-dojo-type="dijit/layout/ContentPane" title="GEOPOINTS" selected="true">
+                    <div id="cFiltersList2" style="width: 100%; height: 100%; overflow: hidden;"></div>
+                </div>
+                <div id="gregions" data-dojo-type="dijit/layout/ContentPane" title="REGIONS">
+                    <div id="cFiltersRegion" style="width: 100%; height: 100%; overflow: hidden;"></div>
+                </div>                
+            </div>
             <div id="basemapGallery" class="drop-panel" ></div> 
             <div id="legendDiv" class="drop-panel"></div>
             <div id="regions" class="drop-panel">
