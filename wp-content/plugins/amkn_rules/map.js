@@ -212,6 +212,7 @@ function initMap(){
             }); 
           polygonsDraw(regmap);
           findPointsRegions(regmap);
+          featureLayer.hide();
 //          hideLoading();
         },
         onError:function(error){}
@@ -279,8 +280,7 @@ function polygonsDraw(regions) {
   });
   featureLayer.on("selection-complete", function(evt){
     alert(featureLayer.graphics+'@');
-  });  
-//  featureLayer.hide();
+  });    
 //    dojo.forEach(featureLayer.graphics,function(graphic){
 //      if(extent.contains(graphic.geometry)){       
 //            results.push(getListingContentTree(graphic.attributes.id));
@@ -405,13 +405,17 @@ function updateDataLayerRegionTree(flag)
 
 function updateDataLayerPoints(flag)
 {
-  console.log(dataLayer.visible+'1$%&'+featureLayer.visible);
-  if (dataLayer.visible) {
+//  console.log(dataLayer.visible+'1$%&'+featureLayer.visible+'//'+flag);
+  if (flag) {
     dataLayer.hide();
-    featureLayer.show();
+    featureLayer.show();    
+    dojo.style(dojo.byId('cFiltersList2'), "display", "none");
+    dojo.style(dojo.byId('cFiltersRegion'), "display", "block");
   } else {
     dataLayer.show();
     featureLayer.hide();
+    dojo.style(dojo.byId('cFiltersList2'), "display", "block");
+    dojo.style(dojo.byId('cFiltersRegion'), "display", "none");
   }
 }
 

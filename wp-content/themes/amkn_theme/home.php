@@ -86,12 +86,21 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
           <div style="height: 86%;">
             
             <div id="sourceMap" data-dojo-type="dijit/layout/AccordionContainer" style="height: 100%;">
-                <div id ="gpoints" data-dojo-type="dijit/layout/ContentPane" title="GEOPOINTS" selected="true">
+                <!--<div id ="gpoints" data-dojo-type="dijit/layout/ContentPane" title="GEOPOINTS" selected="true">-->
+                  <label class="switch-light switch-candy" onclick="" style="margin-left: 0;">
+                    <input type="checkbox" onclick="updateDataLayerPoints(this.checked)">
+                    <span>
+                      Wireless
+                      <span>GEOPOINTS</span>
+                      <span>REGIONS</span>
+                    </span>
+                    <a></a>
+                  </label>
                     <div id="cFiltersList2" style="width: 100%; height: 100%; overflow: hidden;"></div>
-                </div>
-                <div id="gregions" data-dojo-type="dijit/layout/ContentPane" title="REGIONS">
-                    <div id="cFiltersRegion" style="width: 100%; height: 100%; overflow: hidden;"></div>
-                </div>                
+                <!--</div>-->
+                <!--<div id="gregions" data-dojo-type="dijit/layout/ContentPane" title="REGIONS">-->
+                    <div id="cFiltersRegion" style="width: 100%; height: 100%; overflow: hidden; display: none"></div>
+                <!--</div>-->                
             </div>
             <div id="basemapGallery" class="drop-panel" ></div> 
             <div id="legendDiv" class="drop-panel"></div>

@@ -50,6 +50,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
         </script>
         <!-- DynaTree library used in the new sidebar -->
         <link href="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
+        <link href="<?php bloginfo('template_directory'); ?>/toggle-switch.css" rel="stylesheet" type="text/css">
         <script src="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/jquery.dynatree.js" type="text/javascript"></script>
         <script type="text/javascript">
           var firstime = false;
