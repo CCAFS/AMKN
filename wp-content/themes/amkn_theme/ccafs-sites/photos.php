@@ -4,6 +4,7 @@
  * @subpackage AMKNToolbox
  */
 global $post;
+$post_old = $post; // Save the post object.
 if (get_post_meta($post->ID, 'rangephotos', true)) {
    $rangevideos = get_post_meta($post->ID, 'rangephotos', true);
 } else {
@@ -37,7 +38,7 @@ $postType = "";
 
       <?php } ?>
    <?php
-   endwhile;
+   endwhile;   
 // Reset Query
 //   wp_reset_query();
    ?><!-- end loop-->  
@@ -94,7 +95,7 @@ $postType = "";
             ?>
             <h3 class="videolabels"><?php echo ucfirst($siteTitle);?> distance: <span class="taxItems"><?php echo round(distance($sitepoint, $photopoint),2)." km"?></span></h3>
          </div>
-         <div class="video photoset">
+         <div class="video photoset" style="max-height: 300px; overflow-y: scroll;">
               <?php the_content(); ?>
           </div>
          <div id="amkn-paginate">
@@ -109,4 +110,5 @@ $postType = "";
     <?php } ?>
  <?php
  endwhile;
+ $post = $post_old; // Restore the post object.
  ?>

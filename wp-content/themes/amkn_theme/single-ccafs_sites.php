@@ -62,7 +62,7 @@ if (isset($embed) && $embed == "1") {
       <?php load_template(TEMPLATEPATH . '/ccafs-sites/photos.php'); ?>
    </div>  
 </div>  
-
+<script src="<?php echo get_bloginfo('template_url'); ?>/js/jquery.reveal.js" type="text/javascript"></script>
 <?php
 //Load Menu with pin $section on
    $class = 'class="current-menu-item"';

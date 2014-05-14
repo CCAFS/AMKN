@@ -20,9 +20,6 @@
 
 </div><!-- end Container -->
 
-<script src="<?php echo get_bloginfo('template_url'); ?>/js/jquery.reveal.js" type="text/javascript"></script>
-
-
 <?php
 get_footer();
 ?>
