@@ -82,7 +82,7 @@ $themes = array('1'=>'1','2'=>'2','3'=>'3','4.1'=>'4.1','4.2'=>'4.2','4.3'=>'4.3
           <fieldset>
             <legend>Filters</legend>  
             <div class="pure-g">
-              <div class="pure-u-1-3">
+              <div class="pure-u-1-6">
                 <label for="theme">Search by Theme</labe>
                 <select name="theme">
                   <option value="0">---</option>
@@ -92,7 +92,7 @@ $themes = array('1'=>'1','2'=>'2','3'=>'3','4.1'=>'4.1','4.2'=>'4.2','4.3'=>'4.3
                   <?php endforeach;?>
                 </select>            
               </div>
-              <div class="pure-u-1-3">
+              <div class="pure-u-1-6">
                 <label for="leader">Leader</labe>      
                 <select name="leader">
                   <option value="0">---</option>
@@ -102,23 +102,26 @@ $themes = array('1'=>'1','2'=>'2','3'=>'3','4.1'=>'4.1','4.2'=>'4.2','4.3'=>'4.3
                   <?php endforeach;?>
                 </select>
               </div>
-            </div>
-            <div class="pure-g">
-              <div class="pure-u-1-3">
+              <div class="pure-u-1-4">
                 <label for="initDate">
                   Start date
                 </label>
                 <input type="text" name="initDate" id="initDate" value="<?php echo $_GET['initDate']?>">          
               </div>
-              <div class="pure-u-1-3">
+              <div class="pure-u-1-5">
                 <label for="endDate">
                   End date
                 </label>          
                 <input type="text" name="endDate" id="endDate" value="<?php echo $_GET['endDate']?>">
               </div>
-            </div>
-            <button id="search" type="submit" class="pure-button pure-button-primary">Search</button>
-            <button id="reset" type="button" class="pure-button pure-button-active">Reset</button>
+              <div class="pure-u-1-5">
+                <label for="space">
+                  &nbsp;
+                </label> 
+                <button id="search" type="submit" class="pure-button pure-button-primary">Search</button>
+                <button id="reset" type="button" class="pure-button pure-button-active">Reset</button>
+              </div>
+            </div>            
             <!--<input type="submit" name="search" class="pure-button pure-button-primary" value="Search">-->      
           </fieldset>  
         </form>    
