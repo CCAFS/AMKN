@@ -406,12 +406,12 @@ function updateDataLayerRegionTree(flag)
 function updateDataLayerPoints(flag)
 {
 //  console.log(dataLayer.visible+'1$%&'+featureLayer.visible+'//'+flag);
-  if (flag) {
+  if (flag=='regs') {
     dataLayer.hide();
     featureLayer.show();    
     dojo.style(dojo.byId('cFiltersList2'), "display", "none");
     dojo.style(dojo.byId('cFiltersRegion'), "display", "block");
-  } else {
+  } else if (flag=='geop')  {
     dataLayer.show();
     featureLayer.hide();
     dojo.style(dojo.byId('cFiltersList2'), "display", "block");
@@ -1788,29 +1788,29 @@ function getItemsAtLocation(sPtX,sPtY,evt)
     polyGraphic=new esri.Graphic(polygon,gs);   
     hoverLayer.add(polyGraphic);
 //    dojo.connect(hoverLayer,"onClick",function(){
-//    hoverLayer.on("click", function(evts){
-//      var results=[]; 
-//      tempcid = 0;
-//      countCid = 0;
-//      dojo.forEach(dataLayer.graphics,function(graphic){
-//          if(polygon.getExtent().contains(graphic.geometry)){
-//              results.push(getListingContent(graphic.attributes.id));
-//          }
-//      });      
-////      alert(results.length);
-//      cPx=new esri.geometry.Point(map.toMap(evt.screenPoint).x,map.toMap(evt.screenPoint).y,map.spatialReference);
-//      var ttContent="<span class='blockNoWrap'>At this location ("+results.length+") <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='zoomToCtxt();'><a>Zoom here</a></button> <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='cPop();'><a>Close</a></button></span>";
-//      ttContent+="<table style='width:100%;'><tbody><tr><td><ul class='homebox-list zoom_in-list'>"+results.join("")+"<ul></tr></td></tbody></table>";
-//      hQuery.setContent(ttContent);
-//      dojo.style(hQuery.domNode,"opacity",1);
-//      dijit.popup.open({
-//          popup:hQuery,
-//          x:evt.pageX,
-//          y:evt.pageY
-//      });
-////      dojo.connect(hQuery,"onMouseOut",cPop);
-//    });
-    findPointsInPolygon(polygon.getExtent(),evt);
+    hoverLayer.on("click", function(evts){
+      var results=[]; 
+      tempcid = 0;
+      countCid = 0;
+      dojo.forEach(dataLayer.graphics,function(graphic){
+          if(polygon.getExtent().contains(graphic.geometry)){
+              results.push(getListingContent(graphic.attributes.id));
+          }
+      });      
+//      alert(results.length);
+      cPx=new esri.geometry.Point(map.toMap(evt.screenPoint).x,map.toMap(evt.screenPoint).y,map.spatialReference);
+      var ttContent="<span class='blockNoWrap'>At this location ("+results.length+") <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='zoomToCtxt();'><a>Zoom here</a></button> <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='cPop();'><a>Close</a></button></span>";
+      ttContent+="<table style='width:100%;'><tbody><tr><td><ul class='homebox-list zoom_in-list'>"+results.join("")+"<ul></tr></td></tbody></table>";
+      hQuery.setContent(ttContent);
+      dojo.style(hQuery.domNode,"opacity",1);
+      dijit.popup.open({
+          popup:hQuery,
+          x:evt.pageX,
+          y:evt.pageY
+      });
+//      dojo.connect(hQuery,"onMouseOut",cPop);
+    });
+//    findPointsInPolygon(polygon.getExtent(),evt);
 }
 var addedLayers=[];
 
