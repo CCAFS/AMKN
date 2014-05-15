@@ -26,7 +26,7 @@ $postType = "";
 <?php /* Start the Loop */ ?>
 
 
-<div class="slider-video side-more borde1"> 
+<div class="slider-video side-more borde1" style="display:none"> 
 
    <?php while (have_posts()) : the_post(); ?>
       <?php

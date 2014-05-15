@@ -19,7 +19,7 @@ $postType = "";
 <?php /* Start the Loop */ ?>
 
 
-<div class="slider-photos side-more" > 
+<div class="slider-photos side-more" style="display:none"> 
 
    <?php while (have_posts()) : the_post(); ?>
       <?php
