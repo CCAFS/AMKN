@@ -84,19 +84,29 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 
           <!--  Base map -->
           <div style="height: 86%;">            
-            <div id="sourceMap" data-dojo-type="dijit/layout/AccordionContainer" style="height: 100%;">                
+            <div id="sourceMap" data-dojo-type="dijit/layout/AccordionContainer" style="height: 100%;position: relative;">                
               <div class="switch-toggle switch-candy switch-candy-yellow">
-                <input id="geop" name="view" type="radio" checked onclick="updateDataLayerPoints(this.id)">
+                <input id="geop" name="view" type="radio" checked onclick="updateDataLayerPoints(this.id);">
                 <label for="geop" onclick="">GEOPOINTS</label>
-                <input id="regs" name="view" type="radio" onclick="updateDataLayerPoints(this.id)">
+                <input id="regs" name="view" type="radio" onclick="updateDataLayerPoints(this.id);">
                 <label for="regs" onclick="">REGIONS</label>
                 <a></a>
               </div>
-              <div id="cFiltersList2" style="width: 100%; height: 100%; overflow: hidden;"></div>                
+              <div id="cFiltersList2" style="width: 100%; height: 100%;position: absolute;"></div>                
               <div id="cFiltersRegion" style="width: 100%; height: 100%; overflow: hidden; display: none"></div>
             </div>
             <div id="basemapGallery" class="drop-panel" ></div> 
-            <div id="legendDiv" class="drop-panel"></div>
+            <div id="layersDiv" class="drop-panel" data-dojo-type="dijit/layout/AccordionContainer" style="height: 100%;">
+              <div data-dojo-type="dijit/layout/ContentPane" title="Data Layers" selected="true" style="overflow: hidden;">
+                <div>                  
+                    <a href="#" id="btnDeselectAll">Hide All Layers</a>                  
+                </div>
+                <div id="dataLayers" style="width: 100%; height: 100%;" ></div>
+              </div>
+              <div id="accord_legend" title="Data Legend" data-dojo-type="dijit/layout/ContentPane">
+                <div id="legendDiv" style="width: 100%; height: 100%;"></div>
+              </div>
+            </div>
             <div id="regions" class="drop-panel">
               <ul class="homebox-list zoom_in-list">
               <li><a href="javascript:void(0)" onClick="go2Region('-268581.06491998816;1492308.2161012604', 5);"><img src="<?php bloginfo('template_directory'); ?>/images/west-africa.png"> West Africa</a></li>

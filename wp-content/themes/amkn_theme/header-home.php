@@ -63,12 +63,68 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                     children: treeData,
                     selectMode: 3,
                     checkbox: true,
+                    select: true,
                     debugLevel: 0,
                     onActivate: function(node) {
                         // A DynaTreeNode object is passed to the activation handler
                         // Note: we also get this event, if persistence is on, and the page is reloaded.
-                       
-                        //onListHover(node.data.key);
+                                               
+                        //showItemDetails
+                        if( node.data.url ) {
+                          document.location = node.data.url;
+//                          updateLayerVisibilityTree();
+                        }
+//                            window.open(node.data.url);                       
+                    },
+                    onSelect: function(flag, node) {  
+                      if( !node.data.url ) {
+
+                        if (node.data.key == 'accord_ccafs_sites' || node.data.key == 'accord_video_testimonials'  || node.data.key == 'accord_amkn_blog_posts'
+                              || node.data.key == 'accord_biodiv_cases' || node.data.key == 'accord_photo_testimonials'|| node.data.key == 'accord_ccafs_activities' || node.data.key.match('taxio_')) {
+
+//                          var points = node.tree.getSelectedNodes(); 
+                            if (firstime) updateDataLayerTree(true); 
+                        } else if(node.data.key == 'select_all'){
+                          if(flag) {
+                            $("#cFiltersList2").dynatree("getRoot").visit(function(node){
+                              node.select(true);
+                            });
+                          } else {
+                            $("#cFiltersList2").dynatree("getRoot").visit(function(node){
+                              node.select(false);
+                            });
+                          }
+                        } else { 
+//                          updateLayerVisibilityTree(node,flag);  
+//                            if ($("#legendDiv").children().length != 1) {
+//                                $( "#legend-button" ).addClass("haslegend"); 
+//
+//                            }else{
+//                                $( "#legend-button" ).removeClass("haslegend");   
+//                            }
+
+                        }
+                      }
+                    },
+                    onCreate: function(node, nodeSpan) {
+                        $(nodeSpan).hover(function(){
+                            onListHover(node.data.key,node.data.url);
+                        }, function(){                                                        
+                            onFeatureLeave();
+                        });
+                    }
+                }); 
+                $("#dataLayers").dynatree({
+                    children: treeDataLayer,
+                    selectMode: 3,
+                    expand: true,
+                    checkbox: true,
+                    classNames: {checkbox: "dynatree-radio"},
+                    debugLevel: 0,
+                    onActivate: function(node) {
+                        // A DynaTreeNode object is passed to the activation handler
+                        // Note: we also get this event, if persistence is on, and the page is reloaded.
+                                              
                         //showItemDetails
                         if( node.data.url ) {
                           document.location = node.data.url;
@@ -85,14 +141,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
 //                          var points = node.tree.getSelectedNodes(); 
                             if (firstime) updateDataLayerTree(true); 
                         } else { 
-                          updateLayerVisibilityTree(node,flag);  
-                            if ($("#legendDiv").children().length != 1) {
-                                $( "#legend-button" ).addClass("haslegend"); 
-
-                            }else{
-                                $( "#legend-button" ).removeClass("haslegend");   
-                            }
-
+                          updateLayerVisibilityTree(node,flag);
                         }
                       }
                     },
@@ -129,15 +178,37 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
 
 //                          var points = node.tree.getSelectedNodes(); 
                             if (firstime) updateDataLayerRegionTree(flag); 
+                        } else if(node.data.key == 'select_all'){
+                          if(flag) {
+                            $("#cFiltersRegion").dynatree("getRoot").visit(function(node){
+                              node.select(true);
+                            });
+                          } else {
+                            $("#cFiltersRegion").dynatree("getRoot").visit(function(node){
+                              node.select(false);
+                            });
+                          }
                         } else { 
-                          updateLayerVisibilityTree(node,flag);  
-                            if ($("#legendDiv").children().length != 1) {
-                                $( "#legend-button" ).addClass("haslegend"); 
+//                          updateLayerVisibilityTree(node,flag);  
+//                            if ($("#legendDiv").children().length != 1) {
+//                                $( "#legend-button" ).addClass("haslegend"); 
+//
+//                            }else{
+//                                $( "#legend-button" ).removeClass("haslegend");   
+//                            }
 
-                            }else{
-                                $( "#legend-button" ).removeClass("haslegend");   
-                            }
-
+                        }
+                      } else {
+                        if(node.data.key == 'select_all'){
+                          if(flag) {
+                            $("#cFiltersRegion").dynatree("getRoot").visit(function(node){
+                              node.select(true);
+                            });
+                          } else {
+                            $("#cFiltersRegion").dynatree("getRoot").visit(function(node){
+                              node.select(false);
+                            });
+                          }
                         }
                       }
                     },
@@ -156,7 +227,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                 $( "#legend-button" ).click(function() {
                   $( this ).addClass("selected").siblings().removeClass("selected"); 
                   $( this ).removeClass("haslegend"); 
-                  $( "#legendDiv" ).show().siblings().hide(); 
+                  $( "#layersDiv" ).show().siblings().hide(); 
                 }); 
                 $( "#filter-button" ).click(function() {
                   $( this ).addClass("selected").siblings().removeClass("selected");  
@@ -165,14 +236,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                 $( "#region-button" ).click(function() {
                   $( this ).addClass("selected").siblings().removeClass("selected");  
                   $( "#regions" ).show().siblings().hide();
-                });
-                var myButton = dojo.byId("gregions_button");
-                $( "#gregions_button" ).click(function() {
-//                dojo.connect(dojo.byId("gregions_button"), "onclick", function(evt){                 
-                  updateDataLayerPoints(false);
-//                  updateDataLayerRegionTree(true);
-                });                                
-               
+                });               
 //                dojo.connect(myButton2, "onclick", function(evt){
 //                  console.log('2$%&');
 //                  updateDataLayerPoints(true);
@@ -184,6 +248,13 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                     // Remodal-master http://vodkabears.github.io/remodal/ 
                     openLandingPage();
                 }
+                
+              $("#btnDeselectAll").click(function(){
+                $("#dataLayers").dynatree("getRoot").visit(function(node){
+                  node.select(false);
+                });
+                return false;
+              });              
             });
             function openLandingPage(){$('.remodal').show();inst = $('[data-remodal-id=modal]').remodal({ "hashTracking": false });inst.open()}
             function closeLandingPage(){inst.close()}

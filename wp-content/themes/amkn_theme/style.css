@@ -276,9 +276,9 @@ table.esriLegendLayer {
     width: 100%;
     height: 91%;
     overflow: auto;
-    position: absolute !important;
+    /*position: absolute !important;*/
     bottom: 0;
-    display:none;
+    /*display:none;*/
 }
 h2.homebox-title, .dijitDialogTitle, .dojoxExpandoTitle, .homebox, .dijitTitlePaneTitle, .dijitTitlePaneTextNode, .dijitDialogTitleBar {
     /* background: url("images/box-bg.png") repeat scroll 0 0 #FFFFFF !important; */

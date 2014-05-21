@@ -25,11 +25,11 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
     <div class="entrymeta">Source: <em><?php echo get_bookmark($srcID)->link_description; ?></em> <a target="_blank" href="<?php echo get_post_meta($post->ID, 'syndication_permalink', true); ?>">permalink</a></div>
     <div class="entrymeta">Posted by <?php the_author(); ?> on <?php the_date(); ?><!--  | <a href="<?php comments_link(); ?>"><?php comments_number('no responses', 'one response', '% responses'); ?></a>--><?php echo get_the_tag_list(' | ', ', ', ''); ?> </div>
     <!--Begin Share Button-->
-  <?php
-  if (function_exists('sociable_html')) {
-    echo sociable_html();
-  }
-  ?>
+    <?php
+    if (function_exists('sociable_html')) {
+//    echo sociable_html();
+    }
+    ?>
     <!--End Share Button-->
     <?php //get_sidebar('sidemap_embed'); ?>
     <div class="video blog-post">
@@ -40,10 +40,10 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
           </p>   
           <br clear="all" />
         <?php endwhile; // end of the loop. ?>
-      <?php echo "<p><b>Start Date: </b>" . $start . "<br><b>End date: </b>" . $end . "<br><b>Milestone: </b>" . $milestone. "<br><b>Budget: </b>$" . number_format($budget,2)."</p>"; ?>
-      <?php if($metaDesc!=''): ?>
-      <h3>Themes</h3>
-      <p><?php echo $metaDesc; ?></p>
+      <?php echo "<p><b>Start Date: </b>" . $start . "<br><b>End date: </b>" . $end . "<br><b>Milestone: </b>" . $milestone . "<br><b>Budget: </b>$" . number_format($budget, 2) . "</p>"; ?>
+      <?php if ($metaDesc != ''): ?>
+        <h3>Themes</h3>
+        <p><?php echo $metaDesc; ?></p>
       <?php endif; ?>
       <?php
       $args2 = array(
@@ -81,7 +81,7 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
 } else {
   ?>
   <div id="container">
-    
+
     <div id="sidebar">
       <?php get_sidebar('sidemap'); ?>
       <?php get_sidebar('sidemore'); ?>  
@@ -90,22 +90,16 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
       <h2 class="title"><?php the_title(); ?></h2>
       <div class="entrymeta">Source: <em><?php echo get_bookmark($srcID)->link_description; ?></em> <a target="_blank" href="<?php echo get_post_meta($post->ID, 'syndication_permalink', true); ?>">permalink</a></div>
       <div class="entrymeta">Posted by <?php the_author(); ?> on <?php the_date(); ?><!--  | <a href="<?php comments_link(); ?>"><?php comments_number('no responses', 'one response', '% responses'); ?></a>--><?php echo get_the_tag_list(' | ', ', ', ''); ?> </div>
-      <!--Begin Share Button-->
-      <?php
-      if (function_exists('sociable_html')) {
-        echo sociable_html();
-      }
-      ?>
-      <!--End Share Button-->
-      <div class="video blog-post">
-        <?php if (have_posts()) while (have_posts()) : the_post(); ?>
-      <?php the_content(); ?>
-    <?php endwhile; // end of the loop.  ?>
-    <?php echo "<p><b>Start Date: </b>" . $start . "<br><b>End date: </b>" . $end . "<br><b>Milestone: </b>" . $milestone. "<br><b>Budget: </b>$" . number_format($budget,2)."</p>"; ?>
-    <?php if($metaDesc!=''): ?>
-      <h3>Themes</h3>
-      <p><?php echo $metaDesc; ?></p>
-    <?php endif; ?>
+      <div class="blog-post">
+        <?php echo "<p><b>Start Date: </b>" . $start . "<br><b>End date: </b>" . $end . "<br><b>Milestone: </b>" . $milestone . "<br><b>Budget: </b>$" . number_format($budget, 2) . "</p>"; ?>
+        <?php // if (have_posts()) while (have_posts()) : the_post(); ?>
+        <h3>Description</h3>
+          <?php the_content(); ?>
+        <?php // endwhile; // end of the loop.  ?>        
+        <?php if ($metaDesc != ''): ?>
+          <h3>Themes</h3>
+          <p><?php echo $metaDesc; ?></p>
+        <?php endif; ?>
         <?php
         $args2 = array(
             'public' => true,
@@ -135,6 +129,11 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
         }
         ?>   
       </div>
+      <?php
+      if (function_exists('sociable_html')) {
+        echo sociable_html();
+      }
+      ?>
     </div><!-- end content -->
 
 
