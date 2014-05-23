@@ -504,6 +504,7 @@ while( $contentQuery->have_posts() ) : $contentQuery->the_post();
   $tmpGeoPoint = '';
   if ($row['geoRSSPoint']) {
     foreach ($row['geoRSSPoint'] as $key => $value) {
+      if ($value != '') {
           $geoPoint=strtr($value, $trans);
           if(($geoPoint && $tmpGeoPoint == '' ) || $geoPoint != $tmpGeoPoint) {
             if ($contentQuery->post->post_type == 'ccafs_activities')
@@ -512,6 +513,7 @@ while( $contentQuery->have_posts() ) : $contentQuery->the_post();
               echo $geoPoint.",\"".preg_replace('/\s+?(\S+)?$/', '', substr(the_title( "", "", false ), 0, 80))."...\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
           }
           $tmpGeoPoint = $geoPoint;
+      }
     }
   }
 //  $geoPoint=strtr(get_post_meta($contentQuery->post->ID, 'geoRSSPoint', true), $trans);
