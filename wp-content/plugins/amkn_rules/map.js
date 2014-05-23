@@ -309,6 +309,7 @@ function findPointsRegions(regions) {
 //      alert(JSON.stringify(regions[index], null, 4));
       results.push(getListingRegionsTree(regions[index]));
     }
+    totalSources['reg'] = actnmap.length;
 //    dojo.forEach(regions,function(region){
 ////      alert(JSON.stringify(region, null, 4));
 ////        if(extent.contains(graphic.geometry)){            
@@ -425,6 +426,11 @@ function updateDataLayerPoints(flag)
     dojo.style(dojo.byId('cFiltersList2'), "display", "block");
     dojo.style(dojo.byId('cFiltersRegion'), "display", "none");
   }
+  var onthemap=dijit.byId('onthemap');
+  if (dojo.byId('geop').checked) 
+    onthemap.attr("title","What&#39;s on the map ("+totalSources['gp']+")");
+  else
+    onthemap.attr("title","What&#39;s on the map ("+totalSources['reg']+")");
 }
 
 function closeDialog() {
@@ -1677,7 +1683,12 @@ function findPointsInExtentTree(extent) {
         } 
     });
     var onthemap=dijit.byId('onthemap');
-    onthemap.attr("title","What&#39;s on the map ("+results.length+")");    
+    if (dojo.byId('geop').checked) {
+      onthemap.attr("title","What&#39;s on the map ("+results.length+")");
+      totalSources['gp'] = results.length;
+    } else {
+      onthemap.attr("title","What&#39;s on the map ("+totalSources['reg']+")");
+    }
     var rootNode = $("#cFiltersList2").dynatree("getRoot");
     var childrenNodes = rootNode.getChildren();
     

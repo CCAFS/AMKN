@@ -17,12 +17,13 @@ if($_GET['leader'] != '0' && $_GET['leader'] != '') {
 if($_GET['theme'] != '0' && $_GET['theme'] != '') {
   $metaKey[] = array('key' => 'theme','value' => $_GET['theme']);
 }
-
+$paged = get_query_var('paged');
 if(count($metaKey)) {
-  $args = array_merge(array('meta_query' => $metaKey), array('posts_per_page' => '8', 'order'=>'DESC'));  
+  $args = array_merge(array('meta_query' => $metaKey), array('posts_per_page' => '8', 'order'=>'DESC', 'paged'=>$paged)); 
 } else {
   $args = $query_string.'&posts_per_page=8&order=DESC';  
 }
+//echo "**".count($total->found_posts)."**";
 $posts = query_posts($args);
 //print_r($metaKey);
 ?>
