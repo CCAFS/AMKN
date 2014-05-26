@@ -32,6 +32,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
             if ($site_description && ( is_home() || is_front_page() ))
                 echo " | $site_description";
             ?></title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
         <link rel="icon" type="image/png" href="<?php bloginfo('template_directory'); ?>/images/favicon.png" />
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/tundra/tundra.css" />
         <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
@@ -254,7 +255,13 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                   node.select(false);
                 });
                 return false;
-              });              
+              });
+              $("#btnToggleSelect").click(function(){
+                $("#cFiltersList2").dynatree("getRoot").visit(function(node){
+                  node.toggleSelect();
+                });
+                return false;
+              });
             });
             function openLandingPage(){$('.remodal').show();inst = $('[data-remodal-id=modal]').remodal({ "hashTracking": false });inst.open()}
             function closeLandingPage(){inst.close()}
