@@ -85,7 +85,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
           <!--  Base map -->
           <div style="height: 86%;">            
             <div id="sourceMap" data-dojo-type="dijit/layout/AccordionContainer" style="height: 100%;position: relative;">                
-              <div class="switch-toggle switch-candy switch-candy-yellow">
+              <div class="switch-toggle switch-candy switch-candy-yellow" style="display:none">
                 <input id="geop" name="view" type="radio" checked onclick="updateDataLayerPoints(this.id);">
                 <label for="geop" onclick="">GEOPOINTS</label>
                 <input id="regs" name="view" type="radio" onclick="updateDataLayerPoints(this.id);">
@@ -109,9 +109,11 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
             </div>
             <div id="regions" class="drop-panel">
               <ul class="homebox-list zoom_in-list">
-              <li><a href="javascript:void(0)" onClick="go2Region('-268581.06491998816;1492308.2161012604', 5);"><img src="<?php bloginfo('template_directory'); ?>/images/west-africa.png"> West Africa</a></li>
-              <li><a href="javascript:void(0)" onClick="go2Region('3997216.609617994;-51108.259032608126', 5);"><img src="<?php bloginfo('template_directory'); ?>/images/east-africa.png"> East Africa</a></li>
-              <li><a href="javascript:void(0)" onClick="go2Region('8610344.140683722;2172292.0197260105', 5);"><img src="<?php bloginfo('template_directory'); ?>/images/south-asia.png"> South Asia</a></li>
+              <li><a href="javascript:void(0)" onClick="go2Region('-268581.06491998816;1492308.2161012604', 4, 'wa');"><img src="<?php bloginfo('template_directory'); ?>/images/west-africa.png"> West Africa</a></li>
+              <li><a href="javascript:void(0)" onClick="go2Region('3997216.609617994;-51108.259032608126', 4, 'ea');"><img src="<?php bloginfo('template_directory'); ?>/images/east-africa.png"> East Africa</a></li>
+              <li><a href="javascript:void(0)" onClick="go2Region('8610344.140683722;2172292.0197260105', 4, 'sa');"><img src="<?php bloginfo('template_directory'); ?>/images/south-asia.png"> South Asia</a></li>
+              <li><a href="javascript:void(0)" onClick="go2Region('-8364791.100883702;-303044.7042604806', 4, 'la');"><img src="<?php bloginfo('template_directory'); ?>/images/latin-america2.png"> Latin America</a></li>
+              <li><a href="javascript:void(0)" onClick="go2Region('11442794.66081846;782972.5936150161', 4, 'sea');"><img src="<?php bloginfo('template_directory'); ?>/images/southeast-asia2.png"> Southeast Asia</a></li>
               </ul>
             </div>
           </div>   

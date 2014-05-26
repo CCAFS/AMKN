@@ -58,7 +58,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
             jQuery(function ($) {
                 //$(document).ready(function() {
                 // Attach the dynatree widget to an existing <div id="tree"> element
-                // and pass the tree options as an argument to the dynatree() function:
+                // and pass the tree options as an argument to the dynatree() function:                
                 $("#cFiltersList2").dynatree({
                     children: treeData,
                     selectMode: 3,

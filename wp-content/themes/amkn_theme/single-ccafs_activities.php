@@ -93,7 +93,7 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
       <div class="blog-post">
         <?php echo "<p><b>Start Date: </b>" . $start . "<br><b>End date: </b>" . $end . "<br><b>Milestone: </b>" . $milestone . "<br><b>Budget: </b>$" . number_format($budget, 2) . "</p>"; ?>
         <?php // if (have_posts()) while (have_posts()) : the_post(); ?>
-        <h3>Description</h3>
+          <h3>Description</h3>
           <?php the_content(); ?>
         <?php // endwhile; // end of the loop.  ?>        
         <?php if ($metaDesc != ''): ?>

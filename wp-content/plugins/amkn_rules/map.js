@@ -93,7 +93,7 @@ function initMap(){
         isZoomSlider:false,
         wrapAround180:true
     });
-    getActivitiesByCountry();
+//    getActivitiesByCountry();
     dojo.connect(map,"onUpdateStart",showLoading);
     dojo.connect(map,"onUpdateEnd",hideLoading);
     dojo.connect(map,"onPanStart",showLoading);
@@ -290,6 +290,57 @@ function polygonsDraw(regions) {
 //            results.push(getListingContentTree(graphic.attributes.id));
 //        } 
 //    });
+}
+
+function highlightRegions(region) {
+  if((typeof featureRegion != 'undefined'))
+    map.removeLayer(featureRegion);
+
+  var contriesRegion = {};
+  contriesRegion['la'] = "'Guatemala','Honduras','El Salvador','Nicaragua','Colombia','Peru'";
+  contriesRegion['wa'] = "'Senegal','Mali','Niger','Ghana','Burkina Faso'";
+  contriesRegion['ea'] = "'Ethiopia','Kenya','Uganda','Tanzania'";
+  contriesRegion['sa'] = "'India','Nepal','Bangladesh'";
+  contriesRegion['sea'] = "'Vietnam','Cambodia','Laos'";
+  //create a feature layer based on the feature collection
+  featureRegion = new esri.layers.FeatureLayer("http://gisweb.ciat.cgiar.org/arcgis/rest/services/CCAFS/ccafs_climate/MapServer/0",
+  {
+    mode: esri.layers.FeatureLayer.MODE_SNAPSHOT,
+    outFields: ["*"]
+  });
+  featureRegion.setDefinitionExpression("COUNTRY IN ("+contriesRegion[region]+")"); 
+  var symbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255, 255, 255, 0.35]), 1), new dojo.Color([125, 125, 125, 0.35]));
+  featureRegion.setRenderer(new esri.renderer.SimpleRenderer(symbol));
+  map.addLayer(featureRegion,0);
+        
+  var highlightSymbol = new esri.symbol.SimpleFillSymbol(
+    esri.symbol.SimpleFillSymbol.STYLE_NULL, 
+    new esri.symbol.SimpleLineSymbol(
+      esri.symbol.SimpleLineSymbol.STYLE_SOLID, 
+      new dojo.Color([125,125,125]), 3
+    ), 
+    new dojo.Color([125,125,125,0.35])
+  );           
+  //listen for when the onMouseOver event fires on the countiesGraphicsLayer
+  //when fired, create a new graphic with the geometry from the event.graphic and add it to the maps graphics layer
+  featureRegion.on("mouse-over", function(evt){
+//    var t = "<b>${COUNTRY}</b>";
+//    var content = esri.lang.substitute(evt.graphic.attributes,t);
+//    dialog.setContent(content);
+//    dojo.style(dialog.domNode, "opacity", 0.85);
+//    dijit.popup.open({
+//      popup: dialog, 
+//      x: evt.pageX,
+//      y: evt.pageY
+//    });
+    var highlightGraphic = new esri.Graphic(evt.graphic.geometry,highlightSymbol);          
+    map.graphics.add(highlightGraphic); 
+//    alert('hi'+featureRegion.id);
+  });
+  featureRegion.on("mouse-out", function(evt){
+    map.graphics.clear();
+//    dijit.popup.close(dialog);
+  });
 }
 
 function findPointsRegions(regions) {
@@ -1449,12 +1500,13 @@ function initBackMap()
     lvlMp="";        
     updateDataLayerTree(false);
 }
-function go2Region(pt,zm)
+function go2Region(pt,zm,rg)
 {
     move2=new esri.geometry.Point([parseFloat(pt.split(";")[0]),parseFloat(pt.split(";")[1])],new esri.SpatialReference({
         wkid:102100
     }));
     map.centerAndZoom(move2,parseFloat(zm));
+    highlightRegions(rg);
 //    map.centerAt(map.extent.getCenter());
 }
 function checkTaxElements(elements){
@@ -1533,6 +1585,9 @@ function zoomToOExt(){
         }
     });
     map.setExtent(tExt);
+    if (typeof featureRegion!="undefined")
+      featureRegion.hide();
+    
 }
 function getMapPointFromMenuPosition(box){
     var x=box.x,y=box.y;
@@ -1677,10 +1732,11 @@ function findPointsInExtentTree(extent) {
     tempCid = 0;
     countCid = 0;
     var totalNum = 0;
+//    alert(postTotal);
     dojo.forEach(dataLayer.graphics,function(graphic){
-        if(extent.contains(graphic.geometry)){            
+        if(extent.contains(graphic.geometry)){
             results.push(getListingContentTree(graphic.attributes.id));
-        } 
+        }
     });
     var onthemap=dijit.byId('onthemap');
     if (dojo.byId('geop').checked) {
@@ -1707,32 +1763,32 @@ function findPointsInExtentTree(extent) {
         switch(childrenNodes[i].data.key) {
             case 'accord_ccafs_sites':              
               childrenNodes[i].addChild(cconmap);
-              childrenNodes[i].data.title = "CCAFS Sites ("+cconmap.length+"/"+totalNum+")";
+              childrenNodes[i].data.title = "CCAFS Sites ("+cconmap.length+"/"+postTotal[childrenNodes[i].data.key.replace('accord_','')]+")";
               childrenNodes[i].render();
             break;
             case 'accord_video_testimonials':     
                 childrenNodes[i].addChild(vtonmap);                
-                childrenNodes[i].data.title = "Videos ("+vtonmap.length+"/"+totalNum+")";
+                childrenNodes[i].data.title = "Videos ("+vtonmap.length+"/"+postTotal[childrenNodes[i].data.key.replace('accord_','')]+")";
                 childrenNodes[i].render();
             break;
             case 'accord_amkn_blog_posts':
                 childrenNodes[i].addChild(bgonmap);
-                childrenNodes[i].data.title = "Blog Posts ("+bgonmap.length+"/"+totalNum+")";
+                childrenNodes[i].data.title = "Blog Posts ("+bgonmap.length+"/"+postTotal[childrenNodes[i].data.key.replace('accord_','')]+")";
                 childrenNodes[i].render();
             break;
             case 'accord_biodiv_cases':
                 childrenNodes[i].addChild(bdonmap);               
-                childrenNodes[i].data.title = "Agrobiodiversity Cases ("+bdonmap.length+"/"+totalNum+")";
+                childrenNodes[i].data.title = "Agrobiodiversity Cases ("+bdonmap.length+"/"+postTotal[childrenNodes[i].data.key.replace('accord_','')]+")";
                 childrenNodes[i].render();
             break;
             case 'accord_photo_testimonials':
                 childrenNodes[i].addChild(ptonmap);                
-                childrenNodes[i].data.title = "Photo Sets ("+ptonmap.length+"/"+totalNum+")";
+                childrenNodes[i].data.title = "Photo Sets ("+ptonmap.length+"/"+postTotal[childrenNodes[i].data.key.replace('accord_','')]+")";
                 childrenNodes[i].render();
             break;
             case 'accord_ccafs_activities':             
                 childrenNodes[i].addChild(actnmap);                
-                childrenNodes[i].data.title = "Activities ("+actnmap.length+"/"+totalNum+")";
+                childrenNodes[i].data.title = "Activities ("+actnmap.length+"/"+postTotal[childrenNodes[i].data.key.replace('accord_','')]+")";
                 childrenNodes[i].render();
             break;
         }

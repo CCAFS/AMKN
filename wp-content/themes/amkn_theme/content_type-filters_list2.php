@@ -42,6 +42,7 @@ echo "{ title: \"Select All\",
                 key: \"select_all\",                 
                 isFolder: false,                
 //                select: true,
+                addClass: \"customSelect\",
                 selectMode: 2,
                 icon:false,
                 hideCheckbox: false,
@@ -163,5 +164,66 @@ if  ($taxonomies) {
 <!-- div element in wich the tree will appear. -->
 <!--<div id="cFiltersList2" style="width: 100%; height: 68%; overflow: hidden;">
 </div>  end cFiltersList2-->
+<?php 
+$qargs = array(
+        'post_type' => isset($postTypes) ? explode(",",$postTypes) : array( 'ccafs_activities','ccafs_sites','biodiv_cases','amkn_blog_posts','photo_testimonials','video_testimonials,' ),
+	'posts_per_page' => '-1',
+        'tax_query' => array(
+		'relation' => 'AND',
+		array(
+			'taxonomy' => 'impacts',
+			'field' => 'id',
+			'terms' => $impQ,
+                        'operator' => $impO,
+		),
+		array(
+			'taxonomy' => 'adaptation_strategy',
+			'field' => 'id',
+			'terms' => $asQ,
+                        'operator' => $asO,
+		),
+		array(
+			'taxonomy' => 'agroecological_zones',
+			'field' => 'id',
+			'terms' => $azQ,
+                        'operator' => $azO,
+		),
+		array(
+			'taxonomy' => 'climate_change_challenges',
+			'field' => 'id',
+			'terms' => $cccQ,
+                        'operator' => $cccO,
+		),
+		array(
+			'taxonomy' => 'mitigation_strategy',
+			'field' => 'id',
+			'terms' => $msQ,
+                        'operator' => $msO,
+		),
+		array(
+			'taxonomy' => 'crops_livestock',
+			'field' => 'id',
+			'terms' => $clQ,
+                        'operator' => $clO,
+		),
+	)
+);
+$contentQuery = new WP_Query($qargs);
+$trans = array(" " => ",");
+//echo 'Latitude,Longitude,Location,CID,Type' . "\n";
+while( $contentQuery->have_posts() ) {
+  $contentQuery->the_post();
+  $contentQuery->post->post_type;
+  if (!isset($postTotal[$contentQuery->post->post_type]))
+    $postTotal[$contentQuery->post->post_type] = 0;
+  $postTotal[$contentQuery->post->post_type] +=1;
+}
+//print_r($postTotal);
+?>
+<script>
+   var postTotal = <?php echo json_encode($postTotal)?>;
+//   alert(postTotal);
+//   alert(JSON.stringify(postTotal, null, 4));
+</script>
 
 

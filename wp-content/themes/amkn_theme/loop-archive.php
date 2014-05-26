@@ -21,11 +21,11 @@ $paged = get_query_var('paged');
 if(count($metaKey)) {
   $args = array_merge(array('meta_query' => $metaKey), array('posts_per_page' => '8', 'order'=>'DESC', 'paged'=>$paged)); 
 } else {
-  $args = $query_string.'&posts_per_page=8&order=DESC';  
+  $args = $query_string.'&posts_per_page=16&order=ASC&orderby=title';  
 }
 //echo "**".count($total->found_posts)."**";
 $posts = query_posts($args);
-//print_r($metaKey);
+//print_r($args);echo "**";
 ?>
 
 <?php /* Start the Loop */ ?>
