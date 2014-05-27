@@ -256,10 +256,20 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                 });
                 return false;
               });
-              $("#btnToggleSelect").click(function(){
+              $("#btnUnselectAll").click(function(){
                 $("#cFiltersList2").dynatree("getRoot").visit(function(node){
-                  node.toggleSelect();
+                  node.select(false);
                 });
+                $("#divBtnSelectAll").show();
+                $("#divBtnUnselectAll").hide();
+                return false;
+              });
+              $("#btnSelectAll").click(function(){
+                $("#cFiltersList2").dynatree("getRoot").visit(function(node){
+                  node.select(true);
+                });
+                $("#divBtnSelectAll").hide();
+                $("#divBtnUnselectAll").show();
                 return false;
               });
             });

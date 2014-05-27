@@ -92,9 +92,14 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
                 <label for="regs" onclick="">REGIONS</label>
                 <a></a>
               </div>
-              <div>
-                <button style="width: 100%;background: #E3BB3B"class="pure-button pure-button-primary" id="btnToggleSelect">
-                  Toggle Select
+              <div id="divBtnSelectAll" style="display:none">
+                <button style="width: 100%;background: #E3BB3B"class="pure-button pure-button-primary" id="btnSelectAll">
+                  Select All
+                </button>
+              </div>
+              <div id="divBtnUnselectAll">
+                <button style="width: 100%;background: #E3BB3B"class="pure-button pure-button-primary" id="btnUnselectAll">
+                  Unselect All
                 </button>
               </div>
               <div id="cFiltersList2" style="width: 100%; height: 100%;position: absolute;"></div>                

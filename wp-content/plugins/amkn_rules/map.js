@@ -33,7 +33,7 @@ var intMinExtX=-7728835.025551194;
 var intMinExtY=-5586372.099330453;
 var initLvl=3;
 
-var map,visLyr,popup,popupOptions,tLayers=[],vLyr,qPop,identifyTask,identifyParams,legend,hQuery,cPx,cHType,polyGraphic,hoverGraphic,hoverText,currentLocation,popupWindow,cntr,idCT,highlightSymbol,highlightGraphic,showLegend,sGCP,baseMP,iconT,baseExt,ctrPt,lvlMp,loadExtent,mapLevel,mapExtent,basemapGallery,tiledMapServiceLayer,gcpFarmingSystems,africaTSLayers,multipoint,popupSize,loading,initExtent,maxExtent,dataLayer,hoverLayer,syms6,syms4,syms5,syms2,syml6,syml4,syml5,syml2,visible=[],legendLayers=[],featureLayer,totalSources;
+var map,visLyr,popup,popupOptions,tLayers=[],vLyr,qPop,identifyTask,identifyParams,legend,hQuery,cPx,cHType,polyGraphic,hoverGraphic,hoverText,currentLocation,popupWindow,cntr,idCT,highlightSymbol,highlightGraphic,showLegend,sGCP,baseMP,iconT,baseExt,ctrPt,lvlMp,loadExtent,mapLevel,mapExtent,basemapGallery,tiledMapServiceLayer,gcpFarmingSystems,africaTSLayers,multipoint,popupSize,loading,initExtent,maxExtent,dataLayer,hoverLayer,syms6,syms4,syms5,syms2,syml6,syml4,syml5,syml2,visible=[],legendLayers=[],featureLayer,featureRegion,totalSources;
 
 var vtonmap=[];
 var cconmap=[];
@@ -324,22 +324,11 @@ function highlightRegions(region) {
   //listen for when the onMouseOver event fires on the countiesGraphicsLayer
   //when fired, create a new graphic with the geometry from the event.graphic and add it to the maps graphics layer
   featureRegion.on("mouse-over", function(evt){
-//    var t = "<b>${COUNTRY}</b>";
-//    var content = esri.lang.substitute(evt.graphic.attributes,t);
-//    dialog.setContent(content);
-//    dojo.style(dialog.domNode, "opacity", 0.85);
-//    dijit.popup.open({
-//      popup: dialog, 
-//      x: evt.pageX,
-//      y: evt.pageY
-//    });
     var highlightGraphic = new esri.Graphic(evt.graphic.geometry,highlightSymbol);          
     map.graphics.add(highlightGraphic); 
-//    alert('hi'+featureRegion.id);
   });
   featureRegion.on("mouse-out", function(evt){
     map.graphics.clear();
-//    dijit.popup.close(dialog);
   });
 }
 
