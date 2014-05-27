@@ -272,6 +272,11 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                 $("#divBtnUnselectAll").show();
                 return false;
               });
+              $(document).on('click','.close_box',function(){
+                  $(this).parent().fadeTo(300,0,function(){
+                        $(this).remove();
+                  });
+              });
             });
             function openLandingPage(){$('.remodal').show();inst = $('[data-remodal-id=modal]').remodal({ "hashTracking": false });inst.open()}
             function closeLandingPage(){inst.close()}

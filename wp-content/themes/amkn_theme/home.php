@@ -92,6 +92,12 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
                 <label for="regs" onclick="">REGIONS</label>
                 <a></a>
               </div>
+              <div class="info box" >
+                <div class="close_box">X</div>
+                <div style="">
+                Only location with geo-coordinates are represented on the map currently; other location with CCAFS activities are being updated and will later appear on the map.
+                </div>
+              </div>
               <div id="divBtnSelectAll" style="display:none">
                 <button style="width: 100%;background: #E3BB3B"class="pure-button pure-button-primary" id="btnSelectAll">
                   Select All
@@ -101,7 +107,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
                 <button style="width: 100%;background: #E3BB3B"class="pure-button pure-button-primary" id="btnUnselectAll">
                   Unselect All
                 </button>
-              </div>
+              </div>              
               <div id="cFiltersList2" style="width: 100%; height: 100%;position: absolute;"></div>                
               <div id="cFiltersRegion" style="width: 100%; height: 100%; overflow: hidden; display: none"></div>
             </div>
