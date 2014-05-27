@@ -438,9 +438,14 @@ h1.feat-maintitle {
   border-radius: 24%;
 }
 .ccafs_sites { 
-    height: 360px;
-    width: 247px;
+    width: 500px;
+    height: 140px;
 
+}
+.ccafs_sites img.image {
+  float: left;
+  margin: 0px 8px 11px 11px;
+  border-radius: 24%;
 }
 .amkn_blog_posts{
     width: 99%;
@@ -1425,7 +1430,7 @@ img.site-photo {
     -moz-border-top-colors: none;
     background-color: #FFFFFF !important;
     border-color: #CCC;
-    -moz-use-text-color #FFFFFF #FFFFFF;
+    -moz-use-text-color: #FFFFFF #FFFFFF;
     border-image: none;
     border-style: solid none solid solid;
     border-width: 1px medium 1px 1px;

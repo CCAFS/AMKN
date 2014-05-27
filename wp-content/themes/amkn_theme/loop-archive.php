@@ -116,20 +116,31 @@ switch ($postType) {
     $geoPoint = str_ireplace(" ", ",", trim($geoRSSPoint));
     $sURL = str_ireplace("http://", "", site_url());
     $sURL= "amkn.org";
-    $staticMapURL = "http://maps.google.com/maps/api/staticmap?center=".$geoPoint."&zoom=4&size=220x215&markers=icon:http%3A%2F%2F".$sURL."%2Fwp-content%2Fthemes%2Famkn_theme%2Fimages%2F".$post->post_type."-mini.png|".$geoPoint."&maptype=roadmap&sensor=false";
+    $staticMapURL = "http://maps.google.com/maps/api/staticmap?center=".$geoPoint."&zoom=4&size=70x70&markers=icon:http%3A%2F%2F".$sURL."%2Fwp-content%2Fthemes%2Famkn_theme%2Fimages%2F".$post->post_type."-mini.png|".$geoPoint."&maptype=roadmap&sensor=false";
     $tEx = $post->post_excerpt;
     if(strlen($tEx) > 75){
         $tEx = substr($tEx,0,75)."...";
     }
     $args4Countries = array('fields' => 'names');
     $cgMapCountries = wp_get_object_terms($post->ID, 'cgmap-countries', $args4Countries);
+    $village = get_post_meta($post->ID, 'village', true);
+    $city = get_post_meta($post->ID, 'city', true);
+    $showLocality = ($village) ? $village : $city;
 ?>
 
     <div class="videoteaser">
     <img class="videotitleico" src="<?php bloginfo( 'template_directory' ); ?>/images/<?php echo $postType; ?>-mini.png" alt="Benchmark site"/> 
     <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?> [<?php echo $cgMapCountries[0]; ?>]</a></h2>
-    <a href="<?php the_permalink(); ?>"><img src="<?php echo $staticMapURL; ?>" /></a>
-    <p><?php echo $tEx; ?></p>
+    <a href="<?php the_permalink(); ?>"><img class="image" src="<?php echo $staticMapURL; ?>" /></a>
+    <p>
+      <?php echo $tEx; ?><br>
+        <span class="sidemap-labels">Next town:</span> <?php echo $showLocality; ?><br>
+        <span class="sidemap-labels">Geocoordinates:</span>
+        <span class="geo">
+           <span class="latitude"><?php echo str_ireplace(" ", "</span>; <span class='longitude'>", $geoRSSPoint); ?></span>
+        </span>
+    </p>    
+     
     </div>
  
 <?php
