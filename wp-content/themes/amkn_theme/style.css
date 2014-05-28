@@ -170,8 +170,9 @@ ul.navigation li ul.sub-menu {
     display: none;
     position: absolute;
     list-style: none;
-    padding: 5px 0px 0px 0px;
-    top: 51px;
+    padding: 0px 0px 0px 0px;
+    margin: 0;
+    top: 54px;
     left: 0;
     font-size: 0.7em;
     background: url(./images/transparent.gif) transparent !important;
@@ -276,9 +277,9 @@ table.esriLegendLayer {
     width: 100%;
     height: 91%;
     overflow: auto;
-    position: absolute !important;
+    /*position: absolute !important;*/
     bottom: 0;
-    display:none;
+    /*display:none;*/
 }
 h2.homebox-title, .dijitDialogTitle, .dojoxExpandoTitle, .homebox, .dijitTitlePaneTitle, .dijitTitlePaneTextNode, .dijitDialogTitleBar {
     /* background: url("images/box-bg.png") repeat scroll 0 0 #FFFFFF !important; */
@@ -438,9 +439,14 @@ h1.feat-maintitle {
   border-radius: 24%;
 }
 .ccafs_sites { 
-    height: 360px;
-    width: 247px;
+    width: 500px;
+    height: 140px;
 
+}
+.ccafs_sites img.image {
+  float: left;
+  margin: 0px 8px 11px 11px;
+  border-radius: 24%;
 }
 .amkn_blog_posts{
     width: 99%;
@@ -721,6 +727,7 @@ ul.footercredits {
 .blog-post {
     border: medium none !important;
     padding: 3px;
+    text-align:justify;
 }
 .dijitPopup {
     border: 1px solid #DEDEDE;
@@ -1425,7 +1432,7 @@ img.site-photo {
     -moz-border-top-colors: none;
     background-color: #FFFFFF !important;
     border-color: #CCC;
-    -moz-use-text-color #FFFFFF #FFFFFF;
+    -moz-use-text-color: #FFFFFF #FFFFFF;
     border-image: none;
     border-style: solid none solid solid;
     border-width: 1px medium 1px 1px;
@@ -1840,4 +1847,38 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
     margin-right: 0.8em;
     width: 22px;
     height: 22px;
+}
+
+.info, .success, .warning, .error, .validation {
+border: 1px solid;
+border-radius:.5em;
+/*margin: 10px 0px;*/
+padding:2px 10px 15px 50px;
+background-repeat: no-repeat;
+background-position: 10px center;
+}
+.info {
+color: #00529B;
+font-size: 70%;
+background-color: #BDE5F8;
+background-image: url('images/infoMap.png');
+background-size:30px 30px;
+}
+
+.close_box {
+    float:right;    
+    padding:2px 5px;
+    background-position: right;
+    background-image: url('images/cancel.png');
+    background-size:15px 15px;
+    background-repeat: no-repeat;
+    width: 100%;
+}
+
+.close_box:hover {
+/*    float:right;
+    display:inline-block;
+    padding:2px 5px;
+    background:#ccc;
+    color:#fff;*/
 }
