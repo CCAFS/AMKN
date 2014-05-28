@@ -33,7 +33,7 @@ var intMinExtX=-7728835.025551194;
 var intMinExtY=-5586372.099330453;
 var initLvl=3;
 
-var map,visLyr,popup,popupOptions,tLayers=[],vLyr,qPop,identifyTask,identifyParams,legend,hQuery,cPx,cHType,polyGraphic,hoverGraphic,hoverText,currentLocation,popupWindow,cntr,idCT,highlightSymbol,highlightGraphic,showLegend,sGCP,baseMP,iconT,baseExt,ctrPt,lvlMp,loadExtent,mapLevel,mapExtent,basemapGallery,tiledMapServiceLayer,gcpFarmingSystems,africaTSLayers,multipoint,popupSize,loading,initExtent,maxExtent,dataLayer,hoverLayer,syms6,syms4,syms5,syms2,syml6,syml4,syml5,syml2,visible=[],legendLayers=[],featureLayer;
+var map,visLyr,popup,popupOptions,tLayers=[],vLyr,qPop,identifyTask,identifyParams,legend,hQuery,cPx,cHType,polyGraphic,hoverGraphic,hoverText,currentLocation,popupWindow,cntr,idCT,highlightSymbol,highlightGraphic,showLegend,sGCP,baseMP,iconT,baseExt,ctrPt,lvlMp,loadExtent,mapLevel,mapExtent,basemapGallery,tiledMapServiceLayer,gcpFarmingSystems,africaTSLayers,multipoint,popupSize,loading,initExtent,maxExtent,dataLayer,hoverLayer,syms6,syms4,syms5,syms2,syml6,syml4,syml5,syml2,visible=[],legendLayers=[],featureLayer,featureRegion,totalSources;
 
 var vtonmap=[];
 var cconmap=[];
@@ -93,7 +93,7 @@ function initMap(){
         isZoomSlider:false,
         wrapAround180:true
     });
-    getActivitiesByCountry();
+//    getActivitiesByCountry();
     dojo.connect(map,"onUpdateStart",showLoading);
     dojo.connect(map,"onUpdateEnd",hideLoading);
     dojo.connect(map,"onPanStart",showLoading);
@@ -211,6 +211,8 @@ function initMap(){
                 }
             }); 
           polygonsDraw(regmap);
+          findPointsRegions(regmap);
+          featureLayer.hide();
 //          hideLoading();
         },
         onError:function(error){}
@@ -236,10 +238,14 @@ function polygonsDraw(regions) {
   map.addLayer(featureLayer,0);
   
   featureLayer.on("click", function(evt){
-    console.log(JSON.stringify(evt.graphic.attributes, null, 4));
+//    console.log(JSON.stringify(evt.graphic.geometry, null, 4));
     var results=[];
     dojo.forEach(regions[evt.graphic.attributes['COUNTRY']],function(item){
-      results.push("<li style='cursor:pointer;' onMouseOut='onFeatureLeave()' onclick='document.location = \"./?p="+item.cIDField+"\"''>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+item.typeField+"-mini.png' />&nbsp;"+item.labelField+"</li>");
+      if (item.typeField=="ccafs_activities") {
+        ttl = item.labelField.split('|');
+        ttl = "<b>Title: </b>"+ttl[0]+"<br><b>Contact: </b>"+ttl[1].replace(/#/gi,", ")+"<br><b>Theme: </b>"+ttl[2];
+      }
+      results.push("<li style='cursor:pointer;' onMouseOut='onFeatureLeave()' onclick='document.location = \"./?p="+item.cIDField+"\"''>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+item.typeField+"-mini.png' />&nbsp;"+ttl+"</li>");
     });      
 
     var ttContent="<span class='blockNoWrap'>At "+evt.graphic.attributes['COUNTRY']+" ("+results.length+") <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='zoomToCtxt();'><a>Zoom here</a></button> <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='cPop();'><a>Close</a></button></span>";
@@ -278,12 +284,193 @@ function polygonsDraw(regions) {
   });
   featureLayer.on("selection-complete", function(evt){
     alert(featureLayer.graphics+'@');
-  });  
+  });    
 //    dojo.forEach(featureLayer.graphics,function(graphic){
 //      if(extent.contains(graphic.geometry)){       
 //            results.push(getListingContentTree(graphic.attributes.id));
 //        } 
 //    });
+}
+
+function highlightRegions(region) {
+  if((typeof featureRegion != 'undefined'))
+    map.removeLayer(featureRegion);
+
+  var contriesRegion = {};
+  contriesRegion['la'] = "'Guatemala','Honduras','El Salvador','Nicaragua','Colombia','Peru'";
+  contriesRegion['wa'] = "'Senegal','Mali','Niger','Ghana','Burkina Faso'";
+  contriesRegion['ea'] = "'Ethiopia','Kenya','Uganda','Tanzania'";
+  contriesRegion['sa'] = "'India','Nepal','Bangladesh'";
+  contriesRegion['sea'] = "'Vietnam','Cambodia','Laos'";
+  //create a feature layer based on the feature collection
+  featureRegion = new esri.layers.FeatureLayer("http://gisweb.ciat.cgiar.org/arcgis/rest/services/CCAFS/ccafs_climate/MapServer/0",
+  {
+    mode: esri.layers.FeatureLayer.MODE_SNAPSHOT,
+    outFields: ["*"]
+  });
+  featureRegion.setDefinitionExpression("COUNTRY IN ("+contriesRegion[region]+")"); 
+  var symbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255, 255, 255, 0.35]), 1), new dojo.Color([125, 125, 125, 0.35]));
+  featureRegion.setRenderer(new esri.renderer.SimpleRenderer(symbol));
+  map.addLayer(featureRegion,0);
+        
+  var highlightSymbol = new esri.symbol.SimpleFillSymbol(
+    esri.symbol.SimpleFillSymbol.STYLE_NULL, 
+    new esri.symbol.SimpleLineSymbol(
+      esri.symbol.SimpleLineSymbol.STYLE_SOLID, 
+      new dojo.Color([125,125,125]), 3
+    ), 
+    new dojo.Color([125,125,125,0.35])
+  );           
+  //listen for when the onMouseOver event fires on the countiesGraphicsLayer
+  //when fired, create a new graphic with the geometry from the event.graphic and add it to the maps graphics layer
+  featureRegion.on("mouse-over", function(evt){
+    var highlightGraphic = new esri.Graphic(evt.graphic.geometry,highlightSymbol);          
+    map.graphics.add(highlightGraphic); 
+  });
+  featureRegion.on("mouse-out", function(evt){
+    map.graphics.clear();
+  });
+}
+
+function findPointsRegions(regions) {
+    var results=[];
+//    vtonmap=[];
+//    cconmap=[];
+//    bgonmap=[];
+//    bdonmap=[];
+//    ptonmap=[];
+    actnmap=[];
+    oactnmapr = {};
+    tempCidr = 0;
+    countCid = 0;  
+    limitfor = 0;
+//    alert(JSON.stringify(regions, null, 4));
+    for(var index in regions) { 
+//      alert(JSON.stringify(regions[index], null, 4));
+      results.push(getListingRegionsTree(regions[index]));
+    }
+    totalSources['reg'] = actnmap.length;
+//    dojo.forEach(regions,function(region){
+////      alert(JSON.stringify(region, null, 4));
+////        if(extent.contains(graphic.geometry)){            
+//            results.push(getListingRegionsTree(region));
+////        } 
+//    });
+//    var onthemap=dijit.byId('onthemap');
+//    onthemap.attr("title","What&#39;s on the map ("+results.length+")");    
+    var rootNode = $("#cFiltersRegion").dynatree("getRoot");
+    var childrenNodes = rootNode.getChildren();
+    
+    for(i = 0; i < childrenNodes.length; i++) {
+        // clean array.
+//        if (childrenNodes[i].data.key !== 'accord_data_layer' && childrenNodes[i].data.key !== 'accord_filter_resource_theme') {
+//          childrenNodes[i].removeChildren();
+//        }
+        // add children and update the number of records on it.
+        switch(childrenNodes[i].data.key) {
+//            case 'accord_ccafs_sites':                
+//                childrenNodes[i].addChild(cconmap);
+//                childrenNodes[i].data.title = "CCAFS Sites ("+cconmap.length+")";
+//                childrenNodes[i].render();
+//            break;
+//            case 'accord_video_testimonials':     
+//                childrenNodes[i].addChild(vtonmap);                
+//                childrenNodes[i].data.title = "Videos ("+vtonmap.length+")";
+//                childrenNodes[i].render();
+//            break;
+//            case 'accord_amkn_blog_posts':
+//                childrenNodes[i].addChild(bgonmap);
+//                childrenNodes[i].data.title = "Blog Posts ("+bgonmap.length+")";
+//                childrenNodes[i].render();
+//            break;
+//            case 'accord_biodiv_cases':
+//                childrenNodes[i].addChild(bdonmap);               
+//                childrenNodes[i].data.title = "Agrobiodiversity Cases ("+bdonmap.length+")";
+//                childrenNodes[i].render();
+//            break;
+//            case 'accord_photo_testimonials':
+//                childrenNodes[i].addChild(ptonmap);                
+//                childrenNodes[i].data.title = "Photo Sets ("+ptonmap.length+")";
+//                childrenNodes[i].render();
+//            break;
+            case 'accord_ccafs_activities':             
+                childrenNodes[i].addChild(actnmap);
+                childrenNodes[i].select(true);
+                childrenNodes[i].data.title = "Activities ("+actnmap.length+")";
+                childrenNodes[i].render();
+            break;
+        }
+    }
+}
+
+function getListingRegionsTree(region){
+    var rt,ttl,cid;
+    
+    dojo.forEach(region,function(activitie){      
+      ttl=activitie.labelField;
+      cid=activitie.cIDField;
+      rt=activitie.typeField;
+//      console.log(JSON.stringify(activitie, null, 4)+limitfor+'//'+cid+'/');
+      if (!oactnmap[cid]) {
+        countCid=1;
+        if (rt==="ccafs_activities") {
+          ttl = ttl.split('|');
+          title = "<b>Title: </b>"+ttl[0]+"<br><b>Contact: </b>"+ttl[1].replace(/#/gi,",")+"<br><b>Theme: </b>"+ttl[2];
+          mapPTS=actnmap.push({
+            title: title,
+            tooltip:ttl[0],
+            key: 52,
+            url: './?p='+cid,                        
+            hideCheckbox: true,
+            unselectable: true,
+            select: false,
+            icon: '../../../../images/ccafs_activities-mini.png'
+          //isLazy: true
+          }); 
+        }
+      } else {
+        countCid++;
+      }
+      if(!oactnmapr[cid])
+        oactnmapr[cid] = [];
+      oactnmapr[cid].push({ 
+        key: 52,
+      });     
+      tempCidr = cid;
+      limitfor++;
+//      if(limitfor==1) 
+//        return;
+    });
+    return;
+}
+
+function updateDataLayerRegionTree(flag)
+{
+  if (flag)
+    featureLayer.show();
+  else
+    featureLayer.hide();
+}
+
+function updateDataLayerPoints(flag)
+{
+//  console.log(dataLayer.visible+'1$%&'+featureLayer.visible+'//'+flag);
+  if (flag=='regs') {
+    dataLayer.hide();
+    featureLayer.show();    
+    dojo.style(dojo.byId('cFiltersList2'), "display", "none");
+    dojo.style(dojo.byId('cFiltersRegion'), "display", "block");
+  } else if (flag=='geop')  {
+    dataLayer.show();
+    featureLayer.hide();
+    dojo.style(dojo.byId('cFiltersList2'), "display", "block");
+    dojo.style(dojo.byId('cFiltersRegion'), "display", "none");
+  }
+  var onthemap=dijit.byId('onthemap');
+  if (dojo.byId('geop').checked) 
+    onthemap.attr("title","What&#39;s on the map ("+totalSources['gp']+")");
+  else
+    onthemap.attr("title","What&#39;s on the map ("+totalSources['reg']+")");
 }
 
 function closeDialog() {
@@ -324,6 +511,7 @@ function hideLoading(error){
 }
 function processCsvData(url){
     showLoading();
+    totalSources = {};
     var frameUrl=new dojo._Url(window.location.href);
     var csvUrl=new dojo._Url(url);
     if(frameUrl.host!==csvUrl.host||frameUrl.port!==csvUrl.port||frameUrl.scheme!==csvUrl.scheme){
@@ -349,6 +537,10 @@ function processCsvData(url){
                 var label=csvStore.getValue(item,labelField)||"";
                 var id=csvStore.getIdentity(item);
                 addGraphic(id,csvStore.getValue(item,latField),csvStore.getValue(item,longField),csvStore.getValue(item,typeField));
+                if(!totalSources[csvStore.getValue(item,typeField)])
+                  totalSources[csvStore.getValue(item,typeField)] = {};
+                totalSources[csvStore.getValue(item,typeField)][csvStore.getValue(item,"CID")] = 1;
+//                totalSources[csvStore.getValue(item,typeField)] += 1;
             });
             dojo.forEach(dataLayer.graphics,function(graphic){
                 var geometry=graphic.geometry;
@@ -639,6 +831,11 @@ function getListingContent(id){
             cid=csvStore.getValue(item,"CID");
         }
     });
+    //(0='title',1='contactName',2='theme')
+    if (rt=="ccafs_activities") {
+      ttl = ttl.split('|');
+      ttl = "<b>Title: </b>"+ttl[0]+"<br><b>Contact: </b>"+ttl[1].replace(/#/gi,", ")+"<br><b>Theme: </b>"+ttl[2];
+    }
 //    mapPTS=rt=="video_testimonials"?vtonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+",\'p="+cid+"\')' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
 //    mapPTS=rt=="ccafs_sites"?cconmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' >"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;<a class='link-ccafs-sites' href='./?p="+cid+"'>"+ttl+"</a></li>"):"";//without popup
 //    mapPTS=rt=="amkn_blog_posts"?bgonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
@@ -1074,6 +1271,7 @@ function setView()
 function setViewTree()
 {    
   var points = $("#cFiltersList2").dynatree("getTree").getSelectedNodes();
+  var pointsLyr = $("#dataLayers").dynatree("getTree").getSelectedNodes();
   var showpts="";
   var showimp="";
   var showas="";
@@ -1098,9 +1296,13 @@ function setViewTree()
           showccc+=points[i].data.key.replace('taxio_','')+",";
         break;
       }
-    } else if (points[i].data.key.match('aglyr') && points[i].data.key.match('|')) {
-      showLyr+=points[i].data.key+","; 
     }
+  }
+  
+  for(var i=0;i<pointsLyr.length;i++){
+//    if (pointsLyr[i].data.key.match('aglyr') && pointsLyr[i].data.key.match('|')) {
+      showLyr+=pointsLyr[i].data.key+","; 
+//    }
   }
   showpts=showpts===""?"":"/pts="+showpts;
   showimp=showimp===""?"":"/imp="+showimp;
@@ -1205,6 +1407,7 @@ function getView()
 
 function getViewTree()
 {
+  var initPts = true;
   if(location.hash) {
     location.hash=unescape(location.hash);
     var theMap=unescape(location.hash).split("/");
@@ -1214,6 +1417,7 @@ function getViewTree()
         switch(cEle){
           case"pts":
             checkTypeElements(theMap[mp].split("=")[1]);
+            initPts = false;
           break;
           case"imp":
             checkTaxElements(theMap[mp].split("=")[1]);
@@ -1265,6 +1469,12 @@ function getViewTree()
       }
     }
   }
+  if(initPts) {
+    $("#cFiltersList2").dynatree("getRoot").visit(function(node){
+      node.select(true);
+    });
+  }
+    
   firstime = true;
 }
 
@@ -1279,12 +1489,13 @@ function initBackMap()
     lvlMp="";        
     updateDataLayerTree(false);
 }
-function go2Region(pt,zm)
+function go2Region(pt,zm,rg)
 {
     move2=new esri.geometry.Point([parseFloat(pt.split(";")[0]),parseFloat(pt.split(";")[1])],new esri.SpatialReference({
         wkid:102100
     }));
     map.centerAndZoom(move2,parseFloat(zm));
+    highlightRegions(rg);
 //    map.centerAt(map.extent.getCenter());
 }
 function checkTaxElements(elements){
@@ -1363,6 +1574,9 @@ function zoomToOExt(){
         }
     });
     map.setExtent(tExt);
+    if (typeof featureRegion!="undefined")
+      featureRegion.hide();
+    
 }
 function getMapPointFromMenuPosition(box){
     var x=box.x,y=box.y;
@@ -1417,7 +1631,8 @@ function getListingContentTree(id){
         icon: '../../../../images/ccafs_sites-mini.png'
       }):"";
       mapPTS=rt==="video_testimonials"?vtonmap.push({
-          title: ttl, 
+          title: ttl,
+          tooltip:ttl,
           key: id,
           url: './?p='+cid,
           hideCheckbox: true,
@@ -1427,7 +1642,8 @@ function getListingContentTree(id){
       //isLazy: true
       }):"";
       mapPTS=rt==="amkn_blog_posts"?bgonmap.push({
-          title: ttl, 
+          title: ttl,
+          tooltip:ttl,
           key: id,
           url: './?p='+cid,
           hideCheckbox: true,
@@ -1438,6 +1654,7 @@ function getListingContentTree(id){
       }):"";
       mapPTS=rt==="biodiv_cases"?bdonmap.push({
           title: ttl, 
+          tooltip:ttl,
           key: id,
           url: './?p='+cid,
           hideCheckbox: true,
@@ -1447,7 +1664,8 @@ function getListingContentTree(id){
       //isLazy: true
       }):"";
       mapPTS=rt==="photo_testimonials"?ptonmap.push({
-          title: ttl, 
+          title: ttl,
+          tooltip:ttl,
           key: id,
           url: './?p='+cid,                        
           hideCheckbox: true,
@@ -1456,8 +1674,13 @@ function getListingContentTree(id){
           icon: '../../../../images/photo_testimonials-mini.png'
       //isLazy: true
       }):"";
-      mapPTS=rt==="ccafs_activities"?actnmap.push({
-        title: ttl, 
+      if (rt==="ccafs_activities") {
+        //(0='title',1='contactName',2='theme')
+        ttl = ttl.split('|');
+        title = "<b>Title:</b>"+ttl[0]+"<br><b>Contact:</b>"+ttl[1].replace(/#/gi,",")+"<br><b>Theme:</b>"+ttl[2];
+        mapPTS = actnmap.push({
+        title: title,
+        tooltip:ttl[0],
           key: id,
           url: './?p='+cid,                        
           hideCheckbox: true,
@@ -1465,7 +1688,8 @@ function getListingContentTree(id){
           select: false,
           icon: '../../../../images/ccafs_activities-mini.png'
         //isLazy: true
-      }):"";    
+        });
+      }
     } else {
       countCid++;
     }     
@@ -1496,13 +1720,20 @@ function findPointsInExtentTree(extent) {
     oactnmap = {};
     tempCid = 0;
     countCid = 0;
+    var totalNum = 0;
+//    alert(postTotal);
     dojo.forEach(dataLayer.graphics,function(graphic){
-        if(extent.contains(graphic.geometry)){            
+        if(extent.contains(graphic.geometry)){
             results.push(getListingContentTree(graphic.attributes.id));
-        } 
+        }
     });
     var onthemap=dijit.byId('onthemap');
-    onthemap.attr("title","What&#39;s on the map ("+results.length+")");    
+    if (dojo.byId('geop').checked) {
+      onthemap.attr("title","What&#39;s on the map ("+results.length+")");
+      totalSources['gp'] = results.length;
+    } else {
+      onthemap.attr("title","What&#39;s on the map ("+totalSources['reg']+")");
+    }
     var rootNode = $("#cFiltersList2").dynatree("getRoot");
     var childrenNodes = rootNode.getChildren();
     
@@ -1512,35 +1743,41 @@ function findPointsInExtentTree(extent) {
           childrenNodes[i].removeChildren();
         }
         // add children and update the number of records on it.
+        if (totalSources[childrenNodes[i].data.key.replace('accord_','')]) {
+          totalNum = Object.keys(totalSources[childrenNodes[i].data.key.replace('accord_','')]).length;         
+        } else {
+          totalNum = 0;
+        }
+        
         switch(childrenNodes[i].data.key) {
-            case 'accord_ccafs_sites':                
-                childrenNodes[i].addChild(cconmap);
-                childrenNodes[i].data.title = "CCAFS Sites ("+cconmap.length+")";
-                childrenNodes[i].render();
+            case 'accord_ccafs_sites':              
+              childrenNodes[i].addChild(cconmap);
+              childrenNodes[i].data.title = "CCAFS Sites ("+cconmap.length+"/"+postTotal[childrenNodes[i].data.key.replace('accord_','')]+")";
+              childrenNodes[i].render();
             break;
             case 'accord_video_testimonials':     
                 childrenNodes[i].addChild(vtonmap);                
-                childrenNodes[i].data.title = "Videos ("+vtonmap.length+")";
+                childrenNodes[i].data.title = "Videos ("+vtonmap.length+"/"+postTotal[childrenNodes[i].data.key.replace('accord_','')]+")";
                 childrenNodes[i].render();
             break;
             case 'accord_amkn_blog_posts':
                 childrenNodes[i].addChild(bgonmap);
-                childrenNodes[i].data.title = "Blog Posts ("+bgonmap.length+")";
+                childrenNodes[i].data.title = "Blog Posts ("+bgonmap.length+"/"+postTotal[childrenNodes[i].data.key.replace('accord_','')]+")";
                 childrenNodes[i].render();
             break;
             case 'accord_biodiv_cases':
                 childrenNodes[i].addChild(bdonmap);               
-                childrenNodes[i].data.title = "Agrobiodiversity Cases ("+bdonmap.length+")";
+                childrenNodes[i].data.title = "Agrobiodiversity Cases ("+bdonmap.length+"/"+postTotal[childrenNodes[i].data.key.replace('accord_','')]+")";
                 childrenNodes[i].render();
             break;
             case 'accord_photo_testimonials':
                 childrenNodes[i].addChild(ptonmap);                
-                childrenNodes[i].data.title = "Photo Sets ("+ptonmap.length+")";
+                childrenNodes[i].data.title = "Photo Sets ("+ptonmap.length+"/"+postTotal[childrenNodes[i].data.key.replace('accord_','')]+")";
                 childrenNodes[i].render();
             break;
             case 'accord_ccafs_activities':             
                 childrenNodes[i].addChild(actnmap);                
-                childrenNodes[i].data.title = "Activities ("+actnmap.length+")";
+                childrenNodes[i].data.title = "Activities ("+actnmap.length+"/"+postTotal[childrenNodes[i].data.key.replace('accord_','')]+")";
                 childrenNodes[i].render();
             break;
         }
@@ -1554,7 +1791,7 @@ function findPointsInExtentTree(extent) {
  * @author Camilo Rodriguez email: c.r.sanchez@cgiar.org
 **/
 function createDataLayersBranch () {
-  var nodeDataLayer = $("#cFiltersList2").dynatree("getTree").getNodeByKey("accord_data_layer");
+  var nodeDataLayer = $("#dataLayers").dynatree("getTree").getNodeByKey("accord_data_layer");
   var ly = '';
   var children = nodeDataLayer.getChildren();
   var totalLayers = 0;
@@ -1564,7 +1801,8 @@ function createDataLayersBranch () {
     layer = new esri.layers.ArcGISDynamicMapServiceLayer(ly[2]);
     layer.id = ly[0];      
     totalLayers+=buildLayerListTree (layer,ly[0],ly[1],soon);
-  }
+  }  
+  nodeDataLayer.expand(true);
 }
 
 function findPointsInExtent(extent){
@@ -1642,29 +1880,29 @@ function getItemsAtLocation(sPtX,sPtY,evt)
     polyGraphic=new esri.Graphic(polygon,gs);   
     hoverLayer.add(polyGraphic);
 //    dojo.connect(hoverLayer,"onClick",function(){
-//    hoverLayer.on("click", function(evts){
-//      var results=[]; 
-//      tempcid = 0;
-//      countCid = 0;
-//      dojo.forEach(dataLayer.graphics,function(graphic){
-//          if(polygon.getExtent().contains(graphic.geometry)){
-//              results.push(getListingContent(graphic.attributes.id));
-//          }
-//      });      
-////      alert(results.length);
-//      cPx=new esri.geometry.Point(map.toMap(evt.screenPoint).x,map.toMap(evt.screenPoint).y,map.spatialReference);
-//      var ttContent="<span class='blockNoWrap'>At this location ("+results.length+") <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='zoomToCtxt();'><a>Zoom here</a></button> <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='cPop();'><a>Close</a></button></span>";
-//      ttContent+="<table style='width:100%;'><tbody><tr><td><ul class='homebox-list zoom_in-list'>"+results.join("")+"<ul></tr></td></tbody></table>";
-//      hQuery.setContent(ttContent);
-//      dojo.style(hQuery.domNode,"opacity",1);
-//      dijit.popup.open({
-//          popup:hQuery,
-//          x:evt.pageX,
-//          y:evt.pageY
-//      });
-////      dojo.connect(hQuery,"onMouseOut",cPop);
-//    });
-    findPointsInPolygon(polygon.getExtent(),evt);
+    hoverLayer.on("click", function(evts){
+      var results=[]; 
+      tempcid = 0;
+      countCid = 0;
+      dojo.forEach(dataLayer.graphics,function(graphic){
+          if(polygon.getExtent().contains(graphic.geometry)){
+              results.push(getListingContent(graphic.attributes.id));
+          }
+      });      
+//      alert(results.length);
+      cPx=new esri.geometry.Point(map.toMap(evt.screenPoint).x,map.toMap(evt.screenPoint).y,map.spatialReference);
+      var ttContent="<span class='blockNoWrap'>At this location ("+results.length+") <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='zoomToCtxt();'><a>Zoom here</a></button> <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='cPop();'><a>Close</a></button></span>";
+      ttContent+="<table style='width:100%;'><tbody><tr><td><ul class='homebox-list zoom_in-list'>"+results.join("")+"<ul></tr></td></tbody></table>";
+      hQuery.setContent(ttContent);
+      dojo.style(hQuery.domNode,"opacity",1);
+      dijit.popup.open({
+          popup:hQuery,
+          x:evt.pageX,
+          y:evt.pageY
+      });
+//      dojo.connect(hQuery,"onMouseOut",cPop);
+    });
+//    findPointsInPolygon(polygon.getExtent(),evt);
 }
 var addedLayers=[];
 
@@ -1779,10 +2017,10 @@ function buildLayerListTree(layer,layerName,single,soon) {
       }
       var vLyrArray = (typeof vLyr!=="undefined")?vLyr.split(","):new Array();
       for ($j=0;$j<vLyrArray.length;$j++) {
-        if($("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]) != null) {
-          $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).select(true);
-          $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).getParent().expand(true);
-          $("#cFiltersList2").dynatree("getTree").getNodeByKey(vLyrArray[$j]).getParent().getParent().expand(true);
+        if($("#dataLayers").dynatree("getTree").getNodeByKey(vLyrArray[$j]) != null) {
+          $("#dataLayers").dynatree("getTree").getNodeByKey(vLyrArray[$j]).select(true);
+          $("#dataLayers").dynatree("getTree").getNodeByKey(vLyrArray[$j]).getParent().expand(true);
+          $("#dataLayers").dynatree("getTree").getNodeByKey(vLyrArray[$j]).getParent().getParent().expand(true);
         }
       }
 
@@ -1840,7 +2078,8 @@ function updateLayerVisibilityTree(node,flag) {
     deltLyr=setTimeout(function(){
         map.centerAt(map.extent.getCenter());
         rLegend();
-    },1000);
+        dijit.byId('layersDiv').selectChild(dijit.byId('accord_legend'));
+    },1000);    
 }
 
 function unselectCheck(node) {

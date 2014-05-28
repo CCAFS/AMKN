@@ -38,14 +38,23 @@ array_multisort($sortArray[$orderby], SORT_ASC, $post_types);
     var treeData = [
 <?php
 $fst = 1;
+//echo "{ title: \"Select All\", 
+//                key: \"select_all\",                 
+//                isFolder: false,                
+////                select: true,
+//                addClass: \"customSelect\",
+//                selectMode: 2,
+//                icon:false,
+//                hideCheckbox: false,
+//            },";
 foreach ($post_types as $post_type) {
     if (!in_array($post_type->name, $excludeTypes)) {
         echo $fst == 1 ? "" : ",";
-        $fst = 0;
+        $fst = 0;        
         echo "{ title: \"" . $post_type->label . "\", 
                 key: \"accord_" . $post_type->name . "\",                 
                 isFolder: true,                
-                select: false,
+//                select: true,
                 selectMode: 2,
                 hideCheckbox: false,
                     ";
@@ -75,7 +84,7 @@ foreach ($post_types as $post_type) {
             }";
     }
 }
-$layers =  ",{ title: \"Data Layer (".count($bookmarks).")\", 
+$layers =  "]; var treeDataLayer = [ { title: \"Data Layer (".count($bookmarks).")\", 
                 key: \"accord_data_layer\",                  
                 isFolder: true,
                 hideCheckbox: true,            
@@ -98,7 +107,7 @@ foreach($bookmarks as $bm) {
   $i++;
 }
 $layers .=    "]
-       }";
+       }];";
 echo $layers;
 
 $args2=array(
@@ -112,7 +121,7 @@ $output = 'objects'; // or names
 $operator = 'and'; // 'and' or 'or'
 $taxonomies=get_taxonomies($args2,$output,$operator);
 if  ($taxonomies) {
-  $taxoTree =  ",{ title: \"Filter by Resource Theme\", 
+  $taxoTree =  "var treeDataTaxo = [{ title: \"Filter by Resource Theme\", 
                 key: \"accord_filter_resource_theme\", 
                 isFolder: true,
                 hideCheckbox: true,            
@@ -132,11 +141,12 @@ if  ($taxonomies) {
                      isFolder: true, 
                      hideCheckbox: true,
                      key: '".$taxonomy->name."',
-                     selectMode: 3,
+                     selectMode: 3,                     
                      children: [";
       if($count > 0){
         foreach ($terms as $term) {
-          $taxoTree .= "{title: '".$term->name."',                       
+          $taxoTree .= "{title: '".$term->name."',
+                        icon:false,
                         key: 'taxio_".$term->term_id."',
                         },";
         }
@@ -154,5 +164,66 @@ if  ($taxonomies) {
 <!-- div element in wich the tree will appear. -->
 <!--<div id="cFiltersList2" style="width: 100%; height: 68%; overflow: hidden;">
 </div>  end cFiltersList2-->
+<?php 
+$qargs = array(
+        'post_type' => isset($postTypes) ? explode(",",$postTypes) : array( 'ccafs_activities','ccafs_sites','biodiv_cases','amkn_blog_posts','photo_testimonials','video_testimonials,' ),
+	'posts_per_page' => '-1',
+        'tax_query' => array(
+		'relation' => 'AND',
+		array(
+			'taxonomy' => 'impacts',
+			'field' => 'id',
+			'terms' => $impQ,
+                        'operator' => $impO,
+		),
+		array(
+			'taxonomy' => 'adaptation_strategy',
+			'field' => 'id',
+			'terms' => $asQ,
+                        'operator' => $asO,
+		),
+		array(
+			'taxonomy' => 'agroecological_zones',
+			'field' => 'id',
+			'terms' => $azQ,
+                        'operator' => $azO,
+		),
+		array(
+			'taxonomy' => 'climate_change_challenges',
+			'field' => 'id',
+			'terms' => $cccQ,
+                        'operator' => $cccO,
+		),
+		array(
+			'taxonomy' => 'mitigation_strategy',
+			'field' => 'id',
+			'terms' => $msQ,
+                        'operator' => $msO,
+		),
+		array(
+			'taxonomy' => 'crops_livestock',
+			'field' => 'id',
+			'terms' => $clQ,
+                        'operator' => $clO,
+		),
+	)
+);
+$contentQuery = new WP_Query($qargs);
+$trans = array(" " => ",");
+//echo 'Latitude,Longitude,Location,CID,Type' . "\n";
+while( $contentQuery->have_posts() ) {
+  $contentQuery->the_post();
+  $contentQuery->post->post_type;
+  if (!isset($postTotal[$contentQuery->post->post_type]))
+    $postTotal[$contentQuery->post->post_type] = 0;
+  $postTotal[$contentQuery->post->post_type] +=1;
+}
+//print_r($postTotal);
+?>
+<script>
+   var postTotal = <?php echo json_encode($postTotal)?>;
+//   alert(postTotal);
+//   alert(JSON.stringify(postTotal, null, 4));
+</script>
 
 

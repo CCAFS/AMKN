@@ -454,7 +454,7 @@ $cccO = isset($ccc) ? "IN" : "BETWEEN";
 $azO = isset($az) ? "IN" : "BETWEEN";
 
 $qargs = array(
-        'post_type' => isset($postTypes) ? explode(",",$postTypes) : array( 'video_testimonials', 'ccafs_sites', 'amkn_blog_posts', 'photo_testimonials', 'biodiv_cases', 'ccafs_activities' ),
+        'post_type' => isset($postTypes) ? explode(",",$postTypes) : array( 'none' ),
 	'posts_per_page' => '-1',
         'tax_query' => array(
 		'relation' => 'AND',
@@ -500,14 +500,21 @@ $contentQuery = new WP_Query($qargs);
 $trans = array(" " => ",");
 echo 'Latitude,Longitude,Location,CID,Type' . "\n";
 while( $contentQuery->have_posts() ) : $contentQuery->the_post();
-  $row = get_post_meta($contentQuery->post->ID, 'geoRSSPoint', false);
+  $row = get_post_meta($contentQuery->post->ID);
   $tmpGeoPoint = '';
-  foreach ($row as $value) {
-    $geoPoint=strtr($value, $trans);
-    if(($geoPoint && $tmpGeoPoint == '' ) || $geoPoint != $tmpGeoPoint) {
-      echo $geoPoint.",\"".the_title( "", "", false )."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
+  if ($row['geoRSSPoint']) {
+    foreach ($row['geoRSSPoint'] as $key => $value) {
+      if ($value != '') {
+          $geoPoint=strtr($value, $trans);
+          if(($geoPoint && $tmpGeoPoint == '' ) || $geoPoint != $tmpGeoPoint) {
+            if ($contentQuery->post->post_type == 'ccafs_activities')
+              echo $geoPoint.",\"".preg_replace('/\s+?(\S+)?$/', '', substr(the_title( "", "", false ), 0, 60))."...|".implode('#',$row['contactName']).'|'.implode('#',$row['theme'])."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
+            else
+              echo $geoPoint.",\"".preg_replace('/\s+?(\S+)?$/', '', substr(the_title( "", "", false ), 0, 80))."...\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
+          }
+          $tmpGeoPoint = $geoPoint;
+      }
     }
-    $tmpGeoPoint = $geoPoint;
   }
 //  $geoPoint=strtr(get_post_meta($contentQuery->post->ID, 'geoRSSPoint', true), $trans);
 //  if($geoPoint) {
@@ -532,14 +539,19 @@ function esriMapRegions( $atts ) {
   $trans = array(" " => ",");
   echo 'Regions,Location,CID,Type' . "\n";
   while( $contentQuery->have_posts() ) { $contentQuery->the_post();
-    $row = get_post_meta($contentQuery->post->ID, 'countryLocationName', false);
+    $row = get_post_meta($contentQuery->post->ID);
     $tmpGeoPoint = '';
-    foreach ($row as $value) {
-      $geoPoint=$value;
-      if(($geoPoint && $tmpGeoPoint == '' ) || $geoPoint != $tmpGeoPoint) {
-        echo "\"".$geoPoint."\",\"".the_title( "", "", false )."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
-      }
-      $tmpGeoPoint = $geoPoint;
+    if ($row['countryLocationName']) {
+      foreach ($row['countryLocationName'] as $key => $value) {
+        $geoPoint=$value;
+        if(($geoPoint && $tmpGeoPoint == '' ) || $geoPoint != $tmpGeoPoint) {          
+          if ($contentQuery->post->post_type == 'ccafs_activities')
+            echo "\"".$geoPoint."\",\"".preg_replace('/\s+?(\S+)?$/', '', substr(the_title( "", "", false ), 0, 60))."...|".implode('#',$row['contactName']).'|'.implode('#',$row['theme'])."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
+          else
+            echo "\"".$geoPoint."\",\"".preg_replace('/\s+?(\S+)?$/', '', substr(the_title( "", "", false ), 0, 80))."...\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
+        }
+        $tmpGeoPoint = $geoPoint;
+      } 
     }
   }
 }

@@ -20,5 +20,7 @@
          pager: false,
          auto: true
       });
+      $('.slider-photos').show();
+      $('.slider-video').show();
    });
  

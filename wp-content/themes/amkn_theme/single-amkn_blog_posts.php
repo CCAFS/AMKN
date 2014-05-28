@@ -87,17 +87,14 @@ $getArgs=array(
 <h2 class="title"><?php the_title(); ?></h2>
 <div class="entrymeta">Source: <em><?php echo get_bookmark( $srcID )->link_description; ?></em> <a target="_blank" href="<?php echo get_post_meta($post->ID, 'syndication_permalink', true); ?>">permalink</a></div>
 <div class="entrymeta">Posted by <?php the_author(); ?> on <?php the_date(); ?><!--  | <a href="<?php comments_link(); ?>"><?php comments_number('no responses','one response','% responses'); ?></a>--><?php echo get_the_tag_list(' | ',', ',''); ?> </div>
-<!--Begin Share Button-->
-<?php if (function_exists('sociable_html')) {
-echo sociable_html();
-} ?>
-<!--End Share Button-->
 <div class="video blog-post">
 <?php if ( have_posts() ) while ( have_posts() ) : the_post(); ?>
     <?php the_content(); ?>
 <?php endwhile; // end of the loop. ?>
-<h3>Themes</h3>
-<p><?php echo $metaDesc; ?></p>
+<?php if ($metaDesc != ''): ?>
+  <h3>Themes</h3>
+  <p><?php echo $metaDesc; ?></p>
+<?php endif; ?>
 <?php
 $args2=array(
   'public'   => true,
@@ -127,6 +124,11 @@ $getArgs=array(
 }
 ?>   
 </div>
+<?php 
+  if (function_exists('sociable_html')) {
+    echo sociable_html();
+  }
+?>
 </div><!-- end content -->
 
 

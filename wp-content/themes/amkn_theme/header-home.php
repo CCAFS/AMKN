@@ -32,6 +32,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
             if ($site_description && ( is_home() || is_front_page() ))
                 echo " | $site_description";
             ?></title>
+        <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
         <link rel="icon" type="image/png" href="<?php bloginfo('template_directory'); ?>/images/favicon.png" />
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/tundra/tundra.css" />
         <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
@@ -50,6 +51,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
         </script>
         <!-- DynaTree library used in the new sidebar -->
         <link href="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
+        <link href="<?php bloginfo('template_directory'); ?>/toggle-switch.css" rel="stylesheet" type="text/css">
         <script src="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/jquery.dynatree.js" type="text/javascript"></script>
         <script type="text/javascript">
           var firstime = false;
@@ -57,8 +59,102 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
             jQuery(function ($) {
                 //$(document).ready(function() {
                 // Attach the dynatree widget to an existing <div id="tree"> element
-                // and pass the tree options as an argument to the dynatree() function:
+                // and pass the tree options as an argument to the dynatree() function:                
                 $("#cFiltersList2").dynatree({
+                    children: treeData,
+                    selectMode: 3,
+                    checkbox: true,
+                    select: true,
+                    debugLevel: 0,
+                    onActivate: function(node) {
+                        // A DynaTreeNode object is passed to the activation handler
+                        // Note: we also get this event, if persistence is on, and the page is reloaded.
+                                               
+                        //showItemDetails
+                        if( node.data.url ) {
+                          document.location = node.data.url;
+//                          updateLayerVisibilityTree();
+                        }
+//                            window.open(node.data.url);                       
+                    },
+                    onSelect: function(flag, node) {  
+                      if( !node.data.url ) {
+
+                        if (node.data.key == 'accord_ccafs_sites' || node.data.key == 'accord_video_testimonials'  || node.data.key == 'accord_amkn_blog_posts'
+                              || node.data.key == 'accord_biodiv_cases' || node.data.key == 'accord_photo_testimonials'|| node.data.key == 'accord_ccafs_activities' || node.data.key.match('taxio_')) {
+
+//                          var points = node.tree.getSelectedNodes(); 
+                            if (firstime) updateDataLayerTree(true); 
+                        } else if(node.data.key == 'select_all'){
+                          if(flag) {
+                            $("#cFiltersList2").dynatree("getRoot").visit(function(node){
+                              node.select(true);
+                            });
+                          } else {
+                            $("#cFiltersList2").dynatree("getRoot").visit(function(node){
+                              node.select(false);
+                            });
+                          }
+                        } else { 
+//                          updateLayerVisibilityTree(node,flag);  
+//                            if ($("#legendDiv").children().length != 1) {
+//                                $( "#legend-button" ).addClass("haslegend"); 
+//
+//                            }else{
+//                                $( "#legend-button" ).removeClass("haslegend");   
+//                            }
+
+                        }
+                      }
+                    },
+                    onCreate: function(node, nodeSpan) {
+                        $(nodeSpan).hover(function(){
+                            onListHover(node.data.key,node.data.url);
+                        }, function(){                                                        
+                            onFeatureLeave();
+                        });
+                    }
+                }); 
+                $("#dataLayers").dynatree({
+                    children: treeDataLayer,
+                    selectMode: 3,
+                    expand: true,
+                    checkbox: true,
+                    classNames: {checkbox: "dynatree-radio"},
+                    debugLevel: 0,
+                    onActivate: function(node) {
+                        // A DynaTreeNode object is passed to the activation handler
+                        // Note: we also get this event, if persistence is on, and the page is reloaded.
+                                              
+                        //showItemDetails
+                        if( node.data.url ) {
+                          document.location = node.data.url;
+//                          updateLayerVisibilityTree();
+                        }
+//                            window.open(node.data.url);                       
+                    },
+                    onSelect: function(flag, node) {  
+                      if( !node.data.url ) {
+
+                        if (node.data.key == 'accord_ccafs_sites' || node.data.key == 'accord_video_testimonials'  || node.data.key == 'accord_amkn_blog_posts'
+                              || node.data.key == 'accord_biodiv_cases' || node.data.key == 'accord_photo_testimonials'|| node.data.key == 'accord_ccafs_activities' || node.data.key.match('taxio_')) {
+
+//                          var points = node.tree.getSelectedNodes(); 
+                            if (firstime) updateDataLayerTree(true); 
+                        } else { 
+                          updateLayerVisibilityTree(node,flag);
+                        }
+                      }
+                    },
+                    onCreate: function(node, nodeSpan) {
+                        $(nodeSpan).hover(function(){
+                            onListHover(node.data.key,node.data.url);
+                        }, function(){                                                        
+                            onFeatureLeave();
+                        });
+                    }
+                }); 
+                $("#cFiltersRegion").dynatree({
                     children: treeData,
                     selectMode: 3,
                     checkbox: true,
@@ -82,24 +178,46 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                               || node.data.key == 'accord_biodiv_cases' || node.data.key == 'accord_photo_testimonials'|| node.data.key == 'accord_ccafs_activities' || node.data.key.match('taxio_')) {
 
 //                          var points = node.tree.getSelectedNodes(); 
-                            if (firstime) updateDataLayerTree(true); 
+                            if (firstime) updateDataLayerRegionTree(flag); 
+                        } else if(node.data.key == 'select_all'){
+                          if(flag) {
+                            $("#cFiltersRegion").dynatree("getRoot").visit(function(node){
+                              node.select(true);
+                            });
+                          } else {
+                            $("#cFiltersRegion").dynatree("getRoot").visit(function(node){
+                              node.select(false);
+                            });
+                          }
                         } else { 
-                          updateLayerVisibilityTree(node,flag);  
-                            if ($("#legendDiv").children().length != 1) {
-                                $( "#legend-button" ).addClass("haslegend"); 
+//                          updateLayerVisibilityTree(node,flag);  
+//                            if ($("#legendDiv").children().length != 1) {
+//                                $( "#legend-button" ).addClass("haslegend"); 
+//
+//                            }else{
+//                                $( "#legend-button" ).removeClass("haslegend");   
+//                            }
 
-                            }else{
-                                $( "#legend-button" ).removeClass("haslegend");   
-                            }
-
+                        }
+                      } else {
+                        if(node.data.key == 'select_all'){
+                          if(flag) {
+                            $("#cFiltersRegion").dynatree("getRoot").visit(function(node){
+                              node.select(true);
+                            });
+                          } else {
+                            $("#cFiltersRegion").dynatree("getRoot").visit(function(node){
+                              node.select(false);
+                            });
+                          }
                         }
                       }
                     },
                     onCreate: function(node, nodeSpan) {
                         $(nodeSpan).hover(function(){
-                            onListHover(node.data.key,node.data.url);
+//                            onListHover(node.data.key,node.data.url);
                         }, function(){                                                        
-                            onFeatureLeave();
+//                            onFeatureLeave();
                         });
                     }
                 }); 
@@ -110,23 +228,55 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                 $( "#legend-button" ).click(function() {
                   $( this ).addClass("selected").siblings().removeClass("selected"); 
                   $( this ).removeClass("haslegend"); 
-                  $( "#legendDiv" ).show().siblings().hide(); 
+                  $( "#layersDiv" ).show().siblings().hide(); 
                 }); 
                 $( "#filter-button" ).click(function() {
                   $( this ).addClass("selected").siblings().removeClass("selected");  
-                  $( "#cFiltersList2" ).show().siblings().hide();
+                  $( "#sourceMap" ).show().siblings().hide();
                 }); 
                 $( "#region-button" ).click(function() {
                   $( this ).addClass("selected").siblings().removeClass("selected");  
                   $( "#regions" ).show().siblings().hide();
-                }); 
-
-                
+                });               
+//                dojo.connect(myButton2, "onclick", function(evt){
+//                  console.log('2$%&');
+//                  updateDataLayerPoints(true);
+//                  updateDataLayerRegionTree(false);
+//                });
+         
                 var a =getCookie("showmsg"); 
                 if(null!=a&&""!=a&&"true"==a);else{
                     // Remodal-master http://vodkabears.github.io/remodal/ 
                     openLandingPage();
                 }
+                
+              $("#btnDeselectAll").click(function(){
+                $("#dataLayers").dynatree("getRoot").visit(function(node){
+                  node.select(false);
+                });
+                return false;
+              });
+              $("#btnUnselectAll").click(function(){
+                $("#cFiltersList2").dynatree("getRoot").visit(function(node){
+                  node.select(false);
+                });
+                $("#divBtnSelectAll").show();
+                $("#divBtnUnselectAll").hide();
+                return false;
+              });
+              $("#btnSelectAll").click(function(){
+                $("#cFiltersList2").dynatree("getRoot").visit(function(node){
+                  node.select(true);
+                });
+                $("#divBtnSelectAll").hide();
+                $("#divBtnUnselectAll").show();
+                return false;
+              });
+              $(document).on('click','.close_box',function(){
+                  $(this).parent().fadeTo(300,0,function(){
+                        $(this).remove();
+                  });
+              });
             });
             function openLandingPage(){$('.remodal').show();inst = $('[data-remodal-id=modal]').remodal({ "hashTracking": false });inst.open()}
             function closeLandingPage(){inst.close()}
