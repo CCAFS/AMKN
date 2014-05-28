@@ -92,10 +92,10 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
                 <label for="regs" onclick="">REGIONS</label>
                 <a></a>
               </div>
-              <div class="info box" >
-                <div class="close_box">X</div>
+              <div class="info" >
+                <div class="close_box">&nbsp;</div>
                 <div style="">
-                Only location with geo-coordinates are represented on the map currently; other location with CCAFS activities are being updated and will later appear on the map.
+                Only location with geo-coordinates are represented on the map.
                 </div>
               </div>
               <div id="divBtnSelectAll" style="display:none">
