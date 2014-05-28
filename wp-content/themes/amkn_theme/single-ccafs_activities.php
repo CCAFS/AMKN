@@ -9,7 +9,13 @@ $start = get_post_meta($post->ID, 'startDate', true);
 $end = get_post_meta($post->ID, 'endDate', true);
 $milestone = get_post_meta($post->ID, 'milestone', true);
 $budget = get_post_meta($post->ID, 'budget', true);
-$budget = 1500000;
+$idActivity = get_post_meta($post->ID, 'activityId', true);
+$theme = get_post_meta($post->ID, 'theme', true);
+$keywords = get_post_meta($post->ID, 'keywords');
+$contacts = get_post_meta($post->ID, 'contactName');
+$contactsEmail = get_post_meta($post->ID, 'contactEmail');
+
+//$budget = 1500000;
 
 if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
   get_header('embed');
@@ -82,20 +88,79 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
   ?>
   <div id="container">
 
-    <div id="sidebar">
-      <?php get_sidebar('sidemap'); ?>
-      <?php get_sidebar('sidemore'); ?>  
+    <div id="sidebar">&nbsp;
+      <?php // get_sidebar('sidemap'); ?>
+      <?php // get_sidebar('sidemore'); ?>  
     </div><!--end sidebar -->
     <div class="content">
-      <h2 class="title"><?php the_title(); ?></h2>
+      <h3><?php echo 'Theme '.$theme.' - Activity '.$idActivity?></h3><hr>
       <div class="entrymeta">Source: <em><?php echo get_bookmark($srcID)->link_description; ?></em> <a target="_blank" href="<?php echo get_post_meta($post->ID, 'syndication_permalink', true); ?>">permalink</a></div>
       <div class="entrymeta">Posted by <?php the_author(); ?> on <?php the_date(); ?><!--  | <a href="<?php comments_link(); ?>"><?php comments_number('no responses', 'one response', '% responses'); ?></a>--><?php echo get_the_tag_list(' | ', ', ', ''); ?> </div>
-      <div class="blog-post">
-        <?php echo "<p><b>Start Date: </b>" . $start . "<br><b>End date: </b>" . $end . "<br><b>Milestone: </b>" . $milestone . "<br><b>Budget: </b>$" . number_format($budget, 2) . "</p>"; ?>
+      <br><b>Title:</b><br>
+      <?php the_title(); ?>
+      <?php if (count($keywords)):?>
+        <?php 
+          foreach($keywords as $key => $keyword):         
+            $keyw .= $keyword.", ";
+          endforeach;
+        ?>
+      <?php endif;?>
+      <br><br><b>Keywords:</b><br>
+      <?php echo substr_replace($keyw, ".", -2); ?>          
+      <div class="blog-post">        
         <?php // if (have_posts()) while (have_posts()) : the_post(); ?>
-          <h3>Description</h3>
+          <br><b>Description:</b><br>
           <?php the_content(); ?>
-        <?php // endwhile; // end of the loop.  ?>        
+        <?php // endwhile; // end of the loop.  ?>
+        <br><br>
+        <table id="indicators" class="generalInformation">
+          <tr>
+            <td>
+              <?php echo "<b>Start Date: </b>"?>
+            </td>
+            <td>
+              <?php echo ($start)?date('d F, Y', strtotime($start)):'No data';?>
+            </td>
+            <td>
+              <?php echo "<b>Budget:<b>"?>
+            </td>
+            <td>
+              <?php echo "$ ".$budget." USD";?>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <?php echo "<b>End date: </b>"?>  
+            </td>
+            <td>
+              <?php echo ($end)?date('d F, Y', strtotime($end)):'No data';?>
+            </td>
+            <td>
+              <?php echo "<b>Milestone: </b>" ?>
+            </td>
+            <td>
+              <?php echo $milestone?>
+            </td>
+          </tr>
+          </table>
+          <br>
+          <table class="">
+          <?php foreach($contacts as $key => $contact): ?>
+            <?php if ($key==0) :?>
+            <tr>
+              <td style="width: 160px;">
+                <b>Contact Person:</b>
+              </td>                     
+              <td colspan="3"><?php echo $contact; if(isset($contactsEmail[$key])) echo "(".$contactsEmail[$key].")"?></td>
+            </tr>
+            <?php else:?>
+              <tr>
+                <td></td>
+                <td colspan="3"><?php echo $contact; if(isset($contactsEmail[$key])) echo "(".$contactsEmail[$key].")"?></td>
+              </tr>
+            <?php endif;?>
+          <?php endforeach;?>          
+        </table>
         <?php if ($metaDesc != ''): ?>
           <h3>Themes</h3>
           <p><?php echo $metaDesc; ?></p>

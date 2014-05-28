@@ -1881,3 +1881,14 @@ background-size:30px 30px;
     background:#ccc;
     color:#fff;*/
 }
+
+.generalInformation td {
+width: 160px;
+padding: 3px;
+}
+
+#indicators table, #indicators tr{
+  border:1px solid black; 
+  background-color: #FFF;
+  border-collapse:collapse;
+}

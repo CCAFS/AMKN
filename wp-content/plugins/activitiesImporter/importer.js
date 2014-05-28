@@ -63,6 +63,8 @@ for (var i=0, len=activities.length; i<len; i++) {
   for (var j=0, lenj=cont.length; j<lenj; j++) {          
     output += '<ccafs:keyword>'+cont[j].childNodes[0].data.trim()+'</ccafs:keyword>\n';          
   }
+  
+  output += '<ccafs:budget>'+activities[i].getElementsByTagName("budget")[0].getElementsByTagName("usd")[0].childNodes[0].data+'</ccafs:budget>\n';       
   output += '</item>\n';
 }
 output += '</channel>\n';
