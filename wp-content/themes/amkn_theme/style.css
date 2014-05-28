@@ -170,8 +170,9 @@ ul.navigation li ul.sub-menu {
     display: none;
     position: absolute;
     list-style: none;
-    padding: 5px 0px 0px 0px;
-    top: 51px;
+    padding: 0px 0px 0px 0px;
+    margin: 0;
+    top: 54px;
     left: 0;
     font-size: 0.7em;
     background: url(./images/transparent.gif) transparent !important;
