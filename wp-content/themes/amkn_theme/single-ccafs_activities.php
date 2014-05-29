@@ -93,7 +93,7 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
       <?php // get_sidebar('sidemore'); ?>  
     </div><!--end sidebar -->
     <div class="content">
-      <h3><?php echo 'Theme '.$theme.' - Activity '.$idActivity?></h3><hr>
+      <h3><?php echo 'Activity '.$idActivity.' - Theme '.$theme?></h3><hr>
       <div class="entrymeta">Source: <em><?php echo get_bookmark($srcID)->link_description; ?></em> <a target="_blank" href="<?php echo get_post_meta($post->ID, 'syndication_permalink', true); ?>">permalink</a></div>
       <div class="entrymeta">Posted by <?php the_author(); ?> on <?php the_date(); ?><!--  | <a href="<?php comments_link(); ?>"><?php comments_number('no responses', 'one response', '% responses'); ?></a>--><?php echo get_the_tag_list(' | ', ', ', ''); ?> </div>
       <br><b>Title:</b><br>
@@ -125,7 +125,8 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
               <?php echo "<b>Budget:<b>"?>
             </td>
             <td>
-              <?php echo "$ ".$budget." USD";?>
+              <?php // echo "USD ".$budget;?>
+              <?php echo "USD ".number_format(str_replace(',', '', $budget), 2,',','.')?>
             </td>
           </tr>
           <tr>

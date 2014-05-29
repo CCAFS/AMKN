@@ -5,7 +5,7 @@
  */
 get_header();
 $currType=get_query_var( 'taxonomy' );
-$themes = array('1'=>'1','2'=>'2','3'=>'3','4.1'=>'4.1','4.2'=>'4.2','4.3'=>'4.3');
+$themes = array('1'=>'Theme 1','2'=>'Theme 2','3'=>'Theme 3','4.1'=>'Theme 4.1','4.2'=>'Theme 4.2','4.3'=>'Theme 4.3');
 ?>
 <div id="container">
   <div class="content">
@@ -17,7 +17,8 @@ $themes = array('1'=>'1','2'=>'2','3'=>'3','4.1'=>'4.1','4.2'=>'4.2','4.3'=>'4.3
 
         foreach ($myposts as $key => $post){
           $lead = get_post_meta($post->ID, 'leaderAcronym', true);
-          $leader[str_replace(' ', '',$lead)] = $lead;
+          if (!cgValidate($lead))
+            $leader[str_replace(' ', '',$lead)] = $lead;
         }
         ksort($leader);
 //        echo "<pre>".count($myposts).print_r($leader,true)."</pre>";
@@ -82,26 +83,32 @@ $themes = array('1'=>'1','2'=>'2','3'=>'3','4.1'=>'4.1','4.2'=>'4.2','4.3'=>'4.3
         });
         $(document).ready(function() 
             { 
-                $("#myTable").tablesorter(); 
+//                $("#myTable").tablesorter(); 
             } 
         );
         </script>
         <form class="pure-form pure-form-stacked" name ="search-activities" id ="search-activities" method="get" action="/ccafs-activities/">
           <fieldset>
-            <legend>Filters</legend>  
+            <legend>Search By</legend>
+            <?php if ($_GET['order'] == 'true'):?>
+              <input type="hidden" id="order" name="order" value="true">
+            <?php else:?>
+              <input type="hidden" id="order" name="order" value="false">
+            <?php endif;?>
+            <input type="hidden" id="orderby" name="orderby" value="title">            
             <div class="pure-g">
               <div class="pure-u-1-6">
-                <label for="theme">Search by Theme</labe>
+                <label for="theme">Theme / Flagship</labe>
                 <select name="theme">
                   <option value="0">---</option>
-                  <?php foreach ($themes as $theme):?>
-                    <?php $selected = ''; if ($_GET['theme'] == $theme) $selected = 'selected';?>
-                    <option value=<?php echo $theme?> <?php echo $selected?>><?php echo $theme?></option>
+                  <?php foreach ($themes as $key => $theme):?>
+                    <?php $selected = ''; if ($_GET['theme'] == $key) $selected = 'selected';?>
+                    <option value=<?php echo $key?> <?php echo $selected?>><?php echo $theme?></option>
                   <?php endforeach;?>
                 </select>            
               </div>
               <div class="pure-u-1-6">
-                <label for="leader">Leader</labe>      
+                <label for="leader">CG Center</labe>      
                 <select name="leader">
                   <option value="0">---</option>
                   <?php foreach ($leader as $key => $lead):?>
@@ -110,17 +117,17 @@ $themes = array('1'=>'1','2'=>'2','3'=>'3','4.1'=>'4.1','4.2'=>'4.2','4.3'=>'4.3
                   <?php endforeach;?>
                 </select>
               </div>
-              <div class="pure-u-1-4">
+              <div class="pure-u-1-6">
                 <label for="initDate">
                   Start date
                 </label>
-                <input type="text" name="initDate" id="initDate" value="<?php echo $_GET['initDate']?>">          
+                <input type="text" name="initDate" id="initDate" value="<?php echo $_GET['initDate']?>" class="pure-input-2-3">          
               </div>
-              <div class="pure-u-1-5">
+              <div class="pure-u-1-6">
                 <label for="endDate">
                   End date
                 </label>          
-                <input type="text" name="endDate" id="endDate" value="<?php echo $_GET['endDate']?>">
+                <input type="text" name="endDate" id="endDate" value="<?php echo $_GET['endDate']?>" class="pure-input-2-3">
               </div>
               <div class="pure-u-1-5">
                 <label for="space">
@@ -132,28 +139,31 @@ $themes = array('1'=>'1','2'=>'2','3'=>'3','4.1'=>'4.1','4.2'=>'4.2','4.3'=>'4.3
             </div>            
             <!--<input type="submit" name="search" class="pure-button pure-button-primary" value="Search">-->      
           </fieldset>  
-        </form>    
+        </form>        
         <table id="myTable" class="tablesorter">
           <thead>
           <tr>
-          <th>
-            Title
-          </th>
-          <th>
-            Leader
-          </th>
-          <th>
-            Organization
-          </th>
-          <th>
-            Budget
-          </th>
+            <th>
+              Title
+            </th>            
+            <th>
+              Theme / Flagship
+            </th>
+            <th>
+              CG Center
+            </th>
+            <th onclick="if(document.getElementById('order').value=='true') {document.getElementById('order').value='false';} else {document.getElementById('order').value=true};document.getElementById('orderby').value='budget';document.getElementById('search-activities').submit();">
+              Budget (USD)
+            </th>
           </tr>
           </thead>
           <tbody> 
             <?php get_template_part( 'loop', 'activities' );?>
           </tbody> 
       </table>
+      <?php
+//      echo "<h3>Total Activities found ".$wp_query->found_posts."</h3>";
+      ?>
       <br clear="all" />
       <div id="amkn-paginate">
       <?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); } else { ?>

@@ -119,7 +119,7 @@ switch ($postType) {
     <a href="<?php the_permalink(); ?>"><img class="image" src="<?php echo $staticMapURL; ?>" /></a>
     <p>
       <?php echo $tEx; ?><br>
-        <span class="sidemap-labels">site ID:</span> <?php echo $sideId; ?><br>
+        <span class="sidemap-labels">Site ID:</span> <?php echo $sideId; ?><br>
         <span class="sidemap-labels">Sampling Frame Name:</span> <?php echo $blockName; ?><br>
         <span class="sidemap-labels">Next town:</span> <?php echo $showLocality; ?><br>
         <span class="sidemap-labels">Geocoordinates:</span>

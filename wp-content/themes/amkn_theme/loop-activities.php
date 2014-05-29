@@ -5,6 +5,11 @@
  */
 global $query_string; // required
 $metaKey = array();
+$orderby = array();
+$order = 'ASC';
+if($_GET['order'] == 'true') {
+  $order = 'DESC';
+}
 if($_GET['initDate'] != '') {
   $metaKey[] = array('key' => 'startDateFilter','value' => date_format_wp($_GET['initDate']), 'compare' => '>=');
 }
@@ -17,16 +22,21 @@ if($_GET['leader'] != '0' && $_GET['leader'] != '') {
 if($_GET['theme'] != '0' && $_GET['theme'] != '') {
   $metaKey[] = array('key' => 'theme','value' => $_GET['theme']);
 }
+if($_GET['orderby'] != 'title' && $_GET['orderby'] != '') {
+  $orderby = array( 'orderby' => 'meta_value_num', 'meta_key' => $_GET['orderby']);
+}
 $paged = get_query_var('paged');
 if(count($metaKey)) {  
-  $args = array_merge(array('meta_query' => $metaKey), array('posts_per_page' => '25', 'order'=>'DESC', 'paged'=>$paged)); 
-} else {
+  $args = array_merge(array('meta_query' => $metaKey), array('posts_per_page' => '25', 'order'=>$order, 'paged'=>$paged), $orderby);  
+} elseif(count($orderby)) {
+  $args = array_merge(array('posts_per_page' => '25', 'order'=>$order, 'paged'=>$paged), $orderby);  
+}  else {
   $args = $query_string.'&posts_per_page=25&order=ASC&orderby=title';  
 }
-
+//echo "<pre>".print_r($args,true)."</pre>";
 $posts = query_posts($args);
-//echo "**".count($posts->found_posts)."**";
-//print_r($args);echo "**";
+global $wp_query; 
+echo "<h3>".$wp_query->found_posts." Activities found</h3>";
 ?>
 
 <?php /* Start the Loop */ ?>
@@ -40,6 +50,7 @@ $posts = query_posts($args);
   $budget = get_post_meta($post->ID, 'budget', true);
   $leader = get_post_meta($post->ID, 'leaderName', true);
   $org = get_post_meta($post->ID, 'leaderAcronym', true);
+  $theme = get_post_meta($post->ID, 'theme', true); 
   $geoPoint = str_ireplace(" ", ",", trim($geoRSSPoint));
   $sURL = str_ireplace("http://", "", site_url());
   $sURL= "amkn.org";
@@ -59,15 +70,16 @@ $posts = query_posts($args);
   <tr onclick="window.location.href = '<?php the_permalink(); ?>';">
     <td>
       <?php echo $tactivity?>
+    </td>    
+    <td>
+      <?php echo "Theme ".$theme?>
     </td>
     <td>
-      <?php echo $leader?>
+      <?php echo (!cgValidate($org))?$org:'';?>
     </td>
     <td>
-      <?php echo $org?>
-    </td>
-    <td>
-      <?php echo "$ ".$budget." USD"?>
+      <?php echo number_format(str_replace(',', '', $budget), 2,',','.')?>
+      <?php // echo $budget?>
     </td>
   </tr>
 <?php endwhile; ?><!-- end loop-->

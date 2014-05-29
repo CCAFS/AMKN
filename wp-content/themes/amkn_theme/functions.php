@@ -128,3 +128,10 @@ function date_format_wp ($date) {
   $date = explode('/',$date);
   return $date[2].$date[1].$date[0];
 }
+
+function cgValidate($text) {
+  $exct = array('RPL EA','RPL LAM','RPL SAs','RPL WA','Theme 1', 'Theme 2', 'Theme 3', 'Theme 4.1', 'Theme 4.2', 'Theme 4.3');
+  if (in_array($text, $exct))
+    return true;
+  return false;
+}

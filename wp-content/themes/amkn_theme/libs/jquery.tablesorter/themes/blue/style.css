@@ -46,6 +46,16 @@ table.tablesorter tbody tr:hover td {
     /*float:right;*/
     /*display:inline-block;*/
     /*padding:2px 5px;*/
+    cursor:pointer;
     background:#ccc !important;
     color:#fff!important;
+}
+
+table.tablesorter thead tr:hover th {
+    /*float:right;*/
+    /*display:inline-block;*/
+    /*padding:2px 5px;*/
+    cursor:pointer;
+/*    background:#ccc !important;
+    color:#fff!important;*/
 }
