@@ -161,9 +161,11 @@ $themes = array('1'=>'Theme 1','2'=>'Theme 2','3'=>'Theme 3','4.1'=>'Theme 4.1',
             <?php get_template_part( 'loop', 'activities' );?>
           </tbody> 
       </table>
-      <?php
-//      echo "<h3>Total Activities found ".$wp_query->found_posts."</h3>";
-      ?>
+      <?php if($wp_query->found_posts == 0): ?>
+        <script>                  
+            $( "#myTable" ).hide();                 
+        </script>  
+      <?php endif;?>
       <br clear="all" />
       <div id="amkn-paginate">
       <?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); } else { ?>
