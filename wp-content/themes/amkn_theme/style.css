@@ -440,7 +440,7 @@ h1.feat-maintitle {
 }
 .ccafs_sites { 
     width: 500px;
-    height: 140px;
+    /*height: 140px;*/
 
 }
 .ccafs_sites img.image {

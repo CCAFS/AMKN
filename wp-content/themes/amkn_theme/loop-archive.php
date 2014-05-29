@@ -96,6 +96,8 @@ switch ($postType) {
         //$postThumb = get_the_post_thumbnail($post->ID, array(130,224) );
 
     $geoRSSPoint = get_post_meta($post->ID, 'geoRSSPoint', true);
+    $sideId = get_post_meta($post->ID, 'siteId', true);
+    $blockName = get_post_meta($post->ID, 'blockName', true);
     $geoPoint = str_ireplace(" ", ",", trim($geoRSSPoint));
     $sURL = str_ireplace("http://", "", site_url());
     $sURL= "amkn.org";
@@ -117,6 +119,8 @@ switch ($postType) {
     <a href="<?php the_permalink(); ?>"><img class="image" src="<?php echo $staticMapURL; ?>" /></a>
     <p>
       <?php echo $tEx; ?><br>
+        <span class="sidemap-labels">site ID:</span> <?php echo $sideId; ?><br>
+        <span class="sidemap-labels">Sampling Frame Name:</span> <?php echo $blockName; ?><br>
         <span class="sidemap-labels">Next town:</span> <?php echo $showLocality; ?><br>
         <span class="sidemap-labels">Geocoordinates:</span>
         <span class="geo">
@@ -127,47 +131,7 @@ switch ($postType) {
     </div>
  
 <?php
-    break;
-    case "ccafs_activities":
-    $geoRSSPoint = get_post_meta($post->ID, 'geoRSSPoint', true);
-    $budget = get_post_meta($post->ID, 'budget', true);
-    $geoPoint = str_ireplace(" ", ",", trim($geoRSSPoint));
-    $sURL = str_ireplace("http://", "", site_url());
-    $sURL= "amkn.org";
-    $staticMapURL = "http://maps.google.com/maps/api/staticmap?center=".$geoPoint."&zoom=2&size=70x70&markers=icon:http%3A%2F%2F".$sURL."%2Fwp-content%2Fthemes%2Famkn_theme%2Fimages%2F".$post->post_type."-mini.png|".$geoPoint."&maptype=roadmap&sensor=false";
-    $tEx = $post->post_excerpt;
-    if(strlen($tEx) > 150){
-        $tEx = substr($tEx,0,150)."...";
-    }
-    $tactivity = $post->post_title;
-    if(strlen($tactivity) > 60){
-        $tactivity = substr($tactivity,0,60)."...";
-    }
-
-    $args4Countries = array('fields' => 'names');
-    $cgMapCountries = wp_get_object_terms($post->ID, 'cgmap-countries', $args4Countries);
-?>
-    <tr>
-      <td>
-        <?php echo $tactivity?>
-      </td>
-      <td>
-      </td>
-      <td>
-      </td>
-      <td>
-        <?php echo $budget?>
-      </td>
-    </tr>
-<!--    <div class="videoteaser">
-    <img class="videotitleico" src="<?php bloginfo( 'template_directory' ); ?>/images/<?php echo $postType; ?>-mini.png" alt="Benchmark site"/> 
-    <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php echo $tactivity; ?></a></h2>
-    <a href="<?php the_permalink(); ?>"><img class="image" src="<?php echo $staticMapURL; ?>" /></a>
-    <p><?php echo $tEx; ?></p>
-    </div>-->
- 
-<?php
-    break;
+    break;    
 }
 ?>
 </div>

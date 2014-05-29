@@ -105,7 +105,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
               </div>
               <div id="divBtnUnselectAll">
                 <button style="width: 100%;background: #E3BB3B"class="pure-button pure-button-primary" id="btnUnselectAll">
-                  Unselect All
+                  Deselect All
                 </button>
               </div>              
               <div id="cFiltersList2" style="width: 100%; height: 100%;position: absolute;"></div>                
