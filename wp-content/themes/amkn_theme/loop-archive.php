@@ -4,25 +4,8 @@
  * @subpackage AMKNToolbox
  */
 global $query_string; // required
-$metaKey = array();
-if($_GET['initDate'] != '') {
-  $metaKey[] = array('key' => 'startDate','value' => date_format_wp($_GET['initDate']), 'compare' => '>=');
-}
-if($_GET['endDate'] != '') {
-  $metaKey[] = array('key' => 'endDate','value' => date_format_wp($_GET['endDate']), 'compare' => '<=');
-}
-if($_GET['leader'] != '0' && $_GET['leader'] != '') {
-  $metaKey[] = array('key' => 'leaderAcronym','value' => $_GET['leader']);
-}
-if($_GET['theme'] != '0' && $_GET['theme'] != '') {
-  $metaKey[] = array('key' => 'theme','value' => $_GET['theme']);
-}
 $paged = get_query_var('paged');
-if(count($metaKey)) {
-  $args = array_merge(array('meta_query' => $metaKey), array('posts_per_page' => '8', 'order'=>'DESC', 'paged'=>$paged)); 
-} else {
-  $args = $query_string.'&posts_per_page=16&order=ASC&orderby=title';  
-}
+$args = $query_string.'&posts_per_page=16&order=ASC&orderby=title';  
 //echo "**".count($total->found_posts)."**";
 $posts = query_posts($args);
 //print_r($args);echo "**";
@@ -147,6 +130,7 @@ switch ($postType) {
     break;
     case "ccafs_activities":
     $geoRSSPoint = get_post_meta($post->ID, 'geoRSSPoint', true);
+    $budget = get_post_meta($post->ID, 'budget', true);
     $geoPoint = str_ireplace(" ", ",", trim($geoRSSPoint));
     $sURL = str_ireplace("http://", "", site_url());
     $sURL= "amkn.org";
@@ -163,13 +147,24 @@ switch ($postType) {
     $args4Countries = array('fields' => 'names');
     $cgMapCountries = wp_get_object_terms($post->ID, 'cgmap-countries', $args4Countries);
 ?>
-
-    <div class="videoteaser">
+    <tr>
+      <td>
+        <?php echo $tactivity?>
+      </td>
+      <td>
+      </td>
+      <td>
+      </td>
+      <td>
+        <?php echo $budget?>
+      </td>
+    </tr>
+<!--    <div class="videoteaser">
     <img class="videotitleico" src="<?php bloginfo( 'template_directory' ); ?>/images/<?php echo $postType; ?>-mini.png" alt="Benchmark site"/> 
     <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php echo $tactivity; ?></a></h2>
     <a href="<?php the_permalink(); ?>"><img class="image" src="<?php echo $staticMapURL; ?>" /></a>
     <p><?php echo $tEx; ?></p>
-    </div>
+    </div>-->
  
 <?php
     break;

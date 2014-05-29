@@ -106,7 +106,7 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
         ?>
       <?php endif;?>
       <br><br><b>Keywords:</b><br>
-      <?php echo substr_replace($keyw, ".", -2); ?>          
+      <?php echo ($keyw)?substr_replace($keyw, ".", -2):''; ?>          
       <div class="blog-post">        
         <?php // if (have_posts()) while (have_posts()) : the_post(); ?>
           <br><b>Description:</b><br>

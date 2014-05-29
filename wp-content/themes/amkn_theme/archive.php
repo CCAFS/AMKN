@@ -24,8 +24,11 @@ $themes = array('1'=>'1','2'=>'2','3'=>'3','4.1'=>'4.1','4.2'=>'4.2','4.3'=>'4.3
     ?>
         <meta charset="utf-8">
         <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/libs/jquery.tablesorter/themes/blue/style.css">
         <script src="//code.jquery.com/jquery-1.9.1.js"></script>
         <script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+        <!--<script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/libs/jquery.tablesorter/jquery-latest.js"></script>--> 
+        <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/libs/jquery.tablesorter/jquery.tablesorter.js"></script>
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
         <script>
           var treeData;
@@ -77,6 +80,11 @@ $themes = array('1'=>'1','2'=>'2','3'=>'3','4.1'=>'4.1','4.2'=>'4.2','4.3'=>'4.3
               }
           });          
         });
+        $(document).ready(function() 
+            { 
+                $("#myTable").tablesorter(); 
+            } 
+        );
         </script>
         <form class="pure-form pure-form-stacked" name ="search-activities" id ="search-activities" method="get" action="/ccafs-activities/">
           <fieldset>
@@ -125,10 +133,40 @@ $themes = array('1'=>'1','2'=>'2','3'=>'3','4.1'=>'4.1','4.2'=>'4.2','4.3'=>'4.3
             <!--<input type="submit" name="search" class="pure-button pure-button-primary" value="Search">-->      
           </fieldset>  
         </form>    
-    <?php   
-        endif;        
-        get_template_part( 'loop', 'archive' ); 
-    ?>        
+        <table id="myTable" class="tablesorter">
+          <thead>
+          <tr>
+          <th>
+            Title
+          </th>
+          <th>
+            Leader
+          </th>
+          <th>
+            Organization
+          </th>
+          <th>
+            Budget
+          </th>
+          </tr>
+          </thead>
+          <tbody> 
+            <?php get_template_part( 'loop', 'activities' );?>
+          </tbody> 
+      </table>
+      <br clear="all" />
+      <div id="amkn-paginate">
+      <?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); } else { ?>
+          <div class="alignleft"><?php next_posts_link('&larr; Previous Entries'); ?></div>
+          <div class="alignright"><?php previous_posts_link('Next Entries &rarr;'); ?></div>
+          <?php } ?>
+      </div>
+      <br clear="all">
+      <br clear="all">
+    <?php  else:
+        get_template_part( 'loop', 'archive' );         
+      endif;
+    ?>
 
   </div><!-- end content -->
 </div><!-- end Container -->
