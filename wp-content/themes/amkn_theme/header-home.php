@@ -82,28 +82,8 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
 
                         if (node.data.key == 'accord_ccafs_sites' || node.data.key == 'accord_video_testimonials'  || node.data.key == 'accord_amkn_blog_posts'
                               || node.data.key == 'accord_biodiv_cases' || node.data.key == 'accord_photo_testimonials'|| node.data.key == 'accord_ccafs_activities' || node.data.key.match('taxio_')) {
-
-//                          var points = node.tree.getSelectedNodes(); 
-                            if (firstime) updateDataLayerTree(true); 
-                        } else if(node.data.key == 'select_all'){
-                          if(flag) {
-                            $("#cFiltersList2").dynatree("getRoot").visit(function(node){
-                              node.select(true);
-                            });
-                          } else {
-                            $("#cFiltersList2").dynatree("getRoot").visit(function(node){
-                              node.select(false);
-                            });
-                          }
-                        } else { 
-//                          updateLayerVisibilityTree(node,flag);  
-//                            if ($("#legendDiv").children().length != 1) {
-//                                $( "#legend-button" ).addClass("haslegend"); 
-//
-//                            }else{
-//                                $( "#legend-button" ).removeClass("haslegend");   
-//                            }
-
+                            if (firstime) updateDataLayerTree(true);
+                            validateSelect();
                         }
                       }
                     },
@@ -169,7 +149,6 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                           document.location = node.data.url;
 //                          updateLayerVisibilityTree();
                         }
-//                            window.open(node.data.url);                       
                     },
                     onSelect: function(flag, node) {  
                       if( !node.data.url ) {
@@ -179,37 +158,6 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
 
 //                          var points = node.tree.getSelectedNodes(); 
                             if (firstime) updateDataLayerRegionTree(flag); 
-                        } else if(node.data.key == 'select_all'){
-                          if(flag) {
-                            $("#cFiltersRegion").dynatree("getRoot").visit(function(node){
-                              node.select(true);
-                            });
-                          } else {
-                            $("#cFiltersRegion").dynatree("getRoot").visit(function(node){
-                              node.select(false);
-                            });
-                          }
-                        } else { 
-//                          updateLayerVisibilityTree(node,flag);  
-//                            if ($("#legendDiv").children().length != 1) {
-//                                $( "#legend-button" ).addClass("haslegend"); 
-//
-//                            }else{
-//                                $( "#legend-button" ).removeClass("haslegend");   
-//                            }
-
-                        }
-                      } else {
-                        if(node.data.key == 'select_all'){
-                          if(flag) {
-                            $("#cFiltersRegion").dynatree("getRoot").visit(function(node){
-                              node.select(true);
-                            });
-                          } else {
-                            $("#cFiltersRegion").dynatree("getRoot").visit(function(node){
-                              node.select(false);
-                            });
-                          }
                         }
                       }
                     },
@@ -237,13 +185,8 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                 $( "#region-button" ).click(function() {
                   $( this ).addClass("selected").siblings().removeClass("selected");  
                   $( "#regions" ).show().siblings().hide();
-                });               
-//                dojo.connect(myButton2, "onclick", function(evt){
-//                  console.log('2$%&');
-//                  updateDataLayerPoints(true);
-//                  updateDataLayerRegionTree(false);
-//                });
-         
+                });
+
                 var a =getCookie("showmsg"); 
                 if(null!=a&&""!=a&&"true"==a);else{
                     // Remodal-master http://vodkabears.github.io/remodal/ 
@@ -256,21 +199,12 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                 });
                 return false;
               });
-              $("#btnUnselectAll").click(function(){
+              $("#ckbSelectAll").click(function(){
+                var status = false;
+                if( $(this).prop('checked')  ) status = true;
                 $("#cFiltersList2").dynatree("getRoot").visit(function(node){
-                  node.select(false);
+                  node.select(status);
                 });
-                $("#divBtnSelectAll").show();
-                $("#divBtnUnselectAll").hide();
-                return false;
-              });
-              $("#btnSelectAll").click(function(){
-                $("#cFiltersList2").dynatree("getRoot").visit(function(node){
-                  node.select(true);
-                });
-                $("#divBtnSelectAll").hide();
-                $("#divBtnUnselectAll").show();
-                return false;
               });
               $(document).on('click','.close_box',function(){
                   $(this).parent().fadeTo(300,0,function(){

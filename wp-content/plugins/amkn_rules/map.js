@@ -331,14 +331,13 @@ function highlightRegions(region) {
     map.graphics.clear();
   });
 }
-
+/*
+ * This function is without use currently
+ * @param {type} evt
+ * @returns {void}
+ */
 function findPointsRegions(regions) {
     var results=[];
-//    vtonmap=[];
-//    cconmap=[];
-//    bgonmap=[];
-//    bdonmap=[];
-//    ptonmap=[];
     actnmap=[];
     oactnmapr = {};
     tempCidr = 0;
@@ -641,7 +640,7 @@ function onFeatureHover(evt){
 **/
 function onListHover(id,url){
   var cit=(url)?url.split('='):''; 
-  if (!oactnmap[cit[1]]) {
+  if (typeof oactnmap[cit[1]] == 'undefined') {
     id = parseInt(id);  
     if (!isNaN(id)) {
       var graphic=findGraphicById(id);
@@ -972,22 +971,11 @@ function updateDataLayerTree(cb)
   showccc=showccc===""?"":"&ccc="+showccc;
 
   var newURL=baseDataURL+"?fmt=csv"+showpts+showimp+showas+showms+showcl+showccc+showaz;
-  if(cb)
-  {
-//      map.removeLayer(dataLayer);
-//      dataLayer="";
-//      dataLayer=new esri.layers.GraphicsLayer();
-//      map.addLayer(dataLayer);
+  if(cb) {
       dataLayer.clear();
-//      disableFormsOnQuery();
   }
   processCsvData(newURL);
-  if(cb)
-  {
-//      dojo.connect(dataLayer,"onClick",onFeatureClick);
-//      dojo.connect(map.graphics,"onClick",onFeatureClick);
-//      dojo.connect(dataLayer,"onMouseOver",onFeatureHover);
-//      dojo.connect(dataLayer,"onMouseOut",onFeatureLeave);
+  if(cb) {
       setViewTree();
   }
 }
@@ -1721,7 +1709,6 @@ function findPointsInExtentTree(extent) {
     tempCid = 0;
     countCid = 0;
     var totalNum = 0;
-//    alert(postTotal);
     dojo.forEach(dataLayer.graphics,function(graphic){
         if(extent.contains(graphic.geometry)){
             results.push(getListingContentTree(graphic.attributes.id));
@@ -1729,7 +1716,7 @@ function findPointsInExtentTree(extent) {
     });
     var onthemap=dijit.byId('onthemap');
     if (dojo.byId('geop').checked) {
-      onthemap.attr("title","What&#39;s on the map ("+results.length+")");
+      onthemap.attr("title","What&#39;s on the map ("+Object.keys(oactnmap).length+")");
       totalSources['gp'] = results.length;
     } else {
       onthemap.attr("title","What&#39;s on the map ("+totalSources['reg']+")");
@@ -2188,6 +2175,17 @@ function updateInitLyr(lID,lyrID,id){
         }
     (tpp>0)?dojo.addClass(document.getElementById("rsLayers_label"),"sldMenu"):dojo.removeClass(document.getElementById("rsLayers_label"),"sldMenu");
     map.centerAt(map.extent.getCenter());
+}
+
+function validateSelect() {
+  var checkedAll = true;
+  $("#cFiltersList2").dynatree("getRoot").visit(function(node){
+    if( !node.data.url ) {
+      if(!node.isSelected()) checkedAll = false;
+    }
+  });
+  if(!checkedAll) $("#ckbSelectAll").prop('checked', false);
+  else $("#ckbSelectAll").prop('checked', true);
 }
 var mp={};
 

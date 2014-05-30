@@ -98,15 +98,8 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
                 Only content with geo-coordinates are represented on the map.
                 </div>
               </div>
-              <div id="divBtnSelectAll" style="display:none">
-                <button style="width: 100%;background: #E3BB3B"class="pure-button pure-button-primary" id="btnSelectAll">
-                  Select All
-                </button>
-              </div>
-              <div id="divBtnUnselectAll">
-                <button style="width: 100%;background: #E3BB3B"class="pure-button pure-button-primary" id="btnUnselectAll">
-                  Deselect All
-                </button>
+              <div id="divBtnUnselectAll" style="padding:5px 10px;">
+                <input type="checkbox" id ="ckbSelectAll" checked> Select All
               </div>              
               <div id="cFiltersList2" style="width: 100%; height: 100%;position: absolute;"></div>                
               <div id="cFiltersRegion" style="width: 100%; height: 100%; overflow: hidden; display: none"></div>
