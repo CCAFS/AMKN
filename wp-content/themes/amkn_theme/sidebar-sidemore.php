@@ -22,7 +22,7 @@ $postType = "";
     }
 </script>
 <div class="side-more">
-<h3 class="sidefollow">Featured on AMKN</h3>
+<h3 class="sidefollow">The Newest on AMKN</h3>
 <ul class="side-more-list">
 <li><a href="javascript:void(0)" onclick="switchTab('tabvideo_testimonials')">Video</a></li>
 <li><a href="javascript:void(0)" onclick="switchTab('tabphoto_testimonials')">Photo</a></li>

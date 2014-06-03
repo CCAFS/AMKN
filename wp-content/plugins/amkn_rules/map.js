@@ -40,6 +40,7 @@ var cconmap=[];
 var bgonmap=[];
 var bdonmap=[];
 var ptonmap=[];
+totalSources = {};
 
 /**
  * @function initMap
@@ -325,7 +326,7 @@ function highlightRegions(region) {
   //when fired, create a new graphic with the geometry from the event.graphic and add it to the maps graphics layer
   featureRegion.on("mouse-over", function(evt){
     var highlightGraphic = new esri.Graphic(evt.graphic.geometry,highlightSymbol);          
-    map.graphics.add(highlightGraphic); 
+    map.graphics.add(highlightGraphic);     
   });
   featureRegion.on("mouse-out", function(evt){
     map.graphics.clear();
@@ -509,8 +510,7 @@ function hideLoading(error){
 //    setViewTree();
 }
 function processCsvData(url){
-    showLoading();
-    totalSources = {};
+    showLoading();    
     var frameUrl=new dojo._Url(window.location.href);
     var csvUrl=new dojo._Url(url);
     if(frameUrl.host!==csvUrl.host||frameUrl.port!==csvUrl.port||frameUrl.scheme!==csvUrl.scheme){
@@ -1469,12 +1469,17 @@ function getViewTree()
 function initBackMap()
 {
     var move;
+    if(baseMP==1) {
+      tmpCoord = esri.geometry.lngLatToXY(parseFloat(ctrPt.split(";")[1]),parseFloat(ctrPt.split(";")[0]),false);
+      ctrPt = tmpCoord[0]+';'+tmpCoord[1];
+    }    
     if(ctrPt&&lvlMp){
       move=new esri.geometry.Point([parseFloat(ctrPt.split(";")[0]),parseFloat(ctrPt.split(";")[1])],new esri.SpatialReference({wkid:102100}));
       map.centerAndZoom(move,parseFloat(lvlMp));
     }
     ctrPt="";
-    lvlMp="";        
+    lvlMp="";
+    baseMP="basemap_5";
     updateDataLayerTree(false);
 }
 function go2Region(pt,zm,rg)
@@ -2186,6 +2191,16 @@ function validateSelect() {
   });
   if(!checkedAll) $("#ckbSelectAll").prop('checked', false);
   else $("#ckbSelectAll").prop('checked', true);
+}
+
+/*
+ * test function
+ */
+function showCoordinates(evt) {
+  //the map is in web mercator but display coordinates in geographic (lat, long)
+  var mp = esri.geometry.webMercatorToGeographic(evt.mapPoint);
+  //display mouse coordinates
+  console.log(mp.x.toFixed(3) + ", " + mp.y.toFixed(3));
 }
 var mp={};
 

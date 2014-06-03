@@ -106,7 +106,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
             </div>
             <div id="basemapGallery" class="drop-panel" ></div> 
             <div id="layersDiv" class="drop-panel" data-dojo-type="dijit/layout/AccordionContainer" style="height: 100%;">
-              <div data-dojo-type="dijit/layout/ContentPane" title="Data Layers" selected="true" style="overflow: hidden;">
+              <div id="accord_data_layer" data-dojo-type="dijit/layout/ContentPane" title="Data Layers" selected="true" style="overflow: hidden;">
                 <div>                  
                     <a href="#" id="btnDeselectAll">Hide All Layers</a>                  
                 </div>
@@ -150,7 +150,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 
 <div id="featured">
   <div id="container">
-    <h1 class="feat-maintitle">Featured on AMKN</h1>
+    <h1 class="feat-maintitle">The Newest on AMKN</h1>
     <!--<button onClick="feedback_widget.show()" dojoType="dijit.form.Button" type="submit" class="amknButton msGenButton right"><a>Community <br />Feedback</a></button>-->
     <?php get_template_part( 'teaser', 'video' ); ?><!-- end column 1 -->
     <?php get_template_part( 'teaser', 'photo' ); ?><!-- end column 2 -->
