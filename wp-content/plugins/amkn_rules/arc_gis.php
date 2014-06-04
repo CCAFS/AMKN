@@ -102,13 +102,13 @@
   
   // open the curl session
   $session = curl_init();
-  
+  $cType=(isset($_SERVER['CONTENT_TYPE']))?$_SERVER['CONTENT_TYPE']:'';
   // set the appropriate options for this request
   $options = array(
     CURLOPT_URL => $targetUrl,
     CURLOPT_HEADER => false,
     CURLOPT_HTTPHEADER => array(
-      'Content-Type: ' . $_SERVER['CONTENT_TYPE'],
+      'Content-Type: ' . $cType,
       'Referer: ' . $_SERVER['HTTP_REFERER']
     ),
     CURLOPT_RETURNTRANSFER => true,

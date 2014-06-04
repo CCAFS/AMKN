@@ -103,7 +103,8 @@ Processing Job Failed. Please try again...
                     <b>File List</b>
                     <span id="filelistlinks"></span> </tr>            
                     <tr align="left" valign="top" id="td_results" style="display:none;" >
-                        <td style="width:700px;height:350px;"><div id="tabs" style="width:100%;height:380px;">
+                        <td style="width:700px;height:380px;">
+                          <div id="tabs" style="width:100%;height:399px;">
                                 <ul>
                                     <li><a href="#tabs-1">Chart</a></li>
                                     <li><a href="#tabs-2">Data</a></li>
@@ -126,7 +127,7 @@ Processing Job Failed. Please try again...
                                 </div>
                                 <div id="tabs-2">
                                     <div id="TitleFileClim"></div>
-                                    <iframe id="ifarchWTG" width="100%" height="320px;"> </iframe>
+                                    <iframe id="ifarchWTG" width="100%" height="310px;"> </iframe>
                                 </div>
                                 <div id="tabs-3">
                                     <div id="btnDownload">

@@ -185,7 +185,7 @@ function showHideResults() {
 }
 
 function showClimateFileData(a) {
-    el("info").innerHTML = "<img src='images/loading.gif'/> <h2>Loading...</h2>";
+    el("info").innerHTML = "<img src='/wp-content/themes/amkn_theme/images/loading.gif'/> <h2>Loading...</h2>";
     currentFile = a;
     OutDir && OutDir != "" ? clientSideInclude("ifarchWTG", "/wp-content/plugins/amkn_rules/arc_gis.php?"+OutDir + "/" + a + ".WTG") : console.log("Output Directory was not found!")
 }
@@ -196,7 +196,7 @@ function onChangeSelectClimateFile() {
 }
 
 function showChart(a) {
-    el("info").innerHTML = "<img src='images/loading.gif'/> <h2>Loading...</h2>";
+    el("info").innerHTML = "<img src='/wp-content/themes/amkn_theme/images/loading.gif'/> <h2>Loading...</h2>";
     switch (a) {
     case "RAIN":
         el("info").innerHTML = imgRAIN;
@@ -214,12 +214,12 @@ function showChart(a) {
         el("info").innerHTML = imgSRAD;
         break;
     default:
-        el("info").innerHTML = "<img src='images/loading.gif'/> <h2>Loading...</h2>"
+        el("info").innerHTML = "<img src='/wp-content/themes/amkn_theme/images/loading.gif'/> <h2>Loading...</h2>"
     }
 }
 
 function createChartRAIN() {
-    var a = [];
+    var a = [];    
     for (i = 0; i < arrayRAIN.length; i++) a.push(Math.round(arrayRAIN[i]));
     var b = "<img id='imgChartRain' src=\"";
     b += "http://chart.apis.google.com/chart?chxt=x,y,x&amp;chs=550x270&amp;chco=0B0B61&amp;";
@@ -232,16 +232,16 @@ function createChartRAIN() {
     b += "2:||Time (days)|&amp;";
     b += "chxs=2,424242,13,0,t&amp;";
     b += "chf=bg,s,EFEFEF&amp;";
-    var c = numberRound(arrayRAIN.max(), 10);
+    var c = numberRound(arrayRAIN.max(), 10);   
     a = "chd=" + simpleEncode(a, c);
     b += a + '"';
-    b += "/>";
+    b += "/>";    
     if (el("rdRAIN").checked) el("info").innerHTML = b;
     imgRAIN = b
 }
 
 function createChartSRAD() {
-    var a = [];
+    var a = [];    
     for (i = 0; i < arraySRAD.length; i++) a.push(Math.round(arraySRAD[i]));
     var b = "<img id='imgChartSRad' src=\"";
     b += "http://chart.apis.google.com/chart?chxt=x,y,x&amp;chs=550x270&amp;chco=FE9A2E&amp;";
@@ -278,7 +278,7 @@ function createChartTEMP() {
     c += "2:||Time (days)|&amp;";
     c += "chxs=2,424242,13,0,t&amp;";
     c += "chf=bg,s,EFEFEF&amp;";
-    var d = numberRound(a.max(), 10);
+    var d = numberRound(a.max(), 10);    
     a = simpleEncode(a, d);
     b = simpleEncode(b, d);
     b = "chd=" + a + "," + b.substring(2);
@@ -349,12 +349,12 @@ function clientSideInclude(a, b) {
         } catch (f) {
             c = false
         }
-    }
+    }    
     var g = document.getElementById(a);
     if (g) if (c) {
         c.open("GET", b, false);
         c.send(null);
-        processData(c.responseText);
+        processData(c.responseText);       
         el("ifarchWTG").src = b;
         el("TitleFileClim").innerHTML = "<strong>(" + currentFile + ".WTG)</strong>"
     } else g.innerHTML = "Sorry, your browser does not support XMLHTTPRequest objects. This page requires Internet Explorer 5 or better for Windows, or Firefox for any system, or Safari. Other compatible browsers may also exist.";
@@ -363,31 +363,36 @@ function clientSideInclude(a, b) {
 function display_column() {}
 
 function processData(a) {
-    el("info").innerHTML = "<img src='images/loading.gif'/> <h2>Loading...</h2>";
+    el("info").innerHTML = "<img src='/wp-content/themes/amkn_theme/images/loading.gif'/> <h2>Loading...</h2>";
     arrayDATE = [];
     arraySRAD = [];
     arrayTMAX = [];
     arrayTMIN = [];
     arrayRAIN = [];
-    var b = a.split("\n");
-    for (a = 4; a < b.length; a++) {
+    var b = a.split("\n");    
+    for (a = 4; a < b.length; a++) {      
         var c = eliminarDatosNulos(b[a].split(" "));
         if (c.length >= 4) {
-            var d = c[0].trim();
+            if((typeof c[0] !== 'undefined'))
+              var d = c[0].trim();
             arrayDATE.push(d);
-            d = c[1].trim();
+            if((typeof c[1] !== 'undefined'))
+              d = c[1].trim();
             arraySRAD.push(parseFloat(d));
-            d = c[2].trim();
+            if((typeof c[2] !== 'undefined'))
+              d = c[2].trim();
             arrayTMAX.push(parseFloat(d));
-            d = c[3].trim();
+            if((typeof c[3] !== 'undefined'))
+              d = c[3].trim();
             arrayTMIN.push(parseFloat(d));
-            c = c[4].trim();
-            arrayRAIN.push(parseFloat(c))
+            if((typeof c[4] !== 'undefined'))
+              c = c[4].trim();
+            arrayRAIN.push(parseFloat(c));
         }
-    }
+    }    
     createChartRAIN();
     createChartSRAD();
-    createChartTEMP()
+    createChartTEMP();
 }
 function eliminarDatosNulos(a) {
     var b = [];
@@ -496,7 +501,7 @@ function computeMarkSimGCMService(a, b, c, d, e, f, g, k) {
     }, completeCallback, statusCallback)
 }
 
-function statusCallback(a) {
+function statusCallback(a) {  
     if (a.jobStatus == "esriJobFailed") {
         console.log("Processing Job Failed. Please try again...");
         alert("Processing Job Failed. Please try again...")
@@ -520,7 +525,7 @@ function displayResult(a) {
 
     el("wcResults").style.display = "block";
     el("wcNoResults").style.display = "none";
-    
+
     if (a = a.value.url) {
         if (a.substring(0, 16) == "c:arcgisserver") a = a.replace("c:arcgisserver", "http://gismap.ciat.cgiar.org");
         a = getFileDirectory(a);
