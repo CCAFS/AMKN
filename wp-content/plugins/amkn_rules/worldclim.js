@@ -132,9 +132,9 @@ function RunModel() {
     f = g ? "1975" : f;
     g = document.forms.input_form.numrep.value;
     var k = document.forms.input_form.seed.value;
-    if (e != "a1" && e != "a2" && e != "b1") alert("Please select a valid Scenario");
-    else if (isNaN(a) || isNaN(b)) alert("Please enter a valid number for Latitude or Longitude");
-    else if (c == null || c == "") alert("Please enter a valid name for Place");
+    if (e != "a1" && e != "a2" && e != "b1") {alert("Please select a valid Scenario"); dijit.byId("BtnRun").resetTimeout();}
+    else if (isNaN(a) || isNaN(b)) {alert("Please enter a valid number for Latitude or Longitude");dijit.byId("BtnRun").resetTimeout(); }
+    else if (c == null || c == "") {alert("Please enter a valid name for Place"); dijit.byId("BtnRun").resetTimeout();}
     else {
         if (c) for (i = 0; i < c.length; i++) if (c.charAt(i) === "\\" || c.charAt(i) === "/" || c.charAt(i) === ":" || c.charAt(i) === "*" || c.charAt(i) === "?" || c.charAt(i) === '"' || c.charAt(i) === "<" || c.charAt(i) === ">" || c.charAt(i) === "|") {
             alert("A place name can't contain any of the following characters:\n \\ / : * ? \" < > |");

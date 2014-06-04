@@ -10,6 +10,7 @@ $geoPoint = str_ireplace(" ", ",", trim($geoRSSPoint));
 $sURL = str_ireplace("http://", "", "amkn.org");
 $staticMapURL = "http://maps.google.com/maps/api/staticmap?center=" . $geoPoint . "&amp;zoom=4&amp;size=414x300&amp;markers=icon:http%3A%2F%2F" . $sURL . "%2Fwp-content%2Fthemes%2Famkn_theme%2Fimages%2F" . $post->post_type . "-mini.png|" . $geoPoint . "&amp;maptype=roadmap&amp;sensor=false";
 ?>
+<?php if ($geoRSSPoint!='') :?>
 <?php wp_reset_query(); ?>
 <div class="sidemap">
    
@@ -46,3 +47,5 @@ $staticMapURL = "http://maps.google.com/maps/api/staticmap?center=" . $geoPoint 
       <li><span class="sidemap-labels"><a href="<?php echo $browserURL; ?>">Locate on the map</a></span></li>
    </ul>
 </div>
+<?php else: echo "<br>"; 
+  endif;?>
