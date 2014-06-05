@@ -298,18 +298,23 @@ function highlightRegions(region) {
     map.removeLayer(featureRegion);
 
   var contriesRegion = {};
-  contriesRegion['la'] = "'Guatemala','Honduras','El Salvador','Nicaragua','Colombia','Peru'";
-  contriesRegion['wa'] = "'Senegal','Mali','Niger','Ghana','Burkina Faso'";
-  contriesRegion['ea'] = "'Ethiopia','Kenya','Uganda','Tanzania'";
-  contriesRegion['sa'] = "'India','Nepal','Bangladesh'";
-  contriesRegion['sea'] = "'Vietnam','Cambodia','Laos'";
+//  contriesRegion['la'] = "'Guatemala','Honduras','El Salvador','Nicaragua','Colombia','Peru'";
+  contriesRegion['la'] = "'GT','HO','ES','NU','CO','PE'";
+//  contriesRegion['wa'] = "'Senegal','Mali','Niger','Ghana','Burkina Faso'";
+  contriesRegion['wa'] = "'SG','ML','NG','GH','UV'";
+//  contriesRegion['ea'] = "'Ethiopia','Kenya','Uganda','Tanzania'";
+  contriesRegion['ea'] = "'ET','KE','UG','TZ'";
+//  contriesRegion['sa'] = "'India','Nepal','Bangladesh'";
+  contriesRegion['sa'] = "'IN','NP','BG'";
+//  contriesRegion['sea'] = "'Vietnam','Cambodia','Laos'";
+  contriesRegion['sea'] = "'VM','CB','LA'";
   //create a feature layer based on the feature collection
   featureRegion = new esri.layers.FeatureLayer("http://gisweb.ciat.cgiar.org/arcgis/rest/services/CCAFS/ccafs_climate/MapServer/0",
   {
     mode: esri.layers.FeatureLayer.MODE_SNAPSHOT,
     outFields: ["*"]
   });
-  featureRegion.setDefinitionExpression("COUNTRY IN ("+contriesRegion[region]+")"); 
+  featureRegion.setDefinitionExpression("FIPS_CNTRY IN ("+contriesRegion[region]+")"); 
   var symbol = new esri.symbol.SimpleFillSymbol(esri.symbol.SimpleFillSymbol.STYLE_SOLID, new esri.symbol.SimpleLineSymbol(esri.symbol.SimpleLineSymbol.STYLE_SOLID, new dojo.Color([255, 255, 255, 0.35]), 1), new dojo.Color([125, 125, 125, 0.35]));
   featureRegion.setRenderer(new esri.renderer.SimpleRenderer(symbol));
   map.addLayer(featureRegion,0);
@@ -326,7 +331,8 @@ function highlightRegions(region) {
   //when fired, create a new graphic with the geometry from the event.graphic and add it to the maps graphics layer
   featureRegion.on("mouse-over", function(evt){
     var highlightGraphic = new esri.Graphic(evt.graphic.geometry,highlightSymbol);          
-    map.graphics.add(highlightGraphic);     
+    map.graphics.add(highlightGraphic); 
+//    console.log(JSON.stringify(evt.graphic.attributes, null, 4));
   });
   featureRegion.on("mouse-out", function(evt){
     map.graphics.clear();
