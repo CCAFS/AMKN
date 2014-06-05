@@ -1426,10 +1426,10 @@ function getViewTree()
             ctrPt=theMap[mp].split("=")[1];
           break;
           case"cntr":
-//            cntr=theMap[mp].split("=")[1];
-//            var ctPT=new esri.geometry.Point(parseFloat(cntr.split(";")[1]),parseFloat(cntr.split(";")[0]));
-//            ctPT=esri.geometry.geographicToWebMercator(ctPT);
-//            ctrPt=ctPT.x+";"+ctPT.y;
+            cntr=theMap[mp].split("=")[1];
+            var ctPT=new esri.geometry.Point(parseFloat(cntr.split(";")[1]),parseFloat(cntr.split(";")[0]));
+            ctPT=esri.geometry.geographicToWebMercator(ctPT);
+            ctrPt=ctPT.x+";"+ctPT.y;
           break;
           case"idCT":
 //            idCT=theMap[mp].split("=")[1];
@@ -1468,18 +1468,13 @@ function getViewTree()
 
 function initBackMap()
 {
-    var move;
-    if(baseMP==1) {
-      tmpCoord = esri.geometry.lngLatToXY(parseFloat(ctrPt.split(";")[1]),parseFloat(ctrPt.split(";")[0]),false);
-      ctrPt = tmpCoord[0]+';'+tmpCoord[1];
-    }    
+    var move;    
     if(ctrPt&&lvlMp){
       move=new esri.geometry.Point([parseFloat(ctrPt.split(";")[0]),parseFloat(ctrPt.split(";")[1])],new esri.SpatialReference({wkid:102100}));
       map.centerAndZoom(move,parseFloat(lvlMp));
     }
     ctrPt="";
     lvlMp="";
-    baseMP="basemap_5";
     updateDataLayerTree(false);
 }
 function go2Region(pt,zm,rg)

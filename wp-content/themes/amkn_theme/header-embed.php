@@ -71,6 +71,19 @@ if (strpos($_SERVER['HTTP_USER_AGENT'], 'iPad') !== FALSE){
 </style>        
     <?php 
 }?>
+  <script>
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', '<?php echo get_option('google_analytics'); ?>', 'amkn.org');
+    ga('create', 'UA-22478956-2', 'amkn.org', {'name': 'newTracker'});
+    ga('send', 'pageview');
+    ga('newTracker.send', 'pageview');
+
+
+  </script>
 </head>
 <body class="embededO tundra">
 <div id="embedPage">
