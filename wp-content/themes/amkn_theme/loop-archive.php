@@ -5,9 +5,13 @@
  */
 global $query_string; // required
 $paged = get_query_var('paged');
-$args = $query_string.'&posts_per_page=16&order=ASC&orderby=title';  
-//echo "**".count($total->found_posts)."**";
+if (get_query_var( 'post_type' ) == 'ccafs_sites') {
+  $args = $query_string.'&posts_per_page=16&order=ASC&orderby=meta_value&meta_key=ccafs_region'; 
+} else {
+  $args = $query_string.'&posts_per_page=16&order=ASC&orderby=title';  
+}
 $posts = query_posts($args);
+$tmpregion = '';
 //print_r($args);echo "**";
 ?>
 
@@ -21,6 +25,12 @@ $postThumb = "";
 ?>
 
 <div id="archive-entry">
+<?php
+  $region = get_post_meta($post->ID, 'ccafs_region', true);
+?>
+<?php if ($region != $tmpregion && $postType == 'ccafs_sites'): ?>
+<br><h3><?php echo $region?></h3>
+<?php $tmpregion = $region; endif;?>
 <div class="videocolumn <?php echo $postType; ?>">
 <?php 
 switch ($postType) {
@@ -103,7 +113,7 @@ switch ($postType) {
     break;
     case "ccafs_sites":
         //$postThumb = get_the_post_thumbnail($post->ID, array(130,224) );
-
+//    $region = get_post_meta($post->ID, 'ccafs_region', true);
     $geoRSSPoint = get_post_meta($post->ID, 'geoRSSPoint', true);
     $sideId = get_post_meta($post->ID, 'siteId', true);
     $blockName = get_post_meta($post->ID, 'blockName', true);
@@ -117,26 +127,26 @@ switch ($postType) {
     }
     $args4Countries = array('fields' => 'names');
     $cgMapCountries = wp_get_object_terms($post->ID, 'cgmap-countries', $args4Countries);
+    $country = get_post_meta($post->ID, 'siteCountry', true);
     $village = get_post_meta($post->ID, 'village', true);
     $city = get_post_meta($post->ID, 'city', true);
     $showLocality = ($village) ? $village : $city;
 ?>
 
     <div class="videoteaser">
-    <img class="videotitleico" src="<?php bloginfo( 'template_directory' ); ?>/images/<?php echo $postType; ?>-mini.png" alt="Benchmark site"/> 
-    <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?> [<?php echo $cgMapCountries[0]; ?>]</a></h2>
-    <a href="<?php the_permalink(); ?>"><img class="image" src="<?php echo $staticMapURL; ?>" /></a>
-    <p>
-      <?php echo $tEx; ?><br>
-        <span class="sidemap-labels">Site ID:</span> <?php echo $sideId; ?><br>
-        <span class="sidemap-labels">Sampling Frame Name:</span> <?php echo $blockName; ?><br>
-        <span class="sidemap-labels">Next town:</span> <?php echo $showLocality; ?><br>
-        <span class="sidemap-labels">Geocoordinates:</span>
-        <span class="geo">
-           <span class="latitude"><?php echo str_ireplace(" ", "</span>; <span class='longitude'>", $geoRSSPoint); ?></span>
-        </span>
-    </p>    
-     
+      <img class="videotitleico" src="<?php bloginfo( 'template_directory' ); ?>/images/<?php echo $postType; ?>-mini.png" alt="Benchmark site"/> 
+      <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?> [<?php echo $country; ?>]</a></h2>
+      <a href="<?php the_permalink(); ?>"><img class="image" src="<?php echo $staticMapURL; ?>" /></a>
+      <p>
+        <?php // echo $tEx; ?><br>
+          <span class="sidemap-labels">Site ID:</span> <?php echo $sideId; ?><br>
+          <span class="sidemap-labels">Sampling Frame Name:</span> <?php echo $blockName; ?><br>
+          <span class="sidemap-labels">Next town:</span> <?php echo $showLocality; ?><br>
+          <span class="sidemap-labels">Geocoordinates:</span>
+          <span class="geo">
+             <span class="latitude"><?php echo str_ireplace(" ", "</span>; <span class='longitude'>", $geoRSSPoint); ?></span>
+          </span>
+      </p>         
     </div>
  
 <?php

@@ -64,7 +64,7 @@ for (var i=0, len=activities.length; i<len; i++) {
     output += '<ccafs:keyword>'+cont[j].childNodes[0].data.trim()+'</ccafs:keyword>\n';          
   }
   
-  output += '<ccafs:budget>'+activities[i].getElementsByTagName("budget")[0].getElementsByTagName("usd")[0].childNodes[0].data+'</ccafs:budget>\n';
+  output += '<ccafs:budget>'+activities[i].getElementsByTagName("budget")[0].getElementsByTagName("usd")[0].childNodes[0].data.replace(',','')+'</ccafs:budget>\n';
   if (activities[i].getElementsByTagName("startDate")[0].childNodes[0])
     output += '<ccafs:startDateFilter>'+dateFormat(activities[i].getElementsByTagName("startDate")[0].childNodes[0].data)+'</ccafs:startDateFilter>\n';
   if (activities[i].getElementsByTagName("endDate")[0].childNodes[0]) 
