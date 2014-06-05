@@ -87,8 +87,8 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
 } else {
   ?>
   <script>
-    if (typeof document.getElementById("menu-item-4301") != 'undefined')
-      document.getElementById("menu-item-4301").className += ' current-menu-item';
+    if (typeof document.getElementById("menu-item-3841") != 'undefined')
+      document.getElementById("menu-item-3841").className += ' current-menu-item';
    </script>
   <div id="container">
 

@@ -91,8 +91,8 @@ if (in_array($section, $ccafsSections)) {
 }
 ?>
 <script>
-  if (typeof document.getElementById("menu-item-4302") != 'undefined')
-    document.getElementById("menu-item-4302").className += ' current-menu-item';
+  if (typeof document.getElementById("menu-item-3840") != 'undefined')
+    document.getElementById("menu-item-3840").className += ' current-menu-item';
 </script>
 <script src="<?php echo get_bloginfo('template_url'); ?>/ccafs-sites/js/jquery.bxslider.min.js"></script>
 <link href="<?php echo get_bloginfo('template_url'); ?>/ccafs-sites/css/jquery.bxslider.css" rel="stylesheet" />

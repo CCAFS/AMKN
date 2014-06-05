@@ -190,7 +190,7 @@ $themes = array('1'=>'Adaptation to Progressive Climate Change','2'=>'Adaptation
       <br clear="all">
       <br clear="all">
       <script>        
-         document.getElementById("menu-item-4301").className += ' current-menu-item';
+         document.getElementById("menu-item-3841").className += ' current-menu-item';
       </script>
     <?php  else:
         get_template_part( 'loop', 'archive' );         
