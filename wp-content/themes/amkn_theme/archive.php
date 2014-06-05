@@ -5,7 +5,7 @@
  */
 get_header();
 $currType=get_query_var( 'taxonomy' );
-$themes = array('1'=>'Theme 1','2'=>'Theme 2','3'=>'Theme 3','4.1'=>'Theme 4.1','4.2'=>'Theme 4.2','4.3'=>'Theme 4.3');
+$themes = array('1'=>'Adaptation to Progressive Climate Change','2'=>'Adaptation through Managing Climate Risk','3'=>' Pro-Poor Climate Change Mitigation','4.1'=>' Linking Knowledge to Action','4.2'=>'Data and Tools for Analysis and Planning','4.3'=>'Policies and Institutions');
 ?>
 <div id="container">
   <div class="content">
@@ -81,11 +81,19 @@ $themes = array('1'=>'Theme 1','2'=>'Theme 2','3'=>'Theme 3','4.1'=>'Theme 4.1',
               }
           });          
         });
-        $(document).ready(function() 
-            { 
-//                $("#myTable").tablesorter(); 
-            } 
-        );
+          $(document).ready(function() 
+              { 
+  //                $("#myTable").tablesorter(); 
+              } 
+          );
+          function orderColumn(colm){
+            if(document.getElementById('order').value=='true') {
+              document.getElementById('order').value='false';
+            } else {
+              document.getElementById('order').value=true
+            }
+            document.getElementById('orderby').value=colm;document.getElementById('search-activities').submit();
+          }
         </script>
         <form class="pure-form pure-form-stacked" name ="search-activities" id ="search-activities" method="get" action="/ccafs-activities/">
           <fieldset>
@@ -96,17 +104,7 @@ $themes = array('1'=>'Theme 1','2'=>'Theme 2','3'=>'Theme 3','4.1'=>'Theme 4.1',
               <input type="hidden" id="order" name="order" value="false">
             <?php endif;?>
             <input type="hidden" id="orderby" name="orderby" value="title">            
-            <div class="pure-g">
-              <div class="pure-u-1-6">
-                <label for="theme">Theme / Flagship</labe>
-                <select name="theme">
-                  <option value="0">---</option>
-                  <?php foreach ($themes as $key => $theme):?>
-                    <?php $selected = ''; if ($_GET['theme'] == $key) $selected = 'selected';?>
-                    <option value=<?php echo $key?> <?php echo $selected?>><?php echo $theme?></option>
-                  <?php endforeach;?>
-                </select>            
-              </div>
+            <div class="pure-g">              
               <div class="pure-u-1-6">
                 <label for="leader">CG Center</labe>      
                 <select name="leader">
@@ -129,13 +127,29 @@ $themes = array('1'=>'Theme 1','2'=>'Theme 2','3'=>'Theme 3','4.1'=>'Theme 4.1',
                 </label>          
                 <input type="text" name="endDate" id="endDate" value="<?php echo $_GET['endDate']?>" class="pure-input-2-3">
               </div>
-              <div class="pure-u-1-5">
+<!--              <div class="pure-u-1-6">
+                <label for="keyword">
+                  Keyword
+                </label>          
+                <input type="text" name="keyword" id="keyword" value="<?php echo $_GET['keyword']?>" class="pure-input-2-3">
+              </div>-->
+              <div class="pure-u-1-6">
                 <label for="space">
                   &nbsp;
                 </label> 
                 <button id="search" type="submit" class="pure-button pure-button-primary">Search</button>
                 <button id="reset" type="button" class="pure-button pure-button-active">Reset</button>
               </div>
+              <div class="pure-u-1-1">
+                <label for="theme">Topic</labe>
+                <select name="theme">
+                  <option value="0">---</option>
+                  <?php foreach ($themes as $key => $theme):?>
+                    <?php $selected = ''; if ($_GET['theme'] == $key) $selected = 'selected';?>
+                    <option value=<?php echo $key?> <?php echo $selected?>><?php echo $theme?></option>
+                  <?php endforeach;?>
+                </select>            
+              </div>              
             </div>            
             <!--<input type="submit" name="search" class="pure-button pure-button-primary" value="Search">-->      
           </fieldset>  
@@ -146,13 +160,13 @@ $themes = array('1'=>'Theme 1','2'=>'Theme 2','3'=>'Theme 3','4.1'=>'Theme 4.1',
             <th>
               Title
             </th>            
-            <th>
-              Theme / Flagship
+            <th onclick="orderColumn('theme')">
+              Topic
             </th>
-            <th>
+            <th onclick="orderColumn('leaderName')">
               CG Center
             </th>
-            <th onclick="if(document.getElementById('order').value=='true') {document.getElementById('order').value='false';} else {document.getElementById('order').value=true};document.getElementById('orderby').value='budget';document.getElementById('search-activities').submit();">
+            <th onclick="orderColumn('budget')">
               Budget (USD)
             </th>
           </tr>
@@ -175,6 +189,9 @@ $themes = array('1'=>'Theme 1','2'=>'Theme 2','3'=>'Theme 3','4.1'=>'Theme 4.1',
       </div>
       <br clear="all">
       <br clear="all">
+      <script>        
+         document.getElementById("menu-item-4301").className += ' current-menu-item';
+      </script>
     <?php  else:
         get_template_part( 'loop', 'archive' );         
       endif;

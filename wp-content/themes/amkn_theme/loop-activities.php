@@ -7,6 +7,7 @@ global $query_string; // required
 $metaKey = array();
 $orderby = array();
 $order = 'ASC';
+$filt = 'Results ';
 if($_GET['order'] == 'true') {
   $order = 'DESC';
 }
@@ -18,9 +19,14 @@ if($_GET['endDate'] != '') {
 }
 if($_GET['leader'] != '0' && $_GET['leader'] != '') {
   $metaKey[] = array('key' => 'leaderAcronym','value' => $_GET['leader']);
+  $filt .=', CG Center: '.$_GET['leader'];
 }
 if($_GET['theme'] != '0' && $_GET['theme'] != '') {
   $metaKey[] = array('key' => 'theme','value' => $_GET['theme']);
+  $filt .=', Topic: Theme '.$_GET['theme'];
+}
+if($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
+//  $metaKey[] = array('key' => 'theme','value' => $_GET['theme']);
 }
 if($_GET['orderby'] != 'title' && $_GET['orderby'] != '') {
   $orderby = array( 'orderby' => 'meta_value_num', 'meta_key' => $_GET['orderby']);
@@ -36,7 +42,7 @@ if(count($metaKey)) {
 //echo "<pre>".print_r($args,true)."</pre>";
 $posts = query_posts($args);
 global $wp_query; 
-echo "<h3>".$wp_query->found_posts." Activities found</h3>";
+echo "<h3>".$filt.', <b>'.$wp_query->found_posts." found</b></h3>";
 ?>
 
 <?php /* Start the Loop */ ?>

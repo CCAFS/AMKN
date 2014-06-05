@@ -36,7 +36,10 @@ switch ($postType) {
             $tTitle = substr($tTitle,0,35)."...";
         }  
 ?>
-        
+        <script>    
+          if (typeof document.getElementById("menu-item-4306") != 'undefined')
+            document.getElementById("menu-item-4306").className += ' current-menu-item';
+        </script>
         <div class="videoteaser">
         <img class="videotitleico" src="<?php bloginfo( 'template_directory' ); ?>/images/<?php echo $postType; ?>-mini.png" alt="Video Testimonials"/> 
         <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php echo $tTitle; ?></a></h2>
@@ -60,7 +63,10 @@ switch ($postType) {
             $tTitle = substr($tTitle,0,35)."...";
         } 
 ?>
-         
+        <script>
+          if (typeof document.getElementById("menu-item-4306") != 'undefined')
+            document.getElementById("menu-item-4306").className += ' current-menu-item';
+        </script>
         <div class="videoteaser">
         <img class="videotitleico" src="<?php bloginfo( 'template_directory' ); ?>/images/<?php echo $postType; ?>-mini.png" alt="Video Testimonials"/> <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php echo $tTitle; ?></a></h2>
 
@@ -82,7 +88,10 @@ switch ($postType) {
         $ttitle = substr($ttitle,0,80)."...";
     }
 ?>
-
+    <script>
+      if (typeof document.getElementById("menu-item-4306") != 'undefined')
+        document.getElementById("menu-item-4306").className += ' current-menu-item';
+    </script>
     <div class="entry">
     <div class="image" style="background: url(<?php echo catch_that_image($post); ?>) center" ></div>
     <h2 class="entrytitle"><a href="<?php the_permalink(); ?>"><?php echo $ttitle; ?></a></h2>

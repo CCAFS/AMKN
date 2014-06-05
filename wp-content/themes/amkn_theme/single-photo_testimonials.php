@@ -77,6 +77,10 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
    get_footer('embed');
 } else {
    ?>
+   <script>
+     if (typeof document.getElementById("menu-item-4306") != 'undefined')
+      document.getElementById("menu-item-4306").className += ' current-menu-item';
+   </script>
    <div id="container">
       <div id="sidebar">
          <?php get_sidebar('sidemap'); ?>

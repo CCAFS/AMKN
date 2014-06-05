@@ -86,6 +86,10 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
   get_footer('embed');
 } else {
   ?>
+  <script>
+    if (typeof document.getElementById("menu-item-4301") != 'undefined')
+      document.getElementById("menu-item-4301").className += ' current-menu-item';
+   </script>
   <div id="container">
 
     <div id="sidebar">&nbsp;
@@ -94,7 +98,7 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
     </div><!--end sidebar -->
     <div class="content">
       <h3><?php echo 'Activity '.$idActivity.' - Theme '.$theme?></h3><hr>
-      <div class="entrymeta">Source: <em><?php echo get_bookmark($srcID)->link_description; ?></em> <a target="_blank" href="<?php echo get_post_meta($post->ID, 'syndication_permalink', true); ?>">permalink</a></div>
+      <div class="">Source: <em><?php echo get_bookmark($srcID)->link_description; ?></em> <a target="_blank" href="<?php echo get_post_meta($post->ID, 'syndication_permalink', true); ?>">permalink</a></div>
       <div class="entrymeta">Posted by <?php the_author(); ?> on <?php the_date(); ?><!--  | <a href="<?php comments_link(); ?>"><?php comments_number('no responses', 'one response', '% responses'); ?></a>--><?php echo get_the_tag_list(' | ', ', ', ''); ?> </div>
       <br><b>Title:</b><br>
       <?php the_title(); ?>

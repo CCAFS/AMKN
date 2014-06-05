@@ -85,6 +85,10 @@ $getArgs=array(
     get_footer('embed');
 }else{
  ?>
+<script>
+  if (typeof document.getElementById("menu-item-4306") != 'undefined')
+    document.getElementById("menu-item-4306").className += ' current-menu-item';
+</script>
 <div id="container">
 <div id="sidebar">
 <?php get_sidebar( 'sidemap' ); ?>
