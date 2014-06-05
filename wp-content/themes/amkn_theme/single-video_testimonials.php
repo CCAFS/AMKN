@@ -86,8 +86,8 @@ $getArgs=array(
 }else{
  ?>
 <script>
-  if (typeof document.getElementById("menu-item-4306") != 'undefined')
-    document.getElementById("menu-item-4306").className += ' current-menu-item';
+  if (typeof document.getElementById("menu-item-3842") != 'undefined')
+    document.getElementById("menu-item-3842").className += ' current-menu-item';
 </script>
 <div id="container">
 <div id="sidebar">
