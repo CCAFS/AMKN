@@ -729,6 +729,11 @@ ul.footercredits {
     padding: 3px;
     text-align:justify;
 }
+
+.blog-post img {
+    max-height: 600px;
+}
+
 .dijitPopup {
     border: 1px solid #DEDEDE;
 }
