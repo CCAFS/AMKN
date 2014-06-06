@@ -84,7 +84,7 @@ $getArgs=array(
 
 </div><!--end sidebar -->
 <div class="content">
-<h2 class="title"><?php the_title(); ?></h2>
+<h2 class="title"><?php echo htmlspecialchars_decode(the_title($before = '', $after = '', $echo = false)); ?></h2>
 <div class="entrymeta">Source: <em><?php echo get_bookmark( $srcID )->link_description; ?></em> <a target="_blank" href="<?php echo get_post_meta($post->ID, 'syndication_permalink', true); ?>">permalink</a></div>
 <div class="entrymeta">Posted by <?php the_author(); ?> on <?php the_date(); ?><!--  | <a href="<?php comments_link(); ?>"><?php comments_number('no responses','one response','% responses'); ?></a>--><?php echo get_the_tag_list(' | ',', ',''); ?> </div>
 <div class="video blog-post">
