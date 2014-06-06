@@ -157,7 +157,7 @@ $themes = array('1'=>'Adaptation to Progressive Climate Change','2'=>'Adaptation
         <table id="myTable" class="tablesorter">
           <thead>
           <tr>
-            <th>
+            <th onclick="orderColumn('title')">
               Title
             </th>            
             <th onclick="orderColumn('theme')">

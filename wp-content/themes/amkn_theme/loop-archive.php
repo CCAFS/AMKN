@@ -138,7 +138,7 @@ switch ($postType) {
       <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?> [<?php echo $country; ?>]</a></h2>
       <a href="<?php the_permalink(); ?>"><img class="image" src="<?php echo $staticMapURL; ?>" /></a>
       <p>
-        <?php // echo $tEx; ?><br>
+        <?php // echo $tEx; ?>
           <span class="sidemap-labels">Site ID:</span> <?php echo $sideId; ?><br>
           <span class="sidemap-labels">Sampling Frame Name:</span> <?php echo $blockName; ?><br>
           <span class="sidemap-labels">Next town:</span> <?php echo $showLocality; ?><br>

@@ -156,12 +156,12 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
               <td style="width: 160px;">
                 <b>Contact Person:</b>
               </td>                     
-              <td colspan="3"><?php echo $contact; if(isset($contactsEmail[$key])) echo "(".$contactsEmail[$key].")"?></td>
+              <td colspan="3"><?php echo $contact; if(isset($contactsEmail[$key])) echo " (".$contactsEmail[$key].")"?></td>
             </tr>
             <?php else:?>
               <tr>
                 <td></td>
-                <td colspan="3"><?php echo $contact; if(isset($contactsEmail[$key])) echo "(".$contactsEmail[$key].")"?></td>
+                <td colspan="3"><?php echo $contact; if(isset($contactsEmail[$key])) echo " (".$contactsEmail[$key].")"?></td>
               </tr>
             <?php endif;?>
           <?php endforeach;?>          
