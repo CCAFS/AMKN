@@ -7,7 +7,8 @@ global $query_string; // required
 $metaKey = array();
 $orderby = array();
 $order = 'ASC';
-$filt = 'Results ';
+$filt = 'Results';
+$themes = array('1'=>'Adaptation to Progressive Climate Change','2'=>'Adaptation through Managing Climate Risk','3'=>' Pro-Poor Climate Change Mitigation','4.1'=>' Linking Knowledge to Action','4.2'=>'Data and Tools for Analysis and Planning','4.3'=>'Policies and Institutions');
 if($_GET['order'] == 'true') {
   $order = 'DESC';
 }
@@ -29,7 +30,10 @@ if($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
 //  $metaKey[] = array('key' => 'theme','value' => $_GET['theme']);
 }
 if($_GET['orderby'] != 'title' && $_GET['orderby'] != '') {
-  $orderby = array( 'orderby' => 'meta_value_num', 'meta_key' => $_GET['orderby']);
+  $orderType = ($_GET['orderby']=='leaderName')?'meta_value':'meta_value_num';
+  $orderby = array( 'orderby' => $orderType, 'meta_key' => $_GET['orderby']);
+} else if ($_GET['orderby'] == 'title') {
+  $orderby = array( 'orderby' => 'title','post_type'=>'ccafs_activities');
 }
 $paged = get_query_var('paged');
 if(count($metaKey)) {  
@@ -39,7 +43,7 @@ if(count($metaKey)) {
 }  else {
   $args = $query_string.'&posts_per_page=25&order=ASC&orderby=title';  
 }
-//echo "<pre>".print_r($args,true)."</pre>";
+//echo "<pre>".$query_string.print_r($args,true)."</pre>";
 $posts = query_posts($args);
 global $wp_query; 
 echo "<h3>".$filt.', <b>'.$wp_query->found_posts." found</b></h3>";
@@ -78,7 +82,7 @@ echo "<h3>".$filt.', <b>'.$wp_query->found_posts." found</b></h3>";
       <?php echo $tactivity?>
     </td>    
     <td>
-      <?php echo "Theme ".$theme?>
+      <?php echo $themes[$theme]?>
     </td>
     <td>
       <?php echo (!cgValidate($org))?$org:'';?>
