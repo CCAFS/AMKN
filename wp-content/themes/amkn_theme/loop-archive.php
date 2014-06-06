@@ -8,7 +8,7 @@ $paged = get_query_var('paged');
 if (get_query_var( 'post_type' ) == 'ccafs_sites') {
   $args = $query_string.'&posts_per_page=16&order=ASC&orderby=meta_value&meta_key=ccafs_region'; 
 } else {
-  $args = $query_string.'&posts_per_page=16&order=ASC&orderby=title';  
+  $args = $query_string.'&posts_per_page=16&order=DESC&orderby=date';  
 }
 $posts = query_posts($args);
 $tmpregion = '';
