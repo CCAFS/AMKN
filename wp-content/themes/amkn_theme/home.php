@@ -116,6 +116,19 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
                 <div id="legendDiv" style="width: 100%; height: 100%;"></div>
               </div>
             </div>
+<!--            <div id="layersDiv" style="height: 100%;">
+              <h3>Data Layers</h3>
+              <div style="height: 100%;">
+                <div>                  
+                    <a href="#" id="btnDeselectAll">Hide All Layers</a>                  
+                </div>
+                <div id="dataLayers" style="width: 100%; height: 100%;" ></div>
+              </div>
+              <h3>Data Legend</h3>
+              <div style="height: 100%;">
+                <div id="legendDiv" style="width: 100%; height: 100%;"></div>
+              </div>
+            </div>-->
             <div id="regions" class="drop-panel">
               <ul class="homebox-list zoom_in-list">
               <li><a href="javascript:void(0)" onClick="go2Region('-268581.06491998816;1492308.2161012604', 4, 'wa');"><img src="<?php bloginfo('template_directory'); ?>/images/west-africa.png"> West Africa</a></li>

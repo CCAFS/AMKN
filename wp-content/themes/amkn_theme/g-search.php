@@ -10,33 +10,6 @@ get_header();
 
 ?>
 <div id="container">
-
-
-<div id="sidebar">
-<ul class="sidelinks">
-<?php
-	$aboutPages = get_pages('child_of=5&sort_column=post_title');
-        $currStyle = $post->ID == 5 ? "sidecurrent" : "";
-	?>
-    <li><a class="<?php echo $currStyle; ?>" href="<?php echo get_page_link(5) ?>">About AMKN</a></li>
-	<?php
-	foreach($aboutPages as $pageA)
-	{
-	$currPStyle = $post->ID == $pageA->ID ? "sidecurrent" : "";
-            ?>
-    <li><a class="<?php echo $currPStyle; ?>" href="<?php echo get_page_link($pageA->ID) ?>"><?php echo $pageA->post_title ?></a></li>
-	<?php
-	}
-?>
-</ul>
-
-<a href="/"><span class="button-sidebar ">Browse the map</span></a>
-
-<?php get_sidebar( 'follow' ); ?>
-</div><!--end sidebar -->
-
-
-
 <div class="content">
 <h2 class="title"><?php the_title(); ?></h2>
   <div style="display:none">
@@ -65,6 +38,9 @@ get_header();
 			  case 'blog-posts':
 				imgLoc = '/wp-content/themes/amkn_theme/images/amkn_blog_posts-mini.png';
 				break;
+                          case 'ccafs-activities':
+				imgLoc = '/wp-content/themes/amkn_theme/images/ccafs_activities-mini.png';
+				break;
 			  default:
 				break;
 			}
@@ -78,14 +54,14 @@ get_header();
 
               <!-- Append results within the table cell.-->
 		<!-- Create 21px x 21px thumbnails.-->
-			<div data-if="resThumb()" id="amkn_thumbnail">
-			  <div class="gs-image-box gs-web-image-box">
-				<a class="gs-image" data-attr="{href:url, target:target}">
-				  <img class="gs-image" data-attr="{src:resThumb(), width:21, height: 21}"/>
-				</a>
-			  </div>
-			</div>
-			  <div class="gs-title">
+              <div data-if="resThumb()" id="amkn_thumbnail">
+                <div class="gs-image-box gs-web-image-box">
+                  <a class="gs-image" data-attr="{href:url, target:target}">
+                    <img class="gs-image" data-attr="{src:resThumb(), width:21, height: 21}"/>
+                  </a>
+                </div>
+              </div>
+              <div class="gs-title">
                 <a class="gs-title" data-attr="{href:unescapedUrl,target:target}"
                   data-body="html(title)"></a>
               </div>
