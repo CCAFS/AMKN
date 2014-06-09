@@ -127,12 +127,12 @@ $themes = array('1'=>'Adaptation to Progressive Climate Change','2'=>'Adaptation
                 </label>          
                 <input type="text" name="endDate" id="endDate" value="<?php echo $_GET['endDate']?>" class="pure-input-2-3">
               </div>
-<!--              <div class="pure-u-1-6">
+              <div class="pure-u-1-6">
                 <label for="keyword">
                   Keyword
                 </label>          
                 <input type="text" name="keyword" id="keyword" value="<?php echo $_GET['keyword']?>" class="pure-input-2-3">
-              </div>-->
+              </div>
               <div class="pure-u-1-6">
                 <label for="space">
                   &nbsp;
