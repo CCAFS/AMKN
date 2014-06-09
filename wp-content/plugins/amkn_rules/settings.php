@@ -509,6 +509,8 @@ while( $contentQuery->have_posts() ) : $contentQuery->the_post();
           if(($geoPoint && $tmpGeoPoint == '' ) || $geoPoint != $tmpGeoPoint) {
             if ($contentQuery->post->post_type == 'ccafs_activities')
               echo $geoPoint.",\"".preg_replace('/\s+?(\S+)?$/', '', substr(the_title( "", "", false ), 0, 60))."...|".implode('#',$row['contactName']).'|'.implode('#',$row['theme'])."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
+            else if ($contentQuery->post->post_type == 'ccafs_sites')
+              echo $geoPoint.",\"".preg_replace('/\s+?(\S+)?$/', '', substr(the_title( "", "", false ), 0, 80))."...|".$row['siteId'][0]."|".$row['siteCountry'][0]."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
             else
               echo $geoPoint.",\"".preg_replace('/\s+?(\S+)?$/', '', substr(the_title( "", "", false ), 0, 80))."...\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
           }

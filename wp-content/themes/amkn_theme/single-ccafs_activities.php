@@ -117,7 +117,7 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
           <?php the_content(); ?>
         <?php // endwhile; // end of the loop.  ?>
         <br><br>
-        <table id="indicators" class="generalInformation">
+        <table  class="generalInformation">
           <tr>
             <td>
               <?php echo "<b>Start Date: </b>"?>
@@ -139,13 +139,7 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
             </td>
             <td>
               <?php echo ($end)?date('d F, Y', strtotime($end)):'No data';?>
-            </td>
-            <td>
-              <?php echo "<b>Milestone: </b>" ?>
-            </td>
-            <td>
-              <?php echo $milestone?>
-            </td>
+            </td>            
           </tr>
           </table>
           <br>

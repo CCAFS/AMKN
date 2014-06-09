@@ -41,6 +41,7 @@ var bgonmap=[];
 var bdonmap=[];
 var ptonmap=[];
 totalSources = {};
+topics = {'1':'Adaptation to Progressive Climate Change','2':'Adaptation through Managing Climate Risk','3':' Pro-Poor Climate Change Mitigation','4.1':' Linking Knowledge to Action','4.2':'Data and Tools for Analysis and Planning','4.3':'Policies and Institutions'};
 
 /**
  * @function initMap
@@ -244,7 +245,7 @@ function polygonsDraw(regions) {
     dojo.forEach(regions[evt.graphic.attributes['COUNTRY']],function(item){
       if (item.typeField=="ccafs_activities") {
         ttl = item.labelField.split('|');
-        ttl = "<b>Title: </b>"+ttl[0]+"<br><b>Contact: </b>"+ttl[1].replace(/#/gi,", ")+"<br><b>Theme: </b>"+ttl[2];
+        ttl = "<b>Title: </b>"+ttl[0]+"<br><b>Contact: </b>"+ttl[1].replace(/#/gi,", ")+"<br><b>Topic: </b>"+topics[ttl[2]];
       }
       results.push("<li style='cursor:pointer;' onMouseOut='onFeatureLeave()' onclick='document.location = \"./?p="+item.cIDField+"\"''>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+item.typeField+"-mini.png' />&nbsp;"+ttl+"</li>");
     });      
@@ -402,7 +403,7 @@ function findPointsRegions(regions) {
             case 'accord_ccafs_activities':             
                 childrenNodes[i].addChild(actnmap);
                 childrenNodes[i].select(true);
-                childrenNodes[i].data.title = "Activities ("+actnmap.length+")";
+                childrenNodes[i].data.title = "Research Projects ("+actnmap.length+")";
                 childrenNodes[i].render();
             break;
         }
@@ -421,7 +422,7 @@ function getListingRegionsTree(region){
         countCid=1;
         if (rt==="ccafs_activities") {
           ttl = ttl.split('|');
-          title = "<b>Title: </b>"+ttl[0]+"<br><b>Contact: </b>"+ttl[1].replace(/#/gi,",")+"<br><b>Theme: </b>"+ttl[2];
+          title = "<b>Title: </b>"+ttl[0]+"<br><b>Contact: </b>"+ttl[1].replace(/#/gi,",")+"<br><b>Topic: </b>"+topics[ttl[2]];
           mapPTS=actnmap.push({
             title: title,
             tooltip:ttl[0],
@@ -839,7 +840,10 @@ function getListingContent(id){
     //(0='title',1='contactName',2='theme')
     if (rt=="ccafs_activities") {
       ttl = ttl.split('|');
-      ttl = "<b>Title: </b>"+ttl[0]+"<br><b>Contact: </b>"+ttl[1].replace(/#/gi,", ")+"<br><b>Theme: </b>"+ttl[2];
+      ttl = "<b>Title: </b>"+ttl[0]+"<br><b>Contact: </b>"+ttl[1].replace(/#/gi,", ")+"<br><b>Topic: </b>"+topics[ttl[2]];
+    } else if (rt=="ccafs_sites") {
+      ttl = ttl.split('|');
+      ttl = "<b>Title: </b>"+ttl[0]+"<br><b>Site Id: </b>"+ttl[1]+"<br><b>Country: </b>"+ttl[2];
     }
 //    mapPTS=rt=="video_testimonials"?vtonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+",\'p="+cid+"\')' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
 //    mapPTS=rt=="ccafs_sites"?cconmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' >"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;<a class='link-ccafs-sites' href='./?p="+cid+"'>"+ttl+"</a></li>"):"";//without popup
@@ -896,7 +900,7 @@ function getPopupTitle(type){
             break;
         case"ccafs_activities":
             cHType=symhA;
-            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Activities";
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Research Projects";
             break;
         default:
             cHType=highlightSymbol;
@@ -1615,15 +1619,19 @@ function getListingContentTree(id){
     });    
     if (tempCid != cid) {
       countCid=1;
-      mapPTS=rt==="ccafs_sites"?cconmap.push({
-        title: ttl, 
+      if(rt==="ccafs_sites"){
+        ttl = ttl.split('|');
+        title =  "<b>Title: </b>"+ttl[0]+"<br><b>Site Id: </b>"+ttl[1]+"<br><b>Country: </b>"+ttl[2]; 
+        cconmap.push({        
+        title: title,
         key: id,
         url: './?p='+cid,
         hideCheckbox: true,
         unselectable: true,
         select: false,
         icon: '../../../../images/ccafs_sites-mini.png'
-      }):"";
+        });
+      }
       mapPTS=rt==="video_testimonials"?vtonmap.push({
           title: ttl,
           tooltip:ttl,
@@ -1671,7 +1679,7 @@ function getListingContentTree(id){
       if (rt==="ccafs_activities") {
         //(0='title',1='contactName',2='theme')
         ttl = ttl.split('|');
-        title = "<b>Title:</b>"+ttl[0]+"<br><b>Contact:</b>"+ttl[1].replace(/#/gi,",")+"<br><b>Theme:</b>"+ttl[2];
+        title = "<b>Title:</b>"+ttl[0]+"<br><b>Contact:</b>"+ttl[1].replace(/#/gi,",")+"<br><b>Topic:</b>"+topics[ttl[2]];
         mapPTS = actnmap.push({
         title: title,
         tooltip:ttl[0],
@@ -1745,7 +1753,7 @@ function findPointsInExtentTree(extent) {
         switch(childrenNodes[i].data.key) {
             case 'accord_ccafs_sites':              
               childrenNodes[i].addChild(cconmap);
-              childrenNodes[i].data.title = "CCAFS Sites ("+cconmap.length+"/"+postTotal[childrenNodes[i].data.key.replace('accord_','')]+")";
+              childrenNodes[i].data.title = "Research Sites ("+cconmap.length+"/"+postTotal[childrenNodes[i].data.key.replace('accord_','')]+")";
               childrenNodes[i].render();
             break;
             case 'accord_video_testimonials':     
@@ -1770,7 +1778,7 @@ function findPointsInExtentTree(extent) {
             break;
             case 'accord_ccafs_activities':             
                 childrenNodes[i].addChild(actnmap);                
-                childrenNodes[i].data.title = "Activities ("+actnmap.length+"/"+postTotal[childrenNodes[i].data.key.replace('accord_','')]+")";
+                childrenNodes[i].data.title = "Research Projects ("+actnmap.length+"/"+postTotal[childrenNodes[i].data.key.replace('accord_','')]+")";
                 childrenNodes[i].render();
             break;
         }
