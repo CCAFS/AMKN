@@ -759,6 +759,12 @@ ul.footercredits {
     font-weight: 700;
     padding: 5px 4px 5px 8px;
 }
+
+.dijitAccordionTitleSelected .dijitAccordionArrow {
+    background:url("images/coll.gif") no-repeat;
+    margin-top:-1px;
+}
+
 .dijitAccordionArrow {
     background: url("images/coll2.png") no-repeat scroll 0 0 transparent;
     height: 15px;
@@ -799,12 +805,12 @@ ul.footercredits {
     margin-top: 5px;
     width: 20px;
 }
-#accord_legend_button .dijitAccordionArrow {
+/*#accord_legend_button .dijitAccordionArrow {
     background: url("images/data_layersM.png") no-repeat scroll 0 0 transparent;
     height: 25px;
     width: 21px;
-}
-#accord_amkn_blog_posts_button .dijitAccordionArrow {
+}*/
+/*#accord_amkn_blog_posts_button .dijitAccordionArrow {
     background: url("images/amkn_blog_posts-mini.png") no-repeat scroll 0 0 transparent;
     height: 21px;
     width: 21px;
@@ -828,7 +834,7 @@ ul.footercredits {
     background: url("images/video_testimonials-mini.png") no-repeat scroll 0 0 transparent;
     height: 21px;
     width: 21px;
-}
+}*/
 .onmap {
     display: block;
     height: 100%;

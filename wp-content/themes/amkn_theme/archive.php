@@ -83,7 +83,7 @@ $themes = array('1'=>'Adaptation to Progressive Climate Change','2'=>'Adaptation
         });
           $(document).ready(function() 
               { 
-  //                $("#myTable").tablesorter(); 
+//                  $("#myTable").tablesorter(); 
               } 
           );
           function orderColumn(colm){
@@ -106,9 +106,9 @@ $themes = array('1'=>'Adaptation to Progressive Climate Change','2'=>'Adaptation
             <input type="hidden" id="orderby" name="orderby" value="title">            
             <div class="pure-g">              
               <div class="pure-u-1-6">
-                <label for="leader">CG Center</labe>      
+                <label for="leader">Led Center</labe>      
                 <select name="leader">
-                  <option value="0">---</option>
+                  <option value="0">All Centers</option>
                   <?php foreach ($leader as $key => $lead):?>
                     <?php $selected = ''; if ($_GET['leader'] == $lead) $selected = 'selected';?>
                     <option value='<?php echo $lead?>' <?php echo $selected?>><?php echo $lead?></option>
@@ -143,7 +143,7 @@ $themes = array('1'=>'Adaptation to Progressive Climate Change','2'=>'Adaptation
               <div class="pure-u-1-1">
                 <label for="theme">Topic</labe>
                 <select name="theme">
-                  <option value="0">---</option>
+                  <option value="0">All Topics</option>
                   <?php foreach ($themes as $key => $theme):?>
                     <?php $selected = ''; if ($_GET['theme'] == $key) $selected = 'selected';?>
                     <option value=<?php echo $key?> <?php echo $selected?>><?php echo $theme?></option>
@@ -164,7 +164,7 @@ $themes = array('1'=>'Adaptation to Progressive Climate Change','2'=>'Adaptation
               Topic
             </th>
             <th onclick="orderColumn('leaderName')">
-              CG Center
+              Led Center
             </th>
             <th onclick="orderColumn('budget')">
               Budget (USD)

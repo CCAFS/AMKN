@@ -53,6 +53,10 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
         <link href="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
         <link href="<?php bloginfo('template_directory'); ?>/toggle-switch.css" rel="stylesheet" type="text/css">
         <script src="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/jquery.dynatree.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
+        <!--<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
+  <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
         <script type="text/javascript">
           var firstime = false;
           var inst;
@@ -211,6 +215,9 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                         $(this).remove();
                   });
               });
+//              $( "#layersDiv" ).accordion({
+//                heightStyle: "content"
+//              });
             });
             function openLandingPage(){$('.remodal').show();inst = $('[data-remodal-id=modal]').remodal({ "hashTracking": false });inst.open()}
             function closeLandingPage(){inst.close()}
