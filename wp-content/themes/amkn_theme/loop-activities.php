@@ -4,6 +4,7 @@
  * @subpackage AMKNToolbox
  */
 global $query_string; // required
+global $wpdb;
 $metaKey = array();
 $orderby = array();
 $order = 'ASC';
@@ -26,9 +27,6 @@ if($_GET['theme'] != '0' && $_GET['theme'] != '') {
   $metaKey[] = array('key' => 'theme','value' => $_GET['theme']);
   $filt .=', Topic: Theme '.$_GET['theme'];
 }
-if($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
-//  $metaKey[] = array('key' => 'theme','value' => $_GET['theme']);
-}
 if($_GET['orderby'] != 'title' && $_GET['orderby'] != '') {
   $orderType = ($_GET['orderby']=='leaderName')?'meta_value':'meta_value_num';
   $orderby = array( 'orderby' => $orderType, 'meta_key' => $_GET['orderby']);
@@ -41,7 +39,18 @@ if(count($metaKey)) {
 } elseif(count($orderby)) {
   $args = array_merge(array('posts_per_page' => '25', 'order'=>$order, 'paged'=>$paged), $orderby);  
 }  else {
-  $args = $query_string.'&posts_per_page=25&order=ASC&orderby=title';  
+//  $args = $query_string.'&posts_per_page=25&order=ASC&orderby=title';
+  $args = array(
+      'post_type'=>'ccafs_activities',
+      'orderby'=>'title',
+      'order'=>'asc',
+      'posts_per_page'=>'25'
+  );
+}
+
+if($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
+  $mypostids = $wpdb->get_col("select ID from ".$wpdb->posts." where post_type = 'ccafs_activities' AND (post_title like '%".$_GET['keyword']."%' OR post_content like '%".$_GET['keyword']."%')");
+  $args = array_merge($args,array('post__in'=>$mypostids));
 }
 //echo "<pre>".$query_string.print_r($args,true)."</pre>";
 $posts = query_posts($args);
