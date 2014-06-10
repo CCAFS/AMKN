@@ -37,5 +37,5 @@ $description = $wpdb->get_row("SELECT * FROM bs_descriptions WHERE bms_id='" . $
 
 </div>
 <?php if ($description->source):?>
-  <div class='source'><a href='<?php echo $description->source ?>' target="_blank">Source: Baseline survey</a></div>
+  <div class='source'><a href='<?php echo $description->source ?>' target="_blank">Source: Baseline survey, <?php echo $description->source_date?></a></div>
 <?php endif;?>
