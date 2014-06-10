@@ -81,72 +81,72 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
     <div id="onthemap" <?php echo $style?> dojoType="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="259" splitter="<?php echo $splitter?>" region="left" style="width: 259px;" startExpanded="true">
       <!--Here is the calling to the template that show the left menu-->
         <?php get_template_part( 'content_type', 'filters_list2' ); ?>
-
-          <!--  Base map -->
-          <div style="height: 86%;">            
-            <div id="sourceMap" data-dojo-type="dijit/layout/AccordionContainer" style="height: 100%;position: relative;">                
-              <div class="switch-toggle switch-candy switch-candy-yellow" style="display:none">
-                <input id="geop" name="view" type="radio" checked onclick="updateDataLayerPoints(this.id);">
-                <label for="geop" onclick="">GEOPOINTS</label>
-                <input id="regs" name="view" type="radio" onclick="updateDataLayerPoints(this.id);">
-                <label for="regs" onclick="">REGIONS</label>
-                <a></a>
-              </div>
-              <div class="info" >
-                <div class="close_box">&nbsp;</div>
-                <div style="">
-                Only content with geo-coordinates are represented on the map.
-                </div>
-              </div>
-              <div id="divBtnUnselectAll" style="padding:5px 10px;">
-                <input type="checkbox" id ="ckbSelectAll" checked> Select All
-              </div>              
-              <div id="cFiltersList2" style="width: 100%; height: 100%;position: absolute;"></div>                
-              <div id="cFiltersRegion" style="width: 100%; height: 100%; overflow: hidden; display: none"></div>
-            </div>
-            <div id="basemapGallery" class="drop-panel" ></div> 
-            <div id="layersDiv" class="drop-panel" data-dojo-type="dijit/layout/AccordionContainer" style="height: 100%;">
-              <div id="accord_data_layer" data-dojo-type="dijit/layout/ContentPane" title="Data Layers" selected="true" style="overflow: hidden;">
-                <div>                  
-                    <a href="#" id="btnDeselectAll">Hide All Layers</a>                  
-                </div>
-                <div id="dataLayers" style="width: 100%; height: 100%;" ></div>
-              </div>
-              <div id="accord_legend" title="Data Legend" data-dojo-type="dijit/layout/ContentPane">
-                <div id="legendDiv" style="width: 100%; height: 100%;"></div>
-              </div>
-            </div>
-<!--            <div id="layersDiv" style="height: 100%;">
-              <h3>Data Layers</h3>
-              <div style="height: 100%;">
-                <div>                  
-                    <a href="#" id="btnDeselectAll">Hide All Layers</a>                  
-                </div>
-                <div id="dataLayers" style="width: 100%; height: 100%;" ></div>
-              </div>
-              <h3>Data Legend</h3>
-              <div style="height: 100%;">
-                <div id="legendDiv" style="width: 100%; height: 100%;"></div>
-              </div>
-            </div>-->
-            <div id="regions" class="drop-panel">
-              <ul class="homebox-list zoom_in-list">
-              <li><a href="javascript:void(0)" onClick="go2Region('-268581.06491998816;1492308.2161012604', 4, 'wa');"><img src="<?php bloginfo('template_directory'); ?>/images/west-africa.png"> West Africa</a></li>
-              <li><a href="javascript:void(0)" onClick="go2Region('3997216.609617994;-51108.259032608126', 4, 'ea');"><img src="<?php bloginfo('template_directory'); ?>/images/east-africa.png"> East Africa</a></li>
-              <li><a href="javascript:void(0)" onClick="go2Region('8610344.140683722;2172292.0197260105', 4, 'sa');"><img src="<?php bloginfo('template_directory'); ?>/images/south-asia.png"> South Asia</a></li>
-              <li><a href="javascript:void(0)" onClick="go2Region('-8364791.100883702;-303044.7042604806', 4, 'la');"><img src="<?php bloginfo('template_directory'); ?>/images/latin-america2.png"> Latin America</a></li>
-              <li><a href="javascript:void(0)" onClick="go2Region('11442794.66081846;782972.5936150161', 4, 'sea');"><img src="<?php bloginfo('template_directory'); ?>/images/southeast-asia2.png"> Southeast Asia</a></li>
-              </ul>
-            </div>
-          </div>   
-          <!--  end Base map -->
-       <div id="panel-buttons">
+      <div id="panel-buttons">
         <button id="filter-button" class="panel-button selected"> &nbsp;</button>
         <button id="legend-button" class="panel-button"> &nbsp;</button>
         <button id="basemap-button" class="panel-button"> &nbsp;</button>
         <button id="region-button" class="panel-button"> &nbsp;</button>
         <button id="reset-button" class="panel-button" onClick="zoomToOExt();"> &nbsp;</button>
-      </div>    
+      </div>
+          <!--  Base map -->
+      <div style="height: 86%;">            
+        <div id="sourceMap" data-dojo-type="dijit/layout/AccordionContainer" style="height: 100%;position: relative;">                
+          <div class="switch-toggle switch-candy switch-candy-yellow" style="display:none">
+            <input id="geop" name="view" type="radio" checked onclick="updateDataLayerPoints(this.id);">
+            <label for="geop" onclick="">GEOPOINTS</label>
+            <input id="regs" name="view" type="radio" onclick="updateDataLayerPoints(this.id);">
+            <label for="regs" onclick="">REGIONS</label>
+            <a></a>
+          </div>
+          <div class="info" >
+            <div class="close_box">&nbsp;</div>
+            <div style="">
+            Only content with geo-coordinates are represented on the map.
+            </div>
+          </div>
+          <div id="divBtnUnselectAll" style="padding:5px 10px;">
+            <input type="checkbox" id ="ckbSelectAll" checked> Select All
+          </div>              
+              <div id="cFiltersList2" style="width: 100%; height: 75%;position: absolute;"></div>                
+          <div id="cFiltersRegion" style="width: 100%; height: 100%; overflow: hidden; display: none"></div>
+        </div>
+        <div id="basemapGallery" class="drop-panel" ></div> 
+        <div id="layersDiv" class="drop-panel" data-dojo-type="dijit/layout/AccordionContainer" style="height: 100%;">
+          <div id="accord_data_layer" data-dojo-type="dijit/layout/ContentPane" title="Data Layers" selected="true" style="overflow: hidden;">
+            <div>                  
+                <a href="#" id="btnDeselectAll">Hide All Layers</a>                  
+            </div>
+            <div id="dataLayers" style="width: 100%; height: 100%;" ></div>
+          </div>
+          <div id="accord_legend" title="Data Legend" data-dojo-type="dijit/layout/ContentPane">
+            <div id="legendDiv" style="width: 100%; height: 100%;"></div>
+          </div>
+        </div>
+<!--            <div id="layersDiv" style="height: 100%;">
+          <h3>Data Layers</h3>
+          <div style="height: 100%;">
+            <div>                  
+                <a href="#" id="btnDeselectAll">Hide All Layers</a>                  
+            </div>
+            <div id="dataLayers" style="width: 100%; height: 100%;" ></div>
+          </div>
+          <h3>Data Legend</h3>
+          <div style="height: 100%;">
+            <div id="legendDiv" style="width: 100%; height: 100%;"></div>
+          </div>
+        </div>-->
+        <div id="regions" class="drop-panel">
+          <ul class="homebox-list zoom_in-list">
+          <li><a href="javascript:void(0)" onClick="go2Region('-268581.06491998816;1492308.2161012604', 4, 'wa');"><img src="<?php bloginfo('template_directory'); ?>/images/west-africa.png"> West Africa</a></li>
+          <li><a href="javascript:void(0)" onClick="go2Region('3997216.609617994;-51108.259032608126', 4, 'ea');"><img src="<?php bloginfo('template_directory'); ?>/images/east-africa.png"> East Africa</a></li>
+          <li><a href="javascript:void(0)" onClick="go2Region('8610344.140683722;2172292.0197260105', 4, 'sa');"><img src="<?php bloginfo('template_directory'); ?>/images/south-asia.png"> South Asia</a></li>
+          <li><a href="javascript:void(0)" onClick="go2Region('-8364791.100883702;-303044.7042604806', 4, 'la');"><img src="<?php bloginfo('template_directory'); ?>/images/latin-america2.png"> Latin America</a></li>
+          <li><a href="javascript:void(0)" onClick="go2Region('11442794.66081846;782972.5936150161', 4, 'sea');"><img src="<?php bloginfo('template_directory'); ?>/images/southeast-asia2.png"> Southeast Asia</a></li>
+          </ul>
+        </div>
+      </div>   
+          <!--  end Base map -->
+          
     </div>
     
   </div>

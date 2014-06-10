@@ -38,5 +38,5 @@ $shorts = $wpdb->get_results("SELECT * FROM " . $tableId . " WHERE bms_id='" . $
 
 </div>
 <?php if ($description->source):?>
-  <div class='source'><a href='<?php echo $description->source ?>' target="_blank">Source: Baseline survey</a></div>
+  <div class='source'><a href='<?php echo $description->source ?>' target="_blank">Source: Baseline survey, <?php echo $description->source_date?></a></div>
 <?php endif;?>
