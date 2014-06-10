@@ -35,6 +35,9 @@ get_header();
 			  case 'benchmark-sites':
 				imgLoc = '/wp-content/themes/amkn_theme/images/ccafs_sites-mini.png';
 				break;
+                          case 'ccafs-sites':
+				imgLoc = '/wp-content/themes/amkn_theme/images/ccafs_sites-mini.png';
+				break;
 			  case 'blog-posts':
 				imgLoc = '/wp-content/themes/amkn_theme/images/amkn_blog_posts-mini.png';
 				break;
@@ -80,7 +83,7 @@ get_header();
 <script type="text/javascript">
   google.load('search', '1', {language : 'en', style : google.loader.themes.MINIMALIST});
   google.setOnLoadCallback(function() {
-    var customSearchControl = new google.search.CustomSearchControl('006258028603901489807:f5u-sjei-wm');
+    var customSearchControl = new google.search.CustomSearchControl('007658706490572941822:v04khf-g68y');
     customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
     // Use "amkn_" as a unique ID to override the default rendering.
     google.search.Csedr.addOverride("amkn_");

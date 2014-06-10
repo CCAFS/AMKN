@@ -1757,9 +1757,9 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
 
 #basemapGallery { 
     width: 100%;
-    height: 90%;
+    height: 99%;
     overflow: auto;
-    position: absolute;
+    /*position: absolute;*/
     bottom: 0;
     display:none;
 }
@@ -1772,7 +1772,7 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
 #panel-buttons{
     background: #fff;
     width: 259px;
-    position: absolute;
+    /*position: absolute;*/
     bottom: 0;
     /* left: 1em; */
     z-index: 2;
