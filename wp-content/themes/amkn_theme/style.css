@@ -1351,6 +1351,7 @@ ul, ol, .m3re-item p {
     margin: auto;
     padding-left: 45px;
     width: 1024px;
+    height: 75px
 }
 .link-ccafs-sites {
     text-decoration: none;
@@ -1388,7 +1389,7 @@ ul, ol, .m3re-item p {
 #column2-video {
     background: none repeat scroll 0 0 #FFFFFF;
     margin: 5px;
-    max-height: 210px;
+    max-height: 250px;
     overflow: hidden;
 }
 #column2-info {
