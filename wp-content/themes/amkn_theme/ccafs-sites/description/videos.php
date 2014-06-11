@@ -20,14 +20,14 @@ if (get_post_meta($post->ID, 'rangevideos', true)) {
 
 $sitepoint = get_post_meta($post->ID, 'geoRSSPoint', true);
 $siteTitle = $post->post_name;
-query_posts("posts_per_page=20&post_type=video_testimonials");
+query_posts("posts_per_page=20&post_type=video_testimonials&meta_key=geoRSSPoint");
 $postType = "";
 ?>
 <?php /* Start the Loop */ ?>
 
-
+<h2 style="padding-left: 10px; margin-bottom: 0px; margin-top: 10px;">Nearest videos</h2>
 <div class="slider-video side-more borde1" style="display:none"> 
-
+  
    <?php while (have_posts()) : the_post(); ?>
       <?php
       $postType = $post->post_type;
@@ -133,7 +133,7 @@ $postType = "";
                }
             }
             ?> 
-            <h3 class="videolabels"><?php echo ucfirst($siteTitle);?> distance: <span class="taxItems"><?php echo round(distance($sitepoint, $videopoint),2)." km"?></span></h3>
+            <h3 class="videolabels">Distance to <?php echo ucfirst($siteTitle);?>: <span class="taxItems"><?php echo round(distance($sitepoint, $videopoint),2)." km"?></span></h3>
          </div>
 
          <a class="close-reveal-modal">&#215;</a>
