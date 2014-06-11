@@ -18,7 +18,7 @@
          slideMargin: 1,
          controls: true,
          pager: false,
-         auto: true
+         auto: false
       });
       $('.slider-photos').show();
       $('.slider-video').show();

@@ -13,14 +13,12 @@ if (get_post_meta($post->ID, 'rangephotos', true)) {
 }
 $siteTitle = $post->post_name;
 $sitepoint = get_post_meta($post->ID, 'geoRSSPoint', true);
-query_posts("posts_per_page=1000&post_type=photo_testimonials");
+query_posts("posts_per_page=1000&post_type=photo_testimonials&meta_key=geoRSSPoint");
 $postType = "";
 ?>
 <?php /* Start the Loop */ ?>
-
-
-<div class="slider-photos side-more" style="display:none"> 
-
+<div style="padding-left: 0px; margin-bottom: 0px; font-size: 12px; height: 15px;">Nearest photo sets</div>
+<div class="slider-photos side-more" style="display:none;"> 
    <?php while (have_posts()) : the_post(); ?>
       <?php
       $postType = $post->post_type; 
@@ -93,7 +91,7 @@ $postType = "";
                }
             }
             ?>
-            <h3 class="videolabels"><?php echo ucfirst($siteTitle);?> distance: <span class="taxItems"><?php echo round(distance($sitepoint, $photopoint),2)." km"?></span></h3>
+            <h3 class="videolabels">Distance to <?php echo ucfirst($siteTitle);?>: <span class="taxItems"><?php echo round(distance($sitepoint, $photopoint),2)." km"?></span></h3>
          </div>
          <div class="video photoset" style="max-height: 300px; overflow-y: scroll;">
               <?php the_content(); ?>
