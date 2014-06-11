@@ -20,7 +20,7 @@ if (get_post_meta($post->ID, 'rangevideos', true)) {
 
 $sitepoint = get_post_meta($post->ID, 'geoRSSPoint', true);
 $siteTitle = $post->post_name;
-query_posts("posts_per_page=20&post_type=video_testimonials&meta_key=geoRSSPoint");
+query_posts("posts_per_page=-1&post_type=video_testimonials&meta_key=geoRSSPoint");
 $postType = "";
 ?>
 <?php /* Start the Loop */ ?>

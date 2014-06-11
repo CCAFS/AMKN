@@ -6,7 +6,7 @@
 global $post;
 $post_old = $post; // Save the post object.
 if (get_post_meta($post->ID, 'rangephotos', true)) {
-   $rangevideos = get_post_meta($post->ID, 'rangephotos', true);
+   $rangephotos = get_post_meta($post->ID, 'rangephotos', true);
 } else {
    // Range default of photos --> 710 km
    $rangephotos = 300;

@@ -83,8 +83,8 @@ add_filter( 'excerpt_length', 'custom_excerpt_length', 999 );
  * $point1,$point2 --> String - "-0.314705,35.022805"
  */
 function distance($point1, $point2) {
-   $coo1 = explode(',', trim($point1));
-   $coo2 = explode(',', trim($point2));
+   $coo1 = explode(' ', trim($point1));
+   $coo2 = explode(' ', trim($point2));
    return sqrt(pow(($coo1[0] - $coo2[0]), 2) + pow(($coo1[1] - $coo2[1]), 2)) * 235;
 }
 
