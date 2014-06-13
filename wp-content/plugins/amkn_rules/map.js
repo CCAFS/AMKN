@@ -41,6 +41,7 @@ var bgonmap=[];
 var bdonmap=[];
 var ptonmap=[];
 totalSources = {};
+oactnmap = {};
 topics = {'1':'Adaptation to Progressive Climate Change','2':'Adaptation through Managing Climate Risk','3':' Pro-Poor Climate Change Mitigation','4.1':' Linking Knowledge to Action','4.2':'Data and Tools for Analysis and Planning','4.3':'Policies and Institutions'};
 
 /**
@@ -51,18 +52,18 @@ topics = {'1':'Adaptation to Progressive Climate Change','2':'Adaptation through
 function initMap(){
     baseMP='basemap_5';
     getViewTree();
-    syml6=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/pin-mini.png",17,25);
-    syms6=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/pin-mini.png",7,10);    
-    syml4=new esri.symbol.PictureMarkerSymbol('./wp-content/themes/amkn_theme/images/amkn_blog_posts-mini.png',21,21);    
-    syml5=new esri.symbol.PictureMarkerSymbol('./wp-content/themes/amkn_theme/images/photo_testimonials-mini.png',21,21);    
-    syml2=new esri.symbol.PictureMarkerSymbol('./wp-content/themes/amkn_theme/images/video_testimonials-mini.png',21,21);    
-    sym7=new esri.symbol.PictureMarkerSymbol('./wp-content/themes/amkn_theme/images/biodiv_cases-mini.png',21,21);    
+    syml6=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/pin-mini.png?ver=2",17,25);
+    syms6=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/pin-mini.png?ver=2",7,10);    
+    syml4=new esri.symbol.PictureMarkerSymbol('./wp-content/themes/amkn_theme/images/amkn_blog_posts-mini.png?ver=2',21,21);    
+    syml5=new esri.symbol.PictureMarkerSymbol('./wp-content/themes/amkn_theme/images/photo_testimonials-mini.png?ver=2',21,21);    
+    syml2=new esri.symbol.PictureMarkerSymbol('./wp-content/themes/amkn_theme/images/video_testimonials-mini.png?ver=2',21,21);    
+    sym7=new esri.symbol.PictureMarkerSymbol('./wp-content/themes/amkn_theme/images/biodiv_cases-mini.png?ver=2',21,21);    
     symh2=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/video_testimonials-miniH.gif",21,21);
     symh4=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/amkn_blog_posts-miniH.gif",21,21);
     symh5=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/photo_testimonials-miniH.gif",21,21);
     symh6=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/ccafs_sites-miniH.gif",17,25);
     symhX=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/biodiv_cases-miniH.gif",21,21);
-    symhA=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/ccafs_activities-mini.png",21,21);
+    symhA=new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/ccafs_activities-mini.png?ver=2",21,21);
     syms4=new esri.symbol.SimpleMarkerSymbol().setColor(new dojo.Color([0,0,255]));
     syms5=new esri.symbol.SimpleMarkerSymbol().setColor(new dojo.Color([0,0,255]));
     syms2=new esri.symbol.SimpleMarkerSymbol().setColor(new dojo.Color([0,0,255]));
@@ -247,7 +248,7 @@ function polygonsDraw(regions) {
         ttl = item.labelField.split('|');
         ttl = "<b>Title: </b>"+ttl[0]+"<br><b>Contact: </b>"+ttl[1].replace(/#/gi,", ")+"<br><b>Topic: </b>"+topics[ttl[2]];
       }
-      results.push("<li style='cursor:pointer;' onMouseOut='onFeatureLeave()' onclick='document.location = \"./?p="+item.cIDField+"\"''>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+item.typeField+"-mini.png' />&nbsp;"+ttl+"</li>");
+      results.push("<li style='cursor:pointer;' onMouseOut='onFeatureLeave()' onclick='document.location = \"./?p="+item.cIDField+"\"''>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+item.typeField+"-mini.png?ver=2' />&nbsp;"+ttl+"</li>");
     });      
 
     var ttContent="<span class='blockNoWrap'>At "+evt.graphic.attributes['COUNTRY']+" ("+results.length+") <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='zoomToCtxt();'><a>Zoom here</a></button> <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='cPop();'><a>Close</a></button></span>";
@@ -431,7 +432,7 @@ function getListingRegionsTree(region){
             hideCheckbox: true,
             unselectable: true,
             select: false,
-            icon: '../../../../images/ccafs_activities-mini.png'
+            icon: '../../../../images/ccafs_activities-mini.png?ver=2'
           //isLazy: true
           }); 
         }
@@ -845,12 +846,12 @@ function getListingContent(id){
       ttl = ttl.split('|');
       ttl = "<b>Title: </b>"+ttl[0]+"<br><b>Site Id: </b>"+ttl[1]+"<br><b>Country: </b>"+ttl[2];
     }
-//    mapPTS=rt=="video_testimonials"?vtonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+",\'p="+cid+"\')' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
-//    mapPTS=rt=="ccafs_sites"?cconmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' >"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;<a class='link-ccafs-sites' href='./?p="+cid+"'>"+ttl+"</a></li>"):"";//without popup
-//    mapPTS=rt=="amkn_blog_posts"?bgonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
-//    mapPTS=rt=="biodiv_cases"?bdonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
-//    mapPTS=rt=="photo_testimonials"?ptonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
-//    maganaPpTS=rt=="ccafs_activities"?actnmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+",\'p="+cid+"\')' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>"):"";
+//    mapPTS=rt=="video_testimonials"?vtonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+",\'p="+cid+"\')' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png?ver=2' />&nbsp;"+ttl+"</li>"):"";
+//    mapPTS=rt=="ccafs_sites"?cconmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' >"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png?ver=2' />&nbsp;<a class='link-ccafs-sites' href='./?p="+cid+"'>"+ttl+"</a></li>"):"";//without popup
+//    mapPTS=rt=="amkn_blog_posts"?bgonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png?ver=2' />&nbsp;"+ttl+"</li>"):"";
+//    mapPTS=rt=="biodiv_cases"?bdonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png?ver=2' />&nbsp;"+ttl+"</li>"):"";
+//    mapPTS=rt=="photo_testimonials"?ptonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png?ver=2' />&nbsp;"+ttl+"</li>"):"";
+//    maganaPpTS=rt=="ccafs_activities"?actnmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+",\'p="+cid+"\')' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png?ver=2' />&nbsp;"+ttl+"</li>"):"";
     if (location.search=='') {
 //      if (rt=="ccafs_activities") {
         if (tempcid !== cid) { 
@@ -860,9 +861,9 @@ function getListingContent(id){
         else
           countCid++;
         tempcid = cid;
-//        return"<li style='cursor:pointer;' onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+")'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+countCid+'. '+ttl+"</li>";
+//        return"<li style='cursor:pointer;' onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='showItemDetails(this, "+id+")'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png?ver=2' />&nbsp;"+countCid+'. '+ttl+"</li>";
 //      } else {
-        return"<li style='cursor:pointer;' onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='document.location = \"./?p="+cid+"\"'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>";
+        return"<li style='cursor:pointer;' onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='document.location = \"./?p="+cid+"\"'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png?ver=2' />&nbsp;"+ttl+"</li>";
 //      }
     } else {
       str = location.search.split('&');
@@ -873,34 +874,34 @@ function getListingContent(id){
       document.getElementById("showContent").style.height = (parameterTwo[1]-50)+"px";
 //      document.getElementById("ifrm").style.width = (parameterOne[1]-50)+"px";
 //      document.getElementById("ifrm").style.minHeight = (parameterTwo[1]-50)+"px";      
-      return"<li style='cursor:pointer;' onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='window.open(\"./?p="+cid+"\",\"_blank\",\"scrollbars=yes, resizable=yes, top=60, left=60, width=700, height=630\");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png' />&nbsp;"+ttl+"</li>";      
+      return"<li style='cursor:pointer;' onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' onclick='window.open(\"./?p="+cid+"\",\"_blank\",\"scrollbars=yes, resizable=yes, top=60, left=60, width=700, height=630\");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png?ver=2' />&nbsp;"+ttl+"</li>";      
     }    
 }
 function getPopupTitle(type){
     switch(type){
         case"video_testimonials":
             cHType=symh2;
-            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Video";
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png?ver=2' />&nbsp;Video";
             break;
         case"ccafs_sites":
             cHType=symh6;
-            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Site";
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png?ver=2' />&nbsp;Site";
             break;
         case"amkn_blog_posts":
             cHType=symh4;
-            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Blog Post";
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png?ver=2' />&nbsp;Blog Post";
             break;
         case"biodiv_cases":
             cHType=symhX;
-            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Agrobiodiversity Cases";
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png?ver=2' />&nbsp;Agrobiodiversity Cases";
             break;
         case"photo_testimonials":
             cHType=symh5;
-            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Photo Set";
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png?ver=2' />&nbsp;Photo Set";
             break;
         case"ccafs_activities":
             cHType=symhA;
-            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png' />&nbsp;Research Projects";
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+type+"-mini.png?ver=2' />&nbsp;Research Projects";
             break;
         default:
             cHType=highlightSymbol;
@@ -1629,7 +1630,7 @@ function getListingContentTree(id){
         hideCheckbox: true,
         unselectable: true,
         select: false,
-        icon: '../../../../images/ccafs_sites-mini.png'
+        icon: '../../../../images/ccafs_sites-mini.png?ver=2'
         });
       }
       mapPTS=rt==="video_testimonials"?vtonmap.push({
@@ -1640,7 +1641,7 @@ function getListingContentTree(id){
           hideCheckbox: true,
           unselectable: true,
           select: false,
-          icon: '../../../../images/video_testimonials-mini.png'
+          icon: '../../../../images/video_testimonials-mini.png?ver=2'
       //isLazy: true
       }):"";
       mapPTS=rt==="amkn_blog_posts"?bgonmap.push({
@@ -1651,7 +1652,7 @@ function getListingContentTree(id){
           hideCheckbox: true,
           unselectable: true,
           select: false,
-          icon: '../../../../images/amkn_blog_posts-mini.png'
+          icon: '../../../../images/amkn_blog_posts-mini.png?ver=2'
       //isLazy: true
       }):"";
       mapPTS=rt==="biodiv_cases"?bdonmap.push({
@@ -1662,7 +1663,7 @@ function getListingContentTree(id){
           hideCheckbox: true,
           unselectable: true,
           select: false,
-          icon: '../../../../images/biodiv_cases-mini.png'
+          icon: '../../../../images/biodiv_cases-mini.png?ver=2'
       //isLazy: true
       }):"";
       mapPTS=rt==="photo_testimonials"?ptonmap.push({
@@ -1673,7 +1674,7 @@ function getListingContentTree(id){
           hideCheckbox: true,
           unselectable: true,
           select: false,
-          icon: '../../../../images/photo_testimonials-mini.png'
+          icon: '../../../../images/photo_testimonials-mini.png?ver=2'
       //isLazy: true
       }):"";
       if (rt==="ccafs_activities") {
@@ -1688,7 +1689,7 @@ function getListingContentTree(id){
           hideCheckbox: true,
           unselectable: true,
           select: false,
-          icon: '../../../../images/ccafs_activities-mini.png'
+          icon: '../../../../images/ccafs_activities-mini.png?ver=2'
         //isLazy: true
         });
       }
@@ -1983,17 +1984,17 @@ function buildLayerListTree(layer,layerName,single,soon) {
 //                  url: './?p='+cid,
 //                  hideCheckbox: true,
                   select: checked,
-                  icon: '../../../../images/map_icon.png'
+                  icon: '../../../../images/map_icon.png?ver=2'
                 });
             }else{
               child.push({
                   title: "<h4>"+layer.layerInfos[$i].name+"</h4>",
 //                  isFolder: true,
 //                  key: layer.layerInfos[$i].id
-                  icon: '../../../../images/data_layersM.png',
+                  icon: '../../../../images/data_layersM.png?ver=2',
                   hideCheckbox: true,
                   unselectable: true
-//                  icon: '../../../../images/map_icon.png'
+//                  icon: '../../../../images/map_icon.png?ver=2'
                 });
               //Here comes the title or header layer's group
             }
@@ -2005,7 +2006,7 @@ function buildLayerListTree(layer,layerName,single,soon) {
 //                  url: './?p='+cid,
 //                  hideCheckbox: true,
                   select: checked,
-                  icon: '../../../../images/map_icon.png'
+                  icon: '../../../../images/map_icon.png?ver=2'
                 });
             }
         }  

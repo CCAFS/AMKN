@@ -13,6 +13,12 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
 ?><!DOCTYPE html>
 <html <?php language_attributes(); ?>>
     <head>
+        <!-- no cache headers -->
+        <meta http-equiv="Pragma" content="no-cache">
+        <meta http-equiv="no-cache">
+        <meta http-equiv="Expires" content="-1">
+        <meta http-equiv="Cache-Control" content="no-cache">
+        <!-- end no cache headers -->
         <meta http-equiv="Content-Type" content="text/html; charset=<?php bloginfo('charset'); ?>" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
         <meta name="description" content="The Climate Change Adaptation and Mitigation Knowledge Network (AMKN) is a platform for accessing and sharing current agricultural adaptation and mitigation knowledge from the CGIAR and its partners. It brings together farmers’ realities on the ground and links them with multiple and combined research outputs, to highlight current challenges and inspire new ideas. It aims to assits scientists and stakeholders to assess and adjust their actions in order to ensure future food security, improved smallholder farmers’ resilience and livelihoods.">
@@ -35,7 +41,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
         <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
         <link rel="icon" type="image/png" href="<?php bloginfo('template_directory'); ?>/images/favicon.png" />
         <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/tundra/tundra.css" />
-        <link rel="stylesheet" href="<?php bloginfo('stylesheet_url'); ?>" type="text/css" media="screen" />
+        <link rel="stylesheet" href="<?php bloginfo('stylesheet_url');echo '?ver=2'; ?>" type="text/css" media="screen" />
         <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
         <script type="text/javascript">
             var djConfig = {
@@ -53,7 +59,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
         <link href="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
         <link href="<?php bloginfo('template_directory'); ?>/toggle-switch.css" rel="stylesheet" type="text/css">
         <script src="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/jquery.dynatree.js" type="text/javascript"></script>
-        <link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">
+        <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">-->
         <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
         <!--<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
   <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
@@ -173,20 +179,20 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                         });
                     }
                 }); 
-                $( "#basemap-button" ).click(function() {
+                $( "#basemap-button" ).hover(function() {
                   $( this ).addClass("selected").siblings().removeClass("selected");  
                   $( "#basemapGallery" ).show().siblings().hide();
                 }); 
-                $( "#legend-button" ).click(function() {
+                $( "#legend-button" ).hover(function() {
                   $( this ).addClass("selected").siblings().removeClass("selected"); 
                   $( this ).removeClass("haslegend"); 
                   $( "#layersDiv" ).show().siblings().hide(); 
                 }); 
-                $( "#filter-button" ).click(function() {
+                $( "#filter-button" ).hover(function() {
                   $( this ).addClass("selected").siblings().removeClass("selected");  
                   $( "#sourceMap" ).show().siblings().hide();
                 }); 
-                $( "#region-button" ).click(function() {
+                $( "#region-button" ).hover(function() {
                   $( this ).addClass("selected").siblings().removeClass("selected");  
                   $( "#regions" ).show().siblings().hide();
                 });
@@ -215,6 +221,9 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                         $(this).remove();
                   });
               });
+//              $(function() {
+//                $( "#onthemap" ).draggable();
+//              });
 //              $( "#layersDiv" ).accordion({
 //                heightStyle: "content"
 //              });

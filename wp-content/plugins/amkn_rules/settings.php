@@ -380,7 +380,7 @@ function esriMapEmbedFine( $atts ) {
 		'bar' => 'something else',
 	), $atts ) );
         $embedCode = '
-<script type="text/javascript" src="' . $x . 'map.js"></script>
+<script type="text/javascript" src="' . $x . 'map.js?ver=2"></script>
 <script>
     var dataUrl = "' . get_bloginfo ( 'home' ) . '/mappoints/";
     var baseDataURL = "' . get_bloginfo ( 'home' ) . '/mappoints/";
