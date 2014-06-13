@@ -1728,7 +1728,7 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
     background: #fff;  
     box-shadow: 1px 1px 6px rgba(0, 0, 0, 0.2); 
     top: 1em !important;
-    left: 1em !important; 
+    /*left: 1em !important;*/ 
     margin: 0 0 20px 0 !important;
 }
 
@@ -1786,11 +1786,11 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
     display: none;
 }
 
-#legend-button{  background-image: url("images/layers.png");  }
-#basemap-button{  background-image: url("images/basemap.png");  }
-#region-button{  background-image: url("images/regions.png");  }
-#reset-button{  background-image: url("images/reset.png");  }
-#filter-button{  background-image: url("images/filter.png");  }
+#legend-button{  background-image: url("images/layers3.png"), url("images/buttons/13.gif");  background-size: 53px 50px;}
+#basemap-button{  background-image: url("images/basemap3.png"), url("images/buttons/13.gif");  background-size: 53px 50px;}
+#region-button{  background-image: url("images/regions3.png"), url("images/buttons/13.gif");  background-size: 53px 50px;}
+#reset-button{  background-image: url("images/home3.png"), url("images/buttons/13.gif");  background-size: 53px 50px;}
+#filter-button{  background-image: url("images/filter3.png"), url("images/buttons/13.gif"); background-size: 53px 50px; }
 
 .panel-button{
     cursor: pointer;
@@ -1810,9 +1810,17 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
     background-image: url("images/layers_legend.png");
     
 }
-.panel-button.selected { 
-    background-color: #FFFFFF;
-    border-top: 1px solid #fff;
+#legend-button.panel-button.selected { 
+    background-image: url("images/layers3.png"),url("images/buttons/09.png")!important;
+}
+#basemap-button.panel-button.selected { 
+    background-image: url("images/basemap3.png"),url("images/buttons/09.png")!important;
+}
+#region-button.panel-button.selected { 
+    background-image: url("images/regions3.png"),url("images/buttons/09.png")!important;
+}
+#filter-button.panel-button.selected { 
+    background-image: url("images/filter3.png"),url("images/buttons/09.png")!important;
 }
 .source {
   width: 100%;
@@ -1904,4 +1912,9 @@ padding: 3px;
   border:1px solid black; 
   background-color: #FFF;
   border-collapse:collapse;
+}
+
+#onthemap_splitter {
+  height: 537px!important;  
+  top: 17px!important; 
 }
