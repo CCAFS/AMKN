@@ -125,13 +125,13 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
             <td>
               <?php echo ($start)?date('d F, Y', strtotime($start)):'No data';?>
             </td>
-            <td>
-              <?php echo "<b>Budget:<b>"?>
-            </td>
-            <td>
+<!--            <td>
+              <?php // echo "<b>Budget:<b>"?>
+            </td>-->
+<!--            <td>
               <?php // echo "USD ".$budget;?>
-              <?php echo "USD ".number_format(str_replace(',', '', $budget), 2,',','.')?>
-            </td>
+              <?php // echo "USD ".number_format(str_replace(',', '', $budget), 2,',','.')?>
+            </td>-->
           </tr>
           <tr>
             <td>

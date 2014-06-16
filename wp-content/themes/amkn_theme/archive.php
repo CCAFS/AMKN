@@ -166,9 +166,9 @@ $themes = array('1'=>'Adaptation to Progressive Climate Change','2'=>'Adaptation
             <th onclick="orderColumn('leaderName')">
               Led Center
             </th>
-            <th onclick="orderColumn('budget')">
+<!--            <th onclick="orderColumn('budget')">
               Budget (USD)
-            </th>
+            </th>-->
           </tr>
           </thead>
           <tbody> 
