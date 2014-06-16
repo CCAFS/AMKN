@@ -1777,7 +1777,7 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
     bottom: 0;
     /* left: 1em; */
     z-index: 2;
-    box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.3);
+    /* box-shadow: 3px 2px 4px rgba(0, 0, 0, 0.3); */
 }
 
 .drop-panel{
@@ -1797,7 +1797,7 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
     width: 53px;
     height: 50px;
     background: #EEE;
-    border: 1px solid #CCC;
+    border: 1px solid #E6E6E6;
     margin: 0 -6px 0 0;
     padding: 0;
     background-repeat: no-repeat;
@@ -1870,7 +1870,7 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
 }
 
 .info, .success, .warning, .error, .validation {
-border: 1px solid;
+border: 1px solid #E2E2E2;
 border-radius:.5em;
 /*margin: 10px 0px;*/
 padding:2px 10px 15px 50px;
@@ -1878,9 +1878,9 @@ background-repeat: no-repeat;
 background-position: 10px center;
 }
 .info {
-color: #00529B;
+color: #666666;
 font-size: 70%;
-background-color: #BDE5F8;
+background-color: #F3F3F3;
 background-image: url('images/infoMap.png');
 background-size:30px 30px;
 }
