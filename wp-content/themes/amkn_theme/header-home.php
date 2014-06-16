@@ -14,10 +14,10 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
 <html <?php language_attributes(); ?>>
     <head>
         <!-- no cache headers -->
-        <meta http-equiv="Pragma" content="no-cache">
-        <meta http-equiv="no-cache">
-        <meta http-equiv="Expires" content="-1">
-        <meta http-equiv="Cache-Control" content="no-cache">
+        <!--<meta http-equiv="Pragma" content="no-cache">-->
+        <!--<meta http-equiv="no-cache">-->
+        <meta http-equiv="Expires" content="Tue, 30 Dec 2014 23:59:59 GMT">
+        <!--<meta http-equiv="Cache-Control" content="no-cache">-->
         <!-- end no cache headers -->
         <meta http-equiv="Content-Type" content="text/html; charset=<?php bloginfo('charset'); ?>" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
