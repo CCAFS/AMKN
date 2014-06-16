@@ -96,9 +96,9 @@ echo "<h3>".$filt.', <b>'.$wp_query->found_posts." found</b></h3>";
     <td>
       <?php echo (!cgValidate($org))?$org:'';?>
     </td>
-    <td>
-      <?php echo number_format(str_replace(',', '', $budget), 2,',','.')?>
+<!--    <td>
+      <?php // echo number_format(str_replace(',', '', $budget), 2,',','.')?>
       <?php // echo $budget?>
-    </td>
+    </td>-->
   </tr>
 <?php endwhile; ?><!-- end loop-->
