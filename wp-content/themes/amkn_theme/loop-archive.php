@@ -4,15 +4,47 @@
  * @subpackage AMKNToolbox
  */
 global $query_string; // required
+$date = array();
+$dateArg = array();
 $paged = get_query_var('paged');
+$filt = 'Results';
+if($_GET['initDate'] != '') {
+  $initDate = explode('/',$_GET['initDate']);
+  $date['after'] = array('year' => $initDate[2],'month' => $initDate[1], 'day' => $initDate[0]);
+}
+if($_GET['endDate'] != '') {
+  $endDate = explode('/',$_GET['endDate']);
+  $date['before'] = array('year' => $endDate[2],'month' => $endDate[1], 'day' => $endDate[0]);
+}
+if (count($date)) {
+  $dateArg = array(
+      'date_query' => array(
+          $date,
+          'inclusive' => false
+    )
+  );
+}
 if (get_query_var( 'post_type' ) == 'ccafs_sites') {
   $args = $query_string.'&posts_per_page=16&order=ASC&orderby=meta_value&meta_key=ccafs_region'; 
 } else {
-  $args = $query_string.'&posts_per_page=16&order=DESC&orderby=date';  
+//  $args = $query_string.'&posts_per_page=16&order=DESC&orderby=date';
+  $args = array_merge ($dateArg, array(
+      'post_type'=>get_query_var( 'post_type' ),
+      'orderby'=>'date',
+      'order'=>'DESC',
+      'posts_per_page'=>'16',
+      'paged'=>$paged
+  ));
+}
+if($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
+  $mypostids = $wpdb->get_col("select ID from ".$wpdb->posts." where post_type = '".get_query_var( 'post_type' )."' AND (post_title like '%".$_GET['keyword']."%' OR post_content like '%".$_GET['keyword']."%')");
+  $args = array_merge($args,array('post__in'=>$mypostids));
 }
 $posts = query_posts($args);
+global $wp_query; 
+echo "<h3>".$filt.', <b>'.$wp_query->found_posts." found</b></h3>";
 $tmpregion = '';
-//print_r($args);echo "**";
+//echo "<pre>".print_r($args,true)."</pre>";echo "**";
 ?>
 
 <?php /* Start the Loop */ ?>
@@ -53,7 +85,7 @@ switch ($postType) {
         <div class="videoteaser">
         <img class="videotitleico" src="<?php bloginfo( 'template_directory' ); ?>/images/<?php echo $postType; ?>-mini.png" alt="Video Testimonials"/> 
         <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php echo $tTitle; ?></a></h2>
-
+        <div class="entrymeta" style="padding-left: 15px;">Posted on <?php echo get_the_date(); ?></div>
         <a href="<?php the_permalink(); ?>"><img class="image"   src="<?php echo $postThumb; ?>" alt="Video Testimonials" /></a>
         <p><?php echo $metaDesc; ?></p>
         </div>
@@ -79,7 +111,7 @@ switch ($postType) {
         </script>
         <div class="videoteaser">
         <img class="videotitleico" src="<?php bloginfo( 'template_directory' ); ?>/images/<?php echo $postType; ?>-mini.png" alt="Video Testimonials"/> <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php echo $tTitle; ?></a></h2>
-
+        <div class="entrymeta" style="padding-left: 15px;">Posted on <?php echo get_the_date(); ?></div>
         <a href="<?php the_permalink(); ?>"><img class="image" src="<?php echo $postThumb; ?>" alt="Video Testimonials" /></a>
         <p><?php echo $metaDesc; ?></p>
         </div>

@@ -168,7 +168,7 @@ function initMap(){
       });
       new Tooltip({
           connectId: ["legend-button"],
-          label: "Data Legend"
+          label: "Data Layers"
       });
       new Tooltip({
           connectId: ["basemap-button"],

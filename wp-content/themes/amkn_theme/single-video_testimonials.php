@@ -49,7 +49,7 @@ echo sociable_html();
     allowfullscreen="true" />
 </object>
 </div>
-<h3>Themes</h3>
+<h3>Description</h3>
 <p><?php echo $metaDesc; ?></p>
 <?php
 $args2=array(
@@ -101,7 +101,7 @@ $getArgs=array(
 
 <h2 class="title"><?php the_title(); ?></h2>
 <div class="entrymeta">Source: <em><?php echo get_bookmark( $srcID )->link_description; ?></em> <a target="_blank" href="<?php echo get_post_meta($post->ID, 'syndication_permalink', true); ?>">permalink</a></div>
-
+<div class="entrymeta">Posted on <?php the_date(); ?><!--  | <a href="<?php comments_link(); ?>"><?php comments_number('no responses','one response','% responses'); ?></a>--><?php echo get_the_tag_list(' | ',', ',''); ?> </div>
 <!--End Share Button-->
 <div class="video">
 <object width="747" height="390" type="application/http">
@@ -120,8 +120,8 @@ $getArgs=array(
 <?php if (function_exists('sociable_html')) {
 echo sociable_html();
 } ?>
-<h3>Themes</h3>
-<p><?php echo $metaDesc; ?></p>
+<h3>Description</h3>
+<p><?php echo $metaDesc; ?><a target="_blank" href="<?php echo get_post_meta($post->ID, 'syndication_permalink', true); ?>"> more</a></p>
 <?php
 $args2=array(
   'public'   => true,

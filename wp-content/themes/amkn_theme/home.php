@@ -101,7 +101,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
           <div class="info" >
             <div class="close_box">&nbsp;</div>
             <div style="">
-            Only content with geo-coordinates are represented on the map.
+            Only contents with geo-coordinates are represented on the map.
             </div>
           </div>
           <div id="divBtnUnselectAll" style="padding:5px 10px;">
