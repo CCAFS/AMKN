@@ -12,13 +12,13 @@ if($_GET['initDate'] != '') {
   $initDate = explode('/',$_GET['initDate']);
   $date['after'] = array('year' => $initDate[2],'month' => $initDate[1], 'day' => $initDate[0]);
   $dateFormat = explode('/',$_GET['initDate']);
-  $filt .='start date: '.date('d F, Y', strtotime($dateFormat[1].'/'.$dateFormat[0].'/'.$dateFormat[2]))."; ";
+  $filt .='Start date '.date('d F, Y', strtotime($dateFormat[1].'/'.$dateFormat[0].'/'.$dateFormat[2]))."<br>";
 }
 if($_GET['endDate'] != '') {
   $endDate = explode('/',$_GET['endDate']);
   $date['before'] = array('year' => $endDate[2],'month' => $endDate[1], 'day' => $endDate[0]);
   $dateFormat = explode('/',$_GET['endDate']);
-  $filt .='end date: '.date('d F, Y', strtotime($dateFormat[1].'/'.$dateFormat[0].'/'.$dateFormat[2]))."; ";
+  $filt .='End date '.date('d F, Y', strtotime($dateFormat[1].'/'.$dateFormat[0].'/'.$dateFormat[2]))."<br>";
 }
 if (count($date)) {
   $dateArg = array(
@@ -50,13 +50,12 @@ if (get_query_var( 'post_type' ) == 'ccafs_sites') {
 if($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
   $mypostids = $wpdb->get_col("select ID from ".$wpdb->posts." where post_type = '".get_query_var( 'post_type' )."' AND (post_title like '%".$_GET['keyword']."%' OR post_content like '%".$_GET['keyword']."%')");
   $args = array_merge($args,array('post__in'=>$mypostids));
-  $filt .='keyword: '.$_GET['keyword']."; ";
+  $filt .='Keyword '.$_GET['keyword']."<br>";
 }
 $posts = query_posts($args);
 global $wp_query;
 $plural = ($wp_query->found_posts>1)?'s':'';
-echo "<h3>".$wp_query->found_posts." result".$plural." found; <i style='font-family: -webkit-body;'>".substr_replace(trim($filt), "", -1)."</i></h3>";
-//echo "<h3>".$filt.', <b>'.$wp_query->found_posts." found</b></h3>";
+echo "<h3>Found ".$wp_query->found_posts."<br><i style='font-family: -webkit-body;font-size: 0.75em;'>".substr_replace(trim($filt), "", -1)."</i></h3>";
 $tmpregion = '';
 //echo "<pre>".print_r($args,true)."</pre>";echo "**";
 ?>

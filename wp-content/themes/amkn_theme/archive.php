@@ -105,7 +105,7 @@ $themes = array('1'=>'Adaptation to Progressive Climate Change','2'=>'Adaptation
             <input type="hidden" id="orderby" name="orderby" value="title">            
             <div class="pure-g">              
               <div class="pure-u-1-6">
-                <label for="leader">Led Center</labe>      
+                <label for="leader">Lead Center</labe>      
                 <select name="leader">
                   <option value="0">All Centers</option>
                   <?php foreach ($leader as $key => $lead):?>
@@ -163,7 +163,7 @@ $themes = array('1'=>'Adaptation to Progressive Climate Change','2'=>'Adaptation
               Topic
             </th>
             <th onclick="orderColumn('leaderName')">
-              Led Center
+              Lead Center
             </th>
 <!--            <th onclick="orderColumn('budget')">
               Budget (USD)

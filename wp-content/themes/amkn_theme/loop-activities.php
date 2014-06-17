@@ -15,17 +15,21 @@ if($_GET['order'] == 'true') {
 }
 if($_GET['initDate'] != '') {
   $metaKey[] = array('key' => 'startDateFilter','value' => date_format_wp($_GET['initDate']), 'compare' => '>=');
+  $dateFormat = explode('/',$_GET['initDate']);
+  $filt .='Start date '.date('d F, Y', strtotime($dateFormat[1].'/'.$dateFormat[0].'/'.$dateFormat[2]))."<br>";
 }
 if($_GET['endDate'] != '') {
   $metaKey[] = array('key' => 'endDateFilter','value' => date_format_wp($_GET['endDate']), 'compare' => '<=');
+  $dateFormat = explode('/',$_GET['endDate']);
+  $filt .='End date '.date('d F, Y', strtotime($dateFormat[1].'/'.$dateFormat[0].'/'.$dateFormat[2]))."<br>";
 }
 if($_GET['leader'] != '0' && $_GET['leader'] != '') {
   $metaKey[] = array('key' => 'leaderAcronym','value' => $_GET['leader']);
-  $filt .='CG Center: '.$_GET['leader'].'; ';
+  $filt .='CG Center '.$_GET['leader'].'<br>';
 }
 if($_GET['theme'] != '0' && $_GET['theme'] != '') {
   $metaKey[] = array('key' => 'theme','value' => $_GET['theme']);
-  $filt .='Topic: Theme '.$_GET['theme'].'; ';
+  $filt .='Topic '.$themes[$_GET['theme']].'<br>';
 }
 if($_GET['orderby'] != 'title' && $_GET['orderby'] != '') {
   $orderType = ($_GET['orderby']=='leaderName')?'meta_value':'meta_value_num';
@@ -51,13 +55,12 @@ if(count($metaKey)) {
 if($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
   $mypostids = $wpdb->get_col("select ID from ".$wpdb->posts." where post_type = 'ccafs_activities' AND (post_title like '%".$_GET['keyword']."%' OR post_content like '%".$_GET['keyword']."%')");
   $args = array_merge($args,array('post__in'=>$mypostids));
-  $filt .='Keyword: '.$_GET['keyword'].'; ';
+  $filt .='Keyword '.$_GET['keyword'].'<br>';
 }
 //echo "<pre>".$query_string.print_r($args,true)."</pre>";
 $posts = query_posts($args);
 global $wp_query;
-$plural = ($wp_query->found_posts>1)?'s':'';
-echo "<h3>".$wp_query->found_posts." result".$plural." found; <i style='font-family: -webkit-body;'>".substr_replace(trim($filt), "", -1)."</i></h3>";
+echo "<h3>Found ".$wp_query->found_posts."<br><i style='font-family: -webkit-body;font-size: 0.75em;'>".substr_replace(trim($filt), "", -1)."</i></h3>";
 ?>
 
 <?php /* Start the Loop */ ?>
