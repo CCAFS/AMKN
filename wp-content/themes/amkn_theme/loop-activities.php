@@ -8,7 +8,7 @@ global $wpdb;
 $metaKey = array();
 $orderby = array();
 $order = 'ASC';
-$filt = 'Results';
+$filt = '';
 $themes = array('1'=>'Adaptation to Progressive Climate Change','2'=>'Adaptation through Managing Climate Risk','3'=>' Pro-Poor Climate Change Mitigation','4.1'=>' Linking Knowledge to Action','4.2'=>'Data and Tools for Analysis and Planning','4.3'=>'Policies and Institutions');
 if($_GET['order'] == 'true') {
   $order = 'DESC';
@@ -21,11 +21,11 @@ if($_GET['endDate'] != '') {
 }
 if($_GET['leader'] != '0' && $_GET['leader'] != '') {
   $metaKey[] = array('key' => 'leaderAcronym','value' => $_GET['leader']);
-  $filt .=', CG Center: '.$_GET['leader'];
+  $filt .='CG Center: '.$_GET['leader'].'; ';
 }
 if($_GET['theme'] != '0' && $_GET['theme'] != '') {
   $metaKey[] = array('key' => 'theme','value' => $_GET['theme']);
-  $filt .=', Topic: Theme '.$_GET['theme'];
+  $filt .='Topic: Theme '.$_GET['theme'].'; ';
 }
 if($_GET['orderby'] != 'title' && $_GET['orderby'] != '') {
   $orderType = ($_GET['orderby']=='leaderName')?'meta_value':'meta_value_num';
@@ -51,11 +51,13 @@ if(count($metaKey)) {
 if($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
   $mypostids = $wpdb->get_col("select ID from ".$wpdb->posts." where post_type = 'ccafs_activities' AND (post_title like '%".$_GET['keyword']."%' OR post_content like '%".$_GET['keyword']."%')");
   $args = array_merge($args,array('post__in'=>$mypostids));
+  $filt .='Keyword: '.$_GET['keyword'].'; ';
 }
 //echo "<pre>".$query_string.print_r($args,true)."</pre>";
 $posts = query_posts($args);
-global $wp_query; 
-echo "<h3>".$filt.', <b>'.$wp_query->found_posts." found</b></h3>";
+global $wp_query;
+$plural = ($wp_query->found_posts>1)?'s':'';
+echo "<h3>".$wp_query->found_posts." result".$plural." found; <i style='font-family: -webkit-body;'>".substr_replace(trim($filt), "", -1)."</i></h3>";
 ?>
 
 <?php /* Start the Loop */ ?>

@@ -113,8 +113,8 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
         <div id="basemapGallery" class="drop-panel" ></div> 
         <div id="layersDiv" class="drop-panel" data-dojo-type="dijit/layout/AccordionContainer" style="height: 100%;">
           <div id="accord_data_layer" data-dojo-type="dijit/layout/ContentPane" title="Data Layers" selected="true" style="overflow: hidden;">
-            <div>                  
-                <a href="#" id="btnDeselectAll">Hide All Layers</a>                  
+            <div style="background-color:#DE910A;padding-left: 10px">                  
+                <a href="#" id="btnDeselectAll" style="color:white">Hide All Layers</a>                  
             </div>
             <div id="dataLayers" style="width: 100%; height: 100%;" ></div>
           </div>

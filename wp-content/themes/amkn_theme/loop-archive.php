@@ -7,14 +7,18 @@ global $query_string; // required
 $date = array();
 $dateArg = array();
 $paged = get_query_var('paged');
-$filt = 'Results';
+$filt = '';
 if($_GET['initDate'] != '') {
   $initDate = explode('/',$_GET['initDate']);
   $date['after'] = array('year' => $initDate[2],'month' => $initDate[1], 'day' => $initDate[0]);
+  $dateFormat = explode('/',$_GET['initDate']);
+  $filt .='start date: '.date('d F, Y', strtotime($dateFormat[1].'/'.$dateFormat[0].'/'.$dateFormat[2]))."; ";
 }
 if($_GET['endDate'] != '') {
   $endDate = explode('/',$_GET['endDate']);
   $date['before'] = array('year' => $endDate[2],'month' => $endDate[1], 'day' => $endDate[0]);
+  $dateFormat = explode('/',$_GET['endDate']);
+  $filt .='end date: '.date('d F, Y', strtotime($dateFormat[1].'/'.$dateFormat[0].'/'.$dateFormat[2]))."; ";
 }
 if (count($date)) {
   $dateArg = array(
@@ -25,7 +29,14 @@ if (count($date)) {
   );
 }
 if (get_query_var( 'post_type' ) == 'ccafs_sites') {
-  $args = $query_string.'&posts_per_page=16&order=ASC&orderby=meta_value&meta_key=ccafs_region'; 
+  $args = $query_string.'&posts_per_page=16&order=ASC&orderby=meta_value&meta_key=ccafs_region';
+  $args = array_merge ($dateArg, array(
+      'post_type'=>get_query_var( 'post_type' ),
+      'orderby'=>'meta_value',
+      'order'=>'ASC',
+      'posts_per_page'=>'16',
+      'meta_key'=>'ccafs_region'      
+  ));
 } else {
 //  $args = $query_string.'&posts_per_page=16&order=DESC&orderby=date';
   $args = array_merge ($dateArg, array(
@@ -39,10 +50,13 @@ if (get_query_var( 'post_type' ) == 'ccafs_sites') {
 if($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
   $mypostids = $wpdb->get_col("select ID from ".$wpdb->posts." where post_type = '".get_query_var( 'post_type' )."' AND (post_title like '%".$_GET['keyword']."%' OR post_content like '%".$_GET['keyword']."%')");
   $args = array_merge($args,array('post__in'=>$mypostids));
+  $filt .='keyword: '.$_GET['keyword']."; ";
 }
 $posts = query_posts($args);
-global $wp_query; 
-echo "<h3>".$filt.', <b>'.$wp_query->found_posts." found</b></h3>";
+global $wp_query;
+$plural = ($wp_query->found_posts>1)?'s':'';
+echo "<h3>".$wp_query->found_posts." result".$plural." found; <i style='font-family: -webkit-body;'>".substr_replace(trim($filt), "", -1)."</i></h3>";
+//echo "<h3>".$filt.', <b>'.$wp_query->found_posts." found</b></h3>";
 $tmpregion = '';
 //echo "<pre>".print_r($args,true)."</pre>";echo "**";
 ?>
@@ -177,7 +191,8 @@ switch ($postType) {
           <span class="sidemap-labels">Geocoordinates:</span>
           <span class="geo">
              <span class="latitude"><?php echo str_ireplace(" ", "</span>; <span class='longitude'>", $geoRSSPoint); ?></span>
-          </span>
+          </span><br>
+          <span class="sidemap-labels">Posted on </span><?php echo get_the_date(); ?>
       </p>         
     </div>
  

@@ -1945,7 +1945,7 @@ function buildLayerList(layer,lID,layerName,single){
         visLyr=layerName;
         layer.setVisibility(true);
         layer.setVisibleLayers(visible);
-        dijit.byId('cFiltersList').selectChild(dijit.byId('accord_legend'));
+//        dijit.byId('cFiltersList').selectChild(dijit.byId('accord_legend'));
         dojo.addClass(document.getElementById("layerbt_"+layerName),"sldMenu");
         map.centerAt(map.extent.getCenter());
     }
@@ -2165,7 +2165,7 @@ function updateLayerVisibility(lID,lyrID){
         rLegend();
     },1000);
     dojo.hasClass(document.getElementById("onthemap"),"dojoxExpandoClosed")?dijit.byId('onthemap').toggle():"";
-    dijit.byId('cFiltersList').selectChild(dijit.byId('accord_legend'));
+//    dijit.byId('cFiltersList').selectChild(dijit.byId('accord_legend'));
 }
 function updateInitLyr(lID,lyrID,id){
     var cLyr=map.getLayer(lyrID);
