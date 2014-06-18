@@ -48,7 +48,8 @@ if(count($metaKey)) {
       'post_type'=>'ccafs_activities',
       'orderby'=>'title',
       'order'=>'asc',
-      'posts_per_page'=>'25'
+      'posts_per_page'=>'25',
+      'paged'=>$paged
   );
 }
 

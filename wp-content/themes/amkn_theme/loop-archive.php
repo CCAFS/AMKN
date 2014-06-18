@@ -74,7 +74,7 @@ $postThumb = "";
   $region = get_post_meta($post->ID, 'ccafs_region', true);
 ?>
 <?php if ($region != $tmpregion && $postType == 'ccafs_sites'): ?>
-<br><h3><?php echo $region?></h3>
+  <h3><?php echo $region?></h3>
 <?php $tmpregion = $region; endif;?>
 <div class="videocolumn <?php echo $postType; ?>">
 <?php 
