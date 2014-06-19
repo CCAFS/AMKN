@@ -16,7 +16,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
         <!-- no cache headers -->
         <!--<meta http-equiv="Pragma" content="no-cache">-->
         <!--<meta http-equiv="no-cache">-->
-        <meta http-equiv="Expires" content="Tue, 30 Dec 2014 23:59:59 GMT">
+        <!--<meta http-equiv="Expires" content="Tue, 30 Dec 2014 23:59:59 GMT">-->
         <!--<meta http-equiv="Cache-Control" content="no-cache">-->
         <!-- end no cache headers -->
         <meta http-equiv="Content-Type" content="text/html; charset=<?php bloginfo('charset'); ?>" />
@@ -76,6 +76,14 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                     checkbox: true,
                     select: true,
                     debugLevel: 0,
+                    onClick: function(node) {
+                      if (node.data.key == 'accord_data_layers') {
+                          $( "#legend-button" ).addClass("selected").siblings().removeClass("selected"); 
+                          $( "#legend-button" ).removeClass("haslegend"); 
+                          $( "#layersDiv" ).show().siblings().hide();
+                          node.select(false);                            
+                      }
+                    },
                     onActivate: function(node) {
                         // A DynaTreeNode object is passed to the activation handler
                         // Note: we also get this event, if persistence is on, and the page is reloaded.
@@ -84,10 +92,10 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                         if( node.data.url ) {
                           document.location = node.data.url;
 //                          updateLayerVisibilityTree();
-                        }
+                        }                        
 //                            window.open(node.data.url);                       
                     },
-                    onSelect: function(flag, node) {  
+                    onSelect: function(flag, node) {
                       if( !node.data.url ) {
 
                         if (node.data.key == 'accord_ccafs_sites' || node.data.key == 'accord_video_testimonials'  || node.data.key == 'accord_amkn_blog_posts'
@@ -95,6 +103,9 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
                             if (firstime) updateDataLayerTree(true);
                             validateSelect();
                         }
+                      }
+                      if (node.data.key == 'accord_data_layers') {
+                          node.select(false);                            
                       }
                     },
                     onCreate: function(node, nodeSpan) {

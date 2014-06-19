@@ -2195,7 +2195,7 @@ function updateInitLyr(lID,lyrID,id){
 function validateSelect() {
   var checkedAll = true;
   $("#cFiltersList2").dynatree("getRoot").visit(function(node){
-    if( !node.data.url ) {
+    if( !node.data.url && node.data.key != 'accord_data_layers') {
       if(!node.isSelected()) checkedAll = false;
     }
   });

@@ -38,15 +38,16 @@ array_multisort($sortArray[$orderby], SORT_ASC, $post_types);
     var treeData = [
 <?php
 $fst = 1;
-//echo "{ title: \"Select All\", 
-//                key: \"select_all\",                 
-//                isFolder: false,                
-////                select: true,
-//                addClass: \"customSelect\",
-//                selectMode: 2,
+echo "{ title: \"Data Layers\", 
+                key: \"accord_data_layers\",                 
+                isFolder: false,                
+//                select: true,
+                icon: '../../../../images/data_layersM.png',
+                addClass: \"customSelect\",
+                selectMode: 2,
 //                icon:false,
-//                hideCheckbox: false,
-//            },";
+                hideCheckbox: false,
+            },";
 foreach ($post_types as $post_type) {
     if (!in_array($post_type->name, $excludeTypes)) {
         echo $fst == 1 ? "" : ",";
