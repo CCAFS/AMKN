@@ -113,24 +113,34 @@ $themes = array('1'=>'Adaptation to Progressive Climate Change','2'=>'Adaptation
                     <option value='<?php echo $lead?>' <?php echo $selected?>><?php echo $lead?></option>
                   <?php endforeach;?>
                 </select>
-              </div>
-              <div class="pure-u-1-6">
-                <label for="initDate">
-                  Start date
-                </label>
-                <input type="text" name="initDate" id="initDate" value="<?php echo $_GET['initDate']?>" class="pure-input-2-3">          
-              </div>
-              <div class="pure-u-1-6">
-                <label for="endDate">
-                  End date
-                </label>          
-                <input type="text" name="endDate" id="endDate" value="<?php echo $_GET['endDate']?>" class="pure-input-2-3">
-              </div>
+              </div>             
               <div class="pure-u-1-6">
                 <label for="keyword">
                   Keyword
                 </label>          
                 <input type="text" name="keyword" id="keyword" value="<?php echo $_GET['keyword']?>" class="pure-input-2-3">
+              </div>
+               <?php
+                $checkOng='';
+                $checkPast='';
+                ($_GET['view'] == 'true')?$checkOng='checked':'';
+                ($_GET['view'] == 'false')?$checkPast='checked':'';
+              ?>
+              <div class="pure-u-1-6">
+                <label for="space">
+                  &nbsp;
+                </label>
+                <label for="remember">
+                    <input id="ong" name="view" type="radio" value="true" <?php echo $checkOng?>> Ongoing projects
+                </label>
+              </div>
+              <div class="pure-u-1-8">
+                <label for="space">
+                  &nbsp;
+                </label>
+                <label for="remember">
+                    <input id="past" name="view" type="radio" value="false" <?php echo $checkPast?>> Past projects
+                </label>                
               </div>
               <div class="pure-u-1-6">
                 <label for="space">

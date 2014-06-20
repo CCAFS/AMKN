@@ -13,15 +13,14 @@ $themes = array('1'=>'Adaptation to Progressive Climate Change','2'=>'Adaptation
 if($_GET['order'] == 'true') {
   $order = 'DESC';
 }
-if($_GET['initDate'] != '') {
-  $metaKey[] = array('key' => 'startDateFilter','value' => date_format_wp($_GET['initDate']), 'compare' => '>=');
-  $dateFormat = explode('/',$_GET['initDate']);
-  $filt .='Start date '.date('d F, Y', strtotime($dateFormat[1].'/'.$dateFormat[0].'/'.$dateFormat[2]))."<br>";
-}
-if($_GET['endDate'] != '') {
-  $metaKey[] = array('key' => 'endDateFilter','value' => date_format_wp($_GET['endDate']), 'compare' => '<=');
-  $dateFormat = explode('/',$_GET['endDate']);
-  $filt .='End date '.date('d F, Y', strtotime($dateFormat[1].'/'.$dateFormat[0].'/'.$dateFormat[2]))."<br>";
+if(isset($_GET['view'])) {
+  if ($_GET['view'] == 'true') {
+    $metaKey[] = array('key' => 'endDateFilter','value' => date('Ymd'), 'compare' => '>');
+    $filt .='Ongoing projects<br>';
+  } else {
+    $metaKey[] = array('key' => 'endDateFilter','value' => date('Ymd'), 'compare' => '<=');
+    $filt .='Past projects<br>';
+  }  
 }
 if($_GET['leader'] != '0' && $_GET['leader'] != '') {
   $metaKey[] = array('key' => 'leaderAcronym','value' => $_GET['leader']);
@@ -58,7 +57,7 @@ if($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
   $args = array_merge($args,array('post__in'=>$mypostids));
   $filt .='Keyword '.$_GET['keyword'].'<br>';
 }
-//echo "<pre>".$query_string.print_r($args,true)."</pre>";
+//echo "<pre>".print_r($metaKey,true)."</pre>";
 $posts = query_posts($args);
 global $wp_query;
 echo "<h3>Found ".$wp_query->found_posts."<br><i style='font-family: -webkit-body;font-size: 0.75em;'>".substr_replace(trim($filt), "", -1)."</i></h3>";
