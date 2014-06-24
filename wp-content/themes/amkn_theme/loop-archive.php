@@ -175,7 +175,14 @@ switch ($postType) {
     $country = get_post_meta($post->ID, 'siteCountry', true);
     $village = get_post_meta($post->ID, 'village', true);
     $city = get_post_meta($post->ID, 'city', true);
-    $showLocality = ($village) ? $village : $city;
+    $area = get_post_meta($post->ID, 'area', true);
+    if ($village)
+      $showLocality = $village;
+    else if ($city)
+      $showLocality = $city;
+    else
+      $showLocality = $area;
+//    $showLocality = ($village) ? $village : $city;
 ?>
 
     <div class="videoteaser">

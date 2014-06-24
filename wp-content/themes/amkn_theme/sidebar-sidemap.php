@@ -23,7 +23,14 @@ $staticMapURL = "http://maps.google.com/maps/api/staticmap?center=" . $geoPoint 
       }
       $village = get_post_meta($post->ID, 'village', true);
       $city = get_post_meta($post->ID, 'city', true);
-      $showLocality = ($village) ? $village : $city;
+      $area = get_post_meta($post->ID, 'area', true);
+      if ($village)
+        $showLocality = $village;
+      else if ($city)
+        $showLocality = $city;
+      else
+        $showLocality = $area;
+//      $showLocality = ($village) ? $village : $city;
       $nearestBMSiteID = get_post_meta($post->ID, 'nearestBenchmarkSite', true);
       $nearestBMSitePermalink = get_permalink($nearestBMSiteID);
       $browserURL = "/#/bm=basemap_5/cntr=" . str_ireplace(" ", ";", trim($geoRSSPoint)) . "/lvl=5";
