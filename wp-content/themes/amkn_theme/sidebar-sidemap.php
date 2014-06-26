@@ -37,7 +37,7 @@ $staticMapURL = "http://maps.google.com/maps/api/staticmap?center=" . $geoPoint 
       $showLocality2 = ($showLocality) ? $showLocality : $geoPoint;
       $wcURL = "/marksim-dssat-weather-file-generator/?lt=" . str_ireplace(" ", "&ln=", $geoRSSPoint) . "&pl=" . $showLocality2;
       ?>
-      <li><span class="sidemap-labels">Next town:</span> <?php echo $showLocality; ?></li>
+      <li><span class="sidemap-labels">Town:</span> <?php echo $showLocality; ?></li>
       <li><span class="sidemap-labels">Geocoordinates:</span>
          <span class="geo">
             <span class="latitude"><?php echo str_ireplace(" ", "</span>; <span class='longitude'>", $geoRSSPoint); ?></span>

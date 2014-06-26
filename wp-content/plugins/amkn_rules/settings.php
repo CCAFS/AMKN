@@ -559,7 +559,72 @@ function esriMapRegions( $atts ) {
 }
 add_shortcode( 'getcsvregions', 'esriMapRegions' );
 
+function ccafsSitesGeojson( ) {
 
+$regions = explode(',',$_GET["rgs"]);
+$meta = array();
+if(count($regions)) {
+  $meta = array('realtion' => 'OR');
+//  foreach($regions as $region){
+    $meta[] = array('key'=> 'ccafs_region', 'value'   => $regions);
+//  }
+}
+//$meta = array('realtion' => 'OR', array('key' => 'ccafs_region', 'value' => 'East Africa'), array('key' => 'ccafs_region', 'value' => 'South Asia'));
+$qargs = array(
+        'post_type' => 'ccafs_sites',
+	'posts_per_page' => '-1',
+        'orderby'=>'meta_value',
+        'order'=>'ASC',      
+        'meta_key'=>'ccafs_region'
+);
+if(count($meta)) {
+  $args = array_merge(array('meta_query' => $meta), $qargs);  
+} else {
+  $args = array(
+        'post_type' => 'none'
+  );
+}
+//print_r($args);
+$contentQuery = new WP_Query($args);
+$trans = array(" " => ",");
+echo 'eqfeed_callback({ "type": "FeatureCollection",
+          "features": [';
+while( $contentQuery->have_posts() ) : $contentQuery->the_post();
+  $row = get_post_meta($contentQuery->post->ID);
+  $tmpGeoPoint = '';
+  if ($row['geoRSSPoint']) {
+    foreach ($row['geoRSSPoint'] as $key => $value) {
+      if ($value != '') {
+          $geoPoint=explode(' ', $value);
+          if(($geoPoint && $tmpGeoPoint == '' ) || $geoPoint != $tmpGeoPoint) {
+            echo '
+             { "type": "Feature",
+              "id": "'.$contentQuery->post->ID.'",
+              "geometry": {"type": "Point", "coordinates": ['.$geoPoint[1].', '.$geoPoint[0].']},
+              "properties": {"title": "'.preg_replace('/\s+?(\S+)?$/', '', the_title( "", "", false )).'", "country":"'.$row['siteCountry'][0].'", "region":"'.$row['ccafs_region'][0].'"}
+             }, 
+            ';
+//              echo $geoPoint.",\"".preg_replace('/\s+?(\S+)?$/', '', the_title( "", "", false ))."|".$row['siteId'][0]."|".$row['siteCountry'][0]."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";            
+          }
+          $tmpGeoPoint = $geoPoint;
+      }
+    }
+  }
+//  $geoPoint=strtr(get_post_meta($contentQuery->post->ID, 'geoRSSPoint', true), $trans);
+//  if($geoPoint) {
+//    echo $geoPoint.",\"".the_title( "", "", false )."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
+//  }
+//    else
+//    {
+//         echo "NP".",\"".the_title( "", "", false )."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
+//
+//    }
+endwhile;
+echo ']
+     });';
+wp_reset_postdata();
+}
+add_shortcode( 'getGeojson', 'ccafsSitesGeojson' );
 
 
 //add_filter('wp_loaded','flushRules');

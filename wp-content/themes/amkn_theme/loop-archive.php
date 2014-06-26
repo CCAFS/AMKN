@@ -8,18 +8,21 @@ $date = array();
 $dateArg = array();
 $paged = get_query_var('paged');
 $filt = '';
+
 if($_GET['initDate'] != '') {
   $initDate = explode('/',$_GET['initDate']);
   $date['after'] = array('year' => $initDate[2],'month' => $initDate[1], 'day' => $initDate[0]);
   $dateFormat = explode('/',$_GET['initDate']);
   $filt .='Start date '.date('d F, Y', strtotime($dateFormat[1].'/'.$dateFormat[0].'/'.$dateFormat[2]))."<br>";
 }
+
 if($_GET['endDate'] != '') {
   $endDate = explode('/',$_GET['endDate']);
   $date['before'] = array('year' => $endDate[2],'month' => $endDate[1], 'day' => $endDate[0]);
   $dateFormat = explode('/',$_GET['endDate']);
   $filt .='End date '.date('d F, Y', strtotime($dateFormat[1].'/'.$dateFormat[0].'/'.$dateFormat[2]))."<br>";
 }
+
 if (count($date)) {
   $dateArg = array(
       'date_query' => array(
@@ -28,6 +31,7 @@ if (count($date)) {
     )
   );
 }
+
 if (get_query_var( 'post_type' ) == 'ccafs_sites') {
   $args = $query_string.'&posts_per_page=16&order=ASC&orderby=meta_value&meta_key=ccafs_region';
   $args = array_merge ($dateArg, array(
@@ -37,6 +41,33 @@ if (get_query_var( 'post_type' ) == 'ccafs_sites') {
       'posts_per_page'=>'16',
       'meta_key'=>'ccafs_region'      
   ));
+  $regions = $_GET["region"];
+  $meta = array();
+  if(count($regions)) {
+    $meta = array('realtion' => 'OR');
+  //  foreach($regions as $region){
+      $meta[] = array('key'=> 'ccafs_region', 'value'   => $regions);
+  //  }
+  }
+  //$meta = array('realtion' => 'OR', array('key' => 'ccafs_region', 'value' => 'East Africa'), array('key' => 'ccafs_region', 'value' => 'South Asia'));
+  $qargs = array(
+          'post_type' => 'ccafs_sites',
+          'posts_per_page' => '-1',
+          'orderby'=>'meta_value',
+          'order'=>'ASC',      
+          'meta_key'=>'ccafs_region'
+  );
+  if(count($meta)) {
+    $args = array_merge(array('meta_query' => $meta), $qargs);  
+  } else {
+    $args = array(
+          'post_type' => 'ccafs_sites',
+          'posts_per_page' => '-1',
+          'orderby'=>'meta_value',
+          'order'=>'ASC',      
+          'meta_key'=>'ccafs_region'
+    );
+  }
 } else {
 //  $args = $query_string.'&posts_per_page=16&order=DESC&orderby=date';
   $args = array_merge ($dateArg, array(
@@ -47,36 +78,37 @@ if (get_query_var( 'post_type' ) == 'ccafs_sites') {
       'paged'=>$paged
   ));
 }
+
 if($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
   $mypostids = $wpdb->get_col("select ID from ".$wpdb->posts." where post_type = '".get_query_var( 'post_type' )."' AND (post_title like '%".$_GET['keyword']."%' OR post_content like '%".$_GET['keyword']."%')");
   $args = array_merge($args,array('post__in'=>$mypostids));
   $filt .='Keyword '.$_GET['keyword']."<br>";
 }
+
 $posts = query_posts($args);
 global $wp_query;
-$plural = ($wp_query->found_posts>1)?'s':'';
-echo "<h3>Found ".$wp_query->found_posts."<br><i style='font-family: -webkit-body;font-size: 0.75em;'>".substr_replace(trim($filt), "", -1)."</i></h3>";
+//$plural = ($wp_query->found_posts>1)?'s':'';
+if ($post->post_type != 'ccafs_sites')
+  echo "<h3>Found ".$wp_query->found_posts."<br><i style='font-family: -webkit-body;font-size: 0.75em;'>".substr_replace(trim($filt), "", -1)."</i></h3>";
 $tmpregion = '';
 //echo "<pre>".print_r($args,true)."</pre>";echo "**";
 ?>
-
 <?php /* Start the Loop */ ?>
 <?php //query_posts('posts_per_page=10'); ?>
 <?php while ( have_posts() ) : the_post();
-$postType = $post->post_type;
-$postId = $post->ID;
-$postThumb = "";
-
+  $postType = $post->post_type;
+  $postId = $post->ID;
+  $postThumb = "";
 ?>
-
-<div id="archive-entry">
+<!--<div id="archive-entry">-->
 <?php
   $region = get_post_meta($post->ID, 'ccafs_region', true);
 ?>
-<?php if ($region != $tmpregion && $postType == 'ccafs_sites'): ?>
-  <h3><?php echo $region?></h3>
-<?php $tmpregion = $region; endif;?>
-<div class="videocolumn <?php echo $postType; ?>">
+<?php if ($postType == 'ccafs_sites'): ?>
+  <div id="<?php echo $post->ID?>" class="<?php echo $postType; ?>" onmouseover="openDialog(markerArray[<?php echo $post->ID?>])">
+<?php else:?>
+  <div id="<?php echo $post->ID?>" class="videocolumn <?php echo $postType; ?>">
+<?php endif;?>
 <?php 
 switch ($postType) {
     case "video_testimonials":
@@ -165,7 +197,7 @@ switch ($postType) {
     $geoPoint = str_ireplace(" ", ",", trim($geoRSSPoint));
     $sURL = str_ireplace("http://", "", site_url());
     $sURL= "amkn.org";
-    $staticMapURL = "http://maps.google.com/maps/api/staticmap?center=".$geoPoint."&zoom=4&size=70x70&markers=icon:http%3A%2F%2F".$sURL."%2Fwp-content%2Fthemes%2Famkn_theme%2Fimages%2F".$post->post_type."-mini.png|".$geoPoint."&maptype=roadmap&sensor=false";
+//    $staticMapURL = "http://maps.google.com/maps/api/staticmap?center=".$geoPoint."&zoom=4&size=70x70&markers=icon:http%3A%2F%2F".$sURL."%2Fwp-content%2Fthemes%2Famkn_theme%2Fimages%2F".$post->post_type."-mini.png|".$geoPoint."&maptype=roadmap&sensor=false";
     $tEx = $post->post_excerpt;
     if(strlen($tEx) > 75){
         $tEx = substr($tEx,0,75)."...";
@@ -188,28 +220,22 @@ switch ($postType) {
     <div class="videoteaser">
       <img class="videotitleico" src="<?php bloginfo( 'template_directory' ); ?>/images/<?php echo $postType; ?>-mini.png" alt="Benchmark site"/> 
       <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?> [<?php echo $country; ?>]</a></h2>
-      <a href="<?php the_permalink(); ?>"><img class="image" src="<?php echo $staticMapURL; ?>" /></a>
+      <!--<a href="<?php // the_permalink(); ?>"><img class="image" src="<?php // echo $staticMapURL; ?>" /></a>-->
       <p>
         <?php // echo $tEx; ?>
           <span class="sidemap-labels">Site ID:</span> <?php echo $sideId; ?><br>
           <span class="sidemap-labels">Sampling Frame Name:</span> <?php echo $blockName; ?><br>
-          <span class="sidemap-labels">Next town:</span> <?php echo $showLocality; ?><br>
-          <span class="sidemap-labels">Geocoordinates:</span>
-          <span class="geo">
-             <span class="latitude"><?php echo str_ireplace(" ", "</span>; <span class='longitude'>", $geoRSSPoint); ?></span>
-          </span><br>
-          <span class="sidemap-labels">Posted on </span><?php echo get_the_date(); ?>
+          <span class="sidemap-labels">Town:</span> <?php echo $showLocality; ?>          
       </p>         
     </div>
  
 <?php
-    break;    
-}
+  break;    
+  }
 ?>
 </div>
-</div>
+<!--</div>-->
 <?php endwhile; ?><!-- end loop-->
-
 <br clear="all" />
 <div id="amkn-paginate">
 <?php if(function_exists('wp_pagenavi')) { wp_pagenavi(); } else { ?>

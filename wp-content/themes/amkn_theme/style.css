@@ -439,10 +439,34 @@ h1.feat-maintitle {
   border-radius: 24%;
 }
 .ccafs_sites { 
-    width: 500px;
+    width: 290px;
+    background-color: #F5F5F5;
+    display: block;
+    float: left;
+    margin-bottom: 2px;
+    margin-right: 6px;
+    /*width: 247px;*/
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
+    /*height: 140px;*/
+}
+
+.ccafs_sites p {
+  padding-left: 25px!important;
+}
+
+.ccafs_sites_selected { 
+    width: 290px;
+    background-color: #E2F1FC;
+    display: block;
+    float: left;
+    margin-bottom: 2px;
+    margin-right: 6px;
+    /*width: 247px;*/
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.1);
     /*height: 140px;*/
 
 }
+
 .ccafs_sites img.image {
   float: left;
   margin: 10px 8px 11px 11px;
