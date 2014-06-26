@@ -232,7 +232,7 @@ $themes = array('1'=>'Adaptation to Progressive Climate Change','2'=>'Adaptation
             rgs = 'East%20Africa,West%20Africa,South%20Asia,Southeast%20Asia,Latin%20America';
           }
           var script = document.createElement('script');
-          script.src = 'http://amkn.local/sitesgeojson/?rgs='+rgs;
+          script.src = '<?php bloginfo('url'); ?>/sitesgeojson/?rgs='+rgs;
           var s = document.getElementsByTagName('script')[0];
           s.parentNode.insertBefore(script, s);        
         }
