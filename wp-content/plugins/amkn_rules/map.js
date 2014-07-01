@@ -34,7 +34,7 @@ var intMinExtY=-5586372.099330453;
 var initLvl=3;
 
 var map,visLyr,popup,popupOptions,tLayers=[],vLyr,qPop,identifyTask,identifyParams,legend,hQuery,cPx,cHType,polyGraphic,hoverGraphic,hoverText,currentLocation,popupWindow,cntr,idCT,highlightSymbol,highlightGraphic,showLegend,sGCP,baseMP,iconT,baseExt,ctrPt,lvlMp,loadExtent,mapLevel,mapExtent,basemapGallery,tiledMapServiceLayer,gcpFarmingSystems,africaTSLayers,multipoint,popupSize,loading,initExtent,maxExtent,dataLayer,hoverLayer,syms6,syms4,syms5,syms2,syml6,syml4,syml5,syml2,visible=[],legendLayers=[],featureLayer,featureRegion,totalSources;
-
+var dataLayerVt,dataLayerCs,dataLayerBp,dataLayerBc,dataLayerPt,dataLayerCa;
 var vtonmap=[];
 var cconmap=[];
 var bgonmap=[];
@@ -114,7 +114,7 @@ function initMap(){
             visible:false
         });
         overviewMapDijit.startup();        
-        initBackMap();
+        initBackMap();        
         dojo.removeClass("tb3","hide");       
     });
     dojo.connect(map,"onExtentChange",function(extent){
@@ -151,15 +151,41 @@ function initMap(){
         wkid:4326
     }));
     dataLayer=new esri.layers.GraphicsLayer();
+    dataLayerVt=new esri.layers.GraphicsLayer();
+    dataLayerCs=new esri.layers.GraphicsLayer();
+    dataLayerBp=new esri.layers.GraphicsLayer();
+    dataLayerBc=new esri.layers.GraphicsLayer();
+    dataLayerPt=new esri.layers.GraphicsLayer();
+    dataLayerCa=new esri.layers.GraphicsLayer();
     hoverLayer=new esri.layers.GraphicsLayer();
+    dataLayer.hide();
+    dataLayerVt.hide();
+    dataLayerCs.hide();
+    dataLayerBp.hide();
+    dataLayerBc.hide();
+    dataLayerPt.hide();
+    dataLayerCa.hide();
+    layersSwitchInitial();
     map.addLayer(dataLayer);
+    map.addLayer(dataLayerVt);
+    map.addLayer(dataLayerCs);
+    map.addLayer(dataLayerBp);
+    map.addLayer(dataLayerBc);
+    map.addLayer(dataLayerPt);
+    map.addLayer(dataLayerCa);
     map.addLayer(hoverLayer);
     dojo.connect(dataLayer,"onClick",onFeatureClick);
     dojo.connect(map.graphics,"onClick",onFeatureClick);
     dojo.connect(dataLayer,"onMouseOver",onFeatureHover);
-    dojo.connect(hoverLayer,"onMouseOut",onFeatureLeave);    
+    dojo.connect(hoverLayer,"onMouseOut",onFeatureLeave);
+    dojo.connect(dataLayerVt,"onMouseOver",onFeatureHover);
+    dojo.connect(dataLayerCs,"onMouseOver",onFeatureHover);
+    dojo.connect(dataLayerBp,"onMouseOver",onFeatureHover);
+    dojo.connect(dataLayerBc,"onMouseOver",onFeatureHover);
+    dojo.connect(dataLayerPt,"onMouseOver",onFeatureHover);
+    dojo.connect(dataLayerCa,"onMouseOver",onFeatureHover);
     dojo.connect(hoverLayer,"onMouseOver",showTT);
-    dojo.connect(map,"onLoad",addDataLayers);
+    dojo.connect(map,"onLoad",addDataLayers);    
     
     require(["dijit/Tooltip", "dojo/domReady!"], function(Tooltip){
       new Tooltip({
@@ -183,6 +209,75 @@ function initMap(){
           label: "Reset zoom"
       });
   });
+}
+
+function layersSwitchInitial() {
+  var pointsi = $("#cFiltersList2").dynatree("getTree").getSelectedNodes();
+  for(var i=0;i<pointsi.length;i++){
+      if(pointsi[i].data.key.match('accord_')) {        
+        switch(pointsi[i].data.key) {
+          case 'accord_ccafs_sites':                              
+                dataLayerCs.show();
+          break;
+          case 'accord_video_testimonials':     
+                dataLayerVt.show();
+          break;
+          case 'accord_amkn_blog_posts':
+                dataLayerBp.show();
+          break;
+          case 'accord_biodiv_cases':
+                dataLayerBc.show();
+          break;
+          case 'accord_photo_testimonials':
+                dataLayerPt.show();
+          break;
+          case 'accord_ccafs_activities':             
+                dataLayerCa.show();
+          break;
+        }
+    }
+  }
+}
+
+function layersSwitch(node,flag) {
+  switch(node) {
+    case 'accord_ccafs_sites':                
+        if(flag)
+          dataLayerCs.show();
+        else
+          dataLayerCs.hide();
+    break;
+    case 'accord_video_testimonials':     
+        if(flag)
+          dataLayerVt.show();
+        else
+          dataLayerVt.hide();
+    break;
+    case 'accord_amkn_blog_posts':
+        if(flag)
+          dataLayerBp.show();
+        else
+          dataLayerBp.hide();
+    break;
+    case 'accord_biodiv_cases':
+        if(flag)
+          dataLayerBc.show();
+        else
+          dataLayerBc.hide();
+    break;
+    case 'accord_photo_testimonials':
+        if(flag)
+          dataLayerPt.show();
+        else
+          dataLayerPt.hide();
+    break;
+    case 'accord_ccafs_activities':             
+        if(flag)
+          dataLayerCa.show();
+        else
+          dataLayerCa.hide();
+    break;
+  }
 }
   
   function getActivitiesByCountry(){
@@ -517,8 +612,8 @@ function hideLoading(error){
     findPointsInExtentTree(map.extent);
 //    setViewTree();
 }
-function processCsvData(url){
-    showLoading();    
+function processCsvData(url,init){
+//    showLoading();    
     var frameUrl=new dojo._Url(window.location.href);
     var csvUrl=new dojo._Url(url);
     if(frameUrl.host!==csvUrl.host||frameUrl.port!==csvUrl.port||frameUrl.scheme!==csvUrl.scheme){
@@ -543,7 +638,7 @@ function processCsvData(url){
                 }
                 var label=csvStore.getValue(item,labelField)||"";
                 var id=csvStore.getIdentity(item);
-                addGraphic(id,csvStore.getValue(item,latField),csvStore.getValue(item,longField),csvStore.getValue(item,typeField));
+                addGraphic(id,csvStore.getValue(item,latField),csvStore.getValue(item,longField),csvStore.getValue(item,typeField),init);
                 if(!totalSources[csvStore.getValue(item,typeField)])
                   totalSources[csvStore.getValue(item,typeField)] = {};
                 totalSources[csvStore.getValue(item,typeField)][csvStore.getValue(item,"CID")] = 1;
@@ -696,7 +791,7 @@ function centerAtPoint(clkX,clkY)
     var centerPoint=new esri.geometry.Point(newX,clkY,map.spatialReference);
     map.centerAt(centerPoint);
 }
-function addGraphic(id,latitude,longitude,type){
+function addGraphic(id,latitude,longitude,type,init){
     latitude=parseFloat(latitude);
     longitude=parseFloat(longitude);
     if(isNaN(latitude)||isNaN(longitude)){
@@ -720,31 +815,61 @@ function addGraphic(id,latitude,longitude,type){
             dataLayer.add(new esri.Graphic(geometry,sym2,{
                 id:id
             }));
-            break;
+            if (init) {
+              dataLayerVt.add(new esri.Graphic(geometry,sym2,{
+                  id:id
+              }));
+            }
+            break;            
         case"ccafs_sites":
             dataLayer.add(new esri.Graphic(geometry,sym6,{
                 id:id
             }));
+            if (init) {
+              dataLayerCs.add(new esri.Graphic(geometry,sym6,{
+                  id:id
+              }));
+            }
             break;
         case"amkn_blog_posts":
             dataLayer.add(new esri.Graphic(geometry,sym4,{
                 id:id
             }));
+            if (init) {
+              dataLayerBp.add(new esri.Graphic(geometry,sym4,{
+                  id:id
+              }));
+            }
             break;
         case"biodiv_cases":
             dataLayer.add(new esri.Graphic(geometry,sym7,{
                 id:id
             }));
+            if (init) {
+              dataLayerBc.add(new esri.Graphic(geometry,sym7,{
+                  id:id
+              }));
+            }
             break;
         case"photo_testimonials":
             dataLayer.add(new esri.Graphic(geometry,sym5,{
                 id:id
             }));
+            if (init) {
+              dataLayerPt.add(new esri.Graphic(geometry,sym5,{
+                  id:id
+              }));
+            }
             break;
-        case"ccafs_activities":
+        case"ccafs_activities":          
             dataLayer.add(new esri.Graphic(geometry,symA,{
                 id:id
             }));
+            if (init) {              
+              dataLayerCa.add(new esri.Graphic(geometry,symA,{
+                  id:id
+              }));
+            }
             break;
         default:
             dataLayer.add(new esri.Graphic(geometry,sym5,{
@@ -983,12 +1108,10 @@ function updateDataLayerTree(cb)
 
   var newURL=baseDataURL+"?fmt=csv"+showpts+showimp+showas+showms+showcl+showccc+showaz;
   if(cb) {
-      dataLayer.clear();
-  }
-  processCsvData(newURL);
-  if(cb) {
-      setViewTree();
-  }
+    dataLayer.clear();
+    processCsvData(newURL,false);
+    setViewTree();
+  } 
 }
 
 function updateDataLayer(cb)
@@ -1486,6 +1609,9 @@ function initBackMap()
     }
     ctrPt="";
     lvlMp="";
+    var newURL=baseDataURL+"?fmt=csv&pts=ccafs_activities,ccafs_sites,biodiv_cases,amkn_blog_posts,photo_testimonials,video_testimonials,";
+    processCsvData(newURL,true);
+    
     updateDataLayerTree(false);
 }
 function go2Region(pt,zm,rg)

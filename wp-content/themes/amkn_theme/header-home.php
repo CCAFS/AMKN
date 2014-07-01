@@ -100,7 +100,10 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
 
                         if (node.data.key == 'accord_ccafs_sites' || node.data.key == 'accord_video_testimonials'  || node.data.key == 'accord_amkn_blog_posts'
                               || node.data.key == 'accord_biodiv_cases' || node.data.key == 'accord_photo_testimonials'|| node.data.key == 'accord_ccafs_activities' || node.data.key.match('taxio_')) {
-                            if (firstime) updateDataLayerTree(true);
+                            if (firstime) {
+                              updateDataLayerTree(true);
+                              layersSwitch(node.data.key,flag);
+                            }
                             validateSelect();
                         }
                       }
@@ -171,7 +174,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
 //                          updateLayerVisibilityTree();
                         }
                     },
-                    onSelect: function(flag, node) {  
+                    onSelect: function(flag, node) {
                       if( !node.data.url ) {
 
                         if (node.data.key == 'accord_ccafs_sites' || node.data.key == 'accord_video_testimonials'  || node.data.key == 'accord_amkn_blog_posts'
