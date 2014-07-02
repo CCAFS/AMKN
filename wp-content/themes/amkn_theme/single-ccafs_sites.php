@@ -43,14 +43,19 @@
 
 
 $metaDesc = get_post_meta($post->ID, 'content_description', true);
-$embed = $_GET["embeddded"];
+$embed = $_GET["embedded"];
 $section = $_GET["section"];
 
-if (isset($embed) && $embed == "1") {
+if (isset($embed) && $embed == "1") :
    get_header('embed');
-} else {
+ else:
    get_header('page');
-}
+   ?>
+   <script>
+    if (typeof document.getElementById("menu-item-3840") != 'undefined')
+      document.getElementById("menu-item-3840").className += ' current-menu-item';
+   </script>
+<?php endif;
 ?>
 </div> <!-- end Header -->
 <div id="header-sites">
@@ -69,12 +74,12 @@ if (isset($embed) && $embed == "1") {
    ?>
    <div class="mainmenu"> 
       <ul id="Mainmenu" class="Mainmenu">
-         <li <?php if ($section == '') echo $class; ?>><a  href="./"><span>Description</span></a></li>
-         <li <?php if ($section == 'quick-facts') echo $class; ?>><a href="./?section=quick-facts"><span>Quick facts</span></a></li>
-         <li <?php if ($section == 'food-livelihood') echo $class; ?>><a href="./?section=food-livelihood"><span>Food & Livelihood</span></a></li>
-         <li <?php if ($section == 'climate-impacts') echo $class; ?>><a href="./?section=climate-impacts"><span>Climate & Impacts</span></a></li>
-         <li <?php if ($section == 'adaptation-mitigation') echo $class; ?>><a href="./?section=adaptation-mitigation"><span>Adaptation & Mitigation</span></a></li>
-         <li <?php if ($section == 'gender') echo $class; ?>><a href="./?section=gender"><span>Gender</span></a></li>
+         <li <?php if ($section == '') echo $class; ?>><a  href="./<?php echo (isset($_GET["embedded"]))?'?embedded='.$_GET["embedded"]:'';?>"><span>Description</span></a></li>
+         <li <?php if ($section == 'quick-facts') echo $class; ?>><a href="./?section=quick-facts<?php echo (isset($_GET["embedded"]))?'&embedded='.$_GET["embedded"]:'';?>"><span>Quick facts</span></a></li>
+         <li <?php if ($section == 'food-livelihood') echo $class; ?>><a href="./?section=food-livelihood<?php echo (isset($_GET["embedded"]))?'&embedded='.$_GET["embedded"]:'';?>"><span>Food & Livelihood</span></a></li>
+         <li <?php if ($section == 'climate-impacts') echo $class; ?>><a href="./?section=climate-impacts<?php echo (isset($_GET["embedded"]))?'&embedded='.$_GET["embedded"]:'';?>"><span>Climate & Impacts</span></a></li>
+         <li <?php if ($section == 'adaptation-mitigation') echo $class; ?>><a href="./?section=adaptation-mitigation<?php echo (isset($_GET["embedded"]))?'&embedded='.$_GET["embedded"]:'';?>"><span>Adaptation & Mitigation</span></a></li>
+         <li <?php if ($section == 'gender') echo $class; ?>><a href="./?section=gender<?php echo (isset($_GET["embedded"]))?'&embedded='.$_GET["embedded"]:'';?>"><span>Gender</span></a></li>
          <!--<li <?php if ($section == 'ongoing-research') echo $class; ?>><a href="./?section=ongoing-research"><span>Ongoing Research</span></a></li>-->
          <!--<li <?php if ($section == 'tools-data') echo $class; ?>><a href="./?section=tools-data"><span>Tools & Data</span></a></li>-->
       </ul> 
@@ -90,10 +95,6 @@ if (in_array($section, $ccafsSections)) {
    load_template(TEMPLATEPATH . '/ccafs-sites/site-description.php');
 }
 ?>
-<script>
-  if (typeof document.getElementById("menu-item-3840") != 'undefined')
-    document.getElementById("menu-item-3840").className += ' current-menu-item';
-</script>
 <script src="<?php echo get_bloginfo('template_url'); ?>/ccafs-sites/js/jquery.bxslider.min.js"></script>
 <link href="<?php echo get_bloginfo('template_url'); ?>/ccafs-sites/css/jquery.bxslider.css" rel="stylesheet" />
 <script src="<?php echo get_bloginfo('template_url'); ?>/ccafs-sites/js/sliders.js"></script>

@@ -21,5 +21,8 @@
 </div><!-- end Container -->
 
 <?php
-get_footer();
+  $embed = $_GET["embedded"];
+
+  if (!isset($embed) || $embed != "1")
+    get_footer();
 ?>

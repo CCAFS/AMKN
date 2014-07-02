@@ -9,19 +9,19 @@ $ccafsSubSections = array("mitigation-activities", "cropping-changes", "manageme
     <div id="vtab" class="tabs4">  
         <ul>
             <li <?php if (!$subsection) echo $class; ?>>
-                <a href="<?php echo $ltab; ?>">
+                <a href="<?php echo $ltab; echo (isset($_GET["embedded"]))?'&embedded='.$_GET["embedded"]:'';?>">
                     <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/food-security.png" border="0"><br> Adaptability index</a>
             </li>
             <li <?php if ($subsection == $ccafsSubSections[0]) echo $class; ?>>
-                <a href="<?php echo $ltab . $ccafsSubSections[0]; ?>">
+                <a href="<?php echo $ltab . $ccafsSubSections[0]; echo (isset($_GET["embedded"]))?'&embedded='.$_GET["embedded"]:'';?>">
                     <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/climate-crises.png" border="0"><br> Mitigation activities</a>
             </li>
             <li <?php if ($subsection == $ccafsSubSections[1]) echo $class; ?>>
-                <a href="<?php echo $ltab . $ccafsSubSections[1]; ?>">
+                <a href="<?php echo $ltab . $ccafsSubSections[1]; echo (isset($_GET["embedded"]))?'&embedded='.$_GET["embedded"]:'';?>">
                     <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/climate-crises.png" border="0"><br>Cropping changes</a>
             </li>
             <li <?php if ($subsection == $ccafsSubSections[2]) echo $class; ?>>
-                <a href="<?php echo $ltab . $ccafsSubSections[2]; ?>">
+                <a href="<?php echo $ltab . $ccafsSubSections[2]; echo (isset($_GET["embedded"]))?'&embedded='.$_GET["embedded"]:'';?>">
                     <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/management-changes.png" border="0"><br>Management changes</a>
             </li> 
         </ul>
@@ -37,5 +37,8 @@ $ccafsSubSections = array("mitigation-activities", "cropping-changes", "manageme
     </div><!-- end vtab --> 
 </div><!-- end Container --> 
 <?php
-get_footer();
+  $embed = $_GET["embedded"];
+
+  if (!isset($embed) || $embed != "1")
+    get_footer();
 ?>

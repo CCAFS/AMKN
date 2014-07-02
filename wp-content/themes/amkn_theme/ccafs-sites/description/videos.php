@@ -50,7 +50,7 @@ $postType = "";
       if (strlen($title) > 65)
          $title = substr($title, 0, 60) . "...";
 
-      if (distance($sitepoint, $videopoint) < $rangevideos) {
+      if (distance($sitepoint, $videopoint) < $rangevideos) :
          ?>
 
          <div class="site-video <?php echo distance($sitepoint, $videopoint) ?>">
@@ -69,7 +69,7 @@ $postType = "";
          </div>
 
 
-      <?php } ?>
+      <?php endif; ?>
    <?php endwhile; ?><!-- end loop-->
 
 

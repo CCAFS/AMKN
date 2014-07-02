@@ -13,19 +13,19 @@ $ccafsSubSections = array("on-farm", "off-farmcash", "diversification");
     <div id="vtab" class="tabs4">  
         <ul>
             <li <?php if (!$subsection) echo $class; ?>>
-                <a href="<?php echo $ltab; ?>">
+                <a href="<?php echo $ltab; echo (isset($_GET["embedded"]))?'&embedded='.$_GET["embedded"]:'';?>">
                     <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/hunger-months.png" border="0"><br> Food Sources</a>
             </li>
             <li <?php if ($subsection == $ccafsSubSections[0]) echo $class; ?>>
-                <a href="<?php echo $ltab . $ccafsSubSections[0]; ?>">
+                <a href="<?php echo $ltab . $ccafsSubSections[0]; echo (isset($_GET["embedded"]))?'&embedded='.$_GET["embedded"]:'';?>">
                     <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/crop-calendar.png" border="0"><br>On-farm diversity</a>
             </li>
             <li <?php if ($subsection == $ccafsSubSections[1]) echo $class; ?>>
-                <a href="<?php echo $ltab . $ccafsSubSections[1]; ?>">
+                <a href="<?php echo $ltab . $ccafsSubSections[1]; echo (isset($_GET["embedded"]))?'&embedded='.$_GET["embedded"]:'';?>">
                     <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/climate-crises.png" border="0"><br>Off-farmcash resorces</a>
             </li>
             <li <?php if ($subsection == $ccafsSubSections[2]) echo $class; ?>>
-                <a href="<?php echo $ltab . $ccafsSubSections[2]; ?>">
+                <a href="<?php echo $ltab . $ccafsSubSections[2]; echo (isset($_GET["embedded"]))?'&embedded='.$_GET["embedded"]:'';?>">
                     <img src="<?php bloginfo('template_directory'); ?>/ccafs-sites/images/food-security.png" border="0"><br>Diversification indices</a>
             </li> 
         </ul>
@@ -44,5 +44,8 @@ $ccafsSubSections = array("on-farm", "off-farmcash", "diversification");
 </div><!-- end Container -->
 
 <?php
-get_footer();
+  $embed = $_GET["embedded"];
+
+  if (!isset($embed) || $embed != "1")
+    get_footer();
 ?>
