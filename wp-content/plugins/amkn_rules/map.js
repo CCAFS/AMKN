@@ -613,7 +613,7 @@ function hideLoading(error){
 //    setViewTree();
 }
 function processCsvData(url,init){
-//    showLoading();    
+    showLoading();    
     var frameUrl=new dojo._Url(window.location.href);
     var csvUrl=new dojo._Url(url);
     if(frameUrl.host!==csvUrl.host||frameUrl.port!==csvUrl.port||frameUrl.scheme!==csvUrl.scheme){
@@ -627,6 +627,7 @@ function processCsvData(url,init){
         onComplete:function(items,request){
             var content="";
             var labelField,latField,longField,typeField,cIDField;
+            var start = new Date().getTime();
             dojo.forEach(items,function(item,index){
                 if(index===0){
                     var fields=getAttributeFields(item);
@@ -644,19 +645,22 @@ function processCsvData(url,init){
                 totalSources[csvStore.getValue(item,typeField)][csvStore.getValue(item,"CID")] = 1;
 //                totalSources[csvStore.getValue(item,typeField)] += 1;
             });
-            dojo.forEach(dataLayer.graphics,function(graphic){
-                var geometry=graphic.geometry;
-                if(geometry){
-                    multipoint.addPoint({
-                        x:geometry.x,
-                        y:geometry.y
-                    });
-                }
-            });
-            if(multipoint.points.length>0){
-                maxExtent=multipoint.getExtent();
-            }
+            var end = new Date().getTime();
+            var time = end - start;
+//            dojo.forEach(dataLayer.graphics,function(graphic){
+//                var geometry=graphic.geometry;
+//                if(geometry){
+//                    multipoint.addPoint({
+//                        x:geometry.x,
+//                        y:geometry.y
+//                    });
+//                }
+//            });
+//            if(multipoint.points.length>0){
+//                maxExtent=multipoint.getExtent();
+//            }
             hideLoading();
+            console.log('**'+time);
 //            enableFormsOnQuery();
         },
         onError:function(error){}
