@@ -8,7 +8,7 @@ get_header();
   <div class="content">    
       <h1><strong>What is AMKN?</strong></h1>
       <p>
-        The Climate Change Adaptation and Mitigation Knowledge Network (AMKN) is a platform for accessing and sharing current agricultural adaptation and mitigation knowledge from the CGIAR and its partners. It brings together farmers’ realities on the ground and links them with multiple and combined research outputs, to highlight current challenges and inspire new ideas. It aims to assits scientists and stakeholders to assess and adjust their actions in order to ensure future food security, improved smallholder farmers’ resilience and livelihoods.
+        The Climate Change Adaptation and Mitigation Knowledge Network (AMKN) is a platform for accessing and sharing current agricultural adaptation and mitigation knowledge from the CGIAR and its partners. It brings together farmers’ realities on the ground and links them with multiple and combined research outputs, to highlight current challenges and inspire new ideas. It aims to assist scientists and stakeholders to assess and adjust their actions in order to ensure future food security, improved smallholder farmers’ resilience and livelihoods.
       </p>
       <p>
         AMKN aggregates, visualizes and interconnects research outputs from the CGIAR Research Program on Climate Change, Agriculture and Food Security (CCAFS) focused on addressing risk management, progressive adaptation and pro-poor mitigation options for agricultural and food systems.
