@@ -260,7 +260,7 @@ $themes = array('1'=>'Adaptation to Progressive Climate Change','2'=>'Adaptation
                 }
                 $("div#"+results.features[i].id).addClass("ccafs_sites_selected").siblings().removeClass("ccafs_sites_selected");  
                 $('#sites').scrollTo($("div#"+results.features[i].id), 500,{offset: {top:-135, left:0}});
-                var contentString = '<div id="content"><b>'+results.features[i].properties.title+' ['+results.features[i].properties.country+'] <br>CCAFS Region: '+results.features[i].properties.region+'</b></div>';
+                var contentString = '<div id="content"><b>'+results.features[i].properties.title+' ['+results.features[i].properties.country+'] </b><br>CCAFS Region: '+results.features[i].properties.region+'</div>';
                 infowindow = new google.maps.InfoWindow({
                     content: contentString
                 });
