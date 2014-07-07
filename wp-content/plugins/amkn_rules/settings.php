@@ -512,7 +512,7 @@ while( $contentQuery->have_posts() ) : $contentQuery->the_post();
             else if ($contentQuery->post->post_type == 'ccafs_sites')
               echo $geoPoint.",\"".preg_replace('/\s+?(\S+)?$/', '', the_title( "", "", false ))."|".$row['siteId'][0]."|".$row['siteCountry'][0]."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
             else
-              echo $geoPoint.",\"".preg_replace('/\s+?(\S+)?$/', '', substr(the_title( "", "", false ), 0, 80))."...\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
+              echo $geoPoint.",\"".preg_replace('/\s+?(\S+)?$/', '', substr(the_title( "", "", false ), 0, 80))."...|".get_the_date()."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
           }
           $tmpGeoPoint = $geoPoint;
       }

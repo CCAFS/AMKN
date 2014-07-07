@@ -996,6 +996,12 @@ function getListingContent(id){
     } else if (rt=="ccafs_sites") {
       ttl = ttl.split('|');
       ttl = "<b>Title: </b>"+ttl[0]+"<br><b>Site Id: </b>"+ttl[1]+"<br><b>Country: </b>"+ttl[2];
+    } else if (rt=="biodiv_cases") {
+      ttl = ttl.split('|');
+      ttl = "<b>Title: </b>"+ttl[0];
+    } else {
+      ttl = ttl.split('|');
+      ttl = "<b>Title: </b>"+ttl[0]+"<br><b>Pub Date: </b>"+ttl[1];
     }
 //    mapPTS=rt=="video_testimonials"?vtonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+",\'p="+cid+"\')' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png?ver=2' />&nbsp;"+ttl+"</li>"):"";
 //    mapPTS=rt=="ccafs_sites"?cconmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' >"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png?ver=2' />&nbsp;<a class='link-ccafs-sites' href='./?p="+cid+"'>"+ttl+"</a></li>"):"";//without popup
@@ -1785,50 +1791,62 @@ function getListingContentTree(id){
         icon: '../../../../images/ccafs_sites-mini.png?ver=2'
         });
       }
-      mapPTS=rt==="video_testimonials"?vtonmap.push({
-          title: ttl,
-          tooltip:ttl,
+      if(rt==="video_testimonials"){
+        ttl = ttl.split('|');
+        vtonmap.push({
+          title: "<b>Title: </b>"+ttl[0]+"<br><b>Pub Date:</b> "+ttl[1],
+            tooltip:"Title: "+ttl[0],
           key: id,
           url: './?p='+cid,
           hideCheckbox: true,
           unselectable: true,
           select: false,
           icon: '../../../../images/video_testimonials-mini.png?ver=2'
-      //isLazy: true
-      }):"";
-      mapPTS=rt==="amkn_blog_posts"?bgonmap.push({
-          title: ttl,
-          tooltip:ttl,
-          key: id,
-          url: './?p='+cid,
-          hideCheckbox: true,
-          unselectable: true,
-          select: false,
-          icon: '../../../../images/amkn_blog_posts-mini.png?ver=2'
-      //isLazy: true
-      }):"";
-      mapPTS=rt==="biodiv_cases"?bdonmap.push({
-          title: ttl, 
-          tooltip:ttl,
+        //isLazy: true
+        });
+      }
+      if(rt==="amkn_blog_posts"){
+        ttl = ttl.split('|');
+        bgonmap.push({
+            title: "<b>Title: </b>"+ttl[0]+"<br><b>Pub Date:</b> "+ttl[1],
+            tooltip:"Title: "+ttl[0],
+            key: id,
+            url: './?p='+cid,
+            hideCheckbox: true,
+            unselectable: true,
+            select: false,
+            icon: '../../../../images/amkn_blog_posts-mini.png?ver=2'
+        //isLazy: true
+        });
+      }
+      if(rt==="biodiv_cases"){
+        ttl = ttl.split('|');
+        bdonmap.push({
+          title: ttl[0], 
+          tooltip:ttl[0],
           key: id,
           url: './?p='+cid,
           hideCheckbox: true,
           unselectable: true,
           select: false,
           icon: '../../../../images/biodiv_cases-mini.png?ver=2'
-      //isLazy: true
-      }):"";
-      mapPTS=rt==="photo_testimonials"?ptonmap.push({
-          title: ttl,
-          tooltip:ttl,
+        //isLazy: true
+        });
+      }
+      if(rt==="photo_testimonials"){
+        ttl = ttl.split('|');
+        ptonmap.push({
+          title: "<b>Title: </b>"+ttl[0]+"<br><b>Pub Date:</b> "+ttl[1],
+          tooltip:"Title: "+ttl[0],
           key: id,
           url: './?p='+cid,                        
           hideCheckbox: true,
           unselectable: true,
           select: false,
           icon: '../../../../images/photo_testimonials-mini.png?ver=2'
-      //isLazy: true
-      }):"";
+        //isLazy: true
+        });
+      }
       if (rt==="ccafs_activities") {
         //(0='title',1='contactName',2='theme')
         ttl = ttl.split('|');
