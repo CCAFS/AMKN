@@ -46,7 +46,7 @@ echo "{ title: \"Data Layers\",
                 addClass: \"customSelect\",
                 selectMode: 2,
 //                icon:false,
-                hideCheckbox: false,
+                hideCheckbox: true,
             },";
 foreach ($post_types as $post_type) {
     if (!in_array($post_type->name, $excludeTypes)) {
