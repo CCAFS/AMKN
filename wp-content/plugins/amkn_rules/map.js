@@ -627,11 +627,12 @@ function showLoading(){
 //    map.disableScrollWheelZoom();
 }
 function hideLoading(error){
+    findPointsInExtentTree(map.extent);
     esri.hide(loading);
 //    map.enableMapNavigation();
 //    map.disableScrollWheelZoom();
 //    findPointsInExtent(map.extent);
-    findPointsInExtentTree(map.extent);
+    
 //    setViewTree();
 }
 function processCsvData(url,init){
@@ -645,6 +646,7 @@ function processCsvData(url,init){
     csvStore=new dojox.data.CsvStore({
         url:url
     });
+//    console.log(JSON.stringify(csvStore, null, 4));
     csvStore.fetch({
         onComplete:function(items,request){
             var content="";
@@ -682,10 +684,10 @@ function processCsvData(url,init){
 //                maxExtent=multipoint.getExtent();
 //            }
             hideLoading();
-            console.log('**'+time);
+//            console.log('**'+time);
 //            enableFormsOnQuery();
         },
-        onError:function(error){}
+        onError:function(error){console.log(error)}
     });
 }
 
@@ -998,10 +1000,10 @@ function getListingContent(id){
       ttl = "<b>Title: </b>"+ttl[0]+"<br><b>Site Id: </b>"+ttl[1]+"<br><b>Country: </b>"+ttl[2];
     } else if (rt=="biodiv_cases") {
       ttl = ttl.split('|');
-      ttl = "<b>Title: </b>"+ttl[0];
+      ttl = ttl[0];
     } else {
       ttl = ttl.split('|');
-      ttl = "<b>Title: </b>"+ttl[0]+"<br><b>Published: </b>"+ttl[1];
+      ttl = ""+ttl[0]+"<br><span style='color:gray'><small>Published "+ttl[1]+"</small></span>";
     }
 //    mapPTS=rt=="video_testimonials"?vtonmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+",\'p="+cid+"\')' onclick='showItemDetails(this, "+id+");'>"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png?ver=2' />&nbsp;"+ttl+"</li>"):"";
 //    mapPTS=rt=="ccafs_sites"?cconmap.push("<li onMouseOut='onFeatureLeave()' onMouseOver='onListHover("+id+")' >"+"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/"+rt+"-mini.png?ver=2' />&nbsp;<a class='link-ccafs-sites' href='./?p="+cid+"'>"+ttl+"</a></li>"):"";//without popup
@@ -1141,7 +1143,13 @@ function updateDataLayerTree(cb)
   var newURL=baseDataURL+"?fmt=csv"+showpts+showimp+showas+showms+showcl+showccc+showaz;
   if(cb) {
     dataLayer.clear();
-    processCsvData(newURL,false);
+    dataLayerVt.clear();
+    dataLayerCs.clear();
+    dataLayerBp.clear();
+    dataLayerBc.clear();
+    dataLayerPt.clear();
+    dataLayerCa.clear();
+    processCsvData(newURL,true);
     setViewTree();
   } 
 }
@@ -1641,10 +1649,10 @@ function initBackMap()
     }
     ctrPt="";
     lvlMp="";
-    var newURL=baseDataURL+"?fmt=csv&pts=ccafs_activities,ccafs_sites,biodiv_cases,amkn_blog_posts,photo_testimonials,video_testimonials,";
-    processCsvData(newURL,true);
+    var newURLs=baseDataURL+"?fmt=csv&pts=ccafs_activities,ccafs_sites,biodiv_cases,amkn_blog_posts,photo_testimonials,video_testimonials,";
+//    processCsvData(newURLs,true);
     
-    updateDataLayerTree(false);
+    updateDataLayerTree(true);
 }
 function go2Region(pt,zm,rg)
 {
@@ -1794,8 +1802,8 @@ function getListingContentTree(id){
       if(rt==="video_testimonials"){
         ttl = ttl.split('|');
         vtonmap.push({
-          title: "<b>Title: </b>"+ttl[0]+"<br><b>Published:</b> "+ttl[1],
-            tooltip:"Title: "+ttl[0],
+          title: ""+ttl[0]+"<br><span style='color:gray'><small>Published "+ttl[1]+"</small></span>",
+          tooltip:"Title: "+ttl[0],
           key: id,
           url: './?p='+cid,
           hideCheckbox: true,
@@ -1808,7 +1816,7 @@ function getListingContentTree(id){
       if(rt==="amkn_blog_posts"){
         ttl = ttl.split('|');
         bgonmap.push({
-            title: "<b>Title: </b>"+ttl[0]+"<br><b>Published:</b> "+ttl[1],
+            title: ""+ttl[0]+"<br><span style='color:gray'><small>Published "+ttl[1]+"</small></span>",
             tooltip:"Title: "+ttl[0],
             key: id,
             url: './?p='+cid,
@@ -1836,7 +1844,7 @@ function getListingContentTree(id){
       if(rt==="photo_testimonials"){
         ttl = ttl.split('|');
         ptonmap.push({
-          title: "<b>Title: </b>"+ttl[0]+"<br><b>Published:</b> "+ttl[1],
+          title: ""+ttl[0]+"<br><span style='color:gray'><small>Published "+ttl[1]+"</small></span>",
           tooltip:"Title: "+ttl[0],
           key: id,
           url: './?p='+cid,                        
