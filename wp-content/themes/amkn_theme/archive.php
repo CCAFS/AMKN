@@ -214,9 +214,9 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
         var map;
         var markerArray = {};
         function initialize() {
-          var myLatlng = new google.maps.LatLng(12.968888, 41.138147);
+          var myLatlng = new google.maps.LatLng(12.968888, 10.138147);
           var mapOptions = {
-            zoom: 3,
+            zoom: 2,
             center: myLatlng
           }
           map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
@@ -232,12 +232,36 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
               strRg += rg[1] + ',';
             }
             rgs = strRg;
-  //            alert(rgs);
+            if(rgs=='East Africa,') {
+              var myLatlng = new google.maps.LatLng(-0.314705, 35.022805);
+              map.setZoom(4);
+              map.setCenter(myLatlng);
+            } else if (rgs=='West Africa,') {
+              var myLatlng = new google.maps.LatLng(13.3686965, -5.762451);
+              map.setZoom(4);
+              map.setCenter(myLatlng);
+            } else if (rgs=="Latin America,") {
+              var myLatlng = new google.maps.LatLng(15.2,-87.883333);
+              map.setZoom(4);
+              map.setCenter(myLatlng);
+            } else if (rgs=='Southeast Asia,') {
+              var myLatlng = new google.maps.LatLng(21.033333, 105.85);
+              map.setZoom(4);
+              map.setCenter(myLatlng);
+            } else if (rgs=='South Asia,') {
+              var myLatlng = new google.maps.LatLng(27.5446255, 83.4506495);
+              map.setZoom(4);
+              map.setCenter(myLatlng);
+            }
           } else {
             rgs = 'East%20Africa,West%20Africa,South%20Asia,Southeast%20Asia,Latin%20America';
           }
-          if(rgs=='all,')
-            rgs = 'East%20Africa,West%20Africa,South%20Asia,Southeast%20Asia,Latin%20America';          
+          if(rgs=='all,') {
+            rgs = 'East%20Africa,West%20Africa,South%20Asia,Southeast%20Asia,Latin%20America';
+            var myLatlng = new google.maps.LatLng(12.968888, 10.138147);
+            map.setZoom(2);
+            map.setCenter(myLatlng);
+          }
           var script = document.createElement('script');
           script.src = '<?php bloginfo('url'); ?>/sitesgeojson/?rgs=' + rgs;
           var s = document.getElementsByTagName('script')[0];
