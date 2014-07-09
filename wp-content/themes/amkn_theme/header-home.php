@@ -66,6 +66,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
         <script type="text/javascript">
           var firstime = false;
           var inst;
+          var selectAll = true;
             jQuery(function ($) {
                 //$(document).ready(function() {
                 // Attach the dynatree widget to an existing <div id="tree"> element
@@ -100,7 +101,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
 
                         if (node.data.key == 'accord_ccafs_sites' || node.data.key == 'accord_video_testimonials'  || node.data.key == 'accord_amkn_blog_posts'
                               || node.data.key == 'accord_biodiv_cases' || node.data.key == 'accord_photo_testimonials'|| node.data.key == 'accord_ccafs_activities' || node.data.key.match('taxio_')) {
-                            if (firstime) {
+                            if (firstime && selectAll) {
                               updateDataLayerTree(true);
                               layersSwitch(node.data.key,flag);
                             }
@@ -225,10 +226,14 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
               });
               $("#ckbSelectAll").click(function(){
                 var status = false;
+                selectAll = false;
                 if( $(this).prop('checked')  ) status = true;
                 $("#cFiltersList2").dynatree("getRoot").visit(function(node){
                   node.select(status);
+                  layersSwitch(node.data.key,status);
                 });
+                updateDataLayerTree(true);
+                selectAll = true;
               });
               $(document).on('click','.close_box',function(){
                   $(this).parent().fadeTo(300,0,function(){
