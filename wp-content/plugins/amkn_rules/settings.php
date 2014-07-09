@@ -195,39 +195,43 @@ function AMKN_Save($postid){
                         getNearestBMSite($postid);
                         update_post_meta($postid, 'processed', "true");
                         break;                    
-                    case 'ccafs_sites':
+                    case 'ccafs_sites':                        
                         $polyText = get_post_meta($postid, 'posList');
-                        $pArray = explode("\n",trim($polyText[0]));
-                        $p0 = trim($pArray[0]);
-                        $p1 = trim($pArray[1]);
-                        $p2 = trim($pArray[2]);
-                        $p3 = trim($pArray[3]);
+                        if ($polyText && $polyText != '') {
+                            $pArray = explode("\n",trim($polyText[0]));
+                            $p0 = trim($pArray[0]);
+                            $p1 = trim($pArray[1]);
+                            $p2 = trim($pArray[2]);
+                            $p3 = trim($pArray[3]);
                             $strPoly = "
                             SELECT AsText(Centroid(GeomFromText('MultiPolygon(((".$p0.",".$p1.",".$p2.",".$p3.",".$p0.")))'))) as CTR;
                             ";
                             $geoRSSPointA = $wpdb->get_results($strPoly);
                             $geoRSSPoint = str_ireplace("POINT(", "", $geoRSSPointA[0]->CTR);
                             $geoRSSPoint = str_ireplace(")", "", $geoRSSPoint);
-                        update_post_meta($postid, 'geoRSSPoint', $geoRSSPoint);
+                            update_post_meta($postid, 'geoRSSPoint', $geoRSSPoint);
+                        } else {
+                            $geoRSSPoint = get_post_meta($postid, 'geoRSSPoint', true);
+                        }
                         $siteMeta = get_post_meta($postid, 'siteMeta');
                         $sMetaArray = explode("|",$siteMeta[0]);
-
                         update_post_meta($postid, 'siteCountry', $sMetaArray[0]);
                         update_post_meta($postid, 'siteName', $sMetaArray[1]);
                         update_post_meta($postid, 'siteId', $sMetaArray[2]);
                         update_post_meta($postid, 'blockName', $sMetaArray[3]);
                         update_post_meta($postid, 'blockId', $sMetaArray[4]);
+                        
                         $geoPointP = str_ireplace(" ", ",", trim($geoRSSPoint));
                         getGeoData($postid, $geoPointP);
                         getNearestBMSite($postid);
 
-                            $geoCountry = "
-    SELECT `slug`
-    FROM   `TRABARIA_GEO_SPACE`
-    WHERE trabariaTrueWithin(GeomFromText('POINT(".$geoRSSPoint.")'), `g`);                        ";
-                            $countrySlugA = $wpdb->get_results($geoCountry);
-                            $countrySlug = explode("|",$countrySlugA[0]->slug);
-                            wp_set_object_terms( $postid, $countrySlug[0], 'cgmap-countries' );
+                        $geoCountry = "
+                        SELECT `slug`
+                        FROM   `TRABARIA_GEO_SPACE`
+                        WHERE trabariaTrueWithin(GeomFromText('POINT(".$geoRSSPoint.")'), `g`);";
+                        $countrySlugA = $wpdb->get_results($geoCountry);
+                        $countrySlug = explode("|",$countrySlugA[0]->slug);
+                        wp_set_object_terms( $postid, $countrySlug[0], 'cgmap-countries' );
                         update_post_meta($postid, 'processed', "true");
                         break;
             }

@@ -3,6 +3,7 @@
  * @package WordPress
  * @subpackage AMKNToolbox
  */
+$embed = $_GET["embedded"];
 global $post;
 $post_old = $post; // Save the post object.
 if (get_post_meta($post->ID, 'rangephotos', true)) {
@@ -58,8 +59,22 @@ $postType = "";
 
        <div id="<?php echo $post->ID; ?>" class="reveal-modal" data-reveal style="top:100px">                       
           <div class ="metaDesc">
-            <strong><h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2></strong>
-            <div class="entrymeta">Source: <em><?php echo get_bookmark($srcID)->link_description; ?></em> <a target="_blank" href="<?php echo get_post_meta($post->ID, 'syndication_permalink', true); ?>">permalink</a></div>
+            <strong>
+                <h2 class="teasertitle">
+                    <?php if (isset($embed) && $embed == "1") :?>
+                        <a>
+                            <?php the_title(); ?>
+                        </a>
+                    <?php else: ?>
+                        <a href="<?php the_permalink(); ?>">
+                            <?php the_title(); ?>
+                        </a>
+                    <?php endif;?>                    
+                </h2>
+            </strong>
+            <div class="entrymeta">Source: <em><?php echo get_bookmark($srcID)->link_description; ?></em> 
+                <a target="_blank" href="<?php echo get_post_meta($post->ID, 'syndication_permalink', true); ?>">permalink</a>
+            </div>
              
             <p><?php echo $metaDesc; ?></p>
              

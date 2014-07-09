@@ -3,6 +3,7 @@
  * @package WordPress
  * @subpackage AMKNToolbox
  */
+$embed = $_GET["embedded"];
 global $post;
 ?>
 <?php
@@ -55,13 +56,21 @@ $postType = "";
 
          <div class="site-video <?php echo distance($sitepoint, $videopoint) ?>">
 
-            <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php echo $title; ?></a></h2>
+            <h2 class="teasertitle">
+                <a href="<?php if (isset($embed) && $embed == "1") echo "#"; else the_permalink(); ?>" <?php if (isset($embed) && $embed == "1") echo "data-reveal-id='".$post->ID."'" ?>>
+                    <?php echo $title; ?>
+                </a>
+            </h2>
             <a href="<?php the_permalink(); ?>"></a> 
 
             <a href="#" data-reveal-id="<?php echo $post->ID; ?>"><img style="float:left" width="210" height="120" src="<?php echo $postThumb; ?>" border="0"></a>
 
             <p style="float:right;width: 188px;padding-right: 20px;"><?php echo $metaDesc; ?>
-               <a href="<?php the_permalink(); ?>"><span class="button-more">Read more</span></a>
+               <a href="<?php if (isset($embed) && $embed == "1") echo "#"; else the_permalink(); ?>" <?php if (isset($embed) && $embed == "1") echo "data-reveal-id='".$post->ID."'" ?>>
+                   <span class="button-more">
+                       Read more
+                   </span>
+               </a>
             </p>
             <br clear="all" />
             <br clear="all" /> 
@@ -100,7 +109,19 @@ $postType = "";
             <embed src="<?php echo $videoURL; ?>" type="application/x-shockwave-flash" width="560" height="315" allowscriptaccess="always" allowfullscreen="true"></embed>
          </object>
          <div class ="metaDesc">
-            <strong><h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2></strong>
+            <strong>
+                <h2 class="teasertitle">
+                    <?php if (isset($embed) && $embed == "1") :?>
+                        <a>
+                            <?php the_title(); ?>
+                        </a>
+                    <?php else: ?>
+                        <a href="<?php the_permalink(); ?>">
+                            <?php the_title(); ?>
+                        </a>
+                    <?php endif;?>  
+                </h2>
+            </strong>
             <div class="entrymeta">Source: <em><?php echo get_bookmark($srcID)->link_description; ?></em> <a target="_blank" href="<?php echo get_post_meta($post->ID, 'syndication_permalink', true); ?>">permalink</a></div>
              
             <p><?php echo $metaDesc; ?></p>
