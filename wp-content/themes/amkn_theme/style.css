@@ -1942,3 +1942,10 @@ padding: 3px;
   height: 537px!important;  
   top: 17px!important; 
 }
+
+.top-banner a {
+display: block;
+height: 70px;
+background: #f9d136;
+/*text-indent: -9000px;*/
+}

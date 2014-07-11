@@ -16,6 +16,7 @@ $siteTitle = $post->post_name;
 $sitepoint = get_post_meta($post->ID, 'geoRSSPoint', true);
 query_posts("posts_per_page=1000&post_type=photo_testimonials&meta_key=geoRSSPoint");
 $postType = "";
+$totalPhotos = 0;
 ?>
 <?php /* Start the Loop */ ?>
 <div style="padding-left: 0px; margin-bottom: 0px; font-size: 12px; height: 15px;">Nearest photo sets</div>
@@ -26,6 +27,7 @@ $postType = "";
     $photopoint = get_post_meta($post->ID, 'geoRSSPoint', true);
 
     if (distance($sitepoint, $photopoint) < $rangephotos) {
+      $totalPhotos++;
       $filename = get_post_meta($post->ID, 'galleryThumb', true);
       $extension_pos = strrpos($filename, '.'); // find position of the last dot, so where the extension starts
       $thumb = substr($filename, 0, $extension_pos) . '_q' . substr($filename, $extension_pos);
@@ -112,9 +114,11 @@ $postType = "";
         <?php the_content(); ?>
       </div>
       <div id="amkn-paginate">
-        <?php if (function_exists('wp_pagenavi')) {
+        <?php
+        if (function_exists('wp_pagenavi')) {
           wp_pagenavi();
-        } else { ?>
+        } else {
+          ?>
           <div class="alignleft"><?php next_posts_link('&larr; Previous Entries'); ?></div>
           <div class="alignright"><?php previous_posts_link('Next Entries &rarr;'); ?></div>
     <?php } ?>
@@ -127,3 +131,34 @@ $postType = "";
 endwhile;
 $post = $post_old; // Restore the post object.
 ?>
+<?php if ($totalPhotos == 0): ?>
+  <script>
+    $('#column2-photos').hide();
+  </script>
+<?php elseif ($totalPhotos <= 8): ?>
+  <script>
+    $('.slider-photos').bxSlider({
+      slideWidth: 500,
+      minSlides: 8,
+      maxSlides: 10,
+      slideMargin: 1,
+      controls: true,
+      pager: false,
+      auto: false
+    });
+  </script>
+<?php else: ?>
+  <script>
+    jQuery(document).ready(function($) {
+      $('.slider-photos').bxSlider({
+        slideWidth: 500,
+        minSlides: 8,
+        maxSlides: 10,
+        slideMargin: 1,
+        controls: true,
+        pager: false,
+        auto: true
+      });
+    });
+  </script>
+<?php endif;?>

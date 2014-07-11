@@ -57,7 +57,7 @@ Template Name: CCAFS sites embed
 
       google.maps.event.addListener(marker,'click', (function(i,results){
         return function() {
-          window.open("./?p="+results.features[i].id+"&embedded=1","_blank","scrollbars=yes, resizable=yes, top=60, left=60, width=1200, height=740");
+          window.open("./?p="+results.features[i].id+"&embedded=1","_blank","scrollbars=yes, resizable=yes, top=20, left=60, width=975, height=670");
         };
       })(i,results));
       google.maps.event.addListener(map, "click", function(){

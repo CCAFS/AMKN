@@ -23,6 +23,7 @@ $sitepoint = get_post_meta($post->ID, 'geoRSSPoint', true);
 $siteTitle = $post->post_name;
 query_posts("posts_per_page=-1&post_type=video_testimonials&meta_key=geoRSSPoint");
 $postType = "";
+$totalVideos = 0;
 ?>
 <?php /* Start the Loop */ ?>
 
@@ -52,13 +53,17 @@ $postType = "";
       $title = substr($title, 0, 60) . "...";
 
     if (distance($sitepoint, $videopoint) < $rangevideos) :
+      $totalVideos++;
       ?>
 
       <div class="site-video <?php echo distance($sitepoint, $videopoint) ?>">
 
         <h2 class="teasertitle">
-          <a href="<?php if (isset($embed) && $embed == "1") echo "#";
-    else the_permalink(); ?>" <?php if (isset($embed) && $embed == "1") echo "data-reveal-id='" . $post->ID . "'" ?>>
+          <a href="<?php if (isset($embed) && $embed == "1")
+      echo "#";
+    else
+      the_permalink();
+    ?>" <?php if (isset($embed) && $embed == "1") echo "data-reveal-id='" . $post->ID . "'" ?>>
     <?php echo $title; ?>
           </a>
         </h2>
@@ -67,8 +72,11 @@ $postType = "";
         <a href="#" data-reveal-id="<?php echo $post->ID; ?>"><img style="float:left" width="210" height="120" src="<?php echo $postThumb; ?>" border="0"></a>
 
         <p style="float:right;width: 188px;padding-right: 20px;"><?php echo $metaDesc; ?>
-          <a href="<?php if (isset($embed) && $embed == "1") echo "#";
-    else the_permalink(); ?>" <?php if (isset($embed) && $embed == "1") echo "data-reveal-id='" . $post->ID . "'" ?>>
+          <a href="<?php if (isset($embed) && $embed == "1")
+      echo "#";
+    else
+      the_permalink();
+    ?>" <?php if (isset($embed) && $embed == "1") echo "data-reveal-id='" . $post->ID . "'" ?>>
             <span class="button-more">
               Read more
             </span>
@@ -117,11 +125,11 @@ $postType = "";
               <a>
               <?php the_title(); ?>
               </a>
-              <?php else: ?>
+    <?php else: ?>
               <a href="<?php the_permalink(); ?>">
-              <?php the_title(); ?>
+      <?php the_title(); ?>
               </a>
-    <?php endif; ?>  
+        <?php endif; ?>  
           </h2>
         </strong>
         <div class="entrymeta">Source: <em><?php echo get_bookmark($srcID)->link_description; ?></em> <a target="_blank" href="<?php echo get_post_meta($post->ID, 'syndication_permalink', true); ?>">permalink</a></div>
@@ -164,3 +172,35 @@ $postType = "";
 
   <?php } ?>
 <?php endwhile; ?><!-- end loop-->
+<?php if ($totalVideos == 0): ?>
+  <script>
+    $('#column2-video').hide();
+  </script>
+<?php elseif ($totalVideos == 1): ?>
+  <script>
+    $('.slider-video').bxSlider({
+      slideWidth: 450,
+      minSlides: 1,
+      maxSlides: 1,
+      slideMargin: 10,
+      controls: false,
+      pager: true,
+      auto: false
+    });
+  </script>
+<?php else: ?>
+  <script>
+    jQuery(document).ready(function($) {
+      $('.slider-video').bxSlider({
+        slideWidth: 450,
+        minSlides: 1,
+        maxSlides: 1,
+        slideMargin: 10,
+        controls: false,
+        pager: true,
+        auto: true
+      });
+    });
+  </script>
+<?php endif; ?>
+
