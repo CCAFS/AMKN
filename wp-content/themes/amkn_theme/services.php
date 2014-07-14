@@ -61,7 +61,7 @@
     $obj->title = 'MarkSimGCM';
     $obj->kind = array('tool');
     $obj->description = 'MarkSimGCM is a stochastic weather generating tool, which uses the well-known MarkSim application, which generates simulated daily weather data specifically designed for use in the tropics, including rainfall, maximum and minimum temperatures and solar radiation.';    
-    $obj->imageUrl = 'http://ccafs.cgiar.org/sites/default/files/styles/large/public/marksim.jpg?itok=gzREmp8L';
+    $obj->imageUrl = 'http://ccafs.cgiar.org/sites/default/files/styles/large/public/Screen%20Shot%202014-07-08%20at%204.40.38%20PM.png?itok=fXQsoSr5';
     $obj->url = 'http://ccafs.cgiar.org/marksimgcm';
     $tools[3] = $obj;
     
@@ -77,7 +77,7 @@
     $obj->title = 'Explore our work on a map!';
     $obj->kind = array('tool');
     $obj->description = 'The Adaptation and Mitigation Knowledge Network lets you explore data from our research on climate change, agriculture and food security, alongside related multimedia such as video interviews with farmers and photos and blogs from field work.';    
-    $obj->imageUrl = 'http://ccafs.cgiar.org/sites/default/files/styles/large/public/amkn-ccafs_sites-large.jpg?itok=dfTzFseX';
+    $obj->imageUrl = 'http://ccafs.cgiar.org/sites/default/files/styles/large/public/Screen%20Shot%202014-07-08%20at%202.30.45%20PM.png?itok=7bull20W';
     $obj->url = 'http://ccafs.cgiar.org/explore-our-work-map';
     $tools[5] = $obj;
     
