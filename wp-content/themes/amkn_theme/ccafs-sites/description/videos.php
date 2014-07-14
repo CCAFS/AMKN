@@ -185,7 +185,7 @@ $totalVideos = 0;
       slideMargin: 10,
       controls: false,
       pager: true,
-      auto: false
+      auto: false     
     });
   </script>
 <?php else: ?>
@@ -198,7 +198,8 @@ $totalVideos = 0;
         slideMargin: 10,
         controls: false,
         pager: true,
-        auto: true
+        auto: true,
+        useCSS: false
       });
     });
   </script>

@@ -71,7 +71,7 @@
       </style>        
       <?php }
     ?>
-    <?php // wp_head(); ?>
+    <?php wp_head(); ?>
     <script>
       (function(i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;

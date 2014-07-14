@@ -65,6 +65,10 @@ else:
 <?php endif;
 ?>
 </div> <!-- end Header -->
+<script src="<?php echo get_bloginfo('template_url'); ?>/ccafs-sites/js/jquery.bxslider.min.js"></script>
+<link href="<?php echo get_bloginfo('template_url'); ?>/ccafs-sites/css/jquery.bxslider.css" rel="stylesheet" />
+<script src="<?php echo get_bloginfo('template_url'); ?>/ccafs-sites/js/sliders.js"></script>
+
 <div id="header-sites">
   <div class="title-page">
     <h2 class="title"><?php the_title(); ?>
@@ -104,6 +108,3 @@ if (in_array($section, $ccafsSections)) {
   load_template(TEMPLATEPATH . '/ccafs-sites/site-description.php');
 }
 ?>
-<script src="<?php echo get_bloginfo('template_url'); ?>/ccafs-sites/js/jquery.bxslider.min.js"></script>
-<link href="<?php echo get_bloginfo('template_url'); ?>/ccafs-sites/css/jquery.bxslider.css" rel="stylesheet" />
-<script src="<?php echo get_bloginfo('template_url'); ?>/ccafs-sites/js/sliders.js"></script>

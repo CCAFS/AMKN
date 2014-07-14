@@ -135,19 +135,7 @@ $post = $post_old; // Restore the post object.
   <script>
     $('#column2-photos').hide();
   </script>
-<?php elseif ($totalPhotos <= 8): ?>
-  <script>
-    $('.slider-photos').bxSlider({
-      slideWidth: 500,
-      minSlides: 8,
-      maxSlides: 10,
-      slideMargin: 1,
-      controls: true,
-      pager: false,
-      auto: false
-    });
-  </script>
-<?php else: ?>
+<?php elseif ($totalPhotos >= 8): ?>
   <script>
     jQuery(document).ready(function($) {
       $('.slider-photos').bxSlider({
