@@ -369,7 +369,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="West Africa" <?php echo ($_GET['region']=='West Africa') ? 'checked' : '' ?>>West Africa
               </label>
             </div>
-            <div class="pure-u-1-6">
+<!--            <div class="pure-u-1-6">
               <label for="space">
                 &nbsp;
               </label>
@@ -384,7 +384,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
               <label for="remember">
                 <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="Southeast Asia" <?php echo ($_GET['region']=='Southeast Asia') ? 'checked' : '' ?>> Southeast Asia 
               </label>
-            </div>
+            </div>-->
             <div class="pure-u-1-6">
               <label for="space">
                 &nbsp;
