@@ -668,6 +668,7 @@ function processCsvData(url){
                   totalSources[csvStore.getValue(item,typeField)] = {};
                 totalSources[csvStore.getValue(item,typeField)][csvStore.getValue(item,"CID")] = 1;
 //                totalSources[csvStore.getValue(item,typeField)] += 1;
+                $("#loader").width(((index/items.length)*100)+'%');
             });
             var end = new Date().getTime();
             var time = end - start;
@@ -682,7 +683,7 @@ function processCsvData(url){
 //            });
 //            if(multipoint.points.length>0){
 //                maxExtent=multipoint.getExtent();
-//            }
+//            }            
             hideLoading();
 //            console.log('**'+time);
 //            enableFormsOnQuery();
@@ -1904,7 +1905,7 @@ function findPointsInExtentTree(extent) {
     var totalNum = 0;
     dojo.forEach(dataLayer.graphics,function(graphic){
         if(extent.contains(graphic.geometry)){
-            results.push(getListingContentTree(graphic.attributes.id));
+            results.push(getListingContentTree(graphic.attributes.id));            
         }
     });
     var onthemap=dijit.byId('onthemap');
@@ -2396,7 +2397,7 @@ mp.lMap=function(){
     var lMapTimer;
     clearTimeout(lMapTimer);
     lMapTimer=setTimeout(function(){
-        initMap();
+        initMap();        
     },500);
 }
 dojo.addOnLoad(function(){
