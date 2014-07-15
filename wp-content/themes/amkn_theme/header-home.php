@@ -18,7 +18,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
         <!--<meta http-equiv="no-cache">-->
         <!--<meta http-equiv="Expires" content="Tue, 30 Dec 2014 23:59:59 GMT">-->
         <!--<meta http-equiv="Cache-Control" content="no-cache">-->
-        <!-- end no cache headers -->
+        <!-- end no cache headers -->        
         <meta http-equiv="Content-Type" content="text/html; charset=<?php bloginfo('charset'); ?>" />
         <meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
         <meta name="description" content="The Climate Change Adaptation and Mitigation Knowledge Network (AMKN) is a platform for accessing and sharing current agricultural adaptation and mitigation knowledge from the CGIAR and its partners. It brings together farmers’ realities on the ground and links them with multiple and combined research outputs, to highlight current challenges and inspire new ideas. It aims to assits scientists and stakeholders to assess and adjust their actions in order to ensure future food security, improved smallholder farmers’ resilience and livelihoods.">
@@ -256,8 +256,8 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
         </script>
         <!--<script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5compact"></script>-->
         <!--<link rel="stylesheet" href="http://js.arcgis.com/3.7/js/esri/css/esri.css">-->
-        <link rel="stylesheet" href="http://js.arcgis.com/3.8/js/esri/css/esri.css">
-        <script src="http://js.arcgis.com/3.8/"></script>
+        <link rel="stylesheet" href="http://js.arcgis.com/3.10/js/esri/css/esri.css">
+        <script src="http://js.arcgis.com/3.10/"></script>
         <?php
         if (strpos($_SERVER['HTTP_USER_AGENT'], 'iPad') !== FALSE) {
             ?>
@@ -284,7 +284,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
           ga('newTracker.send', 'pageview');
 
 
-        </script>
+        </script>        
     </head>
     <body class="tundra">
         
