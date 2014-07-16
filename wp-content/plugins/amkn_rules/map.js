@@ -1879,7 +1879,7 @@ function getListingContentTree(id){
       oactnmap[cid] = [];
     oactnmap[cid].push({ 
       key: id,
-    });     
+    });    
     tempCid = cid;
     return;
 }
@@ -1902,11 +1902,21 @@ function findPointsInExtentTree(extent) {
     oactnmap = {};
     tempCid = 0;
     countCid = 0;
-    var totalNum = 0;
+    progressbar = $( "#progressbar" );
+    tmptotal=0;    
+    totalGraphs=dataLayer.graphics.length;    
+    var totalNum = 0;    
     dojo.forEach(dataLayer.graphics,function(graphic){
         if(extent.contains(graphic.geometry)){
-            results.push(getListingContentTree(graphic.attributes.id));            
+                results.push(getListingContentTree(graphic.attributes.id));            
         }
+        setTimeout(function(){
+        tmptotal++;
+//        console.log(tmptotal+'/'+totalGraphs);        
+            progressbar.progressbar( "option", {
+              value: (tmptotal/totalGraphs)*100
+              });
+        },80);
     });
     var onthemap=dijit.byId('onthemap');
     if (dojo.byId('geop').checked) {

@@ -81,9 +81,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
         <div id="onthemap" <?php echo $style ?> dojoType="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="259" splitter="<?php echo $splitter ?>" region="left" style="width: 259px;" startExpanded="true">
           <!--Here is the calling to the template that show the left menu-->
           <?php get_template_part('content_type', 'filters_list2'); ?>
-          <div class="meter">
-                  <span id="loader" style="width: 0%"></span>
-              </div>
+          <div id="progressbar"><div class="progress-label">Loading...</div></div>
           <div id="panel-buttons">
             <button id="filter-button" class="panel-button selected"> &nbsp;</button>
             <button id="legend-button" class="panel-button"> &nbsp;</button>
@@ -207,7 +205,8 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
       </div>
 
     </div>
-    <?php get_footer();
+    <?php
+    get_footer();
   endif;
   ?>
 
