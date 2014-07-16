@@ -669,12 +669,13 @@ function processCsvData(url) {
                     totalSources[csvStore.getValue(item, typeField)] = {};
                 totalSources[csvStore.getValue(item, typeField)][csvStore.getValue(item, "CID")] = 1;
 //                totalSources[csvStore.getValue(item,typeField)] += 1;
-//                setTimeout(function() {
-                console.log(index + '/' + items.length);
-                progressbar.progressbar("option", {
-                    value: (Math.round((index+1 / items.length) * 100))
-                });
-//                }, 80);
+                setTimeout(function() {
+                    tmptotal++;
+//        console.log(tmptotal+'/'+totalGraphs);        
+                    progressbar.progressbar("option", {
+                        value: (Math.round((index / items.length) * 100))
+                    });
+                }, 80);
             });
             var end = new Date().getTime();
             var time = end - start;
