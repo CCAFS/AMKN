@@ -83,7 +83,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
           <?php get_template_part('content_type', 'filters_list2'); ?>
           <div class="meter">
                   <span id="loader" style="width: 0%"></span>
-          </div>
+              </div>
           <div id="panel-buttons">
             <button id="filter-button" class="panel-button selected"> &nbsp;</button>
             <button id="legend-button" class="panel-button"> &nbsp;</button>
@@ -208,7 +208,8 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 
     </div>
     <?php get_footer();
-  endif; ?>
+  endif;
+  ?>
 
 </div>
 

@@ -52,7 +52,7 @@ if (isset($embed) && $embed == "1") :
   get_header('embed');
   ?>
   <div class="top-banner">
-    <a target="_blank" href="./?p=<?php echo $post->ID ?>" onclick="window.close();" id="ar-top-banner">Go to AMKN</a>
+    To view the full version click <a target="_blank" href="./?p=<?php echo $post->ID ?>" onclick="window.close();" id="ar-top-banner">here</a>
   </div>
 <?php
 else:

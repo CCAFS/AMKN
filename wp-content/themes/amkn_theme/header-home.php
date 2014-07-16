@@ -270,7 +270,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
         ?>
         <!--  Remodal-master  "version": "0.1.3" http://vodkabears.github.io/remodal/ -->
         <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.css">
-        <script src="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.min.js"></script>
+        <script src="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.min.js"></script>         
         <?php wp_head(); ?>
         <script>
           (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){

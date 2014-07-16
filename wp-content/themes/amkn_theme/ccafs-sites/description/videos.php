@@ -178,14 +178,16 @@ $totalVideos = 0;
   </script>
 <?php elseif ($totalVideos == 1): ?>
   <script>
-    $('.slider-video').bxSlider({
-      slideWidth: 450,
-      minSlides: 1,
-      maxSlides: 1,
-      slideMargin: 10,
-      controls: false,
-      pager: true,
-      auto: false     
+    jQuery(document).ready(function($) {
+      $('.slider-video').bxSlider({
+        slideWidth: 450,
+          minSlides: 1,
+          maxSlides: 1,
+          slideMargin: 10,
+          controls: false,
+          pager: true,
+          auto: false     
+      });
     });
   </script>
 <?php else: ?>
