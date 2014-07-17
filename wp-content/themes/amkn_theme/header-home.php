@@ -224,12 +224,12 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
           openLandingPage();
         }
 
-        $("#btnDeselectAll").click(function() {
-          $("#dataLayers").dynatree("getRoot").visit(function(node) {
-            node.select(false);
-          });
-          return false;
-        });
+//        $("#btnDeselectAll").click(function() {
+//          $("#dataLayers").dynatree("getRoot").visit(function(node) {
+//            node.select(false);
+//          });
+//          return false;
+//        });
         $("#ckbSelectAll").click(function() {
           var status = false;
           selectAll = false;
@@ -254,6 +254,11 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
 //                heightStyle: "content"
 //              });
       });
+      function hideLayers () {
+        $("#dataLayers").dynatree("getRoot").visit(function(node) {
+            node.select(false);
+          });
+      } 
       function openLandingPage() {
         $('.remodal').show();
         inst = $('[data-remodal-id=modal]').remodal({"hashTracking": false});
@@ -300,48 +305,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
     ?>
     <!--  Remodal-master  "version": "0.1.3" http://vodkabears.github.io/remodal/ -->
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.css">
-    <script src="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.min.js"></script>
-    <style>
-      /*          .ui-progressbar {
-                  position: relative;
-                }
-                .progress-label {
-                  position: absolute;
-                  left: 50%;
-                  top: 4px;
-                  font-weight: bold;
-                  text-shadow: 1px 1px 0 #fff;
-                }*/
-    </style>
-    <script>
-      $(function() {
-        var progressbar = $("#progressbar"),
-                progressLabel = $(".progress-label");
-
-        progressbar.progressbar({
-          value: false,
-          change: function() {
-            progressLabel.text(progressbar.progressbar("value") + "%");
-          },
-          complete: function() {
-            progressLabel.text("Complete!");
-          }
-        });
-
-//        function progress() {
-//          var val = progressbar.progressbar("value") || 0;
-//
-//          progressbar.progressbar("value", val + 2);
-//
-//          if (val < 99) {
-//            setTimeout(progress, 80);
-//          }
-//        }
-
-//        setTimeout(progress, 2000);
-      });
-    </script>    
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.0/themes/smoothness/jquery-ui.css">
+    <script src="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.min.js"></script>       
 <?php wp_head(); ?>
     <script>
       (function(i, s, o, g, r, a, m) {

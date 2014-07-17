@@ -696,7 +696,7 @@ function processCsvData(url) {
 //            enableFormsOnQuery();
         },
         onError: function(error) {
-            console.log(error)
+            console.log(error);
         }
     });
 }

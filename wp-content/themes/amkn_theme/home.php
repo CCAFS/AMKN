@@ -81,7 +81,6 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
         <div id="onthemap" <?php echo $style ?> dojoType="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="259" splitter="<?php echo $splitter ?>" region="left" style="width: 259px;" startExpanded="true">
           <!--Here is the calling to the template that show the left menu-->
           <?php get_template_part('content_type', 'filters_list2'); ?>
-          <div id="progressbar"><div class="progress-label">Loading...</div></div>
           <div id="panel-buttons">
             <button id="filter-button" class="panel-button selected"> &nbsp;</button>
             <button id="legend-button" class="panel-button"> &nbsp;</button>
@@ -114,9 +113,9 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
             <div id="basemapGallery" class="drop-panel" ></div> 
             <div id="layersDiv" class="drop-panel" data-dojo-type="dijit/layout/AccordionContainer" style="height: 100%;">
               <div id="accord_data_layer" data-dojo-type="dijit/layout/ContentPane" title="Data Layers" selected="true" style="overflow: hidden;">
-                <div style="background-color:#DE910A;padding-left: 10px">                  
-                  <a href="#" id="btnDeselectAll" style="color:white">Hide All Layers</a>                  
-                </div>
+                <button class="checkCtrls amknButton" id="btnDeselectAll" dojoType="dijit.form.Button"  onclick="hideLayers()">
+                  Hide All Layers
+                </button>
                 <div id="dataLayers" style="width: 100%; height: 100%;" ></div>
               </div>
               <div id="accord_legend" title="Data Legend" data-dojo-type="dijit/layout/ContentPane">
