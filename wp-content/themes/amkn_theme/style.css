@@ -1951,3 +1951,8 @@ text-align: center;
 padding-top: 5px;
 /*text-indent: -9000px;*/
 }
+
+#accord_data_layer {
+    min-height: 375px;
+    min-width: 249px;
+}
