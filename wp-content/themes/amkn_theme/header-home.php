@@ -41,9 +41,10 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
     <link rel="icon" type="image/png" href="<?php bloginfo('template_directory'); ?>/images/favicon.png" />
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/tundra/tundra.css" />
-    <link rel="stylesheet" href="<?php bloginfo('stylesheet_url');
-      echo '?ver=2';
-      ?>" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php
+    bloginfo('stylesheet_url');
+    echo '?ver=2';
+    ?>" type="text/css" media="screen" />
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
     <script type="text/javascript">
       var djConfig = {
@@ -61,6 +62,9 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
     <link href="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
     <link href="<?php bloginfo('template_directory'); ?>/toggle-switch.css" rel="stylesheet" type="text/css">
     <script src="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/jquery.dynatree.js" type="text/javascript"></script>
+    <script src="<?php bloginfo('template_directory'); ?>/libs/jBox/jBox.min.js"></script>
+    <link href="<?php bloginfo('template_directory'); ?>/libs/jBox/jBox.css" rel="stylesheet">
+    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.scrollTo.js"></script> 
     <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">-->
     <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
     <!--<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
@@ -252,13 +256,29 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
 //              });
 //              $( "#layersDiv" ).accordion({
 //                heightStyle: "content"
-//              });
+//              });        
       });
-      function hideLayers () {
+      jQuery(document).ready(function($) {
+        setTimeout(function() {
+          new jBox('Notice', {
+            content: 'A new content is available!',
+            position: {x: 'right', y: 'bottom'},
+            autoClose: false,
+            onClose: function() {
+              $.scrollTo($("div#featured"), 500);
+              setTimeout(function() {
+                $("#container").animate({left: '15px'},200);
+                $("#container").animate({left: '0px'},200);
+              }, 500);
+            }
+          })
+        }, 5000);
+      });
+      function hideLayers() {
         $("#dataLayers").dynatree("getRoot").visit(function(node) {
-            node.select(false);
-          });
-      } 
+          node.select(false);
+        });
+      }
       function openLandingPage() {
         $('.remodal').show();
         inst = $('[data-remodal-id=modal]').remodal({"hashTracking": false});
@@ -305,8 +325,8 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
     ?>
     <!--  Remodal-master  "version": "0.1.3" http://vodkabears.github.io/remodal/ -->
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.css">
-    <script src="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.min.js"></script>       
-<?php wp_head(); ?>
+    <script src="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.min.js"></script>    
+    <?php wp_head(); ?>
     <script>
       (function(i, s, o, g, r, a, m) {
         i['GoogleAnalyticsObject'] = r;
@@ -333,9 +353,10 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
 
 
     <div id="header">
-      <div class="logos"><a href="<?php bloginfo('url');
-echo $var;
-?>">
+      <div class="logos"><a href="<?php
+        bloginfo('url');
+        echo $var;
+        ?>">
           <img class="amkn_logo" src="<?php bloginfo('template_directory'); ?>/images/amkn.gif" alt="AMKN logo" />
           <img class="ccafs_logo" src="<?php bloginfo('template_directory'); ?>/images/ccafs-logo.png" alt="CCAFS logo" /></a>
       </div><!-- end logos -->
@@ -369,5 +390,5 @@ echo $var;
 
 
     </div> <!-- end Header -->
-<?php
+    <?php
 //get_header('menu'); ?>
