@@ -156,8 +156,6 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 
 
   </div>
-
-
   <?php if (!isset($_GET['embedded'])): ?>
 
     <div id="featured">
@@ -170,7 +168,8 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 
 
       </div><!-- end Featured -->
-    </div>  
+    </div>
+  <?php get_template_part('teaser', 'newest_posts'); ?>
     <div class="remodal" style="display:none;" data-remodal-id="modal" data-remodal-options='{ "hashTracking": false }'>
       <div id="whatisamkn" class="modal"> 
         <h1><strong>What is AMKN?</strong></h1>

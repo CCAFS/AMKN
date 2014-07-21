@@ -755,7 +755,8 @@ ul.footercredits {
 }
 
 .blog-post img {
-    max-height: 600px;
+    max-width: 100%;
+    height: auto !important;
 }
 
 .dijitPopup {
@@ -1957,6 +1958,23 @@ padding-top: 5px;
     min-width: 249px;
 }
 
-#jBox1 {
+#jBoxInit {
     cursor:pointer;
+}
+
+.notice .image {
+/*    width: 60px;
+    height: 60px;*/
+    max-width: 120px;
+    height: auto !important;
+    /*margin-left: 14px;*/
+}
+
+.notice a {
+    color: white;
+    font-size: small;
+}
+
+.notice {
+  width: 260px;
 }

@@ -3,6 +3,13 @@
  * @package WordPress
  * @subpackage AMKNToolbox
  */
+$_SESSION['lastDate'] = 0;
+date_default_timezone_set('America/Bogota');
+if (isset($_COOKIE["lastDate"])) {
+  $_SESSION['lastDate'] = 'January 1st, 2013';
+}
+//setcookie("lastDate", date('Y-m-d H:i:s e'), strtotime( '+30 days' ));
+setcookie("lastDate", date('F jS, Y'), strtotime('+30 days'));
 $var = '';
 if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
   $var = '?embedded=1';
@@ -258,22 +265,13 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
 //                heightStyle: "content"
 //              });        
       });
-      jQuery(document).ready(function($) {
+      function scrollNew() {
+        $.scrollTo($("div#featured"), 500);
         setTimeout(function() {
-          new jBox('Notice', {
-            content: 'A new content is available!',
-            position: {x: 'right', y: 'bottom'},
-            autoClose: false,
-            onClose: function() {
-              $.scrollTo($("div#featured"), 500);
-              setTimeout(function() {
-                $("#container").animate({left: '15px'},200);
-                $("#container").animate({left: '0px'},200);
-              }, 500);
-            }
-          })
-        }, 5000);
-      });
+          $("#container").animate({left: '15px'}, 200);
+          $("#container").animate({left: '0px'}, 200);
+        }, 500);
+      }
       function hideLayers() {
         $("#dataLayers").dynatree("getRoot").visit(function(node) {
           node.select(false);
@@ -390,5 +388,3 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
 
 
     </div> <!-- end Header -->
-    <?php
-//get_header('menu'); ?>
