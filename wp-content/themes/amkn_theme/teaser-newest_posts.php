@@ -64,8 +64,7 @@ $postType = "";
     $metaDesc = substr($metaDesc, 0, 65) . "...";
   ?>
   <div class="notice" style="display: none;" id="grabMe">
-    <img class="titleico" src="<?php bloginfo('template_directory'); ?>/images/<?php echo $postType; ?>-mini.png" alt="<?php echo get_post_type_object($postType)->labels->singular_name; ?>"/> <a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-    <br><a href="./video" style="font-size: 12px"><?php echo $wp_query->found_posts ?> video posts unread</a>
+    <img class="titleico" src="<?php bloginfo('template_directory'); ?>/images/<?php echo $postType; ?>-mini.png" alt="<?php echo get_post_type_object($postType)->labels->singular_name; ?>"/><a href="./video" ><?php echo $wp_query->found_posts ?> video posts unread</a>
   </div>
   <?php
 endwhile;
@@ -114,8 +113,7 @@ $postType = "";
     $metaDesc = substr($metaDesc, 0, 65) . "...";
   ?>
   <div class="notice" style="display: none;" id="grabMe2">
-    <img class="titleico" src="<?php bloginfo('template_directory'); ?>/images/<?php echo $postType; ?>-mini.png" alt="<?php echo get_post_type_object($postType)->labels->singular_name; ?>"/><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-    <br><a href="./photo-sets" style="font-size: 12px"><?php echo $wp_query->found_posts ?> photo sets unread</a>
+    <img class="titleico" src="<?php bloginfo('template_directory'); ?>/images/<?php echo $postType; ?>-mini.png" alt="<?php echo get_post_type_object($postType)->labels->singular_name; ?>"/><a href="./photo-sets"><?php echo $wp_query->found_posts ?> photo sets unread</a>
   </div>
   <?php
 endwhile;
@@ -164,8 +162,7 @@ $postType = "";
     $metaDesc = substr($metaDesc, 0, 65) . "...";
   ?>
   <div class="notice" style="display: none;" id="grabMe3">
-    <img class="titleico" src="<?php bloginfo('template_directory'); ?>/images/<?php echo $postType; ?>-mini.png" alt="<?php echo get_post_type_object($postType)->labels->singular_name; ?>"/><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a>
-    <br><a href="./blog-posts" style="font-size: 12px"><?php echo $wp_query->found_posts ?> blog posts unread</a>
+    <img class="titleico" src="<?php bloginfo('template_directory'); ?>/images/<?php echo $postType; ?>-mini.png" alt="<?php echo get_post_type_object($postType)->labels->singular_name; ?>"/><a href="./blog-posts"><?php echo $wp_query->found_posts ?> blog posts unread</a>
   </div>
 <?php endwhile; ?>
 <?php if ($newsV || $newsP || $newsB): ?>
@@ -236,7 +233,7 @@ $postType = "";
                 }, 1000);
               }
             } else {
-              scrollNew()
+              scrollNew();
             }
           }
         })

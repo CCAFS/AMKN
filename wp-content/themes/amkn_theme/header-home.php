@@ -4,9 +4,10 @@
  * @subpackage AMKNToolbox
  */
 $_SESSION['lastDate'] = 0;
-date_default_timezone_set('America/Bogota');
+setcookie("lastDateTmp", 0, strtotime('+1 days'));
 if (isset($_COOKIE["lastDate"])) {
   $_SESSION['lastDate'] = 'January 1st, 2013';
+  setcookie("lastDateTmp", 'January 1st, 2013', strtotime('+1 days'));
 }
 //setcookie("lastDate", date('Y-m-d H:i:s e'), strtotime( '+30 days' ));
 setcookie("lastDate", date('F jS, Y'), strtotime('+30 days'));
@@ -50,7 +51,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/tundra/tundra.css" />
     <link rel="stylesheet" href="<?php
     bloginfo('stylesheet_url');
-    echo '?ver=2.1';
+    echo '?ver=2.2';
     ?>" type="text/css" media="screen" />
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
     <script type="text/javascript">

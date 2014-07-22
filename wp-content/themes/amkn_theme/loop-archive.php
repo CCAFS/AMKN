@@ -3,6 +3,7 @@
  * @package WordPress
  * @subpackage AMKNToolbox
  */
+//echo $_COOKIE['lastDateTmp'] . "$#";
 global $query_string; // required
 $date = array();
 $dateArg = array();
@@ -42,7 +43,7 @@ if (get_query_var('post_type') == 'ccafs_sites') {
     'meta_key' => 'ccafs_region'
   ));
   $regions = $_GET["region"];
-  $meta = array();  
+  $meta = array();
   if (count($regions) && $regions != 'all') {
     $meta = array('realtion' => 'OR');
     //  foreach($regions as $region){
@@ -94,7 +95,7 @@ $tmpregion = '';
 //echo "<pre>".print_r($args,true)."</pre>";echo "**";
 ?>
 <?php /* Start the Loop */ ?>
-<?php //query_posts('posts_per_page=10');  ?>
+<?php //query_posts('posts_per_page=10');   ?>
 <?php
 while (have_posts()) : the_post();
   $postType = $post->post_type;
@@ -105,10 +106,13 @@ while (have_posts()) : the_post();
   <?php
   $region = get_post_meta($post->ID, 'ccafs_region', true);
   ?>
-    <?php if ($postType == 'ccafs_sites'): ?>
+  <?php if ($postType == 'ccafs_sites'): ?>
     <div id="<?php echo $post->ID ?>" class="<?php echo $postType; ?>" onmouseover="openDialog(markerArray[<?php echo $post->ID ?>])">
-      <?php else: ?>
-      <div id="<?php echo $post->ID ?>" class="videocolumn <?php echo $postType; ?>">
+    <?php else: ?>
+      <div id="<?php echo $post->ID ?>" class="videocolumn <?php echo $postType; ?>" style="position: relative">
+        <?php if (strtotime($_COOKIE['lastDateTmp']) < strtotime(get_the_date()) ): ?>
+          <img style="right:0; position:absolute" src="<?php bloginfo('template_directory'); ?>/images/new-icon.png" alt="New item" height="30" width="30" /> 
+        <?php endif; ?>
       <?php endif; ?>
       <?php
       switch ($postType) {
@@ -127,7 +131,7 @@ while (have_posts()) : the_post();
           <script>
             if (typeof document.getElementById("menu-item-3842") != 'undefined')
               document.getElementById("menu-item-3842").className += ' current-menu-item';
-          </script>
+          </script>          
           <div class="videoteaser">
             <img class="videotitleico" src="<?php bloginfo('template_directory'); ?>/images/<?php echo $postType; ?>-mini.png" alt="Video Testimonials"/> 
             <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php echo $tTitle; ?></a></h2>
@@ -222,9 +226,9 @@ while (have_posts()) : the_post();
           <div class="videoteaser">
             <img class="videotitleico" src="<?php bloginfo('template_directory'); ?>/images/<?php echo $postType; ?>-mini.png" alt="Benchmark site"/> 
             <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?> [<?php echo $country; ?>]</a></h2>
-            <!--<a href="<?php // the_permalink(); ?>"><img class="image" src="<?php // echo $staticMapURL; ?>" /></a>-->
+            <!--<a href="<?php // the_permalink();  ?>"><img class="image" src="<?php // echo $staticMapURL;  ?>" /></a>-->
             <p>
-      <?php // echo $tEx;  ?>
+              <?php // echo $tEx;  ?>
               <span class="sidemap-labels">Site ID:</span> <?php echo $sideId; ?><br>
               <span class="sidemap-labels">Sampling Frame Name:</span> <?php echo $blockName; ?><br>
               <span class="sidemap-labels">Town:</span> <?php echo $showLocality; ?>          
@@ -237,12 +241,14 @@ while (have_posts()) : the_post();
       ?>
     </div>
     <!--</div>-->
-    <?php endwhile; ?><!-- end loop-->
+  <?php endwhile; ?><!-- end loop-->
   <br clear="all" />
   <div id="amkn-paginate">
-    <?php if (function_exists('wp_pagenavi')) {
+    <?php
+    if (function_exists('wp_pagenavi')) {
       wp_pagenavi();
-    } else { ?>
+    } else {
+      ?>
       <div class="alignleft"><?php next_posts_link('&larr; Previous Entries'); ?></div>
       <div class="alignright"><?php previous_posts_link('Next Entries &rarr;'); ?></div>
 <?php } ?>

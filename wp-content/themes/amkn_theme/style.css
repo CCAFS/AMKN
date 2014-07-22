@@ -1972,9 +1972,9 @@ padding-top: 5px;
 
 .notice a {
     color: white;
-    font-size: small;
+    /*font-size: small;*/
 }
 
 .notice {
-  width: 260px;
+  width: 190px;
 }
