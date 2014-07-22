@@ -162,8 +162,6 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
         <?php get_template_part('teaser', 'video'); ?><!-- end column 1 -->
         <?php get_template_part('teaser', 'photo'); ?><!-- end column 2 -->
         <?php get_template_part('teaser', 'blog'); ?><!-- end column 3 -->
-
-
       </div><!-- end Featured -->
     </div>
   <?php get_template_part('teaser', 'newest_posts'); ?>
