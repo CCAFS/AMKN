@@ -36,7 +36,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != ''){
 		echo " | $site_description";
 	?></title>
 <link rel="icon" type="image/png" href="<?php bloginfo( 'template_directory' ); ?>/images/favicon.png" />
-<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); ?>" type="text/css" media="screen" />
+<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_url' ); echo '?ver=2.2';?>" type="text/css" media="screen" />
 <link rel="pingback" href="<?php bloginfo( 'pingback_url' ); ?>" />
 <?php wp_head(); ?>
 <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
