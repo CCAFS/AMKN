@@ -186,7 +186,7 @@ while (have_posts()) : the_post();
               document.getElementById("menu-item-3842").className += ' current-menu-item';
           </script>
           <div class="entry">
-            <div class="image" style="background: url(<?php echo catch_that_image($post); ?>) center" ></div>
+            <div class="image" style="background: url(<?php echo catch_that_image($post); ?>) center;background-repeat:no-repeat;" ></div>
             <h2 class="entrytitle"><a href="<?php the_permalink(); ?>"><?php echo htmlspecialchars_decode($ttitle); ?></a></h2>
             <div class="entrymeta">Posted by <?php the_author(); ?> on <?php echo get_the_date(); ?><!--  | <a href="<?php comments_link(); ?>"><?php comments_number('no responses', 'one response', '% responses'); ?></a>--><?php echo get_the_tag_list(' | ', ', ', ''); ?> </div>
             <p><?php echo $tEx; ?></p>

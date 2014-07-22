@@ -814,7 +814,7 @@ function onListHover(id, url) {
 
 }
 function onFeatureLeave() {
-    map.graphics.clear();
+    if(map.graphics) map.graphics.clear();
     hoverLayer.clear();
 }
 function showTT(evt) {
