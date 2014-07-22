@@ -152,9 +152,6 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
       </div>  
       <!-- featured section starts here -->
     </div>
-
-
-
   </div>
   <?php if (!isset($_GET['embedded'])): ?>
 
