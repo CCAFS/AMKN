@@ -3,11 +3,11 @@
  * @package WordPress
  * @subpackage AMKNToolbox
  */
-$_SESSION['lastDate'] = date('F jS, Y');
-setcookie("lastDateTmp", date('F jS, Y'), strtotime('+1 days'));
+$_SESSION['lastDate'] = 0;
+setcookie("lastDateTmp", 0, strtotime('+1 days'));
 if (isset($_COOKIE["lastDate"])) {
-  $_SESSION['lastDate'] = date('F jS, Y');
-  setcookie("lastDateTmp", date('F jS, Y'), strtotime('+1 days'));
+  $_SESSION['lastDate'] = 'January 1, 2013';
+  setcookie("lastDateTmp", 'January 1, 2013', strtotime('+1 days'));
 }
 //setcookie("lastDate", date('Y-m-d H:i:s e'), strtotime( '+30 days' ));
 setcookie("lastDate", date('F jS, Y'), strtotime('+30 days'));
