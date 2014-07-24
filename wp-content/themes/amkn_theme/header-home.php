@@ -6,8 +6,8 @@
 $_SESSION['lastDate'] = 0;
 setcookie("lastDateTmp", 0, strtotime('+1 days'));
 if (isset($_COOKIE["lastDate"])) {
-  $_SESSION['lastDate'] = 'January 1, 2013';
-  setcookie("lastDateTmp", 'January 1, 2013', strtotime('+1 days'));
+  $_SESSION['lastDate'] = 'January 1, 2014';
+  setcookie("lastDateTmp", 'January 1, 2014', strtotime('+1 days'));
 }
 //setcookie("lastDate", date('Y-m-d H:i:s e'), strtotime( '+30 days' ));
 setcookie("lastDate", date('F jS, Y'), strtotime('+30 days'));
@@ -72,7 +72,9 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
     <script src="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/jquery.dynatree.js" type="text/javascript"></script>
     <script src="<?php bloginfo('template_directory'); ?>/libs/jBox/jBox.min.js"></script>
     <link href="<?php bloginfo('template_directory'); ?>/libs/jBox/jBox.css" rel="stylesheet">
-    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.scrollTo.js"></script> 
+    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.scrollTo.js"></script>
+    <link rel=" stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/libs/TinyTools/css/tinytools.tourtip.min.css">
+    <script src="<?php bloginfo('template_directory'); ?>/libs/TinyTools/tinytools.tourtip.min.js"></script>
     <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">-->
     <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
     <!--<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
@@ -305,6 +307,52 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
         d.setDate(d.getDate() + c);
         var e = escape(b) + (null == c ? "" : "; expires=" + d.toUTCString());
         document.cookie = a + "=" + e
+      }
+      function tour() {
+        $("#onthemap").tourTip({
+          title: "On the map",
+          description: "This is a description for the newly born TourTip :)",
+          previous: true,
+          position: 'right'
+        });
+        $("#filter-button").tourTip({
+          title: "On the map",
+          description: "This is a description for the newly born TourTip :)",
+          previous: true,
+          position: 'right'
+        });
+        $("#legend-button").tourTip({
+          title: "On the map",
+          description: "This is a description for the newly born TourTip :)",
+          previous: true,
+          position: 'right'
+        });
+        $("#basemap-button").tourTip({
+          title: "On the map",
+          description: "This is a description for the newly born TourTip :)",
+          previous: true,
+          position: 'right'
+        });
+        $("#region-button").tourTip({
+          title: "On the map",
+          description: "This is a description for the newly born TourTip :)",
+          previous: true,
+          position: 'right'
+        });
+        $("#reset-button").tourTip({
+          title: "On the map",
+          description: "This is a description for the newly born TourTip :)",
+          previous: true,
+          position: 'right'
+        });
+        $("#container").tourTip({
+          title: "The newest",
+          description: "This is a description for the newly born TourTip :)",
+          previous: true,
+          position: 'top',
+          close:true
+        });
+        $.tourTip.start();
       }
 
     </script>
