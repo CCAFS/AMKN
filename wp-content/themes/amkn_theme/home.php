@@ -200,6 +200,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
         <p >For more information on AMKN, visit the About page.</p>
         <p class="chkmsg">&nbsp;&nbsp;<input type="checkbox" id="chk_showmsg" onchange="applyShowMsg();">Do not show this message again</p>
         <a id="gotoamkn" onclick="closeLandingPage()">Go to AMKN</a>
+        <a id="tour" onclick="closeLandingPage();tour()">Start tour</a>
       </div>
 
     </div>

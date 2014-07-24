@@ -64,7 +64,7 @@ $postType = "";
     $metaDesc = substr($metaDesc, 0, 65) . "...";
   ?>
   <div class="notice" style="display: none;" id="grabMe">
-    <img class="titleico" src="<?php bloginfo('template_directory'); ?>/images/<?php echo $postType; ?>-mini.png" alt="<?php echo get_post_type_object($postType)->labels->singular_name; ?>"/><a href="./video" ><?php echo $wp_query->found_posts ?> video posts unread</a>
+    <a href="./video" ><?php echo $wp_query->found_posts ?><img class="titleico" src="<?php bloginfo('template_directory'); ?>/images/<?php echo $postType; ?>-mini.png" alt="<?php echo get_post_type_object($postType)->labels->singular_name; ?>"/> video posts unread</a>
   </div>
   <?php
 endwhile;
@@ -167,7 +167,7 @@ $postType = "";
 <?php endwhile; ?>
 <?php if ($newsV || $newsP || $newsB): ?>
   <script>
-    jQuery(document).ready(function($) {
+    $(document).ready(function($) {
       setTimeout(function() {
         new jBox('Notice', {
           id: 'jBoxInit',
@@ -181,8 +181,8 @@ $postType = "";
             y: 10
           },
           autoClose: false,
-          onCloseComplete: function() {
-            if ('<?php echo $_SESSION['lastDate']?>' != '0') {
+          onCloseComplete: function() {            
+            if ('<?php echo $_SESSION['lastDate'] ?>' != '0') {
               if (<?php echo ($newsV) ? 'true' : 'false'; ?>) {
                 new jBox('Notice', {
                   content: $('#grabMe'),

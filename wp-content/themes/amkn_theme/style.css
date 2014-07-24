@@ -1978,3 +1978,8 @@ padding-top: 5px;
 .notice {
   width: 190px;
 }
+
+.gmap {
+    vertical-align: middle;
+    padding-bottom: 5px;
+}

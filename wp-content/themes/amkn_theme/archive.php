@@ -46,7 +46,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
           $('#reset').click(function() {
             var elements = document.getElementById("search-activities").elements;
 
-  //            $('#search-activities').reset();
+            //            $('#search-activities').reset();
 
             for (i = 0; i < elements.length; i++) {
 
@@ -82,7 +82,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
         });
         $(document).ready(function()
         {
-  //                  $("#myTable").tablesorter(); 
+          //                  $("#myTable").tablesorter(); 
         }
         );
         function orderColumn(colm) {
@@ -102,7 +102,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
             <input type="hidden" id="order" name="order" value="true">
           <?php else: ?>
             <input type="hidden" id="order" name="order" value="false">
-  <?php endif; ?>
+          <?php endif; ?>
           <input type="hidden" id="orderby" name="orderby" value="title">            
           <div class="pure-g">              
             <div class="pure-u-1-6">
@@ -111,7 +111,9 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                   <option value="0">All Centers</option>
                   <?php foreach ($leader as $key => $lead): ?>
                     <?php $selected = '';
-                    if ($_GET['leader'] == $lead) $selected = 'selected'; ?>
+                    if ($_GET['leader'] == $lead)
+                      $selected = 'selected';
+                    ?>
                     <option value='<?php echo $lead ?>' <?php echo $selected ?>><?php echo $lead ?></option>
   <?php endforeach; ?>
                 </select>
@@ -157,7 +159,9 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                   <option value="0">All Topics</option>
                   <?php foreach ($themes as $key => $theme): ?>
                     <?php $selected = '';
-                    if ($_GET['theme'] == $key) $selected = 'selected'; ?>
+                    if ($_GET['theme'] == $key)
+                      $selected = 'selected';
+                    ?>
                     <option value=<?php echo $key ?> <?php echo $selected ?>><?php echo $theme ?></option>
   <?php endforeach; ?>
                 </select>            
@@ -184,7 +188,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
           </tr>
         </thead>
         <tbody> 
-      <?php get_template_part('loop', 'activities'); ?>
+  <?php get_template_part('loop', 'activities'); ?>
         </tbody> 
       </table>
       <?php if ($wp_query->found_posts == 0): ?>
@@ -194,12 +198,14 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
         <?php endif; ?>
       <br clear="all" />
       <div id="amkn-paginate">
-        <?php if (function_exists('wp_pagenavi')) {
+        <?php
+        if (function_exists('wp_pagenavi')) {
           wp_pagenavi();
-        } else { ?>
+        } else {
+          ?>
           <div class="alignleft"><?php next_posts_link('&larr; Previous Entries'); ?></div>
           <div class="alignright"><?php previous_posts_link('Next Entries &rarr;'); ?></div>
-  <?php } ?>
+      <?php } ?>
       </div>
       <br clear="all">
       <br clear="all">
@@ -221,7 +227,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
           }
           map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
           // Create a script tag and set the USGS URL as the source.
-  //          if(!location.hash)
+          //          if(!location.hash)
           if (location.search) {
             rgs = location.search;
             rgs = rgs.replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/\+/g, ' ').replace(/\?/g, '');
@@ -232,23 +238,23 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
               strRg += rg[1] + ',';
             }
             rgs = strRg;
-            if(rgs=='East Africa,') {
+            if (rgs == 'East Africa,') {
               var myLatlng = new google.maps.LatLng(-0.314705, 35.022805);
               map.setZoom(4);
               map.setCenter(myLatlng);
-            } else if (rgs=='West Africa,') {
+            } else if (rgs == 'West Africa,') {
               var myLatlng = new google.maps.LatLng(13.3686965, -5.762451);
               map.setZoom(4);
               map.setCenter(myLatlng);
-            } else if (rgs=="Latin America,") {
-              var myLatlng = new google.maps.LatLng(15.2,-87.883333);
+            } else if (rgs == "Latin America,") {
+              var myLatlng = new google.maps.LatLng(15.2, -87.883333);
               map.setZoom(4);
               map.setCenter(myLatlng);
-            } else if (rgs=='Southeast Asia,') {
+            } else if (rgs == 'Southeast Asia,') {
               var myLatlng = new google.maps.LatLng(21.033333, 105.85);
               map.setZoom(4);
               map.setCenter(myLatlng);
-            } else if (rgs=='South Asia,') {
+            } else if (rgs == 'South Asia,') {
               var myLatlng = new google.maps.LatLng(27.5446255, 83.4506495);
               map.setZoom(4);
               map.setCenter(myLatlng);
@@ -256,7 +262,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
           } else {
             rgs = 'East%20Africa,West%20Africa,South%20Asia,Southeast%20Asia,Latin%20America';
           }
-          if(rgs=='all,') {
+          if (rgs == 'all,') {
             rgs = 'East%20Africa,West%20Africa,South%20Asia,Southeast%20Asia,Latin%20America';
             var myLatlng = new google.maps.LatLng(12.968888, 10.138147);
             map.setZoom(2);
@@ -283,7 +289,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
             });
 
             markerArray[results.features[i].id] = marker;
-  //            google.maps.event.addListener(marker, 'click', function(event) {alert(results.features[idx].properties.title)});
+            //            google.maps.event.addListener(marker, 'click', function(event) {alert(results.features[idx].properties.title)});
             google.maps.event.addListener(marker, 'mouseover', (function(marker, i, results) {
               return function() {
                 if (infowindow) {
@@ -291,7 +297,14 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 }
                 $("div#" + results.features[i].id).addClass("ccafs_sites_selected").siblings().removeClass("ccafs_sites_selected");
                 $('#sites').scrollTo($("div#" + results.features[i].id), 500, {offset: {top: -135, left: 0}});
-                var contentString = '<div id="content"><b>' + results.features[i].properties.title + ' [' + results.features[i].properties.country + '] </b><br>CCAFS Region: ' + results.features[i].properties.region + '</div>';
+                var contentString = 
+                        '<div id="content"><b>' + results.features[i].properties.title + ' [' + results.features[i].properties.country + '] </b><br>CCAFS Region: ' + results.features[i].properties.region
+                        + '<br>'
+                        + '<img src="<?php bloginfo('template_directory'); ?>/images/ccafs_activities-mini.png" class="gmap"/> Projects: ' + results.features[i].properties.activities+''
+                        + '<br><img src="<?php bloginfo('template_directory'); ?>/images/amkn_blog_posts-mini.png" class="gmap"/> Blogs: ' + results.features[i].properties.blogs+''
+                        + '<br><img src="<?php bloginfo('template_directory'); ?>/images/photo_testimonials-mini.png" class="gmap"/> Photos: ' + results.features[i].properties.photos+''
+                        + '<br><img src="<?php bloginfo('template_directory'); ?>/images/video_testimonials-mini.png" class="gmap"/> Videos: ' + results.features[i].properties.videos + ''
+                        + '</div>';
                 infowindow = new google.maps.InfoWindow({
                   content: contentString
                 });
@@ -305,7 +318,14 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                   eval(infowindow).close();
                 }
                 $("div#" + results.features[i].id).addClass("ccafs_sites_selected").siblings().removeClass("ccafs_sites_selected");
-                var contentString = '<div id="content"><b>' + results.features[i].properties.title + ' [' + results.features[i].properties.country + '] <br>CCAFS Region: ' + results.features[i].properties.region + '</b></div>';
+                var contentString = 
+                        '<div id="content"><b>' + results.features[i].properties.title + ' [' + results.features[i].properties.country + '] </b><br>CCAFS Region: ' + results.features[i].properties.region
+                        + '<br><ul>'
+                        + '<li><img src="<?php bloginfo('template_directory'); ?>/images/ccafs_activities-mini.png"/> Projects: ' + results.features[i].properties.activities+'</li>'
+                        + '<li><img src="<?php bloginfo('template_directory'); ?>/images/amkn_blog_posts-mini.png"/> Blogs: ' + results.features[i].properties.blogs+'</li>'
+                        + '<li><img src="<?php bloginfo('template_directory'); ?>/images/photo_testimonials-mini.png"/> Photos: ' + results.features[i].properties.photos+'</li>'
+                        + '<li><img src="<?php bloginfo('template_directory'); ?>/images/video_testimonials-mini.png"/> Videos: ' + results.features[i].properties.videos + '</li>'
+                        + '</ul></div>';
                 infowindow = new google.maps.InfoWindow({
                   content: contentString
                 });
@@ -350,7 +370,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 &nbsp;
               </label>
               <label for="remember">
-                <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="all" <?php echo (!isset($_GET['region']) || $_GET['region']=='all') ? 'checked' : '' ?>>Show all
+                <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="all" <?php echo (!isset($_GET['region']) || $_GET['region'] == 'all') ? 'checked' : '' ?>>Show all
               </label>
             </div>
             <div class="pure-u-1-6">
@@ -358,7 +378,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 &nbsp;
               </label>
               <label for="remember">
-                <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="East Africa" <?php echo ($_GET['region']=='East Africa') ? 'checked' : '' ?>>East Africa
+                <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="East Africa" <?php echo ($_GET['region'] == 'East Africa') ? 'checked' : '' ?>>East Africa
               </label>
             </div>
             <div class="pure-u-1-6">
@@ -366,31 +386,31 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 &nbsp;
               </label>
               <label for="remember">
-                <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="West Africa" <?php echo ($_GET['region']=='West Africa') ? 'checked' : '' ?>>West Africa
+                <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="West Africa" <?php echo ($_GET['region'] == 'West Africa') ? 'checked' : '' ?>>West Africa
               </label>
             </div>
-<!--            <div class="pure-u-1-6">
-              <label for="space">
-                &nbsp;
-              </label>
-              <label for="remember">
-                <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="Latin America" <?php echo ($_GET['region']=='Latin America') ? 'checked' : '' ?>>Latin America
-              </label>
-            </div>
+            <!--            <div class="pure-u-1-6">
+                          <label for="space">
+                            &nbsp;
+                          </label>
+                          <label for="remember">
+                            <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="Latin America" <?php echo ($_GET['region'] == 'Latin America') ? 'checked' : '' ?>>Latin America
+                          </label>
+                        </div>
+                        <div class="pure-u-1-6">
+                          <label for="space">
+                            &nbsp;
+                          </label>
+                          <label for="remember">
+                            <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="Southeast Asia" <?php echo ($_GET['region'] == 'Southeast Asia') ? 'checked' : '' ?>> Southeast Asia 
+                          </label>
+                        </div>-->
             <div class="pure-u-1-6">
               <label for="space">
                 &nbsp;
               </label>
               <label for="remember">
-                <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="Southeast Asia" <?php echo ($_GET['region']=='Southeast Asia') ? 'checked' : '' ?>> Southeast Asia 
-              </label>
-            </div>-->
-            <div class="pure-u-1-6">
-              <label for="space">
-                &nbsp;
-              </label>
-              <label for="remember">
-                <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="South Asia" <?php echo ($_GET['region']=='South Asia') ? 'checked' : '' ?>>South Asia
+                <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="South Asia" <?php echo ($_GET['region'] == 'South Asia') ? 'checked' : '' ?>>South Asia
               </label>
             </div>
           </div>            
@@ -401,10 +421,10 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
         <?php get_template_part('loop', 'archive'); ?>
       </div>
       <div>
-      <?php
+  <?php
 //          global $wp_query;
 //          echo $wp_query->found_posts;
-      ?>
+  ?>
       </div>
 <?php else: ?>
       <script>
