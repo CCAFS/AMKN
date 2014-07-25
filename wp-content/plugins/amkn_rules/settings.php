@@ -507,7 +507,7 @@ function esriMapPoints($atts) {
     $tmpGeoPoint = '';
     if ($row['geoRSSPoint']) {
       foreach ($row['geoRSSPoint'] as $key => $value) {
-        if ($value != '') {
+        if (trim($value) != '') {
           $geoPoint = strtr($value, $trans);
           if (($geoPoint && $tmpGeoPoint == '' ) || $geoPoint != $tmpGeoPoint) {
             if ($contentQuery->post->post_type == 'ccafs_activities')

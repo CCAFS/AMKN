@@ -53,7 +53,14 @@ if($_GET['width'])
           }
 //          $("div#"+results.features[i].id).addClass("ccafs_sites_selected").siblings().removeClass("ccafs_sites_selected");  
 //          $('#sites').scrollTo($("div#"+results.features[i].id), 500,{offset: {top:-135, left:0}});
-          var contentString = '<div id="content"><b>'+results.features[i].properties.title+' ['+results.features[i].properties.country+'] </b><br>CCAFS Region: '+results.features[i].properties.region+'</div>';
+          var contentString = 
+                        '<div id="content"><b>' + results.features[i].properties.title + ' [' + results.features[i].properties.country + '] </b><br>CCAFS Region: ' + results.features[i].properties.region
+                        + '<br>'
+                        + '<img src="<?php bloginfo('template_directory'); ?>/images/ccafs_activities-mini.png" class="gmap"/> Projects: ' + results.features[i].properties.activities+''
+                        + '<br><img src="<?php bloginfo('template_directory'); ?>/images/amkn_blog_posts-mini.png" class="gmap"/> Blogs: ' + results.features[i].properties.blogs+''
+                        + '<br><img src="<?php bloginfo('template_directory'); ?>/images/photo_testimonials-mini.png" class="gmap"/> Photos: ' + results.features[i].properties.photos+''
+                        + '<br><img src="<?php bloginfo('template_directory'); ?>/images/video_testimonials-mini.png" class="gmap"/> Videos: ' + results.features[i].properties.videos + ''
+                        + '</div>';
           infowindow = new google.maps.InfoWindow({
               content: contentString
           });
