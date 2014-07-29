@@ -103,7 +103,7 @@ if ($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
 
 $posts = query_posts($args);
 global $wp_query;
-if ($post->post_type != 'ccafs_sites')
+if ($posts->post_type != 'ccafs_sites')
   echo "<h3>Found " . $wp_query->found_posts . "<br><i style='font-family: -webkit-body;font-size: 0.75em;'>" . substr_replace(trim($filt), "", -1) . "</i></h3>";
 $tmpregion = '';
 ?>

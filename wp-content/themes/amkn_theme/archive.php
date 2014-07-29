@@ -279,7 +279,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
 
         window.eqfeed_callback = function(results) {
           var image = "<?php bloginfo('template_directory'); ?>/images/ccafs_sites-miniH.png";
-          var infobox, infowindow;
+          var infobox;
           for (var i = 0; i < results.features.length; i++) {
             idx = i;
             var coords = results.features[i].geometry.coordinates;
