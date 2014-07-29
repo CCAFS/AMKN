@@ -1979,7 +1979,28 @@ padding-top: 5px;
   width: 190px;
 }
 
-.gmap {
+.gmap img{
     vertical-align: middle;
     padding-bottom: 5px;
+}
+
+.gmap a {
+    cursor:pointer;
+}
+
+.gmap {
+    border:2px solid white;
+    margin-top: 8px;
+    background:#FFF;
+    color:#333;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size:12px;
+    padding: .5em 1em;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    text-shadow:0 -1px #FFF;
+    -webkit-box-shadow: 0 0  8px #FFF;
+    box-shadow: 0 0 8px #FFF;
+    border-radius: 10px 10px 10px 10px;
 }

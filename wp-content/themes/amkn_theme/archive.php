@@ -110,12 +110,13 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 <select name="leader">
                   <option value="0">All Centers</option>
                   <?php foreach ($leader as $key => $lead): ?>
-                    <?php $selected = '';
+                    <?php
+                    $selected = '';
                     if ($_GET['leader'] == $lead)
                       $selected = 'selected';
                     ?>
                     <option value='<?php echo $lead ?>' <?php echo $selected ?>><?php echo $lead ?></option>
-  <?php endforeach; ?>
+                  <?php endforeach; ?>
                 </select>
             </div>             
             <div class="pure-u-1-6">
@@ -158,12 +159,13 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 <select name="theme">
                   <option value="0">All Topics</option>
                   <?php foreach ($themes as $key => $theme): ?>
-                    <?php $selected = '';
+                    <?php
+                    $selected = '';
                     if ($_GET['theme'] == $key)
                       $selected = 'selected';
                     ?>
                     <option value=<?php echo $key ?> <?php echo $selected ?>><?php echo $theme ?></option>
-  <?php endforeach; ?>
+                  <?php endforeach; ?>
                 </select>            
             </div>              
           </div>            
@@ -188,14 +190,14 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
           </tr>
         </thead>
         <tbody> 
-  <?php get_template_part('loop', 'activities'); ?>
+          <?php get_template_part('loop', 'activities'); ?>
         </tbody> 
       </table>
       <?php if ($wp_query->found_posts == 0): ?>
         <script>
           $("#myTable").hide();
         </script>  
-        <?php endif; ?>
+      <?php endif; ?>
       <br clear="all" />
       <div id="amkn-paginate">
         <?php
@@ -205,17 +207,18 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
           ?>
           <div class="alignleft"><?php next_posts_link('&larr; Previous Entries'); ?></div>
           <div class="alignright"><?php previous_posts_link('Next Entries &rarr;'); ?></div>
-      <?php } ?>
+        <?php } ?>
       </div>
       <br clear="all">
       <br clear="all">
       <script>
         document.getElementById("menu-item-3841").className += ' current-menu-item';
       </script>
-<?php elseif (get_query_var('post_type') == 'ccafs_sites') : ?>
+    <?php elseif (get_query_var('post_type') == 'ccafs_sites') : ?>
       <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
-      <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.scrollTo.js"></script>        
-      <script src="https://maps.googleapis.com/maps/api/js?v=3.exp"></script>
+      <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.scrollTo.js"></script>
+      <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
+      <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
       <script>
         var map;
         var markerArray = {};
@@ -276,7 +279,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
 
         window.eqfeed_callback = function(results) {
           var image = "<?php bloginfo('template_directory'); ?>/images/ccafs_sites-miniH.png";
-          var infowindow;
+          var infobox, infowindow;
           for (var i = 0; i < results.features.length; i++) {
             idx = i;
             var coords = results.features[i].geometry.coordinates;
@@ -285,51 +288,33 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
               position: latLng,
               map: map,
               icon: image,
-              title: results.features[i].properties.title
+//              title: results.features[i].properties.title
             });
 
             markerArray[results.features[i].id] = marker;
             //            google.maps.event.addListener(marker, 'click', function(event) {alert(results.features[idx].properties.title)});
             google.maps.event.addListener(marker, 'mouseover', (function(marker, i, results) {
               return function() {
-                if (infowindow) {
-                  eval(infowindow).close();
+                if (infobox) {
+                  eval(infobox).close();
                 }
                 $("div#" + results.features[i].id).addClass("ccafs_sites_selected").siblings().removeClass("ccafs_sites_selected");
                 $('#sites').scrollTo($("div#" + results.features[i].id), 500, {offset: {top: -135, left: 0}});
-                var contentString = 
-                        '<div id="content"><b>' + results.features[i].properties.title + ' [' + results.features[i].properties.country + '] </b><br>CCAFS Region: ' + results.features[i].properties.region
-                        + '<br>'
-                        + '<img src="<?php bloginfo('template_directory'); ?>/images/ccafs_activities-mini.png" class="gmap"/> Projects: ' + results.features[i].properties.activities+''
-                        + '<br><img src="<?php bloginfo('template_directory'); ?>/images/amkn_blog_posts-mini.png" class="gmap"/> Blogs: ' + results.features[i].properties.blogs+''
-                        + '<br><img src="<?php bloginfo('template_directory'); ?>/images/photo_testimonials-mini.png" class="gmap"/> Photos: ' + results.features[i].properties.photos+''
-                        + '<br><img src="<?php bloginfo('template_directory'); ?>/images/video_testimonials-mini.png" class="gmap"/> Videos: ' + results.features[i].properties.videos + ''
-                        + '</div>';
-                infowindow = new google.maps.InfoWindow({
-                  content: contentString
-                });
-                infowindow.open(map, marker);
+                var contentString = infoWindowContent(results.features[i]);
+                infobox = getBox(contentString);
+                infobox.open(map, marker);
               };
             })(marker, i, results));
 
             google.maps.event.addListener(marker, 'dblclick', (function(marker, i, results) {
               return function() {
-                if (infowindow) {
-                  eval(infowindow).close();
+                if (infobox) {
+                  eval(infobox).close();
                 }
                 $("div#" + results.features[i].id).addClass("ccafs_sites_selected").siblings().removeClass("ccafs_sites_selected");
-                var contentString = 
-                        '<div id="content"><b>' + results.features[i].properties.title + ' [' + results.features[i].properties.country + '] </b><br>CCAFS Region: ' + results.features[i].properties.region
-                        + '<br>'
-                        + '<img src="<?php bloginfo('template_directory'); ?>/images/ccafs_activities-mini.png" class="gmap"/> Projects: ' + results.features[i].properties.activities+''
-                        + '<br><img src="<?php bloginfo('template_directory'); ?>/images/amkn_blog_posts-mini.png" class="gmap"/> Blogs: ' + results.features[i].properties.blogs+''
-                        + '<br><img src="<?php bloginfo('template_directory'); ?>/images/photo_testimonials-mini.png" class="gmap"/> Photos: ' + results.features[i].properties.photos+''
-                        + '<br><img src="<?php bloginfo('template_directory'); ?>/images/video_testimonials-mini.png" class="gmap"/> Videos: ' + results.features[i].properties.videos + ''
-                        + '</div>';
-                infowindow = new google.maps.InfoWindow({
-                  content: contentString
-                });
-                infowindow.open(map, marker);
+                var contentString = infoWindowContent(results.features[i]);
+                infobox = getBox(contentString);
+                infobox.open(map, marker);                
               };
             })(marker, i, results));
 
@@ -339,9 +324,36 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
               };
             })(i, results));
             google.maps.event.addListener(map, "click", function() {
-              infowindow.close();
+              infobox.close();
             });
           }
+        }
+
+        function infoWindowContent(result) {
+          return '<div class="gmap" id="content"><b>' + result.properties.title + ' [' + result.properties.country + '] </b><br>CCAFS Region: ' + result.properties.region
+                  + '<br>'
+                  + '<a href="/ccafs-activities/?nearest_site=' + result.id + '&order=false&orderby=title&leader=0&keyword=&theme=0"><img src="<?php bloginfo('template_directory'); ?>/images/ccafs_activities-mini.png"/> Projects: ' + result.properties.activities + '</a>'
+                  + '<br><a href="/blog-posts/?nearest_site=' + result.id + '"><img src="<?php bloginfo('template_directory'); ?>/images/amkn_blog_posts-mini.png"/> Blogs: ' + result.properties.blogs + '</a>'
+                  + '<br><a href="/photo-sets/?nearest_site=' + result.id + '"><img src="<?php bloginfo('template_directory'); ?>/images/photo_testimonials-mini.png" /> Photos: ' + result.properties.photos + '</a>'
+                  + '<br><a href="/video/?nearest_site=' + result.id + '"><img src="<?php bloginfo('template_directory'); ?>/images/video_testimonials-mini.png" /> Videos: ' + result.properties.videos + '</a>'
+                  + '</div>';
+        }
+
+        function getBox(contentString) {
+          return new InfoBox({
+            content: contentString,
+            disableAutoPan: false,
+            maxWidth: 150,
+            pixelOffset: new google.maps.Size(-140, 0),
+            zIndex: null,
+            boxStyle: {
+              background: "url('<?php bloginfo('template_directory'); ?>/images/tipbox1.gif') no-repeat",
+              width: "200px"
+            },
+            closeBoxMargin: "12px 4px 2px 2px",
+            closeBoxURL: "http://www.google.com/intl/en_us/mapfiles/close.gif",
+            infoBoxClearance: new google.maps.Size(1, 1)
+          });
         }
 
         function openDialog(marker) {
@@ -357,10 +369,10 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
         }
         google.maps.event.addDomListener(window, 'load', initialize);
       </script>
-  <?php
+      <?php
 //        print_r($_GET['region']);
-  $checkOng = 'checked';
-  ?>
+      $checkOng = 'checked';
+      ?>
       <form class="pure-form pure-form-stacked" name ="search-sources" id ="search-sources" method="get">
         <fieldset>
           <legend>Filter By CCAFS Region</legend>                      
@@ -421,12 +433,12 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
         <?php get_template_part('loop', 'archive'); ?>
       </div>
       <div>
-  <?php
+        <?php
 //          global $wp_query;
 //          echo $wp_query->found_posts;
-  ?>
+        ?>
       </div>
-<?php else: ?>
+    <?php else: ?>
       <script>
         $(function() {
           $("#initDate").datepicker({
@@ -478,11 +490,11 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
       <form class="pure-form pure-form-stacked" name ="search-sources" id ="search-sources" method="get">
         <fieldset>
           <legend>Search By</legend>
-  <?php if ($_GET['order'] == 'true'): ?>
+          <?php if ($_GET['order'] == 'true'): ?>
             <input type="hidden" id="order" name="order" value="true">
-  <?php else: ?>
+          <?php else: ?>
             <input type="hidden" id="order" name="order" value="false">
-  <?php endif; ?>
+          <?php endif; ?>
           <input type="hidden" id="orderby" name="orderby" value="title">            
           <div class="pure-g">
             <div class="pure-u-1-6">
@@ -514,10 +526,10 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
           <!--<input type="submit" name="search" class="pure-button pure-button-primary" value="Search">-->      
         </fieldset>  
       </form>      
-  <?php
-  get_template_part('loop', 'archive');
-endif;
-?>
+      <?php
+      get_template_part('loop', 'archive');
+    endif;
+    ?>
 
   </div><!-- end content -->
 </div><!-- end Container -->

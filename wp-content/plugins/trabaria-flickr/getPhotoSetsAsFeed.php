@@ -73,7 +73,7 @@ $output .= "<rss version='2.0' xmlns:dc='http://purl.org/dc/elements/1.1/' xmlns
                 <title>".htmlspecialchars($userInfo[0]->realname)."Flickr Photo Sets</title>
                 <link>".$userInfo[0]->photosurl."</link>
                 <description>".htmlspecialchars($userInfo[0]->realname)."Flickr Photo Sets</description>";
-$maxSets2Get = count($photoSets) > 50 ? 50 : count($photoSets);
+$maxSets2Get = count($photoSets) > 100 ? 100 : count($photoSets);
 for($i=0; $i < $maxSets2Get; $i++) {
   $arr = $photoSets[$i]->attributes();
   $primaryPhoto = $arr["primary"];

@@ -80,7 +80,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 
         <div id="onthemap" <?php echo $style ?> dojoType="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="259" splitter="<?php echo $splitter ?>" region="left" style="width: 259px;" startExpanded="true">
           <!--Here is the calling to the template that show the left menu-->
-          <?php get_template_part('content_type', 'filters_list2'); ?>
+          <?php get_template_part('content_type', 'filters_list2'); ?>          
           <div id="panel-buttons">
             <button id="filter-button" class="panel-button selected"> &nbsp;</button>
             <button id="legend-button" class="panel-button"> &nbsp;</button>
@@ -169,7 +169,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 
       </div><!-- end Featured -->
     </div>
-  <?php get_template_part('teaser', 'newest_posts'); ?>
+    <?php get_template_part('teaser', 'newest_posts'); ?>
     <div class="remodal" style="display:none;" data-remodal-id="modal" data-remodal-options='{ "hashTracking": false }'>
       <div id="whatisamkn" class="modal"> 
         <h1><strong>What is AMKN?</strong></h1>
@@ -200,7 +200,8 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
         <p >For more information on AMKN, visit the About page.</p>
         <p class="chkmsg">&nbsp;&nbsp;<input type="checkbox" id="chk_showmsg" onchange="applyShowMsg();">Do not show this message again</p>
         <a id="gotoamkn" onclick="closeLandingPage()">Go to AMKN</a>
-        <a id="tour" onclick="closeLandingPage();tour()">Start tour</a>
+        <a id="tour" onclick="closeLandingPage();
+              tour()">Start tour</a>
       </div>
 
     </div>

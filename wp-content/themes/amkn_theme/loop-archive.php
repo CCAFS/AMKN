@@ -7,6 +7,7 @@
 global $query_string; // required
 $date = array();
 $dateArg = array();
+$metaKey = array();
 $paged = get_query_var('paged');
 $filt = '';
 
@@ -31,6 +32,18 @@ if (count($date)) {
       'inclusive' => false
     )
   );
+}
+
+if ($_GET['nearest_site'] != '0' && $_GET['nearest_site'] != '') {
+  $metaKey[] = array('key' => 'nearestBenchmarkSite', 'value' => $_GET['nearest_site']);
+  $argsn = array('posts_per_page' => -1, 'post_type' => 'ccafs_sites');
+  $contentQuery = new WP_Query($argsn);
+  $sites = array();
+  while ($contentQuery->have_posts()) {
+    $contentQuery->the_post();
+    $sites[$contentQuery->post->ID] = the_title("", "", false);
+  }
+  $filt .='Nearest Research site "' . $sites[$_GET['nearest_site']] . '"<br>';
 }
 
 if (get_query_var('post_type') == 'ccafs_sites') {
@@ -78,6 +91,8 @@ if (get_query_var('post_type') == 'ccafs_sites') {
     'posts_per_page' => '16',
     'paged' => $paged
   ));
+  if (count($metaKey))
+    $args = array_merge(array('meta_query' => $metaKey), $args);
 }
 
 if ($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
@@ -88,14 +103,11 @@ if ($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
 
 $posts = query_posts($args);
 global $wp_query;
-//$plural = ($wp_query->found_posts>1)?'s':'';
 if ($post->post_type != 'ccafs_sites')
   echo "<h3>Found " . $wp_query->found_posts . "<br><i style='font-family: -webkit-body;font-size: 0.75em;'>" . substr_replace(trim($filt), "", -1) . "</i></h3>";
 $tmpregion = '';
-//echo "<pre>".print_r($args,true)."</pre>";echo "**";
 ?>
 <?php /* Start the Loop */ ?>
-<?php //query_posts('posts_per_page=10');   ?>
 <?php
 while (have_posts()) : the_post();
   $postType = $post->post_type;
@@ -110,7 +122,7 @@ while (have_posts()) : the_post();
     <div id="<?php echo $post->ID ?>" class="<?php echo $postType; ?>" onmouseover="openDialog(markerArray[<?php echo $post->ID ?>])">
     <?php else: ?>
       <div id="<?php echo $post->ID ?>" class="videocolumn <?php echo $postType; ?>" style="position: relative">
-        <?php if (strtotime($_COOKIE['lastDateTmp']) < strtotime(get_the_date()) ): ?>
+        <?php if (strtotime($_COOKIE['lastDateTmp']) < strtotime(get_the_date())): ?>
           <img style="right:0; position:absolute" src="<?php bloginfo('template_directory'); ?>/images/new-icon.png" alt="New item" height="30" width="30" /> 
         <?php endif; ?>
       <?php endif; ?>
@@ -226,7 +238,7 @@ while (have_posts()) : the_post();
           <div class="videoteaser">
             <img class="videotitleico" src="<?php bloginfo('template_directory'); ?>/images/<?php echo $postType; ?>-mini.png" alt="Benchmark site"/> 
             <h2 class="teasertitle"><a href="<?php the_permalink(); ?>"><?php the_title(); ?> [<?php echo $country; ?>]</a></h2>
-            <!--<a href="<?php // the_permalink();  ?>"><img class="image" src="<?php // echo $staticMapURL;  ?>" /></a>-->
+            <!--<a href="<?php // the_permalink();    ?>"><img class="image" src="<?php // echo $staticMapURL;    ?>" /></a>-->
             <p>
               <?php // echo $tEx;  ?>
               <span class="sidemap-labels">Site ID:</span> <?php echo $sideId; ?><br>
@@ -251,7 +263,7 @@ while (have_posts()) : the_post();
       ?>
       <div class="alignleft"><?php next_posts_link('&larr; Previous Entries'); ?></div>
       <div class="alignright"><?php previous_posts_link('Next Entries &rarr;'); ?></div>
-<?php } ?>
+    <?php } ?>
   </div>
   <br clear="all">
   <br clear="all">
