@@ -645,7 +645,7 @@ function processCsvData(url) {
         console.log(url);
     }
     csvStore = new dojox.data.CsvStore({
-        url: dataUrl+'mapPoints.csv'
+        url: url
     });
 //    console.log(JSON.stringify(csvStore, null, 4));
     csvStore.fetch({
@@ -1154,7 +1154,12 @@ function updateDataLayerTree(cb)
     showms = showms == "" ? "" : "&ms=" + showms;
     showccc = showccc === "" ? "" : "&ccc=" + showccc;
 
-    var newURL = baseDataURL + "?fmt=csv" + showpts + showimp + showas + showms + showcl + showccc + showaz;
+    var newURL = '';
+    if (points.length == 6) {
+        newURL = dataUrl  + '.csv';
+    }else{
+        newURL = baseDataURL + "?fmt=csv" + showpts + showimp + showas + showms + showcl + showccc + showaz;
+    }
     if (cb) {
         dataLayer.clear();
         dataLayerVt.clear();

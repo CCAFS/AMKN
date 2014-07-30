@@ -384,7 +384,7 @@ function esriMapEmbedFine($atts) {
   $embedCode = '
 <script type="text/javascript" src="' . $x . 'map.js?ver=2"></script>
 <script>
-    var dataUrl = "' . get_bloginfo('home') . '/";
+    var dataUrl = "' . get_bloginfo('home') . '/mapPoints";
     var baseDataURL = "' . get_bloginfo('home') . '/mappoints/";
     var regionsDataURL = "' . get_bloginfo('home') . '/mapregions/";
     var defaultFields = ["Location", "Latitude", "Longitude", "Type", "cID"];
@@ -533,10 +533,25 @@ function esriMapPoints($atts) {
 //    }
   endwhile;
   echo $output;
-  $file = fopen("./mapPoints.csv","w+");
-  fwrite($file,$output);
-  fclose($file); 
+//  $file = fopen("mapPoints".$postTypes.".csv","w+");
+//  fwrite($file,$output);
+//  fclose($file); 
   wp_reset_postdata();
+}
+
+function combinatoria ($items,$size) {
+//  $items = explode(',',$string);
+//  echo count($items);
+  if($size<=0) {
+    echo '<br>';
+  } else {
+    foreach ($items as $key=>$item) {
+      echo $item.', ';
+      unset($items[$key]);
+      combinatoria($items, $size-1);      
+    }
+    
+  }
 }
 
 add_shortcode('getcsvpoints', 'esriMapPoints');
