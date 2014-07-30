@@ -1072,6 +1072,9 @@ ul.sidemap-list li {
 .sidemap-small {
     display: block;
 }
+.sidemap-over {
+    font-size:11px;
+}
 .sidemap-small ul.sidemap-list li {
     display: inline;
     margin: 5px 3px 5px 0;

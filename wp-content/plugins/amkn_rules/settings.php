@@ -384,7 +384,7 @@ function esriMapEmbedFine($atts) {
   $embedCode = '
 <script type="text/javascript" src="' . $x . 'map.js?ver=2"></script>
 <script>
-    var dataUrl = "' . get_bloginfo('home') . '/mappoints/";
+    var dataUrl = "' . get_bloginfo('home') . '/";
     var baseDataURL = "' . get_bloginfo('home') . '/mappoints/";
     var regionsDataURL = "' . get_bloginfo('home') . '/mapregions/";
     var defaultFields = ["Location", "Latitude", "Longitude", "Type", "cID"];
@@ -499,9 +499,10 @@ function esriMapPoints($atts) {
       ),
     )
   );
+  $output = '';
   $contentQuery = new WP_Query($qargs);
   $trans = array(" " => ",");
-  echo 'Latitude,Longitude,Location,CID,Type' . "\n";
+  $output .= 'Latitude,Longitude,Location,CID,Type' . "\n";
   while ($contentQuery->have_posts()) : $contentQuery->the_post();
     $row = get_post_meta($contentQuery->post->ID);
     $tmpGeoPoint = '';
@@ -511,11 +512,11 @@ function esriMapPoints($atts) {
           $geoPoint = strtr($value, $trans);
           if (($geoPoint && $tmpGeoPoint == '' ) || $geoPoint != $tmpGeoPoint) {
             if ($contentQuery->post->post_type == 'ccafs_activities')
-              echo $geoPoint . ",\"" . preg_replace('/\s+?(\S+)?$/', '', substr(the_title("", "", false), 0, 60)) . "...|" . implode('#', $row['contactName']) . '|' . implode('#', $row['theme']) . "\",\"" . $contentQuery->post->ID . "\",\"" . $contentQuery->post->post_type . "\"" . "\n";
+              $output .= $geoPoint . ",\"" . preg_replace('/\s+?(\S+)?$/', '', substr(the_title("", "", false), 0, 60)) . "...|" . implode('#', $row['contactName']) . '|' . implode('#', $row['theme']) . "\",\"" . $contentQuery->post->ID . "\",\"" . $contentQuery->post->post_type . "\"" . "\n";
             else if ($contentQuery->post->post_type == 'ccafs_sites')
-              echo $geoPoint . ",\"" . preg_replace('/\s+?(\S+)?$/', '', the_title("", "", false)) . "|" . $row['siteId'][0] . "|" . $row['siteCountry'][0] . "\",\"" . $contentQuery->post->ID . "\",\"" . $contentQuery->post->post_type . "\"" . "\n";
+              $output .= $geoPoint . ",\"" . preg_replace('/\s+?(\S+)?$/', '', the_title("", "", false)) . "|" . $row['siteId'][0] . "|" . $row['siteCountry'][0] . "\",\"" . $contentQuery->post->ID . "\",\"" . $contentQuery->post->post_type . "\"" . "\n";
             else
-              echo $geoPoint . ",\"" . preg_replace('/\s+?(\S+)?$/', '', substr(the_title("", "", false), 0, 80)) . "...|" . get_the_date() . "\",\"" . $contentQuery->post->ID . "\",\"" . $contentQuery->post->post_type . "\"" . "\n";
+              $output .= $geoPoint . ",\"" . preg_replace('/\s+?(\S+)?$/', '', substr(the_title("", "", false), 0, 80)) . "...|" . get_the_date() . "\",\"" . $contentQuery->post->ID . "\",\"" . $contentQuery->post->post_type . "\"" . "\n";
           }
           $tmpGeoPoint = $geoPoint;
         }
@@ -531,6 +532,10 @@ function esriMapPoints($atts) {
 //
 //    }
   endwhile;
+  echo $output;
+  $file = fopen("./mapPoints.csv","w+");
+  fwrite($file,$output);
+  fclose($file); 
   wp_reset_postdata();
 }
 

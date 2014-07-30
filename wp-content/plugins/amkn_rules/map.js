@@ -169,9 +169,9 @@ function initMap() {
 
     tiledMapServiceLayer = new esri.layers.ArcGISTiledMapServiceLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer");
     map.addLayer(tiledMapServiceLayer);
-    multipoint = new esri.geometry.Multipoint(new esri.SpatialReference({
-        wkid: 4326
-    }));
+//    multipoint = new esri.geometry.Multipoint(new esri.SpatialReference({
+//        wkid: 4326
+//    }));
     dataLayer = new esri.layers.GraphicsLayer();
     dataLayerVt = new esri.layers.GraphicsLayer();
     dataLayerCs = new esri.layers.GraphicsLayer();
@@ -645,7 +645,7 @@ function processCsvData(url) {
         console.log(url);
     }
     csvStore = new dojox.data.CsvStore({
-        url: url
+        url: dataUrl+'mapPoints.csv'
     });
 //    console.log(JSON.stringify(csvStore, null, 4));
     csvStore.fetch({

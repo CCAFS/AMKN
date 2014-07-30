@@ -280,6 +280,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
         window.eqfeed_callback = function(results) {
           var image = "<?php bloginfo('template_directory'); ?>/images/ccafs_sites-miniH.png";
           var infobox;
+          var markeri;
           for (var i = 0; i < results.features.length; i++) {
             idx = i;
             var coords = results.features[i].geometry.coordinates;
@@ -287,8 +288,8 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
             var marker = new google.maps.Marker({
               position: latLng,
               map: map,
-              icon: image,
-//              title: results.features[i].properties.title
+              icon: image
+  //              title: results.features[i].properties.title
             });
 
             markerArray[results.features[i].id] = marker;
@@ -298,11 +299,24 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 if (infobox) {
                   eval(infobox).close();
                 }
+                if (markeri) {
+                  eval(markeri).setMap(null);
+                }
                 $("div#" + results.features[i].id).addClass("ccafs_sites_selected").siblings().removeClass("ccafs_sites_selected");
-                $('#sites').scrollTo($("div#" + results.features[i].id), 500, {offset: {top: -135, left: 0}});
+                $('#sites').scrollTo($("div#" + results.features[i].id), 100, {offset: {top: -135, left: 0}});
                 var contentString = infoWindowContent(results.features[i]);
                 infobox = getBox(contentString);
                 infobox.open(map, marker);
+                
+                var imagei = "<?php bloginfo('template_directory'); ?>/images/ccafs_sites-miniI.png";
+                var coords = results.features[i].geometry.coordinates;
+                var latLng = new google.maps.LatLng(coords[1], coords[0]);
+                markeri = new google.maps.Marker({
+                  position: latLng,
+                  map: map,
+                  zIndex: 9999999,
+                  icon: imagei
+                });
               };
             })(marker, i, results));
 
@@ -311,10 +325,23 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 if (infobox) {
                   eval(infobox).close();
                 }
+                if (markeri) {
+                  eval(markeri).setMap(null);
+                }
                 $("div#" + results.features[i].id).addClass("ccafs_sites_selected").siblings().removeClass("ccafs_sites_selected");
                 var contentString = infoWindowContent(results.features[i]);
                 infobox = getBox(contentString);
-                infobox.open(map, marker);                
+                infobox.open(map, marker);
+                
+                var imagei = "<?php bloginfo('template_directory'); ?>/images/ccafs_sites-miniI.png";
+                var coords = results.features[i].geometry.coordinates;
+                var latLng = new google.maps.LatLng(coords[1], coords[0]);
+                markeri = new google.maps.Marker({
+                  position: latLng,
+                  map: map,
+                  zIndex: 9999999,
+                  icon: imagei
+                });
               };
             })(marker, i, results));
 
@@ -325,6 +352,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
             })(i, results));
             google.maps.event.addListener(map, "click", function() {
               infobox.close();
+              markeri.setMap(null);
             });
           }
         }

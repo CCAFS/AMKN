@@ -103,7 +103,7 @@ if ($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
 
 $posts = query_posts($args);
 global $wp_query;
-if ($posts->post_type != 'ccafs_sites')
+if (get_query_var('post_type') != 'ccafs_sites')
   echo "<h3>Found " . $wp_query->found_posts . "<br><i style='font-family: -webkit-body;font-size: 0.75em;'>" . substr_replace(trim($filt), "", -1) . "</i></h3>";
 $tmpregion = '';
 ?>
@@ -226,6 +226,7 @@ while (have_posts()) : the_post();
           $village = get_post_meta($post->ID, 'village', true);
           $city = get_post_meta($post->ID, 'city', true);
           $area = get_post_meta($post->ID, 'area', true);
+          $overview = get_post_meta($post->ID, 'Overview', true);
           if ($village)
             $showLocality = $village;
           else if ($city)
@@ -241,9 +242,10 @@ while (have_posts()) : the_post();
             <!--<a href="<?php // the_permalink();    ?>"><img class="image" src="<?php // echo $staticMapURL;    ?>" /></a>-->
             <p>
               <?php // echo $tEx;  ?>
-              <span class="sidemap-labels">Site ID:</span> <?php echo $sideId; ?><br>
-              <span class="sidemap-labels">Sampling Frame Name:</span> <?php echo $blockName; ?><br>
-              <span class="sidemap-labels">Town:</span> <?php echo $showLocality; ?>          
+              <!--<span class="sidemap-labels">Site ID:</span> <?php echo $sideId; ?><br>-->
+              <!--<span class="sidemap-labels">Sampling Frame Name:</span> <?php echo $blockName; ?><br>-->
+              <span class="sidemap-labels">Town:</span> <?php echo $showLocality."."; ?><br>
+              <span class="sidemap-over"><?php echo $overview?></span>
             </p>         
           </div>
 
