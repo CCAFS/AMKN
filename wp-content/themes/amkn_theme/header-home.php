@@ -73,7 +73,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/tundra/tundra.css" />
     <link rel="stylesheet" href="<?php
     bloginfo('stylesheet_url');
-    echo '?ver=2.2';
+    echo '?ver=2.3';
     ?>" type="text/css" media="screen" />
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
     <script type="text/javascript">

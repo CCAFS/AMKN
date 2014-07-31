@@ -183,6 +183,8 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
           The AMKN map allows users to explore various forms of agro-climatic information from diverse sources, in a user friendly way that meets the needs of different users regardless of their technical background.
         </p>
         <br>
+        <p >For more information on AMKN, visit the <a href="./about/">About</a> page.</p>
+        <p class="chkmsg">&nbsp;&nbsp;<input type="checkbox" id="chk_showmsg" onchange="applyShowMsg();">Do not show this message again</p>
       </div>
 
       <div id="whatonthemap" class="modal"> 
@@ -196,12 +198,11 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
         <p><img src="<?php bloginfo('template_directory'); ?>/images/ccafs_activities-mini.png" alt="">  <strong>CCAFS activities</strong> – Descriptions of specific past and ongoing research being conducted by CCAFS and its partners, including date, location and budget information</p>
         <br>
       </div>
-      <div id="info" class="left">
-        <p >For more information on AMKN, visit the <a href="./about/">About</a> page.</p>
-        <p class="chkmsg">&nbsp;&nbsp;<input type="checkbox" id="chk_showmsg" onchange="applyShowMsg();">Do not show this message again</p>
+      <div id="info" class="left">        
         <a id="gotoamkn" onclick="closeLandingPage()">Go to AMKN</a>
         <a id="tour" onclick="closeLandingPage();
               tour()">Start tour</a>
+            &nbsp;&nbsp;&nbsp;
       </div>
 
     </div>
