@@ -183,8 +183,13 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
           The AMKN map allows users to explore various forms of agro-climatic information from diverse sources, in a user friendly way that meets the needs of different users regardless of their technical background.
         </p>
         <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
         <p >For more information on AMKN, visit the <a href="./about/">About</a> page.</p>
-        <p class="chkmsg">&nbsp;&nbsp;<input type="checkbox" id="chk_showmsg" onchange="applyShowMsg();">Do not show this message again</p>
+        <p class="chkmsg"><input type="checkbox" id="chk_showmsg" onchange="applyShowMsg();">&nbsp;Do not show this message again</p>
       </div>
 
       <div id="whatonthemap" class="modal"> 

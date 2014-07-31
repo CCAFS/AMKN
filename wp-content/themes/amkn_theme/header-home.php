@@ -71,10 +71,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
     <link rel="icon" type="image/png" href="<?php bloginfo('template_directory'); ?>/images/favicon.png" />
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/tundra/tundra.css" />
-    <link rel="stylesheet" href="<?php
-    bloginfo('stylesheet_url');
-    echo '?ver=2.3';
-    ?>" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php bloginfo('stylesheet_url') ?>?ver=2.3" type="text/css" media="screen" />
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
     <script type="text/javascript">
       var djConfig = {
@@ -253,9 +250,9 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
         });
 
         var a = getCookie("showmsg");
-        if (null != a && "" != a && "true" == a){
+        if (null != a && "" != a && "true" == a) {
           noticeInitial();
-        }else {
+        } else {
           // Remodal-master http://vodkabears.github.io/remodal/ 
           openLandingPage();
         }
@@ -396,29 +393,29 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
     <!--  Remodal-master  "version": "0.1.3" http://vodkabears.github.io/remodal/ -->
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.css">
     <script src="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.min.js"></script>
-      <?php wp_head(); ?>
-      <script>
-        (function(i, s, o, g, r, a, m) {
-          i['GoogleAnalyticsObject'] = r;
-          i[r] = i[r] || function() {
-            (i[r].q = i[r].q || []).push(arguments)
-          }, i[r].l = 1 * new Date();
-          a = s.createElement(o),
-                  m = s.getElementsByTagName(o)[0];
-          a.async = 1;
-          a.src = g;
-          m.parentNode.insertBefore(a, m)
-        })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+    <?php wp_head(); ?>
+    <script>
+      (function(i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function() {
+          (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+                m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+      })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
 
-        ga('create', '<?php echo get_option('google_analytics'); ?>', 'amkn.org');
-        ga('create', 'UA-22478956-2', 'amkn.org', {'name': 'newTracker'});
-        ga('send', 'pageview');
-        ga('newTracker.send', 'pageview');
+      ga('create', '<?php echo get_option('google_analytics'); ?>', 'amkn.org');
+      ga('create', 'UA-22478956-2', 'amkn.org', {'name': 'newTracker'});
+      ga('send', 'pageview');
+      ga('newTracker.send', 'pageview');
 
 
-      </script>        
-    </head>
-    <body class="tundra">
+    </script>        
+  </head>
+  <body class="tundra">
 
 
 
