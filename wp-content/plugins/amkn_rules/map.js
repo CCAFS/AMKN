@@ -1153,13 +1153,9 @@ function updateDataLayerTree(cb)
     showas = showas === "" ? "" : "&as=" + showas;
     showms = showms == "" ? "" : "&ms=" + showms;
     showccc = showccc === "" ? "" : "&ccc=" + showccc;
-
-    var newURL = '';
-    if (points.length == 6) {
-        newURL = dataUrl  + '.csv';
-    }else{
-        newURL = baseDataURL + "?fmt=csv" + showpts + showimp + showas + showms + showcl + showccc + showaz;
-    }
+    
+    var newURL = baseDataURL + "?fmt=csv" + showpts + showimp + showas + showms + showcl + showccc + showaz;
+    
     if (cb) {
         dataLayer.clear();
         dataLayerVt.clear();

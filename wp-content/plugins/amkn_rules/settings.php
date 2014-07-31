@@ -242,6 +242,8 @@ function AMKN_Save($postid) {
       updateAllNearestBMSite();
     }
   }
+  $this_dir = dirname(__FILE__);
+  rmdir($this_dir . "/tmp");
 }
 
 // [esrimap foo="foo-value"]
@@ -456,72 +458,81 @@ function esriMapPoints($atts) {
   $cccO = isset($ccc) ? "IN" : "BETWEEN";
   $azO = isset($az) ? "IN" : "BETWEEN";
 
-  $qargs = array(
-    'post_type' => isset($postTypes) ? explode(",", $postTypes) : array('none'),
-    'posts_per_page' => '-1',
-    'tax_query' => array(
-      'relation' => 'AND',
-      array(
-        'taxonomy' => 'impacts',
-        'field' => 'id',
-        'terms' => $impQ,
-        'operator' => $impO,
-      ),
-      array(
-        'taxonomy' => 'adaptation_strategy',
-        'field' => 'id',
-        'terms' => $asQ,
-        'operator' => $asO,
-      ),
-      array(
-        'taxonomy' => 'agroecological_zones',
-        'field' => 'id',
-        'terms' => $azQ,
-        'operator' => $azO,
-      ),
-      array(
-        'taxonomy' => 'climate_change_challenges',
-        'field' => 'id',
-        'terms' => $cccQ,
-        'operator' => $cccO,
-      ),
-      array(
-        'taxonomy' => 'mitigation_strategy',
-        'field' => 'id',
-        'terms' => $msQ,
-        'operator' => $msO,
-      ),
-      array(
-        'taxonomy' => 'crops_livestock',
-        'field' => 'id',
-        'terms' => $clQ,
-        'operator' => $clO,
-      ),
-    )
-  );
-  $output = '';
-  $contentQuery = new WP_Query($qargs);
-  $trans = array(" " => ",");
-  $output .= 'Latitude,Longitude,Location,CID,Type' . "\n";
-  while ($contentQuery->have_posts()) : $contentQuery->the_post();
-    $row = get_post_meta($contentQuery->post->ID);
-    $tmpGeoPoint = '';
-    if ($row['geoRSSPoint']) {
-      foreach ($row['geoRSSPoint'] as $key => $value) {
-        if (trim($value) != '') {
-          $geoPoint = strtr($value, $trans);
-          if (($geoPoint && $tmpGeoPoint == '' ) || $geoPoint != $tmpGeoPoint) {
-            if ($contentQuery->post->post_type == 'ccafs_activities')
-              $output .= $geoPoint . ",\"" . preg_replace('/\s+?(\S+)?$/', '', substr(the_title("", "", false), 0, 60)) . "...|" . implode('#', $row['contactName']) . '|' . implode('#', $row['theme']) . "\",\"" . $contentQuery->post->ID . "\",\"" . $contentQuery->post->post_type . "\"" . "\n";
-            else if ($contentQuery->post->post_type == 'ccafs_sites')
-              $output .= $geoPoint . ",\"" . preg_replace('/\s+?(\S+)?$/', '', the_title("", "", false)) . "|" . $row['siteId'][0] . "|" . $row['siteCountry'][0] . "\",\"" . $contentQuery->post->ID . "\",\"" . $contentQuery->post->post_type . "\"" . "\n";
-            else
-              $output .= $geoPoint . ",\"" . preg_replace('/\s+?(\S+)?$/', '', substr(the_title("", "", false), 0, 80)) . "...|" . get_the_date() . "\",\"" . $contentQuery->post->ID . "\",\"" . $contentQuery->post->post_type . "\"" . "\n";
+  $this_dir = dirname(__FILE__);
+  $filename = "mapPoints" . $postTypes . ".csv";
+  if (file_exists($this_dir . "/tmp/" . $filename)) {
+    $file = fopen($this_dir . "/tmp/" . $filename, "r");
+    // read the contents  
+    $contents = fread($file, filesize($this_dir . "/tmp/" . $filename));
+    fclose($file);  
+    echo $contents; 
+  } else {
+    $qargs = array(
+      'post_type' => isset($postTypes) ? explode(",", $postTypes) : array('none'),
+      'posts_per_page' => '-1',
+      'tax_query' => array(
+        'relation' => 'AND',
+        array(
+          'taxonomy' => 'impacts',
+          'field' => 'id',
+          'terms' => $impQ,
+          'operator' => $impO,
+        ),
+        array(
+          'taxonomy' => 'adaptation_strategy',
+          'field' => 'id',
+          'terms' => $asQ,
+          'operator' => $asO,
+        ),
+        array(
+          'taxonomy' => 'agroecological_zones',
+          'field' => 'id',
+          'terms' => $azQ,
+          'operator' => $azO,
+        ),
+        array(
+          'taxonomy' => 'climate_change_challenges',
+          'field' => 'id',
+          'terms' => $cccQ,
+          'operator' => $cccO,
+        ),
+        array(
+          'taxonomy' => 'mitigation_strategy',
+          'field' => 'id',
+          'terms' => $msQ,
+          'operator' => $msO,
+        ),
+        array(
+          'taxonomy' => 'crops_livestock',
+          'field' => 'id',
+          'terms' => $clQ,
+          'operator' => $clO,
+        ),
+      )
+    );
+    $output = '';
+    $contentQuery = new WP_Query($qargs);
+    $trans = array(" " => ",");
+    $output .= 'Latitude,Longitude,Location,CID,Type' . "\n";
+    while ($contentQuery->have_posts()) : $contentQuery->the_post();
+      $row = get_post_meta($contentQuery->post->ID);
+      $tmpGeoPoint = '';
+      if ($row['geoRSSPoint']) {
+        foreach ($row['geoRSSPoint'] as $key => $value) {
+          if (trim($value) != '') {
+            $geoPoint = strtr($value, $trans);
+            if (($geoPoint && $tmpGeoPoint == '' ) || $geoPoint != $tmpGeoPoint) {
+              if ($contentQuery->post->post_type == 'ccafs_activities')
+                $output .= $geoPoint . ",\"" . preg_replace('/\s+?(\S+)?$/', '', substr(the_title("", "", false), 0, 60)) . "...|" . implode('#', $row['contactName']) . '|' . implode('#', $row['theme']) . "\",\"" . $contentQuery->post->ID . "\",\"" . $contentQuery->post->post_type . "\"" . "\n";
+              else if ($contentQuery->post->post_type == 'ccafs_sites')
+                $output .= $geoPoint . ",\"" . preg_replace('/\s+?(\S+)?$/', '', the_title("", "", false)) . "|" . $row['siteId'][0] . "|" . $row['siteCountry'][0] . "\",\"" . $contentQuery->post->ID . "\",\"" . $contentQuery->post->post_type . "\"" . "\n";
+              else
+                $output .= $geoPoint . ",\"" . preg_replace('/\s+?(\S+)?$/', '', substr(the_title("", "", false), 0, 80)) . "...|" . get_the_date() . "\",\"" . $contentQuery->post->ID . "\",\"" . $contentQuery->post->post_type . "\"" . "\n";
+            }
+            $tmpGeoPoint = $geoPoint;
           }
-          $tmpGeoPoint = $geoPoint;
         }
       }
-    }
 //  $geoPoint=strtr(get_post_meta($contentQuery->post->ID, 'geoRSSPoint', true), $trans);
 //  if($geoPoint) {
 //    echo $geoPoint.",\"".the_title( "", "", false )."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
@@ -531,26 +542,27 @@ function esriMapPoints($atts) {
 //         echo "NP".",\"".the_title( "", "", false )."\",\"".$contentQuery->post->ID."\",\"".$contentQuery->post->post_type."\"" . "\n";
 //
 //    }
-  endwhile;
-  echo $output;
-//  $file = fopen("mapPoints".$postTypes.".csv","w+");
-//  fwrite($file,$output);
-//  fclose($file); 
-  wp_reset_postdata();
+    endwhile;
+    echo $output;
+    mkdir($this_dir . "/tmp", 0700);
+    $file = fopen($this_dir . "/tmp/" . $filename, "w+");
+    fwrite($file, $output);
+    fclose($file);
+    wp_reset_postdata();
+  }
 }
 
-function combinatoria ($items,$size) {
+function combinatoria($items, $size) {
 //  $items = explode(',',$string);
 //  echo count($items);
-  if($size<=0) {
+  if ($size <= 0) {
     echo '<br>';
   } else {
-    foreach ($items as $key=>$item) {
-      echo $item.', ';
+    foreach ($items as $key => $item) {
+      echo $item . ', ';
       unset($items[$key]);
-      combinatoria($items, $size-1);      
+      combinatoria($items, $size - 1);
     }
-    
   }
 }
 
@@ -668,16 +680,16 @@ function nearestPosts($siteId) {
   foreach ($contentQuery->posts as $post) {
     switch ($post->post_type) {
       case "ccafs_activities":
-        $count['a']++;
+        $count['a'] ++;
         break;
       case "video_testimonials":
-        $count['v']++;
+        $count['v'] ++;
         break;
       case "amkn_blog_posts":
-        $count['b']++;
+        $count['b'] ++;
         break;
       case "photo_testimonials":
-        $count['p']++;
+        $count['p'] ++;
         break;
     }
 //    $count++;
