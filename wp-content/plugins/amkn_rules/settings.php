@@ -108,6 +108,28 @@ add_action('wp_insert_post', 'AMKN_Save');
 //add_action('publish_video_testimonials', 'AMKN_Save');
 //add_action('publish_amkn_blog_posts', 'AMKN_Save');
 
+function deleteDirectory($dir) {
+  if (!file_exists($dir)) {
+    return true;
+  }
+
+  if (!is_dir($dir)) {
+    return unlink($dir);
+  }
+
+  foreach (scandir($dir) as $item) {
+    if ($item == '.' || $item == '..') {
+      continue;
+    }
+
+    if (!deleteDirectory($dir . "/" . $item)) {
+      return false;
+    }
+  }
+
+  return rmdir($dir);
+}
+
 function AMKN_Save($postid) {
   global $wpdb;
   if (defined('DOING_AUTOSAVE') && DOING_AUTOSAVE) {
@@ -243,7 +265,7 @@ function AMKN_Save($postid) {
     }
   }
   $this_dir = dirname(__FILE__);
-  rmdir($this_dir . "/tmp");
+  deleteDirectory($this_dir . "/tmp");
 }
 
 // [esrimap foo="foo-value"]
@@ -464,8 +486,8 @@ function esriMapPoints($atts) {
     $file = fopen($this_dir . "/tmp/" . $filename, "r");
     // read the contents  
     $contents = fread($file, filesize($this_dir . "/tmp/" . $filename));
-    fclose($file);  
-    echo $contents; 
+    fclose($file);
+    echo $contents;
   } else {
     $qargs = array(
       'post_type' => isset($postTypes) ? explode(",", $postTypes) : array('none'),
