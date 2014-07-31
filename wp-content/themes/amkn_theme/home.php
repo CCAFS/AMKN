@@ -174,13 +174,13 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
       <div id="whatisamkn" class="modal"> 
         <h1><strong>What is AMKN?</strong></h1>
         <p>
-          The Climate Change Adaptation and Mitigation Knowledge Network (AMKN) is a platform for accessing and sharing current agricultural adaptation and mitigation knowledge from the CGIAR and its partners. It brings together farmers’ realities on the ground and links them with multiple and combined research outputs, to highlight current challenges and inspire new ideas. It aims to assist scientists and stakeholders to assess and adjust their actions in order to ensure future food security, improved smallholder farmers’ resilience and livelihoods.
+          The AMKN is a platform for accessing and sharing current agricultural adaptation and mitigation knowledge from the CGIAR and its partners. 
         </p>
         <p>  
-          AMKN aggregates, visualizes and interconnects research outputs from the CGIAR Research Program on Climate Change, Agriculture and Food Security (CCAFS) focused on addressing risk management, progressive adaptation and pro-poor mitigation options for agricultural and food systems.
+          It provides a visual display of farmers’ on-the-ground climate realities and transforms hard research data into interactive multimedia that can be easily understood by all users.
         </p>
         <p>  
-          The AMKN map allows users to explore a large volume of climatic, environmental, and social information from diverse sources, including data visualization tools, map layers, and multimedia. 
+          The AMKN map allows users to explore various forms of agro-climatic information from diverse sources, in a user friendly way that meets the needs of different users regardless of their technical background.
         </p>
         <br>
       </div>
@@ -197,7 +197,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
         <br>
       </div>
       <div id="info" class="left">
-        <p >For more information on AMKN, visit the About page.</p>
+        <p >For more information on AMKN, visit the <a href="./about/">About</a> page.</p>
         <p class="chkmsg">&nbsp;&nbsp;<input type="checkbox" id="chk_showmsg" onchange="applyShowMsg();">Do not show this message again</p>
         <a id="gotoamkn" onclick="closeLandingPage()">Go to AMKN</a>
         <a id="tour" onclick="closeLandingPage();
