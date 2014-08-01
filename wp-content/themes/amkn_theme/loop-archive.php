@@ -119,7 +119,7 @@ while (have_posts()) : the_post();
   $region = get_post_meta($post->ID, 'ccafs_region', true);
   ?>
   <?php if ($postType == 'ccafs_sites'): ?>
-    <div id="<?php echo $post->ID ?>" class="<?php echo $postType; ?>" onmouseover="openDialog(markerArray[<?php echo $post->ID ?>])">
+    <div id="<?php echo $post->ID ?>" class="<?php echo $postType." ".str_replace(' ', '', $region); ?>" onmouseover="openDialog(markerArray[<?php echo $post->ID ?>])">
     <?php else: ?>
       <div id="<?php echo $post->ID ?>" class="videocolumn <?php echo $postType; ?>" style="position: relative">
         <?php if (strtotime($_COOKIE['lastDateTmp']) < strtotime(get_the_date())): ?>

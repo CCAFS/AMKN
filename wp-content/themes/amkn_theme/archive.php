@@ -307,7 +307,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 var contentString = infoWindowContent(results.features[i]);
                 infobox = getBox(contentString);
                 infobox.open(map, marker);
-                
+
                 var imagei = "<?php bloginfo('template_directory'); ?>/images/ccafs_sites-miniI.png";
                 var coords = results.features[i].geometry.coordinates;
                 var latLng = new google.maps.LatLng(coords[1], coords[0]);
@@ -332,7 +332,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 var contentString = infoWindowContent(results.features[i]);
                 infobox = getBox(contentString);
                 infobox.open(map, marker);
-                
+
                 var imagei = "<?php bloginfo('template_directory'); ?>/images/ccafs_sites-miniI.png";
                 var coords = results.features[i].geometry.coordinates;
                 var latLng = new google.maps.LatLng(coords[1], coords[0]);
@@ -388,12 +388,28 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
           google.maps.event.trigger(marker, 'dblclick');
         }
 
-        function updateMap() {
-          var script = document.createElement('script');
-          script.src = 'http://amkn.local/sitesgeojson/?rgs=East%20Africa';
-          var s = document.getElementsByTagName('script')[0];
-          s.parentNode.insertBefore(script, s);
-          google.maps.event.trigger(map, 'resize');
+        function filterMap(rgs) {
+          var myLatlng;
+          var zoom = 4;
+          if (rgs == 'East Africa') {
+            myLatlng = new google.maps.LatLng(-0.314705, 35.022805);
+          } else if (rgs == 'West Africa') {
+            myLatlng = new google.maps.LatLng(13.3686965, -5.762451);
+          } else if (rgs == "Latin America") {
+            myLatlng = new google.maps.LatLng(15.2, -87.883333);
+          } else if (rgs == 'Southeast Asia') {
+            myLatlng = new google.maps.LatLng(21.033333, 105.85);
+          } else if (rgs == 'South Asia') {
+            myLatlng = new google.maps.LatLng(27.5446255, 83.4506495);
+          } else if (rgs == 'all') {
+            myLatlng = new google.maps.LatLng(12.968888, 10.138147);
+            zoom = 2;
+            rgs = 'ccafs_sites';
+          }
+          map.setZoom(zoom);
+          map.panTo(myLatlng);
+          $(".ccafs_sites").css("display", "none");
+          $("."+rgs.replace(" ", "")).css("display", "block");
         }
         google.maps.event.addDomListener(window, 'load', initialize);
       </script>
@@ -410,7 +426,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 &nbsp;
               </label>
               <label for="remember">
-                <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="all" <?php echo (!isset($_GET['region']) || $_GET['region'] == 'all') ? 'checked' : '' ?>>Show all
+                <input id="ong" name="region" onchange="filterMap(this.value)" type="radio" value="all" <?php echo (!isset($_GET['region']) || $_GET['region'] == 'all') ? 'checked' : '' ?>>Show all
               </label>
             </div>
             <div class="pure-u-1-6">
@@ -418,7 +434,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 &nbsp;
               </label>
               <label for="remember">
-                <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="East Africa" <?php echo ($_GET['region'] == 'East Africa') ? 'checked' : '' ?>>East Africa
+                <input id="ong" name="region" onchange="filterMap(this.value)" type="radio" value="East Africa" <?php echo ($_GET['region'] == 'East Africa') ? 'checked' : '' ?>>East Africa
               </label>
             </div>
             <div class="pure-u-1-6">
@@ -426,7 +442,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 &nbsp;
               </label>
               <label for="remember">
-                <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="West Africa" <?php echo ($_GET['region'] == 'West Africa') ? 'checked' : '' ?>>West Africa
+                <input id="ong" name="region" onchange="filterMap(this.value)" type="radio" value="West Africa" <?php echo ($_GET['region'] == 'West Africa') ? 'checked' : '' ?>>West Africa
               </label>
             </div>
             <!--            <div class="pure-u-1-6">
@@ -450,12 +466,13 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 &nbsp;
               </label>
               <label for="remember">
-                <input id="ong" name="region" onchange="this.form.submit()" type="radio" value="South Asia" <?php echo ($_GET['region'] == 'South Asia') ? 'checked' : '' ?>>South Asia
+                <input id="ong" name="region" onchange="filterMap(this.value)" type="radio" value="South Asia" <?php echo ($_GET['region'] == 'South Asia') ? 'checked' : '' ?>>South Asia
               </label>
             </div>
           </div>            
-        </fieldset>  
+        </fieldset>        
       </form>
+      <!--<button id="search" class="pure-button pure-button-primary" onclick="updateMap()">Test</button>-->
       <div style="height: 400px; width: 700px;float:left;margin-bottom: 20px" id="map-canvas"></div>
       <div id="sites" style="height: 400px; width: 310px;float:left; overflow: auto;margin-bottom: 20px">
         <?php get_template_part('loop', 'archive'); ?>

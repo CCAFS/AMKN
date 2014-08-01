@@ -1873,7 +1873,7 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
 .remodal #info{
     width: 100%;
     position: relative;
-    min-height: 35px;
+    min-height: 50px;
 }
 .remodal a#gotoamkn{
     background: #433E5A;
