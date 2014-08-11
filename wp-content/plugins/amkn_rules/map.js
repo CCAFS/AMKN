@@ -814,7 +814,8 @@ function onListHover(id, url) {
 
 }
 function onFeatureLeave() {
-    if(map.graphics) map.graphics.clear();
+    if (map.graphics)
+        map.graphics.clear();
     hoverLayer.clear();
 }
 function showTT(evt) {
@@ -1153,9 +1154,9 @@ function updateDataLayerTree(cb)
     showas = showas === "" ? "" : "&as=" + showas;
     showms = showms == "" ? "" : "&ms=" + showms;
     showccc = showccc === "" ? "" : "&ccc=" + showccc;
-    
+
     var newURL = baseDataURL + "?fmt=csv" + showpts + showimp + showas + showms + showcl + showccc + showaz;
-    
+
     if (cb) {
         dataLayer.clear();
         dataLayerVt.clear();
@@ -1625,6 +1626,8 @@ function getViewTree()
                         break;
                     case"lvl":
                         lvlMp = theMap[mp].split("=")[1];
+                        if (lvlMp == '-1')
+                            lvlMp = 3;
                         break;
                     case"lyr":
                         vLyr = theMap[mp].split("=")[1];
