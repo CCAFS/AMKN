@@ -178,7 +178,7 @@ $postType = "";
       setTimeout(function() {
         new jBox('Notice', {
           id: 'jBoxInit',
-          content: 'A new content is available!',
+          content: 'New contents are available!',
 //          closeButton: true,
           attributes: {
             x: 'right',
@@ -203,7 +203,7 @@ $postType = "";
                     x: 15,
                     y: 10
                   },
-                  autoClose: false,
+                  autoClose: 60000,
                   closeButton: true,
                 });
               }
@@ -220,7 +220,7 @@ $postType = "";
                       x: 15,
                       y: 10
                     },
-                    autoClose: false,
+                    autoClose: 60000,
                     closeButton: true,
                   });
                 }, 500);
@@ -238,7 +238,7 @@ $postType = "";
                       x: 15,
                       y: 10
                     },
-                    autoClose: false,
+                    autoClose: 60000,
                     closeButton: true,
                   })
                 }, 1000);
