@@ -22,26 +22,26 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
   <div class="tundra">
 
     <div <?php echo $style ?> id="yellow_navbar">       
-      <div class="taxonomies hide" dojoType="dijit.form.DropDownButton" id="rsLayers">
+      <div class="taxonomies hide" data-dojo-type="dijit.form.DropDownButton" id="rsLayers">
         <span>Display Data Layers</span>
-        <div dojoType="dijit.TooltipDialog">
-          <button dojoType="dijit.form.Button" type="submit" class="checkCtrls amknButton"><a>Close</a></button>
-          <!--    <button onClick="updateLegend();" dojoType="dijit.form.Button" type="submit" class="checkCtrls amknButton"><a>[Show Data Layer Legend]</a></button>-->
-          <button class="checkCtrls amknButton" id="aLayer" dojoType="dijit.form.Button"  onclick="updateLayerVisibility(null, visLyr);">
+        <div data-dojo-type="dijit.TooltipDialog">
+          <button data-dojo-type="dijit.form.Button" type="submit" class="checkCtrls amknButton"><a>Close</a></button>
+          <!--    <button onClick="updateLegend();" data-dojo-type="dijit.form.Button" type="submit" class="checkCtrls amknButton"><a>[Show Data Layer Legend]</a></button>-->
+          <button class="checkCtrls amknButton" id="aLayer" data-dojo-type="dijit.form.Button"  onclick="updateLayerVisibility(null, visLyr);">
             Hide All Layers
           </button>
           <br />
-          <div id="tslider" dojoType="dijit.form.HorizontalSlider" name="tslider" width="350"
+          <div id="tslider" data-dojo-type="dijit.form.HorizontalSlider" name="tslider" width="350"
                onChange="setTrans(arguments[0] / 100);"
                value="100" maximum="100" minimum="0" pageIncrement="100"
                showButtons="true" intermediateChanges="true" slideDuration="500" style="position:relative; width:350px;">
-            <ol dojoType="dijit.form.HorizontalRuleLabels" container="topDecoration"
+            <ol data-dojo-type="dijit.form.HorizontalRuleLabels" container="topDecoration"
                 style="height:1.5em;font-size:75%;color:gray;">
               <li>Active Data Layer Opacity
               </li>
             </ol>
 
-            <ol dojoType="dijit.form.HorizontalRuleLabels" container="bottomDecoration"
+            <ol data-dojo-type="dijit.form.HorizontalRuleLabels" container="bottomDecoration"
                 style="height:1em;font-size:75%;color:gray;">
               <li>
                 0.0
@@ -64,12 +64,12 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 
     <div id="cBlock" style='<?php echo $size ?>'>
       <div id="showContent" class="navigating">
-        <div id="popContent" class="layers-box" dojoType="dijit.TitlePane" title="Content" closable="true" open="true"> </div>
+        <div id="popContent" class="layers-box" data-dojo-type="dijit.TitlePane" title="Content" closable="true" open="true"> </div>
       </div> 
       <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/tundra/tundra.css" />
-      <div dojoType="dijit.layout.BorderContainer" design="headline" gutters="true" liveSplitters="false" id="borderContainer" style='<?php echo $size ?>'>
+      <div data-dojo-type="dijit.layout.BorderContainer" design="headline" gutters="true" liveSplitters="false" id="borderContainer" style='<?php echo $size ?>'>
 
-        <div id="map-side" dojoType="dijit.layout.ContentPane" splitter="false" region="center" style="widows: 100%; display: inline; overflow:hidden;">
+        <div id="map-side" data-dojo-type="dijit.layout.ContentPane" splitter="false" region="center" style="widows: 100%; display: inline; overflow:hidden;">
 
           <div <?php echo $style ?> id="tb3" class="hide"> 
           </div>
@@ -78,7 +78,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
             <?php endwhile; // end of the loop. ?>
         </div>
 
-        <div id="onthemap" <?php echo $style ?> dojoType="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="259" splitter="<?php echo $splitter ?>" region="left" style="width: 259px;" startExpanded="true">
+        <div id="onthemap" <?php echo $style ?> data-dojo-type="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="259" splitter="<?php echo $splitter ?>" region="left" style="width: 259px;" startExpanded="true">
           <!--Here is the calling to the template that show the left menu-->
           <?php get_template_part('content_type', 'filters_list2'); ?>          
           <div id="panel-buttons">
@@ -113,7 +113,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
             <div id="basemapGallery" class="drop-panel" ></div> 
             <div id="layersDiv" class="drop-panel" data-dojo-type="dijit/layout/AccordionContainer" style="height: 100%;">
               <div id="accord_data_layer" data-dojo-type="dijit/layout/ContentPane" title="Data Layers" selected="true" style="overflow: hidden;">
-                <button class="checkCtrls amknButton" id="btnDeselectAll" dojoType="dijit.form.Button"  onclick="hideLayers()">
+                <button class="checkCtrls amknButton" id="btnDeselectAll" data-dojo-type="dijit.form.Button"  onclick="hideLayers()">
                   Hide All Layers
                 </button>
                 <div id="dataLayers" style="width: 100%; height: 100%;" ></div>
@@ -161,7 +161,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
     <div id="featured">
       <div id="container">
         <h1 class="feat-maintitle">The Newest on AMKN</h1>
-        <!--<button onClick="feedback_widget.show()" dojoType="dijit.form.Button" type="submit" class="amknButton msGenButton right"><a>Community <br />Feedback</a></button>-->
+        <!--<button onClick="feedback_widget.show()" data-dojo-type="dijit.form.Button" type="submit" class="amknButton msGenButton right"><a>Community <br />Feedback</a></button>-->
         <?php get_template_part('teaser', 'video'); ?><!-- end column 1 -->
         <?php get_template_part('teaser', 'photo'); ?><!-- end column 2 -->
         <?php get_template_part('teaser', 'blog'); ?><!-- end column 3 -->
