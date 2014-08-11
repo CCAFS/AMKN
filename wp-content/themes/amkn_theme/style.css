@@ -8,9 +8,9 @@
     font-family: 'open_sanscondensed_light';
     src: url('font/OpenSans-CondLight-webfont.eot');
     src: url('font/OpenSans-CondLight-webfont.eot?#iefix') format('embedded-opentype'),
-         url('font/OpenSans-CondLight-webfont.woff') format('woff'),
-         url('font/OpenSans-CondLight-webfont.ttf') format('truetype'),
-         url('font/OpenSans-CondLight-webfont.svg#open_sanscondensed_light') format('svg');
+        url('font/OpenSans-CondLight-webfont.woff') format('woff'),
+        url('font/OpenSans-CondLight-webfont.ttf') format('truetype'),
+        url('font/OpenSans-CondLight-webfont.svg#open_sanscondensed_light') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -19,9 +19,9 @@
     font-family: 'open_sanscondensed_bold';
     src: url('font/OpenSans-CondBold-webfont.eot');
     src: url('font/OpenSans-CondBold-webfont.eot?#iefix') format('embedded-opentype'),
-         url('font/OpenSans-CondBold-webfont.woff') format('woff'),
-         url('font/OpenSans-CondBold-webfont.ttf') format('truetype'),
-         url('font/OpenSans-CondBold-webfont.svg#open_sanscondensed_light') format('svg');
+        url('font/OpenSans-CondBold-webfont.woff') format('woff'),
+        url('font/OpenSans-CondBold-webfont.ttf') format('truetype'),
+        url('font/OpenSans-CondBold-webfont.svg#open_sanscondensed_light') format('svg');
     font-weight: normal;
     font-style: normal;
 
@@ -151,10 +151,10 @@ ul.navigation li {
     padding: 0.35em 0em 0.5em 0em;
 }
 ul.navigation li:hover { 
-     background-color: #FFA300;
+    background-color: #FFA300;
 }
 ul.navigation li:hover .sub-menu {
-     display: block;
+    display: block;
 }
 
 
@@ -187,7 +187,7 @@ ul.navigation li ul.sub-menu li {
 }
 
 ul.navigation li ul.sub-menu li:hover {
-     background-color: #c57f02;
+    background-color: #c57f02;
 }
 
 .current, .current-menu-item, .current_page_item{
@@ -358,8 +358,8 @@ ul.homebox-list li a {
     color: #444;
 }
 ul.homebox-list li img {
-  max-width: 60px;
-  vertical-align: middle;
+    max-width: 60px;
+    vertical-align: middle;
 }
 ul.zoom_in-list li {
     padding-bottom: 35px;
@@ -434,9 +434,9 @@ h1.feat-maintitle {
     height: 130px;
 }
 .ccafs_activities img.image {
-  float: left;
-  margin: 0px 8px 11px 11px;
-  border-radius: 24%;
+    float: left;
+    margin: 0px 8px 11px 11px;
+    border-radius: 24%;
 }
 .ccafs_sites { 
     width: 290px;
@@ -451,7 +451,7 @@ h1.feat-maintitle {
 }
 
 .ccafs_sites p {
-  padding-left: 25px!important;
+    padding-left: 25px!important;
 }
 
 .ccafs_sites_selected { 
@@ -468,9 +468,9 @@ h1.feat-maintitle {
 }
 
 .ccafs_sites img.image {
-  float: left;
-  margin: 10px 8px 11px 11px;
-  border-radius: 24%;
+    float: left;
+    margin: 10px 8px 11px 11px;
+    border-radius: 24%;
 }
 .amkn_blog_posts{
     width: 99%;
@@ -605,7 +605,7 @@ img.videotitleico {
 }
 .column > a > span.button-more {
     position: absolute;
- 
+
     right: 0.5em;
     bottom: 0.5em;
 }
@@ -1172,7 +1172,7 @@ ul.side-more-list a {
     text-decoration: none !important;
     color: #55322B;
     margin-left: 4px;
-     
+
 }
 .entry {
     margin-bottom: 5px;
@@ -1423,7 +1423,7 @@ ul, ol, .m3re-item p {
 #column2-info {
     background: none repeat scroll 0 0 #FFFFFF;
     margin: 5px;
-    max-height: 312px;
+    max-height: 275px;
     overflow: auto;
     padding: 10px;
 }
@@ -1592,13 +1592,13 @@ ul#vtab {
     padding-top: 0;
 }
 #vtab > ul > li.selected {
-    
+
     border-right: 1px solid #F0F0F0 !important;
     box-shadow: 0 3px 4px #B9ABAB;
     z-index: -1;
 }
 #vtab > ul > li {
-    
+
     border-right: 1px solid #F0F0F0 !important;
 }
 #vtab > ul > li {
@@ -1693,7 +1693,7 @@ td.table-color1 {
 
 #tool h4 {
     font-size: 17px;
-    
+
     margin: 10px 0px;
 }
 
@@ -1723,7 +1723,7 @@ td.table-color1 {
 }
 #dijit_TitlePane_0_titleBarNode {
     background-image: url(http://amkn.local/wp-content/themes/amkn_theme/images/amkn_blog_posts-mini.png);
-    
+
 }
 
 
@@ -1749,7 +1749,7 @@ ul.dynatree-container img {
     height: 433px !important;
 }
 #accord_content_button, #accord_legend_button{
-font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
+    font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
 }
 
 #onthemap { 
@@ -1777,9 +1777,9 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
 }
 
 .esriSimpleSlider{
-     clear: left;
+    clear: left;
     top:3% !important;
-     
+
     left: 96% !important;
 }
 
@@ -1795,7 +1795,7 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
 
 
 #basemap-button {
-    
+
 }
 
 #panel-buttons{
@@ -1836,7 +1836,7 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
 
 #legend-button.panel-button.haslegend{ 
     background-image: url("images/layers_legend.png");
-    
+
 }
 #legend-button.panel-button.selected { 
     background-image: url("images/layers3.png"),url("images/buttons/09.png")!important;
@@ -1851,9 +1851,9 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
     background-image: url("images/filter3.png"),url("images/buttons/09.png")!important;
 }
 .source {
-  width: 100%;
-  position: absolute;
-  bottom: 1em;
+    width: 100%;
+    position: absolute;
+    bottom: 1em;
 
 }
 
@@ -1899,19 +1899,19 @@ font-family: open_sanscondensed_bold,trebuchet MS,Helvetica,sans-serif;
 }
 
 .info, .success, .warning, .error, .validation {
-border: 1px solid #E2E2E2;
-border-radius:.5em;
-/*margin: 10px 0px;*/
-padding:2px 10px 15px 50px;
-background-repeat: no-repeat;
-background-position: 10px center;
+    border: 1px solid #E2E2E2;
+    border-radius:.5em;
+    /*margin: 10px 0px;*/
+    padding:2px 10px 15px 50px;
+    background-repeat: no-repeat;
+    background-position: 10px center;
 }
 .info {
-color: #666666;
-font-size: 70%;
-background-color: #F3F3F3;
-background-image: url('images/infoMap.png');
-background-size:30px 30px;
+    color: #666666;
+    font-size: 70%;
+    background-color: #F3F3F3;
+    background-image: url('images/infoMap.png');
+    background-size:30px 30px;
 }
 
 .close_box {
@@ -1925,36 +1925,36 @@ background-size:30px 30px;
 }
 
 .close_box:hover {
-/*    float:right;
-    display:inline-block;
-    padding:2px 5px;
-    background:#ccc;
-    color:#fff;*/
+    /*    float:right;
+        display:inline-block;
+        padding:2px 5px;
+        background:#ccc;
+        color:#fff;*/
 }
 
 .generalInformation td {
-width: 160px;
-padding: 3px;
+    width: 160px;
+    padding: 3px;
 }
 
 #indicators table, #indicators tr{
-  border:1px solid black; 
-  background-color: #FFF;
-  border-collapse:collapse;
+    border:1px solid black; 
+    background-color: #FFF;
+    border-collapse:collapse;
 }
 
 #onthemap_splitter {
-  height: 537px!important;  
-  top: 17px!important; 
+    height: 537px!important;  
+    top: 17px!important; 
 }
 
 .top-banner {
-display: block;
-height: 30px;
-background: #f9d136;
-text-align: center;
-padding-top: 5px;
-/*text-indent: -9000px;*/
+    display: block;
+    height: 30px;
+    background: #f9d136;
+    text-align: center;
+    padding-top: 5px;
+    /*text-indent: -9000px;*/
 }
 
 #accord_data_layer {
@@ -1967,8 +1967,8 @@ padding-top: 5px;
 }
 
 .notice .image {
-/*    width: 60px;
-    height: 60px;*/
+    /*    width: 60px;
+        height: 60px;*/
     max-width: 120px;
     height: auto !important;
     /*margin-left: 14px;*/
@@ -1980,7 +1980,7 @@ padding-top: 5px;
 }
 
 .notice {
-  width: 190px;
+    width: 190px;
 }
 
 .gmap img{
@@ -2007,4 +2007,90 @@ padding-top: 5px;
     -webkit-box-shadow: 0 0  8px #FFF;
     box-shadow: 0 0 8px #FFF;
     border-radius: 10px 10px 10px 10px;
+}
+
+.CSSTableGenerator {
+    margin:0px;padding:0px;
+    width:100%;
+    box-shadow: 10px 10px 5px #888888;
+    border:1px solid #000000;
+
+    -moz-border-radius-bottomleft:0px;
+    -webkit-border-bottom-left-radius:0px;
+    border-bottom-left-radius:0px;
+
+    -moz-border-radius-bottomright:0px;
+    -webkit-border-bottom-right-radius:0px;
+    border-bottom-right-radius:0px;
+
+    -moz-border-radius-topright:0px;
+    -webkit-border-top-right-radius:0px;
+    border-top-right-radius:0px;
+
+    -moz-border-radius-topleft:0px;
+    -webkit-border-top-left-radius:0px;
+    border-top-left-radius:0px;
+}.CSSTableGenerator table{
+    border-collapse: collapse;
+    border-spacing: 0;
+    width:100%;
+    height:100%;
+    margin:0px;padding:0px;
+}.CSSTableGenerator tr:last-child td:last-child {
+    -moz-border-radius-bottomright:0px;
+    -webkit-border-bottom-right-radius:0px;
+    border-bottom-right-radius:0px;
+}
+.CSSTableGenerator table tr:first-child td:first-child {
+    -moz-border-radius-topleft:0px;
+    -webkit-border-top-left-radius:0px;
+    border-top-left-radius:0px;
+}
+.CSSTableGenerator table tr:first-child td:last-child {
+    -moz-border-radius-topright:0px;
+    -webkit-border-top-right-radius:0px;
+    border-top-right-radius:0px;
+}
+.CSSTableGenerator tr:last-child td:first-child{
+    -moz-border-radius-bottomleft:0px;
+    -webkit-border-bottom-left-radius:0px;
+    border-bottom-left-radius:0px;
+}
+.CSSTableGenerator tr:hover td{
+
+}
+.CSSTableGenerator tr:nth-child(odd){ background-color:#e5e5e5; }
+.CSSTableGenerator tr:nth-child(even)    { background-color:#ffffff; }
+.CSSTableGenerator td{
+    vertical-align:middle;
+    border:1px solid #000000;
+    border-width:0px 1px 1px 0px;
+    text-align:left;
+    padding:7px;
+    font-size:12px;
+    font-family:Arial;
+    font-weight:normal;
+    color:#000000;
+}
+.CSSTableGenerator tr:last-child td{
+    border-width:0px 1px 0px 0px;
+}
+.CSSTableGenerator tr td:last-child{
+    border-width:0px 0px 1px 0px;
+}
+.CSSTableGenerator tr:last-child td:last-child{
+    border-width:0px 0px 0px 0px;
+}
+.CSSTableGenerator tr:first-child:hover td{
+    background:-o-linear-gradient(bottom, #cccccc 5%, #b2b2b2 100%);	
+    background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #cccccc), color-stop(1, #b2b2b2) );
+    background:-moz-linear-gradient( center top, #cccccc 5%, #b2b2b2 100% );
+    filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#cccccc", endColorstr="#b2b2b2");	background: -o-linear-gradient(top,#cccccc,b2b2b2);
+    background-color:#cccccc;
+}
+.CSSTableGenerator tr:first-child td:first-child{
+    border-width:0px 0px 1px 0px;
+}
+.CSSTableGenerator tr:first-child td:last-child{
+    border-width:0px 0px 1px 1px;
 }

@@ -43,6 +43,7 @@ if ($_GET['nearest_site'] != '0' && $_GET['nearest_site'] != '') {
     $contentQuery->the_post();
     $sites[$contentQuery->post->ID] = the_title("", "", false);
   }
+  wp_reset_postdata();
   $filt .='Nearest Research site "' . $sites[$_GET['nearest_site']] . '"<br>';
 }
 
@@ -88,7 +89,7 @@ if (get_query_var('post_type') == 'ccafs_sites') {
     'post_type' => get_query_var('post_type'),
     'orderby' => 'date',
     'order' => 'DESC',
-    'posts_per_page' => '16',
+    'posts_per_page' => '15',
     'paged' => $paged
   ));
   if (count($metaKey))
@@ -96,20 +97,18 @@ if (get_query_var('post_type') == 'ccafs_sites') {
 }
 
 if ($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
-  $mypostids = $wpdb->get_col("select ID from " . $wpdb->posts . " where post_type = '" . get_query_var('post_type') . "' AND (post_title like '%" . $_GET['keyword'] . "%' OR post_content like '%" . $_GET['keyword'] . "%')");
-  $args = array_merge($args, array('post__in' => $mypostids));
+  $args['s'] = $_GET['keyword'];
   $filt .='Keyword ' . $_GET['keyword'] . "<br>";
 }
 
-$posts = query_posts($args);
-global $wp_query;
+$posts = new WP_Query($args);
 if (get_query_var('post_type') != 'ccafs_sites')
-  echo "<h3>Found " . $wp_query->found_posts . "<br><i style='font-family: -webkit-body;font-size: 0.75em;'>" . substr_replace(trim($filt), "", -1) . "</i></h3>";
+  echo "<h3>Found " . $posts->found_posts . "<br><i style='font-family: -webkit-body;font-size: 0.75em;'>" . substr_replace(trim($filt), "", -1) . "</i></h3>";
 $tmpregion = '';
 ?>
 <?php /* Start the Loop */ ?>
 <?php
-while (have_posts()) : the_post();
+while ($posts->have_posts()) : $posts->the_post();
   $postType = $post->post_type;
   $postId = $post->ID;
   $postThumb = "";
@@ -255,17 +254,21 @@ while (have_posts()) : the_post();
       ?>
     </div>
     <!--</div>-->
-  <?php endwhile; ?><!-- end loop-->
+  <?php endwhile; 
+    
+  ?><!-- end loop-->
   <br clear="all" />
   <div id="amkn-paginate">
     <?php
     if (function_exists('wp_pagenavi')) {
-      wp_pagenavi();
+      wp_pagenavi(array('query' => $posts));
     } else {
       ?>
       <div class="alignleft"><?php next_posts_link('&larr; Previous Entries'); ?></div>
       <div class="alignright"><?php previous_posts_link('Next Entries &rarr;'); ?></div>
-    <?php } ?>
+    <?php } 
+    wp_reset_postdata();
+    ?>
   </div>
   <br clear="all">
   <br clear="all">

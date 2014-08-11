@@ -10,7 +10,7 @@ table.tablesorter {
         /*border:1px solid black;*/
 }
 table.tablesorter thead tr th, table.tablesorter tfoot tr th {
-	background-color: #e6EEEE;
+	background-color: #cccccc;
 	border: 1px solid black;
 	font-size: 12pt;
 	padding: 4px;

@@ -142,7 +142,7 @@ $post = $post_old; // Restore the post object.
   <script>
     $('#column2-photos').hide();
   </script>
-<?php elseif ($totalPhotos >= 8): ?>
+<?php elseif ($totalPhotos > 8): ?>
   <script>
     jQuery(document).ready(function($) {
       $('.slider-photos').bxSlider({
@@ -153,6 +153,21 @@ $post = $post_old; // Restore the post object.
         controls: true,
         pager: false,
         auto: true,
+        useCSS: false
+      });
+    });
+  </script>
+<?php elseif ($totalPhotos <= 8): ?>
+  <script>
+    jQuery(document).ready(function($) {
+      $('.slider-photos').bxSlider({
+        slideWidth: 500,
+        minSlides: 8,
+        maxSlides: 10,
+        slideMargin: 1,
+        controls: true,
+        pager: false,
+//        auto: true,
         useCSS: false
       });
     });

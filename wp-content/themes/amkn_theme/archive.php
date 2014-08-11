@@ -50,7 +50,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
 
             for (i = 0; i < elements.length; i++) {
 
-              field_type = elements[i].type.toLowerCase();
+              field_type = elements[i].type;
 
               switch (field_type) {
 
@@ -172,7 +172,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
           <!--<input type="submit" name="search" class="pure-button pure-button-primary" value="Search">-->      
         </fieldset>  
       </form>        
-      <table id="myTable" class="tablesorter">
+      <table id="myTable" class="tablesorter CSSTableGenerator">
         <thead>
           <tr>
             <th onclick="orderColumn('title')">
@@ -190,30 +190,8 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
           </tr>
         </thead>
         <tbody> 
-          <?php get_template_part('loop', 'activities'); ?>
-        </tbody> 
-      </table>
-      <?php if ($wp_query->found_posts == 0): ?>
-        <script>
-          $("#myTable").hide();
-        </script>  
-      <?php endif; ?>
-      <br clear="all" />
-      <div id="amkn-paginate">
-        <?php
-        if (function_exists('wp_pagenavi')) {
-          wp_pagenavi();
-        } else {
-          ?>
-          <div class="alignleft"><?php next_posts_link('&larr; Previous Entries'); ?></div>
-          <div class="alignright"><?php previous_posts_link('Next Entries &rarr;'); ?></div>
-        <?php } ?>
-      </div>
-      <br clear="all">
-      <br clear="all">
-      <script>
-        document.getElementById("menu-item-3841").className += ' current-menu-item';
-      </script>
+          <?php get_template_part('loop', 'activities'); ?>        
+      
     <?php elseif (get_query_var('post_type') == 'ccafs_sites') : ?>
       <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
       <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.scrollTo.js"></script>
@@ -229,58 +207,21 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
             center: myLatlng
           }
           map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
-          // Create a script tag and set the USGS URL as the source.
-          //          if(!location.hash)
-          if (location.search) {
-            rgs = location.search;
-            rgs = rgs.replace(/%5B/g, '[').replace(/%5D/g, ']').replace(/\+/g, ' ').replace(/\?/g, '');
-            rgs = rgs.split('&');
-            strRg = '';
-            for (i = 0; i < rgs.length; i++) {
-              rg = rgs[i].split('=');
-              strRg += rg[1] + ',';
-            }
-            rgs = strRg;
-            if (rgs == 'East Africa,') {
-              var myLatlng = new google.maps.LatLng(-0.314705, 35.022805);
-              map.setZoom(4);
-              map.setCenter(myLatlng);
-            } else if (rgs == 'West Africa,') {
-              var myLatlng = new google.maps.LatLng(13.3686965, -5.762451);
-              map.setZoom(4);
-              map.setCenter(myLatlng);
-            } else if (rgs == "Latin America,") {
-              var myLatlng = new google.maps.LatLng(15.2, -87.883333);
-              map.setZoom(4);
-              map.setCenter(myLatlng);
-            } else if (rgs == 'Southeast Asia,') {
-              var myLatlng = new google.maps.LatLng(21.033333, 105.85);
-              map.setZoom(4);
-              map.setCenter(myLatlng);
-            } else if (rgs == 'South Asia,') {
-              var myLatlng = new google.maps.LatLng(27.5446255, 83.4506495);
-              map.setZoom(4);
-              map.setCenter(myLatlng);
-            }
-          } else {
-            rgs = 'East%20Africa,West%20Africa,South%20Asia,Southeast%20Asia,Latin%20America';
-          }
-          if (rgs == 'all,') {
-            rgs = 'East%20Africa,West%20Africa,South%20Asia,Southeast%20Asia,Latin%20America';
-            var myLatlng = new google.maps.LatLng(12.968888, 10.138147);
-            map.setZoom(2);
-            map.setCenter(myLatlng);
-          }
+          rgs = 'East%20Africa,West%20Africa,South%20Asia,Southeast%20Asia,Latin%20America';
           var script = document.createElement('script');
           script.src = '<?php bloginfo('url'); ?>/sitesgeojson/?rgs=' + rgs;
           var s = document.getElementsByTagName('script')[0];
           s.parentNode.insertBefore(script, s);
+
+          google.maps.event.addListener(map, "center_changed", function() {
+            filterPanel();
+          });
         }
 
         window.eqfeed_callback = function(results) {
           var image = "<?php bloginfo('template_directory'); ?>/images/ccafs_sites-miniH.png";
           var infobox;
-          var markeri;
+          var markeri = new google.maps.Marker();
           for (var i = 0; i < results.features.length; i++) {
             idx = i;
             var coords = results.features[i].geometry.coordinates;
@@ -307,7 +248,9 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 var contentString = infoWindowContent(results.features[i]);
                 infobox = getBox(contentString);
                 infobox.open(map, marker);
-
+                google.maps.event.addListener(infobox, "closeclick", function() {
+                  markeri.setMap(null);
+                });
                 var imagei = "<?php bloginfo('template_directory'); ?>/images/ccafs_sites-miniI.png";
                 var coords = results.features[i].geometry.coordinates;
                 var latLng = new google.maps.LatLng(coords[1], coords[0]);
@@ -317,6 +260,11 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                   zIndex: 9999999,
                   icon: imagei
                 });
+                google.maps.event.addListener(markeri, 'click', (function(i, results) {
+                  return function() {
+                    document.location = "./?p=" + results.features[i].id;
+                  };
+                })(i, results));
               };
             })(marker, i, results));
 
@@ -332,7 +280,9 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 var contentString = infoWindowContent(results.features[i]);
                 infobox = getBox(contentString);
                 infobox.open(map, marker);
-
+                google.maps.event.addListener(infobox, "closeclick", function() {
+                  markeri.setMap(null);
+                });
                 var imagei = "<?php bloginfo('template_directory'); ?>/images/ccafs_sites-miniI.png";
                 var coords = results.features[i].geometry.coordinates;
                 var latLng = new google.maps.LatLng(coords[1], coords[0]);
@@ -345,11 +295,11 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
               };
             })(marker, i, results));
 
-            google.maps.event.addListener(marker, 'click', (function(i, results) {
-              return function() {
-                document.location = "./?p=" + results.features[i].id;
-              };
-            })(i, results));
+//            google.maps.event.addListener(marker, 'click', (function(i, results) {
+//              return function() {
+//                document.location = "./?p=" + results.features[i].id;
+//              };
+//            })(i, results));
             google.maps.event.addListener(map, "click", function() {
               infobox.close();
               markeri.setMap(null);
@@ -408,8 +358,15 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
           }
           map.setZoom(zoom);
           map.panTo(myLatlng);
+        }
+
+        function filterPanel() {
           $(".ccafs_sites").css("display", "none");
-          $("."+rgs.replace(" ", "")).css("display", "block");
+          $.each(markerArray, function(i, val) {
+            if (map.getBounds().contains(val.getPosition())) {
+              $("#" + i).css("display", "block");
+            }
+          });
         }
         google.maps.event.addDomListener(window, 'load', initialize);
       </script>
@@ -474,7 +431,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
       </form>
       <!--<button id="search" class="pure-button pure-button-primary" onclick="updateMap()">Test</button>-->
       <div style="height: 400px; width: 700px;float:left;margin-bottom: 20px" id="map-canvas"></div>
-      <div id="sites" style="height: 400px; width: 310px;float:left; overflow: auto;margin-bottom: 20px">
+      <div id="sites" style="height: 400px; width: 310px;float:left; overflow: scroll;margin-bottom: 20px;background: #F5F5F5;overflow-x: auto">
         <?php get_template_part('loop', 'archive'); ?>
       </div>
       <div>

@@ -87,20 +87,18 @@ if (count($metaKey)) {
 }
 
 if ($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
-  $mypostids = $wpdb->get_col("select ID from " . $wpdb->posts . " where post_type = 'ccafs_activities' AND (post_title like '%" . $_GET['keyword'] . "%' OR post_content like '%" . $_GET['keyword'] . "%')");
-  $args = array_merge($args, array('post__in' => $mypostids));
+  $args['s'] = $_GET['keyword'];
   $filt .='Keyword ' . $_GET['keyword'] . '<br>';
 }
 //echo "<pre>".print_r($metaKey,true)."</pre>";
-$posts = query_posts($args);
-global $wp_query;
-echo "<h3>Found " . $wp_query->found_posts . "<br><i style='font-family: -webkit-body;font-size: 0.75em;'>" . substr_replace(trim($filt), "", -1) . "</i></h3>";
+$posts = new WP_Query($args);
+echo "<h3>Found " . $posts->found_posts . "<br><i style='font-family: -webkit-body;font-size: 0.75em;'>" . substr_replace(trim($filt), "", -1) . "</i></h3>";
 ?>
 
 <?php /* Start the Loop */ ?>
 <?php //query_posts('posts_per_page=10'); ?>
 <?php
-while (have_posts()) : the_post();
+while ($posts->have_posts()) : $posts->the_post();
   $postType = $post->post_type;
   $postId = $post->ID;
   $postThumb = "";
@@ -142,3 +140,26 @@ while (have_posts()) : the_post();
     </td>-->
   </tr>
 <?php endwhile; ?><!-- end loop-->
+</tbody> 
+</table>
+<?php if ($posts->found_posts == 0): ?>
+  <script>
+    $("#myTable").hide();
+  </script>  
+<?php endif; ?>
+<br clear="all" />
+<div id="amkn-paginate">
+  <?php
+  if (function_exists('wp_pagenavi')) {
+    wp_pagenavi(array('query' => $posts));
+  } else {
+    ?>
+    <div class="alignleft"><?php next_posts_link('&larr; Previous Entries'); ?></div>
+    <div class="alignright"><?php previous_posts_link('Next Entries &rarr;'); ?></div>
+  <?php } ?>
+</div>
+<br clear="all">
+<br clear="all">
+<script>
+  document.getElementById("menu-item-3841").className += ' current-menu-item';
+</script>
