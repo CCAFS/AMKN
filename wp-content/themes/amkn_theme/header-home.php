@@ -86,9 +86,9 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
       //]]>
     </script>
     <!-- DynaTree library used in the new sidebar -->
-    <link href="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
+    <link href="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.1/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
     <link href="<?php bloginfo('template_directory'); ?>/toggle-switch.css" rel="stylesheet" type="text/css">
-    <script src="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/jquery.dynatree.js" type="text/javascript"></script>
+    <script src="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.1/jquery.dynatree.min.js" type="text/javascript"></script>
     <script src="<?php bloginfo('template_directory'); ?>/libs/jBox/jBox.min.js"></script>
     <link href="<?php bloginfo('template_directory'); ?>/libs/jBox/jBox.css" rel="stylesheet">
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.scrollTo.js"></script>
@@ -248,6 +248,12 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
           $(this).addClass("selected").siblings().removeClass("selected");
           $("#regions").show().siblings().hide();
         });
+        
+//        $(document).on('click', '#closePrintMapWin', function() {
+//          $(this).parent().fadeTo(300, 0, function() {
+//            $(this).hide();
+//          });
+//        });
 
         var a = getCookie("showmsg");
         if (null != a && "" != a && "true" == a) {
