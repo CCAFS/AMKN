@@ -27,6 +27,7 @@
  */
 global $query_string; // required
 global $wpdb;
+$join = '';
 $metaKey = array();
 $orderby = array();
 $order = 'ASC';
@@ -35,22 +36,26 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
 if ($_GET['order'] == 'true') {
   $order = 'DESC';
 }
-if (isset($_GET['view'])) {
-  if ($_GET['view'] == 'true') {
+if (isset($_GET['view']) && count($_GET['view']) != 2) {
+  if (in_array('active', $_GET['view'])) {
     $metaKey[] = array('key' => 'endDateFilter', 'value' => date('Ymd'), 'compare' => '>');
+    $join .= " INNER JOIN $wpdb->postmeta b ON (b.post_id = z.ID AND b.meta_key = 'endDateFilter' AND b.meta_value > " . date('Ymd') . ")";
     $filt .='Ongoing projects<br>';
   } else {
     $metaKey[] = array('key' => 'endDateFilter', 'value' => date('Ymd'), 'compare' => '<=');
+    $join .= " JOIN $wpdb->postmeta b ON (b.post_id = z.ID AND b.meta_key = 'endDateFilter' AND b.meta_value <= " . date('Ymd') . ")";
     $filt .='Past projects<br>';
   }
 }
 if ($_GET['leader'] != '0' && $_GET['leader'] != '') {
   $metaKey[] = array('key' => 'leaderAcronym', 'value' => $_GET['leader']);
+  $join .= " INNER JOIN $wpdb->postmeta c ON (c.post_id = z.id AND c.meta_key = 'leaderAcronym' AND c.meta_value IN ('" . implode("','", $_GET['leader']) . "'))";
   $filt .='CG Center ' . $_GET['leader'] . '<br>';
 }
 if ($_GET['theme'] != '0' && $_GET['theme'] != '') {
   $metaKey[] = array('key' => 'theme', 'value' => $_GET['theme']);
-  $filt .='Topic ' . $themes[$_GET['theme']] . '<br>';
+  $join .= " INNER JOIN $wpdb->postmeta d ON (d.post_id = z.ID AND d.meta_key = 'theme' AND d.meta_value IN ('" . implode("','", $_GET['theme']) . "'))";
+  //$filt .='Topic ' . $themes[$_GET['theme']] . '<br>';
 }
 if ($_GET['orderby'] != 'title' && $_GET['orderby'] != '') {
   $orderType = ($_GET['orderby'] == 'leaderName') ? 'meta_value' : 'meta_value_num';
@@ -92,7 +97,7 @@ if ($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
 }
 //echo "<pre>".print_r($metaKey,true)."</pre>";
 $posts = new WP_Query($args);
-echo "<h3>Found " . $posts->found_posts . "<br><i style='font-family: -webkit-body;font-size: 0.75em;'>" . substr_replace(trim($filt), "", -1) . "</i></h3>";
+//echo "<h3>Found " . $posts->found_posts . "<br><i style='font-family: -webkit-body;font-size: 0.75em;'>" . substr_replace(trim($filt), "", -1) . "</i></h3>";
 ?>
 
 <?php /* Start the Loop */ ?>
@@ -142,13 +147,9 @@ while ($posts->have_posts()) : $posts->the_post();
 <?php endwhile; ?><!-- end loop-->
 </tbody> 
 </table>
-<?php if ($posts->found_posts == 0): ?>
-  <script>
-    $("#myTable").hide();
-  </script>  
-<?php endif; ?>
+<?php echo "<h3 style='margin-left:15px'>Showing <b>" . $posts->found_posts . "</b>  projects matching the search criteria</h3>"; ?>
 <br clear="all" />
-<div id="amkn-paginate">
+<div class= "clearfix" id="amkn-paginate">
   <?php
   if (function_exists('wp_pagenavi')) {
     wp_pagenavi(array('query' => $posts));
@@ -158,6 +159,170 @@ while ($posts->have_posts()) : $posts->the_post();
     <div class="alignright"><?php previous_posts_link('Next Entries &rarr;'); ?></div>
   <?php } ?>
 </div>
+</div>
+
+<div id="tabs-2" style="width:100%">
+  <table style="width: 100%">
+    <tr>
+      <td><div id="chartTheme" style="width:50%;"></div>
+      </td>
+      <td><div id="chartStatus" style="width:50%;"></div>
+      </td> 
+    </tr>
+  </table>
+  <div id="chartLeader" style="width:100%;padding-top: 30px;"></div>
+</div>
+</div>
+</div>
+</div>
+<script src="<?php echo get_bloginfo('template_url'); ?>/ccafs-sites/libs/highcharts-3.0.5/highcharts.js"></script>
+
+<?php
+//  $sql = "SELECT a.meta_value, count(*) FROM $wpdb->posts z INNER JOIN  $wpdb->postmeta a ON (a.post_id = z.ID) $join WHERE a.meta_key = 'theme' GROUP BY a.meta_key ";
+$sql = "SELECT a.meta_value, count(*) as total FROM $wpdb->postmeta a WHERE a.meta_key = 'theme' AND a.post_id IN (SELECT ID FROM $wpdb->posts z $join) GROUP BY a.meta_value ";
+$chartTheme = $wpdb->get_results($sql);
+
+$sql = "SELECT CASE WHEN a.meta_value > NOW() THEN 'active' WHEN a.meta_value <= NOW() THEN 'closed' END AS status, count(*) as total FROM $wpdb->postmeta a WHERE a.meta_key = 'endDateFilter' AND a.post_id IN (SELECT ID FROM $wpdb->posts z $join) GROUP BY status ";
+$chartStatus = $wpdb->get_results($sql);
+
+$sql = "SELECT a.meta_value, count(*) as total FROM $wpdb->postmeta a WHERE a.meta_key = 'leaderAcronym' AND a.post_id IN (SELECT ID FROM $wpdb->posts z $join) AND a.meta_value NOT IN ('RPL EA','RPL LAM','RPL SAs','RPL WA','Theme 1', 'Theme 2', 'Theme 3', 'Theme 4.1', 'Theme 4.2', 'Theme 4.3') GROUP BY a.meta_value ";
+$chartLead = $wpdb->get_results($sql);
+
+$rest = "";
+$ress = "";
+$resl = "";
+foreach ($chartTheme as $theme) {
+  $rest .= "['" . $themes[$theme->meta_value] . "', " . $theme->total . "],";
+}
+
+foreach ($chartStatus as $status) {
+  $ress .= "['" . $status->status . "', " . $status->total . "],";
+}
+
+foreach ($chartLead as $lead) {
+  $resl .= "['" . $lead->meta_value . "', " . $lead->total . "],";
+}
+//echo "<pre>" . print_r($chartStatus, true) . "</pre>$$$" . $sql;
+?>
+<script>
+    $("#tabs").tabs();
+
+    // Build the chart
+    $('#chartTheme').highcharts({
+      chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        width: 300
+      },
+      title: {
+        text: 'Projects by Theme'
+      },
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.y}</b>'
+      },
+      legend: {
+        layout: 'vertical',
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: false
+          },
+          showInLegend: true
+        }
+      },
+      series: [{
+          type: 'pie',
+          name: 'Projects',
+          data: [
+<?php echo $rest ?>
+          ]
+        }]
+    });
+
+    // Build the chart
+    $('#chartStatus').highcharts({
+      chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        width: 300
+      },
+      title: {
+        text: 'Projects by Status'
+      },
+      legend: {
+        layout: 'vertical'
+      },
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.y}</b>'
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: false
+          },
+          showInLegend: true
+        }
+      },
+      series: [{
+          type: 'pie',
+          name: 'Projects',
+          data: [
+<?php echo $ress ?>
+          ]
+        }]
+    });
+
+    // Build the chart
+    $('#chartLeader').highcharts({
+      chart: {
+        plotBackgroundColor: null,
+        plotBorderWidth: null,
+        plotShadow: false,
+        width: 600
+      },
+      title: {
+        text: 'Projects by Leader center'
+      },
+      tooltip: {
+        pointFormat: '{series.name}: <b>{point.y}</b>'
+      },
+      legend: {
+        layout: 'vertical',
+        verticalAlign: 'middle',
+        align: 'right'
+      },
+      plotOptions: {
+        pie: {
+          allowPointSelect: true,
+          cursor: 'pointer',
+          dataLabels: {
+            enabled: false
+          },
+          showInLegend: true
+        }
+      },
+      series: [{
+          type: 'pie',
+          name: 'Projects',
+          data: [
+<?php echo $resl ?>
+          ]
+        }]
+    });
+</script>
+<?php if ($posts->found_posts == 0): ?>
+  <script>
+    $("#myTable").hide();
+  </script>  
+<?php endif; ?>
+
 <br clear="all">
 <br clear="all">
 <script>
