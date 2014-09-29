@@ -417,7 +417,7 @@ function esriMapEmbedFine($atts) {
     var initLyrs=[];
 </script>
 <div id="map" class="map" dojotype="dijit.layout.ContentPane" region="center">
-<img id="loadingImg" src="' . $x . 'images/loading3.gif" style="position:absolute; right:512px; top:256px; z-index:100; display:none;" />
+<img id="loadingImg" src="' . $x . 'images/loading3.gif" style="position:absolute; right:50%; top:256px; z-index:100; display:none;" />
 </div>
 
 ';
