@@ -107,10 +107,10 @@ if ($_GET['width'])
 //          $('#sites').scrollTo($("div#"+results.features[i].id), 500,{offset: {top:-135, left:0}});
           var contentString = '<div class="gmap" id="content"><b>' + results.features[i].properties.title + ' [' + results.features[i].properties.country + '] </b><br>CCAFS Region: ' + results.features[i].properties.region
                   + '<br>'
-                  + '<a href="javascript:void(0)" onclick=window.open("/ccafs-activities/?nearest_site=' + results.features[i].id + '&order=false&orderby=title&leader=0&keyword=&theme=0")><img src="<?php bloginfo('template_directory'); ?>/images/ccafs_activities-mini.png"/> Projects: ' + results.features[i].properties.activities + '</a>'
-                  + '<br><a href="/blog-posts/?nearest_site=' + results.features[i].id + '" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/images/amkn_blog_posts-mini.png"/> Blogs: ' + results.features[i].properties.blogs + '</a>'
-                  + '<br><a href="/photo-sets/?nearest_site=' + results.features[i].id + '" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/images/photo_testimonials-mini.png" /> Photos: ' + results.features[i].properties.photos + '</a>'
-                  + '<br><a href="/video/?nearest_site=' + results.features[i].id + '" target="_blank"><img src="<?php bloginfo('template_directory'); ?>/images/video_testimonials-mini.png" /> Videos: ' + results.features[i].properties.videos + '</a>'
+                  + '<img src="<?php bloginfo('template_directory'); ?>/images/ccafs_activities-mini.png"/> Projects: ' + results.features[i].properties.activities + ''
+                  + '<br><img src="<?php bloginfo('template_directory'); ?>/images/amkn_blog_posts-mini.png"/> Blogs: ' + results.features[i].properties.blogs + ''
+                  + '<br><img src="<?php bloginfo('template_directory'); ?>/images/photo_testimonials-mini.png" /> Photos: ' + results.features[i].properties.photos + ''
+                  + '<br><img src="<?php bloginfo('template_directory'); ?>/images/video_testimonials-mini.png" /> Videos: ' + results.features[i].properties.videos + ''
                   + '</div>';
           infowindow = new InfoBox({
             content: contentString,
@@ -127,12 +127,17 @@ if ($_GET['width'])
             infoBoxClearance: new google.maps.Size(1, 1)
           });
           infowindow.open(map, marker);
+          google.maps.event.addListener(infowindow, 'click', (function(i, results) {
+            return function() {
+              window.open("./?p=" + results.features[i].id + "&embedded=1", "_blank", "scrollbars=yes, resizable=yes, top=20, left=60, width=1065, height=670");
+            };
+          })(i, results));
         };
       })(marker, i, results));
 
       google.maps.event.addListener(marker, 'click', (function(i, results) {
         return function() {
-          window.open("./?p=" + results.features[i].id + "&embedded=1", "_blank", "scrollbars=yes, resizable=yes, top=20, left=60, width=975, height=670");
+          window.open("./?p=" + results.features[i].id + "&embedded=1", "_blank", "scrollbars=yes, resizable=yes, top=20, left=60, width=1065, height=670");
         };
       })(i, results));
       google.maps.event.addListener(map, "click", function() {
