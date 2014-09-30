@@ -171,10 +171,10 @@ $postType = "";
     <img class="titleico" src="<?php bloginfo('template_directory'); ?>/images/<?php echo $postType; ?>-mini.png" alt="<?php echo get_post_type_object($postType)->labels->singular_name; ?>"/><a href="./blog-posts"><?php echo $wp_query->found_posts ?> blog posts unread</a>
   </div>
 <?php endwhile; ?>
-<?php if ($newsV || $newsP || $newsB): ?>
   <script>
   //    $(document).ready(function($) {
     function noticeInitial() {
+      <?php  if ($newsV || $newsP || $newsB): ?>
       setTimeout(function() {
         new jBox('Notice', {
           id: 'jBoxInit',
@@ -188,7 +188,7 @@ $postType = "";
             x: 15,
             y: 10
           },
-          autoClose: 5000,
+          autoClose: false,
           onCloseComplete: function() {
             if ('<?php echo $_SESSION['lastDate'] ?>' != '0') {
               if (<?php echo ($newsV) ? 'true' : 'false'; ?>) {
@@ -203,7 +203,7 @@ $postType = "";
                     x: 15,
                     y: 10
                   },
-                  autoClose: 60000,
+                  autoClose: false,
                   closeButton: true,
                 });
               }
@@ -220,7 +220,7 @@ $postType = "";
                       x: 15,
                       y: 10
                     },
-                    autoClose: 60000,
+                    autoClose: false,
                     closeButton: true,
                   });
                 }, 500);
@@ -238,7 +238,7 @@ $postType = "";
                       x: 15,
                       y: 10
                     },
-                    autoClose: 60000,
+                    autoClose: false,
                     closeButton: true,
                   })
                 }, 1000);
@@ -249,8 +249,7 @@ $postType = "";
           }
         })
       }, 5000);
+      <?php  endif; ?>
     }
-
   //    });
   </script>
-<?php endif; ?>

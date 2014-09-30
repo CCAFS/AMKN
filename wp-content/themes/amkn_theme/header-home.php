@@ -28,8 +28,10 @@
 $_SESSION['lastDate'] = 0;
 setcookie("lastDateTmp", 0, strtotime('+1 days'));
 if (isset($_COOKIE["lastDate"])) {
-  $_SESSION['lastDate'] = 'January 1, 2014';
-  setcookie("lastDateTmp", 'January 1, 2014', strtotime('+1 days'));
+//  $_SESSION['lastDate'] = 'January 1, 2014';
+  $_SESSION['lastDate'] = $_COOKIE["lastDate"];
+//  setcookie("lastDateTmp", 'January 1, 2014', strtotime('+1 days'));
+  setcookie("lastDateTmp", $_SESSION['lastDate']);
 }
 //setcookie("lastDate", date('Y-m-d H:i:s e'), strtotime( '+30 days' ));
 setcookie("lastDate", date('F jS, Y'), strtotime('+30 days'));
@@ -249,11 +251,11 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
           $("#regions").show().siblings().hide();
         });
         
-//        $(document).on('click', '#closePrintMapWin', function() {
-//          $(this).parent().fadeTo(300, 0, function() {
-//            $(this).hide();
-//          });
-//        });
+        $(document).on('click', '#closePrintMapWin', function() {
+          $(this).parent().fadeTo(300, 0, function() {
+            $(this).hide();
+          });
+        });
 
         var a = getCookie("showmsg");
         if (null != a && "" != a && "true" == a) {
@@ -296,8 +298,8 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
       function scrollNew() {
         $.scrollTo($("div#featured"), 500);
         setTimeout(function() {
-          $("#container").animate({left: '15px'}, 200);
-          $("#container").animate({left: '0px'}, 200);
+//          $("#container").animate({left: '15px'}, 200);
+//          $("#container").animate({left: '0px'}, 200);
         }, 500);
       }
       function hideLayers() {
@@ -422,9 +424,6 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
     </script>        
   </head>
   <body class="tundra">
-
-
-
     <div id="header">
       <div class="logos"><a href="<?php
         bloginfo('url');
@@ -437,7 +436,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
       <div id="right-header">
 
         <div class="navbar">
-          <form action="/search/" id="searchform" method="get"><input type="text" value="" id="searchbar" name="q" /><input type="submit" value="Search" id="searchsubmit" /></form>   
+          <!--<form action="/search/" id="searchform" method="get"><input type="text" value="" id="searchbar" name="q" /><input type="submit" value="Search" id="searchsubmit" /></form>-->   
           <?php
           $defaults = array(
             'container' => 'none',
@@ -457,9 +456,5 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
           ?>
           <form action=<?php echo get_bloginfo('wpurl') . "/search/" ?> id="searchform" method="get"><input type="text" value="" id="searchbar" name="q" /><input type="submit" value="Search" id="searchsubmit" /></form>
         </div><!-- end navbar -->
-
-
       </div><!-- end right-header -->
-
-
     </div> <!-- end Header -->
