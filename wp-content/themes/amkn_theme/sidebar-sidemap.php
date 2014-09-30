@@ -9,7 +9,7 @@ global $post;
 $geoRSSPoint = get_post_meta($post->ID, 'geoRSSPoint', true);
 $geoPoint = str_ireplace(" ", ",", trim($geoRSSPoint));
 $sURL = str_ireplace("http://", "", "amkn.org");
-$staticMapURL = "http://maps.google.com/maps/api/staticmap?center=" . $geoPoint . "&amp;zoom=4&amp;size=414x300&amp;markers=icon:http%3A%2F%2F" . $sURL . "%2Fwp-content%2Fthemes%2Famkn_theme%2Fimages%2F" . $post->post_type . "-miniH.png|" . $geoPoint . "&amp;maptype=roadmap&amp;sensor=false";
+$staticMapURL = "http://maps.google.com/maps/api/staticmap?center=" . $geoPoint . "&amp;zoom=4&amp;size=414x300&amp;markers=icon:http%3A%2F%2F" . $sURL . "%2Fwp-content%2Fthemes%2Famkn_theme%2Fimages%2F" . $post->post_type . "-mini.png|" . $geoPoint . "&amp;maptype=roadmap&amp;sensor=false";
 ?>
 <?php if (trim($geoRSSPoint) != '') : ?>
   <?php wp_reset_query(); ?>
@@ -51,7 +51,7 @@ $staticMapURL = "http://maps.google.com/maps/api/staticmap?center=" . $geoPoint 
         <img class="map-site" width="414" height="300" src="<?php echo $staticMapURL; ?>" />
       <?php } ?>  
       <li><span class="sidemap-labels">&nbsp;</span></li>
-      <li><span class="sidemap-labels"><a href="javascript:void(0)" onClick="window.open('<?php echo $wcURL; ?>', 'marksim', 'width=700,height=730');">Simulate Daily Weather</a></span></li>
+      <li><span class="sidemap-labels"><a href="javascript:void(0)" onClick="window.open('<?php echo $wcURL; ?>', 'marksim', 'width=800,height=600');">Simulate Daily Weather</a></span></li>
       <?php if (!(isset($embed) && $embed == "1")): ?>
         <li><span class="sidemap-labels"><a href="<?php echo $browserURL; ?>">Locate on the map</a></span></li>
       <?php endif; ?>
