@@ -132,11 +132,11 @@ while ($posts->have_posts()) : $posts->the_post();
           $postThumb = substr($firstPostThumb, 0, strrpos($firstPostThumb, '/') + 1) . "0.jpg";
           $metaDesc = get_post_meta($post->ID, 'content_description', true);
           if (strlen($metaDesc) > 75) {
-            $metaDesc = substr($metaDesc, 0, 75) . "...";
+            $metaDesc = trim_text($metaDesc, 75);
           }
           $tTitle = $post->post_title;
           if (strlen($tTitle) > 35) {
-            $tTitle = substr($tTitle, 0, 35) . "...";
+            $tTitle = trim_text($tTitle, 35);
           }
           ?>
           <script>
@@ -159,12 +159,12 @@ while ($posts->have_posts()) : $posts->the_post();
           $postThumb = get_post_meta($post->ID, 'galleryThumb', true);
           $metaDesc = get_post_meta($post->ID, 'content_description', true);
           if (strlen($metaDesc) > 75) {
-            $metaDesc = substr($metaDesc, 0, 75) . "...";
+            $metaDesc = trim_text($metaDesc, 75);
           }
 
           $tTitle = $post->post_title;
           if (strlen($tTitle) > 35) {
-            $tTitle = substr($tTitle, 0, 35) . "...";
+            $tTitle = trim_text($tTitle, 35);
           }
           ?>
           <script>
@@ -185,11 +185,11 @@ while ($posts->have_posts()) : $posts->the_post();
         case "amkn_blog_posts":
           $tEx = get_the_content_with_format();
           if (strlen($tEx) > 400) {
-            $tEx = substr($tEx, 0, 400) . "...";
+            $tEx = trim_text($tEx, 400);
           }
           $ttitle = $post->post_title;
           if (strlen($ttitle) > 80) {
-            $ttitle = substr($ttitle, 0, 80) . "...";
+            $ttitle = trim_text($ttitle, 80);
           }
           ?>
           <script>
@@ -217,7 +217,7 @@ while ($posts->have_posts()) : $posts->the_post();
 //    $staticMapURL = "http://maps.google.com/maps/api/staticmap?center=".$geoPoint."&zoom=4&size=70x70&markers=icon:http%3A%2F%2F".$sURL."%2Fwp-content%2Fthemes%2Famkn_theme%2Fimages%2F".$post->post_type."-mini.png|".$geoPoint."&maptype=roadmap&sensor=false";
           $tEx = $post->post_excerpt;
           if (strlen($tEx) > 75) {
-            $tEx = substr($tEx, 0, 75) . "...";
+            $tEx = trim_text($tEx, 75);
           }
           $args4Countries = array('fields' => 'names');
           $cgMapCountries = wp_get_object_terms($post->ID, 'cgmap-countries', $args4Countries);
