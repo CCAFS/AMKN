@@ -1,13 +1,37 @@
 <?php
+/*
+ *  This file is part of Adaptation and Mitigation Knowledge Network (AMKN).
+ *
+ *  AMKN is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  at your option) any later version.
+ *
+ *  AMKN is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
+ *
+ *  You should have received a copy of the GNU General Public License
+ *  along with DMSP.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Copyright 2012 (C) Climate Change, Agriculture and Food Security (CCAFS)
+ * 
+ * Created on : 20-10-2012
+ * @author      
+ * @version     1.0
+ */
 /**
  * @package WordPress
  * @subpackage AMKNToolbox
  */
-$_SESSION['lastDate'] = date('F jS, Y');
-setcookie("lastDateTmp", date('F jS, Y'), strtotime('+1 days'));
+$_SESSION['lastDate'] = 0;
+setcookie("lastDateTmp", 0, strtotime('+1 days'));
 if (isset($_COOKIE["lastDate"])) {
-  $_SESSION['lastDate'] = date('F jS, Y');
-  setcookie("lastDateTmp", date('F jS, Y'), strtotime('+1 days'));
+//  $_SESSION['lastDate'] = 'January 1, 2014';
+  $_SESSION['lastDate'] = $_COOKIE["lastDate"];
+//  setcookie("lastDateTmp", 'January 1, 2014', strtotime('+1 days'));
+  setcookie("lastDateTmp", $_SESSION['lastDate']);
 }
 //setcookie("lastDate", date('Y-m-d H:i:s e'), strtotime( '+30 days' ));
 setcookie("lastDate", date('F jS, Y'), strtotime('+30 days'));
@@ -49,10 +73,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
     <link rel="stylesheet" href="http://yui.yahooapis.com/pure/0.4.2/pure-min.css">
     <link rel="icon" type="image/png" href="<?php bloginfo('template_directory'); ?>/images/favicon.png" />
     <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/tundra/tundra.css" />
-    <link rel="stylesheet" href="<?php
-    bloginfo('stylesheet_url');
-    echo '?ver=2.2';
-    ?>" type="text/css" media="screen" />
+    <link rel="stylesheet" href="<?php bloginfo('stylesheet_url') ?>?ver=2.3" type="text/css" media="screen" />
     <link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
     <script type="text/javascript">
       var djConfig = {
@@ -67,12 +88,14 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
       //]]>
     </script>
     <!-- DynaTree library used in the new sidebar -->
-    <link href="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
+    <link href="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.1/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
     <link href="<?php bloginfo('template_directory'); ?>/toggle-switch.css" rel="stylesheet" type="text/css">
-    <script src="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.4/jquery.dynatree.js" type="text/javascript"></script>
+    <script src="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.1/jquery.dynatree.min.js" type="text/javascript"></script>
     <script src="<?php bloginfo('template_directory'); ?>/libs/jBox/jBox.min.js"></script>
     <link href="<?php bloginfo('template_directory'); ?>/libs/jBox/jBox.css" rel="stylesheet">
-    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.scrollTo.js"></script> 
+    <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.scrollTo.js"></script>
+    <link rel=" stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/libs/TinyTools/css/tinytools.tourtip.min.css">
+    <script src="<?php bloginfo('template_directory'); ?>/libs/TinyTools/tinytools.tourtip.min.js"></script>
     <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">-->
     <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
     <!--<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
@@ -227,11 +250,17 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
           $(this).addClass("selected").siblings().removeClass("selected");
           $("#regions").show().siblings().hide();
         });
+        
+        $(document).on('click', '#closePrintMapWin', function() {
+          $(this).parent().fadeTo(300, 0, function() {
+            $(this).hide();
+          });
+        });
 
         var a = getCookie("showmsg");
-        if (null != a && "" != a && "true" == a)
-          ;
-        else {
+        if (null != a && "" != a && "true" == a) {
+          noticeInitial();
+        } else {
           // Remodal-master http://vodkabears.github.io/remodal/ 
           openLandingPage();
         }
@@ -269,8 +298,8 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
       function scrollNew() {
         $.scrollTo($("div#featured"), 500);
         setTimeout(function() {
-          $("#container").animate({left: '15px'}, 200);
-          $("#container").animate({left: '0px'}, 200);
+//          $("#container").animate({left: '15px'}, 200);
+//          $("#container").animate({left: '0px'}, 200);
         }, 500);
       }
       function hideLayers() {
@@ -284,7 +313,8 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
         inst.open()
       }
       function closeLandingPage() {
-        inst.close()
+        inst.close();
+        noticeInitial();
       }
       function applyShowMsg() {
         showmsg = document.getElementById("chk_showmsg").checked, null != showmsg && "" != showmsg && setCookie("showmsg", showmsg, 365)
@@ -306,6 +336,52 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
         var e = escape(b) + (null == c ? "" : "; expires=" + d.toUTCString());
         document.cookie = a + "=" + e
       }
+      function tour() {
+        $("#onthemap").tourTip({
+          title: "On the map",
+          description: "This is a description for the newly born TourTip :)",
+          previous: true,
+          position: 'right'
+        });
+        $("#filter-button").tourTip({
+          title: "On the map",
+          description: "This is a description for the newly born TourTip :)",
+          previous: true,
+          position: 'right'
+        });
+        $("#legend-button").tourTip({
+          title: "On the map",
+          description: "This is a description for the newly born TourTip :)",
+          previous: true,
+          position: 'right'
+        });
+        $("#basemap-button").tourTip({
+          title: "On the map",
+          description: "This is a description for the newly born TourTip :)",
+          previous: true,
+          position: 'right'
+        });
+        $("#region-button").tourTip({
+          title: "On the map",
+          description: "This is a description for the newly born TourTip :)",
+          previous: true,
+          position: 'right'
+        });
+        $("#reset-button").tourTip({
+          title: "On the map",
+          description: "This is a description for the newly born TourTip :)",
+          previous: true,
+          position: 'right'
+        });
+        $("#container").tourTip({
+          title: "The newest",
+          description: "This is a description for the newly born TourTip :)",
+          previous: true,
+          position: 'top',
+          close: true
+        });
+        $.tourTip.start();
+      }
 
     </script>
     <!--<script type="text/javascript" src="http://serverapi.arcgisonline.com/jsapi/arcgis/?v=2.5compact"></script>-->
@@ -324,7 +400,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
     ?>
     <!--  Remodal-master  "version": "0.1.3" http://vodkabears.github.io/remodal/ -->
     <link rel="stylesheet" href="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.css">
-    <script src="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.min.js"></script>    
+    <script src="<?php bloginfo('template_directory'); ?>/libs/Remodal-master/dist/jquery.remodal.min.js"></script>
     <?php wp_head(); ?>
     <script>
       (function(i, s, o, g, r, a, m) {
@@ -348,9 +424,6 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
     </script>        
   </head>
   <body class="tundra">
-
-
-
     <div id="header">
       <div class="logos"><a href="<?php
         bloginfo('url');
@@ -363,7 +436,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
       <div id="right-header">
 
         <div class="navbar">
-          <form action="/search/" id="searchform" method="get"><input type="text" value="" id="searchbar" name="q" /><input type="submit" value="Search" id="searchsubmit" /></form>   
+          <!--<form action="/search/" id="searchform" method="get"><input type="text" value="" id="searchbar" name="q" /><input type="submit" value="Search" id="searchsubmit" /></form>-->   
           <?php
           $defaults = array(
             'container' => 'none',
@@ -383,9 +456,5 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
           ?>
           <form action=<?php echo get_bloginfo('wpurl') . "/search/" ?> id="searchform" method="get"><input type="text" value="" id="searchbar" name="q" /><input type="submit" value="Search" id="searchsubmit" /></form>
         </div><!-- end navbar -->
-
-
       </div><!-- end right-header -->
-
-
     </div> <!-- end Header -->

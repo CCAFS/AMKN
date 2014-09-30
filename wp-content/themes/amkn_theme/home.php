@@ -22,26 +22,26 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
   <div class="tundra">
 
     <div <?php echo $style ?> id="yellow_navbar">       
-      <div class="taxonomies hide" dojoType="dijit.form.DropDownButton" id="rsLayers">
+      <div class="taxonomies hide" data-dojo-type="dijit.form.DropDownButton" id="rsLayers">
         <span>Display Data Layers</span>
-        <div dojoType="dijit.TooltipDialog">
-          <button dojoType="dijit.form.Button" type="submit" class="checkCtrls amknButton"><a>Close</a></button>
-          <!--    <button onClick="updateLegend();" dojoType="dijit.form.Button" type="submit" class="checkCtrls amknButton"><a>[Show Data Layer Legend]</a></button>-->
-          <button class="checkCtrls amknButton" id="aLayer" dojoType="dijit.form.Button"  onclick="updateLayerVisibility(null, visLyr);">
+        <div data-dojo-type="dijit.TooltipDialog">
+          <button data-dojo-type="dijit.form.Button" type="submit" class="checkCtrls amknButton"><a>Close</a></button>
+          <!--    <button onClick="updateLegend();" data-dojo-type="dijit.form.Button" type="submit" class="checkCtrls amknButton"><a>[Show Data Layer Legend]</a></button>-->
+          <button class="checkCtrls amknButton" id="aLayer" data-dojo-type="dijit.form.Button"  onclick="updateLayerVisibility(null, visLyr);">
             Hide All Layers
           </button>
           <br />
-          <div id="tslider" dojoType="dijit.form.HorizontalSlider" name="tslider" width="350"
+          <div id="tslider" data-dojo-type="dijit.form.HorizontalSlider" name="tslider" width="350"
                onChange="setTrans(arguments[0] / 100);"
                value="100" maximum="100" minimum="0" pageIncrement="100"
                showButtons="true" intermediateChanges="true" slideDuration="500" style="position:relative; width:350px;">
-            <ol dojoType="dijit.form.HorizontalRuleLabels" container="topDecoration"
+            <ol data-dojo-type="dijit.form.HorizontalRuleLabels" container="topDecoration"
                 style="height:1.5em;font-size:75%;color:gray;">
               <li>Active Data Layer Opacity
               </li>
             </ol>
 
-            <ol dojoType="dijit.form.HorizontalRuleLabels" container="bottomDecoration"
+            <ol data-dojo-type="dijit.form.HorizontalRuleLabels" container="bottomDecoration"
                 style="height:1em;font-size:75%;color:gray;">
               <li>
                 0.0
@@ -64,12 +64,20 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
 
     <div id="cBlock" style='<?php echo $size ?>'>
       <div id="showContent" class="navigating">
-        <div id="popContent" class="layers-box" dojoType="dijit.TitlePane" title="Content" closable="true" open="true"> </div>
-      </div> 
+        <div id="popContent" class="layers-box" data-dojo-type="dijit.TitlePane" title="Content" closable="true" open="true"> </div>
+      </div>
+<!--      <div id="printMap" class="shadow" style="visibility: visible;">
+        <div id="closePrintMapWin" class="closeBtn" title="Close"></div>
+        <div style="top:5px;padding-top:15px;text-align:center;"><h3>Print Map</h3></div>
+        <span id="printWorking" style="display:none;position: absolute;top: 80px;left: 35px;"><img src="<?php echo get_template_directory_uri(); ?>/imgs/ajax-loader.gif"></span>
+        <div id="print_button" style="text-align:center;"><div class="esriPrint"><table class="dijit dijitReset dijitInline dijitLeft esriPrintButton dijitComboButton" cellspacing="0" cellpadding="0" role="presentation" id="dijit_form_ComboButton_0" widgetid="dijit_form_ComboButton_0"><tbody role="presentation"><tr role="presentation"><td class="dijitReset dijitStretch dijitButtonNode" data-dojo-attach-point="buttonNode" data-dojo-attach-event="ondijitclick:_onClick,onkeypress:_onButtonKeyPress"><div id="dijit_form_ComboButton_0_button" class="dijitReset dijitButtonContents" data-dojo-attach-point="titleNode" role="button" aria-labelledby="dijit_form_ComboButton_0_label" tabindex="0"><div class="dijitReset dijitInline dijitIcon dijitNoIcon" data-dojo-attach-point="iconNode" role="presentation"></div><div class="dijitReset dijitInline dijitButtonText" id="dijit_form_ComboButton_0_label" data-dojo-attach-point="containerNode" role="presentation">Imprimir</div></div></td><td id="dijit_form_ComboButton_0_arrow" class="dijitReset dijitRight dijitButtonNode dijitArrowButton dijitDownArrowButton" data-dojo-attach-point="_popupStateNode,focusNode,_buttonNode" data-dojo-attach-event="onkeypress:_onArrowKeyPress" title="" role="button" aria-haspopup="true" tabindex="0" style="-webkit-user-select: none;"><div class="dijitReset dijitArrowButtonInner" role="presentation"></div><div class="dijitReset dijitArrowButtonChar" role="presentation">▼</div></td><td style="display:none !important;"><input type="button" value="" data-dojo-attach-point="valueNode" role="presentation"></td></tr></tbody></table></div></div>
+        <div id="print_button" style="text-align:center;"></div>
+        <hr>        
+      </div>-->
       <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/tundra/tundra.css" />
-      <div dojoType="dijit.layout.BorderContainer" design="headline" gutters="true" liveSplitters="false" id="borderContainer" style='<?php echo $size ?>'>
+      <div data-dojo-type="dijit.layout.BorderContainer" design="headline" gutters="true" liveSplitters="false" id="borderContainer" style='<?php echo $size ?>'>
 
-        <div id="map-side" dojoType="dijit.layout.ContentPane" splitter="false" region="center" style="widows: 100%; display: inline; overflow:hidden;">
+        <div id="map-side" data-dojo-type="dijit.layout.ContentPane" splitter="false" region="center" style="widows: 100%; display: inline; overflow:hidden;">
 
           <div <?php echo $style ?> id="tb3" class="hide"> 
           </div>
@@ -78,9 +86,9 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
             <?php endwhile; // end of the loop. ?>
         </div>
 
-        <div id="onthemap" <?php echo $style ?> dojoType="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="259" splitter="<?php echo $splitter ?>" region="left" style="width: 259px;" startExpanded="true">
+        <div id="onthemap" <?php echo $style ?> data-dojo-type="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="259" splitter="<?php echo $splitter ?>" region="left" style="width: 259px;" startExpanded="true">
           <!--Here is the calling to the template that show the left menu-->
-          <?php get_template_part('content_type', 'filters_list2'); ?>
+          <?php get_template_part('content_type', 'filters_list2'); ?>          
           <div id="panel-buttons">
             <button id="filter-button" class="panel-button selected"> &nbsp;</button>
             <button id="legend-button" class="panel-button"> &nbsp;</button>
@@ -113,7 +121,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
             <div id="basemapGallery" class="drop-panel" ></div> 
             <div id="layersDiv" class="drop-panel" data-dojo-type="dijit/layout/AccordionContainer" style="height: 100%;">
               <div id="accord_data_layer" data-dojo-type="dijit/layout/ContentPane" title="Data Layers" selected="true" style="overflow: hidden;">
-                <button class="checkCtrls amknButton" id="btnDeselectAll" dojoType="dijit.form.Button"  onclick="hideLayers()">
+                <button class="checkCtrls amknButton" id="btnDeselectAll" data-dojo-type="dijit.form.Button"  onclick="hideLayers()">
                   Hide All Layers
                 </button>
                 <div id="dataLayers" style="width: 100%; height: 100%;" ></div>
@@ -158,26 +166,33 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
     <div id="featured">
       <div id="container">
         <h1 class="feat-maintitle">The Newest on AMKN</h1>
-        <!--<button onClick="feedback_widget.show()" dojoType="dijit.form.Button" type="submit" class="amknButton msGenButton right"><a>Community <br />Feedback</a></button>-->
+        <!--<button onClick="feedback_widget.show()" data-dojo-type="dijit.form.Button" type="submit" class="amknButton msGenButton right"><a>Community <br />Feedback</a></button>-->
         <?php get_template_part('teaser', 'video'); ?><!-- end column 1 -->
         <?php get_template_part('teaser', 'photo'); ?><!-- end column 2 -->
         <?php get_template_part('teaser', 'blog'); ?><!-- end column 3 -->
       </div><!-- end Featured -->
     </div>
-  <?php get_template_part('teaser', 'newest_posts'); ?>
+    <?php get_template_part('teaser', 'newest_posts'); ?>
     <div class="remodal" style="display:none;" data-remodal-id="modal" data-remodal-options='{ "hashTracking": false }'>
       <div id="whatisamkn" class="modal"> 
         <h1><strong>What is AMKN?</strong></h1>
         <p>
-          The Climate Change Adaptation and Mitigation Knowledge Network (AMKN) is a platform for accessing and sharing current agricultural adaptation and mitigation knowledge from the CGIAR and its partners. It brings together farmers’ realities on the ground and links them with multiple and combined research outputs, to highlight current challenges and inspire new ideas. It aims to assist scientists and stakeholders to assess and adjust their actions in order to ensure future food security, improved smallholder farmers’ resilience and livelihoods.
+          The AMKN is a platform for accessing and sharing current agricultural adaptation and mitigation knowledge from the CGIAR and its partners. 
         </p>
         <p>  
-          AMKN aggregates, visualizes and interconnects research outputs from the CGIAR Research Program on Climate Change, Agriculture and Food Security (CCAFS) focused on addressing risk management, progressive adaptation and pro-poor mitigation options for agricultural and food systems.
+          It provides a visual display of farmers’ on-the-ground climate realities and transforms hard research data into interactive multimedia that can be easily understood by all users.
         </p>
         <p>  
-          The AMKN map allows users to explore a large volume of climatic, environmental, and social information from diverse sources, including data visualization tools, map layers, and multimedia. 
+          The AMKN map allows users to explore various forms of agro-climatic information from diverse sources, in a user friendly way that meets the needs of different users regardless of their technical background.
         </p>
         <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+        <p >For more information on AMKN, visit the <a href="./about/">About</a> page.</p>
+        <p class="chkmsg"><input type="checkbox" id="chk_showmsg" onchange="applyShowMsg();">&nbsp;Do not show this message again</p>
       </div>
 
       <div id="whatonthemap" class="modal"> 
@@ -191,10 +206,11 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
         <p><img src="<?php bloginfo('template_directory'); ?>/images/ccafs_activities-mini.png" alt="">  <strong>CCAFS activities</strong> – Descriptions of specific past and ongoing research being conducted by CCAFS and its partners, including date, location and budget information</p>
         <br>
       </div>
-      <div id="info" class="left">
-        <p >For more information on AMKN, visit the About page.</p>
-        <p class="chkmsg">&nbsp;&nbsp;<input type="checkbox" id="chk_showmsg" onchange="applyShowMsg();">Do not show this message again</p>
+      <div id="info" class="left">        
         <a id="gotoamkn" onclick="closeLandingPage()">Go to AMKN</a>
+        <a id="tour" onclick="closeLandingPage();
+              tour()">Start tour</a>
+        &nbsp;&nbsp;&nbsp;
       </div>
 
     </div>

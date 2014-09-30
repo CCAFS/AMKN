@@ -1,19 +1,25 @@
 <?php
 /*
- * Copyright (C) 2014 CRSANCHEZ CCAFS-CIAT
+ *  This file is part of Adaptation and Mitigation Knowledge Network (AMKN).
  *
- * This program is free software: you can redistribute it and/or modify
- * it under the terms of the GNU General Public License as published by
- * the Free Software Foundation, either version 3 of the License, or
- * (at your option) any later version.
+ *  AMKN is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  at your option) any later version.
  *
- * This program is distributed in the hope that it will be useful,
- * but WITHOUT ANY WARRANTY; without even the implied warranty of
- * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- * GNU General Public License for more details.
+ *  AMKN is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *  GNU General Public License for more details.
  *
- * You should have received a copy of the GNU General Public License
- * along with this program.  If not, see <http://www.gnu.org/licenses/>.
+ *  You should have received a copy of the GNU General Public License
+ *  along with DMSP.  If not, see <http://www.gnu.org/licenses/>.
+ *
+ * Copyright 2012 (C) Climate Change, Agriculture and Food Security (CCAFS)
+ * 
+ * Created on : 20-10-2012
+ * @author      
+ * @version     1.0
  */
 
 //echo $_SESSION['lastDate'];
@@ -64,7 +70,7 @@ $postType = "";
     $metaDesc = substr($metaDesc, 0, 65) . "...";
   ?>
   <div class="notice" style="display: none;" id="grabMe">
-    <img class="titleico" src="<?php bloginfo('template_directory'); ?>/images/<?php echo $postType; ?>-mini.png" alt="<?php echo get_post_type_object($postType)->labels->singular_name; ?>"/><a href="./video" ><?php echo $wp_query->found_posts ?> video posts unread</a>
+    <a href="./video" ><?php echo $wp_query->found_posts ?><img class="titleico" src="<?php bloginfo('template_directory'); ?>/images/<?php echo $postType; ?>-mini.png" alt="<?php echo get_post_type_object($postType)->labels->singular_name; ?>"/> video posts unread</a>
   </div>
   <?php
 endwhile;
@@ -165,24 +171,26 @@ $postType = "";
     <img class="titleico" src="<?php bloginfo('template_directory'); ?>/images/<?php echo $postType; ?>-mini.png" alt="<?php echo get_post_type_object($postType)->labels->singular_name; ?>"/><a href="./blog-posts"><?php echo $wp_query->found_posts ?> blog posts unread</a>
   </div>
 <?php endwhile; ?>
-<?php if ($newsV || $newsP || $newsB): ?>
   <script>
-    jQuery(document).ready(function($) {
+  //    $(document).ready(function($) {
+    function noticeInitial() {
+      <?php  if ($newsV || $newsP || $newsB): ?>
       setTimeout(function() {
         new jBox('Notice', {
           id: 'jBoxInit',
-          content: 'A new content is available!',
+          content: 'New contents are available!',
+//          closeButton: true,
           attributes: {
             x: 'right',
             y: 'bottom'
           },
           position: {
-            x: 5,
+            x: 15,
             y: 10
           },
           autoClose: false,
           onCloseComplete: function() {
-            if ('<?php echo $_SESSION['lastDate']?>' != '0') {
+            if ('<?php echo $_SESSION['lastDate'] ?>' != '0') {
               if (<?php echo ($newsV) ? 'true' : 'false'; ?>) {
                 new jBox('Notice', {
                   content: $('#grabMe'),
@@ -192,10 +200,11 @@ $postType = "";
                     y: 'bottom'
                   },
                   position: {
-                    x: 5,
+                    x: 15,
                     y: 10
                   },
                   autoClose: false,
+                  closeButton: true,
                 });
               }
               if (<?php echo ($newsP) ? 'true' : 'false'; ?>) {
@@ -208,10 +217,11 @@ $postType = "";
                       y: 'bottom'
                     },
                     position: {
-                      x: 5,
+                      x: 15,
                       y: 10
                     },
                     autoClose: false,
+                    closeButton: true,
                   });
                 }, 500);
               }
@@ -225,10 +235,11 @@ $postType = "";
                       y: 'bottom'
                     },
                     position: {
-                      x: 5,
+                      x: 15,
                       y: 10
                     },
                     autoClose: false,
+                    closeButton: true,
                   })
                 }, 1000);
               }
@@ -238,6 +249,7 @@ $postType = "";
           }
         })
       }, 5000);
-    });
+      <?php  endif; ?>
+    }
+  //    });
   </script>
-<?php endif; ?>

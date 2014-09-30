@@ -35,6 +35,8 @@ dojo.require("esri.dijit.BasemapGallery");
 dojo.require("dijit.form.Slider");
 dojo.require("esri.dijit.Legend");
 dojo.require("dijit.Dialog");
+dojo.require("esri.dijit.Print");
+dojo.require("esri.layers.WMSLayer");
 dojo.require("dijit.form.Button");
 dojo.require("dijit.layout.TabContainer");
 dojo.require("dijit.Menu");
@@ -169,9 +171,9 @@ function initMap() {
 
     tiledMapServiceLayer = new esri.layers.ArcGISTiledMapServiceLayer("http://server.arcgisonline.com/ArcGIS/rest/services/World_Topo_Map/MapServer");
     map.addLayer(tiledMapServiceLayer);
-    multipoint = new esri.geometry.Multipoint(new esri.SpatialReference({
-        wkid: 4326
-    }));
+//    multipoint = new esri.geometry.Multipoint(new esri.SpatialReference({
+//        wkid: 4326
+//    }));
     dataLayer = new esri.layers.GraphicsLayer();
     dataLayerVt = new esri.layers.GraphicsLayer();
     dataLayerCs = new esri.layers.GraphicsLayer();
@@ -231,6 +233,59 @@ function initMap() {
             label: "Reset zoom"
         });
     });
+//    require([
+//        "esri/dijit/Print",
+//        "dojo/dom", "esri/tasks/PrintTemplate", "esri/config", "dojo/_base/array", "dojo/domReady!"
+//    ], function(
+//            Print,
+//            dom, PrintTemplate, esriConfig,
+//            arrayUtils
+//            ) {
+//        printUrl = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task";
+//        esriConfig.defaults.io.proxyUrl = "./wp-content/themes/amkn_theme/libs/esriProxy/proxy.php";
+//        esriConfig.defaults.io.alwaysUseProxy = false;
+//        var legendLayer = new esri.tasks.LegendLayer();
+//        legendLayer.layerId = "Boundaries";
+//        legendLayer.subLayerIds = [0, 5];
+//        var layouts = [{
+//                name: "Letter ANSI A Landscape",
+//                label: "Landscape (PDF)",
+//                format: "pdf",
+//                options: {
+//                    legendLayers: [legendLayer], // empty array means no legend
+//                    scalebarUnit: "Miles",
+//                    titleText: ", Landscape PDF"
+//                }
+//            }, {
+//                name: "Letter ANSI A Portrait",
+//                label: "Portrait (Image)",
+//                format: "jpg",
+//                options: {
+//                    legendLayers: [legendLayer],
+//                    scaleBarUnit: "Miles",
+//                    titleText: ", Portrait JPG"
+//                }
+//            }];
+//        var templates = arrayUtils.map(layouts, function(lo) {
+//            var t = new PrintTemplate();
+//            t.layout = lo.name;
+//            t.label = lo.label;
+//            t.format = lo.format;
+//            t.layoutOptions = lo.options;
+//            return t;
+//        });
+//        printer = new Print({
+//            map: map,
+//            templates: templates,
+//            url: printUrl
+//        }, dom.byId("print_button"));
+//        printer.startup();
+//    });
+//    var wmsLayer = new esri.layers.WMSLayer("http://data.ilri.org:8080/geoserver/ILRI-Public/UG_COUNTY_PEAS94_00/wms", {
+//        format: "png",
+//        visibleLayers: [0]
+//    });
+//    map.addLayer(wmsLayer);
 }
 
 function layersSwitchInitial() {
@@ -814,7 +869,8 @@ function onListHover(id, url) {
 
 }
 function onFeatureLeave() {
-    if(map.graphics) map.graphics.clear();
+    if (map.graphics)
+        map.graphics.clear();
     hoverLayer.clear();
 }
 function showTT(evt) {
@@ -1155,6 +1211,7 @@ function updateDataLayerTree(cb)
     showccc = showccc === "" ? "" : "&ccc=" + showccc;
 
     var newURL = baseDataURL + "?fmt=csv" + showpts + showimp + showas + showms + showcl + showccc + showaz;
+
     if (cb) {
         dataLayer.clear();
         dataLayerVt.clear();
@@ -1624,6 +1681,8 @@ function getViewTree()
                         break;
                     case"lvl":
                         lvlMp = theMap[mp].split("=")[1];
+                        if (lvlMp == '-1')
+                            lvlMp = 3;
                         break;
                     case"lyr":
                         vLyr = theMap[mp].split("=")[1];

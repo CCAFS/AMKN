@@ -1,0 +1,96 @@
+/*
+Copyright (C) 2014 CRSANCHEZ
+
+This program is free software: you can redistribute it and/or modify
+it under the terms of the GNU General Public License as published by
+the Free Software Foundation, either version 3 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+/* 
+    Created on : Sep 22, 2014, 2:04:57 PM
+    Author     : CRSANCHEZ
+*/
+
+.searchsubmit {
+  background: none repeat scroll 0 0 #E3BB3B;
+  border-color: #E3BB3B;
+}
+
+.category-btn {
+  background:#E3BB3B;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.category-btn.selected { 
+  background:#DE910A;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.categories-btns{
+  color:#FFF;
+}
+
+.label-category {
+  background: #E3BB3B;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.label-category.external {
+  background: #a65207;
+  background-repeat: no-repeat;
+  background-position: 50%;
+}
+
+.label-category {
+  color: #FFF;
+}
+
+.label-subcategory {
+  background: #DE910A; 
+  color: #FFF;
+}
+
+.content-category {
+  background: #f2f1ef; 
+}
+
+.content-category-search {
+  background: #f2f1ef;
+}
+
+.paginate li {
+  background: #E3BB3B;
+}
+
+.paginate .active {
+  background-color: #DE910A;
+}
+
+.label-subcategory.external {
+  background: #603813; 
+}
+
+.content-category.external {
+  background: #e8e0d9; 
+}
+
+.content-category-search.external {
+  /*background: #e8e0d9;*/ 
+}
+
+.closeDetailBtn {
+  background-image: url(../img/close.png?v=1);
+  background-size: 20px 20px;
+  background-repeat: no-repeat;
+}
