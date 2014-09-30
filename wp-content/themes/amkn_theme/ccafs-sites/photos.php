@@ -6,14 +6,6 @@
 $embed = $_GET["embedded"];
 global $post;
 $post_old = $post; // Save the post object.
-if (get_post_meta($post->ID, 'rangephotos', true)) {
-  $rangephotos = get_post_meta($post->ID, 'rangephotos', true);
-} else {
-  // Range default of photos --> 710 km
-  $rangephotos = 300;
-}
-$siteTitle = $post->post_name;
-$sitepoint = get_post_meta($post->ID, 'geoRSSPoint', true);
 $args = array(
   'post_type' => 'photo_testimonials',
   'posts_per_page' => '-1',
@@ -21,14 +13,14 @@ $args = array(
   'meta_query' => array(array('key' => 'nearestBenchmarkSite', 'value' => $post->ID))
 );
 //$args = "posts_per_page=1000&post_type=photo_testimonials&meta_key=geoRSSPoint";
-query_posts($args);
+$posts = new WP_Query($args);
 $postType = "";
 $totalPhotos = 0;
 ?>
 <?php /* Start the Loop */ ?>
 <div style="padding-left: 0px; margin-bottom: 0px; font-size: 12px; height: 15px;">Nearest photo sets</div>
 <div class="slider-photos side-more" style="display:none;"> 
-  <?php while (have_posts()) : the_post(); ?>
+  <?php while ($posts->have_posts()) : $posts->the_post(); ?>
     <?php
     $postType = $post->post_type;
     $photopoint = get_post_meta($post->ID, 'geoRSSPoint', true);
@@ -40,7 +32,7 @@ $totalPhotos = 0;
     $thumb = substr($filename, 0, $extension_pos) . '_q' . substr($filename, $extension_pos);
     ?>
 
-    <div class="site-photo <?php echo distance($sitepoint, $photopoint) ?>">             
+    <div class="site-photo">             
       <a href="#" data-reveal-id="<?php echo $post->ID; ?>"><img height="60" class="site-photo" src="<?php echo $thumb; ?>" border="0"></a>
     </div>
 
@@ -48,10 +40,10 @@ $totalPhotos = 0;
     <?php
   endwhile;
 // Reset Query
-//   wp_reset_query();
+  wp_reset_query();
   ?><!-- end loop-->  
 </div>
-<?php while (have_posts()) : the_post(); ?>
+<?php while ($posts->have_posts()) : $posts->the_post(); ?>
   <?php
   $postType = $post->post_type;
   $photopoint = get_post_meta($post->ID, 'geoRSSPoint', true);
@@ -136,13 +128,15 @@ $totalPhotos = 0;
   <?php // } ?>
   <?php
 endwhile;
+// Reset Query
+wp_reset_query();
 $post = $post_old; // Restore the post object.
 ?>
 <?php if ($totalPhotos == 0): ?>
   <script>
     $('#column2-photos').hide();
   </script>
-<?php elseif ($totalPhotos > 8): ?>
+<?php elseif ($totalPhotos >= 8): ?>
   <script>
     jQuery(document).ready(function($) {
       $('.slider-photos').bxSlider({
@@ -157,19 +151,19 @@ $post = $post_old; // Restore the post object.
       });
     });
   </script>
-<?php elseif ($totalPhotos <= 8): ?>
+<?php elseif ($totalPhotos < 8): ?>
   <script>
-    jQuery(document).ready(function($) {
-      $('.slider-photos').bxSlider({
-        slideWidth: 500,
-        minSlides: 8,
-        maxSlides: 10,
-        slideMargin: 1,
-        controls: true,
-        pager: false,
-//        auto: true,
-        useCSS: false
-      });
-    });
+//    jQuery(document).ready(function($) {
+//      $('.slider-photos').bxSlider({
+//        slideWidth: 500,
+//        minSlides: 8,
+//        maxSlides: 10,
+//        slideMargin: 1,
+//        controls: true,
+//        pager: false,
+//  //        auto: true,
+//        useCSS: false
+//      });
+//    });
   </script>
 <?php endif; ?>

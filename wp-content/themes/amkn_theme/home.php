@@ -65,7 +65,15 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
     <div id="cBlock" style='<?php echo $size ?>'>
       <div id="showContent" class="navigating">
         <div id="popContent" class="layers-box" data-dojo-type="dijit.TitlePane" title="Content" closable="true" open="true"> </div>
-      </div> 
+      </div>
+<!--      <div id="printMap" class="shadow" style="visibility: visible;">
+        <div id="closePrintMapWin" class="closeBtn" title="Close"></div>
+        <div style="top:5px;padding-top:15px;text-align:center;"><h3>Print Map</h3></div>
+        <span id="printWorking" style="display:none;position: absolute;top: 80px;left: 35px;"><img src="<?php echo get_template_directory_uri(); ?>/imgs/ajax-loader.gif"></span>
+        <div id="print_button" style="text-align:center;"><div class="esriPrint"><table class="dijit dijitReset dijitInline dijitLeft esriPrintButton dijitComboButton" cellspacing="0" cellpadding="0" role="presentation" id="dijit_form_ComboButton_0" widgetid="dijit_form_ComboButton_0"><tbody role="presentation"><tr role="presentation"><td class="dijitReset dijitStretch dijitButtonNode" data-dojo-attach-point="buttonNode" data-dojo-attach-event="ondijitclick:_onClick,onkeypress:_onButtonKeyPress"><div id="dijit_form_ComboButton_0_button" class="dijitReset dijitButtonContents" data-dojo-attach-point="titleNode" role="button" aria-labelledby="dijit_form_ComboButton_0_label" tabindex="0"><div class="dijitReset dijitInline dijitIcon dijitNoIcon" data-dojo-attach-point="iconNode" role="presentation"></div><div class="dijitReset dijitInline dijitButtonText" id="dijit_form_ComboButton_0_label" data-dojo-attach-point="containerNode" role="presentation">Imprimir</div></div></td><td id="dijit_form_ComboButton_0_arrow" class="dijitReset dijitRight dijitButtonNode dijitArrowButton dijitDownArrowButton" data-dojo-attach-point="_popupStateNode,focusNode,_buttonNode" data-dojo-attach-event="onkeypress:_onArrowKeyPress" title="" role="button" aria-haspopup="true" tabindex="0" style="-webkit-user-select: none;"><div class="dijitReset dijitArrowButtonInner" role="presentation"></div><div class="dijitReset dijitArrowButtonChar" role="presentation">▼</div></td><td style="display:none !important;"><input type="button" value="" data-dojo-attach-point="valueNode" role="presentation"></td></tr></tbody></table></div></div>
+        <div id="print_button" style="text-align:center;"></div>
+        <hr>        
+      </div>-->
       <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/tundra/tundra.css" />
       <div data-dojo-type="dijit.layout.BorderContainer" design="headline" gutters="true" liveSplitters="false" id="borderContainer" style='<?php echo $size ?>'>
 
@@ -207,7 +215,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
         <a id="gotoamkn" onclick="closeLandingPage()">Go to AMKN</a>
         <a id="tour" onclick="closeLandingPage();
               tour()">Start tour</a>
-            &nbsp;&nbsp;&nbsp;
+        &nbsp;&nbsp;&nbsp;
       </div>
 
     </div>

@@ -22,39 +22,39 @@
  * @version     1.0
  */
 /*
-Template Name: data&tools Template
-*/
-//require('../../../wp-blog-header.php'); 
-get_header('home');
+  Template Name: data&tools Template
+ */
+//require_once( dirname(__FILE__) . '/wp-load.php' );
+get_header();
 
 $url = "http://amkn.org/wp-content/themes/amkn_theme/services.php/DataAndTools/get";
 $http_respone_header = file_get_contents($url);
-$apps = json_decode($http_respone_header,true);
+$apps = json_decode($http_respone_header, true);
 //echo "<pre>".print_r( json_decode($http_respone_header,true),true)."</pre>"; 
 ?>
 <div id="container">
-<h2>Data & Tools</h2>
-<?php
-foreach ($apps as $app) :
-?>
+  <h2>Data & Tools</h2>
+  <?php
+  foreach ($apps as $app) :
+    ?>
 
     <div id="tool">
       <div id="tool-img">
-      <a href="<?php echo $app['url']?>">
-        <img src="<?php echo $app['imageUrl']?>" />
-      </a>
+        <a href="<?php echo $app['url'] ?>">
+          <img src="<?php echo $app['imageUrl'] ?>" />
+        </a>
       </div>
 
       <div id="tool-content">
-      <a href="<?php echo $app['url']?>"><h4><?php echo $app['title']?></h4> </a>
-      <?php echo $app['description']?>
+        <a href="<?php echo $app['url'] ?>"><h4><?php echo $app['title'] ?></h4> </a>
+        <?php echo $app['description'] ?>
       </div>
     </div>
 
-<?php    
-endforeach;
-?>
+    <?php
+  endforeach;
+  ?>
 </div>
 <?php
-get_footer(); 
+get_footer();
 ?>
