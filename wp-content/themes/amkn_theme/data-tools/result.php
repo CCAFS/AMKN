@@ -69,7 +69,7 @@ if ($last < 1) {
         $("#results_box").hide();
         $("#results_box").html(result);
         $("#results_box").fadeIn();
-        $("#pagination_controls").fadeIn();
+        $("#pagination_controls").css('display', 'inline-flex');
       },
       complete: function() {
         $("#loading").fadeOut('slow');
@@ -133,5 +133,5 @@ if ($last < 1) {
 <div id="loading-r" style="display:none;position:absolute; width:100%;top: 300px;">
   <img style="display: block; margin: 0 auto;" src="img/loading.gif" alt="Loader" />
 </div>
-<div id="pagination_controls" style="float:right; display:inline-flex"></div>
+<div id="pagination_controls" style="float:right; display:none"></div>
 <script> request_page(1, $('#filter').serialize());</script>
