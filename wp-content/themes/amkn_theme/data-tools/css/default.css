@@ -40,6 +40,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   color:#FFF;
 }
 
+.category-title{
+  color:#FFF;
+  background: #1281aa;
+}
+
 .label-category {
   background: #4bc8dc;
   background-repeat: no-repeat;

@@ -49,13 +49,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .categories-btns{
   width: 100%; 
-  margin: 10px 0px 10px 0px;
-  padding: 10px 0px 10px 0px;
+  margin: 10px 0px 0px 0px;
+  padding: 10px 0px 0px 0px;
 }
 
 .category-btn {
   cursor:pointer; 
-  height: 98px; 
+  height: 134px; 
   float: left; 
   position: relative;
 }

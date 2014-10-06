@@ -114,6 +114,20 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                 <input type="text" name="keyword" id="keyword" value="<?php echo $_GET['keyword'] ?>" class="pure-input-2-3">
               </div>
               <div style="padding: 15px 15px 15px 15px">
+                <div style="margin-bottom: 10px; font-weight: bold;">Topic</div>
+                <ul style="list-style-type: none;padding: 0px; margin: 0px;">
+                  <?php foreach ($themes as $key => $theme): ?>
+                    <?php
+                    $selected = '';
+                    if (isset($_GET['theme']) && in_array($key, $_GET['theme'])) {
+                      $selected = 'checked';
+                    }
+                    ?>
+                    <li style="display: inline-flex;margin-bottom: 5px;"><input type="checkbox" id="theme" name="theme[]" value="<?php echo $key ?>" onclick="document.getElementById('search-activities').submit();" <?php echo $selected ?>/><div> <?php echo $theme ?></div></li>
+                  <?php endforeach; ?>
+                </ul>
+              </div>
+              <div style="padding: 15px 15px 15px 15px">
                 <div style="margin-bottom: 10px;font-weight: bold;">Status</div>
 
                 <?php
@@ -144,20 +158,6 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                     }
                     ?>
                     <li><input type="checkbox" id="leader" name="leader[]" value="<?php echo $lead ?>" onclick="document.getElementById('search-activities').submit();" <?php echo $selected ?>/> <?php echo $lead ?></li>
-                  <?php endforeach; ?>
-                </ul>
-              </div>
-              <div style="padding: 15px 15px 15px 15px">
-                <div style="margin-bottom: 10px; font-weight: bold;">Topic</div>
-                <ul style="list-style-type: none;padding: 0px; margin: 0px;">
-                  <?php foreach ($themes as $key => $theme): ?>
-                    <?php
-                    $selected = '';
-                    if (isset($_GET['theme']) && in_array($key, $_GET['theme'])) {
-                      $selected = 'checked';
-                    }
-                    ?>
-                    <li><input type="checkbox" id="theme" name="theme[]" value="<?php echo $key ?>" onclick="document.getElementById('search-activities').submit();" <?php echo $selected ?>/> <?php echo $theme ?></li>
                   <?php endforeach; ?>
                 </ul>
               </div>

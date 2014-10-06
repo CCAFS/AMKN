@@ -32,7 +32,7 @@ $args1 = array(
   'public' => true,
   '_builtin' => false
 );
-$excludeTypes = array("flickr_photos", "agtrials");
+$excludeTypes = array("flickr_photos");
 $output = 'objects'; // names or objects
 $operator = 'and'; // 'and' or 'or'
 $post_types = get_post_types($args1, $output, $operator);
@@ -99,6 +99,9 @@ foreach ($post_types as $post_type) {
         break;
       case 'ccafs_activities':
         echo "icon: \"../../../../images/ccafs_activities-mini.png\",";
+        break;
+      case 'agtrials':
+        echo "icon: \"../../../../images/ccafs_sites-miniI.png\",";
         break;
     }
     echo "
@@ -188,7 +191,7 @@ if ($taxonomies) {
 </div>  end cFiltersList2-->
 <?php
 $qargs = array(
-  'post_type' => isset($postTypes) ? explode(",", $postTypes) : array('ccafs_activities', 'ccafs_sites', 'biodiv_cases', 'amkn_blog_posts', 'photo_testimonials', 'video_testimonials,'),
+  'post_type' => isset($postTypes) ? explode(",", $postTypes) : array('agtrials','ccafs_activities', 'ccafs_sites', 'biodiv_cases', 'amkn_blog_posts', 'photo_testimonials', 'video_testimonials,'),
   'posts_per_page' => '-1',
   'tax_query' => array(
     'relation' => 'AND',

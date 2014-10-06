@@ -49,7 +49,7 @@ $categories = $wpdb->get_results($sql);
   <link rel="stylesheet" type="text/css" href="css/default.css">
 <?php endif; ?>
 <script src="js/dataAndTools.js"></script>
-<div id="container" style="background: #FFF">
+<div id="container" style="background: #FFF; font-family: open_sanscondensed_light;">
   <div class="art-search clearfix">
     <!--<form class="" method="get" name="" action="" style="display: inline-flex">-->
     <input class="searchbar" name="s" type="text" value="" onkeydown="serachDeliverable(this.value, event)">
@@ -64,16 +64,11 @@ $categories = $wpdb->get_results($sql);
           $('#detail').html('');
           $('.searchbar').val('');">
         <div style="position: absolute;right: 0.5em;bottom: 0;"><?php echo (isset($catCount[$cat->id])) ? $catCount[$cat->id] : 0 ?></div>
+        <div style="position: absolute;bottom: 0;padding-left: 5px;"><?php echo $cat->name ?></div>
       </div>
-<?php endforeach; ?>
+    <?php endforeach; ?>
   </div>
-  <div class="clearfix" style="width: 100%;">
-    <?php foreach ($categories AS $cat): ?>
-      <div class="category-title" style="width: <?php echo 95 / count($categories) ?>%; margin:<?php echo 2 / count($categories) ?>%; ">
-        <span class="category-title-text"><?php echo $cat->name ?></span>
-      </div>
-<?php endforeach; ?>
-  </div>
+ 
   <div id="loading" style="display:none;position:absolute; width:100%;top: 300px;">
     <img style="display: block; margin: 0 auto;" src="img/loading.gif" alt="Loader" />
   </div>
@@ -81,7 +76,7 @@ $categories = $wpdb->get_results($sql);
     <div style="float: left; padding: 10px; margin: 10px; width: 100%;text-align: center;font-size: 35px; font-style: oblique;">
       Select a category that you are interested
     </div>
-<?php //get_template_part('data-tools/result') ?>
+    <?php //get_template_part('data-tools/result') ?>
   </div>
   <div id="detail" style="padding-top: 30px; width: 100%;" class="clearfix"></div>
 </div>

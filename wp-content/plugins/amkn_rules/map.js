@@ -57,8 +57,8 @@ var intMinExtX = -7728835.025551194;
 var intMinExtY = -5586372.099330453;
 var initLvl = 3;
 
-var map, visLyr, popup, popupOptions, tLayers = [], vLyr, qPop, identifyTask, identifyParams, legend, hQuery, cPx, cHType, polyGraphic, hoverGraphic, hoverText, currentLocation, popupWindow, cntr, idCT, highlightSymbol, highlightGraphic, showLegend, sGCP, baseMP, iconT, baseExt, ctrPt, lvlMp, loadExtent, mapLevel, mapExtent, basemapGallery, tiledMapServiceLayer, gcpFarmingSystems, africaTSLayers, multipoint, popupSize, loading, initExtent, maxExtent, dataLayer, hoverLayer, syms6, syms4, syms5, syms2, syml6, syml4, syml5, syml2, visible = [], legendLayers = [], featureLayer, featureRegion, totalSources;
-var dataLayerVt, dataLayerCs, dataLayerBp, dataLayerBc, dataLayerPt, dataLayerCa;
+var map, visLyr, popup, popupOptions, tLayers = [], vLyr, qPop, identifyTask, identifyParams, legend, hQuery, cPx, cHType, polyGraphic, hoverGraphic, hoverText, currentLocation, popupWindow, cntr, idCT, highlightSymbol, highlightGraphic, showLegend, sGCP, baseMP, iconT, baseExt, ctrPt, lvlMp, loadExtent, mapLevel, mapExtent, basemapGallery, tiledMapServiceLayer, gcpFarmingSystems, africaTSLayers, multipoint, popupSize, loading, initExtent, maxExtent, dataLayer, hoverLayer, syms6, syms4, syms5, syms2, syml6, syml4, syml5, syml2, symlAg,visible = [], legendLayers = [], featureLayer, featureRegion, totalSources;
+var dataLayerVt, dataLayerCs, dataLayerBp, dataLayerBc, dataLayerPt, dataLayerCa, dataLayerAg;
 var vtonmap = [];
 var cconmap = [];
 var bgonmap = [];
@@ -81,6 +81,7 @@ function initMap() {
     syml4 = new esri.symbol.PictureMarkerSymbol('./wp-content/themes/amkn_theme/images/amkn_blog_posts-mini.png?ver=2', 21, 21);
     syml5 = new esri.symbol.PictureMarkerSymbol('./wp-content/themes/amkn_theme/images/photo_testimonials-mini.png?ver=2', 21, 21);
     syml2 = new esri.symbol.PictureMarkerSymbol('./wp-content/themes/amkn_theme/images/video_testimonials-mini.png?ver=2', 21, 21);
+    symlAg = new esri.symbol.PictureMarkerSymbol('./wp-content/themes/amkn_theme/images/ccafs_sites-miniI.png?ver=2', 21, 21);
     sym7 = new esri.symbol.PictureMarkerSymbol('./wp-content/themes/amkn_theme/images/biodiv_cases-mini.png?ver=2', 21, 21);
     symh2 = new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/video_testimonials-miniH.gif", 21, 21);
     symh4 = new esri.symbol.PictureMarkerSymbol("./wp-content/themes/amkn_theme/images/amkn_blog_posts-miniH.gif", 21, 21);
@@ -181,6 +182,7 @@ function initMap() {
     dataLayerBc = new esri.layers.GraphicsLayer();
     dataLayerPt = new esri.layers.GraphicsLayer();
     dataLayerCa = new esri.layers.GraphicsLayer();
+    dataLayerAg = new esri.layers.GraphicsLayer();
     hoverLayer = new esri.layers.GraphicsLayer();
     dataLayer.hide();
     dataLayerVt.hide();
@@ -189,6 +191,7 @@ function initMap() {
     dataLayerBc.hide();
     dataLayerPt.hide();
     dataLayerCa.hide();
+    dataLayerAg.hide();
     layersSwitchInitial();
     map.addLayer(dataLayer);
     map.addLayer(dataLayerVt);
@@ -197,6 +200,7 @@ function initMap() {
     map.addLayer(dataLayerBc);
     map.addLayer(dataLayerPt);
     map.addLayer(dataLayerCa);
+    map.addLayer(dataLayerAg);
     map.addLayer(hoverLayer);
     dojo.connect(dataLayer, "onClick", onFeatureClick);
     dojo.connect(map.graphics, "onClick", onFeatureClick);
@@ -208,6 +212,7 @@ function initMap() {
     dojo.connect(dataLayerBc, "onMouseOver", onFeatureHover);
     dojo.connect(dataLayerPt, "onMouseOver", onFeatureHover);
     dojo.connect(dataLayerCa, "onMouseOver", onFeatureHover);
+    dojo.connect(dataLayerAg, "onMouseOver", onFeatureHover);
     dojo.connect(hoverLayer, "onMouseOver", showTT);
     dojo.connect(map, "onLoad", addDataLayers);
 
@@ -286,6 +291,178 @@ function initMap() {
 //        visibleLayers: [0]
 //    });
 //    map.addLayer(wmsLayer);
+require([
+        "dojo/parser", 
+        "dojo/ready",
+        "dojo/_base/array",
+        "esri/Color",
+        "dojo/dom-style",
+        "dojo/query",
+
+        "esri/map", 
+        "esri/request",
+        "esri/graphic",
+        "esri/geometry/Extent",
+
+        "esri/symbols/SimpleMarkerSymbol",
+        "esri/symbols/SimpleFillSymbol",
+        "esri/symbols/PictureMarkerSymbol",
+        "esri/renderers/ClassBreaksRenderer",
+
+        "esri/layers/GraphicsLayer",
+        "esri/SpatialReference",
+        "esri/dijit/PopupTemplate",
+        "esri/geometry/Point",
+        "esri/geometry/webMercatorUtils",
+
+        "./wp-content/plugins/agtrialsimporter/ClusterLayer.js",
+
+        "dijit/layout/BorderContainer", 
+        "dijit/layout/ContentPane", 
+        "dojo/domReady!"
+      ], function(
+        parser, ready, arrayUtils, Color, domStyle, query,
+        Map, esriRequest, Graphic, Extent,
+        SimpleMarkerSymbol, SimpleFillSymbol, PictureMarkerSymbol, ClassBreaksRenderer,
+        GraphicsLayer, SpatialReference, PopupTemplate, Point, webMercatorUtils,
+        ClusterLayer
+      ) {
+        ready(function() {
+          parser.parse();
+
+          var clusterLayer;
+          var popupOptions = {
+            "markerSymbol": new SimpleMarkerSymbol("circle", 20, null, new Color([0, 0, 0, 0.25])),
+            "marginLeft": "20",
+            "marginTop": "20"
+          };
+//          map = new Map("map", {
+//            basemap: "oceans",
+//            center: [-117.789, 33.543],
+//            zoom: 13
+//          });
+
+          map.on("load", function() {
+            // hide the popup's ZoomTo link as it doesn't make sense for cluster features
+            domStyle.set(query("a.action.zoomTo")[0], "display", "none");
+
+            // get the latest 1000 photos from instagram/laguna beach
+            var photos = esriRequest({
+              "url": "./wp-content/plugins/agtrialsimporter/rssTrials.json",
+              "handleAs": "json"
+            });
+//            photos.then(addClusters, error);
+          });
+
+          function addClusters(resp) {
+            var photoInfo = {};
+            var wgs = new SpatialReference({
+              "wkid": 4326
+            });
+            photoInfo.data = arrayUtils.map(resp, function(p) {
+              var latlng = new  Point(parseFloat(p.longitude), parseFloat(p.latitude), wgs);
+              var webMercator = webMercatorUtils.geographicToWebMercator(latlng);
+              var attributes = {
+                "Caption": p.trialgroup,
+                "Name": p.crop,
+                "Image": p.image,
+                "Link": p.url
+              };
+              return {
+                "x": webMercator.x,
+                "y": webMercator.y,
+                "attributes": attributes
+              };
+            });
+
+            // popupTemplate to work with attributes specific to this dataset
+            var popupTemplate = PopupTemplate({
+              "title": "",
+              "fieldInfos": [{
+                "fieldName": "Caption",
+                visible: true
+              }, {
+                "fieldName": "Name",
+                "label": "By",
+                visible: true
+              }, {
+                "fieldName": "Link",
+                "label": "On Instagram",
+                visible: true
+              }],
+              "mediaInfos": [{
+                "title": "",
+                "caption": "",
+                "type": "image",
+                "value": {
+                  "sourceURL": "{Image}",
+                  "linkURL": "{Link}"
+                }
+              }]
+            });
+
+            // cluster layer that uses OpenLayers style clustering
+            clusterLayer = new ClusterLayer({
+              "data": photoInfo.data,
+              "distance": 100,
+              "id": "clusters",
+              "labelColor": "#fff",
+              "labelOffset": 10,
+              "resolution": map.extent.getWidth() / map.width,
+              "singleColor": "#888",
+              "singleTemplate": popupTemplate
+            });
+            var defaultSym = new SimpleMarkerSymbol().setSize(4);
+            var renderer = new ClassBreaksRenderer(defaultSym, "clusterCount");
+
+            var picBaseUrl = "http://static.arcgis.com/images/Symbols/Shapes/";
+            var blue = new PictureMarkerSymbol(picBaseUrl + "BluePin1LargeB.png", 32, 32).setOffset(0, 15);
+            var green = new PictureMarkerSymbol(picBaseUrl + "GreenPin1LargeB.png", 64, 64).setOffset(0, 15);
+            var red = new PictureMarkerSymbol(picBaseUrl + "RedPin1LargeB.png", 72, 72).setOffset(0, 15);
+            renderer.addBreak(0, 2, blue);
+            renderer.addBreak(2, 200, green);
+            renderer.addBreak(200, 1001, red);
+
+            clusterLayer.setRenderer(renderer);
+            map.addLayer(clusterLayer);
+
+            // close the info window when the map is clicked
+            map.on("click", cleanUp);
+            // close the info window when esc is pressed
+            map.on("key-down", function(e) {
+              if (e.keyCode === 27) {
+                cleanUp();
+              }
+            });
+          }
+
+          function cleanUp() {
+            map.infoWindow.hide();
+            clusterLayer.clearSingles();
+          }
+
+          function error(err) {
+            console.log("something failed: ", err);
+          }
+
+          // show cluster extents...
+          // never called directly but useful from the console 
+          window.showExtents = function() {
+            var extents = map.getLayer("clusterExtents");
+            if ( extents ) {
+              map.removeLayer(extents);
+            }
+            extents = new GraphicsLayer({ id: "clusterExtents" });
+            var sym = new SimpleFillSymbol().setColor(new Color([205, 193, 197, 0.5]));
+
+            arrayUtils.forEach(clusterLayer._clusters, function(c, idx) {
+              var e = c.attributes.extent;
+              extents.add(new Graphic(new Extent(e[0], e[1], e[2], e[3], map.spatialReference), sym));
+            }, this);
+            map.addLayer(extents, 0);
+          }
+        });
+      });
 }
 
 function layersSwitchInitial() {
@@ -310,6 +487,9 @@ function layersSwitchInitial() {
                     break;
                 case 'accord_ccafs_activities':
                     dataLayerCa.show();
+                    break;
+                case 'accord_agtrials':
+                    dataLayerAg.show();
                     break;
             }
         }
@@ -353,6 +533,12 @@ function layersSwitch(node, flag) {
                 dataLayerCa.show();
             else
                 dataLayerCa.hide();
+            break;
+        case 'accord_agtrials':
+            if (flag)
+                dataLayerAg.show();
+            else
+                dataLayerAg.hide();
             break;
     }
 }
@@ -906,6 +1092,7 @@ function addGraphic(id, latitude, longitude, type, init) {
     var sym5 = syml5;
     var sym2 = syml2;
     var symA = symhA;
+    var symAg = symlAg;
     switch (type) {
         case"video_testimonials":
             dataLayer.add(new esri.Graphic(geometry, sym2, {
@@ -963,6 +1150,16 @@ function addGraphic(id, latitude, longitude, type, init) {
             }));
             if (init) {
                 dataLayerCa.add(new esri.Graphic(geometry, symA, {
+                    id: id
+                }));
+            }
+            break;
+        case"agtrials":
+            dataLayer.add(new esri.Graphic(geometry, symAg, {
+                id: id
+            }));
+            if (init) {
+                dataLayerAg.add(new esri.Graphic(geometry, symAg, {
                     id: id
                 }));
             }
@@ -1130,6 +1327,10 @@ function getPopupTitle(type) {
             cHType = symhA;
             return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/" + type + "-mini.png?ver=2' />&nbsp;Research Projects";
             break;
+        case"agtrials":
+            cHType = symlAg;
+            return"<img class='titleImg' src='./wp-content/themes/amkn_theme/images/ccafs_sites-miniI.png?ver=2' />&nbsp;Research Projects";
+            break;
         default:
             cHType = highlightSymbol;
             return"Content Preview";
@@ -1220,6 +1421,7 @@ function updateDataLayerTree(cb)
         dataLayerBc.clear();
         dataLayerPt.clear();
         dataLayerCa.clear();
+        dataLayerAg.clear();
         processCsvData(newURL);
         setViewTree();
     }
@@ -1722,7 +1924,7 @@ function initBackMap()
     }
     ctrPt = "";
     lvlMp = "";
-    var newURLs = baseDataURL + "?fmt=csv&pts=ccafs_activities,ccafs_sites,biodiv_cases,amkn_blog_posts,photo_testimonials,video_testimonials,";
+    var newURLs = baseDataURL + "?fmt=csv&pts=ccafs_activities,ccafs_sites,biodiv_cases,amkn_blog_posts,photo_testimonials,video_testimonials,agtrials,";
 //    processCsvData(newURLs,true);
 
     updateDataLayerTree(true);
@@ -1944,6 +2146,20 @@ function getListingContentTree(id) {
                         //isLazy: true
             });
         }
+        if (rt === "agtrials") {
+            ttl = ttl.split('|');
+            agonmap.push({
+                title: "" + ttl[0] + "<br><span style='color:gray'><small>Published " + ttl[1] + "</small></span>",
+                tooltip: "Title: " + ttl[0],
+                key: id,
+                url: './?p=' + cid,
+                hideCheckbox: true,
+                unselectable: true,
+                select: false,
+                icon: '../../../../images/ccafs_sites-miniI.png?ver=2'
+                        //isLazy: true
+            });
+        }
     } else {
         countCid++;
     }
@@ -1970,6 +2186,7 @@ function findPointsInExtentTree(extent) {
     bgonmap = [];
     bdonmap = [];
     ptonmap = [];
+    agonmap = [];
     actnmap = [];
     oactnmap = {};
     tempCid = 0;
@@ -2034,6 +2251,11 @@ function findPointsInExtentTree(extent) {
             case 'accord_ccafs_activities':
                 childrenNodes[i].addChild(actnmap);
                 childrenNodes[i].data.title = "Research Projects (" + actnmap.length + "/" + postTotal[childrenNodes[i].data.key.replace('accord_', '')] + ")";
+                childrenNodes[i].render();
+                break;
+            case 'accord_agtrials':
+                childrenNodes[i].addChild(agonmap);
+                childrenNodes[i].data.title = "Agtrials (" + agonmap.length + "/" + postTotal[childrenNodes[i].data.key.replace('accord_', '')] + ")";
                 childrenNodes[i].render();
                 break;
         }
@@ -2293,7 +2515,7 @@ function buildLayerListTree(layer, layerName, single, soon) {
         layer.setVisibility(true);
         layer.setVisibleLayers(visible);
         //dijit.byId('cFiltersList').selectChild(dijit.byId('accord_legend'));
-        dojo.addClass(document.getElementById("layerbt_" + layerName), "sldMenu");
+//        dojo.addClass(document.getElementById("layerbt_" + layerName), "sldMenu");
         map.centerAt(map.extent.getCenter());
     }
     return child.length;

@@ -44,6 +44,9 @@ get_header();
                           case 'ccafs-activities':
 				imgLoc = '/wp-content/themes/amkn_theme/images/ccafs_activities-mini.png';
 				break;
+                          case 'biodiv_cases':
+				imgLoc = '/wp-content/themes/amkn_theme/images/biodiv_cases-mini.png';
+				break;
 			  default:
 				break;
 			}

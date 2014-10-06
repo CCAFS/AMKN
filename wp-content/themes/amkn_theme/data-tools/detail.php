@@ -59,7 +59,7 @@ $result = $wpdb->get_row($sql1);
           <td style="width: 50%"><b>Date: </b><?php echo $result->date ?></td>
         </tr>
         <tr>
-          <td style="width: 50%"><b>Format: </b><?php echo $result->format ?></td>
+          <td style="width: 50%"><b>Format: </b><?php echo $result->Format ?></td>
         </tr>
         <tr>
           <td style="width: 50%"><b>Relation: </b><?php echo $result->relation ?></td>
@@ -73,7 +73,7 @@ $result = $wpdb->get_row($sql1);
       <img style="margin-top:15px" src="img/world.png" width="280px">
     </div>
     <div style="font-size: 30px;text-align: center;margin-top: 20px">
-      Creator
+      Creator (<?php echo $result->creator?>)
       <img style="margin-top:15px" src="../images/logo_ciat.png" width="225px">
     </div>
   </div>
