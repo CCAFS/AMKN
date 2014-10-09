@@ -58,7 +58,7 @@ $categories = $wpdb->get_results($sql);
   </div>
   <div class="clearfix categories-btns">
     <?php foreach ($categories AS $cat): ?>
-      <div class="category-btn" style="background-image: url(img/<?php echo $cat->id ?>.png);width:<?php echo 95 / count($categories) ?>%; margin:<?php echo 2.5 / count($categories) ?>%;" onclick="categoryChosen(<?php echo $cat->id ?>, 'first=true');
+      <div id="cat<?php echo $cat->id ?>" class="category-btn" style="background-image: url(img/<?php echo $cat->id ?>.png);width:<?php echo 95 / count($categories) ?>%; margin:<?php echo 2.5 / count($categories) ?>%;" onclick="categoryChosen(<?php echo $cat->id ?>, 'first=true');
           $(this).addClass('selected').siblings().removeClass('selected');
           $('#result').show();
           $('#detail').html('');
@@ -80,6 +80,10 @@ $categories = $wpdb->get_results($sql);
   </div>
   <div id="detail" style="padding-top: 30px; width: 100%;" class="clearfix"></div>
 </div>
+<script>
+  var initPage = true;
+  initialState(document.location.hash);
+</script>
 <?php
 //get_footer();
 ?>

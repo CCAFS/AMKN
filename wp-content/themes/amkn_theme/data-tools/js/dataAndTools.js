@@ -47,11 +47,12 @@ function validSelect(check) {
   }
 }
 
-function categoryChosen(id, form) {
+function categoryChosen(id, form, page) {
+  page = page || 1;
   $.ajax({
     url: "result.php?" + form,
     type: "POST",
-    data: {category: id},
+    data: {category: id, page:page},
     success: function(result) {
       $("#loading").show();
       $("#result").hide();
@@ -61,7 +62,8 @@ function categoryChosen(id, form) {
       $("#loading").fadeOut('slow');
       $("#result").show();
     }
-  })
+  });
+  document.location.hash = "category="+id+((form)?"/"+form:"");
 }
 
 function deliverableChosen(id) {
@@ -94,5 +96,28 @@ function serachDeliverable(key, e) {
         $("#result").show();
       }
     });
+  }
+}
+
+function initialState(anchor) {
+  if (anchor != '') {
+    var form = '';
+    var page = 1 ;
+    var params = unescape(anchor).split("/");
+    var cat = params[0].split("=")[1];
+    if (typeof params[1] !== "undefined") {
+      form = params[1];
+    }
+    if (typeof params[2] !== "undefined") {
+      initPage = false;
+      page = params[2].split("=")[1];
+    }
+//    alert(cat+' '+params[1]);
+    categoryChosen(cat, form, page);
+    $('#cat'+cat).addClass('selected').siblings().removeClass('selected');
+    $('#result').show();
+    $('#detail').html('');
+    $('.searchbar').val('');
+//    request_page(page, form);
   }
 }

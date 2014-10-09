@@ -20,6 +20,7 @@ require('../../../../wp-load.php');
 global $wpdb;
 $where = "";
 $category = $_POST['category'];
+$page = $_POST['page'];
 $subcategories = array();
 if (!isset($_GET['first'])) {
   if (isset($_GET['subc'])) {
@@ -58,6 +59,7 @@ if ($last < 1) {
   var last = <?php echo $last; ?>; // last page number
   var id = <?php echo $category; ?>; // last page number
   function request_page(pn, form) {
+    initPage = true;
 //    $("#results_box").html("");
     $("#loading").show();
 //    $("#pagination_controls").hide();
@@ -100,6 +102,8 @@ if ($last < 1) {
       }
     }
     $("#pagination_controls").html(paginationCtrls);
+    var hash = unescape(document.location.hash).split("/");
+    document.location.hash = hash[0].replace('#','')+'/'+hash[1]+'/page='+pn;
   }
 </script>
 <div style="width: 30%; float:left; background: #f2f1ef; padding: 5px 0px 5px 10px">
@@ -134,4 +138,4 @@ if ($last < 1) {
   <img style="display: block; margin: 0 auto;" src="img/loading.gif" alt="Loader" />
 </div>
 <div id="pagination_controls" style="float:right; display:none"></div>
-<script> request_page(1, $('#filter').serialize());</script>
+<script> request_page(<?php echo $page?>, $('#filter').serialize());</script>
