@@ -25,15 +25,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 }
 
 .category-btn {
-  background:#E3BB3B;
-  background-repeat: no-repeat;
-  background-position: 50%;
+  background-color:#E3BB3B; 
 }
 
 .category-btn.selected { 
-  background:#DE910A;
-  background-repeat: no-repeat;
-  background-position: 50%;
+  background-color:#DE910A; 
 }
 
 .categories-btns{
@@ -41,13 +37,13 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 }
 
 .label-category {
-  background: #E3BB3B;
+  background-color: #E3BB3B;
   background-repeat: no-repeat;
   background-position: 50%;
 }
 
 .label-category.external {
-  background: #a65207;
+  background-color: #a65207;
   background-repeat: no-repeat;
   background-position: 50%;
 }
@@ -57,20 +53,20 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 }
 
 .label-subcategory {
-  background: #DE910A; 
+  background-color: #DE910A; 
   color: #FFF;
 }
 
 .content-category {
-  background: #f2f1ef; 
+  background-color: #f2f1ef; 
 }
 
 .content-category-search {
-  background: #f2f1ef;
+  background-color: #f2f1ef;
 }
 
 .paginate li {
-  background: #E3BB3B;
+  background-color: #E3BB3B;
 }
 
 .paginate .active {
@@ -78,15 +74,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 }
 
 .label-subcategory.external {
-  background: #603813; 
+  background-color: #603813; 
 }
 
 .content-category.external {
-  background: #e8e0d9; 
+  background-color: #e8e0d9; 
 }
 
 .content-category-search.external {
-  /*background: #e8e0d9;*/ 
+  /*background-color: #e8e0d9;*/ 
 }
 
 .closeDetailBtn {

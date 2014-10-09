@@ -62,17 +62,18 @@ $categories = $wpdb->get_results($sql);
           $(this).addClass('selected').siblings().removeClass('selected');
           $('#result').show();
           $('#detail').html('');
-          $('.searchbar').val('');">
-        <div style="position: absolute;right: 0.5em;bottom: 0;"><?php echo (isset($catCount[$cat->id])) ? $catCount[$cat->id] : 0 ?></div>
-        <div style="position: absolute;bottom: 0;padding-left: 5px;"><?php echo $cat->name ?></div>
+          $('.searchbar').val('');
+          $('#loading').show();">
+        <div class="category-name" style=""><?php echo $cat->name ?></div>
+        <div class="category-count" style=""><?php echo (isset($catCount[$cat->id])) ? $catCount[$cat->id] : 0 ?></div>
+          
       </div>
     <?php endforeach; ?>
   </div>
  
-  <div id="loading" style="display:none;position:absolute; width:100%;top: 300px;">
-    <img style="display: block; margin: 0 auto;" src="img/loading.gif" alt="Loader" />
-  </div>
+  <div id="loading"><img style="" src="img/loading.gif" alt="Loader" /></div>
   <div id="result" style="padding-top: 30px; width: 100%;" class="clearfix">
+  
     <div style="float: left; padding: 10px; margin: 10px; width: 100%;text-align: center;font-size: 35px; font-style: oblique;">
       Select a category that you are interested
     </div>
