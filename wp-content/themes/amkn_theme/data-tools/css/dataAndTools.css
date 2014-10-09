@@ -19,6 +19,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     Author     : CRSANCHEZ
 */
 
+#loading{
+  display:none; 
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #FFF;
+  opacity: 0.6;
+}
+#loading img{
+  position: absolute;
+  top: 44%;
+  left: 50%;
+}
+
 .art-search {
   border: none !important;
   margin-left: 777px;
@@ -58,6 +73,15 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   height: 134px; 
   float: left; 
   position: relative;
+  background-repeat: no-repeat;
+  background-position: 50% 22%;
+
+  -webkit-transition:background-position 0.5s ease;
+}
+
+.category-btn.selected {  
+  background-repeat: no-repeat;
+  background-position: 50% 10%;
 }
 
 .category-title{
@@ -70,6 +94,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 .category-title-text{
   display: table-cell; 
   vertical-align: middle;
+}
+
+.category-count{
+  position: absolute;
+  right: 0.5em;
+  bottom: 0;
+}
+
+.category-name{
+  position: absolute;
+  bottom: 0;
+  padding: 4%;
+  width: 92%;
+  height: 25%;
+  line-height: 1em;
 }
 
 .closeDetailBtn {
@@ -155,3 +194,4 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   color:#FFFFFF;
   text-decoration:none;
 }
+
