@@ -195,3 +195,35 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
   text-decoration:none;
 }
 
+/* Results Filters*/
+
+.result-filters {
+  width: 30%;
+  float: left;
+  background: #F2F1EF;
+  padding: 5px 0px 5px 10px;
+}
+
+.result-filters .title{
+  font-size: 30px;
+}
+.result-filters .subtitle{
+  font-size: 1.2em;
+  color:#666;
+}
+
+.result-filters ul{ 
+  padding-left: 15px;
+}
+
+
+.result-filters ul li{
+  font-size: 1.3em;
+}
+
+
+#results_box {
+  width: 67%; 
+  float:left; 
+  margin-left: 15px
+}
