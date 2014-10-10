@@ -49,6 +49,7 @@ function validSelect(check) {
 
 function categoryChosen(id, form, page) {
   page = page || 1;
+  document.location.hash = "category="+id+((form)?"/"+form:"");
   $.ajax({
     url: "result.php?" + form,
     type: "POST",
@@ -63,7 +64,6 @@ function categoryChosen(id, form, page) {
       $("#result").show();
     }
   });
-  document.location.hash = "category="+id+((form)?"/"+form:"");
 }
 
 function deliverableChosen(id) {
@@ -78,12 +78,14 @@ function deliverableChosen(id) {
   })
 }
 
-function serachDeliverable(key, e) {
+function serachDeliverable(key, e, page) {
   if (e.which == 13 || e.keyCode == 13 || e == true) {
+    page = page || 1;
+    document.location.hash = "search="+key;
     $.ajax({
       url: "searchResult.php",
       type: "POST",
-      data: {key: key},
+      data: {key: key, page:page},
       success: function(result) {
         $("#loading").show();
         $("#result").hide();
@@ -96,6 +98,7 @@ function serachDeliverable(key, e) {
         $("#result").show();
       }
     });
+//    document.location.hash = "search="+key;
   }
 }
 
@@ -104,20 +107,27 @@ function initialState(anchor) {
     var form = '';
     var page = 1 ;
     var params = unescape(anchor).split("/");
-    var cat = params[0].split("=")[1];
-    if (typeof params[1] !== "undefined") {
-      form = params[1];
+    if (params[0].split("=")[0] == '#category') {
+      var cat = params[0].split("=")[1];
+      if (typeof params[1] !== "undefined") {
+        form = params[1];
+      }
+      if (typeof params[2] !== "undefined") {
+        page = params[2].split("=")[1];
+      }
+  //    alert(cat+' '+params[1]);
+      categoryChosen(cat, form, page);
+      $('#cat'+cat).addClass('selected').siblings().removeClass('selected');
+      $('#result').show();
+      $('#detail').html('');
+      $('.searchbar').val('');
+    } else if (params[0].split("=")[0] == '#search') {
+      if (typeof params[1] !== "undefined") {
+        page = params[1].split("=")[1];
+      }
+      $('.searchbar').val(params[0].split("=")[1]);
+      serachDeliverable(params[0].split("=")[1], true,page);
     }
-    if (typeof params[2] !== "undefined") {
-      initPage = false;
-      page = params[2].split("=")[1];
-    }
-//    alert(cat+' '+params[1]);
-    categoryChosen(cat, form, page);
-    $('#cat'+cat).addClass('selected').siblings().removeClass('selected');
-    $('#result').show();
-    $('#detail').html('');
-    $('.searchbar').val('');
 //    request_page(page, form);
   }
 }
