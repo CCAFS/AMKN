@@ -95,6 +95,7 @@ if ($last < 1) {
     $("#pagination_controls").html(paginationCtrls);
     var hash = unescape(document.location.hash).split("/");
     document.location.hash = hash[0].replace('#','')+'/page='+pn;
+    transport.postMessage(hash[0].replace('#','')+'/page='+pn);
   }
 </script>
 <div id="results_box" style="width: 100%; float:left; margin-left: 15px">

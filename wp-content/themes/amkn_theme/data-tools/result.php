@@ -104,6 +104,7 @@ if ($last < 1) {
     $("#pagination_controls").html(paginationCtrls);
     var hash = unescape(document.location.hash).split("/");
     document.location.hash = hash[0].replace('#','')+'/'+hash[1]+'/page='+pn;
+    transport.postMessage(hash[0].replace('#','')+'/'+hash[1]+'/page='+pn);
   }
 </script>
 <div class="result-filters">

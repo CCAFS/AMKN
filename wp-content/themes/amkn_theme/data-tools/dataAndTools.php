@@ -60,7 +60,8 @@ $categories = $wpdb->get_results($sql);
      * @param {String} origin
      */
     onMessage: function(message, origin) {
-      alert("Received camo'" + message + "' from '" + origin + "'");
+      console.log(message + "' from '" + origin + "'");
+      initialState(message);
     }
   });
 </script>

@@ -50,6 +50,7 @@ function validSelect(check) {
 function categoryChosen(id, form, page) {
   page = page || 1;
   document.location.hash = "category="+id+((form)?"/"+form:"");
+  transport.postMessage("category="+id+((form)?"/"+form:""));
   $.ajax({
     url: "result.php?" + form,
     type: "POST",
@@ -82,6 +83,7 @@ function serachDeliverable(key, e, page) {
   if (e.which == 13 || e.keyCode == 13 || e == true) {
     page = page || 1;
     document.location.hash = "search="+key;
+    transport.postMessage("search="+key);
     $.ajax({
       url: "searchResult.php",
       type: "POST",
