@@ -48,7 +48,23 @@ $categories = $wpdb->get_results($sql);
 <?php else : ?>
   <link rel="stylesheet" type="text/css" href="css/default.css">
 <?php endif; ?>
+<script src="js/easyXDM.debug.js"></script>
 <script src="js/dataAndTools.js"></script>
+<script type="text/javascript">
+  var transport = new easyXDM.Socket(/** The configuration */{
+    //local: "../name.html",
+    //swf: "../easyxdm.swf",
+    /**
+     * Register the method that should handle incoming messages
+     * @param {String} data
+     * @param {String} origin
+     */
+    onMessage: function(message, origin) {
+      alert("Received camo'" + message + "' from '" + origin + "'");
+    }
+  });
+</script>
+
 <div id="container" style="background: #FFF; font-family: open_sanscondensed_light;">
   <div class="art-search clearfix">
     <!--<form class="" method="get" name="" action="" style="display: inline-flex">-->
@@ -66,14 +82,14 @@ $categories = $wpdb->get_results($sql);
           $('#loading').show();">
         <div class="category-name" style=""><?php echo $cat->name ?></div>
         <div class="category-count" style=""><?php echo (isset($catCount[$cat->id])) ? $catCount[$cat->id] : 0 ?></div>
-          
+
       </div>
     <?php endforeach; ?>
   </div>
- 
+
   <div id="loading"><img style="" src="img/loading.gif" alt="Loader" /></div>
   <div id="result" style="padding-top: 30px; width: 100%;" class="clearfix">
-  
+
     <div style="float: left; padding: 10px; margin: 10px; width: 100%;text-align: center;font-size: 35px; font-style: oblique;">
       Select a category that you are interested
     </div>
