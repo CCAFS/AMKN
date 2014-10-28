@@ -87,7 +87,7 @@ $categories = $wpdb->get_results($sql);
       </div>
     <?php endforeach; ?>
   </div>
-
+  <div id="urlState"></div>
   <div id="loading"><img style="" src="img/loading.gif" alt="Loader" /></div>
   <div id="result" style="padding-top: 30px; width: 100%;" class="clearfix">
 
