@@ -256,13 +256,14 @@ function AMKN_Save($postid) {
           $countrySlugA = $wpdb->get_results($geoCountry);
           $countrySlug = explode("|", $countrySlugA[0]->slug);
           wp_set_object_terms($postid, $countrySlug[0], 'cgmap-countries');
+          updateAllNearestBMSite();
           update_post_meta($postid, 'processed', "true");
           break;
       }
     }
-    if (get_post_type($postid) == "ccafs_sites" && !get_post_meta($postid, 'processed', true)) {
-      updateAllNearestBMSite();
-    }
+//    if (get_post_type($postid) == "ccafs_sites" && !get_post_meta($postid, 'processed', true)) {
+//      updateAllNearestBMSite();
+//    }
   }
   $this_dir = dirname(__FILE__);
   deleteDirectory($this_dir . "/tmp");
