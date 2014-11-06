@@ -1,0 +1,749 @@
+
+ 
+08-12-14 16:55:55 | GET detected
+08-12-14 16:55:55 | Proxy could not resolve requested url - http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task/execute.  Possible solution would be to update 'mustMatch', 'matchAll' or 'url' property in the configuration file.
+ 
+08-12-14 16:57:12 | POST detected
+08-12-14 16:57:12 | Proxy could not resolve requested url - http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task/execute.  Possible solution would be to update 'mustMatch', 'matchAll' or 'url' property in the configuration file.
+ 
+08-12-14 17:20:49 | POST detected
+08-12-14 17:20:49 | Proxy could not resolve requested url - http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task/execute.  Possible solution would be to update 'mustMatch', 'matchAll' or 'url' property in the configuration file.
+ 
+08-12-14 17:22:03 | GET detected
+08-12-14 17:22:03 | Proxy could not resolve requested url - http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task/execute.  Possible solution would be to update 'mustMatch', 'matchAll' or 'url' property in the configuration file.
+ 
+08-12-14 17:23:56 | POST detected
+08-12-14 17:23:56 | Proxy could not resolve requested url - http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task/execute.  Possible solution would be to update 'mustMatch', 'matchAll' or 'url' property in the configuration file.
+ 
+08-12-14 17:24:32 | POST detected
+08-12-14 17:24:32 | Proxy could not resolve requested url - http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task/execute.  Possible solution would be to update 'mustMatch', 'matchAll' or 'url' property in the configuration file.
+ 
+08-12-14 17:34:57 | POST detected
+08-12-14 17:34:57 | Proxy could not resolve requested url - http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task/execute.  Possible solution would be to update 'mustMatch', 'matchAll' or 'url' property in the configuration file.
+ 
+08-12-14 17:35:16 | POST detected
+08-12-14 17:35:16 | Proxy could not resolve requested url - http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task/execute.  Possible solution would be to update 'mustMatch', 'matchAll' or 'url' property in the configuration file.
+ 
+08-12-14 17:37:27 | POST detected
+08-12-14 17:37:27 | Proxy could not resolve requested url - http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task/execute.  Possible solution would be to update 'mustMatch', 'matchAll' or 'url' property in the configuration file.
+ 
+08-12-14 17:42:27 | POST detected
+08-12-14 17:42:27 | ips table created!
+08-12-14 17:42:27 | clicks table created!
+08-12-14 17:42:50 | Ok to proxy
+08-12-14 17:42:50 | Proxy complete
+ 
+08-12-14 17:43:28 | POST detected
+ 
+08-12-14 17:43:46 | Ok to proxy
+08-12-14 17:43:46 | Proxy complete
+08-12-14 17:43:46 | POST detected
+08-12-14 17:44:08 | Ok to proxy
+08-12-14 17:44:08 | Proxy complete
+ 
+08-12-14 17:58:38 | POST detected
+08-12-14 17:59:00 | Ok to proxy
+08-12-14 17:59:00 | Proxy complete
+ 
+08-12-14 18:00:55 | POST detected
+08-12-14 18:01:15 | Ok to proxy
+08-12-14 18:01:15 | Proxy complete
+ 
+08-12-14 18:02:58 | POST detected
+08-12-14 18:03:16 | Ok to proxy
+08-12-14 18:03:16 | Proxy complete
+ 
+08-12-14 18:27:10 | GET detected
+08-12-14 18:27:10 | Proxy could not resolve requested url - http://data.ilri.org:8080/geoserver/ILRI-Public/KENYA_FOREST_TYPES/wms.  Possible solution would be to update 'mustMatch', 'matchAll' or 'url' property in the configuration file.
+ 
+08-12-14 18:30:37 | GET detected
+08-12-14 18:30:41 | Ok to proxy
+08-12-14 18:30:41 | Proxy complete
+ 
+08-12-14 18:30:46 | POST detected
+08-12-14 18:31:05 | Ok to proxy
+08-12-14 18:31:05 | Proxy complete
+ 
+08-12-14 18:31:30 | GET detected
+08-12-14 18:31:30 | Proxy could not resolve requested url - http://data.ilri.org:8080/geoserver/ILRI-Public/KENYA_FOREST_TYPES/wms.  Possible solution would be to update 'mustMatch', 'matchAll' or 'url' property in the configuration file.
+ 
+08-12-14 18:31:46 | GET detected
+08-12-14 18:31:50 | Ok to proxy
+08-12-14 18:31:50 | Proxy complete
+ 
+08-12-14 18:32:06 | GET detected
+08-12-14 18:32:10 | Ok to proxy
+08-12-14 18:32:10 | Proxy complete
+ 
+08-12-14 18:42:58 | GET detected
+08-12-14 18:43:04 | Ok to proxy
+08-12-14 18:43:04 | Proxy complete
+ 
+08-12-14 18:44:47 | GET detected
+08-12-14 18:44:50 | Ok to proxy
+08-12-14 18:44:50 | Proxy complete
+ 
+08-12-14 18:46:16 | GET detected
+08-12-14 18:46:20 | Ok to proxy
+08-12-14 18:46:20 | Proxy complete
+ 
+08-12-14 18:56:36 | GET detected
+08-12-14 18:56:41 | Ok to proxy
+08-12-14 18:56:41 | Proxy complete
+ 
+08-12-14 18:59:47 | GET detected
+08-12-14 18:59:51 | Ok to proxy
+08-12-14 18:59:51 | Proxy complete
+ 
+08-12-14 19:00:30 | GET detected
+08-12-14 19:00:33 | Ok to proxy
+08-12-14 19:00:33 | Proxy complete
+ 
+08-12-14 19:00:58 | GET detected
+08-12-14 19:01:02 | Ok to proxy
+08-12-14 19:01:02 | Proxy complete
+ 
+08-12-14 20:35:07 | GET detected
+08-12-14 20:35:11 | Ok to proxy
+08-12-14 20:35:11 | Proxy complete
+ 
+08-12-14 20:44:23 | GET detected
+08-12-14 20:44:23 | Ok to proxy
+08-12-14 20:44:23 | Proxy complete
+ 
+08-12-14 20:59:04 | GET detected
+08-12-14 20:59:25 | Curl error or no response: Failed to connect to data.ilri.org port 8080: Timed out
+08-12-14 20:59:25 | Ok to proxy
+08-12-14 20:59:25 | Proxy complete
+ 
+08-12-14 21:29:50 | GET detected
+08-12-14 21:29:51 | Ok to proxy
+08-12-14 21:29:51 | Proxy complete
+ 
+08-12-14 21:30:27 | GET detected
+08-12-14 21:30:31 | Ok to proxy
+08-12-14 21:30:31 | Proxy complete
+ 
+08-12-14 21:34:26 | GET detected
+08-12-14 21:34:27 | Ok to proxy
+08-12-14 21:34:27 | Proxy complete
+ 
+08-12-14 21:34:44 | GET detected
+08-12-14 21:34:45 | Ok to proxy
+08-12-14 21:34:45 | Proxy complete
+ 
+08-12-14 21:35:01 | GET detected
+08-12-14 21:35:04 | Ok to proxy
+08-12-14 21:35:04 | Proxy complete
+ 
+08-12-14 21:35:37 | GET detected
+08-12-14 21:35:43 | Ok to proxy
+08-12-14 21:35:43 | Proxy complete
+ 
+08-12-14 21:40:47 | GET detected
+08-12-14 21:40:51 | Ok to proxy
+08-12-14 21:40:51 | Proxy complete
+ 
+08-12-14 21:42:00 | GET detected
+08-12-14 21:42:04 | Ok to proxy
+08-12-14 21:42:04 | Proxy complete
+ 
+08-12-14 22:55:22 | GET detected
+08-12-14 22:55:25 | Ok to proxy
+08-12-14 22:55:25 | Proxy complete
+ 
+08-12-14 23:03:31 | GET detected
+08-12-14 23:03:35 | Ok to proxy
+08-12-14 23:03:35 | Proxy complete
+ 
+08-12-14 23:13:38 | GET detected
+08-12-14 23:13:39 | Ok to proxy
+08-12-14 23:13:39 | Proxy complete
+ 
+08-13-14 14:31:27 | GET detected
+08-13-14 14:31:30 | Ok to proxy
+08-13-14 14:31:30 | Proxy complete
+ 
+08-13-14 14:33:11 | GET detected
+08-13-14 14:33:14 | Ok to proxy
+08-13-14 14:33:14 | Proxy complete
+ 
+08-13-14 14:33:29 | GET detected
+08-13-14 14:33:33 | Ok to proxy
+08-13-14 14:33:33 | Proxy complete
+ 
+08-13-14 14:38:49 | GET detected
+08-13-14 14:38:52 | Ok to proxy
+08-13-14 14:38:52 | Proxy complete
+ 
+08-13-14 14:39:20 | GET detected
+08-13-14 14:39:24 | Ok to proxy
+08-13-14 14:39:24 | Proxy complete
+ 
+08-13-14 14:41:17 | POST detected
+08-13-14 14:41:31 | Ok to proxy
+08-13-14 14:41:31 | Proxy complete
+ 
+08-13-14 14:47:45 | GET detected
+08-13-14 14:47:49 | Ok to proxy
+08-13-14 14:47:49 | Proxy complete
+ 
+08-13-14 16:03:05 | GET detected
+08-13-14 16:03:06 | Ok to proxy
+08-13-14 16:03:06 | Proxy complete
+ 
+08-13-14 16:42:03 | GET detected
+08-13-14 16:42:07 | Ok to proxy
+08-13-14 16:42:07 | Proxy complete
+ 
+08-14-14 16:17:26 | GET detected
+08-14-14 16:17:33 | Ok to proxy
+08-14-14 16:17:33 | Proxy complete
+ 
+08-19-14 15:51:04 | GET detected
+08-19-14 15:51:08 | Ok to proxy
+08-19-14 15:51:08 | Proxy complete
+ 
+08-20-14 21:32:14 | GET detected
+08-20-14 21:32:18 | Ok to proxy
+08-20-14 21:32:18 | Proxy complete
+ 
+09-01-14 18:44:45 | GET detected
+09-01-14 18:44:54 | Ok to proxy
+09-01-14 18:44:54 | Proxy complete
+ 
+09-01-14 18:45:03 | POST detected
+09-01-14 18:45:21 | Ok to proxy
+09-01-14 18:45:21 | Proxy complete
+ 
+09-03-14 17:17:52 | GET detected
+09-03-14 17:17:57 | Ok to proxy
+09-03-14 17:17:57 | Proxy complete
+ 
+09-04-14 17:07:18 | GET detected
+09-04-14 17:07:22 | Ok to proxy
+09-04-14 17:07:22 | Proxy complete
+ 
+09-04-14 20:30:54 | GET detected
+09-04-14 20:31:44 | Ok to proxy
+09-04-14 20:31:44 | Proxy complete
+ 
+09-05-14 14:47:01 | GET detected
+09-05-14 14:47:09 | Ok to proxy
+09-05-14 14:47:09 | Proxy complete
+ 
+09-05-14 18:43:54 | GET detected
+09-05-14 18:43:58 | Ok to proxy
+09-05-14 18:43:58 | Proxy complete
+ 
+09-05-14 18:49:19 | GET detected
+09-05-14 18:49:23 | Ok to proxy
+09-05-14 18:49:23 | Proxy complete
+ 
+09-08-14 15:07:39 | GET detected
+09-08-14 15:08:14 | Ok to proxy
+09-08-14 15:08:14 | Proxy complete
+ 
+09-08-14 16:41:33 | GET detected
+09-08-14 16:41:37 | Ok to proxy
+09-08-14 16:41:37 | Proxy complete
+ 
+09-08-14 16:42:35 | GET detected
+09-08-14 16:42:39 | Ok to proxy
+09-08-14 16:42:39 | Proxy complete
+ 
+09-08-14 16:42:46 | GET detected
+09-08-14 16:42:53 | Ok to proxy
+09-08-14 16:42:53 | Proxy complete
+ 
+09-08-14 16:43:22 | GET detected
+09-08-14 16:43:27 | Ok to proxy
+09-08-14 16:43:27 | Proxy complete
+ 
+09-08-14 16:49:30 | GET detected
+09-08-14 16:49:34 | Ok to proxy
+09-08-14 16:49:34 | Proxy complete
+ 
+09-08-14 20:36:40 | GET detected
+09-08-14 20:36:44 | Ok to proxy
+09-08-14 20:36:44 | Proxy complete
+ 
+09-08-14 23:31:28 | GET detected
+09-08-14 23:31:32 | Ok to proxy
+09-08-14 23:31:32 | Proxy complete
+ 
+09-10-14 14:47:26 | GET detected
+ 
+09-11-14 16:28:45 | GET detected
+09-11-14 16:28:59 | Ok to proxy
+09-11-14 16:28:59 | Proxy complete
+ 
+09-12-14 15:03:43 | GET detected
+09-12-14 15:03:47 | Ok to proxy
+09-12-14 15:03:47 | Proxy complete
+ 
+09-15-14 14:39:35 | GET detected
+09-15-14 14:39:45 | Ok to proxy
+09-15-14 14:39:45 | Proxy complete
+ 
+09-15-14 16:08:57 | GET detected
+09-15-14 16:09:02 | Ok to proxy
+09-15-14 16:09:02 | Proxy complete
+ 
+09-15-14 17:22:54 | GET detected
+09-15-14 17:22:58 | Ok to proxy
+09-15-14 17:22:58 | Proxy complete
+ 
+09-18-14 14:55:23 | GET detected
+09-18-14 14:55:49 | Ok to proxy
+09-18-14 14:55:49 | Proxy complete
+ 
+09-18-14 14:57:34 | GET detected
+09-18-14 14:57:41 | Ok to proxy
+09-18-14 14:57:41 | Proxy complete
+ 
+09-18-14 15:08:11 | GET detected
+09-18-14 15:08:16 | Ok to proxy
+09-18-14 15:08:16 | Proxy complete
+ 
+09-18-14 15:31:39 | GET detected
+09-18-14 15:31:43 | Ok to proxy
+09-18-14 15:31:43 | Proxy complete
+ 
+09-18-14 17:52:38 | GET detected
+09-18-14 17:52:42 | Ok to proxy
+09-18-14 17:52:42 | Proxy complete
+ 
+09-19-14 22:02:42 | GET detected
+09-19-14 22:02:46 | Ok to proxy
+09-19-14 22:02:46 | Proxy complete
+ 
+09-19-14 22:22:42 | GET detected
+09-19-14 22:22:47 | Ok to proxy
+09-19-14 22:22:47 | Proxy complete
+ 
+09-19-14 22:27:15 | GET detected
+09-19-14 22:27:19 | Ok to proxy
+09-19-14 22:27:19 | Proxy complete
+ 
+09-19-14 22:27:27 | GET detected
+09-19-14 22:27:32 | Ok to proxy
+09-19-14 22:27:32 | Proxy complete
+ 
+09-19-14 22:34:10 | POST detected
+09-19-14 22:34:25 | Ok to proxy
+09-19-14 22:34:25 | Proxy complete
+ 
+09-22-14 15:10:42 | GET detected
+09-22-14 15:10:46 | Ok to proxy
+09-22-14 15:10:46 | Proxy complete
+ 
+09-22-14 22:00:36 | GET detected
+09-22-14 22:00:40 | Ok to proxy
+09-22-14 22:00:40 | Proxy complete
+ 
+09-22-14 22:10:15 | GET detected
+09-22-14 22:10:19 | Ok to proxy
+09-22-14 22:10:19 | Proxy complete
+ 
+09-22-14 23:10:53 | GET detected
+09-22-14 23:10:57 | Ok to proxy
+09-22-14 23:10:57 | Proxy complete
+ 
+09-22-14 23:11:09 | GET detected
+09-22-14 23:11:13 | Ok to proxy
+09-22-14 23:11:13 | Proxy complete
+ 
+09-22-14 23:11:27 | GET detected
+09-22-14 23:11:32 | Ok to proxy
+09-22-14 23:11:32 | Proxy complete
+ 
+09-22-14 23:20:45 | GET detected
+09-22-14 23:20:49 | Ok to proxy
+09-22-14 23:20:49 | Proxy complete
+ 
+09-22-14 23:22:41 | GET detected
+09-22-14 23:22:44 | Ok to proxy
+09-22-14 23:22:44 | Proxy complete
+ 
+09-22-14 23:24:58 | GET detected
+09-22-14 23:25:01 | Ok to proxy
+09-22-14 23:25:01 | Proxy complete
+ 
+09-22-14 23:27:58 | GET detected
+09-22-14 23:28:02 | Ok to proxy
+09-22-14 23:28:02 | Proxy complete
+ 
+09-22-14 23:28:58 | GET detected
+09-22-14 23:29:02 | Ok to proxy
+09-22-14 23:29:02 | Proxy complete
+ 
+09-23-14 14:52:54 | GET detected
+09-23-14 14:52:58 | Ok to proxy
+09-23-14 14:52:58 | Proxy complete
+ 
+09-23-14 14:56:56 | GET detected
+09-23-14 14:57:00 | Ok to proxy
+09-23-14 14:57:00 | Proxy complete
+ 
+09-23-14 14:57:33 | GET detected
+09-23-14 14:57:36 | Ok to proxy
+09-23-14 14:57:36 | Proxy complete
+ 
+09-23-14 14:59:34 | GET detected
+09-23-14 14:59:46 | Ok to proxy
+09-23-14 14:59:46 | Proxy complete
+ 
+09-23-14 15:03:06 | GET detected
+09-23-14 15:03:10 | Ok to proxy
+09-23-14 15:03:10 | Proxy complete
+ 
+09-23-14 15:05:14 | GET detected
+09-23-14 15:05:19 | Ok to proxy
+09-23-14 15:05:19 | Proxy complete
+ 
+09-23-14 15:29:57 | GET detected
+09-23-14 15:30:01 | Ok to proxy
+09-23-14 15:30:01 | Proxy complete
+ 
+09-23-14 15:30:44 | GET detected
+09-23-14 15:30:48 | Ok to proxy
+09-23-14 15:30:48 | Proxy complete
+ 
+09-23-14 15:37:48 | GET detected
+09-23-14 15:37:52 | Ok to proxy
+09-23-14 15:37:52 | Proxy complete
+ 
+09-23-14 15:42:57 | GET detected
+ 
+09-23-14 15:43:15 | Ok to proxy
+09-23-14 15:43:15 | Proxy complete
+09-23-14 15:43:15 | GET detected
+09-23-14 15:43:20 | Ok to proxy
+09-23-14 15:43:20 | Proxy complete
+ 
+09-23-14 15:44:22 | GET detected
+09-23-14 15:44:27 | Ok to proxy
+09-23-14 15:44:27 | Proxy complete
+ 
+09-23-14 16:14:20 | GET detected
+09-23-14 16:14:24 | Ok to proxy
+09-23-14 16:14:24 | Proxy complete
+ 
+09-23-14 16:16:35 | GET detected
+09-23-14 16:16:38 | Ok to proxy
+09-23-14 16:16:38 | Proxy complete
+ 
+09-23-14 16:19:03 | GET detected
+09-23-14 16:19:07 | Ok to proxy
+09-23-14 16:19:07 | Proxy complete
+ 
+09-23-14 16:19:38 | GET detected
+09-23-14 16:19:42 | Ok to proxy
+09-23-14 16:19:42 | Proxy complete
+ 
+09-23-14 16:20:56 | GET detected
+09-23-14 16:21:00 | Ok to proxy
+09-23-14 16:21:00 | Proxy complete
+ 
+09-23-14 16:28:45 | GET detected
+09-23-14 16:28:49 | Ok to proxy
+09-23-14 16:28:49 | Proxy complete
+ 
+09-23-14 16:29:29 | GET detected
+09-23-14 16:29:36 | Ok to proxy
+09-23-14 16:29:36 | Proxy complete
+ 
+09-23-14 16:35:20 | GET detected
+09-23-14 16:35:24 | Ok to proxy
+09-23-14 16:35:24 | Proxy complete
+ 
+09-23-14 16:37:02 | GET detected
+09-23-14 16:37:05 | Ok to proxy
+09-23-14 16:37:05 | Proxy complete
+ 
+09-23-14 16:44:06 | GET detected
+09-23-14 16:44:10 | Ok to proxy
+09-23-14 16:44:10 | Proxy complete
+ 
+09-23-14 16:52:10 | GET detected
+09-23-14 16:52:14 | Ok to proxy
+09-23-14 16:52:14 | Proxy complete
+ 
+09-23-14 16:53:15 | POST detected
+09-23-14 16:53:29 | Ok to proxy
+09-23-14 16:53:29 | Proxy complete
+ 
+09-23-14 17:33:58 | GET detected
+09-23-14 17:34:02 | Ok to proxy
+09-23-14 17:34:02 | Proxy complete
+ 
+09-23-14 17:49:59 | GET detected
+09-23-14 17:50:03 | Ok to proxy
+09-23-14 17:50:03 | Proxy complete
+ 
+09-23-14 17:50:32 | GET detected
+09-23-14 17:50:36 | Ok to proxy
+09-23-14 17:50:36 | Proxy complete
+ 
+09-23-14 17:51:17 | GET detected
+09-23-14 17:51:21 | Ok to proxy
+09-23-14 17:51:21 | Proxy complete
+ 
+09-23-14 17:52:06 | GET detected
+09-23-14 17:52:09 | Ok to proxy
+09-23-14 17:52:09 | Proxy complete
+ 
+09-23-14 17:58:32 | GET detected
+09-23-14 17:58:36 | Ok to proxy
+09-23-14 17:58:36 | Proxy complete
+ 
+09-23-14 18:05:30 | GET detected
+09-23-14 18:05:34 | Ok to proxy
+09-23-14 18:05:34 | Proxy complete
+ 
+09-23-14 18:54:01 | GET detected
+09-23-14 18:54:05 | Ok to proxy
+09-23-14 18:54:05 | Proxy complete
+ 
+09-23-14 18:55:25 | GET detected
+09-23-14 18:55:29 | Ok to proxy
+09-23-14 18:55:29 | Proxy complete
+ 
+09-23-14 18:55:38 | GET detected
+09-23-14 18:55:42 | Ok to proxy
+09-23-14 18:55:42 | Proxy complete
+ 
+09-23-14 18:55:51 | GET detected
+09-23-14 18:55:55 | Ok to proxy
+09-23-14 18:55:55 | Proxy complete
+ 
+09-23-14 18:59:06 | GET detected
+09-23-14 18:59:09 | Ok to proxy
+09-23-14 18:59:09 | Proxy complete
+ 
+09-23-14 19:02:11 | GET detected
+09-23-14 19:02:15 | Ok to proxy
+09-23-14 19:02:15 | Proxy complete
+ 
+09-23-14 19:02:28 | GET detected
+09-23-14 19:02:32 | Ok to proxy
+09-23-14 19:02:32 | Proxy complete
+ 
+09-23-14 19:04:23 | GET detected
+09-23-14 19:04:27 | Ok to proxy
+09-23-14 19:04:27 | Proxy complete
+ 
+09-23-14 20:45:11 | GET detected
+09-23-14 20:45:15 | Ok to proxy
+09-23-14 20:45:15 | Proxy complete
+ 
+09-23-14 21:04:24 | GET detected
+09-23-14 21:04:28 | Ok to proxy
+09-23-14 21:04:28 | Proxy complete
+ 
+09-23-14 23:11:05 | GET detected
+09-23-14 23:11:09 | Ok to proxy
+09-23-14 23:11:09 | Proxy complete
+ 
+09-24-14 17:27:53 | GET detected
+09-24-14 17:27:57 | Ok to proxy
+09-24-14 17:27:57 | Proxy complete
+ 
+09-24-14 17:29:25 | GET detected
+09-24-14 17:29:30 | Ok to proxy
+09-24-14 17:29:30 | Proxy complete
+ 
+09-24-14 17:42:24 | GET detected
+09-24-14 17:42:28 | Ok to proxy
+09-24-14 17:42:28 | Proxy complete
+ 
+09-24-14 17:42:38 | GET detected
+09-24-14 17:42:42 | Ok to proxy
+09-24-14 17:42:42 | Proxy complete
+ 
+09-24-14 17:46:24 | GET detected
+09-24-14 17:46:28 | Ok to proxy
+09-24-14 17:46:28 | Proxy complete
+ 
+09-24-14 17:47:25 | GET detected
+09-24-14 17:47:28 | Ok to proxy
+09-24-14 17:47:28 | Proxy complete
+ 
+09-24-14 17:48:25 | GET detected
+09-24-14 17:48:29 | Ok to proxy
+09-24-14 17:48:29 | Proxy complete
+ 
+09-24-14 17:49:59 | GET detected
+09-24-14 17:50:02 | Ok to proxy
+09-24-14 17:50:02 | Proxy complete
+ 
+09-24-14 17:51:34 | GET detected
+09-24-14 17:51:38 | Ok to proxy
+09-24-14 17:51:38 | Proxy complete
+ 
+09-24-14 18:06:46 | GET detected
+09-24-14 18:06:50 | Ok to proxy
+09-24-14 18:06:50 | Proxy complete
+ 
+09-24-14 22:27:15 | GET detected
+09-24-14 22:27:19 | Ok to proxy
+09-24-14 22:27:19 | Proxy complete
+ 
+09-24-14 23:03:47 | GET detected
+09-24-14 23:03:51 | Ok to proxy
+09-24-14 23:03:51 | Proxy complete
+ 
+09-25-14 17:39:55 | GET detected
+09-25-14 17:39:58 | Ok to proxy
+09-25-14 17:39:58 | Proxy complete
+ 
+09-25-14 21:13:40 | GET detected
+09-25-14 21:14:01 | Curl error or no response: Failed to connect to data.ilri.org port 8080: Timed out
+09-25-14 21:14:01 | Ok to proxy
+09-25-14 21:14:01 | Proxy complete
+ 
+09-25-14 22:47:06 | GET detected
+09-25-14 22:47:11 | Ok to proxy
+09-25-14 22:47:11 | Proxy complete
+ 
+09-26-14 15:07:27 | GET detected
+09-26-14 15:07:31 | Ok to proxy
+09-26-14 15:07:31 | Proxy complete
+ 
+09-26-14 17:48:08 | GET detected
+09-26-14 17:48:12 | Ok to proxy
+09-26-14 17:48:12 | Proxy complete
+ 
+09-26-14 18:59:35 | GET detected
+09-26-14 18:59:39 | Ok to proxy
+09-26-14 18:59:39 | Proxy complete
+ 
+09-26-14 21:46:48 | GET detected
+09-26-14 21:46:52 | Ok to proxy
+09-26-14 21:46:52 | Proxy complete
+ 
+09-26-14 21:48:21 | POST detected
+09-26-14 21:48:22 | Ok to proxy
+09-26-14 21:48:22 | Proxy complete
+ 
+09-26-14 21:48:51 | GET detected
+ 
+09-26-14 21:49:18 | Ok to proxy
+09-26-14 21:49:18 | Proxy complete
+09-26-14 21:49:18 | POST detected
+09-26-14 21:49:19 | Ok to proxy
+09-26-14 21:49:19 | Proxy complete
+ 
+09-26-14 21:49:58 | GET detected
+09-26-14 21:50:02 | Ok to proxy
+09-26-14 21:50:02 | Proxy complete
+ 
+09-26-14 21:50:05 | POST detected
+09-26-14 21:51:00 | Ok to proxy
+09-26-14 21:51:00 | Proxy complete
+ 
+09-26-14 21:51:18 | GET detected
+09-26-14 21:51:21 | Ok to proxy
+09-26-14 21:51:21 | Proxy complete
+ 
+09-26-14 21:51:26 | POST detected
+09-26-14 21:51:27 | Ok to proxy
+09-26-14 21:51:27 | Proxy complete
+ 
+09-26-14 21:51:40 | GET detected
+09-26-14 21:51:44 | Ok to proxy
+09-26-14 21:51:44 | Proxy complete
+ 
+09-26-14 21:51:46 | POST detected
+09-26-14 21:51:47 | Ok to proxy
+09-26-14 21:51:47 | Proxy complete
+ 
+09-26-14 21:55:04 | GET detected
+09-26-14 21:55:08 | Ok to proxy
+09-26-14 21:55:08 | Proxy complete
+ 
+09-26-14 21:56:26 | POST detected
+09-26-14 21:56:28 | Ok to proxy
+09-26-14 21:56:28 | Proxy complete
+ 
+09-29-14 15:37:46 | GET detected
+09-29-14 15:37:50 | Ok to proxy
+09-29-14 15:37:50 | Proxy complete
+ 
+09-29-14 15:45:09 | GET detected
+09-29-14 15:45:13 | Ok to proxy
+09-29-14 15:45:13 | Proxy complete
+ 
+09-29-14 15:47:12 | GET detected
+09-29-14 15:47:16 | Ok to proxy
+09-29-14 15:47:16 | Proxy complete
+ 
+09-29-14 16:56:38 | POST detected
+09-29-14 16:56:52 | Ok to proxy
+09-29-14 16:56:52 | Proxy complete
+ 
+09-29-14 17:49:32 | GET detected
+09-29-14 17:49:36 | Ok to proxy
+09-29-14 17:49:36 | Proxy complete
+ 
+09-29-14 18:04:57 | GET detected
+09-29-14 18:05:01 | Ok to proxy
+09-29-14 18:05:01 | Proxy complete
+ 
+09-29-14 18:05:06 | POST detected
+09-29-14 18:05:08 | Ok to proxy
+09-29-14 18:05:08 | Proxy complete
+ 
+09-29-14 21:05:11 | GET detected
+09-29-14 21:05:15 | Ok to proxy
+09-29-14 21:05:15 | Proxy complete
+ 
+09-29-14 21:44:07 | GET detected
+09-29-14 21:44:29 | Curl error or no response: Failed to connect to data.ilri.org port 8080: Timed out
+09-29-14 21:44:29 | Ok to proxy
+09-29-14 21:44:29 | Proxy complete
+ 
+09-29-14 21:44:44 | GET detected
+09-29-14 21:44:47 | Ok to proxy
+09-29-14 21:44:47 | Proxy complete
+ 
+09-29-14 21:48:22 | GET detected
+09-29-14 21:48:26 | Ok to proxy
+09-29-14 21:48:26 | Proxy complete
+ 
+09-29-14 21:49:11 | GET detected
+09-29-14 21:49:15 | Ok to proxy
+09-29-14 21:49:15 | Proxy complete
+ 
+09-29-14 21:49:46 | GET detected
+09-29-14 21:49:50 | Ok to proxy
+09-29-14 21:49:50 | Proxy complete
+ 
+09-29-14 22:02:39 | GET detected
+09-29-14 22:02:42 | Ok to proxy
+09-29-14 22:02:42 | Proxy complete
+ 
+09-29-14 22:04:32 | GET detected
+09-29-14 22:04:36 | Ok to proxy
+09-29-14 22:04:36 | Proxy complete
+ 
+09-29-14 22:06:18 | GET detected
+09-29-14 22:06:22 | Ok to proxy
+09-29-14 22:06:22 | Proxy complete
+ 
+09-29-14 22:09:23 | GET detected
+09-29-14 22:09:27 | Ok to proxy
+09-29-14 22:09:27 | Proxy complete
+ 
+09-30-14 16:36:45 | GET detected
+09-30-14 16:36:49 | Ok to proxy
+09-30-14 16:36:49 | Proxy complete
+ 
+09-30-14 16:37:23 | GET detected
+09-30-14 16:37:27 | Ok to proxy
+09-30-14 16:37:27 | Proxy complete
+ 
+11-06-14 16:27:40 | GET detected
+11-06-14 16:27:44 | Ok to proxy
+11-06-14 16:27:44 | Proxy complete

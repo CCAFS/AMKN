@@ -239,59 +239,60 @@ function initMap() {
       label: "Reset zoom"
     });
   });
-//    require([
-//        "esri/dijit/Print",
-//        "dojo/dom", "esri/tasks/PrintTemplate", "esri/config", "dojo/_base/array", "dojo/domReady!"
-//    ], function(
-//            Print,
-//            dom, PrintTemplate, esriConfig,
-//            arrayUtils
-//            ) {
-//        printUrl = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task";
-//        esriConfig.defaults.io.proxyUrl = "./wp-content/themes/amkn_theme/libs/esriProxy/proxy.php";
-//        esriConfig.defaults.io.alwaysUseProxy = false;
-//        var legendLayer = new esri.tasks.LegendLayer();
-//        legendLayer.layerId = "Boundaries";
-//        legendLayer.subLayerIds = [0, 5];
-//        var layouts = [{
-//                name: "Letter ANSI A Landscape",
-//                label: "Landscape (PDF)",
-//                format: "pdf",
-//                options: {
-//                    legendLayers: [legendLayer], // empty array means no legend
-//                    scalebarUnit: "Miles",
-//                    titleText: ", Landscape PDF"
-//                }
-//            }, {
-//                name: "Letter ANSI A Portrait",
-//                label: "Portrait (Image)",
-//                format: "jpg",
-//                options: {
-//                    legendLayers: [legendLayer],
-//                    scaleBarUnit: "Miles",
-//                    titleText: ", Portrait JPG"
-//                }
-//            }];
-//        var templates = arrayUtils.map(layouts, function(lo) {
-//            var t = new PrintTemplate();
-//            t.layout = lo.name;
-//            t.label = lo.label;
-//            t.format = lo.format;
-//            t.layoutOptions = lo.options;
-//            return t;
-//        });
+    require([
+        "esri/dijit/Print",
+        "dojo/dom", "esri/tasks/PrintTemplate", "esri/config", "dojo/_base/array", "dojo/domReady!"
+    ], function(
+            Print,
+            dom, PrintTemplate, esriConfig,
+            arrayUtils
+            ) {
+        printUrl = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task";
+        esriConfig.defaults.io.proxyUrl = "./wp-content/themes/amkn_theme/libs/esriProxy/proxy.php";
+        esriConfig.defaults.io.alwaysUseProxy = false;
+        var legendLayer = new esri.tasks.LegendLayer();
+        legendLayer.layerId = "Boundaries";
+        legendLayer.subLayerIds = [0, 5];
+        var layouts = [{
+                name: "Letter ANSI A Landscape",
+                label: "Landscape (PDF)",
+                format: "pdf",
+                options: {
+                    legendLayers: [legendLayer], // empty array means no legend
+                    scalebarUnit: "Miles",
+                    titleText: ", Landscape PDF"
+                }
+            }, {
+                name: "Letter ANSI A Portrait",
+                label: "Portrait (Image)",
+                format: "jpg",
+                options: {
+                    legendLayers: [legendLayer],
+                    scaleBarUnit: "Miles",
+                    titleText: ", Portrait JPG"
+                }
+            }];
+        var templates = arrayUtils.map(layouts, function(lo) {
+            var t = new PrintTemplate();
+            t.layout = lo.name;
+            t.label = lo.label;
+            t.format = lo.format;
+            t.layoutOptions = lo.options;
+            return t;
+        });
 //        printer = new Print({
 //            map: map,
 //            templates: templates,
 //            url: printUrl
 //        }, dom.byId("print_button"));
 //        printer.startup();
-//    });
-//    var wmsLayer = new esri.layers.WMSLayer("http://data.ilri.org:8080/geoserver/ILRI-Public/UG_COUNTY_PEAS94_00/wms", {
-//        format: "png",
-//        visibleLayers: [0]
-//    });
-//    map.addLayer(wmsLayer);
+var wmsLayer = new esri.layers.WMSLayer("http://data.ilri.org:8080/geoserver/ILRI-Public/Coefficient-of-variability-of-rainfall/wms", {
+        format: "png",
+        visibleLayers: [0]
+    });
+    map.addLayer(wmsLayer);
+    });
+    
   require([
     "dojo/parser",
     "dojo/ready",
