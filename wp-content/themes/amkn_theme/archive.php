@@ -82,7 +82,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
         });
         $(document).ready(function()
         {
-          //                  $("#myTable").tablesorter(); 
+          //                  $("#projectsTable").tablesorter(); 
         }
         );
         function orderColumn(colm) {
@@ -165,24 +165,24 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
           </form>
         </div>
         <div class="pure-u-3-4">
-          <div id="tabs" style="width:100%">
+          <div id="tabs-min" style="">
             <ul>
               <li><a href="#tabs-1">Projects</a></li>
               <li><a href="#tabs-2">Charts</a></li>
 
             </ul>
             <div id="tabs-1">
-              <table id="myTable" class="tablesorter CSSTableGenerator" style="width: 98%; float:right;margin: 0px 0pt 15px;">
+              <table id="projectsTable" class="tablesorter pure-table-striped" style="width: 100%; float:right;margin: 0px 0pt 15px;">
                 <thead>
                   <tr>
                     <th onclick="orderColumn('title')">
-                      Title
+                      Project title
                     </th>            
                     <th onclick="orderColumn('theme')">
                       Topic
                     </th>
                     <th onclick="orderColumn('leaderName')">
-                      Lead Center
+                      Lead
                     </th>
           <!--            <th onclick="orderColumn('budget')">
                       Budget (USD)

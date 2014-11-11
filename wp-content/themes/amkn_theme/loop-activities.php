@@ -147,7 +147,7 @@ while ($posts->have_posts()) : $posts->the_post();
 <?php endwhile; ?><!-- end loop-->
 </tbody> 
 </table>
-<?php echo "<h3 style='margin-left:15px'>Showing <b>" . $posts->found_posts . "</b>  projects matching the search criteria</h3>"; ?>
+<?php echo "<p id='results' style=''>Showing <b>" . $posts->found_posts . "</b>  projects matching the search criteria</p>"; ?>
 <br clear="all" />
 <div class= "clearfix" id="amkn-paginate">
   <?php
@@ -162,7 +162,7 @@ while ($posts->have_posts()) : $posts->the_post();
 </div>
 
 <div id="tabs-2" style="width:100%">
-  <table style="width: 100%">
+  <table id="" style="width: 100%">
     <tr>
       <td><div id="chartTheme" style="width:50%;"></div>
       </td>
@@ -205,7 +205,7 @@ foreach ($chartLead as $lead) {
 //echo "<pre>" . print_r($chartStatus, true) . "</pre>$$$" . $sql;
 ?>
 <script>
-    $("#tabs").tabs();
+    $("#tabs-min").tabs();
 
     // Build the chart
     $('#chartTheme').highcharts({
@@ -319,7 +319,7 @@ foreach ($chartLead as $lead) {
 </script>
 <?php if ($posts->found_posts == 0): ?>
   <script>
-    $("#myTable").hide();
+    $("#projectsTable").hide();
   </script>  
 <?php endif; ?>
 

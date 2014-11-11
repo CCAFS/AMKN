@@ -1667,10 +1667,10 @@ td.table-color1 {
 }
 
 .ui-tabs-nav.ui-helper-reset.ui-helper-clearfix.ui-widget-header.ui-corner-all {
-  height: 50px;
+  height: 38px;
 }
 .ui-state-default.ui-corner-top.ui-tabs-active.ui-state-active {
-  height: 50px;
+  height: 38px;
 }
 
 
@@ -2025,7 +2025,7 @@ ul.dynatree-container img {
   box-shadow: 0 0 8px #FFF;
   border-radius: 10px 10px 10px 10px;
 }
-
+/*
 .CSSTableGenerator {
   margin:0px;padding:0px;
   width:100%;
@@ -2099,10 +2099,10 @@ ul.dynatree-container img {
   border-width:0px 0px 0px 0px;
 }
 .CSSTableGenerator tr:first-child:hover td{
-  background:-o-linear-gradient(bottom, #cccccc 5%, #b2b2b2 100%);	
+  background:-o-linear-gradient(bottom, #cccccc 5%, #b2b2b2 100%);  
   background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #cccccc), color-stop(1, #b2b2b2) );
   background:-moz-linear-gradient( center top, #cccccc 5%, #b2b2b2 100% );
-  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#cccccc", endColorstr="#b2b2b2");	background: -o-linear-gradient(top,#cccccc,b2b2b2);
+  filter:progid:DXImageTransform.Microsoft.gradient(startColorstr="#cccccc", endColorstr="#b2b2b2");  background: -o-linear-gradient(top,#cccccc,b2b2b2);
   background-color:#cccccc;
 }
 .CSSTableGenerator tr:first-child td:first-child{
@@ -2111,7 +2111,7 @@ ul.dynatree-container img {
 .CSSTableGenerator tr:first-child td:last-child{
   border-width:0px 0px 1px 1px;
 }
-
+*/
 #printMap {
   visibility: hidden;
   background: #fff;
@@ -2158,3 +2158,76 @@ ul.dynatree-container img {
     display: none !important
   }
 }*/
+
+
+
+/****************** CCAFS Activities custom table CSS *****************/
+
+#projectsTable {
+  font-size: 0.7em;
+}
+
+#projectsTable.tablesorter thead tr th, table.tablesorter tfoot tr th {
+  background-color: #F5F5F5;
+  border: 1px solid #E0E0E0; 
+  color: #444;
+  padding: 8px 5px;
+  font-size: 1.2em;
+}
+
+#projectsTable.tablesorter tbody td {
+  color: #444;
+  background-color: #FFF;
+  vertical-align: top;
+  border: 1px solid #E0E0E0;
+  padding: 6px 5px;
+}
+
+#projectsTable.tablesorter tbody tr:hover td {  
+  cursor: pointer;
+  background: #F2F2F2 !important;
+  color: #777!important;
+}
+
+#tabs-min { 
+    background: #fff; 
+    border: 1px solid #D6D6D6; 
+    float: right;
+    padding: 0;
+    border-radius: 8px;
+    width: 99%;
+} 
+#tabs-min .ui-widget-header { 
+    background: transparent; 
+    border: none; 
+    border-bottom: 1px solid #c0c0c0; 
+    -moz-border-radius: 0px; 
+    -webkit-border-radius: 0px; 
+    border-radius: 2px 2px 0px 0px; 
+    background: #E3BB3B;
+    padding: 10px 0 0 10px;
+} 
+#tabs-min .ui-tabs-nav .ui-state-default { 
+    background: transparent; 
+    border: none; 
+} 
+#tabs-min .ui-tabs-nav .ui-state-active { 
+    background: rgba(255, 255, 255, 1); 
+    border: none; 
+} 
+#tabs-min .ui-tabs-nav .ui-state-default a { 
+    color: #f1f1f1; 
+} 
+#tabs-min .ui-tabs-nav .ui-state-active a { 
+    color: #E3BB3B; 
+}
+
+#tabs-min .ui-tabs-panel {
+  padding: 1em;
+}
+
+#tabs-min p#results {
+font-size: 0.85em;
+color: #6F6F6F;
+font-style: italic;
+}
