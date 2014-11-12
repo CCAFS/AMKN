@@ -286,7 +286,7 @@ function initMap() {
 //            url: printUrl
 //        }, dom.byId("print_button"));
 //        printer.startup();
-var wmsLayer = new esri.layers.WMSLayer("http://data.ilri.org:8080/geoserver/ILRI-Public/Coefficient-of-variability-of-rainfall/wms", {
+var wmsLayer = new esri.layers.WMSLayer("http://data.ilri.org:8080/geoserver/ILRI-Public/mean-annual-temperature/wms", {
         format: "png",
         visibleLayers: [0]
     });
