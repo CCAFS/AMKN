@@ -122,66 +122,70 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
       <h3><?php echo 'Activity '.$idActivity.' - Theme '.$theme?></h3><hr>
       <div class="">Source: <em><?php echo get_bookmark($srcID)->link_description; ?></em> <a target="_blank" href="<?php echo get_post_meta($post->ID, 'syndication_permalink', true); ?>">permalink</a></div>
       <div class="entrymeta">Posted by <?php the_author(); ?> on <?php the_date(); ?><!--  | <a href="<?php comments_link(); ?>"><?php comments_number('no responses', 'one response', '% responses'); ?></a>--><?php echo get_the_tag_list(' | ', ', ', ''); ?> </div>
-      <br><b>Title:</b><br>
-      <?php the_title(); ?>
-      <?php if (count($keywords)):?>
-        <?php 
-          foreach($keywords as $key => $keyword):         
-            $keyw .= $keyword.", ";
-          endforeach;
-        ?>
-      <?php endif;?>
-      <br><br><b>Keywords:</b><br>
-      <?php echo ($keyw)?substr_replace($keyw, ".", -2):''; ?>          
-      <div class="blog-post">        
-        <?php // if (have_posts()) while (have_posts()) : the_post(); ?>
-          <br><b>Description:</b><br>
-          <?php the_content(); ?>
-        <?php // endwhile; // end of the loop.  ?>
-        <br><br>
-        <table  class="generalInformation">
-          <tr>
-            <td>
-              <?php echo "<b>Start Date: </b>"?>
-            </td>
-            <td>
-              <?php echo ($start)?date('d F, Y', strtotime($start)):'No data';?>
-            </td>
-<!--            <td>
-              <?php // echo "<b>Budget:<b>"?>
-            </td>-->
-<!--            <td>
-              <?php // echo "USD ".$budget;?>
-              <?php // echo "USD ".number_format(str_replace(',', '', $budget), 2,',','.')?>
-            </td>-->
-          </tr>
-          <tr>
-            <td>
-              <?php echo "<b>End date: </b>"?>  
-            </td>
-            <td>
-              <?php echo ($end)?date('d F, Y', strtotime($end)):'No data';?>
-            </td>            
-          </tr>
-          </table>
-          <br>
-          <table class="">
-          <?php foreach($contacts as $key => $contact): ?>
-            <?php if ($key==0) :?>
+      <div id="activity-information">
+        <br><b>Title:</b><br>
+        <?php the_title(); ?>
+
+
+        <?php if (count($keywords)):?>
+          <br><br>
+          <b>Keywords:</b><br>
+          <ul class="activity-information-keywords">
+          <?php 
+            foreach($keywords as $key => $keyword):         
+              echo "<li> ".$keyword."</li>";
+            endforeach;
+          ?>
+          <?php //echo ($keyw)?substr_replace($keyw, ".", -2):''; ?>  
+          </ul>
+          <div class="clearfix"></div>
+        <?php endif;?>
+        
+               
+        <div class="blog-post">        
+          <?php // if (have_posts()) while (have_posts()) : the_post(); ?>
+            <br><b>Description:</b><br>
+            <?php the_content(); ?>
+          <?php // endwhile; // end of the loop.  ?>
+          <br><br>
+          <table class="activity-information-dates">
             <tr>
-              <td style="width: 160px;">
-                <b>Contact Person:</b>
-              </td>                     
-              <td colspan="3"><?php echo $contact; if(isset($contactsEmail[$key])) echo " (".$contactsEmail[$key].")"?></td>
+              <td>
+                <strong>Start Date: </strong>
+              </td>
+              <td>
+                <?php echo ($start)?date('d F, Y', strtotime($start)):'No data';?>
+              </td>
             </tr>
-            <?php else:?>
+            <tr>
+              <td>
+                <strong>End date: </strong> 
+              </td>
+              <td>
+                <?php echo ($end)?date('d F, Y', strtotime($end)):'No data';?>
+              </td>            
+            </tr>
+            </table>
+            <br>
+            <table class="">
+            <?php foreach($contacts as $key => $contact): ?>
+              <?php if ($key==0) :?>
               <tr>
-                <td></td>
-                <td colspan="3"><?php echo $contact; if(isset($contactsEmail[$key])) echo " (".$contactsEmail[$key].")"?></td>
+                <td style="width: 160px;">
+                  <b>Contact Person:</b>
+                </td>                     
+                <td colspan="3"><?php echo $contact; if(isset($contactsEmail[$key])) echo " &lt;".$contactsEmail[$key]."&gt; "?></td>
               </tr>
-            <?php endif;?>
-          <?php endforeach;?>          
-        </table>
+              <?php else:?>
+                <tr>
+                  <td></td>
+                  <td colspan="3"><?php echo $contact; if(isset($contactsEmail[$key])) echo " &lt;".$contactsEmail[$key]."&gt;"?></td>
+                </tr>
+              <?php endif;?>
+            <?php endforeach;?>          
+          </table>
+
+          </div> <!-- End activity information -->
         <?php if ($metaDesc != ''): ?>
           <h3>Themes</h3>
           <p><?php echo $metaDesc; ?></p>

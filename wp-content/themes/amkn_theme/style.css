@@ -2231,3 +2231,41 @@ font-size: 0.85em;
 color: #6F6F6F;
 font-style: italic;
 }
+
+
+/******** Activity information Custom CSS *********/
+
+#activity-information {
+  background: #FFF;
+  padding: 1em 2em;
+  margin: 2em 0;
+  color: #444;
+  font-size: 0.95em;
+  box-shadow: 0px 0px 6px rgba(0, 0, 0, 0.1);
+  font-family: helvetica, sans-serif;
+}
+
+ul.activity-information-keywords {
+    margin: 10px 0 20px 0;
+
+    padding: 0px;
+}
+
+ul.activity-information-keywords li {
+  float: left;
+  list-style: none;
+  background: #16a085;
+  margin-right: 6px;
+  padding: 3px 11px;
+  border-radius: 5px;
+  color: #fff;
+  text-transform: capitalize;
+}
+
+.activity-information-dates {
+  margin: 8px 0;
+  padding: 8px;
+  border: 1px solid #DADADA;
+  border-radius: 5px;
+  background: #F9F9F9;
+}
