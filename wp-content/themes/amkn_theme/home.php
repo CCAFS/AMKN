@@ -86,7 +86,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
             <?php endwhile; // end of the loop. ?>
         </div>
 
-        <div id="onthemap" <?php echo $style ?> data-dojo-type="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="259" splitter="<?php echo $splitter ?>" region="left" style="width: 259px;" startExpanded="true">
+        <div id="onthemap" <?php echo $style ?> data-dojo-type="dojox.layout.ExpandoPane" title="What&#39;s on the map" maxWidth="259" splitter="<?php echo $splitter ?>" region="left" style="width: 312px;" startExpanded="true">
           <!--Here is the calling to the template that show the left menu-->
           <?php get_template_part('content_type', 'filters_list2'); ?>          
           <div id="panel-buttons">
