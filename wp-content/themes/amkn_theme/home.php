@@ -66,14 +66,14 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
       <div id="showContent" class="navigating">
         <div id="popContent" class="layers-box" data-dojo-type="dijit.TitlePane" title="Content" closable="true" open="true"> </div>
       </div>
-<!--      <div id="printMap" class="shadow" style="visibility: visible;">
-        <div id="closePrintMapWin" class="closeBtn" title="Close"></div>
-        <div style="top:5px;padding-top:15px;text-align:center;"><h3>Print Map</h3></div>
-        <span id="printWorking" style="display:none;position: absolute;top: 80px;left: 35px;"><img src="<?php echo get_template_directory_uri(); ?>/imgs/ajax-loader.gif"></span>
-        <div id="print_button" style="text-align:center;"><div class="esriPrint"><table class="dijit dijitReset dijitInline dijitLeft esriPrintButton dijitComboButton" cellspacing="0" cellpadding="0" role="presentation" id="dijit_form_ComboButton_0" widgetid="dijit_form_ComboButton_0"><tbody role="presentation"><tr role="presentation"><td class="dijitReset dijitStretch dijitButtonNode" data-dojo-attach-point="buttonNode" data-dojo-attach-event="ondijitclick:_onClick,onkeypress:_onButtonKeyPress"><div id="dijit_form_ComboButton_0_button" class="dijitReset dijitButtonContents" data-dojo-attach-point="titleNode" role="button" aria-labelledby="dijit_form_ComboButton_0_label" tabindex="0"><div class="dijitReset dijitInline dijitIcon dijitNoIcon" data-dojo-attach-point="iconNode" role="presentation"></div><div class="dijitReset dijitInline dijitButtonText" id="dijit_form_ComboButton_0_label" data-dojo-attach-point="containerNode" role="presentation">Imprimir</div></div></td><td id="dijit_form_ComboButton_0_arrow" class="dijitReset dijitRight dijitButtonNode dijitArrowButton dijitDownArrowButton" data-dojo-attach-point="_popupStateNode,focusNode,_buttonNode" data-dojo-attach-event="onkeypress:_onArrowKeyPress" title="" role="button" aria-haspopup="true" tabindex="0" style="-webkit-user-select: none;"><div class="dijitReset dijitArrowButtonInner" role="presentation"></div><div class="dijitReset dijitArrowButtonChar" role="presentation">▼</div></td><td style="display:none !important;"><input type="button" value="" data-dojo-attach-point="valueNode" role="presentation"></td></tr></tbody></table></div></div>
-        <div id="print_button" style="text-align:center;"></div>
-        <hr>        
-      </div>-->
+      <!--      <div id="printMap" class="shadow" style="visibility: visible;">
+              <div id="closePrintMapWin" class="closeBtn" title="Close"></div>
+              <div style="top:5px;padding-top:15px;text-align:center;"><h3>Print Map</h3></div>
+              <span id="printWorking" style="display:none;position: absolute;top: 80px;left: 35px;"><img src="<?php echo get_template_directory_uri(); ?>/imgs/ajax-loader.gif"></span>
+              <div id="print_button" style="text-align:center;"><div class="esriPrint"><table class="dijit dijitReset dijitInline dijitLeft esriPrintButton dijitComboButton" cellspacing="0" cellpadding="0" role="presentation" id="dijit_form_ComboButton_0" widgetid="dijit_form_ComboButton_0"><tbody role="presentation"><tr role="presentation"><td class="dijitReset dijitStretch dijitButtonNode" data-dojo-attach-point="buttonNode" data-dojo-attach-event="ondijitclick:_onClick,onkeypress:_onButtonKeyPress"><div id="dijit_form_ComboButton_0_button" class="dijitReset dijitButtonContents" data-dojo-attach-point="titleNode" role="button" aria-labelledby="dijit_form_ComboButton_0_label" tabindex="0"><div class="dijitReset dijitInline dijitIcon dijitNoIcon" data-dojo-attach-point="iconNode" role="presentation"></div><div class="dijitReset dijitInline dijitButtonText" id="dijit_form_ComboButton_0_label" data-dojo-attach-point="containerNode" role="presentation">Imprimir</div></div></td><td id="dijit_form_ComboButton_0_arrow" class="dijitReset dijitRight dijitButtonNode dijitArrowButton dijitDownArrowButton" data-dojo-attach-point="_popupStateNode,focusNode,_buttonNode" data-dojo-attach-event="onkeypress:_onArrowKeyPress" title="" role="button" aria-haspopup="true" tabindex="0" style="-webkit-user-select: none;"><div class="dijitReset dijitArrowButtonInner" role="presentation"></div><div class="dijitReset dijitArrowButtonChar" role="presentation">▼</div></td><td style="display:none !important;"><input type="button" value="" data-dojo-attach-point="valueNode" role="presentation"></td></tr></tbody></table></div></div>
+              <div id="print_button" style="text-align:center;"></div>
+              <hr>        
+            </div>-->
       <link rel="stylesheet" type="text/css" href="http://ajax.googleapis.com/ajax/libs/dojo/1.9.1/dijit/themes/tundra/tundra.css" />
       <div data-dojo-type="dijit.layout.BorderContainer" design="headline" gutters="true" liveSplitters="false" id="borderContainer" style='<?php echo $size ?>'>
 
@@ -94,6 +94,7 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
             <button id="legend-button" class="panel-button"> &nbsp;</button>
             <button id="basemap-button" class="panel-button"> &nbsp;</button>
             <button id="region-button" class="panel-button"> &nbsp;</button>
+            <button id="tools-button" class="panel-button"> &nbsp;</button>
             <button id="reset-button" class="panel-button" onClick="zoomToOExt();"> &nbsp;</button>
           </div>
           <!--  Base map -->
@@ -115,19 +116,19 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
               <div id="divBtnUnselectAll" style="padding:5px 10px;">
                 <input type="checkbox" id ="ckbSelectAll" checked> Select All
               </div>              
-              <div id="cFiltersList2" style="width: 100%; height: 75%;position: absolute;"></div>                
+              <div id="cFiltersList2" style="width: 100%; height: 75%;position: absolute; overflow: hidden; overflow-y: scroll;"></div>                
               <div id="cFiltersRegion" style="width: 100%; height: 100%; overflow: hidden; display: none"></div>
             </div>
             <div id="basemapGallery" class="drop-panel" ></div> 
             <div id="layersDiv" class="drop-panel" data-dojo-type="dijit/layout/AccordionContainer" style="height: 100%;">
-              <div id="accord_data_layer" data-dojo-type="dijit/layout/ContentPane" title="Data Layers" selected="true" style="overflow: hidden;">
+              <div id="accord_data_layer" data-dojo-type="dijit/layout/ContentPane" title="Data Layers" selected="true" style="overflow-y: scroll;">
                 <button class="checkCtrls amknButton" id="btnDeselectAll" data-dojo-type="dijit.form.Button"  onclick="hideLayers()">
                   Hide All Layers
                 </button>
                 <div id="dataLayers" style="width: 100%; height: 100%;" ></div>
               </div>
               <div id="accord_legend" title="Data Legend" data-dojo-type="dijit/layout/ContentPane">
-                <div id="legendDiv" style="width: 100%; height: 100%;"></div>
+                <div id="legendDiv" style="width: 100%; height: 100%;overflow-y: scroll;"></div>
               </div>
             </div>
             <!--            <div id="layersDiv" style="height: 100%;">
@@ -151,7 +152,33 @@ if (isset($_GET['width']) && isset($_GET['height'])) {
                 <li><a href="javascript:void(0)" onClick="go2Region('-8364791.100883702;-303044.7042604806', 4, 'la');"><img src="<?php bloginfo('template_directory'); ?>/images/latin-america2.png"> Latin America</a></li>
                 <li><a href="javascript:void(0)" onClick="go2Region('11442794.66081846;782972.5936150161', 4, 'sea');"><img src="<?php bloginfo('template_directory'); ?>/images/southeast-asia2.png"> Southeast Asia</a></li>
               </ul>
-            </div>          
+            </div>
+            <div id="tools" class="drop-panel" data-dojo-type="dijit/layout/AccordionContainer" style="height: 100%;">
+              <div id="accord_agtrials" data-dojo-type="dijit/layout/ContentPane" title="Agtrials" selected="true" style="overflow: hidden;">
+                <form class="pure-form pure-form-stacked" id="formTrials" name="formTrials">
+                  <fieldset>
+                    <legend>Trials filter:</legend>
+                  <label for="comodity">comodity</label>
+                  <input type="text" id="comodity" name="comodity">
+                  <label for="from">From Sow Date</label>
+                  <input type="text" id="from" name="from">
+                  <label for="to">To Sow Date</label>
+                  <input type="text" id="to" name="to">
+                  <label for="country">country</label>
+                  <input type="text" id="country" name="country">
+                  <button class="checkCtrls amknButton" id="btnFilterTrials" data-dojo-type="dijit.form.Button"  onclick="filterTrials($('#formTrials').serialize());if($('#ckbSelectAll').prop('checked')){$('#ckbSelectAll').click();}">
+                    Filter
+                  </button>
+                  <button type="button" class="checkCtrls amknButton" id="btnCleanTrials" data-dojo-type="dijit.form.Button"  onclick="cleanTrials();">
+                    Clean
+                  </button>
+                  </fieldset>
+                </form>
+              </div>
+              <!--              <div id="accord_legend" title="Data Legend" data-dojo-type="dijit/layout/ContentPane">
+                              
+                            </div>-->
+            </div>
           </div>   
           <!--  end Base map -->
 

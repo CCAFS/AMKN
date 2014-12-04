@@ -1829,6 +1829,7 @@ ul.dynatree-container img {
 #region-button{  background-image: url("images/regions3.png"), url("images/buttons/13.gif");  background-size: 53px 50px;}
 #reset-button{  background-image: url("images/home3.png"), url("images/buttons/13.gif");  background-size: 53px 50px;}
 #filter-button{  background-image: url("images/filter3.png"), url("images/buttons/13.gif"); background-size: 53px 50px; }
+#tools-button{  background-image: url("images/tool.png"), url("images/buttons/13.gif"); background-size: 53px 50px; }
 
 .panel-button{
   cursor: pointer;
@@ -1859,6 +1860,9 @@ ul.dynatree-container img {
 }
 #filter-button.panel-button.selected { 
   background-image: url("images/filter3.png"),url("images/buttons/09.png")!important;
+}
+#tools-button.panel-button.selected { 
+  background-image: url("images/tool.png"),url("images/buttons/09.png")!important;
 }
 .source {
   width: 100%;

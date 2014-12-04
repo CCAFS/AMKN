@@ -27,6 +27,7 @@
  */
 $_SESSION['lastDate'] = 0;
 setcookie("lastDateTmp", 0, strtotime('+1 days'));
+ini_set('memory_limit', '-1');
 if (isset($_COOKIE["lastDate"])) {
   $_SESSION['lastDate'] = 'January 1, 2014';
 //  $_SESSION['lastDate'] = $_COOKIE["lastDate"];
@@ -81,24 +82,18 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
       };
     </script>
     <script type="text/javascript" src="http://www.google.com/jsapi"></script>
-    <script type="text/javascript">
-      //<![CDATA[
-      google.load("jquery", "1.7.1");
-      google.load("jqueryui", "1.8.2");
-      //]]>
-    </script>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/themes/smoothness/jquery-ui.css" />
+    <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.11.2/jquery-ui.min.js"></script>
     <!-- DynaTree library used in the new sidebar -->
-    <link href="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.1/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
+    <link href="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.6/skin-vista/ui.dynatree.css" rel="stylesheet" type="text/css">
     <link href="<?php bloginfo('template_directory'); ?>/toggle-switch.css" rel="stylesheet" type="text/css">
-    <script src="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.1/jquery.dynatree.min.js" type="text/javascript"></script>
+    <script src="<?php bloginfo('template_directory'); ?>/libs/dynatree/1.2.6/jquery.dynatree.min.js" type="text/javascript"></script>
     <script src="<?php bloginfo('template_directory'); ?>/libs/jBox/jBox.min.js"></script>
     <link href="<?php bloginfo('template_directory'); ?>/libs/jBox/jBox.css" rel="stylesheet">
     <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.scrollTo.js"></script>
     <link rel=" stylesheet" type="text/css" href="<?php bloginfo('template_directory'); ?>/libs/TinyTools/css/tinytools.tourtip.min.css">
     <script src="<?php bloginfo('template_directory'); ?>/libs/TinyTools/tinytools.tourtip.min.js"></script>
-    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.10.4/themes/smoothness/jquery-ui.css">-->
-    <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
-    <!--<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
     <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
     <script type="text/javascript">
       var firstime = false;
@@ -233,28 +228,52 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
             });
           }
         });
-        $("#basemap-button").hover(function() {
+        $("#basemap-button").click(function() {
           $(this).addClass("selected").siblings().removeClass("selected");
           $("#basemapGallery").show().siblings().hide();
         });
-        $("#legend-button").hover(function() {
+        $("#legend-button").click(function() {
           $(this).addClass("selected").siblings().removeClass("selected");
           $(this).removeClass("haslegend");
           $("#layersDiv").show().siblings().hide();
         });
-        $("#filter-button").hover(function() {
+        $("#filter-button").click(function() {
           $(this).addClass("selected").siblings().removeClass("selected");
           $("#sourceMap").show().siblings().hide();
         });
-        $("#region-button").hover(function() {
+        $("#region-button").click(function() {
           $(this).addClass("selected").siblings().removeClass("selected");
           $("#regions").show().siblings().hide();
         });
-        
+
+        $("#tools-button").click(function() {
+          $(this).addClass("selected").siblings().removeClass("selected");
+          $("#tools").show().siblings().hide();
+        });
+
         $(document).on('click', '#closePrintMapWin', function() {
           $(this).parent().fadeTo(300, 0, function() {
             $(this).hide();
           });
+        });
+
+        $("#from").datepicker({
+          changeMonth: true,
+          changeYear: true,
+          dateFormat: 'dd/mm/yy',
+          numberOfMonths: 2,
+          onClose: function(selectedDate) {
+            $("#to").datepicker("option", "minDate", selectedDate);
+          }
+        });
+        $("#to").datepicker({
+          changeMonth: true,
+          changeYear: true,
+          dateFormat: 'dd/mm/yy',
+          numberOfMonths: 2,
+          onClose: function(selectedDate) {
+            $("#from").datepicker("option", "maxDate", selectedDate);
+          }
         });
 
         var a = getCookie("showmsg");

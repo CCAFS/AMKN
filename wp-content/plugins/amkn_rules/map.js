@@ -64,9 +64,10 @@ var cconmap = [];
 var bgonmap = [];
 var bdonmap = [];
 var ptonmap = [];
+var clusterLayer;
 totalSources = {};
 oactnmap = {};
-postTypeLabel = {'amkn_blog_posts':'Blogs', 'biodiv_cases':'Agrobiodiversity Cases', 'ccafs_activities':'Projects', 'ccafs_sites':'Research Sites', 'photo_testimonials':'Photos', 'video_testimonials':'Videos'};
+postTypeLabel = {'amkn_blog_posts': 'Blogs', 'biodiv_cases': 'Agrobiodiversity Cases', 'ccafs_activities': 'Projects', 'ccafs_sites': 'Research Sites', 'photo_testimonials': 'Photos', 'video_testimonials': 'Videos'};
 topics = {'1': 'Adaptation to Progressive Climate Change', '2': 'Adaptation through Managing Climate Risk', '3': ' Pro-Poor Climate Change Mitigation', '4.1': ' Linking Knowledge to Action', '4.2': 'Data and Tools for Analysis and Planning', '4.3': 'Policies and Institutions'};
 
 /**
@@ -239,60 +240,261 @@ function initMap() {
       label: "Reset zoom"
     });
   });
-    require([
-        "esri/dijit/Print",
-        "dojo/dom", "esri/tasks/PrintTemplate", "esri/config", "dojo/_base/array", "dojo/domReady!"
-    ], function(
-            Print,
-            dom, PrintTemplate, esriConfig,
-            arrayUtils
-            ) {
-        printUrl = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task";
-        esriConfig.defaults.io.proxyUrl = "./wp-content/themes/amkn_theme/libs/esriProxy/proxy.php";
-        esriConfig.defaults.io.alwaysUseProxy = false;
-        var legendLayer = new esri.tasks.LegendLayer();
-        legendLayer.layerId = "Boundaries";
-        legendLayer.subLayerIds = [0, 5];
-        var layouts = [{
-                name: "Letter ANSI A Landscape",
-                label: "Landscape (PDF)",
-                format: "pdf",
-                options: {
-                    legendLayers: [legendLayer], // empty array means no legend
-                    scalebarUnit: "Miles",
-                    titleText: ", Landscape PDF"
-                }
-            }, {
-                name: "Letter ANSI A Portrait",
-                label: "Portrait (Image)",
-                format: "jpg",
-                options: {
-                    legendLayers: [legendLayer],
-                    scaleBarUnit: "Miles",
-                    titleText: ", Portrait JPG"
-                }
-            }];
-        var templates = arrayUtils.map(layouts, function(lo) {
-            var t = new PrintTemplate();
-            t.layout = lo.name;
-            t.label = lo.label;
-            t.format = lo.format;
-            t.layoutOptions = lo.options;
-            return t;
-        });
+  require([
+    "esri/dijit/Print",
+    "dojo/dom", "esri/tasks/PrintTemplate", "esri/config", "dojo/_base/array", "dojo/domReady!"
+  ], function(
+          Print,
+          dom, PrintTemplate, esriConfig,
+          arrayUtils
+          ) {
+    printUrl = "http://sampleserver6.arcgisonline.com/arcgis/rest/services/Utilities/PrintingTools/GPServer/Export%20Web%20Map%20Task";
+    esriConfig.defaults.io.proxyUrl = "./wp-content/themes/amkn_theme/libs/esriProxy/proxy.php";
+    esriConfig.defaults.io.alwaysUseProxy = false;
+    var legendLayer = new esri.tasks.LegendLayer();
+    legendLayer.layerId = "Boundaries";
+    legendLayer.subLayerIds = [0, 5];
+    var layouts = [{
+        name: "Letter ANSI A Landscape",
+        label: "Landscape (PDF)",
+        format: "pdf",
+        options: {
+          legendLayers: [legendLayer], // empty array means no legend
+          scalebarUnit: "Miles",
+          titleText: ", Landscape PDF"
+        }
+      }, {
+        name: "Letter ANSI A Portrait",
+        label: "Portrait (Image)",
+        format: "jpg",
+        options: {
+          legendLayers: [legendLayer],
+          scaleBarUnit: "Miles",
+          titleText: ", Portrait JPG"
+        }
+      }];
+    var templates = arrayUtils.map(layouts, function(lo) {
+      var t = new PrintTemplate();
+      t.layout = lo.name;
+      t.label = lo.label;
+      t.format = lo.format;
+      t.layoutOptions = lo.options;
+      return t;
+    });
 //        printer = new Print({
 //            map: map,
 //            templates: templates,
 //            url: printUrl
 //        }, dom.byId("print_button"));
 //        printer.startup();
-var wmsLayer = new esri.layers.WMSLayer("http://data.ilri.org:8080/geoserver/ILRI-Public/mean-annual-temperature/wms", {
-        format: "png",
-        visibleLayers: [0]
+    var wmsLayer = new esri.layers.WMSLayer("http://data.ilri.org:8080/geoserver/ILRI-Public/mean-annual-temperature/wms", {
+      format: "png",
+      visibleLayers: [0]
     });
-    map.addLayer(wmsLayer);
-    });
-    
+//    map.addLayer(wmsLayer);
+  });
+
+//  require([
+//    "dojo/parser",
+//    "dojo/ready",
+//    "dojo/_base/array",
+//    "esri/Color",
+//    "dojo/dom-style",
+//    "dojo/query",
+//    "esri/map",
+//    "esri/request",
+//    "esri/graphic",
+//    "esri/geometry/Extent",
+//    "esri/symbols/SimpleMarkerSymbol",
+//    "esri/symbols/SimpleFillSymbol",
+//    "esri/symbols/PictureMarkerSymbol",
+//    "esri/renderers/ClassBreaksRenderer",
+//    "esri/layers/GraphicsLayer",
+//    "esri/SpatialReference",
+//    "esri/dijit/PopupTemplate",
+//    "esri/geometry/Point",
+//    "esri/geometry/webMercatorUtils",
+//    "./wp-content/plugins/agtrialsimporter/ClusterLayer.js",
+//    "dijit/layout/BorderContainer",
+//    "dijit/layout/ContentPane",
+//    "dojo/domReady!"
+//  ], function(
+//          parser, ready, arrayUtils, Color, domStyle, query,
+//          Map, esriRequest, Graphic, Extent,
+//          SimpleMarkerSymbol, SimpleFillSymbol, PictureMarkerSymbol, ClassBreaksRenderer,
+//          GraphicsLayer, SpatialReference, PopupTemplate, Point, webMercatorUtils,
+//          ClusterLayer
+//          ) {
+//    ready(function() {
+//      parser.parse();
+//
+//      var popupOptions = {
+//        "markerSymbol": new SimpleMarkerSymbol("circle", 20, null, new Color([0, 0, 0, 0.25])),
+//        "marginLeft": "20",
+//        "marginTop": "20"
+//      };
+////          map = new Map("map", {
+////            basemap: "oceans",
+////            center: [-117.789, 33.543],
+////            zoom: 13
+////          });
+//
+//      map.on("click", function() {
+//        // hide the popup's ZoomTo link as it doesn't make sense for cluster features
+//        domStyle.set(query("a.action.zoomTo")[0], "display", "none");
+//
+//        // get the latest 1000 photos from instagram/laguna beach
+//        var photos = esriRequest({
+//          "url": "./wp-content/plugins/agtrialsimporter/tmp/newfile.json",
+//          "handleAs": "json"
+//        });
+//            photos.then(addClusters, error);
+//      });
+//
+//      function addClusters(resp) {
+//        var photoInfo = {};
+//        var wgs = new SpatialReference({
+//          "wkid": 4326
+//        });
+//        photoInfo.data = arrayUtils.map(resp, function(p) {
+//          var latlng = new Point(parseFloat(p.longitude), parseFloat(p.latitude), wgs);
+//          var webMercator = webMercatorUtils.geographicToWebMercator(latlng);
+//          var attributes = {
+//            "Caption": p.name,
+//            "Name": p.crop,
+//            "Image": p.image,
+//            "Link": p.url
+//          };
+//          return {
+//            "x": webMercator.x,
+//            "y": webMercator.y,
+//            "attributes": attributes
+//          };
+//        });
+//
+//        // popupTemplate to work with attributes specific to this dataset
+//        var popupTemplate = PopupTemplate({
+//          "title": "",
+//          "fieldInfos": [{
+//              "fieldName": "Caption",
+//              "label": "Name",
+//              visible: true
+//            }, {
+//              "fieldName": "Name",
+//              "label": "Crop",
+//              visible: true
+//            }, {
+//              "fieldName": "Link",
+//              "label": "Url",
+//              visible: true
+//            }],
+//          "mediaInfos": [{
+//              "title": "",
+//              "caption": "",
+//              "type": "image",
+//              "value": {
+//                "sourceURL": "{Image}",
+//                "linkURL": "{Link}"
+//              }
+//            }]
+//        });
+//
+//        // cluster layer that uses OpenLayers style clustering
+//        clusterLayer = new ClusterLayer({
+//          "data": photoInfo.data,
+//          "distance": 100,
+//          "id": "clusters",
+//          "labelColor": "#fff",
+//          "labelOffset": 10,
+//          "resolution": map.extent.getWidth() / map.width,
+//          "singleColor": "#888",
+//          "singleTemplate": popupTemplate
+//        });
+//        var defaultSym = new SimpleMarkerSymbol().setSize(4);
+//        var renderer = new ClassBreaksRenderer(defaultSym, "clusterCount");
+//
+//        var picBaseUrl = "http://static.arcgis.com/images/Symbols/Shapes/";
+//        var blue = new PictureMarkerSymbol(picBaseUrl + "BluePin1LargeB.png", 32, 32).setOffset(0, 15);
+//        var green = new PictureMarkerSymbol(picBaseUrl + "GreenPin1LargeB.png", 64, 64).setOffset(0, 15);
+//        var red = new PictureMarkerSymbol(picBaseUrl + "RedPin1LargeB.png", 72, 72).setOffset(0, 15);
+//        renderer.addBreak(0, 2, blue);
+//        renderer.addBreak(2, 200, green);
+//        renderer.addBreak(200, 1001, red);
+//
+//        clusterLayer.setRenderer(renderer);
+//        map.addLayer(clusterLayer);
+////        clusterLayer.hide();
+//        // close the info window when the map is clicked
+//        map.on("click", cleanUp);
+//        // close the info window when esc is pressed
+//        map.on("key-down", function(e) {
+//          if (e.keyCode === 27) {
+//            cleanUp();
+//          }
+//        });
+//      }
+//
+//      function cleanUp() {
+//        map.infoWindow.hide();
+//        clusterLayer.clearSingles();
+//      }
+//
+//      function error(err) {
+//        console.log("something failed: ", err);
+//      }
+//
+//      // show cluster extents...
+//      // never called directly but useful from the console 
+//      window.showExtents = function() {
+//        var extents = map.getLayer("clusterExtents");
+//        if (extents) {
+//          map.removeLayer(extents);
+//        }
+//        extents = new GraphicsLayer({id: "clusterExtents"});
+//        var sym = new SimpleFillSymbol().setColor(new Color([205, 193, 197, 0.5]));
+//
+//        arrayUtils.forEach(clusterLayer._clusters, function(c, idx) {
+//          var e = c.attributes.extent;
+//          extents.add(new Graphic(new Extent(e[0], e[1], e[2], e[3], map.spatialReference), sym));
+//        }, this);
+//        map.addLayer(extents, 0);
+//      }
+//    });
+//  });
+}
+
+function cleanTrials() {
+  if (clusterLayer) {
+    map.removeLayer(clusterLayer);
+  }
+  $('#formTrials')[0].reset();
+}
+
+function filterTrials(form) {
+  $.ajax({
+    url: "./wp-content/themes/amkn_theme/filterTrials.php",
+    type: "POST",
+    data: form,
+    success: function(result) {
+//      alert('error: '+result+'%');
+      if (result === '1') {
+        switchCluster();
+      } else if (result === '2') {
+        alert('No data found');
+        if(!$('#ckbSelectAll').prop('checked')){$('#ckbSelectAll').click();}
+      } else if (result === '0') {
+        alert('You should select a filter criteria.');
+        if(!$('#ckbSelectAll').prop('checked')){$('#ckbSelectAll').click();}
+      }
+    },
+    complete: function() {
+
+    }
+  });
+
+}
+
+function switchCluster() {
   require([
     "dojo/parser",
     "dojo/ready",
@@ -327,7 +529,6 @@ var wmsLayer = new esri.layers.WMSLayer("http://data.ilri.org:8080/geoserver/ILR
     ready(function() {
       parser.parse();
 
-      var clusterLayer;
       var popupOptions = {
         "markerSymbol": new SimpleMarkerSymbol("circle", 20, null, new Color([0, 0, 0, 0.25])),
         "marginLeft": "20",
@@ -339,17 +540,17 @@ var wmsLayer = new esri.layers.WMSLayer("http://data.ilri.org:8080/geoserver/ILR
 //            zoom: 13
 //          });
 
-      map.on("load", function() {
-        // hide the popup's ZoomTo link as it doesn't make sense for cluster features
-        domStyle.set(query("a.action.zoomTo")[0], "display", "none");
+//      map.on("click", function() {
+      // hide the popup's ZoomTo link as it doesn't make sense for cluster features
+      domStyle.set(query("a.action.zoomTo")[0], "display", "none");
 
-        // get the latest 1000 photos from instagram/laguna beach
-        var photos = esriRequest({
-          "url": "./wp-content/plugins/agtrialsimporter/rssTrials.json",
-          "handleAs": "json"
-        });
-//            photos.then(addClusters, error);
+      // get the latest 1000 photos from instagram/laguna beach
+      var photos = esriRequest({
+        "url": "./wp-content/plugins/agtrialsimporter/tmp/newfile.json",
+        "handleAs": "json"
       });
+      photos.then(addClusters, error);
+//      });
 
       function addClusters(resp) {
         var photoInfo = {};
@@ -360,10 +561,11 @@ var wmsLayer = new esri.layers.WMSLayer("http://data.ilri.org:8080/geoserver/ILR
           var latlng = new Point(parseFloat(p.longitude), parseFloat(p.latitude), wgs);
           var webMercator = webMercatorUtils.geographicToWebMercator(latlng);
           var attributes = {
-            "Caption": p.trialgroup,
+            "Caption": p.name,
             "Name": p.crop,
-            "Image": p.image,
-            "Link": p.url
+            "Country": p.country,
+            "Link": p.url,
+            "Date": p.sow_date
           };
           return {
             "x": webMercator.x,
@@ -377,27 +579,29 @@ var wmsLayer = new esri.layers.WMSLayer("http://data.ilri.org:8080/geoserver/ILR
           "title": "",
           "fieldInfos": [{
               "fieldName": "Caption",
+              "label": "Name",
               visible: true
             }, {
               "fieldName": "Name",
-              "label": "By",
+              "label": "Crop",
+              visible: true
+            }, {
+              "fieldName": "Country",
+              "label": "Country",
+              visible: true
+            }, {
+              "fieldName": "Date",
+              "label": "Date",
               visible: true
             }, {
               "fieldName": "Link",
-              "label": "On Instagram",
+              "label": "Url",
               visible: true
-            }],
-          "mediaInfos": [{
-              "title": "",
-              "caption": "",
-              "type": "image",
-              "value": {
-                "sourceURL": "{Image}",
-                "linkURL": "{Link}"
-              }
             }]
         });
-
+        if (clusterLayer) {
+          map.removeLayer(clusterLayer);
+        }
         // cluster layer that uses OpenLayers style clustering
         clusterLayer = new ClusterLayer({
           "data": photoInfo.data,
@@ -407,6 +611,7 @@ var wmsLayer = new esri.layers.WMSLayer("http://data.ilri.org:8080/geoserver/ILR
           "labelOffset": 10,
           "resolution": map.extent.getWidth() / map.width,
           "singleColor": "#888",
+          "maxSingles": 8000,
           "singleTemplate": popupTemplate
         });
         var defaultSym = new SimpleMarkerSymbol().setSize(4);
@@ -422,7 +627,7 @@ var wmsLayer = new esri.layers.WMSLayer("http://data.ilri.org:8080/geoserver/ILR
 
         clusterLayer.setRenderer(renderer);
         map.addLayer(clusterLayer);
-
+//        clusterLayer.hide();
         // close the info window when the map is clicked
         map.on("click", cleanUp);
         // close the info window when esc is pressed
@@ -2326,10 +2531,10 @@ function findPointsInPolygon(extent, evt, filtParam) {
 //  extentLocal = '';
   if (extent != '')
     extentLocal = extent;
-  
+
   if (evt != '')
     evtLocal = evt;
-    
+
   var results = [];
   var filter = '<select onchange="findPointsInPolygon(\'\',\'\',this.value);">';
   tempcid = 0;
@@ -2345,13 +2550,13 @@ function findPointsInPolygon(extent, evt, filtParam) {
 
   filter += '<option value="">---</option>';
   for (var key in blogType) {
-    var sele = (filtParam == key)?'selected':'';
-    filter += '<option value="'+key+'" '+sele+'>'+postTypeLabel[key]+'</option>';
+    var sele = (filtParam == key) ? 'selected' : '';
+    filter += '<option value="' + key + '" ' + sele + '>' + postTypeLabel[key] + '</option>';
   }
   filter += '</select>';
   cPx = new esri.geometry.Point(map.toMap(evtLocal.screenPoint).x, map.toMap(evtLocal.screenPoint).y, map.spatialReference);
   var ttContent = "<span class='blockNoWrap'>At this location (" + results.length + ") <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='zoomToCtxt();'><a>Zoom here</a></button> <button dojoType='dijit.form.Button' type='submit' class='checkCtrls amknButton' onClick='cPop();'><a>Close</a></button></span>";
-  ttContent += "<br><table style='width:100%;'><tbody><tr><td>Filter by content type: "+filter+"</td></tr><tr><td><ul class='homebox-list zoom_in-list'>" + results.join("") + "<ul></tr></td></tbody></table>";
+  ttContent += "<br><table style='width:100%;'><tbody><tr><td>Filter by content type: " + filter + "</td></tr><tr><td><ul class='homebox-list zoom_in-list'>" + results.join("") + "<ul></tr></td></tbody></table>";
   hQuery.setContent(ttContent);
   dojo.style(hQuery.domNode, "opacity", 1);
   dijit.popup.open({
