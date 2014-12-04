@@ -170,7 +170,7 @@
   
     <div class="  node-body-container z1 nz">
     <figure class="node-main-image">
-      <iframe src="http://amkn.local/ccafs-sites-embed/" width="620" height="440" frameborder="0"></iframe>
+      <iframe src="http://amkn.org/ccafs-sites-embed/" width="620" height="440" frameborder="0"></iframe>
     </figure>
     <div class="node-body"><aside>
 	<p>Jump to:</p>
