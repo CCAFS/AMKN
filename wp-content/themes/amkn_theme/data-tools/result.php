@@ -20,6 +20,7 @@ require('../../../../wp-load.php');
 global $wpdb;
 $where = "";
 $category = $_POST['category'];
+$page = $_POST['page'];
 $subcategories = array();
 if (!isset($_GET['first'])) {
   if (isset($_GET['subc'])) {
@@ -58,6 +59,7 @@ if ($last < 1) {
   var last = <?php echo $last; ?>; // last page number
   var id = <?php echo $category; ?>; // last page number
   function request_page(pn, form) {
+    initPage = true;
 //    $("#results_box").html("");
     $("#loading").show();
 //    $("#pagination_controls").hide();
@@ -100,11 +102,14 @@ if ($last < 1) {
       }
     }
     $("#pagination_controls").html(paginationCtrls);
+    var hash = unescape(document.location.hash).split("/");
+    document.location.hash = hash[0].replace('#','')+'/'+hash[1]+'/page='+pn;
+    transport.postMessage(hash[0].replace('#','')+'/'+hash[1]+'/page='+pn);
   }
 </script>
-<div style="width: 30%; float:left; background: #f2f1ef; padding: 5px 0px 5px 10px">
-  <div style="font-size: 30px;">Tools and computer</div>
-  <div style="font-size: 18px; color:#4bc8dc">Description of category</div>
+<div class="result-filters">
+  <div class="title">Tools and computer</div>
+  <div class="subtitle">Description of category</div>
   <form id="filter">
     <div>
       <ul style="list-style-type: none;">
@@ -116,7 +121,7 @@ if ($last < 1) {
           <?php endforeach; ?>
       </ul>
     </div>
-    <div style="font-size: 30px;">Regions</div>
+    <div class="title">Regions</div>
     <div>
       <ul style="list-style-type: none;">
         <!--<li><input type="checkbox" name="subc0"/><label><?php echo 'All' ?></label></li>-->
@@ -127,11 +132,15 @@ if ($last < 1) {
     </div>
   </form>
 </div>
-<div id="results_box" style="width: 67%; float:left; margin-left: 15px">
+<div id="results_box" >
 
 </div>
 <div id="loading-r" style="display:none;position:absolute; width:100%;top: 300px;">
   <img style="display: block; margin: 0 auto;" src="img/loading.gif" alt="Loader" />
 </div>
 <div id="pagination_controls" style="float:right; display:none"></div>
-<script> request_page(1, $('#filter').serialize());</script>
+
+<!--<script> request_page(1, $('#filter').serialize());</script>-->
+
+<script> request_page(<?php echo $page?>, $('#filter').serialize());</script>
+

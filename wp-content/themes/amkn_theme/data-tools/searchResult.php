@@ -20,6 +20,7 @@ require('../../../../wp-load.php');
 //get_header('embed');
 global $wpdb;
 $search = $_POST['key'];
+$page = $_POST['page'];
 //$sql1 = "SELECT a.*, b.name as sub, c.name as cat, c.id as cat_id FROM dt_deliverables a INNER JOIN dt_subcategories b ON (a.subcategory_id = b.id) INNER JOIN dt_categories c ON (b.category_id = c.id) WHERE a.description LIKE '%".$search."%' OR a.name LIKE '%".$search."%' OR a.subject LIKE '%".$search."%' ";
 //$results = $wpdb->get_results($sql1);
 
@@ -78,7 +79,7 @@ if ($last < 1) {
         first = last-2;
         lastt = last;
       }
-      for (i = first; i <= lastt; i++) {
+      for (i = 1; i <= last; i++) {
         var sel = '';
         if(i==pn) {
           sel = 'active';
@@ -92,6 +93,9 @@ if ($last < 1) {
       }
     }
     $("#pagination_controls").html(paginationCtrls);
+    var hash = unescape(document.location.hash).split("/");
+    document.location.hash = hash[0].replace('#','')+'/page='+pn;
+    transport.postMessage(hash[0].replace('#','')+'/page='+pn);
   }
 </script>
 <div id="results_box" style="width: 100%; float:left; margin-left: 15px">
@@ -100,4 +104,8 @@ if ($last < 1) {
   <img style="display: block; margin: 0 auto;" src="img/loading.gif" alt="Loader" />
 </div>
 <div id="pagination_controls" style="float:right; display:none"></div>
-<script> request_page(1);</script>
+
+<!--<script> request_page(1);</script>-->
+
+<script> request_page(<?php echo $page?>);</script>
+
