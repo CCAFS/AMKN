@@ -1,0 +1,3365 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss xmlns:georss="http://www.georss.org/georss" xmlns:trial="http://localhost/AMKN/wp-content/plugins/activitiesImporter/TypeActivities" version="2.0">
+<channel><title>Agtrials</title><link>http://www.agtrials.org/</link><description></description>
+<item>
+<title>Imtp- 2, Cameroon, Bls</title>
+<link>http://www.agtrials.org/tbtrial/2935</link>
+<description></description>
+<id>2935</id>
+<georss:point>4.583333 9.65</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp- 2, Colombia, Yls</title>
+<link>http://www.agtrials.org/tbtrial/2936</link>
+<description></description>
+<id>2936</id>
+<georss:point>4.516667 -75.783333</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp-2, Costa Rica, Bls</title>
+<link>http://www.agtrials.org/tbtrial/2937</link>
+<description></description>
+<id>2937</id>
+<georss:point>10.266667 -83.45</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp- 2, Honduras, Bls</title>
+<link>http://www.agtrials.org/tbtrial/2938</link>
+<description></description>
+<id>2938</id>
+<georss:point>15.416667 -87.933056</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp- 2, Nigeria_abuja, Bls</title>
+<link>http://www.agtrials.org/tbtrial/2939</link>
+<description></description>
+<id>2939</id>
+<georss:point>9.266667 7.333333</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp- 2, Nigeria_onne, Bls</title>
+<link>http://www.agtrials.org/tbtrial/2940</link>
+<description></description>
+<id>2940</id>
+<georss:point>4.85 7.05</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp- 2, Nigeria_ibadan, Bls</title>
+<link>http://www.agtrials.org/tbtrial/2941</link>
+<description></description>
+<id>2941</id>
+<georss:point>7.433333 3.9</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp- 2, Philippines, Bls</title>
+<link>http://www.agtrials.org/tbtrial/2942</link>
+<description></description>
+<id>2942</id>
+<georss:point>7.083333 125.6</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp- 2, Tonga, Bls</title>
+<link>http://www.agtrials.org/tbtrial/2957</link>
+<description></description>
+<id>2957</id>
+<georss:point>-21.2 -175.2</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp-2, Uganda, Yls</title>
+<link>http://www.agtrials.org/tbtrial/2958</link>
+<description></description>
+<id>2958</id>
+<georss:point>0.413666 32.532504</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp- 2, Australia, Foc4</title>
+<link>http://www.agtrials.org/tbtrial/2959</link>
+<description></description>
+<id>2959</id>
+<georss:point>-27.466667 153.033333</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp- 2, Brazil, Foc1</title>
+<link>http://www.agtrials.org/tbtrial/2960</link>
+<description></description>
+<id>2960</id>
+<georss:point>-12.67 -39.10</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp- 2, Honduras, Foc1</title>
+<link>http://www.agtrials.org/tbtrial/2999</link>
+<description></description>
+<id>2999</id>
+<georss:point>15.416667 -87.933056</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp -2, Indonesia, Foc4</title>
+<link>http://www.agtrials.org/tbtrial/3000</link>
+<description></description>
+<id>3000</id>
+<georss:point>0.016667 100.6</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp 2, Malaysia, Foc4</title>
+<link>http://www.agtrials.org/tbtrial/3001</link>
+<description></description>
+<id>3001</id>
+<georss:point>1.616667 103.933333</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp- 2, Philippines, Foc4</title>
+<link>http://www.agtrials.org/tbtrial/3002</link>
+<description></description>
+<id>3002</id>
+<georss:point>7.5 125.65</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp- 2, South Africa, Foc4</title>
+<link>http://www.agtrials.org/tbtrial/3003</link>
+<description></description>
+<id>3003</id>
+<georss:point>-25.116667 31.083333</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp- 2, Spain, Foc4</title>
+<link>http://www.agtrials.org/tbtrial/3004</link>
+<description></description>
+<id>3004</id>
+<georss:point>28.535483 -16.385679</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp- 2, Taiwan, Foc4</title>
+<link>http://www.agtrials.org/tbtrial/3005</link>
+<description></description>
+<id>3005</id>
+<georss:point>22.7 120.483333</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Imtp- 2, Uganda, Foc</title>
+<link>http://www.agtrials.org/tbtrial/3006</link>
+<description></description>
+<id>3006</id>
+<georss:point>-0.416667 30.166667</georss:point>
+<trial:crop>Banana</trial:crop>
+</item>
+<item>
+<title>Ae01_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3582</link>
+<description></description>
+<id>3582</id>
+<georss:point>-8.37277777777778 -74.5763888888889</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ae02_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3583</link>
+<description></description>
+<id>3583</id>
+<georss:point>11.6894444444444 -84.4666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ae03_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3584</link>
+<description></description>
+<id>3584</id>
+<georss:point>-2.97277777777778 -47.45</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ae04_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3585</link>
+<description></description>
+<id>3585</id>
+<georss:point>3.52277777777778 -76.3166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ae05_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3586</link>
+<description></description>
+<id>3586</id>
+<georss:point>10.0561111111111 -84.6166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ae06_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3587</link>
+<description></description>
+<id>3587</id>
+<georss:point>4.97277777777778 -75.7</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ae08_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3588</link>
+<description></description>
+<id>3588</id>
+<georss:point>-2.97277777777778 -47.45</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ae09_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3589</link>
+<description></description>
+<id>3589</id>
+<georss:point>-2.97277777777778 -47.45</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ae11_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3590</link>
+<description></description>
+<id>3590</id>
+<georss:point>-0.406111111111111 -79.0666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ae12_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3591</link>
+<description></description>
+<id>3591</id>
+<georss:point>2.78944444444444 -76.5333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ae13_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3592</link>
+<description></description>
+<id>3592</id>
+<georss:point>2.43944444444444 -76.6</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ae14_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3593</link>
+<description></description>
+<id>3593</id>
+<georss:point>2.43944444444444 -76.6</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ah01_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3594</link>
+<description></description>
+<id>3594</id>
+<georss:point>8.87277777777778 -64.2166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ah02_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3595</link>
+<description></description>
+<id>3595</id>
+<georss:point>2.82277777777778 -60.6625</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ah03_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3596</link>
+<description></description>
+<id>3596</id>
+<georss:point>-26.0061111111111 -57</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ah04_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3597</link>
+<description></description>
+<id>3597</id>
+<georss:point>4.12277777777778 -72.9666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ah06_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3598</link>
+<description></description>
+<id>3598</id>
+<georss:point>7.95611111111111 -80.4513888888889</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ah07_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3599</link>
+<description></description>
+<id>3599</id>
+<georss:point>-25.2727777777778 -57.6333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ah08_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3600</link>
+<description></description>
+<id>3600</id>
+<georss:point>8.87277777777778 -64.2166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Ah09_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3601</link>
+<description></description>
+<id>3601</id>
+<georss:point>8.87277777777778 -64.2166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al01_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3602</link>
+<description></description>
+<id>3602</id>
+<georss:point>-4.15611111111111 -69.95</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al02_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3603</link>
+<description></description>
+<id>3603</id>
+<georss:point>1.25611111111111 -75.6833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al03_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3604</link>
+<description></description>
+<id>3604</id>
+<georss:point>-16.6727777777778 -39.5666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al04_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3605</link>
+<description></description>
+<id>3605</id>
+<georss:point>9.92277777777778 -83.8277777777778</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al05_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3606</link>
+<description></description>
+<id>3606</id>
+<georss:point>1.25611111111111 -75.6833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al06_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3607</link>
+<description></description>
+<id>3607</id>
+<georss:point>8.23944444444444 -80.9666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al07_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3608</link>
+<description></description>
+<id>3608</id>
+<georss:point>14.0561111111111 -83.3666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al08_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3609</link>
+<description></description>
+<id>3609</id>
+<georss:point>7.12277777777778 -76.1333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al09_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3610</link>
+<description></description>
+<id>3610</id>
+<georss:point>7.12277777777778 -76.1333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al10_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3611</link>
+<description></description>
+<id>3611</id>
+<georss:point>15.7561111111111 -86.75</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al11_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3612</link>
+<description></description>
+<id>3612</id>
+<georss:point>-16.6727777777778 -39.5666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al13_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3613</link>
+<description></description>
+<id>3613</id>
+<georss:point>10.2227777777778 -83.7833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al14_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3614</link>
+<description></description>
+<id>3614</id>
+<georss:point>-27.0061111111111 -57</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al15_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3615</link>
+<description></description>
+<id>3615</id>
+<georss:point>7.87277777777778 -81.2666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al16_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3616</link>
+<description></description>
+<id>3616</id>
+<georss:point>9.37277777777778 -83.7</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al17_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3617</link>
+<description></description>
+<id>3617</id>
+<georss:point>-0.272777777777778 -79.45</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al18_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3618</link>
+<description></description>
+<id>3618</id>
+<georss:point>-0.306111111111111 -79.25</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Al19_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3619</link>
+<description></description>
+<id>3619</id>
+<georss:point>1.57277777777778 -78.6833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Am01_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3620</link>
+<description></description>
+<id>3620</id>
+<georss:point>4.50611111111111 -71.5</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Am02_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3621</link>
+<description></description>
+<id>3621</id>
+<georss:point>-19.0061111111111 -56.6666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Am03_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3622</link>
+<description></description>
+<id>3622</id>
+<georss:point>-25.3894444444444 -57.0833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>At01_adaptacion</title>
+<link>http://www.agtrials.org/tbtrial/3623</link>
+<description></description>
+<id>3623</id>
+<georss:point>-17.8894444444444 -51.7166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be02_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3735</link>
+<description></description>
+<id>3735</id>
+<georss:point>3.10611111111111 -76.5166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be06_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3736</link>
+<description></description>
+<id>3736</id>
+<georss:point>8.00611111111111 -76.2</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be09_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3737</link>
+<description></description>
+<id>3737</id>
+<georss:point>-8.37277777777778 -74.5763888888889</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be12_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3738</link>
+<description></description>
+<id>3738</id>
+<georss:point>3.10611111111111 -76.5166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be17_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3739</link>
+<description></description>
+<id>3739</id>
+<georss:point>-8.37277777777778 -74.5763888888889</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be18_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3740</link>
+<description></description>
+<id>3740</id>
+<georss:point>21.606445 -82.773743</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be19_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3741</link>
+<description></description>
+<id>3741</id>
+<georss:point>4.97277777777778 -75.7</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be20_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3742</link>
+<description></description>
+<id>3742</id>
+<georss:point>4.40611111111111 -75.7166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be21_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3743</link>
+<description></description>
+<id>3743</id>
+<georss:point>3.10611111111111 -76.5166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be26_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3744</link>
+<description></description>
+<id>3744</id>
+<georss:point>18.6727777777778 -70.1666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be27_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3745</link>
+<description></description>
+<id>3745</id>
+<georss:point>18.5894444444444 -69.8333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be28_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3746</link>
+<description></description>
+<id>3746</id>
+<georss:point>5.47277777777778 -75.65</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be29_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3747</link>
+<description></description>
+<id>3747</id>
+<georss:point>2.37277777777778 -75.55</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be30_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3748</link>
+<description></description>
+<id>3748</id>
+<georss:point>6.90611111111111 -75.05</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be32_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3749</link>
+<description></description>
+<id>3749</id>
+<georss:point>-15.0061111111111 -63.75</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be38_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3750</link>
+<description></description>
+<id>3750</id>
+<georss:point>3.10611111111111 -76.5166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be43_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3751</link>
+<description></description>
+<id>3751</id>
+<georss:point>3.52277777777778 -76.3166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be45_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3752</link>
+<description></description>
+<id>3752</id>
+<georss:point>5.93944444444444 -75.7166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be47_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3753</link>
+<description></description>
+<id>3753</id>
+<georss:point>-11.2561111111111 -74.7</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be48_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3754</link>
+<description></description>
+<id>3754</id>
+<georss:point>8.00611111111111 -76.2</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be49_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3755</link>
+<description></description>
+<id>3755</id>
+<georss:point>5.67277777777778 -75.9166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be50_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3756</link>
+<description></description>
+<id>3756</id>
+<georss:point>4.92277777777778 -75.0666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be51_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3757</link>
+<description></description>
+<id>3757</id>
+<georss:point>20.1561111111111 -88.025</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be54_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3758</link>
+<description></description>
+<id>3758</id>
+<georss:point>4.77277777777778 -76.2166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be55_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3759</link>
+<description></description>
+<id>3759</id>
+<georss:point>4.40611111111111 -75.7166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be56_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3760</link>
+<description></description>
+<id>3760</id>
+<georss:point>22.3394444444444 -98.4666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be57_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3761</link>
+<description></description>
+<id>3761</id>
+<georss:point>14.2561111111111 -88.2</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be61_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3762</link>
+<description></description>
+<id>3762</id>
+<georss:point>-17.2061111111111 -64.6666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be63_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3763</link>
+<description></description>
+<id>3763</id>
+<georss:point>2.83944444444444 -76.25</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be64_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3764</link>
+<description></description>
+<id>3764</id>
+<georss:point>5.47277777777778 -75.65</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be69_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3765</link>
+<description></description>
+<id>3765</id>
+<georss:point>-8.37277777777778 -74.5763888888889</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be73_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3766</link>
+<description></description>
+<id>3766</id>
+<georss:point>20.1561111111111 -88.025</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be76_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3767</link>
+<description></description>
+<id>3767</id>
+<georss:point>21.1061111111111 -89.45</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be78_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3768</link>
+<description></description>
+<id>3768</id>
+<georss:point>5.83944444444444 -75.8333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be83_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3769</link>
+<description></description>
+<id>3769</id>
+<georss:point>20.0561111111111 -97.05</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be93_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3770</link>
+<description></description>
+<id>3770</id>
+<georss:point>2.75611111111111 -75.5833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh01_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3771</link>
+<description></description>
+<id>3771</id>
+<georss:point>4.62277777777778 -71.3166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh02_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3772</link>
+<description></description>
+<id>3772</id>
+<georss:point>4.33944444444444 -72.1</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh03_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3773</link>
+<description></description>
+<id>3773</id>
+<georss:point>4.32277777777778 -72.1</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh05_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3774</link>
+<description></description>
+<id>3774</id>
+<georss:point>4.12277777777778 -72.9666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh06_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3775</link>
+<description></description>
+<id>3775</id>
+<georss:point>4.10611111111111 -72.9666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh08_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3776</link>
+<description></description>
+<id>3776</id>
+<georss:point>8.38944444444444 -82.3425</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh09_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3777</link>
+<description></description>
+<id>3777</id>
+<georss:point>9.13944444444444 -79.2166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh10_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3778</link>
+<description></description>
+<id>3778</id>
+<georss:point>4.12277777777778 -73</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh12_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3779</link>
+<description></description>
+<id>3779</id>
+<georss:point>4.83944444444444 -73</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh13_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3780</link>
+<description></description>
+<id>3780</id>
+<georss:point>-26.0061111111111 -57</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh16_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3781</link>
+<description></description>
+<id>3781</id>
+<georss:point>8.42277777777778 -61.35</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh19_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3782</link>
+<description></description>
+<id>3782</id>
+<georss:point>4.10611111111111 -73</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh21_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3783</link>
+<description></description>
+<id>3783</id>
+<georss:point>-0.0894444444444444 -52.9208333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh22_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3784</link>
+<description></description>
+<id>3784</id>
+<georss:point>9.38944444444444 -73.6</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh26_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3785</link>
+<description></description>
+<id>3785</id>
+<georss:point>16.5561111111111 -94.6083333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh28_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3786</link>
+<description></description>
+<id>3786</id>
+<georss:point>18.1061111111111 -95.8833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh29_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3787</link>
+<description></description>
+<id>3787</id>
+<georss:point>18.1061111111111 -95.5333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh31_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3788</link>
+<description></description>
+<id>3788</id>
+<georss:point>2.82277777777778 -60.6625</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh32_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3789</link>
+<description></description>
+<id>3789</id>
+<georss:point>18.986818 -99.406185</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh35_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3790</link>
+<description></description>
+<id>3790</id>
+<georss:point>4.62277777777778 -71.3166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh36_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3791</link>
+<description></description>
+<id>3791</id>
+<georss:point>4.62277777777778 -71.6</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh38_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3792</link>
+<description></description>
+<id>3792</id>
+<georss:point>17.6727777777778 -91.5</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl02_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3793</link>
+<description></description>
+<id>3793</id>
+<georss:point>-17.2061111111111 -64.6794444444444</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl03_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3794</link>
+<description></description>
+<id>3794</id>
+<georss:point>10.241276 -61.112823</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl05_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3795</link>
+<description></description>
+<id>3795</id>
+<georss:point>-1.62277777777778 -77.8666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl06_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3796</link>
+<description></description>
+<id>3796</id>
+<georss:point>-5.93944444444444 -76.0833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl07_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3797</link>
+<description></description>
+<id>3797</id>
+<georss:point>-0.356111111111111 -76.8752777777778</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl09_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3798</link>
+<description></description>
+<id>3798</id>
+<georss:point>9.37277777777778 -83.7</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl10_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3799</link>
+<description></description>
+<id>3799</id>
+<georss:point>1.25611111111111 -75.6833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl12_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3800</link>
+<description></description>
+<id>3800</id>
+<georss:point>-16.3894444444444 -39.1819444444444</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl13_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3801</link>
+<description></description>
+<id>3801</id>
+<georss:point>-16.8394444444444 -64.3333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl14_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3802</link>
+<description></description>
+<id>3802</id>
+<georss:point>-4.15611111111111 -69.95</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl15_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3803</link>
+<description></description>
+<id>3803</id>
+<georss:point>-12.5894444444444 -69.2333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl16_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3804</link>
+<description></description>
+<id>3804</id>
+<georss:point>-4.15611111111111 -69.95</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl17_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3805</link>
+<description></description>
+<id>3805</id>
+<georss:point>4.22277777777778 -73.5666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl19_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3806</link>
+<description></description>
+<id>3806</id>
+<georss:point>-9.15611111111111 -75.5833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl21_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3807</link>
+<description></description>
+<id>3807</id>
+<georss:point>19.0561111111111 -69.4166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl22_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3808</link>
+<description></description>
+<id>3808</id>
+<georss:point>6.48944444444444 -74.8166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl23_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3809</link>
+<description></description>
+<id>3809</id>
+<georss:point>7.00611111111111 -76</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl24_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3810</link>
+<description></description>
+<id>3810</id>
+<georss:point>7.12277777777778 -76.1333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl25_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3811</link>
+<description></description>
+<id>3811</id>
+<georss:point>4.07277777777778 -73.5</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl33_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3812</link>
+<description></description>
+<id>3812</id>
+<georss:point>-0.456111111111111 -76.9833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl38_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3813</link>
+<description></description>
+<id>3813</id>
+<georss:point>-17.3394444444444 -63.8333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl43_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3814</link>
+<description></description>
+<id>3814</id>
+<georss:point>-10.3727777777778 -75.4658333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl44_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3815</link>
+<description></description>
+<id>3815</id>
+<georss:point>6.45611111111111 -76.7333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl45_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3816</link>
+<description></description>
+<id>3816</id>
+<georss:point>8.841736 -76.42004</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl46_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3817</link>
+<description></description>
+<id>3817</id>
+<georss:point>4.22277777777778 -73.5666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl48_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3818</link>
+<description></description>
+<id>3818</id>
+<georss:point>8.10611111111111 -80.6833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl49_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3819</link>
+<description></description>
+<id>3819</id>
+<georss:point>7.57277777777778 -76.7</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl53_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3820</link>
+<description></description>
+<id>3820</id>
+<georss:point>17.0894444444444 -95.0666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl55_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3821</link>
+<description></description>
+<id>3821</id>
+<georss:point>2.67277777777778 -72.6666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl57_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3822</link>
+<description></description>
+<id>3822</id>
+<georss:point>8.426824 -76.777654</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl62_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3823</link>
+<description></description>
+<id>3823</id>
+<georss:point>1.25611111111111 -75.6833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl63_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3824</link>
+<description></description>
+<id>3824</id>
+<georss:point>8.65611111111111 -72.7</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl65_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3825</link>
+<description></description>
+<id>3825</id>
+<georss:point>-0.456111111111111 -76.9833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl71_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3826</link>
+<description></description>
+<id>3826</id>
+<georss:point>6.73944444444444 -75.2833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl73_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3827</link>
+<description></description>
+<id>3827</id>
+<georss:point>7.02277777777778 -73.8</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl76_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3828</link>
+<description></description>
+<id>3828</id>
+<georss:point>6.48944444444444 -72.9666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl77_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3829</link>
+<description></description>
+<id>3829</id>
+<georss:point>6.35611111111111 -73.3333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bm02_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3830</link>
+<description></description>
+<id>3830</id>
+<georss:point>4.50611111111111 -71.5</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bm03_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3831</link>
+<description></description>
+<id>3831</id>
+<georss:point>7.55611111111111 -69.1166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt02_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3832</link>
+<description></description>
+<id>3832</id>
+<georss:point>-15.5894444444444 -47.7083333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt03_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3833</link>
+<description></description>
+<id>3833</id>
+<georss:point>-6.23944444444444 -72.8566666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt04_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3834</link>
+<description></description>
+<id>3834</id>
+<georss:point>-22.0227777777778 -47.8833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt05_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3835</link>
+<description></description>
+<id>3835</id>
+<georss:point>-18.6894444444444 -49.5666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt07_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3836</link>
+<description></description>
+<id>3836</id>
+<georss:point>-20.4561111111111 -54.6166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt08_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3837</link>
+<description></description>
+<id>3837</id>
+<georss:point>-12.2227777777778 -45.3666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt09_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3838</link>
+<description></description>
+<id>3838</id>
+<georss:point>-16.0394444444444 -54.9958333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt10_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3839</link>
+<description></description>
+<id>3839</id>
+<georss:point>-12.2227777777778 -45.3666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt13_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3840</link>
+<description></description>
+<id>3840</id>
+<georss:point>-12.7394444444444 -60.1333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be07_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3841</link>
+<description></description>
+<id>3841</id>
+<georss:point>-6.52277777777778 -76.3525</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be08_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3842</link>
+<description></description>
+<id>3842</id>
+<georss:point>9.17277777777778 -70.6666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be10_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3843</link>
+<description></description>
+<id>3843</id>
+<georss:point>-6.52277777777778 -76.3525</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be11_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3844</link>
+<description></description>
+<id>3844</id>
+<georss:point>-6.53944444444444 -76.3166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be14_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3845</link>
+<description></description>
+<id>3845</id>
+<georss:point>-6.52277777777778 -76.3525</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be15_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3846</link>
+<description></description>
+<id>3846</id>
+<georss:point>-6.52277777777778 -76.3525</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be16_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3847</link>
+<description></description>
+<id>3847</id>
+<georss:point>-6.00611111111111 -77.0333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be22_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3848</link>
+<description></description>
+<id>3848</id>
+<georss:point>17.559428 -98.545647</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be24_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3849</link>
+<description></description>
+<id>3849</id>
+<georss:point>12.2894444444444 -86.3666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be25_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3850</link>
+<description></description>
+<id>3850</id>
+<georss:point>-6.00611111111111 -77.0333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be36_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3851</link>
+<description></description>
+<id>3851</id>
+<georss:point>-10.7227777777778 -62.25</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be40_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3852</link>
+<description></description>
+<id>3852</id>
+<georss:point>14.2561111111111 -88.2</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be44_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3853</link>
+<description></description>
+<id>3853</id>
+<georss:point>-26.7894444444444 -64.5833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be52_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3854</link>
+<description></description>
+<id>3854</id>
+<georss:point>8.37277777777778 -80.1666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be62_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3855</link>
+<description></description>
+<id>3855</id>
+<georss:point>-6.03944444444444 -76.9666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be68_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3856</link>
+<description></description>
+<id>3856</id>
+<georss:point>22.5894444444444 -98.3333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be70_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3857</link>
+<description></description>
+<id>3857</id>
+<georss:point>9.17277777777778 -70.6666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be71_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3858</link>
+<description></description>
+<id>3858</id>
+<georss:point>10.6227777777778 -84.9666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be72_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3859</link>
+<description></description>
+<id>3859</id>
+<georss:point>10.0061111111111 -84.6333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be74_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3860</link>
+<description></description>
+<id>3860</id>
+<georss:point>18.0061111111111 -88.5247222222222</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be75_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3861</link>
+<description></description>
+<id>3861</id>
+<georss:point>18.0061111111111 -88.5247222222222</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be77_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3862</link>
+<description></description>
+<id>3862</id>
+<georss:point>2.50611111111111 -76.6666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be79_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3863</link>
+<description></description>
+<id>3863</id>
+<georss:point>2.92277777777778 -75.3333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be80_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3864</link>
+<description></description>
+<id>3864</id>
+<georss:point>2.50611111111111 -76.6666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be81_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3865</link>
+<description></description>
+<id>3865</id>
+<georss:point>-2.97277777777778 -47.45</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be82_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3866</link>
+<description></description>
+<id>3866</id>
+<georss:point>5.50611111111111 -74.5833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be84_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3867</link>
+<description></description>
+<id>3867</id>
+<georss:point>-8.37277777777778 -74.5763888888889</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be87_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3868</link>
+<description></description>
+<id>3868</id>
+<georss:point>6.33944444444444 -76.1166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be88_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3869</link>
+<description></description>
+<id>3869</id>
+<georss:point>2.83944444444444 -75.25</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be90_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3870</link>
+<description></description>
+<id>3870</id>
+<georss:point>6.38944444444444 -75.3333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be91_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3871</link>
+<description></description>
+<id>3871</id>
+<georss:point>16.8394444444444 -99.75</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be95_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3872</link>
+<description></description>
+<id>3872</id>
+<georss:point>3.67277777777778 -74.8333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be96_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3873</link>
+<description></description>
+<id>3873</id>
+<georss:point>5.78944444444444 -75.8</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be97_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3874</link>
+<description></description>
+<id>3874</id>
+<georss:point>5.83944444444444 -75.95</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be98_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3875</link>
+<description></description>
+<id>3875</id>
+<georss:point>4.10611111111111 -76.2166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be99_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3876</link>
+<description></description>
+<id>3876</id>
+<georss:point>8.17277777777778 -76.0833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh04_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3877</link>
+<description></description>
+<id>3877</id>
+<georss:point>4.12277777777778 -72.6666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh14_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3878</link>
+<description></description>
+<id>3878</id>
+<georss:point>17.8561111111111 -93.4</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh17_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3879</link>
+<description></description>
+<id>3879</id>
+<georss:point>8.80611111111111 -66.4666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh33_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3880</link>
+<description></description>
+<id>3880</id>
+<georss:point>16.0061111111111 -94</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh39_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3881</link>
+<description></description>
+<id>3881</id>
+<georss:point>8.87277777777778 -64.2166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh40_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3882</link>
+<description></description>
+<id>3882</id>
+<georss:point>8.87277777777778 -64.2166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh41_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3883</link>
+<description></description>
+<id>3883</id>
+<georss:point>4.33944444444444 -72.1</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh42_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3884</link>
+<description></description>
+<id>3884</id>
+<georss:point>4.33944444444444 -72.1666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh43_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3885</link>
+<description></description>
+<id>3885</id>
+<georss:point>4.12277777777778 -72.9666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh44_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3886</link>
+<description></description>
+<id>3886</id>
+<georss:point>8.80611111111111 -66.4666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh45_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3887</link>
+<description></description>
+<id>3887</id>
+<georss:point>4.62277777777778 -71.35</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh46_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3888</link>
+<description></description>
+<id>3888</id>
+<georss:point>3.95611111111111 -72.7666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh47_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3889</link>
+<description></description>
+<id>3889</id>
+<georss:point>4.35611111111111 -72.1666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh48_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3890</link>
+<description></description>
+<id>3890</id>
+<georss:point>3.70611111111111 -73.8833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh49_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3891</link>
+<description></description>
+<id>3891</id>
+<georss:point>3.28944444444444 -73.3833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh50_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3892</link>
+<description></description>
+<id>3892</id>
+<georss:point>3.75611111111111 -73.8333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl04_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3893</link>
+<description></description>
+<id>3893</id>
+<georss:point>0.506111111111111 -76.5</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl08_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3894</link>
+<description></description>
+<id>3894</id>
+<georss:point>12.1727777777778 -84.3166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl11_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3895</link>
+<description></description>
+<id>3895</id>
+<georss:point>11.6894444444444 -84.4666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl20_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3896</link>
+<description></description>
+<id>3896</id>
+<georss:point>-5.419148 -80.397949</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl30_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3897</link>
+<description></description>
+<id>3897</id>
+<georss:point>10.0227777777778 -85.4091666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl36_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3898</link>
+<description></description>
+<id>3898</id>
+<georss:point>17.8394444444444 -92.9</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl37_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3899</link>
+<description></description>
+<id>3899</id>
+<georss:point>-10.3061111111111 -74.9</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl39_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3900</link>
+<description></description>
+<id>3900</id>
+<georss:point>8.23944444444444 -81.0825</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl50_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3901</link>
+<description></description>
+<id>3901</id>
+<georss:point>6.18944444444444 -74.0794444444444</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl51_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3902</link>
+<description></description>
+<id>3902</id>
+<georss:point>17.6394444444444 -92.7833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl56_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3903</link>
+<description></description>
+<id>3903</id>
+<georss:point>-16.8394444444444 -64.3333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl58_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3904</link>
+<description></description>
+<id>3904</id>
+<georss:point>10.3561111111111 -84.4833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl60_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3905</link>
+<description></description>
+<id>3905</id>
+<georss:point>-16.8394444444444 -64.3333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl61_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3906</link>
+<description></description>
+<id>3906</id>
+<georss:point>-15.3394444444444 -40.25</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl64_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3907</link>
+<description></description>
+<id>3907</id>
+<georss:point>11.0061111111111 -84.5</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl67_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3908</link>
+<description></description>
+<id>3908</id>
+<georss:point>-0.972777777777778 -77.8</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl68_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3909</link>
+<description></description>
+<id>3909</id>
+<georss:point>-1.50611111111111 -77.9166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl69_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3910</link>
+<description></description>
+<id>3910</id>
+<georss:point>-1.80611111111111 -77.9</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl70_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3911</link>
+<description></description>
+<id>3911</id>
+<georss:point>5.95611111111111 -74.6</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl74_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3912</link>
+<description></description>
+<id>3912</id>
+<georss:point>6.77277777777778 -76.0833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl78_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3913</link>
+<description></description>
+<id>3913</id>
+<georss:point>8.38944444444444 -80.2666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl79_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3914</link>
+<description></description>
+<id>3914</id>
+<georss:point>5.50611111111111 -75</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl80_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3915</link>
+<description></description>
+<id>3915</id>
+<georss:point>1.57277777777778 -78.6833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl81_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3916</link>
+<description></description>
+<id>3916</id>
+<georss:point>11.6894444444444 -84.4666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl82_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3917</link>
+<description></description>
+<id>3917</id>
+<georss:point>14.2894444444444 -89.8972222222222</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl83_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3918</link>
+<description></description>
+<id>3918</id>
+<georss:point>14.2894444444444 -89.8972222222222</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bm06_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3919</link>
+<description></description>
+<id>3919</id>
+<georss:point>7.90611111111111 -67.4166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt11_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3920</link>
+<description></description>
+<id>3920</id>
+<georss:point>-18.7561111111111 -44.9666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt15_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3921</link>
+<description></description>
+<id>3921</id>
+<georss:point>-15.5894444444444 -47.7083333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt17_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3922</link>
+<description></description>
+<id>3922</id>
+<georss:point>-6.23944444444444 -42.8566666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt18_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3923</link>
+<description></description>
+<id>3923</id>
+<georss:point>-19.4727777777778 -44.25</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt19_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3924</link>
+<description></description>
+<id>3924</id>
+<georss:point>-7.20611111111111 -48.2</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be58_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3925</link>
+<description></description>
+<id>3925</id>
+<georss:point>4.97277777777778 -75.7</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be59_produccion</title>
+<link>http://www.agtrials.org/tbtrial/3926</link>
+<description></description>
+<id>3926</id>
+<georss:point>4.97277777777778 -75.7</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be02_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3927</link>
+<description></description>
+<id>3927</id>
+<georss:point>3.10611111111111 -76.5166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be17_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3928</link>
+<description></description>
+<id>3928</id>
+<georss:point>-8.37277777777778 -74.5763888888889</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be18_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3929</link>
+<description></description>
+<id>3929</id>
+<georss:point>21.606445 -82.773743</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be19_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3930</link>
+<description></description>
+<id>3930</id>
+<georss:point>4.97277777777778 -75.7</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be20_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3931</link>
+<description></description>
+<id>3931</id>
+<georss:point>4.40611111111111 -75.7166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be21_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3932</link>
+<description></description>
+<id>3932</id>
+<georss:point>3.10611111111111 -76.5166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be26_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3933</link>
+<description></description>
+<id>3933</id>
+<georss:point>18.6727777777778 -70.1666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be27_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3934</link>
+<description></description>
+<id>3934</id>
+<georss:point>18.5894444444444 -69.8333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be28_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3935</link>
+<description></description>
+<id>3935</id>
+<georss:point>5.47277777777778 -75.65</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be29_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3936</link>
+<description></description>
+<id>3936</id>
+<georss:point>2.37277777777778 -75.55</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be30_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3937</link>
+<description></description>
+<id>3937</id>
+<georss:point>6.90611111111111 -75.05</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be38_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3938</link>
+<description></description>
+<id>3938</id>
+<georss:point>3.10611111111111 -76.5166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be42_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3939</link>
+<description></description>
+<id>3939</id>
+<georss:point>-25.8394444444444 -55.25</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be43_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3940</link>
+<description></description>
+<id>3940</id>
+<georss:point>3.52277777777778 -76.3166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be45_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3941</link>
+<description></description>
+<id>3941</id>
+<georss:point>5.93944444444444 -75.7166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be47_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3942</link>
+<description></description>
+<id>3942</id>
+<georss:point>-11.2561111111111 -74.7</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be48_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3943</link>
+<description></description>
+<id>3943</id>
+<georss:point>8.00611111111111 -76.2</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be49_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3944</link>
+<description></description>
+<id>3944</id>
+<georss:point>5.67277777777778 -75.9166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be50_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3945</link>
+<description></description>
+<id>3945</id>
+<georss:point>4.92277777777778 -75.0666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be51_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3946</link>
+<description></description>
+<id>3946</id>
+<georss:point>20.1561111111111 -88.025</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be54_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3947</link>
+<description></description>
+<id>3947</id>
+<georss:point>4.77277777777778 -76.2166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be57_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3948</link>
+<description></description>
+<id>3948</id>
+<georss:point>14.2561111111111 -88.2</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be60_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3949</link>
+<description></description>
+<id>3949</id>
+<georss:point>6.55611111111111 -75.7452777777778</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be61_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3950</link>
+<description></description>
+<id>3950</id>
+<georss:point>-17.2061111111111 -64.6666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be64_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3951</link>
+<description></description>
+<id>3951</id>
+<georss:point>5.47277777777778 -75.65</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be65_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3952</link>
+<description></description>
+<id>3952</id>
+<georss:point>2.37277777777778 -75.55</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be66_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3953</link>
+<description></description>
+<id>3953</id>
+<georss:point>20.1561111111111 -88.025</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be67_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3954</link>
+<description></description>
+<id>3954</id>
+<georss:point>20.1561111111111 -88.025</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be73_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3955</link>
+<description></description>
+<id>3955</id>
+<georss:point>20.1561111111111 -88.025</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be78_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3956</link>
+<description></description>
+<id>3956</id>
+<georss:point>5.83944444444444 -75.8333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be93_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3957</link>
+<description></description>
+<id>3957</id>
+<georss:point>2.75611111111111 -75.5833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh01_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3958</link>
+<description></description>
+<id>3958</id>
+<georss:point>4.62277777777778 -71.3166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh10_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3959</link>
+<description></description>
+<id>3959</id>
+<georss:point>4.12277777777778 -73</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh16_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3960</link>
+<description></description>
+<id>3960</id>
+<georss:point>8.42277777777778 -61.35</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh22_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3961</link>
+<description></description>
+<id>3961</id>
+<georss:point>9.38944444444444 -73.6</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh23_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3962</link>
+<description></description>
+<id>3962</id>
+<georss:point>9.23944444444444 -75.75</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh28_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3963</link>
+<description></description>
+<id>3963</id>
+<georss:point>18.1061111111111 -95.8833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh29_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3964</link>
+<description></description>
+<id>3964</id>
+<georss:point>18.1061111111111 -95.5333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh32_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3965</link>
+<description></description>
+<id>3965</id>
+<georss:point>18.986818 -99.406185</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh35_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3966</link>
+<description></description>
+<id>3966</id>
+<georss:point>4.62277777777778 -71.3166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh36_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3967</link>
+<description></description>
+<id>3967</id>
+<georss:point>4.62277777777778 -71.6</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh37_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3968</link>
+<description></description>
+<id>3968</id>
+<georss:point>19.0894444444444 -96.1666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh38_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3969</link>
+<description></description>
+<id>3969</id>
+<georss:point>17.6727777777778 -91.5</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl03_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3970</link>
+<description></description>
+<id>3970</id>
+<georss:point>10.241276 -61.112823</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl05_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3971</link>
+<description></description>
+<id>3971</id>
+<georss:point>-1.62277777777778 -77.8666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl06_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3972</link>
+<description></description>
+<id>3972</id>
+<georss:point>-5.93944444444444 -76.0833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl10_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3973</link>
+<description></description>
+<id>3973</id>
+<georss:point>1.25611111111111 -75.6833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl13_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3974</link>
+<description></description>
+<id>3974</id>
+<georss:point>-16.8394444444444 -64.3333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl14_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3975</link>
+<description></description>
+<id>3975</id>
+<georss:point>-4.15611111111111 -69.95</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl15_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3976</link>
+<description></description>
+<id>3976</id>
+<georss:point>-12.5894444444444 -69.2333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl16_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3977</link>
+<description></description>
+<id>3977</id>
+<georss:point>-4.15611111111111 -69.95</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl17_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3978</link>
+<description></description>
+<id>3978</id>
+<georss:point>4.22277777777778 -73.5666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl19_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3979</link>
+<description></description>
+<id>3979</id>
+<georss:point>-9.15611111111111 -75.5833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl22_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3980</link>
+<description></description>
+<id>3980</id>
+<georss:point>6.48944444444444 -74.8166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl23_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3981</link>
+<description></description>
+<id>3981</id>
+<georss:point>7.00611111111111 -76</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl24_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3982</link>
+<description></description>
+<id>3982</id>
+<georss:point>7.12277777777778 -76.1333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl25_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3983</link>
+<description></description>
+<id>3983</id>
+<georss:point>4.07277777777778 -73.5</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl43_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3984</link>
+<description></description>
+<id>3984</id>
+<georss:point>-10.3727777777778 -75.4658333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl44_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3985</link>
+<description></description>
+<id>3985</id>
+<georss:point>6.45611111111111 -76.7333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl46_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3986</link>
+<description></description>
+<id>3986</id>
+<georss:point>4.22277777777778 -73.5666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl47_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3987</link>
+<description></description>
+<id>3987</id>
+<georss:point>8.10611111111111 -80.6833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl49_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3988</link>
+<description></description>
+<id>3988</id>
+<georss:point>7.57277777777778 -76.7</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl52_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3989</link>
+<description></description>
+<id>3989</id>
+<georss:point>17.6394444444444 -92.7833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl55_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3990</link>
+<description></description>
+<id>3990</id>
+<georss:point>2.67277777777778 -72.6666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl57_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3991</link>
+<description></description>
+<id>3991</id>
+<georss:point>8.426824 -76.777654</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl62_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3992</link>
+<description></description>
+<id>3992</id>
+<georss:point>1.25611111111111 -75.6833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl65_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3993</link>
+<description></description>
+<id>3993</id>
+<georss:point>-0.456111111111111 -76.9833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bm02_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3994</link>
+<description></description>
+<id>3994</id>
+<georss:point>4.50611111111111 -71.5</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt02_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3995</link>
+<description></description>
+<id>3995</id>
+<georss:point>-15.5894444444444 -47.7083333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt03_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3996</link>
+<description></description>
+<id>3996</id>
+<georss:point>-6.23944444444444 -72.8566666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt04_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3997</link>
+<description></description>
+<id>3997</id>
+<georss:point>-22.0227777777778 -47.8833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt05_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3998</link>
+<description></description>
+<id>3998</id>
+<georss:point>-18.6894444444444 -49.5666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt07_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/3999</link>
+<description></description>
+<id>3999</id>
+<georss:point>-20.4561111111111 -54.6166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt09_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4000</link>
+<description></description>
+<id>4000</id>
+<georss:point>-16.0394444444444 -54.9958333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be06_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4001</link>
+<description></description>
+<id>4001</id>
+<georss:point>8.00611111111111 -76.2</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be08_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4002</link>
+<description></description>
+<id>4002</id>
+<georss:point>9.17277777777778 -70.6666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be14_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4003</link>
+<description></description>
+<id>4003</id>
+<georss:point>-6.52277777777778 -76.3525</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be15_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4004</link>
+<description></description>
+<id>4004</id>
+<georss:point>-6.52277777777778 -76.3525</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be23_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4005</link>
+<description></description>
+<id>4005</id>
+<georss:point>12.8394444444444 -85.4516666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be24_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4006</link>
+<description></description>
+<id>4006</id>
+<georss:point>12.2894444444444 -86.3666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be32_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4007</link>
+<description></description>
+<id>4007</id>
+<georss:point>-15.0061111111111 -63.75</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be40_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4008</link>
+<description></description>
+<id>4008</id>
+<georss:point>14.2561111111111 -88.2</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be46_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4009</link>
+<description></description>
+<id>4009</id>
+<georss:point>19.4727777777778 -104.633333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be53_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4010</link>
+<description></description>
+<id>4010</id>
+<georss:point>22.8727777777778 -98.25</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be56_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4011</link>
+<description></description>
+<id>4011</id>
+<georss:point>22.3394444444444 -98.4666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be62_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4012</link>
+<description></description>
+<id>4012</id>
+<georss:point>-6.03944444444444 -76.9666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be63_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4013</link>
+<description></description>
+<id>4013</id>
+<georss:point>2.83944444444444 -76.25</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be70_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4014</link>
+<description></description>
+<id>4014</id>
+<georss:point>9.17277777777778 -70.6666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be71_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4015</link>
+<description></description>
+<id>4015</id>
+<georss:point>10.6227777777778 -84.9666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be72_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4016</link>
+<description></description>
+<id>4016</id>
+<georss:point>10.0061111111111 -84.6333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be74_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4017</link>
+<description></description>
+<id>4017</id>
+<georss:point>18.0061111111111 -88.5247222222222</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be75_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4018</link>
+<description></description>
+<id>4018</id>
+<georss:point>18.0061111111111 -88.5247222222222</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be77_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4019</link>
+<description></description>
+<id>4019</id>
+<georss:point>2.50611111111111 -76.6666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be79_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4020</link>
+<description></description>
+<id>4020</id>
+<georss:point>2.92277777777778 -75.3333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be80_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4021</link>
+<description></description>
+<id>4021</id>
+<georss:point>2.50611111111111 -76.6666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be81_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4022</link>
+<description></description>
+<id>4022</id>
+<georss:point>-2.97277777777778 -47.45</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be82_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4023</link>
+<description></description>
+<id>4023</id>
+<georss:point>5.50611111111111 -74.5833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be83_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4024</link>
+<description></description>
+<id>4024</id>
+<georss:point>20.0561111111111 -97.05</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be84_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4025</link>
+<description></description>
+<id>4025</id>
+<georss:point>-8.37277777777778 -74.5763888888889</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be87_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4026</link>
+<description></description>
+<id>4026</id>
+<georss:point>6.33944444444444 -76.1166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be88_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4027</link>
+<description></description>
+<id>4027</id>
+<georss:point>2.83944444444444 -75.25</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be89_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4028</link>
+<description></description>
+<id>4028</id>
+<georss:point>18.9394444444444 -88.1713888888889</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be90_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4029</link>
+<description></description>
+<id>4029</id>
+<georss:point>6.38944444444444 -75.3333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be92_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4030</link>
+<description></description>
+<id>4030</id>
+<georss:point>2.08944444444444 -77.0166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be95_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4031</link>
+<description></description>
+<id>4031</id>
+<georss:point>3.67277777777778 -74.8333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be96_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4032</link>
+<description></description>
+<id>4032</id>
+<georss:point>5.78944444444444 -75.8</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be97_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4033</link>
+<description></description>
+<id>4033</id>
+<georss:point>5.83944444444444 -75.95</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be98_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4034</link>
+<description></description>
+<id>4034</id>
+<georss:point>4.10611111111111 -76.2166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Be99_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4035</link>
+<description></description>
+<id>4035</id>
+<georss:point>8.17277777777778 -76.0833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh02_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4036</link>
+<description></description>
+<id>4036</id>
+<georss:point>4.33944444444444 -72.1</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh03_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4037</link>
+<description></description>
+<id>4037</id>
+<georss:point>4.32277777777778 -72.1</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh04_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4038</link>
+<description></description>
+<id>4038</id>
+<georss:point>4.12277777777778 -72.6666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh05_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4039</link>
+<description></description>
+<id>4039</id>
+<georss:point>4.12277777777778 -72.9666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh06_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4040</link>
+<description></description>
+<id>4040</id>
+<georss:point>4.10611111111111 -72.9666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh08_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4041</link>
+<description></description>
+<id>4041</id>
+<georss:point>8.38944444444444 -82.3425</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh12_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4042</link>
+<description></description>
+<id>4042</id>
+<georss:point>4.83944444444444 -73</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh13_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4043</link>
+<description></description>
+<id>4043</id>
+<georss:point>-26.0061111111111 -57</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh14_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4044</link>
+<description></description>
+<id>4044</id>
+<georss:point>17.8561111111111 -93.4</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh19_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4045</link>
+<description></description>
+<id>4045</id>
+<georss:point>4.10611111111111 -73</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh21_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4046</link>
+<description></description>
+<id>4046</id>
+<georss:point>-0.0894444444444444 -52.9208333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh27_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4047</link>
+<description></description>
+<id>4047</id>
+<georss:point>16.7894444444444 -99.7125</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh30_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4048</link>
+<description></description>
+<id>4048</id>
+<georss:point>19.9394444444444 -105.25</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh39_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4049</link>
+<description></description>
+<id>4049</id>
+<georss:point>8.87277777777778 -64.2166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh40_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4050</link>
+<description></description>
+<id>4050</id>
+<georss:point>8.87277777777778 -64.2166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh41_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4051</link>
+<description></description>
+<id>4051</id>
+<georss:point>4.33944444444444 -72.1</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh42_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4052</link>
+<description></description>
+<id>4052</id>
+<georss:point>4.33944444444444 -72.1666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh43_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4053</link>
+<description></description>
+<id>4053</id>
+<georss:point>4.12277777777778 -72.9666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh44_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4054</link>
+<description></description>
+<id>4054</id>
+<georss:point>8.80611111111111 -66.4666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl02_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4055</link>
+<description></description>
+<id>4055</id>
+<georss:point>-17.2061111111111 -64.6794444444444</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl04_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4056</link>
+<description></description>
+<id>4056</id>
+<georss:point>0.506111111111111 -76.5</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl07_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4057</link>
+<description></description>
+<id>4057</id>
+<georss:point>-0.356111111111111 -76.8752777777778</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl08_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4058</link>
+<description></description>
+<id>4058</id>
+<georss:point>12.1727777777778 -84.3166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl11_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4059</link>
+<description></description>
+<id>4059</id>
+<georss:point>11.6894444444444 -84.4666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl12_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4060</link>
+<description></description>
+<id>4060</id>
+<georss:point>-16.3894444444444 -39.1819444444444</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl20_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4061</link>
+<description></description>
+<id>4061</id>
+<georss:point>-5.419148 -80.397949</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl21_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4062</link>
+<description></description>
+<id>4062</id>
+<georss:point>19.0561111111111 -69.4166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl30_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4063</link>
+<description></description>
+<id>4063</id>
+<georss:point>10.0227777777778 -85.4091666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl33_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4064</link>
+<description></description>
+<id>4064</id>
+<georss:point>-0.456111111111111 -76.9833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl35_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4065</link>
+<description></description>
+<id>4065</id>
+<georss:point>17.8394444444444 -92.9</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl37_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4066</link>
+<description></description>
+<id>4066</id>
+<georss:point>-10.3061111111111 -74.9</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl38_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4067</link>
+<description></description>
+<id>4067</id>
+<georss:point>-17.3394444444444 -63.8333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl39_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4068</link>
+<description></description>
+<id>4068</id>
+<georss:point>8.23944444444444 -81.0825</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl45_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4069</link>
+<description></description>
+<id>4069</id>
+<georss:point>8.841736 -76.42004</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl50_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4070</link>
+<description></description>
+<id>4070</id>
+<georss:point>6.18944444444444 -74.0794444444444</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl51_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4071</link>
+<description></description>
+<id>4071</id>
+<georss:point>17.6394444444444 -92.7833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl54_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4072</link>
+<description></description>
+<id>4072</id>
+<georss:point>9.67277777777778 -84.5</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl56_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4073</link>
+<description></description>
+<id>4073</id>
+<georss:point>-16.8394444444444 -64.3333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl58_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4074</link>
+<description></description>
+<id>4074</id>
+<georss:point>10.3561111111111 -84.4833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl64_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4075</link>
+<description></description>
+<id>4075</id>
+<georss:point>11.0061111111111 -84.5</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl67_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4076</link>
+<description></description>
+<id>4076</id>
+<georss:point>-0.972777777777778 -77.8</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl68_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4077</link>
+<description></description>
+<id>4077</id>
+<georss:point>-1.50611111111111 -77.9166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl69_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4078</link>
+<description></description>
+<id>4078</id>
+<georss:point>-1.80611111111111 -77.9</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl71_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4079</link>
+<description></description>
+<id>4079</id>
+<georss:point>6.73944444444444 -75.2833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl73_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4080</link>
+<description></description>
+<id>4080</id>
+<georss:point>7.02277777777778 -73.8</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl74_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4081</link>
+<description></description>
+<id>4081</id>
+<georss:point>6.77277777777778 -76.0833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl76_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4082</link>
+<description></description>
+<id>4082</id>
+<georss:point>6.48944444444444 -72.9666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl77_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4083</link>
+<description></description>
+<id>4083</id>
+<georss:point>6.35611111111111 -73.3333333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl78_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4084</link>
+<description></description>
+<id>4084</id>
+<georss:point>8.38944444444444 -80.2666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl79_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4085</link>
+<description></description>
+<id>4085</id>
+<georss:point>5.50611111111111 -75</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl80_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4086</link>
+<description></description>
+<id>4086</id>
+<georss:point>1.57277777777778 -78.6833333333333</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bl81_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4087</link>
+<description></description>
+<id>4087</id>
+<georss:point>11.6894444444444 -84.4666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bm06_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4088</link>
+<description></description>
+<id>4088</id>
+<georss:point>7.90611111111111 -67.4166666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt11_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4089</link>
+<description></description>
+<id>4089</id>
+<georss:point>-18.7561111111111 -44.9666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt17_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4090</link>
+<description></description>
+<id>4090</id>
+<georss:point>-6.23944444444444 -42.8566666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bt18_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4091</link>
+<description></description>
+<id>4091</id>
+<georss:point>-19.4727777777778 -44.25</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+<item>
+<title>Bh51_establecimiento</title>
+<link>http://www.agtrials.org/tbtrial/4092</link>
+<description></description>
+<id>4092</id>
+<georss:point>9.22277777777778 -68.2666666666667</georss:point>
+<trial:crop>Forage</trial:crop>
+</item>
+</channel>
+</rss>

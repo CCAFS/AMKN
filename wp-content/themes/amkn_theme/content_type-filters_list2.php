@@ -100,6 +100,9 @@ foreach ($post_types as $post_type) {
       case 'ccafs_activities':
         echo "icon: \"../../../../images/ccafs_activities-mini.png\",";
         break;
+//      case 'agtrials':
+//        echo "icon: \"../../../../images/ccafs_sites-miniI.png\",";
+//        break;
     }
     echo "
             children: [ // Pass an array of nodes.
@@ -188,7 +191,7 @@ if ($taxonomies) {
 </div>  end cFiltersList2-->
 <?php
 $qargs = array(
-  'post_type' => isset($postTypes) ? explode(",", $postTypes) : array('ccafs_activities', 'ccafs_sites', 'biodiv_cases', 'amkn_blog_posts', 'photo_testimonials', 'video_testimonials,'),
+  'post_type' => isset($postTypes) ? explode(",", $postTypes) : array('ccafs_activities', 'ccafs_sites', 'biodiv_cases', 'amkn_blog_posts', 'photo_testimonials', 'video_testimonials'),
   'posts_per_page' => '-1',
   'tax_query' => array(
     'relation' => 'AND',

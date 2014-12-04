@@ -48,8 +48,25 @@ $categories = $wpdb->get_results($sql);
 <?php else : ?>
   <link rel="stylesheet" type="text/css" href="css/default.css">
 <?php endif; ?>
+<script src="js/easyXDM.debug.js"></script>
 <script src="js/dataAndTools.js"></script>
-<div id="container" style="background: #FFF">
+<script type="text/javascript">
+  var transport = new easyXDM.Socket(/** The configuration */{
+    //local: "../name.html",
+    //swf: "../easyxdm.swf",
+    /**
+     * Register the method that should handle incoming messages
+     * @param {String} data
+     * @param {String} origin
+     */
+    onMessage: function(message, origin) {
+      console.log(message + "' from '" + origin + "'");
+      initialState(message);
+    }
+  });
+</script>
+
+<div id="container" style="background: #FFF; font-family: open_sanscondensed_light;">
   <div class="art-search clearfix">
     <!--<form class="" method="get" name="" action="" style="display: inline-flex">-->
     <input class="searchbar" name="s" type="text" value="" onkeydown="serachDeliverable(this.value, event)">
@@ -58,33 +75,33 @@ $categories = $wpdb->get_results($sql);
   </div>
   <div class="clearfix categories-btns">
     <?php foreach ($categories AS $cat): ?>
-      <div class="category-btn" style="background-image: url(img/<?php echo $cat->id ?>.png);width:<?php echo 95 / count($categories) ?>%; margin:<?php echo 2.5 / count($categories) ?>%;" onclick="categoryChosen(<?php echo $cat->id ?>, 'first=true');
+      <div id="cat<?php echo $cat->id ?>" class="category-btn" style="background-image: url(img/<?php echo $cat->id ?>.png);width:<?php echo 95 / count($categories) ?>%; margin:<?php echo 2.5 / count($categories) ?>%;" onclick="categoryChosen(<?php echo $cat->id ?>, 'first=true');
           $(this).addClass('selected').siblings().removeClass('selected');
           $('#result').show();
           $('#detail').html('');
-          $('.searchbar').val('');">
-        <div style="position: absolute;right: 0.5em;bottom: 0;"><?php echo (isset($catCount[$cat->id])) ? $catCount[$cat->id] : 0 ?></div>
+          $('.searchbar').val('');
+          $('#loading').show();">
+        <div class="category-name" style=""><?php echo $cat->name ?></div>
+        <div class="category-count" style=""><?php echo (isset($catCount[$cat->id])) ? $catCount[$cat->id] : 0 ?></div>
+
       </div>
-<?php endforeach; ?>
+    <?php endforeach; ?>
   </div>
-  <div class="clearfix" style="width: 100%;">
-    <?php foreach ($categories AS $cat): ?>
-      <div class="category-title" style="width: <?php echo 95 / count($categories) ?>%; margin:<?php echo 2 / count($categories) ?>%; ">
-        <span class="category-title-text"><?php echo $cat->name ?></span>
-      </div>
-<?php endforeach; ?>
-  </div>
-  <div id="loading" style="display:none;position:absolute; width:100%;top: 300px;">
-    <img style="display: block; margin: 0 auto;" src="img/loading.gif" alt="Loader" />
-  </div>
+  <div id="urlState"></div>
+  <div id="loading"><img style="" src="img/loading.gif" alt="Loader" /></div>
   <div id="result" style="padding-top: 30px; width: 100%;" class="clearfix">
+
     <div style="float: left; padding: 10px; margin: 10px; width: 100%;text-align: center;font-size: 35px; font-style: oblique;">
       Select a category that you are interested
     </div>
-<?php //get_template_part('data-tools/result') ?>
+    <?php //get_template_part('data-tools/result') ?>
   </div>
   <div id="detail" style="padding-top: 30px; width: 100%;" class="clearfix"></div>
 </div>
+<script>
+  var initPage = true;
+  initialState(document.location.hash);
+</script>
 <?php
 //get_footer();
 ?>

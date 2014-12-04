@@ -28,10 +28,10 @@
 $_SESSION['lastDate'] = 0;
 setcookie("lastDateTmp", 0, strtotime('+1 days'));
 if (isset($_COOKIE["lastDate"])) {
-//  $_SESSION['lastDate'] = 'January 1, 2014';
-  $_SESSION['lastDate'] = $_COOKIE["lastDate"];
-//  setcookie("lastDateTmp", 'January 1, 2014', strtotime('+1 days'));
-  setcookie("lastDateTmp", $_SESSION['lastDate']);
+  $_SESSION['lastDate'] = 'January 1, 2014';
+//  $_SESSION['lastDate'] = $_COOKIE["lastDate"];
+  setcookie("lastDateTmp", 'January 1, 2014', strtotime('+1 days'));
+//  setcookie("lastDateTmp", $_SESSION['lastDate']);
 }
 //setcookie("lastDate", date('Y-m-d H:i:s e'), strtotime( '+30 days' ));
 setcookie("lastDate", date('F jS, Y'), strtotime('+30 days'));
@@ -136,7 +136,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
           onSelect: function(flag, node) {
             if (!node.data.url) {
 
-              if (node.data.key == 'accord_ccafs_sites' || node.data.key == 'accord_video_testimonials' || node.data.key == 'accord_amkn_blog_posts'
+              if (node.data.key == 'accord_ccafs_sites' || node.data.key == 'accord_video_testimonials' || node.data.key == 'accord_amkn_blog_posts' || node.data.key == 'accord_agtrials'
                       || node.data.key == 'accord_biodiv_cases' || node.data.key == 'accord_photo_testimonials' || node.data.key == 'accord_ccafs_activities' || node.data.key.match('taxio_')) {
                 if (firstime && selectAll) {
                   updateDataLayerTree(true);

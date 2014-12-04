@@ -64,3 +64,6 @@
 /wp-content/themes/twentyfourteen/
 /wp-content/plugins/advanced-custom-fields/
 /wp-content/plugins/amkn_rules/tmp/
+wp-content/themes/amkn_theme/libs/esriProxy/proxy_log.log
+arcgislink.js
+wp-content/wp-cache-config.php

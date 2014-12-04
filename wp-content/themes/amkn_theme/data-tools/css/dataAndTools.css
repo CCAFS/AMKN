@@ -19,6 +19,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
     Author     : CRSANCHEZ
 */
 
+#loading{
+  display:none; 
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #FFF;
+  opacity: 0.6;
+}
+#loading img{
+  position: absolute;
+  top: 44%;
+  left: 50%;
+}
+
 .art-search {
   border: none !important;
   margin-left: 777px;
@@ -49,15 +64,24 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 .categories-btns{
   width: 100%; 
-  margin: 10px 0px 10px 0px;
-  padding: 10px 0px 10px 0px;
+  margin: 10px 0px 0px 0px;
+  padding: 10px 0px 0px 0px;
 }
 
 .category-btn {
   cursor:pointer; 
-  height: 98px; 
+  height: 134px; 
   float: left; 
   position: relative;
+  background-repeat: no-repeat;
+  background-position: 50% 22%;
+
+  -webkit-transition:background-position 0.5s ease;
+}
+
+.category-btn.selected {  
+  background-repeat: no-repeat;
+  background-position: 50% 10%;
 }
 
 .category-title{
@@ -70,6 +94,21 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 .category-title-text{
   display: table-cell; 
   vertical-align: middle;
+}
+
+.category-count{
+  position: absolute;
+  right: 0.5em;
+  bottom: 0;
+}
+
+.category-name{
+  position: absolute;
+  bottom: 0;
+  padding: 4%;
+  width: 92%;
+  height: 25%;
+  line-height: 1em;
 }
 
 .closeDetailBtn {
@@ -154,4 +193,37 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 .paginate li a{
   color:#FFFFFF;
   text-decoration:none;
+}
+
+/* Results Filters*/
+
+.result-filters {
+  width: 30%;
+  float: left;
+  background: #F2F1EF;
+  padding: 5px 0px 5px 10px;
+}
+
+.result-filters .title{
+  font-size: 30px;
+}
+.result-filters .subtitle{
+  font-size: 1.2em;
+  color:#666;
+}
+
+.result-filters ul{ 
+  padding-left: 15px;
+}
+
+
+.result-filters ul li{
+  font-size: 1.3em;
+}
+
+
+#results_box {
+  width: 67%; 
+  float:left; 
+  margin-left: 15px
 }
