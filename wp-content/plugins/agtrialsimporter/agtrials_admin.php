@@ -17,8 +17,8 @@
  */
 
 /*
- * Plugin Name: AgImpacts - Paginas administrativas
- * Description: Plugin para manejo de propiedades de ag-impacts
+ * Plugin Name: Agtrials - Paginas administrativas
+ * Description: Plugin para manejo de propiedades la importacion de los datos de la aplicacion Agtrials
  * Author: Camilo Rodriguez
  * Version: 1.0
  */
@@ -86,13 +86,15 @@ function importData($files) {
       );
       $postId = wp_insert_post($post);
       if ($postId) {
-        $date = explode('/',$line[3]);
         add_post_meta($postId, 'crop', $line[1], true);
         add_post_meta($postId, 'country', $line[2], true);
         add_post_meta($postId, 'sow_date', $line[3], true);
-        add_post_meta($postId, 'date_filter', $date[2].$date[0].$date[1], true);
         add_post_meta($postId, 'geoRSSPoint', trim($line[4]) . ' ' . trim($line[5]), true);
         add_post_meta($postId, 'syndication_permalink', $line[6], true);
+        if ($line[3] != '') {
+          $date = explode('/',$line[3]);
+          add_post_meta($postId, 'date_filter', $date[2].str_pad($date[0], 2, "0", STR_PAD_LEFT).str_pad($date[1], 2, "0", STR_PAD_LEFT), true);
+        }
       }
 //       echo $line. "<br>";
     }
