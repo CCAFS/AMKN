@@ -2594,7 +2594,7 @@ function updateLayerVisibilityTree(node, flag) {
   lyrID = ly[0];
   lID = ly[1];
   if (map)
-    var cLyr = map.getLayer(ly[0]);
+    var cLyr = map.getLayer(lyrID);
 
   if (cLyr != null) {
     cLyr.setVisibility(false);

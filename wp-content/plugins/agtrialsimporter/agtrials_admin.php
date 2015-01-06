@@ -27,6 +27,43 @@ add_action('admin_menu', 'OpcionMenuMisOpciones');
 
 function OpcionMenuMisOpciones() {
   add_menu_page('Importador', 'agTrials options', 'manage_options', 'pc-admin.php', 'AdminImporter');
+  add_submenu_page('pc-admin.php', 'AgTrials Syndication', 'Syndication', 'manage_options', 'pc-admin.php-syndication', 'adminSyndication');
+}
+
+function adminSyndication() {
+  ?>
+  <link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+  <script src="//code.jquery.com/jquery-1.10.2.js"></script>
+  <script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
+  <script>
+    $(function() {
+      $("#from").datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 3,
+        onClose: function(selectedDate) {
+          $("#to").datepicker("option", "minDate", selectedDate);
+        }
+      });
+      $("#to").datepicker({
+        defaultDate: "+1w",
+        changeMonth: true,
+        numberOfMonths: 3,
+        onClose: function(selectedDate) {
+          $("#from").datepicker("option", "maxDate", selectedDate);
+        }
+      });
+    });
+  </script>
+  <h2>Select a date range to syndicate trials</h2>
+  <form action='' method='POST' enctype='multipart/form-data'>
+    <label for="from">From</label>
+    <input id="from" name="from" type="text">
+    <label for="to">to</label>
+    <input id="to" name="to" type="text">
+    <input type='submit' name='upload_btn' value='Syndicate'>
+  </form>
+  <?php
 }
 
 function AdminImporter() {
@@ -92,8 +129,8 @@ function importData($files) {
         add_post_meta($postId, 'geoRSSPoint', trim($line[4]) . ' ' . trim($line[5]), true);
         add_post_meta($postId, 'syndication_permalink', $line[6], true);
         if ($line[3] != '') {
-          $date = explode('/',$line[3]);
-          add_post_meta($postId, 'date_filter', $date[2].str_pad($date[0], 2, "0", STR_PAD_LEFT).str_pad($date[1], 2, "0", STR_PAD_LEFT), true);
+          $date = explode('/', $line[3]);
+          add_post_meta($postId, 'date_filter', $date[2] . str_pad($date[0], 2, "0", STR_PAD_LEFT) . str_pad($date[1], 2, "0", STR_PAD_LEFT), true);
         }
       }
 //       echo $line. "<br>";
@@ -121,7 +158,7 @@ function exportJson($files) {
         'url' => $line[6]
       );
     }
-    $myfile = fopen($uploadDir."newfile.json", "w") or die("Unable to open file!");
+    $myfile = fopen($uploadDir . "newfile.json", "w") or die("Unable to open file!");
     $txt = json_encode($trials);
     fwrite($myfile, $txt);
     fclose($myfile);
