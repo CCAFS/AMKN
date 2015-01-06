@@ -789,13 +789,13 @@ function getGeoData($pID, $geoPT) {
 }
 
 function updateAllNearestBMSite() {
-  $args = array('numberposts' => -1, 'post_status' => 'publish');
+  $args = array('numberposts' => -1, 'post_status' => 'publish', 'post_type' => array('biodiv_cases', 'ccafs_activities', 'photo_testimonials', 'amkn_blog_posts', 'video_testimonials'));
   $amknObjs = get_posts($args);
   if ($amknObjs) {
     foreach ($amknObjs as $amknObj) {
-      if ($amknObj->post_type != "ccafs_sites") {
+//      if ($amknObj->post_type != "ccafs_sites") {
         getNearestBMSite($amknObj->ID);
-      }
+//      }
     }
   }
 }
