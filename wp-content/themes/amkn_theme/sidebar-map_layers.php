@@ -56,6 +56,29 @@ foreach ($bookmarks as $bm) {
     var aglyr<?php echo $bm->link_id; ?>;
   <?php
 }
+$args = array(
+  'post_type' => 'layer_group',
+  'posts_per_page' => -1,
+  'meta_key' => 'mapserverUrl'
+);
+$the_query = new WP_Query($args);
+if ($the_query->have_posts()) :
+  while ($the_query->have_posts()) :
+    $the_query->the_post();
+    $meta_value = get_post_meta( get_the_ID(), 'mapserverUrl', true );
+//    $layers .= "{title: '" . get_the_title() . "', isFolder: true, hideCheckbox: true, children: [";
+//    $layers .= getChildLayerGroup(get_the_ID());
+//    $terms = wp_get_post_terms(get_the_ID(), 'layer_subgroup', array("fields" => "names"));
+//    foreach ($terms as $sub) {
+//    $layers .= "{title: '" . get_the_ID() . "', isFolder: true, hideCheckbox: true},";
+//    }
+//    $layers .= "]},";
+    ?>
+      var aglyr<?php echo get_the_ID() ?>;
+    <?php
+  endwhile;
+endif;
+wp_reset_postdata();
 ?>
   function addDataLayers()
   {
@@ -115,7 +138,24 @@ foreach ($bookmarks as $bm) {
     dojo.connect(map, "onLayersAddResult", sLeg);
   }
 
-
+<?php
+$args = array(
+  'post_type' => 'layer_group',
+  'posts_per_page' => -1,
+  'meta_key' => 'mapserverUrl'
+);
+$the_query = new WP_Query($args);
+if ($the_query->have_posts()) :
+  while ($the_query->have_posts()) :
+    $the_query->the_post();
+    $meta_value = get_post_meta( get_the_ID(), 'mapserverUrl', true );
+    ?>
+      aglyr<?php echo get_the_ID() ?> = new esri.layers.ArcGISDynamicMapServiceLayer("<?php echo $meta_value; ?>");
+    <?php
+  endwhile;
+endif;
+wp_reset_postdata();
+?>
   function sLeg(results) {
     legend = new esri.dijit.Legend({
       map: map,

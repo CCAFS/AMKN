@@ -32,7 +32,7 @@ $args1 = array(
   'public' => true,
   '_builtin' => false
 );
-$excludeTypes = array("flickr_photos","agtrials");
+$excludeTypes = array("flickr_photos", "agtrials", "layer_group");
 $output = 'objects'; // names or objects
 $operator = 'and'; // 'and' or 'or'
 $post_types = get_post_types($args1, $output, $operator);
@@ -110,7 +110,13 @@ foreach ($post_types as $post_type) {
             }";
   }
 }
-$layers = "]; var treeDataLayer = [ { title: \"Data Layer (" . count($bookmarks) . ")\", 
+$args = array(
+  'post_type' => 'layer_group',
+  'posts_per_page' => -1,
+  'post_parent' => 0
+);
+$the_query = new WP_Query($args);
+$layers = "]; var treeDataLayer = [ { title: \"Data Layer (" . count($the_query->found_posts) . ")\", 
                 key: \"accord_data_layer\",                  
                 isFolder: true,
                 hideCheckbox: true,            
@@ -118,20 +124,34 @@ $layers = "]; var treeDataLayer = [ { title: \"Data Layer (" . count($bookmarks)
                 icon: '../../../../images/data_layersM.png',
                 selectMode: 3,
                 children: [";
-$i = 0;
-foreach ($bookmarks as $bm) {
-  $bmLStr = explode("||", $bm->link_url);
-  if (count($bmLStr) == 1) {
-    $bmLURL = $bm->link_url;
-    $singleLayer = "null";
-  } else {
-    $bmLURL = $bmLStr[0];
-    $singleLayer = $bmLStr[1];
+
+if ($the_query->have_posts()) {
+  while ($the_query->have_posts()) {
+    $the_query->the_post();
+    $layers .= "{title: '" . get_the_title() . "', isFolder: true, hideCheckbox: true, children: [";
+    $layers .= getChildLayerGroup(get_the_ID());
+//    $terms = wp_get_post_terms(get_the_ID(), 'layer_subgroup', array("fields" => "names"));
+//    foreach ($terms as $sub) {
+//    $layers .= "{title: '" . get_the_ID() . "', isFolder: true, hideCheckbox: true},";
+//    }
+    $layers .= "]},";
   }
-  $layers .= "{title: '" . $bm->link_name . "', isFolder: true, hideCheckbox: true, key: 'aglyr" . $bm->link_id . "-" . $singleLayer . "-" . $bmLURL . "-" . $bm->link_id . "'},";
-//  $layers .= "children: [ test[".$i."]]},";
-  $i++;
 }
+wp_reset_postdata();
+$i = 0;
+//foreach ($bookmarks as $bm) {
+//  $bmLStr = explode("||", $bm->link_url);
+//  if (count($bmLStr) == 1) {
+//    $bmLURL = $bm->link_url;
+//    $singleLayer = "null";
+//  } else {
+//    $bmLURL = $bmLStr[0];
+//    $singleLayer = $bmLStr[1];
+//  }
+//  $layers .= "{title: '" . $bm->link_name . "', isFolder: true, hideCheckbox: true, key: 'aglyr" . $bm->link_id . "-" . $singleLayer . "-" . $bmLURL . "-" . $bm->link_id . "'},";
+////  $layers .= "children: [ test[".$i."]]},";
+//  $i++;
+//}
 $layers .= "]
        }];";
 echo $layers;
@@ -191,7 +211,7 @@ if ($taxonomies) {
 </div>  end cFiltersList2-->
 <?php
 $qargs = array(
-  'post_type' => isset($postTypes) ? explode(",", $postTypes) : array('ccafs_activities', 'ccafs_sites', 'biodiv_cases', 'amkn_blog_posts', 'photo_testimonials', 'video_testimonials,'),
+  'post_type' => isset($postTypes) ? explode(",", $postTypes) : array('ccafs_activities', 'ccafs_sites', 'biodiv_cases', 'amkn_blog_posts', 'photo_testimonials', 'video_testimonials'),
   'posts_per_page' => '-1',
   'tax_query' => array(
     'relation' => 'AND',
@@ -250,5 +270,36 @@ while ($contentQuery->have_posts()) {
 //   alert(postTotal);
 //   alert(JSON.stringify(postTotal, null, 4));
 </script>
+<?php
 
-
+function getChildLayerGroup($parent) {
+  $layers = '';
+  $args = array(
+    'post_type' => 'layer_group',
+    'posts_per_page' => -1,
+    'post_parent' => $parent
+  );
+  if ($parent) {
+    $the_query = new WP_Query($args);
+    if ($the_query->have_posts()) {
+      while ($the_query->have_posts()) {
+        $the_query->the_post();
+        $meta_value = get_post_meta( get_the_ID(), 'mapserverUrl', true );
+        if ($meta_value) {
+          $layers .= "{title: '" . get_the_title() . "', icon: '../../../../images/map_icon.png?ver=2', children: [";
+        } else {
+          $layers .= "{title: '" . get_the_title() . "', isFolder: true, hideCheckbox: true, children: [";
+        }
+        $layers .= getChildLayerGroup(get_the_ID());
+//    $terms = wp_get_post_terms(get_the_ID(), 'layer_subgroup', array("fields" => "names"));
+//    foreach ($terms as $sub) {
+//      $layers .= "{title: '" . $sub . "', isFolder: true, hideCheckbox: true},";
+//    }
+        $layers .= "]},";
+      }
+    }
+  }
+  return $layers;
+  wp_reset_postdata();
+}
+?>

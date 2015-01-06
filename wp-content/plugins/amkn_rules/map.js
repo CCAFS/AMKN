@@ -153,7 +153,7 @@ function initMap() {
   dojo.connect(map, "onKeyDown", function(evt) {
     dijit.popup.close(hQuery);
   });
-  createDataLayersBranch();
+//  createDataLayersBranch();
 
   basemapGallery = new esri.dijit.BasemapGallery({
     showArcGISBasemaps: true,
