@@ -14,29 +14,34 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" /> 
   <meta charset="utf-8" />
-<link rel="shortlink" href="http://ccafs.cgiar.org/node/28258" />
 <link rel="shortcut icon" href="http://ccafs.cgiar.org/sites/default/files/favicon.ico" type="image/vnd.microsoft.icon" />
-<link rel="canonical" href="http://ccafs.cgiar.org/atlas-ccafs-sites" />
+<meta name="description" content="The CGIAR Research Program on Climate Change, Agriculture and Food Security (CCAFS) works in East Africa, West Africa, Latin America, Southeast Asia and South Asia." />
 <meta name="generator" content="Drupal 7 (http://drupal.org)" />
-<meta content="" about="/atlas-ccafs-sites" property="dc:title" />
-<meta name="description" content="Jump to: East Africa West Africa South Asia CCAFS has created an atlas for each of the 15 sites where place-based research on climate change, agriculture and food security is ongoing. The atlases profile geospatial indicators of climate variability, bio-physical characteristics and socio-economic variables for each site." />
-  <title>Atlas of CCAFS sites | CCAFS: CGIAR research program on Climate Change, Agriculture and Food Security</title>
-  <link type="text/css" rel="stylesheet" href="http://ccafs.cgiar.org/sites/default/files/advagg_css/css__uLUQAN-al3ih9vFVpIpaRRkCYShNeCaaLnsGTf0MaAQ__vmmXVJ5P58uyUvGk9Qi7qRV_W65yKcT-OKcyN2g9rpw__cFLTeJj-RSDL9bw1aekBj5AM0M1RUe3DRJKdIjqqSr8.css" media="all" />
-<link type="text/css" rel="stylesheet" href="http://ccafs.cgiar.org/sites/default/files/advagg_css/css__2R4Y9oq919N2i8xujQIMTaS0SL_HrIxMfYkgOmDPbjg__3kvjnhPlSmY57EDBJoMy3KR5TXQNEBzxP2MxnGPwPPE__cFLTeJj-RSDL9bw1aekBj5AM0M1RUe3DRJKdIjqqSr8.css" media="screen" />
-<link type="text/css" rel="stylesheet" href="http://ccafs.cgiar.org/sites/default/files/advagg_css/css__ju5oOu71KI6Oyww4SDtbnWD7DzX82YMJshn9E9ulvCI__fe5SQEN_nffK7CZ3420ZB96JTA93xH6TKuU4hBuV7v4__cFLTeJj-RSDL9bw1aekBj5AM0M1RUe3DRJKdIjqqSr8.css" media="all" />
-<link type="text/css" rel="stylesheet" href="http://ccafs.cgiar.org/sites/default/files/advagg_css/css__GIKjW0Jocyk8ymY-4lGlB-xxtt3phJYRzM7VXrX8P34__LbRppccMdIzoJEuc23r60uUvDDlYXxN6CC0xyJASjSY__cFLTeJj-RSDL9bw1aekBj5AM0M1RUe3DRJKdIjqqSr8.css" media="all" />
-  <script type="text/javascript" src="http://ccafs.cgiar.org/sites/default/files/advagg_js/js__n4RGVDu7y2g2uG5GDL6l4iwLUj_pCKU9r4PSB1jAdzo__Aji-uRmnXFkgo8YrknSgb4fdHiOqqBXvjaKhCV89vsA__cFLTeJj-RSDL9bw1aekBj5AM0M1RUe3DRJKdIjqqSr8.js"></script>
+<link rel="canonical" href="http://ccafs.cgiar.org/regions" />
+<link rel="shortlink" href="http://ccafs.cgiar.org/regions" />
+  <title>Regions | CCAFS: CGIAR research program on Climate Change, Agriculture and Food Security</title>
+  <link type="text/css" rel="stylesheet" href="http://ccafs.cgiar.org/sites/default/files/css/css_rEI_5cK_B9hB4So2yZUtr5weuEV3heuAllCDE6XsIkI.css" media="all" />
+<link type="text/css" rel="stylesheet" href="http://ccafs.cgiar.org/sites/default/files/css/css_Hj-L7XQcE0qfyJRECGV_H0uiR6AMwoPoTuTUbvzzim0.css" media="screen" />
+<link type="text/css" rel="stylesheet" href="http://ccafs.cgiar.org/sites/default/files/css/css_dOp52WD9euiZyJ9yRkf3jBbl5BWWZwwJUowFYjShzhM.css" media="all" />
+<link type="text/css" rel="stylesheet" href="http://ccafs.cgiar.org/sites/default/files/css/css_VuvLEzCdwg-srK1j60-TgoWtmcck7zzZqQ1NigWXqaE.css" media="all" />
+<link type="text/css" rel="stylesheet" href="http://ccafs.cgiar.org/sites/default/files/css/css_0RFo6Cwdg48dGtzjd3jXdsTezrt2fUhShsXPUFrNK-g.css" media="all" />
+  <script type="text/javascript" src="http://ccafs.cgiar.org/sites/default/files/js/js_I3QlZBptsVRSjFm-4TnNDSaSY6jiqgx4k0hdObStbUQ.js"></script>
 <script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/webfont/1.4.8/webfont.js"></script>
-<script type="text/javascript" src="http://ccafs.cgiar.org/sites/default/files/advagg_js/js__FabcJ6qluktliDejymsuV-FqaN_HyMKGe93c2rO9Ky0__el1ZLGkKneOoCS6OWa01WHuIEsTsXZ46MRLCF390Fbw__cFLTeJj-RSDL9bw1aekBj5AM0M1RUe3DRJKdIjqqSr8.js"></script>
-<script type="text/javascript" src="http://ccafs.cgiar.org/sites/default/files/advagg_js/js__RDaF_FdWP7tv2x6hjmcZb5-5mlyJxu_t_EL82amYr8s__kNFL4fC8YQR0kPXy8gOqmZzUybikhDC8C688cTCPeyw__cFLTeJj-RSDL9bw1aekBj5AM0M1RUe3DRJKdIjqqSr8.js"></script>
+<script type="text/javascript" src="http://ccafs.cgiar.org/sites/default/files/js/js_CC-zfeuQHcDhFtVRuKW53h30TL7j_105J32Nz8b8R38.js"></script>
+<script type="text/javascript" src="http://ccafs.cgiar.org/sites/default/files/js/js_xnaB0jBYrGI0G159tJmr4dCKw1naro5R-LaIgsgzruY.js"></script>
+<script type="text/javascript" src="http://ccafs.cgiar.org/sites/default/files/js/js_K_pIO4wKElfjC0EYZ-9Xd-aGmB6G3Zfy6cSszuWGb18.js"></script>
 <script type="text/javascript">
 <!--//--><![CDATA[//><!--
+(function(i,s,o,g,r,a,m){i["GoogleAnalyticsObject"]=r;i[r]=i[r]||function(){(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)})(window,document,"script","//www.google-analytics.com/analytics.js","ga");ga("create", "UA-17242976-1", {"cookieDomain":"auto"});if ((location.hash != "") && (location.pathname.indexOf('/research/annual-report') != -1)) {
+    _gaq.push(['_trackEvent', 'Annual Report', 'Landed on a Chapter via fragment', location.hash]);
+}ga("send", "pageview");
 //--><!]]>
 </script>
 <script type="text/javascript" src="http://code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
-<script type="text/javascript" src="http://ccafs.cgiar.org/sites/default/files/advagg_js/js__ipLO5T-pr6vkQa-7wQW0A8N0LHjegd0kvl5DARh_rzU__3ufGNcexfrURY8qqAg_uznY8IwKz01f_rzJd6cz4QTU__cFLTeJj-RSDL9bw1aekBj5AM0M1RUe3DRJKdIjqqSr8.js"></script>
+<script type="text/javascript" src="http://ccafs.cgiar.org/sites/default/files/js/js_yISdBfkGeQh3ANx0eWm-OVO96mvK-8Qjpjl3f4boAWI.js"></script>
 <script type="text/javascript">
 <!--//--><![CDATA[//><!--
+jQuery.extend(Drupal.settings, {"basePath":"\/","pathPrefix":"","ajaxPageState":{"theme":"ccafs","theme_token":"WXOyIJUHLdxjanBsYBI_xvnfH5r5Z-EL_970tS2SL54","js":{"misc\/jquery.js":1,"misc\/jquery.once.js":1,"misc\/drupal.js":1,"\/\/ajax.googleapis.com\/ajax\/libs\/webfont\/1.4.8\/webfont.js":1,"misc\/jquery.cookie.js":1,"sites\/all\/modules\/contrib\/codefilter\/codefilter.js":1,"sites\/all\/modules\/contrib\/google_webfont_loader_api\/google_webfont_loader_api.js":1,"sites\/all\/modules\/contrib\/google_analytics\/googleanalytics.js":1,"0":1,"http:\/\/code.jquery.com\/jquery-migrate-1.2.1.min.js":1,"sites\/all\/themes\/custom\/ccafs\/javascripts\/foundation\/jquery.foundation.forms.js":1,"sites\/all\/themes\/custom\/ccafs\/javascripts\/foundation\/jquery.event.move.js":1,"sites\/all\/themes\/custom\/ccafs\/javascripts\/foundation\/jquery.foundation.mediaQueryToggle.js":1,"sites\/all\/themes\/custom\/ccafs\/javascripts\/foundation\/jquery.foundation.orbit.js":1,"sites\/all\/themes\/custom\/ccafs\/javascripts\/foundation\/jquery.foundation.buttons.js":1,"sites\/all\/themes\/custom\/ccafs\/javascripts\/foundation\/jquery.foundation.tabs.js":1,"sites\/all\/themes\/custom\/ccafs\/javascripts\/foundation\/jquery.event.swipe.js":1,"sites\/all\/themes\/custom\/ccafs\/javascripts\/foundation\/modernizr.foundation.js":1,"sites\/all\/themes\/custom\/ccafs\/javascripts\/foundation\/app.js":1},"css":{"modules\/system\/system.base.css":1,"modules\/system\/system.menus.css":1,"modules\/system\/system.messages.css":1,"modules\/system\/system.theme.css":1,"sites\/all\/modules\/contrib\/codefilter\/codefilter.css":1,"sites\/all\/modules\/contrib\/date\/date_api\/date.css":1,"sites\/all\/modules\/contrib\/date\/date_popup\/themes\/datepicker.1.7.css":1,"modules\/field\/theme\/field.css":1,"modules\/node\/node.css":1,"modules\/search\/search.css":1,"modules\/user\/user.css":1,"sites\/all\/modules\/contrib\/views\/css\/views.css":1,"sites\/all\/modules\/contrib\/ctools\/css\/ctools.css":1,"sites\/all\/modules\/contrib\/panels\/css\/panels.css":1,"sites\/all\/themes\/custom\/ccafs\/templates\/panels\/layouts\/ccafs\/ccafsheader\/ccafsheader.css":1,"modules\/locale\/locale.css":1,"sites\/all\/modules\/features\/custom\/treepanels\/plugins\/layouts\/tree_panel\/tree_panel.css":1,"sites\/all\/themes\/contrib\/boron\/css\/layout.css":1,"sites\/all\/themes\/custom\/base_foundation\/css\/layout.css":1,"sites\/all\/themes\/custom\/base_foundation\/css\/foundation.min.css":1,"sites\/all\/themes\/custom\/base_foundation\/css\/fix.css":1,"sites\/all\/themes\/custom\/base_foundation\/system.menus.css":1,"sites\/all\/themes\/custom\/ccafs\/stylesheets\/app.css":1,"sites\/all\/themes\/custom\/ccafs\/system.theme.css":1,"sites\/all\/themes\/custom\/ccafs\/views.css":1,"sites\/all\/themes\/custom\/ccafs\/field_collection.theme.css":1,"sites\/all\/themes\/custom\/ccafs\/panels.css":1,"sites\/all\/themes\/custom\/ccafs\/date.css":1,"sites\/all\/themes\/custom\/ccafs\/search.css":1}},"googleanalytics":{"trackOutbound":1,"trackMailto":1,"trackDownload":1,"trackDownloadExtensions":"7z|aac|arc|arj|asf|asx|avi|bin|csv|doc(x|m)?|dot(x|m)?|exe|flv|gif|gz|gzip|hqx|jar|jpe?g|js|mp(2|3|4|e?g)|mov(ie)?|msi|msp|pdf|phps|png|ppt(x|m)?|pot(x|m)?|pps(x|m)?|ppam|sld(x|m)?|thmx|qtm?|ra(m|r)?|sea|sit|tar|tgz|torrent|txt|wav|wma|wmv|wpd|xls(x|m|b)?|xlt(x|m)|xlam|xml|z|zip"},"google_webfont_loader_api_setting":{"google":{"families":["Open+Sans:400italic,400,300,700","Open+Sans+Condensed:300"]}}});
 //--><!]]>
 </script>
   
@@ -44,14 +49,9 @@
 <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
 <![endif]-->
 </head>
-<body class="html not-front not-logged-in no-sidebars page-node page-node- page-node-28258 node-type-models-tools-and-data i18n-en" >
+<body class="html not-front not-logged-in no-sidebars page-regions i18n-en" >
 
-    <div class="top-banner">
-
-		<a href="/research/annual-report/2013" id="ar-top-banner">How we&#39;re advancing climate-smart agriculture: read the 2013 Annual Report</a>
-
-</div>
-<div class="page-wrapper">
+    <div class="page-wrapper">
   
   <header id="header">
     <div id="header-top" class="row">
@@ -59,9 +59,9 @@
   <h1 id="logo"><a href="/">CCAFS: CGIAR research program on Climate Change, Agriculture and Food Security</a></h1>
   
   <nav id="language-switcher">
-    <ul class="language-switcher-locale-url"><li class="en first active"><a href="/atlas-ccafs-sites" class="language-link active" lang="en" title="Atlas of CCAFS sites">English</a></li>
-<li class="fr"><a href="/fr/atlas-des-sites-ccafs" class="language-link" lang="fr" title="Atlas des sites CCAFS">Français</a></li>
-<li class="es last"><a href="/es/atlas-ccafs-sites" class="language-link" lang="es">Español</a></li>
+    <ul class="language-switcher-locale-url"><li class="en first active"><a href="/regions" class="language-link active" lang="en">English</a></li>
+<li class="fr"><a href="/fr/regions" class="language-link" lang="fr">Français</a></li>
+<li class="es last"><a href="/es/regions" class="language-link" lang="es">Español</a></li>
 </ul>  </nav>
   
   
@@ -83,7 +83,7 @@
             Filter by type          </label>
                         <div class="views-widget">
           <div class="form-item form-type-select form-item-type">
- <select id="edit-type" name="type" class="form-select"><option value="All" selected="selected">- Any -</option><option value="blog">Blog Post</option><option value="career">Career &amp; Calls</option><option value="event">Event</option><option value="in_the_news">In the news</option><option value="models_tools_and_data">Models Tools and Data</option><option value="people">People</option><option value="press_release">Press release</option><option value="library_item">Publication</option><option value="research_highlight">Research Highlight</option></select>
+ <select id="edit-type" name="type" class="form-select"><option value="All" selected="selected">- Any -</option><option value="blog">Blog Post</option><option value="career">Career &amp; Calls</option><option value="event">Event</option><option value="in_the_news">In the news</option><option value="models_tools_and_data">Models Tools and Data</option><option value="people">People</option><option value="press_release">Press release</option><option value="activity">Project</option><option value="library_item">Publication</option><option value="research_highlight">Research Highlight</option><option value="project">Research Priorities</option></select>
 </div>
         </div>
               </div>
@@ -104,41 +104,38 @@
   </div>
     
   <nav id="header-about-menu">
-    <div class="menu-block-wrapper menu-block-3 menu-name-menu-secondary-links parent-mlid-0 menu-level-1">
-  <ul class="menu"><li class="first leaf has-children menu-mlid-1166"><a href="/contact-us">Contacts</a></li>
-<li class="leaf has-children menu-mlid-1164"><a href="/about-us">About us</a></li>
-<li class="leaf menu-mlid-2465"><a href="/donors">Donors</a></li>
-<li class="leaf has-children menu-mlid-1167"><a href="/partners">Partners</a></li>
-<li class="leaf menu-mlid-1172"><a href="/about/careers-and-calls">Careers & calls</a></li>
-<li class="last leaf has-children menu-mlid-1168"><a href="/news/media-centre">Media & Press</a></li>
-</ul></div>
-  </nav>
+    <ul class="menu"><li class="first collapsed"><a href="/contact-us">Contacts</a></li>
+<li class="collapsed"><a href="/about-us">About us</a></li>
+<li class="collapsed"><a href="/donors">Donors</a></li>
+<li class="collapsed"><a href="/partners">Partners</a></li>
+<li class="leaf"><a href="/about/careers-and-calls">Careers & calls</a></li>
+<li class="last collapsed"><a href="/news/media-centre">Media & Press</a></li>
+</ul>  </nav>
     
 </div>
 
 <nav id="main-menu">
   <ul class="menu row"><li class="first leaf home home-link"><a href="/" class=""><span>Home</span></a></li>
-<li class="expanded research-menu"><a href="/research" class="">Research<span>Our activity</span></a><ul class="menu row"><li class="first leaf only-in-page"><a href="/activities" class="">Research Priorities</a></li>
-<li class="leaf only-in-page"><a href="/research/projects" class="">Projects</a></li>
-<li class="collapsed icon-1"><a href="/themes/long-term-adaptation" class="">Long-Term Adaptation</a></li>
+<li class="expanded research-menu"><a href="/research" class="">Research<span>Our activity</span></a><ul class="menu row"><li class="first leaf row1"><a href="/activities" class="">Research Priorities</a></li>
+<li class="leaf row1"><a href="/research/results" class="">Results</a></li>
+<li class="leaf row1"><a href="/research/projects" class="">Projects</a></li>
+<li class="leaf themes-line"><span class="nolink">Themes</span></li>
+<li class="collapsed icon-1"><a href="/themes/climate-smart-agricultural-practices" class="">Climate-smart agricultural practices</a></li>
 <li class="collapsed icon-2"><a href="/themes/climate-risk-management" class="">Climate Risk Management</a></li>
 <li class="collapsed icon-3"><a href="/themes/low-emissions-agriculture" class="">Low Emissions Agriculture</a></li>
-<li class="collapsed icon-6"><a href="/themes/linking-knowledge-action" class="">Linking Knowledge with Action</a></li>
-<li class="leaf icon-7"><a href="/themes/data-and-tools" class="">Data and Tools</a></li>
-<li class="collapsed icon-8"><a href="/themes/policy-analysis" class="">Policy Analysis</a></li>
-<li class="collapsed icon-4"><a href="/gender" class="">Gender</a></li>
-<li class="last collapsed icon-5"><a href="/scenarios" class="">Future Scenarios</a></li>
+<li class="collapsed icon-4"><a href="/themes/gender-and-equity" class="">Gender and Equity</a></li>
+<li class="last collapsed icon-5"><a href="/themes/policies-and-institutions" class="">Policies and Institutions</a></li>
 </ul></li>
-<li class="expanded region-menu"><a href="/regions" class="">Regions<span>Where we work</span></a><ul class="menu row"><li class="first leaf icon-9"><a href="/regions/east-africa" class="">East Africa</a></li>
+<li class="expanded active-trail region-menu active-trail"><a href="/regions" class="active">Regions<span>Where we work</span></a><ul class="menu row"><li class="first leaf icon-9"><a href="/regions/east-africa" class="">East Africa</a></li>
 <li class="collapsed icon-10"><a href="/regions/west-africa" class="">West Africa</a></li>
 <li class="leaf icon-13"><a href="/regions/latin-america" class="">Latin America</a></li>
 <li class="leaf icon-12"><a href="/regions/southeast-asia" class="">Southeast Asia</a></li>
 <li class="last collapsed icon-11"><a href="/regions/south-asia" class="">South Asia</a></li>
 </ul></li>
 <li class="leaf"><a href="/publications" class="">Publications<span>Outputs and results</span></a></li>
-<li class="leaf active"><a href="/resources/tools-maps-models-and-data" class="">Tools<span>Models, maps, data</span></a></li>
+<li class="leaf"><a href="/resources/tools-maps-models-and-data" class="">Tools<span>Models, maps, data</span></a></li>
 <li class="leaf"><a href="/blog" class="">News Blog<span>Updates and opinions</span></a></li>
-<li class="collapsed"><a href="/how-we-work" class="">How we work<span>Our approach</span></a></li>
+<li class="collapsed"><a href="/how-we-work" class="">How we work<span> Strategic approach</span></a></li>
 <li class="last leaf"><a href="/events" class="">Events<span>Engagement &amp; outreach</span></a></li>
 </ul>  
 </nav>
@@ -149,200 +146,73 @@
     <div class="row">
       <div class="twelve columns">
                 <nav role="breadcrumb" class="breadcrumb">
-          <nav role="breadcrumb" class="breadcrumb"><ul><li><a href="/">Home</a></li><li><a href="/resources/tools-maps-models-and-data">Tools<span>Models, maps, data</span></a></li></ul></nav>  
+          <nav role="breadcrumb" class="breadcrumb"><ul><li><a href="/">Home</a></li></ul></nav>  
         </nav>
                         <div class="title-container">
-	        <h2>Atlas of CCAFS sites</h2>
-	        	        	        	<div class="node-translations">
-	        		Also available in <a href="/fr/atlas-des-sites-ccafs">Français</a>	        	</div>
-	        	        
+	        <h2>Regions</h2>
+	        	        	        
         </div>     
               </div>
     </div>
   </div>
           
              
-        <div class="even-strip">
-  <div class="row">
-    <div class="eight columns structure">
-        <div class="no-title"><article  about="/atlas-ccafs-sites" typeof="sioc:Item foaf:Document" class="node node-models-tools-and-data view-mode-full ">
-
-  
-    <div class="  node-body-container z1 nz">
-    <figure class="node-main-image">
-      <iframe src="http://amkn.org/ccafs-sites-embed/" width="620" height="440" frameborder="0"></iframe>
-    </figure>
-    <div class="node-body"><aside>
-	<p>Jump to:</p>
-	<p><a href="#East Africa">East Africa</a></p>
-	<p><a href="#West Africa">West Africa</a></p>
-	<p><a href="#South Asia">South Asia</a></p>
-</aside>
-<p>CCAFS has created an atlas for each of the 15 sites where place-based research on climate change, agriculture and food security is ongoing.</p>
-<p>The atlases profile geospatial indicators of climate variability, bio-physical characteristics and socio-economic variables for each site.</p>
-<p>Specific characteristics include annual rainfall and temperature, topography, agricultural resources (soil types, length of growing period, land cover and land use), population and livestock density, market access and livelihood zones. There are also maps showing the length of the growing period in 2000 and the projected length of the growing period in 2030. Combined with the household, village and organisational baseline studies, these site atlases help provide context for each site, and ways in which climate change may affect their food security and agricultural practices.&nbsp;</p>
-<h4><a name="East Africa">East Africa</a></h4>
-<p>Ethiopia - Borana (<a href="http://cgspace.cgiar.org/bitstream/handle/10568/33594/EthiopiaBorana.pdf?sequence=1">download</a>)</p>
-<p><iframe frameborder="0" height="300" scrolling="no" src="http://e.issuu.com/embed.html#4405409/4526390" width="400"></iframe></p>
-<p>Kenya - Makueni / Wote (<a href="http://cgspace.cgiar.org/bitstream/handle/10568/33593/KenyaMakueni.pdf?sequence=1">download</a>)</p>
-<p><iframe frameborder="0" height="300" scrolling="no" src="http://e.issuu.com/embed.html#4405409/4912453" width="400"></iframe></p>
-<p>Kenya - Nyando / Katuk Odeyo (<a href="http://cgspace.cgiar.org/bitstream/handle/10568/33589/KenyaNyando.pdf?sequence=1">download</a>)</p>
-<p><iframe frameborder="0" height="300" scrolling="no" src="http://e.issuu.com/embed.html#4405409/4912495" width="400"></iframe></p>
-<p>Tanzania - Usambara / Lushoto (<a href="http://cgspace.cgiar.org/bitstream/handle/10568/33590/TanzaniaLushoto.pdf?sequence=1">download</a>)</p>
-<p><iframe frameborder="0" height="300" scrolling="no" src="http://e.issuu.com/embed.html#4405409/4912517" width="400"></iframe></p>
-<p>Uganda - Albertine Rift / Hoima (<a href="http://cgspace.cgiar.org/bitstream/handle/10568/33580/UgandaHoima.pdf?sequence=1">download</a>)</p>
-<p><iframe frameborder="0" height="300" scrolling="no" src="http://e.issuu.com/embed.html#4405409/4796686" width="400"></iframe></p>
-<p>Uganda - Kagera Basin / Rakai (<a href="http://cgspace.cgiar.org/bitstream/handle/10568/33581/UgandaRakai.pdf?sequence=1">download</a>)</p>
-<p><iframe frameborder="0" height="300" scrolling="no" src="http://e.issuu.com/embed.html#4405409/4793503" width="400"></iframe></p>
-<h4><a name="West Africa">West Africa</a></h4>
-<p style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;">Burkina Faso - Yatenga / Tougou (<a href="http://cgspace.cgiar.org/bitstream/handle/10568/33588/BurkinaFasoTougou.pdf?sequence=1">download</a>)</p>
-<p style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;"><iframe frameborder="0" height="300" scrolling="no" src="http://e.issuu.com/embed.html#4405409/4912568" width="400"></iframe></p>
-<p style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;">Ghana - Lawra - Jirapa / Lawra (<a href="http://cgspace.cgiar.org/bitstream/handle/10568/33592/GhanaLawra.pdf?sequence=1">download</a>)</p>
-<p style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;"><iframe frameborder="0" height="300" scrolling="no" src="http://e.issuu.com/embed.html#4405409/4912582" width="400"></iframe></p>
-<div>Mali - Segou / Cinzana (<a href="http://cgspace.cgiar.org/bitstream/handle/10568/33587/MaliCinzana.pdf?sequence=1">download</a>)</div>
-<div>&nbsp;</div>
-<div><iframe frameborder="0" height="300" scrolling="no" src="http://e.issuu.com/embed.html#4405409/4912801" width="400"></iframe></div>
-<div>&nbsp;</div>
-<div>Niger - Kollo / Fakara (<a href="http://cgspace.cgiar.org/bitstream/handle/10568/33584/NigerFakara.pdf?sequence=1">download</a>)</div>
-<div>&nbsp;</div>
-<div><iframe frameborder="0" height="300" scrolling="no" src="http://e.issuu.com/embed.html#4405409/4912851" width="400"></iframe></div>
-<div>&nbsp;</div>
-<div>Senegal - Kaffrine (<a href="http://cgspace.cgiar.org/bitstream/handle/10568/33585/SenegalKaffrine.pdf?sequence=1">download</a>)</div>
-<div>&nbsp;</div>
-<div><iframe frameborder="0" height="300" scrolling="no" src="http://e.issuu.com/embed.html#4405409/4912951" width="400"></iframe></div>
-<div>&nbsp;</div>
-<div>
-	<h4><a name="South Asia">South Asia</a></h4>
-	<p style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;">Bangladesh - Khulna / Morrelganj (<a href="http://cgspace.cgiar.org/bitstream/handle/10568/33582/BangladeshMorrelganj.pdf?sequence=1">download</a>)</p>
-	<p style="font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;"><iframe frameborder="0" height="300" scrolling="no" src="http://e.issuu.com/embed.html#4405409/4912979" width="400"></iframe></p>
-</div>
-<p>India - Haryana / Karnal (<a href="http://cgspace.cgiar.org/bitstream/handle/10568/33583/IndiaKarnal.pdf?sequence=1">download</a>)</p>
-<p><iframe frameborder="0" height="300" scrolling="no" src="http://e.issuu.com/embed.html#4405409/4913458" width="400"></iframe></p>
-<p>India - Bihar / Vaishali (<a href="http://cgspace.cgiar.org/bitstream/handle/10568/33586/IndiaVaishali.pdf?sequence=1">download</a>)</p>
-<p><iframe frameborder="0" height="300" scrolling="no" src="http://e.issuu.com/embed.html#4405409/4913468" width="400"></iframe></p>
-<p><span style="line-height: 1.5;">Nepal - Mid-Western Terrai / Rupandehi (<a href="http://cgspace.cgiar.org/bitstream/handle/10568/33591/NepalRupandehi.pdf?sequence=1">download</a>)</span></p>
-<p><iframe frameborder="0" height="300" scrolling="no" src="http://e.issuu.com/embed.html#4405409/4913488" width="400"></iframe></p>
-<p>&nbsp;</p>
-</div>  </div>
-  
-    
-  
-   
-  
-    
-    
-</article>
+        <div class="row">
+  <nav id="secondary-menu" class="twelve columns">
+    <div class="menu-block-wrapper menu-block-1 menu-name-main-menu parent-mlid-0 menu-level-2">
+  <ul class="menu row"><li class="first leaf menu-mlid-1100 icon-9"><a href="/regions/east-africa" class="">East Africa</a></li>
+<li class="leaf has-children menu-mlid-1101 icon-10"><a href="/regions/west-africa" class="">West Africa</a></li>
+<li class="leaf menu-mlid-1102 icon-13"><a href="/regions/latin-america" class="">Latin America</a></li>
+<li class="leaf menu-mlid-1103 icon-12"><a href="/regions/southeast-asia" class="">Southeast Asia</a></li>
+<li class="last leaf has-children menu-mlid-1104 icon-11"><a href="/regions/south-asia" class="">South Asia</a></li>
+</ul></div>
+  </nav>
+</div><section class='even-strip strip'><section class='row'><div class="block" ><h3 class="twelve columns" >Where we work</h3>
 
 
 
-
-
-</div>    </div>
-    <div class="four columns structure">
-        <div class="block"><div class="foundation-nomarkup" id="mini-panel-sidebar">
-  <!-- AddThis Button BEGIN -->
-<div class="addthis_toolbox addthis_default_style addthis_32x32_style">
-<a class="addthis_button_facebook"></a>
-<a class="addthis_button_twitter"></a>
-<a class="addthis_button_printfriendly"></a>
-<a class="addthis_button_email"></a>
-<a class="addthis_button_compact"></a>
-<a class="addthis_counter addthis_bubble_style"></a>
-</div>
-<script type="text/javascript">var addthis_config = {"data_track_addressbar":true};</script><script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=ccafs"></script><!-- AddThis Button END --><div class="panel-separator"></div><div class="block"><h3 >Our research themes</h3>
-
-
-
-  <div class="content-wrapper">
-    <div class="content themes-vertical-list filled padded">    <ul class="block-grid four-up">          <li class="">  
-          <a href="/themes/long-term-adaptation" title="Long-Term Adaptation" class="icon-1"><span>Long-Term Adaptation</span></a>  </li>
-          <li class="">  
-          <a href="/themes/climate-risk-management" title="Climate Risk Management" class="icon-2"><span>Climate Risk Management</span></a>  </li>
-          <li class="">  
-          <a href="/themes/low-emissions-agriculture" title="Low Emissions Agriculture" class="icon-3"><span>Low Emissions Agriculture</span></a>  </li>
-          <li class="">  
-          <a href="/themes/linking-knowledge-action" title="Linking Knowledge with Action" class="icon-6"><span>Linking Knowledge with Action</span></a>  </li>
-          <li class="">  
-          <a href="/scenarios" title="Future Scenarios" class="icon-5"><span>Future Scenarios</span></a>  </li>
-          <li class="">  
-          <a href="/gender" title="Gender and Equity" class="icon-4"><span>Gender and Equity</span></a>  </li>
-          <li class="">  
-          <a href="/themes/data-and-tools" title="Data and Tools" class="icon-7"><span>Data and Tools</span></a>  </li>
-          <li class="">  
-          <a href="/themes/policy-analysis" title="Policy Analysis" class="icon-8"><span>Policy Analysis</span></a>  </li>
-      </ul></div>  </div>
-
-
-
-
-
-
-</div><div class="panel-separator"></div><div class="block"><h3 >Where we work</h3>
-
-
-
-    <div class="regions-vertical-list">    <ul>          <li class="card filled padded">  
+        <ul class="regions-horizontal-list block-grid five-up">          <li class="">  
           <a href="/regions/east-africa" class="icon-9"><span>East Africa</span></a>  </li>
-          <li class="card filled padded">  
+          <li class="">  
           <a href="/regions/west-africa" class="icon-10"><span>West Africa</span></a>  </li>
-          <li class="card filled padded">  
+          <li class="">  
           <a href="/regions/latin-america" class="icon-13"><span>Latin America</span></a>  </li>
-          <li class="card filled padded">  
+          <li class="">  
           <a href="/regions/southeast-asia" class="icon-12"><span>Southeast Asia</span></a>  </li>
-          <li class="card filled padded">  
+          <li class="">  
           <a href="/regions/south-asia" class="icon-11"><span>South Asia</span></a>  </li>
-      </ul></div>
+      </ul>
 
 
 
 
 
-</div></div></div>    </div>
-  </div>
-</div>
-          <footer>
-    <div class="row partners">
-    <div class="panel-pane pane-node"  >
-  
-      
-  
-  <div class="pane-content">
-    <div class="five columns logo-ccafs mobile-four">
+</div></section></section><section class='even-strip strip'><section class='row'><div class='twelve columns'><div class="block" ><p>The CGIAR Research Program on Climate Change, Agriculture and Food Security (CCAFS)&nbsp;is now carrying out research in five regions &ndash;&nbsp;<a href="http://ccafs.cgiar.org/regions/east-africa">East Africa</a>,&nbsp;<a href="http://ccafs.cgiar.org/regions/west-africa">West Africa</a>,&nbsp;<a href="http://ccafs.cgiar.org/regions/south-asia">South Asia</a>,&nbsp;<a href="http://ccafs.cgiar.org/regions/latin-america">Latin America</a>&nbsp;and&nbsp;<a href="http://ccafs.cgiar.org/regions/southeast-asia">Southeast Asia</a>.&nbsp;</p>
+<p>Read more about our&nbsp;<a href="http://ccafs.cgiar.org/resources/baseline-surveys">baseline survey activities</a>&nbsp;at the benchmark sites, download<a href="http://ccafs.cgiar.org/atlas-ccafs-sites">&nbsp;</a><a href="http://cgspace.cgiar.org/bitstream/handle/10568/10203/Site%2520Portfolio%2520FINAL.pdf?sequence=6">maps and profiles of the core sites</a>&nbsp;(10 MB PDF), and&nbsp;<a href="http://ccafs.cgiar.org/atlas-ccafs-sites">browse atlases of CCAFS sites in three regions</a>.&nbsp;You can also&nbsp;<a href="http://amkn.org/" target="_blank">explore our sites and data on an interactive map</a>.</p>
+<div><iframe allowfullscreen="" frameborder="0" height="440" scrolling="no" src="http://amkn.local/ccafs-sites-full-embed/" style="margin: 0 auto; display: block; width: 920px; height: 510px; border: 5px solid #e2e2e2;"></iframe></div>
+</div></div></section></section>          <footer>
+    <div class='row partners'><div class="five columns logo-ccafs mobile-four">
 	<p>CCAFS is a collaboration among<br />
 		<a href="http://ccafs.cgiar.org/cgiar-centers-and-programs">CGIAR Centers and Research Programs</a></p>
 </div>
 <div class="three columns logo-ciat mobile-two"><strong>led by</strong><a href="http://ciat.cgiar.org">CIAT</a></div>
 <div class="four columns logo-future-earth mobile-two"><strong>strategic partner</strong><a href="http://futureearth.info">Futureearth</a></div>
-  </div>
-
-  
-  </div>
-</div>
-<div class="footer-wrapper">
-  
-    <div class="row contacts">
-      
-      <div class="five columns footer-info">
-          <strong class="ccafs-title-footer">CCAFS Coordinating Unit</strong><div class="footer-address"><i class="icon-location"></i><strong>University of Copenhagen</strong><br />Faculty of Science,<br />Department of Plant and Environmental Sciences<br /><strong>Rolighedsvej 21, DK-1958 &ndash; Frederiksberg C, Denmark</strong></div>      </div>
-      
-      <div class="three columns footer-contacts">
-          <p><strong>Get in touch</strong> <a class="footer-email icon-envelope" href=""><span>ccafs@cgiar.org</span></a> <a class="footer-phone icon-phone" href=""><span>+45 35331046</span></a></p>      </div>
-      
-      <div class="two columns footer-social">
-          <strong >Get connected</strong><ul class="menu"><li class="first leaf"><a href="https://www.facebook.com/CGIARClimate" class="footer-facebook icon-facebook" target="_blank"><span>facebook</span></a></li>
-<li class="last leaf"><a href="https://twitter.com/cgiarclimate" class="footer-twitter icon-twitter" target="_blank"><span>twitter</span></a></li>
-</ul>      </div>
-      
-      <div class="two columns footer-subscribe">
-         <strong >Subscribe</strong><div class="menu-block-wrapper menu-block-5 menu-name-menu-subscribe parent-mlid-0 menu-level-1">
+</div><div class='footer-wrapper'><div class='row contacts'><div class='five columns footer-info'><h3 class="ccafs-title-footer">CCAFS Coordinating Unit</h3>
+<div class="footer-address">
+<i class="icon-location"></i>
+<strong>University of Copenhagen</strong><br />
+	Faculty of Science,<br />
+	Department of Plant and Environmental Sciences<br />
+	<strong>Rolighedsvej 21, DK-1958 &ndash; Frederiksberg C, Denmark</strong></div>
+</div><div class='three columns footer-contacts'><h3>Get in touch</h3><p><a class="footer-email icon-envelope" href=""><span>ccafs@cgiar.org</span></a> <a class="footer-phone icon-phone" href=""><span>+45 35331046</span></a></p>
+</div><div class='two columns footer-social'><h3>Get connected</h3><ul class="menu"><li class="first leaf"><a href="https://www.facebook.com/CGIARClimate" class="footer-facebook icon-facebook" target="_blank"><span>facebook</span></a></li>
+<li class="leaf"><a href="https://twitter.com/cgiarclimate" class="footer-twitter icon-twitter" target="_blank"><span>twitter</span></a></li>
+<li class="last leaf"><a href="https://plus.google.com/114659520856608278391" title="Google Plus" rel="publisher" class="footer-googleplus icon-googleplus"><span>Google+</span></a></li>
+</ul></div><div class='two columns footer-subscribe'><h3>Subscribe</h3><div class="menu-block-wrapper menu-block-5 menu-name-menu-subscribe parent-mlid-0 menu-level-1">
   <ul class="menu"><li class="first leaf menu-mlid-792"><a href="/sign-up" class="footer-newsletter icon-envelope"><span>newsletter</span></a></li>
 <li class="last leaf menu-mlid-793"><a href="/feeds" class="footer-feed icon-feed"><span>rss feed</span></a></li>
 </ul></div>
-      </div>
-      
-   </div>
-   
-</div>         </footer>
+</div></div></div>  </footer>
 
 </div>
 
