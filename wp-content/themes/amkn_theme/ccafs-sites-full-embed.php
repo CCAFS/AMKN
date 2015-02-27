@@ -241,7 +241,7 @@ $posts = new WP_Query($args);
 //        print_r($_GET['region']);
 $checkOng = 'checked';
 ?>
-<div id="container">
+<div id="container" style='background-color: white'>
   <div class="content">
     <!--<h2 class="title">Research Sites</h2>-->
     <form class="pure-form pure-form-stacked" name ="search-sources" id ="search-sources" method="get">
@@ -300,8 +300,8 @@ $checkOng = 'checked';
       </fieldset>        
     </form>
     <!--<button id="search" class="pure-button pure-button-primary" onclick="updateMap()">Test</button>-->
-    <div style="height: 400px; width: 68%;float:left;margin-bottom: 20px" id="map-canvas"></div>
-    <div id="sites" style="height: 400px; width: 32%;float:left; overflow: scroll;margin-bottom: 20px;background: #F5F5F5;overflow-x: auto">
+    <div style="height: 400px; width: 67%;float:left;margin-bottom: 20px" id="map-canvas"></div>
+    <div id="sites" style="height: 400px; width: 33%;float:left; overflow: scroll;margin-bottom: 20px;background: #F5F5F5;overflow-x: auto">
       <?php
       while ($posts->have_posts()) : $posts->the_post();
       $postType = $post->post_type;
