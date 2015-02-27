@@ -1774,9 +1774,9 @@ function setViewTree()
 
   for (var i = 0; i < pointsLyr.length; i++) {
 //    if (pointsLyr[i].data.key.match('aglyr') && pointsLyr[i].data.key.match('|')) {
-    showLyr += pointsLyr[i].data.key + ",";
+      showLyr += pointsLyr[i].data.key + ",";
 //    }
-  }
+    }
   showpts = showpts === "" ? "" : "/pts=" + showpts;
   showimp = showimp === "" ? "" : "/imp=" + showimp;
   showas = showas === "" ? "" : "/as=" + showas;
@@ -2595,7 +2595,7 @@ function updateLayerVisibilityTree(node, flag) {
   lID = ly[1];
   if (map)
     var cLyr = map.getLayer(lyrID);
-
+  
   if (cLyr != null) {
     cLyr.setVisibility(false);
     dijit.byId('tslider').setValue(cLyr.opacity * 100);

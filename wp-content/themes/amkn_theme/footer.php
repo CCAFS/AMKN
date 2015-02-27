@@ -38,7 +38,7 @@
      'public'   => true,
      '_builtin' => false
    );
-   $excludeTypes = array("flickr_photos", "biodiv_cases");
+   $excludeTypes = array("flickr_photos", "biodiv_cases", "agtrials", "layer_group");
    $output = 'objects'; // names or objects
    $operator = 'and'; // 'and' or 'or'
    $post_types=get_post_types($args1,$output,$operator);

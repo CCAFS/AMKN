@@ -286,7 +286,8 @@ function getChildLayerGroup($parent) {
         $the_query->the_post();
         $meta_value = get_post_meta( get_the_ID(), 'mapserverUrl', true );
         if ($meta_value) {
-          $layers .= "{title: '" . get_the_title() . "', icon: '../../../../images/map_icon.png?ver=2', children: [";
+          $layerInfos = get_post_meta( get_the_ID(), 'layerInfos', true );
+          $layers .= "{title: '" . get_the_title() . "', icon: '../../../../images/map_icon.png?ver=2', key: 'aglyr".get_the_ID()."|".get_the_ID()."|".$layerInfos."', children: [";
         } else {
           $layers .= "{title: '" . get_the_title() . "', isFolder: true, hideCheckbox: true, children: [";
         }
