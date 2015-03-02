@@ -246,7 +246,7 @@ $checkOng = 'checked';
     <!--<h2 class="title">Research Sites</h2>-->
     <form class="pure-form pure-form-stacked" name ="search-sources" id ="search-sources" method="get">
       <fieldset>
-        <legend>Filter By CCAFS Region</legend>                      
+        <!--<legend>Filter By CCAFS Region</legend>-->                      
         <div class="pure-g">
           <div class="pure-u-1-6">
             <label for="space">
