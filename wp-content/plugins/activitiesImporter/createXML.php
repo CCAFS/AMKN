@@ -1,5 +1,6 @@
 <?php  
-  $fh = fopen("rssActivities.xml", 'w');
+  $dir = realpath(dirname(__FILE__));
+  $fh = fopen($dir."/rssActivities.xml", 'w');
   $stringData = $_POST['dataxml'];
   fwrite($fh, $stringData);
   fclose($fh);

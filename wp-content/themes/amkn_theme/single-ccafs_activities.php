@@ -36,6 +36,9 @@ $theme = get_post_meta($post->ID, 'theme', true);
 $keywords = get_post_meta($post->ID, 'keywords');
 $contacts = get_post_meta($post->ID, 'contactName');
 $contactsEmail = get_post_meta($post->ID, 'contactEmail');
+$deliverableTitles = get_post_meta($post->ID, 'deliverableTitle');
+$deliverableTypes = get_post_meta($post->ID, 'deliverableType');
+$objectives = get_post_meta($post->ID, 'objective');
 
 //$budget = 1500000;
 
@@ -140,7 +143,34 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
           </ul>
           <div class="clearfix"></div>
         <?php endif;?>
+          
+        <?php if (count($objectives)):?>
+          <br><br>
+          <b>Objective(s):</b><br>
+          <ul class="">
+          <?php 
+            foreach($objectives as $key => $objective):         
+              echo "<li> ".$objective."</li>";
+            endforeach;
+          ?>
+          <?php //echo ($keyw)?substr_replace($keyw, ".", -2):''; ?>  
+          </ul>
+          <div class="clearfix"></div>
+        <?php endif;?>
         
+        <?php if (count($deliverableTitles)):?>
+          <br><br>
+          <b>Deliverable(s):</b><br>
+          <ul class="">
+          <?php 
+            foreach($deliverableTitles as $key => $deliverableTitle):         
+              echo "<li> ".$deliverableTitle."<!--<span class='devType'>".$deliverableTypes[$key]."</span>--></li>";
+            endforeach;
+          ?>
+          <?php //echo ($keyw)?substr_replace($keyw, ".", -2):''; ?>  
+          </ul>
+          <div class="clearfix"></div>
+        <?php endif;?>
                
         <div class="blog-post">        
           <?php // if (have_posts()) while (have_posts()) : the_post(); ?>
