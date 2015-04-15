@@ -75,6 +75,29 @@ if ($_GET['nearest_site'] != '0' && $_GET['nearest_site'] != '') {
   }
   $filt .='Nearest Research site "' . $sites[$_GET['nearest_site']] . '"<br>';
 }
+if ($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
+  $args['s'] = $_GET['keyword'];
+  $metaKey[] = array(
+    'relation' => 'OR',
+    array(
+      'key' => 'keywords',
+      'value' => ''.$_GET['keyword'].'',
+      'compare' => 'LIKE'
+    ),
+    array(
+      'key' => 'objective',
+      'value' => ''.$_GET['keyword'].'',
+      'compare' => 'LIKE'
+    ),
+    array(
+      'key' => 'deliverableTitle',
+      'value' => ''.$_GET['keyword'].'',
+      'compare' => 'LIKE'
+    )
+    );
+  $_GET['keyword'];
+  $filt .='Keyword ' . $_GET['keyword'] . '<br>';
+}
 $paged = get_query_var('paged');
 if (count($metaKey)) {
   $args = array_merge(array('meta_query' => $metaKey), array('posts_per_page' => '25', 'order' => $order, 'paged' => $paged), $orderby);
@@ -91,11 +114,7 @@ if (count($metaKey)) {
   );
 }
 
-if ($_GET['keyword'] != '0' && $_GET['keyword'] != '') {
-  $args['s'] = $_GET['keyword'];
-  $filt .='Keyword ' . $_GET['keyword'] . '<br>';
-}
-//echo "<pre>".print_r($metaKey,true)."</pre>";
+//echo "<pre>".print_r($args,true)."</pre>";
 $posts = new WP_Query($args);
 //echo "<h3>Found " . $posts->found_posts . "<br><i style='font-family: -webkit-body;font-size: 0.75em;'>" . substr_replace(trim($filt), "", -1) . "</i></h3>";
 ?>

@@ -80,6 +80,15 @@ for (var i = 0, len = activities.length; i < len; i++) {
   for (var j = 0, lenj = cont.length; j < lenj; j++) {
     output += '<ccafs:objective>' + cont[j].childNodes[0].data.trim() + '</ccafs:objective>\n';
   }
+  
+  cont = activities[i].getElementsByTagName("partners")[0].getElementsByTagName("partner");
+  for (var j = 0, lenj = cont.length; j < lenj; j++) {
+    output += (cont[j].getElementsByTagName("acronym")[0].childNodes[0])?  '<ccafs:partnerAcronym>' + cont[j].getElementsByTagName("acronym")[0].childNodes[0].data + '</ccafs:partnerAcronym>\n':'<ccafs:partnerAcronym></ccafs:partnerAcronym>\n';
+    output += (cont[j].getElementsByTagName("name")[0].childNodes[0])?'<ccafs:partnerName>' + cont[j].getElementsByTagName("name")[0].childNodes[0].data + '</ccafs:partnerName>\n':'<ccafs:partnerName></ccafs:partnerName>\n';
+    output += '<ccafs:partnerCountry>' + cont[j].getElementsByTagName("country")[0].getElementsByTagName("name")[0].childNodes[0].data + '</ccafs:partnerCountry>\n';
+    output += (cont[j].getElementsByTagName("contactPerson")[0].getElementsByTagName("name")[0].childNodes[0])? '<ccafs:partnerContactPersonName>' + cont[j].getElementsByTagName("contactPerson")[0].getElementsByTagName("name")[0].childNodes[0].data + '</ccafs:partnerContactPersonName>\n':'<ccafs:partnerContactPersonName></ccafs:partnerContactPersonName>\n';
+    output += (cont[j].getElementsByTagName("contactPerson")[0].getElementsByTagName("email")[0].childNodes[0])? '<ccafs:partnerContactPersonEmail>' + cont[j].getElementsByTagName("contactPerson")[0].getElementsByTagName("email")[0].childNodes[0].data + '</ccafs:partnerContactPersonEmail>\n':'<ccafs:partnerContactPersonEmail></ccafs:partnerContactPersonEmail>\n';
+  }
   output += '</item>\n';
 }
 output += '</channel>\n';

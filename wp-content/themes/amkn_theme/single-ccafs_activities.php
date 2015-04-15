@@ -136,7 +136,7 @@ if (isset($_GET["embed"]) && $_GET["embed"] == "true") {
           <ul class="activity-information-keywords">
           <?php 
             foreach($keywords as $key => $keyword):         
-              echo "<li> ".$keyword."</li>";
+              echo "<li> <a href='/ccafs-activities/?keyword=$keyword' style='color:#fff'>".$keyword."</a></li>";
             endforeach;
           ?>
           <?php //echo ($keyw)?substr_replace($keyw, ".", -2):''; ?>  

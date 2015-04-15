@@ -37,7 +37,7 @@
     $obj->title = 'Atlas of CCAFS sites';
     $obj->kind = array('map');
     $obj->description = 'Browse colorful maps of CCAFS research sites in three regions: East Africa, West Africa and South Asia';
-    $obj->imageUrl = 'http://ccafs.cgiar.org/sites/default/files/styles/large/public/site%20atlas.png?itok=sw2xVua2';
+    $obj->imageUrl = 'http://ccafs.cgiar.org/sites/default/files/styles/large/public/7165513773_f8f60527aa_h.jpg?itok=__JFVAgv';
     $obj->url = 'http://ccafs.cgiar.org/atlas-ccafs-sites';
     $tools[0] = $obj;
     

@@ -2282,3 +2282,18 @@ ul.activity-information-keywords li {
   color: #fff;
   text-transform: capitalize;
 }
+
+#loading{
+  display:none; 
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background: #FFF;
+  opacity: 0.6;
+}
+#loading img{
+  position: absolute;
+  top: 44%;
+  left: 50%;
+}

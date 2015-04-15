@@ -82,7 +82,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
         });
         $(document).ready(function()
         {
-          //                  $("#projectsTable").tablesorter(); 
+          $("#loading").fadeOut('slow'); 
         }
         );
         function orderColumn(colm) {
@@ -95,6 +95,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
           document.getElementById('search-activities').submit();
         }
       </script>
+      <div id="loading" style="z-index:9999;display: block"><img style="" src="<?php echo get_template_directory_uri(); ?>/images/loading.gif" alt="Loader" /></div>
       <div class="pure-g" style="margin-top: 20px">
         <div class="pure-u-1-4">
           <form class="pure-form pure-form-stacked" name ="search-activities" id ="search-activities" method="get" action="/ccafs-activities/">
@@ -193,7 +194,7 @@ $themes = array('1' => 'Adaptation to Progressive Climate Change', '2' => 'Adapt
                   <?php get_template_part('loop', 'activities'); ?>        
 
                 <?php elseif (get_query_var('post_type') == 'ccafs_sites') : ?>
-          <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
+              <!--<script src="//code.jquery.com/jquery-1.10.2.js"></script>-->
                 <script type="text/javascript" src="<?php bloginfo('template_directory'); ?>/js/jquery.scrollTo.js"></script>
                 <script type="text/javascript" src="http://maps.google.com/maps/api/js?sensor=false"></script>
                 <script type="text/javascript" src="http://google-maps-utility-library-v3.googlecode.com/svn/trunk/infobox/src/infobox.js"></script>
