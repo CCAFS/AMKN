@@ -121,6 +121,9 @@ function catch_that_image($post) {
   if(empty($first_img)){ //Defines a default image
     $first_img = bloginfo('template_url')."/images/default.png";
   }
+  if (strpos($first_img, 'http://feedproxy.google.com') !== false) {
+    $first_img = str_replace('http://feedproxy.google.com', 'https://ccafs.cgiar.org', $first_img);
+  }
   return $first_img;
 }
 

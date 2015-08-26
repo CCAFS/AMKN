@@ -449,7 +449,7 @@ if (isset($_GET["embedded"]) && $_GET["embedded"] != '') {
         echo $var;
         ?>">
           <img class="amkn_logo" src="<?php bloginfo('template_directory'); ?>/images/amkn.gif" alt="AMKN logo" />
-          <img class="ccafs_logo" src="<?php bloginfo('template_directory'); ?>/images/ccafs-logo-en.png" alt="CCAFS logo" height="76" width="238" /></a>
+          <img class="ccafs_logo" src="<?php bloginfo('template_directory'); ?>/images/ccafs-logo.png" alt="CCAFS logo" /></a>
       </div><!-- end logos -->
 
       <div id="right-header">
