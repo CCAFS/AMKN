@@ -1,6 +1,6 @@
 <?php
 /*
-  Template Name: aoi-pmh
+  Template Name: oai-pmh
  */
 //verb=GetRecord&metadataPrefix=oai_dc&identifier=oai:cgspace.cgiar.org:10568/25109
 $verb = $_GET['verb'];
@@ -53,7 +53,6 @@ if ($the_query->have_posts()) {
               <dc:creator><?php echo $creator?></dc:creator>
               <dc.publisher><?php echo $publisher?></dc.publisher>
               <dc:subject>Digital Libraries</dc:subject> 
-              <dc.description.abstract><?php echo get_the_excerpt()?></dc.description.abstract> 
               <dc:date><?php echo get_post_time('Y-m-d', true); ?></dc:date>
               <dc:identifier><?php echo get_permalink()?></dc:identifier>
               <dc:source><?php echo $source?></dc:source>
